@@ -6,18 +6,16 @@ import net.runelite.api.ItemComposition;
 import net.runelite.api.NPC;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
-import net.runelite.client.game.SkillIconManager;
 import net.runelite.client.ui.FontManager;
-import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPanel;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.components.LineComponent;
-import net.runelite.client.ui.overlay.components.TitleComponent;
 
 import javax.inject.Inject;
 import java.awt.*;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 class RemindersOverlay extends OverlayPanel {
 
@@ -88,6 +86,24 @@ class RemindersOverlay extends OverlayPanel {
 
 		panelComponent.setPreferredLocation(new Point(anchorX, anchorY));
 
+		for (int id: plugin.activeReminders) {
+			String text = plugin.getText(id);
+			if (text.isEmpty()) continue;
+
+			Color color = plugin.getColor(id);
+
+			panelComponent.getChildren().add(
+					WeightedLineComponent.builder()
+							.left("•")
+							.leftColor(color)
+							.right(text)
+							.rightColor(color)
+							.rightWeight(1f)
+							.rightAlignment(TextAlignment.LEADING)
+							.build()
+			);
+		}
+
 		if (config.listIds())
 		{
 			renderIds();
@@ -102,7 +118,7 @@ class RemindersOverlay extends OverlayPanel {
 				LineComponent.builder()
 						.left("Location")
 						.leftColor(Color.GREEN)
-						.right(String.format("(%d, %d)", plugin.localPos.getX(), plugin.localPos.getY()))
+						.right(String.format("(%d, %d)", plugin.worldPos.getX(), plugin.worldPos.getY()))
 						.build()
 		);
 
@@ -114,17 +130,22 @@ class RemindersOverlay extends OverlayPanel {
 						.build()
 		);
 
+		java.util.List<String> npcNames = new ArrayList<>();
 		for (NPC npc: plugin.npcs)
 		{
 			if (npc.getId() == -1) continue;
 
-			panelComponent.getChildren().add(
-					LineComponent.builder()
-							.left(npc.getName())
-							.leftColor(Color.CYAN)
-							.right(String.valueOf(npc.getId()))
-							.build()
-			);
+			if (!npcNames.contains(npc.getName()))
+			{
+				panelComponent.getChildren().add(
+						LineComponent.builder()
+								.left(npc.getName())
+								.leftColor(Color.CYAN)
+								.right(String.valueOf(npc.getId()))
+								.build()
+				);
+				npcNames.add(npc.getName());
+			}
 		}
 
 		for (ItemComposition item: plugin.inventoryItems)
