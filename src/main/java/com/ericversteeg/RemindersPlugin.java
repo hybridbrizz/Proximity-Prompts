@@ -20,6 +20,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import javax.inject.Inject;
 import java.awt.*;
 import java.time.*;
+import java.time.temporal.ChronoField;
 import java.util.*;
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class RemindersPlugin extends Plugin {
 							.atStartOfDay()
 			);
 
-	LocalDateTime lastDateTime = null;
+	LocalDateTime dateTime = LocalDateTime.now(ZoneId.systemDefault());
 
 	int regionId = 0;
 	int lastRegionId = 0;
@@ -64,7 +65,6 @@ public class RemindersPlugin extends Plugin {
 	List<ItemComposition> inventoryItems = new ArrayList<>();
 
 	WorldPoint worldPos = new WorldPoint(0, 0, 0);
-	LocalPoint tempLocalPoint = new LocalPoint(0, 0);
 
 	boolean progressUpdated = false;
 
@@ -93,6 +93,8 @@ public class RemindersPlugin extends Plugin {
 
 	@Subscribe
 	public void onGameTick(GameTick tick) {
+		dateTime = LocalDateTime.now(ZoneId.systemDefault());
+
 		activeReminders = getActiveReminders();
 
 		inventoryItems.clear();
@@ -163,22 +165,15 @@ public class RemindersPlugin extends Plugin {
 		{
 			if (isEnable(i))
 			{
-				if (checkRadius(i) && !isWithinRadiusOfLocation(i))
-				{
-					continue;
-				}
-
-				if (checkRegion(i) && !isInRegion(i))
-				{
-					continue;
-				}
-
-				if (checkNpcIds(i) && !matchesNpcIds(i))
-				{
-					continue;
-				}
-
-				if (checkItemIds(i) && !matchesItemIds(i))
+				if ((checkTimes(i) && !matchesTimes(i)) ||
+					(checkDaysOfWeek(i) && !matchesDaysOfWeek(i)) ||
+					(checkDates(i) && !matchesDates(i)) ||
+					(checkCoordinates(i) && !matchesCoordinates(i)) ||
+					(checkGeoFences(i) && !matchesGeoFences(i)) ||
+					(checkRegions(i) && !matchesRegions(i)) ||
+					(checkNpcIds(i) && !matchesNpcIds(i)) ||
+					(checkItemIds(i) && !matchesItemIds(i))
+				)
 				{
 					continue;
 				}
@@ -192,32 +187,279 @@ public class RemindersPlugin extends Plugin {
 		return activeList;
 	}
 
-	private boolean checkRadius(int noteId)
+	private boolean checkTimes(int noteId)
 	{
-		return getLocationX(noteId) > 0 || getLocationY(noteId) > 0;
+		return !getTimes(noteId).isEmpty();
 	}
 
-	private boolean isWithinRadiusOfLocation(int noteId)
+	private boolean matchesTimes(int noteId)
 	{
-		int x = getLocationX(noteId);
-		int y = getLocationY(noteId);
+		try {
+			String [] times = getTimes(noteId).split(",");
 
-		double distance = Math.sqrt(
-				Math.pow(x - worldPos.getX(), 2) +
-				Math.pow(y - worldPos.getY(), 2)
-		);
+			for (String timeStr: times)
+			{
+				String [] timeParts = timeStr.split(":");
 
-		return distance <= getRadius(noteId);
+				int h = Integer.parseInt(timeParts[0].trim());
+
+				String ma = timeParts[1].toLowerCase();
+
+				int m = Integer.parseInt(ma
+						.trim()
+						.replace("am", "")
+						.replace("pm", ""));
+
+
+				String aStr = ma
+						.trim()
+						.substring(ma.length() - 2, ma.length());
+
+				int a = 0;
+				if (aStr.equals("pm"))
+				{
+					a = 1;
+				}
+
+				boolean matches = dateTime.get(ChronoField.HOUR_OF_AMPM) == h
+						&& dateTime.get(ChronoField.MINUTE_OF_HOUR) == m
+						&& dateTime.get(ChronoField.AMPM_OF_DAY) == a;
+
+				if (matches)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+		catch (Exception exception)
+		{
+			System.out.println(exception.getMessage());
+			return false;
+		}
 	}
 
-	private boolean checkRegion(int noteId)
+	private boolean checkDaysOfWeek(int noteId)
 	{
-		return getRegionId(noteId) > 0;
+		return !getDaysOfWeek(noteId).isEmpty();
 	}
 
-	private boolean isInRegion(int noteId)
+	private boolean matchesDaysOfWeek(int noteId)
 	{
-		return getRegionId(noteId) == regionId;
+		try {
+			String [] daysOfWeek = getDaysOfWeek(noteId).split(",");
+
+			for (String dayOfWeek: daysOfWeek)
+			{
+				String lcDayOfWeek = dayOfWeek.toLowerCase();
+				int d = 0;
+				if (lcDayOfWeek.startsWith("mo")) d = 7;
+				else if (lcDayOfWeek.startsWith("tu")) d = 2;
+				else if (lcDayOfWeek.startsWith("we")) d = 3;
+				else if (lcDayOfWeek.startsWith("th")) d = 4;
+				else if (lcDayOfWeek.startsWith("fr")) d = 5;
+				else if (lcDayOfWeek.startsWith("sa")) d = 6;
+				else if (lcDayOfWeek.startsWith("su")) d = 7;
+
+				boolean matches = dateTime.get(ChronoField.DAY_OF_WEEK) == d;
+
+				if (matches)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+		catch (Exception exception)
+		{
+			System.out.println(exception.getMessage());
+			return false;
+		}
+	}
+
+	private boolean checkDates(int noteId)
+	{
+		return !getDates(noteId).isEmpty();
+	}
+
+	private boolean matchesDates(int noteId)
+	{
+		try {
+			String [] dates = getDates(noteId).split(",");
+
+			for (String dateStr: dates)
+			{
+				String [] dateParts = dateStr.split("/");
+
+				int m = Integer.parseInt(dateParts[0].trim());
+				int d = Integer.parseInt(dateParts[1].trim());
+				int y = 0;
+
+				if (dateParts.length > 2)
+				{
+					y = Integer.parseInt(dateParts[2].trim());
+				}
+
+				boolean matches = dateTime.get(ChronoField.MONTH_OF_YEAR) == m
+						&& dateTime.get(ChronoField.DAY_OF_MONTH) == d;
+
+				if (y > 0)
+				{
+					matches = matches && Integer.parseInt(
+							String.valueOf(
+									dateTime.get(ChronoField.YEAR))
+										.substring(2, 4)) == y;
+				}
+
+				if (matches)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+		catch (Exception exception)
+		{
+			System.out.println(exception.getMessage());
+			return false;
+		}
+	}
+
+	private boolean checkCoordinates(int noteId)
+	{
+		return !getCoordinates(noteId).isEmpty();
+	}
+
+	private boolean matchesCoordinates(int noteId)
+	{
+		try {
+			String [] coordinates = getCoordinates(noteId).split(",");
+
+			int x = 0;
+			for (int i = 0; i < coordinates.length; i++)
+			{
+				String xOrY = coordinates[i]
+						.replace("(", "")
+						.replace(")", "")
+						.trim();
+
+				if (i % 2 == 0)
+				{
+					x = Integer.parseInt(xOrY);
+					continue;
+				}
+
+				int y = Integer.parseInt(xOrY);
+
+				double distance = Math.sqrt(
+						Math.pow(x - worldPos.getX(), 2) +
+								Math.pow(y - worldPos.getY(), 2)
+				);
+
+				boolean matches = distance <= getRadius(noteId);
+
+				if (matches)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+		catch (Exception exception)
+		{
+			System.out.println(exception.getMessage());
+			return false;
+		}
+	}
+
+	private boolean checkGeoFences(int noteId)
+	{
+		return !getGeoFences(noteId).isEmpty();
+	}
+
+	private boolean matchesGeoFences(int noteId)
+	{
+		try {
+			String [] coordinates = getGeoFences(noteId).split(",");
+
+			int left = 0;
+			int top = 0;
+			int right = 0;
+			for (int i = 0; i < coordinates.length; i++)
+			{
+				String side = coordinates[i]
+						.replace("(", "")
+						.replace(")", "")
+						.trim();
+
+				if (i % 4 == 0)
+				{
+					left = Integer.parseInt(side);
+					continue;
+				}
+				else if (i % 4 == 1)
+				{
+					top = Integer.parseInt(side);
+					continue;
+				}
+				else if (i % 4 == 2)
+				{
+					right = Integer.parseInt(side);
+					continue;
+				}
+
+				int bottom = Integer.parseInt(side);
+
+				boolean matches = worldPos.getX() >= left && worldPos.getX() <= right
+						&& worldPos.getY() >= bottom && worldPos.getY() <= top;
+
+				if (matches)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+		catch (Exception exception)
+		{
+			System.out.println(exception.getMessage());
+			return false;
+		}
+	}
+
+	private boolean checkRegions(int noteId)
+	{
+		return !getRegionIds(noteId).isEmpty();
+	}
+
+	private boolean matchesRegions(int noteId)
+	{
+		try {
+			String [] ids = getRegionIds(noteId).split(",");
+
+			for (String idStr: ids)
+			{
+				int id = Integer.parseInt(idStr.trim());
+
+				boolean matches = regionId == id;
+
+				if (matches)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+		catch (Exception exception)
+		{
+			return false;
+		}
 	}
 
 	private boolean checkNpcIds(int noteId)
@@ -230,7 +472,6 @@ public class RemindersPlugin extends Plugin {
 		try {
 			String [] npcIds = getNpcIds(noteId).split(",");
 
-			boolean matchesAll = true;
 			for (String npcIdStr: npcIds)
 			{
 				int npcId = Integer.parseInt(npcIdStr.trim());
@@ -244,14 +485,13 @@ public class RemindersPlugin extends Plugin {
 					}
 				}
 
-				if (!matches)
+				if (matches)
 				{
-					matchesAll = false;
-					break;
+					return true;
 				}
 			}
 
-			return matchesAll;
+			return false;
 		}
 		catch (Exception exception)
 		{
@@ -269,7 +509,6 @@ public class RemindersPlugin extends Plugin {
 		try {
 			String [] itemIds = getItemIds(noteId).split(",");
 
-			boolean matchesAll = true;
 			for (String itemIdStr: itemIds)
 			{
 				int itemId = Integer.parseInt(itemIdStr.trim());
@@ -283,14 +522,13 @@ public class RemindersPlugin extends Plugin {
 					}
 				}
 
-				if (!matches)
+				if (matches)
 				{
-					matchesAll = false;
-					break;
+					return true;
 				}
 			}
 
-			return matchesAll;
+			return false;
 		}
 		catch (Exception exception)
 		{
@@ -613,1159 +851,424 @@ public class RemindersPlugin extends Plugin {
 		else return Color.WHITE;
 	}
 
-	String getTime(int reminderId)
+	String getTimes(int reminderId)
 	{
-		if (reminderId == 1) return config.reminder1Time();
-		else if (reminderId == 2) return config.reminder2Time();
-		else if (reminderId == 3) return config.reminder3Time();
-		else if (reminderId == 4) return config.reminder4Time();
-		else if (reminderId == 5) return config.reminder5Time();
-		else if (reminderId == 6) return config.reminder6Time();
-		else if (reminderId == 7) return config.reminder7Time();
-		else if (reminderId == 8) return config.reminder8Time();
-		else if (reminderId == 9) return config.reminder9Time();
-		else if (reminderId == 10) return config.reminder10Time();
-		else if (reminderId == 11) return config.reminder11Time();
-		else if (reminderId == 12) return config.reminder12Time();
-		else if (reminderId == 13) return config.reminder13Time();
-		else if (reminderId == 14) return config.reminder14Time();
-		else if (reminderId == 15) return config.reminder15Time();
-		else if (reminderId == 16) return config.reminder16Time();
-		else if (reminderId == 17) return config.reminder17Time();
-		else if (reminderId == 18) return config.reminder18Time();
-		else if (reminderId == 19) return config.reminder19Time();
-		else if (reminderId == 20) return config.reminder20Time();
-		else if (reminderId == 21) return config.reminder21Time();
-		else if (reminderId == 22) return config.reminder22Time();
-		else if (reminderId == 23) return config.reminder23Time();
-		else if (reminderId == 24) return config.reminder24Time();
-		else if (reminderId == 25) return config.reminder25Time();
-		else if (reminderId == 26) return config.reminder26Time();
-		else if (reminderId == 27) return config.reminder27Time();
-		else if (reminderId == 28) return config.reminder28Time();
-		else if (reminderId == 29) return config.reminder29Time();
-		else if (reminderId == 30) return config.reminder30Time();
-		else if (reminderId == 31) return config.reminder31Time();
-		else if (reminderId == 32) return config.reminder32Time();
-		else if (reminderId == 33) return config.reminder33Time();
-		else if (reminderId == 34) return config.reminder34Time();
-		else if (reminderId == 35) return config.reminder35Time();
-		else if (reminderId == 36) return config.reminder36Time();
-		else if (reminderId == 37) return config.reminder37Time();
-		else if (reminderId == 38) return config.reminder38Time();
-		else if (reminderId == 39) return config.reminder39Time();
-		else if (reminderId == 40) return config.reminder40Time();
-		else if (reminderId == 41) return config.reminder41Time();
-		else if (reminderId == 42) return config.reminder42Time();
-		else if (reminderId == 43) return config.reminder43Time();
-		else if (reminderId == 44) return config.reminder44Time();
-		else if (reminderId == 45) return config.reminder45Time();
-		else if (reminderId == 46) return config.reminder46Time();
-		else if (reminderId == 47) return config.reminder47Time();
-		else if (reminderId == 48) return config.reminder48Time();
-		else if (reminderId == 49) return config.reminder49Time();
-		else if (reminderId == 50) return config.reminder50Time();
-		else if (reminderId == 51) return config.reminder51Time();
-		else if (reminderId == 52) return config.reminder52Time();
-		else if (reminderId == 53) return config.reminder53Time();
-		else if (reminderId == 54) return config.reminder54Time();
-		else if (reminderId == 55) return config.reminder55Time();
-		else if (reminderId == 56) return config.reminder56Time();
-		else if (reminderId == 57) return config.reminder57Time();
-		else if (reminderId == 58) return config.reminder58Time();
-		else if (reminderId == 59) return config.reminder59Time();
-		else if (reminderId == 60) return config.reminder60Time();
-		else if (reminderId == 61) return config.reminder61Time();
-		else if (reminderId == 62) return config.reminder62Time();
-		else if (reminderId == 63) return config.reminder63Time();
-		else if (reminderId == 64) return config.reminder64Time();
-		else if (reminderId == 65) return config.reminder65Time();
-		else if (reminderId == 66) return config.reminder66Time();
-		else if (reminderId == 67) return config.reminder67Time();
-		else if (reminderId == 68) return config.reminder68Time();
-		else if (reminderId == 69) return config.reminder69Time();
-		else if (reminderId == 70) return config.reminder70Time();
-		else if (reminderId == 71) return config.reminder71Time();
-		else if (reminderId == 72) return config.reminder72Time();
-		else if (reminderId == 73) return config.reminder73Time();
-		else if (reminderId == 74) return config.reminder74Time();
-		else if (reminderId == 75) return config.reminder75Time();
-		else if (reminderId == 76) return config.reminder76Time();
-		else if (reminderId == 77) return config.reminder77Time();
-		else if (reminderId == 78) return config.reminder78Time();
-		else if (reminderId == 79) return config.reminder79Time();
-		else if (reminderId == 80) return config.reminder80Time();
-		else if (reminderId == 81) return config.reminder81Time();
-		else if (reminderId == 82) return config.reminder82Time();
-		else if (reminderId == 83) return config.reminder83Time();
-		else if (reminderId == 84) return config.reminder84Time();
-		else if (reminderId == 85) return config.reminder85Time();
-		else if (reminderId == 86) return config.reminder86Time();
-		else if (reminderId == 87) return config.reminder87Time();
-		else if (reminderId == 88) return config.reminder88Time();
-		else if (reminderId == 89) return config.reminder89Time();
-		else if (reminderId == 90) return config.reminder90Time();
-		else if (reminderId == 91) return config.reminder91Time();
-		else if (reminderId == 92) return config.reminder92Time();
-		else if (reminderId == 93) return config.reminder93Time();
-		else if (reminderId == 94) return config.reminder94Time();
-		else if (reminderId == 95) return config.reminder95Time();
-		else if (reminderId == 96) return config.reminder96Time();
-		else if (reminderId == 97) return config.reminder97Time();
-		else if (reminderId == 98) return config.reminder98Time();
-		else if (reminderId == 99) return config.reminder99Time();
-		else if (reminderId == 100) return config.reminder100Time();
+		if (reminderId == 1) return config.reminder1Times();
+		else if (reminderId == 2) return config.reminder2Times();
+		else if (reminderId == 3) return config.reminder3Times();
+		else if (reminderId == 4) return config.reminder4Times();
+		else if (reminderId == 5) return config.reminder5Times();
+		else if (reminderId == 6) return config.reminder6Times();
+		else if (reminderId == 7) return config.reminder7Times();
+		else if (reminderId == 8) return config.reminder8Times();
+		else if (reminderId == 9) return config.reminder9Times();
+		else if (reminderId == 10) return config.reminder10Times();
+		else if (reminderId == 11) return config.reminder11Times();
+		else if (reminderId == 12) return config.reminder12Times();
+		else if (reminderId == 13) return config.reminder13Times();
+		else if (reminderId == 14) return config.reminder14Times();
+		else if (reminderId == 15) return config.reminder15Times();
+		else if (reminderId == 16) return config.reminder16Times();
+		else if (reminderId == 17) return config.reminder17Times();
+		else if (reminderId == 18) return config.reminder18Times();
+		else if (reminderId == 19) return config.reminder19Times();
+		else if (reminderId == 20) return config.reminder20Times();
+		else if (reminderId == 21) return config.reminder21Times();
+		else if (reminderId == 22) return config.reminder22Times();
+		else if (reminderId == 23) return config.reminder23Times();
+		else if (reminderId == 24) return config.reminder24Times();
+		else if (reminderId == 25) return config.reminder25Times();
+		else if (reminderId == 26) return config.reminder26Times();
+		else if (reminderId == 27) return config.reminder27Times();
+		else if (reminderId == 28) return config.reminder28Times();
+		else if (reminderId == 29) return config.reminder29Times();
+		else if (reminderId == 30) return config.reminder30Times();
+		else if (reminderId == 31) return config.reminder31Times();
+		else if (reminderId == 32) return config.reminder32Times();
+		else if (reminderId == 33) return config.reminder33Times();
+		else if (reminderId == 34) return config.reminder34Times();
+		else if (reminderId == 35) return config.reminder35Times();
+		else if (reminderId == 36) return config.reminder36Times();
+		else if (reminderId == 37) return config.reminder37Times();
+		else if (reminderId == 38) return config.reminder38Times();
+		else if (reminderId == 39) return config.reminder39Times();
+		else if (reminderId == 40) return config.reminder40Times();
+		else if (reminderId == 41) return config.reminder41Times();
+		else if (reminderId == 42) return config.reminder42Times();
+		else if (reminderId == 43) return config.reminder43Times();
+		else if (reminderId == 44) return config.reminder44Times();
+		else if (reminderId == 45) return config.reminder45Times();
+		else if (reminderId == 46) return config.reminder46Times();
+		else if (reminderId == 47) return config.reminder47Times();
+		else if (reminderId == 48) return config.reminder48Times();
+		else if (reminderId == 49) return config.reminder49Times();
+		else if (reminderId == 50) return config.reminder50Times();
+		else if (reminderId == 51) return config.reminder51Times();
+		else if (reminderId == 52) return config.reminder52Times();
+		else if (reminderId == 53) return config.reminder53Times();
+		else if (reminderId == 54) return config.reminder54Times();
+		else if (reminderId == 55) return config.reminder55Times();
+		else if (reminderId == 56) return config.reminder56Times();
+		else if (reminderId == 57) return config.reminder57Times();
+		else if (reminderId == 58) return config.reminder58Times();
+		else if (reminderId == 59) return config.reminder59Times();
+		else if (reminderId == 60) return config.reminder60Times();
+		else if (reminderId == 61) return config.reminder61Times();
+		else if (reminderId == 62) return config.reminder62Times();
+		else if (reminderId == 63) return config.reminder63Times();
+		else if (reminderId == 64) return config.reminder64Times();
+		else if (reminderId == 65) return config.reminder65Times();
+		else if (reminderId == 66) return config.reminder66Times();
+		else if (reminderId == 67) return config.reminder67Times();
+		else if (reminderId == 68) return config.reminder68Times();
+		else if (reminderId == 69) return config.reminder69Times();
+		else if (reminderId == 70) return config.reminder70Times();
+		else if (reminderId == 71) return config.reminder71Times();
+		else if (reminderId == 72) return config.reminder72Times();
+		else if (reminderId == 73) return config.reminder73Times();
+		else if (reminderId == 74) return config.reminder74Times();
+		else if (reminderId == 75) return config.reminder75Times();
+		else if (reminderId == 76) return config.reminder76Times();
+		else if (reminderId == 77) return config.reminder77Times();
+		else if (reminderId == 78) return config.reminder78Times();
+		else if (reminderId == 79) return config.reminder79Times();
+		else if (reminderId == 80) return config.reminder80Times();
+		else if (reminderId == 81) return config.reminder81Times();
+		else if (reminderId == 82) return config.reminder82Times();
+		else if (reminderId == 83) return config.reminder83Times();
+		else if (reminderId == 84) return config.reminder84Times();
+		else if (reminderId == 85) return config.reminder85Times();
+		else if (reminderId == 86) return config.reminder86Times();
+		else if (reminderId == 87) return config.reminder87Times();
+		else if (reminderId == 88) return config.reminder88Times();
+		else if (reminderId == 89) return config.reminder89Times();
+		else if (reminderId == 90) return config.reminder90Times();
+		else if (reminderId == 91) return config.reminder91Times();
+		else if (reminderId == 92) return config.reminder92Times();
+		else if (reminderId == 93) return config.reminder93Times();
+		else if (reminderId == 94) return config.reminder94Times();
+		else if (reminderId == 95) return config.reminder95Times();
+		else if (reminderId == 96) return config.reminder96Times();
+		else if (reminderId == 97) return config.reminder97Times();
+		else if (reminderId == 98) return config.reminder98Times();
+		else if (reminderId == 99) return config.reminder99Times();
+		else if (reminderId == 100) return config.reminder100Times();
 		else return "";
 	}
 
-	boolean isMonday(int reminderId)
+	String getDaysOfWeek(int reminderId)
 	{
-		if (reminderId == 1) return config.reminder1Monday();
-		else if (reminderId == 2) return config.reminder2Monday();
-		else if (reminderId == 3) return config.reminder3Monday();
-		else if (reminderId == 4) return config.reminder4Monday();
-		else if (reminderId == 5) return config.reminder5Monday();
-		else if (reminderId == 6) return config.reminder6Monday();
-		else if (reminderId == 7) return config.reminder7Monday();
-		else if (reminderId == 8) return config.reminder8Monday();
-		else if (reminderId == 9) return config.reminder9Monday();
-		else if (reminderId == 10) return config.reminder10Monday();
-		else if (reminderId == 11) return config.reminder11Monday();
-		else if (reminderId == 12) return config.reminder12Monday();
-		else if (reminderId == 13) return config.reminder13Monday();
-		else if (reminderId == 14) return config.reminder14Monday();
-		else if (reminderId == 15) return config.reminder15Monday();
-		else if (reminderId == 16) return config.reminder16Monday();
-		else if (reminderId == 17) return config.reminder17Monday();
-		else if (reminderId == 18) return config.reminder18Monday();
-		else if (reminderId == 19) return config.reminder19Monday();
-		else if (reminderId == 20) return config.reminder20Monday();
-		else if (reminderId == 21) return config.reminder21Monday();
-		else if (reminderId == 22) return config.reminder22Monday();
-		else if (reminderId == 23) return config.reminder23Monday();
-		else if (reminderId == 24) return config.reminder24Monday();
-		else if (reminderId == 25) return config.reminder25Monday();
-		else if (reminderId == 26) return config.reminder26Monday();
-		else if (reminderId == 27) return config.reminder27Monday();
-		else if (reminderId == 28) return config.reminder28Monday();
-		else if (reminderId == 29) return config.reminder29Monday();
-		else if (reminderId == 30) return config.reminder30Monday();
-		else if (reminderId == 31) return config.reminder31Monday();
-		else if (reminderId == 32) return config.reminder32Monday();
-		else if (reminderId == 33) return config.reminder33Monday();
-		else if (reminderId == 34) return config.reminder34Monday();
-		else if (reminderId == 35) return config.reminder35Monday();
-		else if (reminderId == 36) return config.reminder36Monday();
-		else if (reminderId == 37) return config.reminder37Monday();
-		else if (reminderId == 38) return config.reminder38Monday();
-		else if (reminderId == 39) return config.reminder39Monday();
-		else if (reminderId == 40) return config.reminder40Monday();
-		else if (reminderId == 41) return config.reminder41Monday();
-		else if (reminderId == 42) return config.reminder42Monday();
-		else if (reminderId == 43) return config.reminder43Monday();
-		else if (reminderId == 44) return config.reminder44Monday();
-		else if (reminderId == 45) return config.reminder45Monday();
-		else if (reminderId == 46) return config.reminder46Monday();
-		else if (reminderId == 47) return config.reminder47Monday();
-		else if (reminderId == 48) return config.reminder48Monday();
-		else if (reminderId == 49) return config.reminder49Monday();
-		else if (reminderId == 50) return config.reminder50Monday();
-		else if (reminderId == 51) return config.reminder51Monday();
-		else if (reminderId == 52) return config.reminder52Monday();
-		else if (reminderId == 53) return config.reminder53Monday();
-		else if (reminderId == 54) return config.reminder54Monday();
-		else if (reminderId == 55) return config.reminder55Monday();
-		else if (reminderId == 56) return config.reminder56Monday();
-		else if (reminderId == 57) return config.reminder57Monday();
-		else if (reminderId == 58) return config.reminder58Monday();
-		else if (reminderId == 59) return config.reminder59Monday();
-		else if (reminderId == 60) return config.reminder60Monday();
-		else if (reminderId == 61) return config.reminder61Monday();
-		else if (reminderId == 62) return config.reminder62Monday();
-		else if (reminderId == 63) return config.reminder63Monday();
-		else if (reminderId == 64) return config.reminder64Monday();
-		else if (reminderId == 65) return config.reminder65Monday();
-		else if (reminderId == 66) return config.reminder66Monday();
-		else if (reminderId == 67) return config.reminder67Monday();
-		else if (reminderId == 68) return config.reminder68Monday();
-		else if (reminderId == 69) return config.reminder69Monday();
-		else if (reminderId == 70) return config.reminder70Monday();
-		else if (reminderId == 71) return config.reminder71Monday();
-		else if (reminderId == 72) return config.reminder72Monday();
-		else if (reminderId == 73) return config.reminder73Monday();
-		else if (reminderId == 74) return config.reminder74Monday();
-		else if (reminderId == 75) return config.reminder75Monday();
-		else if (reminderId == 76) return config.reminder76Monday();
-		else if (reminderId == 77) return config.reminder77Monday();
-		else if (reminderId == 78) return config.reminder78Monday();
-		else if (reminderId == 79) return config.reminder79Monday();
-		else if (reminderId == 80) return config.reminder80Monday();
-		else if (reminderId == 81) return config.reminder81Monday();
-		else if (reminderId == 82) return config.reminder82Monday();
-		else if (reminderId == 83) return config.reminder83Monday();
-		else if (reminderId == 84) return config.reminder84Monday();
-		else if (reminderId == 85) return config.reminder85Monday();
-		else if (reminderId == 86) return config.reminder86Monday();
-		else if (reminderId == 87) return config.reminder87Monday();
-		else if (reminderId == 88) return config.reminder88Monday();
-		else if (reminderId == 89) return config.reminder89Monday();
-		else if (reminderId == 90) return config.reminder90Monday();
-		else if (reminderId == 91) return config.reminder91Monday();
-		else if (reminderId == 92) return config.reminder92Monday();
-		else if (reminderId == 93) return config.reminder93Monday();
-		else if (reminderId == 94) return config.reminder94Monday();
-		else if (reminderId == 95) return config.reminder95Monday();
-		else if (reminderId == 96) return config.reminder96Monday();
-		else if (reminderId == 97) return config.reminder97Monday();
-		else if (reminderId == 98) return config.reminder98Monday();
-		else if (reminderId == 99) return config.reminder99Monday();
-		else if (reminderId == 100) return config.reminder100Monday();
-		else return false;
-	}
-
-	boolean isTuesday(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1Tuesday();
-		else if (reminderId == 2) return config.reminder2Tuesday();
-		else if (reminderId == 3) return config.reminder3Tuesday();
-		else if (reminderId == 4) return config.reminder4Tuesday();
-		else if (reminderId == 5) return config.reminder5Tuesday();
-		else if (reminderId == 6) return config.reminder6Tuesday();
-		else if (reminderId == 7) return config.reminder7Tuesday();
-		else if (reminderId == 8) return config.reminder8Tuesday();
-		else if (reminderId == 9) return config.reminder9Tuesday();
-		else if (reminderId == 10) return config.reminder10Tuesday();
-		else if (reminderId == 11) return config.reminder11Tuesday();
-		else if (reminderId == 12) return config.reminder12Tuesday();
-		else if (reminderId == 13) return config.reminder13Tuesday();
-		else if (reminderId == 14) return config.reminder14Tuesday();
-		else if (reminderId == 15) return config.reminder15Tuesday();
-		else if (reminderId == 16) return config.reminder16Tuesday();
-		else if (reminderId == 17) return config.reminder17Tuesday();
-		else if (reminderId == 18) return config.reminder18Tuesday();
-		else if (reminderId == 19) return config.reminder19Tuesday();
-		else if (reminderId == 20) return config.reminder20Tuesday();
-		else if (reminderId == 21) return config.reminder21Tuesday();
-		else if (reminderId == 22) return config.reminder22Tuesday();
-		else if (reminderId == 23) return config.reminder23Tuesday();
-		else if (reminderId == 24) return config.reminder24Tuesday();
-		else if (reminderId == 25) return config.reminder25Tuesday();
-		else if (reminderId == 26) return config.reminder26Tuesday();
-		else if (reminderId == 27) return config.reminder27Tuesday();
-		else if (reminderId == 28) return config.reminder28Tuesday();
-		else if (reminderId == 29) return config.reminder29Tuesday();
-		else if (reminderId == 30) return config.reminder30Tuesday();
-		else if (reminderId == 31) return config.reminder31Tuesday();
-		else if (reminderId == 32) return config.reminder32Tuesday();
-		else if (reminderId == 33) return config.reminder33Tuesday();
-		else if (reminderId == 34) return config.reminder34Tuesday();
-		else if (reminderId == 35) return config.reminder35Tuesday();
-		else if (reminderId == 36) return config.reminder36Tuesday();
-		else if (reminderId == 37) return config.reminder37Tuesday();
-		else if (reminderId == 38) return config.reminder38Tuesday();
-		else if (reminderId == 39) return config.reminder39Tuesday();
-		else if (reminderId == 40) return config.reminder40Tuesday();
-		else if (reminderId == 41) return config.reminder41Tuesday();
-		else if (reminderId == 42) return config.reminder42Tuesday();
-		else if (reminderId == 43) return config.reminder43Tuesday();
-		else if (reminderId == 44) return config.reminder44Tuesday();
-		else if (reminderId == 45) return config.reminder45Tuesday();
-		else if (reminderId == 46) return config.reminder46Tuesday();
-		else if (reminderId == 47) return config.reminder47Tuesday();
-		else if (reminderId == 48) return config.reminder48Tuesday();
-		else if (reminderId == 49) return config.reminder49Tuesday();
-		else if (reminderId == 50) return config.reminder50Tuesday();
-		else if (reminderId == 51) return config.reminder51Tuesday();
-		else if (reminderId == 52) return config.reminder52Tuesday();
-		else if (reminderId == 53) return config.reminder53Tuesday();
-		else if (reminderId == 54) return config.reminder54Tuesday();
-		else if (reminderId == 55) return config.reminder55Tuesday();
-		else if (reminderId == 56) return config.reminder56Tuesday();
-		else if (reminderId == 57) return config.reminder57Tuesday();
-		else if (reminderId == 58) return config.reminder58Tuesday();
-		else if (reminderId == 59) return config.reminder59Tuesday();
-		else if (reminderId == 60) return config.reminder60Tuesday();
-		else if (reminderId == 61) return config.reminder61Tuesday();
-		else if (reminderId == 62) return config.reminder62Tuesday();
-		else if (reminderId == 63) return config.reminder63Tuesday();
-		else if (reminderId == 64) return config.reminder64Tuesday();
-		else if (reminderId == 65) return config.reminder65Tuesday();
-		else if (reminderId == 66) return config.reminder66Tuesday();
-		else if (reminderId == 67) return config.reminder67Tuesday();
-		else if (reminderId == 68) return config.reminder68Tuesday();
-		else if (reminderId == 69) return config.reminder69Tuesday();
-		else if (reminderId == 70) return config.reminder70Tuesday();
-		else if (reminderId == 71) return config.reminder71Tuesday();
-		else if (reminderId == 72) return config.reminder72Tuesday();
-		else if (reminderId == 73) return config.reminder73Tuesday();
-		else if (reminderId == 74) return config.reminder74Tuesday();
-		else if (reminderId == 75) return config.reminder75Tuesday();
-		else if (reminderId == 76) return config.reminder76Tuesday();
-		else if (reminderId == 77) return config.reminder77Tuesday();
-		else if (reminderId == 78) return config.reminder78Tuesday();
-		else if (reminderId == 79) return config.reminder79Tuesday();
-		else if (reminderId == 80) return config.reminder80Tuesday();
-		else if (reminderId == 81) return config.reminder81Tuesday();
-		else if (reminderId == 82) return config.reminder82Tuesday();
-		else if (reminderId == 83) return config.reminder83Tuesday();
-		else if (reminderId == 84) return config.reminder84Tuesday();
-		else if (reminderId == 85) return config.reminder85Tuesday();
-		else if (reminderId == 86) return config.reminder86Tuesday();
-		else if (reminderId == 87) return config.reminder87Tuesday();
-		else if (reminderId == 88) return config.reminder88Tuesday();
-		else if (reminderId == 89) return config.reminder89Tuesday();
-		else if (reminderId == 90) return config.reminder90Tuesday();
-		else if (reminderId == 91) return config.reminder91Tuesday();
-		else if (reminderId == 92) return config.reminder92Tuesday();
-		else if (reminderId == 93) return config.reminder93Tuesday();
-		else if (reminderId == 94) return config.reminder94Tuesday();
-		else if (reminderId == 95) return config.reminder95Tuesday();
-		else if (reminderId == 96) return config.reminder96Tuesday();
-		else if (reminderId == 97) return config.reminder97Tuesday();
-		else if (reminderId == 98) return config.reminder98Tuesday();
-		else if (reminderId == 99) return config.reminder99Tuesday();
-		else if (reminderId == 100) return config.reminder100Tuesday();
-		else return false;
-	}
-
-	boolean isWednesday(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1Wednesday();
-		else if (reminderId == 2) return config.reminder2Wednesday();
-		else if (reminderId == 3) return config.reminder3Wednesday();
-		else if (reminderId == 4) return config.reminder4Wednesday();
-		else if (reminderId == 5) return config.reminder5Wednesday();
-		else if (reminderId == 6) return config.reminder6Wednesday();
-		else if (reminderId == 7) return config.reminder7Wednesday();
-		else if (reminderId == 8) return config.reminder8Wednesday();
-		else if (reminderId == 9) return config.reminder9Wednesday();
-		else if (reminderId == 10) return config.reminder10Wednesday();
-		else if (reminderId == 11) return config.reminder11Wednesday();
-		else if (reminderId == 12) return config.reminder12Wednesday();
-		else if (reminderId == 13) return config.reminder13Wednesday();
-		else if (reminderId == 14) return config.reminder14Wednesday();
-		else if (reminderId == 15) return config.reminder15Wednesday();
-		else if (reminderId == 16) return config.reminder16Wednesday();
-		else if (reminderId == 17) return config.reminder17Wednesday();
-		else if (reminderId == 18) return config.reminder18Wednesday();
-		else if (reminderId == 19) return config.reminder19Wednesday();
-		else if (reminderId == 20) return config.reminder20Wednesday();
-		else if (reminderId == 21) return config.reminder21Wednesday();
-		else if (reminderId == 22) return config.reminder22Wednesday();
-		else if (reminderId == 23) return config.reminder23Wednesday();
-		else if (reminderId == 24) return config.reminder24Wednesday();
-		else if (reminderId == 25) return config.reminder25Wednesday();
-		else if (reminderId == 26) return config.reminder26Wednesday();
-		else if (reminderId == 27) return config.reminder27Wednesday();
-		else if (reminderId == 28) return config.reminder28Wednesday();
-		else if (reminderId == 29) return config.reminder29Wednesday();
-		else if (reminderId == 30) return config.reminder30Wednesday();
-		else if (reminderId == 31) return config.reminder31Wednesday();
-		else if (reminderId == 32) return config.reminder32Wednesday();
-		else if (reminderId == 33) return config.reminder33Wednesday();
-		else if (reminderId == 34) return config.reminder34Wednesday();
-		else if (reminderId == 35) return config.reminder35Wednesday();
-		else if (reminderId == 36) return config.reminder36Wednesday();
-		else if (reminderId == 37) return config.reminder37Wednesday();
-		else if (reminderId == 38) return config.reminder38Wednesday();
-		else if (reminderId == 39) return config.reminder39Wednesday();
-		else if (reminderId == 40) return config.reminder40Wednesday();
-		else if (reminderId == 41) return config.reminder41Wednesday();
-		else if (reminderId == 42) return config.reminder42Wednesday();
-		else if (reminderId == 43) return config.reminder43Wednesday();
-		else if (reminderId == 44) return config.reminder44Wednesday();
-		else if (reminderId == 45) return config.reminder45Wednesday();
-		else if (reminderId == 46) return config.reminder46Wednesday();
-		else if (reminderId == 47) return config.reminder47Wednesday();
-		else if (reminderId == 48) return config.reminder48Wednesday();
-		else if (reminderId == 49) return config.reminder49Wednesday();
-		else if (reminderId == 50) return config.reminder50Wednesday();
-		else if (reminderId == 51) return config.reminder51Wednesday();
-		else if (reminderId == 52) return config.reminder52Wednesday();
-		else if (reminderId == 53) return config.reminder53Wednesday();
-		else if (reminderId == 54) return config.reminder54Wednesday();
-		else if (reminderId == 55) return config.reminder55Wednesday();
-		else if (reminderId == 56) return config.reminder56Wednesday();
-		else if (reminderId == 57) return config.reminder57Wednesday();
-		else if (reminderId == 58) return config.reminder58Wednesday();
-		else if (reminderId == 59) return config.reminder59Wednesday();
-		else if (reminderId == 60) return config.reminder60Wednesday();
-		else if (reminderId == 61) return config.reminder61Wednesday();
-		else if (reminderId == 62) return config.reminder62Wednesday();
-		else if (reminderId == 63) return config.reminder63Wednesday();
-		else if (reminderId == 64) return config.reminder64Wednesday();
-		else if (reminderId == 65) return config.reminder65Wednesday();
-		else if (reminderId == 66) return config.reminder66Wednesday();
-		else if (reminderId == 67) return config.reminder67Wednesday();
-		else if (reminderId == 68) return config.reminder68Wednesday();
-		else if (reminderId == 69) return config.reminder69Wednesday();
-		else if (reminderId == 70) return config.reminder70Wednesday();
-		else if (reminderId == 71) return config.reminder71Wednesday();
-		else if (reminderId == 72) return config.reminder72Wednesday();
-		else if (reminderId == 73) return config.reminder73Wednesday();
-		else if (reminderId == 74) return config.reminder74Wednesday();
-		else if (reminderId == 75) return config.reminder75Wednesday();
-		else if (reminderId == 76) return config.reminder76Wednesday();
-		else if (reminderId == 77) return config.reminder77Wednesday();
-		else if (reminderId == 78) return config.reminder78Wednesday();
-		else if (reminderId == 79) return config.reminder79Wednesday();
-		else if (reminderId == 80) return config.reminder80Wednesday();
-		else if (reminderId == 81) return config.reminder81Wednesday();
-		else if (reminderId == 82) return config.reminder82Wednesday();
-		else if (reminderId == 83) return config.reminder83Wednesday();
-		else if (reminderId == 84) return config.reminder84Wednesday();
-		else if (reminderId == 85) return config.reminder85Wednesday();
-		else if (reminderId == 86) return config.reminder86Wednesday();
-		else if (reminderId == 87) return config.reminder87Wednesday();
-		else if (reminderId == 88) return config.reminder88Wednesday();
-		else if (reminderId == 89) return config.reminder89Wednesday();
-		else if (reminderId == 90) return config.reminder90Wednesday();
-		else if (reminderId == 91) return config.reminder91Wednesday();
-		else if (reminderId == 92) return config.reminder92Wednesday();
-		else if (reminderId == 93) return config.reminder93Wednesday();
-		else if (reminderId == 94) return config.reminder94Wednesday();
-		else if (reminderId == 95) return config.reminder95Wednesday();
-		else if (reminderId == 96) return config.reminder96Wednesday();
-		else if (reminderId == 97) return config.reminder97Wednesday();
-		else if (reminderId == 98) return config.reminder98Wednesday();
-		else if (reminderId == 99) return config.reminder99Wednesday();
-		else if (reminderId == 100) return config.reminder100Wednesday();
-		else return false;
-	}
-
-	boolean isThursday(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1Thursday();
-		else if (reminderId == 2) return config.reminder2Thursday();
-		else if (reminderId == 3) return config.reminder3Thursday();
-		else if (reminderId == 4) return config.reminder4Thursday();
-		else if (reminderId == 5) return config.reminder5Thursday();
-		else if (reminderId == 6) return config.reminder6Thursday();
-		else if (reminderId == 7) return config.reminder7Thursday();
-		else if (reminderId == 8) return config.reminder8Thursday();
-		else if (reminderId == 9) return config.reminder9Thursday();
-		else if (reminderId == 10) return config.reminder10Thursday();
-		else if (reminderId == 11) return config.reminder11Thursday();
-		else if (reminderId == 12) return config.reminder12Thursday();
-		else if (reminderId == 13) return config.reminder13Thursday();
-		else if (reminderId == 14) return config.reminder14Thursday();
-		else if (reminderId == 15) return config.reminder15Thursday();
-		else if (reminderId == 16) return config.reminder16Thursday();
-		else if (reminderId == 17) return config.reminder17Thursday();
-		else if (reminderId == 18) return config.reminder18Thursday();
-		else if (reminderId == 19) return config.reminder19Thursday();
-		else if (reminderId == 20) return config.reminder20Thursday();
-		else if (reminderId == 21) return config.reminder21Thursday();
-		else if (reminderId == 22) return config.reminder22Thursday();
-		else if (reminderId == 23) return config.reminder23Thursday();
-		else if (reminderId == 24) return config.reminder24Thursday();
-		else if (reminderId == 25) return config.reminder25Thursday();
-		else if (reminderId == 26) return config.reminder26Thursday();
-		else if (reminderId == 27) return config.reminder27Thursday();
-		else if (reminderId == 28) return config.reminder28Thursday();
-		else if (reminderId == 29) return config.reminder29Thursday();
-		else if (reminderId == 30) return config.reminder30Thursday();
-		else if (reminderId == 31) return config.reminder31Thursday();
-		else if (reminderId == 32) return config.reminder32Thursday();
-		else if (reminderId == 33) return config.reminder33Thursday();
-		else if (reminderId == 34) return config.reminder34Thursday();
-		else if (reminderId == 35) return config.reminder35Thursday();
-		else if (reminderId == 36) return config.reminder36Thursday();
-		else if (reminderId == 37) return config.reminder37Thursday();
-		else if (reminderId == 38) return config.reminder38Thursday();
-		else if (reminderId == 39) return config.reminder39Thursday();
-		else if (reminderId == 40) return config.reminder40Thursday();
-		else if (reminderId == 41) return config.reminder41Thursday();
-		else if (reminderId == 42) return config.reminder42Thursday();
-		else if (reminderId == 43) return config.reminder43Thursday();
-		else if (reminderId == 44) return config.reminder44Thursday();
-		else if (reminderId == 45) return config.reminder45Thursday();
-		else if (reminderId == 46) return config.reminder46Thursday();
-		else if (reminderId == 47) return config.reminder47Thursday();
-		else if (reminderId == 48) return config.reminder48Thursday();
-		else if (reminderId == 49) return config.reminder49Thursday();
-		else if (reminderId == 50) return config.reminder50Thursday();
-		else if (reminderId == 51) return config.reminder51Thursday();
-		else if (reminderId == 52) return config.reminder52Thursday();
-		else if (reminderId == 53) return config.reminder53Thursday();
-		else if (reminderId == 54) return config.reminder54Thursday();
-		else if (reminderId == 55) return config.reminder55Thursday();
-		else if (reminderId == 56) return config.reminder56Thursday();
-		else if (reminderId == 57) return config.reminder57Thursday();
-		else if (reminderId == 58) return config.reminder58Thursday();
-		else if (reminderId == 59) return config.reminder59Thursday();
-		else if (reminderId == 60) return config.reminder60Thursday();
-		else if (reminderId == 61) return config.reminder61Thursday();
-		else if (reminderId == 62) return config.reminder62Thursday();
-		else if (reminderId == 63) return config.reminder63Thursday();
-		else if (reminderId == 64) return config.reminder64Thursday();
-		else if (reminderId == 65) return config.reminder65Thursday();
-		else if (reminderId == 66) return config.reminder66Thursday();
-		else if (reminderId == 67) return config.reminder67Thursday();
-		else if (reminderId == 68) return config.reminder68Thursday();
-		else if (reminderId == 69) return config.reminder69Thursday();
-		else if (reminderId == 70) return config.reminder70Thursday();
-		else if (reminderId == 71) return config.reminder71Thursday();
-		else if (reminderId == 72) return config.reminder72Thursday();
-		else if (reminderId == 73) return config.reminder73Thursday();
-		else if (reminderId == 74) return config.reminder74Thursday();
-		else if (reminderId == 75) return config.reminder75Thursday();
-		else if (reminderId == 76) return config.reminder76Thursday();
-		else if (reminderId == 77) return config.reminder77Thursday();
-		else if (reminderId == 78) return config.reminder78Thursday();
-		else if (reminderId == 79) return config.reminder79Thursday();
-		else if (reminderId == 80) return config.reminder80Thursday();
-		else if (reminderId == 81) return config.reminder81Thursday();
-		else if (reminderId == 82) return config.reminder82Thursday();
-		else if (reminderId == 83) return config.reminder83Thursday();
-		else if (reminderId == 84) return config.reminder84Thursday();
-		else if (reminderId == 85) return config.reminder85Thursday();
-		else if (reminderId == 86) return config.reminder86Thursday();
-		else if (reminderId == 87) return config.reminder87Thursday();
-		else if (reminderId == 88) return config.reminder88Thursday();
-		else if (reminderId == 89) return config.reminder89Thursday();
-		else if (reminderId == 90) return config.reminder90Thursday();
-		else if (reminderId == 91) return config.reminder91Thursday();
-		else if (reminderId == 92) return config.reminder92Thursday();
-		else if (reminderId == 93) return config.reminder93Thursday();
-		else if (reminderId == 94) return config.reminder94Thursday();
-		else if (reminderId == 95) return config.reminder95Thursday();
-		else if (reminderId == 96) return config.reminder96Thursday();
-		else if (reminderId == 97) return config.reminder97Thursday();
-		else if (reminderId == 98) return config.reminder98Thursday();
-		else if (reminderId == 99) return config.reminder99Thursday();
-		else if (reminderId == 100) return config.reminder100Thursday();
-		else return false;
-	}
-
-	boolean isFriday(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1Friday();
-		else if (reminderId == 2) return config.reminder2Friday();
-		else if (reminderId == 3) return config.reminder3Friday();
-		else if (reminderId == 4) return config.reminder4Friday();
-		else if (reminderId == 5) return config.reminder5Friday();
-		else if (reminderId == 6) return config.reminder6Friday();
-		else if (reminderId == 7) return config.reminder7Friday();
-		else if (reminderId == 8) return config.reminder8Friday();
-		else if (reminderId == 9) return config.reminder9Friday();
-		else if (reminderId == 10) return config.reminder10Friday();
-		else if (reminderId == 11) return config.reminder11Friday();
-		else if (reminderId == 12) return config.reminder12Friday();
-		else if (reminderId == 13) return config.reminder13Friday();
-		else if (reminderId == 14) return config.reminder14Friday();
-		else if (reminderId == 15) return config.reminder15Friday();
-		else if (reminderId == 16) return config.reminder16Friday();
-		else if (reminderId == 17) return config.reminder17Friday();
-		else if (reminderId == 18) return config.reminder18Friday();
-		else if (reminderId == 19) return config.reminder19Friday();
-		else if (reminderId == 20) return config.reminder20Friday();
-		else if (reminderId == 21) return config.reminder21Friday();
-		else if (reminderId == 22) return config.reminder22Friday();
-		else if (reminderId == 23) return config.reminder23Friday();
-		else if (reminderId == 24) return config.reminder24Friday();
-		else if (reminderId == 25) return config.reminder25Friday();
-		else if (reminderId == 26) return config.reminder26Friday();
-		else if (reminderId == 27) return config.reminder27Friday();
-		else if (reminderId == 28) return config.reminder28Friday();
-		else if (reminderId == 29) return config.reminder29Friday();
-		else if (reminderId == 30) return config.reminder30Friday();
-		else if (reminderId == 31) return config.reminder31Friday();
-		else if (reminderId == 32) return config.reminder32Friday();
-		else if (reminderId == 33) return config.reminder33Friday();
-		else if (reminderId == 34) return config.reminder34Friday();
-		else if (reminderId == 35) return config.reminder35Friday();
-		else if (reminderId == 36) return config.reminder36Friday();
-		else if (reminderId == 37) return config.reminder37Friday();
-		else if (reminderId == 38) return config.reminder38Friday();
-		else if (reminderId == 39) return config.reminder39Friday();
-		else if (reminderId == 40) return config.reminder40Friday();
-		else if (reminderId == 41) return config.reminder41Friday();
-		else if (reminderId == 42) return config.reminder42Friday();
-		else if (reminderId == 43) return config.reminder43Friday();
-		else if (reminderId == 44) return config.reminder44Friday();
-		else if (reminderId == 45) return config.reminder45Friday();
-		else if (reminderId == 46) return config.reminder46Friday();
-		else if (reminderId == 47) return config.reminder47Friday();
-		else if (reminderId == 48) return config.reminder48Friday();
-		else if (reminderId == 49) return config.reminder49Friday();
-		else if (reminderId == 50) return config.reminder50Friday();
-		else if (reminderId == 51) return config.reminder51Friday();
-		else if (reminderId == 52) return config.reminder52Friday();
-		else if (reminderId == 53) return config.reminder53Friday();
-		else if (reminderId == 54) return config.reminder54Friday();
-		else if (reminderId == 55) return config.reminder55Friday();
-		else if (reminderId == 56) return config.reminder56Friday();
-		else if (reminderId == 57) return config.reminder57Friday();
-		else if (reminderId == 58) return config.reminder58Friday();
-		else if (reminderId == 59) return config.reminder59Friday();
-		else if (reminderId == 60) return config.reminder60Friday();
-		else if (reminderId == 61) return config.reminder61Friday();
-		else if (reminderId == 62) return config.reminder62Friday();
-		else if (reminderId == 63) return config.reminder63Friday();
-		else if (reminderId == 64) return config.reminder64Friday();
-		else if (reminderId == 65) return config.reminder65Friday();
-		else if (reminderId == 66) return config.reminder66Friday();
-		else if (reminderId == 67) return config.reminder67Friday();
-		else if (reminderId == 68) return config.reminder68Friday();
-		else if (reminderId == 69) return config.reminder69Friday();
-		else if (reminderId == 70) return config.reminder70Friday();
-		else if (reminderId == 71) return config.reminder71Friday();
-		else if (reminderId == 72) return config.reminder72Friday();
-		else if (reminderId == 73) return config.reminder73Friday();
-		else if (reminderId == 74) return config.reminder74Friday();
-		else if (reminderId == 75) return config.reminder75Friday();
-		else if (reminderId == 76) return config.reminder76Friday();
-		else if (reminderId == 77) return config.reminder77Friday();
-		else if (reminderId == 78) return config.reminder78Friday();
-		else if (reminderId == 79) return config.reminder79Friday();
-		else if (reminderId == 80) return config.reminder80Friday();
-		else if (reminderId == 81) return config.reminder81Friday();
-		else if (reminderId == 82) return config.reminder82Friday();
-		else if (reminderId == 83) return config.reminder83Friday();
-		else if (reminderId == 84) return config.reminder84Friday();
-		else if (reminderId == 85) return config.reminder85Friday();
-		else if (reminderId == 86) return config.reminder86Friday();
-		else if (reminderId == 87) return config.reminder87Friday();
-		else if (reminderId == 88) return config.reminder88Friday();
-		else if (reminderId == 89) return config.reminder89Friday();
-		else if (reminderId == 90) return config.reminder90Friday();
-		else if (reminderId == 91) return config.reminder91Friday();
-		else if (reminderId == 92) return config.reminder92Friday();
-		else if (reminderId == 93) return config.reminder93Friday();
-		else if (reminderId == 94) return config.reminder94Friday();
-		else if (reminderId == 95) return config.reminder95Friday();
-		else if (reminderId == 96) return config.reminder96Friday();
-		else if (reminderId == 97) return config.reminder97Friday();
-		else if (reminderId == 98) return config.reminder98Friday();
-		else if (reminderId == 99) return config.reminder99Friday();
-		else if (reminderId == 100) return config.reminder100Friday();
-		else return false;
-	}
-
-	boolean isSaturday(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1Saturday();
-		else if (reminderId == 2) return config.reminder2Saturday();
-		else if (reminderId == 3) return config.reminder3Saturday();
-		else if (reminderId == 4) return config.reminder4Saturday();
-		else if (reminderId == 5) return config.reminder5Saturday();
-		else if (reminderId == 6) return config.reminder6Saturday();
-		else if (reminderId == 7) return config.reminder7Saturday();
-		else if (reminderId == 8) return config.reminder8Saturday();
-		else if (reminderId == 9) return config.reminder9Saturday();
-		else if (reminderId == 10) return config.reminder10Saturday();
-		else if (reminderId == 11) return config.reminder11Saturday();
-		else if (reminderId == 12) return config.reminder12Saturday();
-		else if (reminderId == 13) return config.reminder13Saturday();
-		else if (reminderId == 14) return config.reminder14Saturday();
-		else if (reminderId == 15) return config.reminder15Saturday();
-		else if (reminderId == 16) return config.reminder16Saturday();
-		else if (reminderId == 17) return config.reminder17Saturday();
-		else if (reminderId == 18) return config.reminder18Saturday();
-		else if (reminderId == 19) return config.reminder19Saturday();
-		else if (reminderId == 20) return config.reminder20Saturday();
-		else if (reminderId == 21) return config.reminder21Saturday();
-		else if (reminderId == 22) return config.reminder22Saturday();
-		else if (reminderId == 23) return config.reminder23Saturday();
-		else if (reminderId == 24) return config.reminder24Saturday();
-		else if (reminderId == 25) return config.reminder25Saturday();
-		else if (reminderId == 26) return config.reminder26Saturday();
-		else if (reminderId == 27) return config.reminder27Saturday();
-		else if (reminderId == 28) return config.reminder28Saturday();
-		else if (reminderId == 29) return config.reminder29Saturday();
-		else if (reminderId == 30) return config.reminder30Saturday();
-		else if (reminderId == 31) return config.reminder31Saturday();
-		else if (reminderId == 32) return config.reminder32Saturday();
-		else if (reminderId == 33) return config.reminder33Saturday();
-		else if (reminderId == 34) return config.reminder34Saturday();
-		else if (reminderId == 35) return config.reminder35Saturday();
-		else if (reminderId == 36) return config.reminder36Saturday();
-		else if (reminderId == 37) return config.reminder37Saturday();
-		else if (reminderId == 38) return config.reminder38Saturday();
-		else if (reminderId == 39) return config.reminder39Saturday();
-		else if (reminderId == 40) return config.reminder40Saturday();
-		else if (reminderId == 41) return config.reminder41Saturday();
-		else if (reminderId == 42) return config.reminder42Saturday();
-		else if (reminderId == 43) return config.reminder43Saturday();
-		else if (reminderId == 44) return config.reminder44Saturday();
-		else if (reminderId == 45) return config.reminder45Saturday();
-		else if (reminderId == 46) return config.reminder46Saturday();
-		else if (reminderId == 47) return config.reminder47Saturday();
-		else if (reminderId == 48) return config.reminder48Saturday();
-		else if (reminderId == 49) return config.reminder49Saturday();
-		else if (reminderId == 50) return config.reminder50Saturday();
-		else if (reminderId == 51) return config.reminder51Saturday();
-		else if (reminderId == 52) return config.reminder52Saturday();
-		else if (reminderId == 53) return config.reminder53Saturday();
-		else if (reminderId == 54) return config.reminder54Saturday();
-		else if (reminderId == 55) return config.reminder55Saturday();
-		else if (reminderId == 56) return config.reminder56Saturday();
-		else if (reminderId == 57) return config.reminder57Saturday();
-		else if (reminderId == 58) return config.reminder58Saturday();
-		else if (reminderId == 59) return config.reminder59Saturday();
-		else if (reminderId == 60) return config.reminder60Saturday();
-		else if (reminderId == 61) return config.reminder61Saturday();
-		else if (reminderId == 62) return config.reminder62Saturday();
-		else if (reminderId == 63) return config.reminder63Saturday();
-		else if (reminderId == 64) return config.reminder64Saturday();
-		else if (reminderId == 65) return config.reminder65Saturday();
-		else if (reminderId == 66) return config.reminder66Saturday();
-		else if (reminderId == 67) return config.reminder67Saturday();
-		else if (reminderId == 68) return config.reminder68Saturday();
-		else if (reminderId == 69) return config.reminder69Saturday();
-		else if (reminderId == 70) return config.reminder70Saturday();
-		else if (reminderId == 71) return config.reminder71Saturday();
-		else if (reminderId == 72) return config.reminder72Saturday();
-		else if (reminderId == 73) return config.reminder73Saturday();
-		else if (reminderId == 74) return config.reminder74Saturday();
-		else if (reminderId == 75) return config.reminder75Saturday();
-		else if (reminderId == 76) return config.reminder76Saturday();
-		else if (reminderId == 77) return config.reminder77Saturday();
-		else if (reminderId == 78) return config.reminder78Saturday();
-		else if (reminderId == 79) return config.reminder79Saturday();
-		else if (reminderId == 80) return config.reminder80Saturday();
-		else if (reminderId == 81) return config.reminder81Saturday();
-		else if (reminderId == 82) return config.reminder82Saturday();
-		else if (reminderId == 83) return config.reminder83Saturday();
-		else if (reminderId == 84) return config.reminder84Saturday();
-		else if (reminderId == 85) return config.reminder85Saturday();
-		else if (reminderId == 86) return config.reminder86Saturday();
-		else if (reminderId == 87) return config.reminder87Saturday();
-		else if (reminderId == 88) return config.reminder88Saturday();
-		else if (reminderId == 89) return config.reminder89Saturday();
-		else if (reminderId == 90) return config.reminder90Saturday();
-		else if (reminderId == 91) return config.reminder91Saturday();
-		else if (reminderId == 92) return config.reminder92Saturday();
-		else if (reminderId == 93) return config.reminder93Saturday();
-		else if (reminderId == 94) return config.reminder94Saturday();
-		else if (reminderId == 95) return config.reminder95Saturday();
-		else if (reminderId == 96) return config.reminder96Saturday();
-		else if (reminderId == 97) return config.reminder97Saturday();
-		else if (reminderId == 98) return config.reminder98Saturday();
-		else if (reminderId == 99) return config.reminder99Saturday();
-		else if (reminderId == 100) return config.reminder100Saturday();
-		else return false;
-	}
-
-	boolean isSunday(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1Sunday();
-		else if (reminderId == 2) return config.reminder2Sunday();
-		else if (reminderId == 3) return config.reminder3Sunday();
-		else if (reminderId == 4) return config.reminder4Sunday();
-		else if (reminderId == 5) return config.reminder5Sunday();
-		else if (reminderId == 6) return config.reminder6Sunday();
-		else if (reminderId == 7) return config.reminder7Sunday();
-		else if (reminderId == 8) return config.reminder8Sunday();
-		else if (reminderId == 9) return config.reminder9Sunday();
-		else if (reminderId == 10) return config.reminder10Sunday();
-		else if (reminderId == 11) return config.reminder11Sunday();
-		else if (reminderId == 12) return config.reminder12Sunday();
-		else if (reminderId == 13) return config.reminder13Sunday();
-		else if (reminderId == 14) return config.reminder14Sunday();
-		else if (reminderId == 15) return config.reminder15Sunday();
-		else if (reminderId == 16) return config.reminder16Sunday();
-		else if (reminderId == 17) return config.reminder17Sunday();
-		else if (reminderId == 18) return config.reminder18Sunday();
-		else if (reminderId == 19) return config.reminder19Sunday();
-		else if (reminderId == 20) return config.reminder20Sunday();
-		else if (reminderId == 21) return config.reminder21Sunday();
-		else if (reminderId == 22) return config.reminder22Sunday();
-		else if (reminderId == 23) return config.reminder23Sunday();
-		else if (reminderId == 24) return config.reminder24Sunday();
-		else if (reminderId == 25) return config.reminder25Sunday();
-		else if (reminderId == 26) return config.reminder26Sunday();
-		else if (reminderId == 27) return config.reminder27Sunday();
-		else if (reminderId == 28) return config.reminder28Sunday();
-		else if (reminderId == 29) return config.reminder29Sunday();
-		else if (reminderId == 30) return config.reminder30Sunday();
-		else if (reminderId == 31) return config.reminder31Sunday();
-		else if (reminderId == 32) return config.reminder32Sunday();
-		else if (reminderId == 33) return config.reminder33Sunday();
-		else if (reminderId == 34) return config.reminder34Sunday();
-		else if (reminderId == 35) return config.reminder35Sunday();
-		else if (reminderId == 36) return config.reminder36Sunday();
-		else if (reminderId == 37) return config.reminder37Sunday();
-		else if (reminderId == 38) return config.reminder38Sunday();
-		else if (reminderId == 39) return config.reminder39Sunday();
-		else if (reminderId == 40) return config.reminder40Sunday();
-		else if (reminderId == 41) return config.reminder41Sunday();
-		else if (reminderId == 42) return config.reminder42Sunday();
-		else if (reminderId == 43) return config.reminder43Sunday();
-		else if (reminderId == 44) return config.reminder44Sunday();
-		else if (reminderId == 45) return config.reminder45Sunday();
-		else if (reminderId == 46) return config.reminder46Sunday();
-		else if (reminderId == 47) return config.reminder47Sunday();
-		else if (reminderId == 48) return config.reminder48Sunday();
-		else if (reminderId == 49) return config.reminder49Sunday();
-		else if (reminderId == 50) return config.reminder50Sunday();
-		else if (reminderId == 51) return config.reminder51Sunday();
-		else if (reminderId == 52) return config.reminder52Sunday();
-		else if (reminderId == 53) return config.reminder53Sunday();
-		else if (reminderId == 54) return config.reminder54Sunday();
-		else if (reminderId == 55) return config.reminder55Sunday();
-		else if (reminderId == 56) return config.reminder56Sunday();
-		else if (reminderId == 57) return config.reminder57Sunday();
-		else if (reminderId == 58) return config.reminder58Sunday();
-		else if (reminderId == 59) return config.reminder59Sunday();
-		else if (reminderId == 60) return config.reminder60Sunday();
-		else if (reminderId == 61) return config.reminder61Sunday();
-		else if (reminderId == 62) return config.reminder62Sunday();
-		else if (reminderId == 63) return config.reminder63Sunday();
-		else if (reminderId == 64) return config.reminder64Sunday();
-		else if (reminderId == 65) return config.reminder65Sunday();
-		else if (reminderId == 66) return config.reminder66Sunday();
-		else if (reminderId == 67) return config.reminder67Sunday();
-		else if (reminderId == 68) return config.reminder68Sunday();
-		else if (reminderId == 69) return config.reminder69Sunday();
-		else if (reminderId == 70) return config.reminder70Sunday();
-		else if (reminderId == 71) return config.reminder71Sunday();
-		else if (reminderId == 72) return config.reminder72Sunday();
-		else if (reminderId == 73) return config.reminder73Sunday();
-		else if (reminderId == 74) return config.reminder74Sunday();
-		else if (reminderId == 75) return config.reminder75Sunday();
-		else if (reminderId == 76) return config.reminder76Sunday();
-		else if (reminderId == 77) return config.reminder77Sunday();
-		else if (reminderId == 78) return config.reminder78Sunday();
-		else if (reminderId == 79) return config.reminder79Sunday();
-		else if (reminderId == 80) return config.reminder80Sunday();
-		else if (reminderId == 81) return config.reminder81Sunday();
-		else if (reminderId == 82) return config.reminder82Sunday();
-		else if (reminderId == 83) return config.reminder83Sunday();
-		else if (reminderId == 84) return config.reminder84Sunday();
-		else if (reminderId == 85) return config.reminder85Sunday();
-		else if (reminderId == 86) return config.reminder86Sunday();
-		else if (reminderId == 87) return config.reminder87Sunday();
-		else if (reminderId == 88) return config.reminder88Sunday();
-		else if (reminderId == 89) return config.reminder89Sunday();
-		else if (reminderId == 90) return config.reminder90Sunday();
-		else if (reminderId == 91) return config.reminder91Sunday();
-		else if (reminderId == 92) return config.reminder92Sunday();
-		else if (reminderId == 93) return config.reminder93Sunday();
-		else if (reminderId == 94) return config.reminder94Sunday();
-		else if (reminderId == 95) return config.reminder95Sunday();
-		else if (reminderId == 96) return config.reminder96Sunday();
-		else if (reminderId == 97) return config.reminder97Sunday();
-		else if (reminderId == 98) return config.reminder98Sunday();
-		else if (reminderId == 99) return config.reminder99Sunday();
-		else if (reminderId == 100) return config.reminder100Sunday();
-		else return false;
-	}
-
-	String getDate(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1Date();
-		else if (reminderId == 2) return config.reminder2Date();
-		else if (reminderId == 3) return config.reminder3Date();
-		else if (reminderId == 4) return config.reminder4Date();
-		else if (reminderId == 5) return config.reminder5Date();
-		else if (reminderId == 6) return config.reminder6Date();
-		else if (reminderId == 7) return config.reminder7Date();
-		else if (reminderId == 8) return config.reminder8Date();
-		else if (reminderId == 9) return config.reminder9Date();
-		else if (reminderId == 10) return config.reminder10Date();
-		else if (reminderId == 11) return config.reminder11Date();
-		else if (reminderId == 12) return config.reminder12Date();
-		else if (reminderId == 13) return config.reminder13Date();
-		else if (reminderId == 14) return config.reminder14Date();
-		else if (reminderId == 15) return config.reminder15Date();
-		else if (reminderId == 16) return config.reminder16Date();
-		else if (reminderId == 17) return config.reminder17Date();
-		else if (reminderId == 18) return config.reminder18Date();
-		else if (reminderId == 19) return config.reminder19Date();
-		else if (reminderId == 20) return config.reminder20Date();
-		else if (reminderId == 21) return config.reminder21Date();
-		else if (reminderId == 22) return config.reminder22Date();
-		else if (reminderId == 23) return config.reminder23Date();
-		else if (reminderId == 24) return config.reminder24Date();
-		else if (reminderId == 25) return config.reminder25Date();
-		else if (reminderId == 26) return config.reminder26Date();
-		else if (reminderId == 27) return config.reminder27Date();
-		else if (reminderId == 28) return config.reminder28Date();
-		else if (reminderId == 29) return config.reminder29Date();
-		else if (reminderId == 30) return config.reminder30Date();
-		else if (reminderId == 31) return config.reminder31Date();
-		else if (reminderId == 32) return config.reminder32Date();
-		else if (reminderId == 33) return config.reminder33Date();
-		else if (reminderId == 34) return config.reminder34Date();
-		else if (reminderId == 35) return config.reminder35Date();
-		else if (reminderId == 36) return config.reminder36Date();
-		else if (reminderId == 37) return config.reminder37Date();
-		else if (reminderId == 38) return config.reminder38Date();
-		else if (reminderId == 39) return config.reminder39Date();
-		else if (reminderId == 40) return config.reminder40Date();
-		else if (reminderId == 41) return config.reminder41Date();
-		else if (reminderId == 42) return config.reminder42Date();
-		else if (reminderId == 43) return config.reminder43Date();
-		else if (reminderId == 44) return config.reminder44Date();
-		else if (reminderId == 45) return config.reminder45Date();
-		else if (reminderId == 46) return config.reminder46Date();
-		else if (reminderId == 47) return config.reminder47Date();
-		else if (reminderId == 48) return config.reminder48Date();
-		else if (reminderId == 49) return config.reminder49Date();
-		else if (reminderId == 50) return config.reminder50Date();
-		else if (reminderId == 51) return config.reminder51Date();
-		else if (reminderId == 52) return config.reminder52Date();
-		else if (reminderId == 53) return config.reminder53Date();
-		else if (reminderId == 54) return config.reminder54Date();
-		else if (reminderId == 55) return config.reminder55Date();
-		else if (reminderId == 56) return config.reminder56Date();
-		else if (reminderId == 57) return config.reminder57Date();
-		else if (reminderId == 58) return config.reminder58Date();
-		else if (reminderId == 59) return config.reminder59Date();
-		else if (reminderId == 60) return config.reminder60Date();
-		else if (reminderId == 61) return config.reminder61Date();
-		else if (reminderId == 62) return config.reminder62Date();
-		else if (reminderId == 63) return config.reminder63Date();
-		else if (reminderId == 64) return config.reminder64Date();
-		else if (reminderId == 65) return config.reminder65Date();
-		else if (reminderId == 66) return config.reminder66Date();
-		else if (reminderId == 67) return config.reminder67Date();
-		else if (reminderId == 68) return config.reminder68Date();
-		else if (reminderId == 69) return config.reminder69Date();
-		else if (reminderId == 70) return config.reminder70Date();
-		else if (reminderId == 71) return config.reminder71Date();
-		else if (reminderId == 72) return config.reminder72Date();
-		else if (reminderId == 73) return config.reminder73Date();
-		else if (reminderId == 74) return config.reminder74Date();
-		else if (reminderId == 75) return config.reminder75Date();
-		else if (reminderId == 76) return config.reminder76Date();
-		else if (reminderId == 77) return config.reminder77Date();
-		else if (reminderId == 78) return config.reminder78Date();
-		else if (reminderId == 79) return config.reminder79Date();
-		else if (reminderId == 80) return config.reminder80Date();
-		else if (reminderId == 81) return config.reminder81Date();
-		else if (reminderId == 82) return config.reminder82Date();
-		else if (reminderId == 83) return config.reminder83Date();
-		else if (reminderId == 84) return config.reminder84Date();
-		else if (reminderId == 85) return config.reminder85Date();
-		else if (reminderId == 86) return config.reminder86Date();
-		else if (reminderId == 87) return config.reminder87Date();
-		else if (reminderId == 88) return config.reminder88Date();
-		else if (reminderId == 89) return config.reminder89Date();
-		else if (reminderId == 90) return config.reminder90Date();
-		else if (reminderId == 91) return config.reminder91Date();
-		else if (reminderId == 92) return config.reminder92Date();
-		else if (reminderId == 93) return config.reminder93Date();
-		else if (reminderId == 94) return config.reminder94Date();
-		else if (reminderId == 95) return config.reminder95Date();
-		else if (reminderId == 96) return config.reminder96Date();
-		else if (reminderId == 97) return config.reminder97Date();
-		else if (reminderId == 98) return config.reminder98Date();
-		else if (reminderId == 99) return config.reminder99Date();
-		else if (reminderId == 100) return config.reminder100Date();
+		if (reminderId == 1) return config.reminder1DaysOfWeek();
+		else if (reminderId == 2) return config.reminder2DaysOfWeek();
+		else if (reminderId == 3) return config.reminder3DaysOfWeek();
+		else if (reminderId == 4) return config.reminder4DaysOfWeek();
+		else if (reminderId == 5) return config.reminder5DaysOfWeek();
+		else if (reminderId == 6) return config.reminder6DaysOfWeek();
+		else if (reminderId == 7) return config.reminder7DaysOfWeek();
+		else if (reminderId == 8) return config.reminder8DaysOfWeek();
+		else if (reminderId == 9) return config.reminder9DaysOfWeek();
+		else if (reminderId == 10) return config.reminder10DaysOfWeek();
+		else if (reminderId == 11) return config.reminder11DaysOfWeek();
+		else if (reminderId == 12) return config.reminder12DaysOfWeek();
+		else if (reminderId == 13) return config.reminder13DaysOfWeek();
+		else if (reminderId == 14) return config.reminder14DaysOfWeek();
+		else if (reminderId == 15) return config.reminder15DaysOfWeek();
+		else if (reminderId == 16) return config.reminder16DaysOfWeek();
+		else if (reminderId == 17) return config.reminder17DaysOfWeek();
+		else if (reminderId == 18) return config.reminder18DaysOfWeek();
+		else if (reminderId == 19) return config.reminder19DaysOfWeek();
+		else if (reminderId == 20) return config.reminder20DaysOfWeek();
+		else if (reminderId == 21) return config.reminder21DaysOfWeek();
+		else if (reminderId == 22) return config.reminder22DaysOfWeek();
+		else if (reminderId == 23) return config.reminder23DaysOfWeek();
+		else if (reminderId == 24) return config.reminder24DaysOfWeek();
+		else if (reminderId == 25) return config.reminder25DaysOfWeek();
+		else if (reminderId == 26) return config.reminder26DaysOfWeek();
+		else if (reminderId == 27) return config.reminder27DaysOfWeek();
+		else if (reminderId == 28) return config.reminder28DaysOfWeek();
+		else if (reminderId == 29) return config.reminder29DaysOfWeek();
+		else if (reminderId == 30) return config.reminder30DaysOfWeek();
+		else if (reminderId == 31) return config.reminder31DaysOfWeek();
+		else if (reminderId == 32) return config.reminder32DaysOfWeek();
+		else if (reminderId == 33) return config.reminder33DaysOfWeek();
+		else if (reminderId == 34) return config.reminder34DaysOfWeek();
+		else if (reminderId == 35) return config.reminder35DaysOfWeek();
+		else if (reminderId == 36) return config.reminder36DaysOfWeek();
+		else if (reminderId == 37) return config.reminder37DaysOfWeek();
+		else if (reminderId == 38) return config.reminder38DaysOfWeek();
+		else if (reminderId == 39) return config.reminder39DaysOfWeek();
+		else if (reminderId == 40) return config.reminder40DaysOfWeek();
+		else if (reminderId == 41) return config.reminder41DaysOfWeek();
+		else if (reminderId == 42) return config.reminder42DaysOfWeek();
+		else if (reminderId == 43) return config.reminder43DaysOfWeek();
+		else if (reminderId == 44) return config.reminder44DaysOfWeek();
+		else if (reminderId == 45) return config.reminder45DaysOfWeek();
+		else if (reminderId == 46) return config.reminder46DaysOfWeek();
+		else if (reminderId == 47) return config.reminder47DaysOfWeek();
+		else if (reminderId == 48) return config.reminder48DaysOfWeek();
+		else if (reminderId == 49) return config.reminder49DaysOfWeek();
+		else if (reminderId == 50) return config.reminder50DaysOfWeek();
+		else if (reminderId == 51) return config.reminder51DaysOfWeek();
+		else if (reminderId == 52) return config.reminder52DaysOfWeek();
+		else if (reminderId == 53) return config.reminder53DaysOfWeek();
+		else if (reminderId == 54) return config.reminder54DaysOfWeek();
+		else if (reminderId == 55) return config.reminder55DaysOfWeek();
+		else if (reminderId == 56) return config.reminder56DaysOfWeek();
+		else if (reminderId == 57) return config.reminder57DaysOfWeek();
+		else if (reminderId == 58) return config.reminder58DaysOfWeek();
+		else if (reminderId == 59) return config.reminder59DaysOfWeek();
+		else if (reminderId == 60) return config.reminder60DaysOfWeek();
+		else if (reminderId == 61) return config.reminder61DaysOfWeek();
+		else if (reminderId == 62) return config.reminder62DaysOfWeek();
+		else if (reminderId == 63) return config.reminder63DaysOfWeek();
+		else if (reminderId == 64) return config.reminder64DaysOfWeek();
+		else if (reminderId == 65) return config.reminder65DaysOfWeek();
+		else if (reminderId == 66) return config.reminder66DaysOfWeek();
+		else if (reminderId == 67) return config.reminder67DaysOfWeek();
+		else if (reminderId == 68) return config.reminder68DaysOfWeek();
+		else if (reminderId == 69) return config.reminder69DaysOfWeek();
+		else if (reminderId == 70) return config.reminder70DaysOfWeek();
+		else if (reminderId == 71) return config.reminder71DaysOfWeek();
+		else if (reminderId == 72) return config.reminder72DaysOfWeek();
+		else if (reminderId == 73) return config.reminder73DaysOfWeek();
+		else if (reminderId == 74) return config.reminder74DaysOfWeek();
+		else if (reminderId == 75) return config.reminder75DaysOfWeek();
+		else if (reminderId == 76) return config.reminder76DaysOfWeek();
+		else if (reminderId == 77) return config.reminder77DaysOfWeek();
+		else if (reminderId == 78) return config.reminder78DaysOfWeek();
+		else if (reminderId == 79) return config.reminder79DaysOfWeek();
+		else if (reminderId == 80) return config.reminder80DaysOfWeek();
+		else if (reminderId == 81) return config.reminder81DaysOfWeek();
+		else if (reminderId == 82) return config.reminder82DaysOfWeek();
+		else if (reminderId == 83) return config.reminder83DaysOfWeek();
+		else if (reminderId == 84) return config.reminder84DaysOfWeek();
+		else if (reminderId == 85) return config.reminder85DaysOfWeek();
+		else if (reminderId == 86) return config.reminder86DaysOfWeek();
+		else if (reminderId == 87) return config.reminder87DaysOfWeek();
+		else if (reminderId == 88) return config.reminder88DaysOfWeek();
+		else if (reminderId == 89) return config.reminder89DaysOfWeek();
+		else if (reminderId == 90) return config.reminder90DaysOfWeek();
+		else if (reminderId == 91) return config.reminder91DaysOfWeek();
+		else if (reminderId == 92) return config.reminder92DaysOfWeek();
+		else if (reminderId == 93) return config.reminder93DaysOfWeek();
+		else if (reminderId == 94) return config.reminder94DaysOfWeek();
+		else if (reminderId == 95) return config.reminder95DaysOfWeek();
+		else if (reminderId == 96) return config.reminder96DaysOfWeek();
+		else if (reminderId == 97) return config.reminder97DaysOfWeek();
+		else if (reminderId == 98) return config.reminder98DaysOfWeek();
+		else if (reminderId == 99) return config.reminder99DaysOfWeek();
+		else if (reminderId == 100) return config.reminder100DaysOfWeek();
 		else return "";
 	}
 
-	int getLocationX(int reminderId)
+	String getDates(int reminderId)
 	{
-		if (reminderId == 1) return config.reminder1LocationX();
-		else if (reminderId == 2) return config.reminder2LocationX();
-		else if (reminderId == 3) return config.reminder3LocationX();
-		else if (reminderId == 4) return config.reminder4LocationX();
-		else if (reminderId == 5) return config.reminder5LocationX();
-		else if (reminderId == 6) return config.reminder6LocationX();
-		else if (reminderId == 7) return config.reminder7LocationX();
-		else if (reminderId == 8) return config.reminder8LocationX();
-		else if (reminderId == 9) return config.reminder9LocationX();
-		else if (reminderId == 10) return config.reminder10LocationX();
-		else if (reminderId == 11) return config.reminder11LocationX();
-		else if (reminderId == 12) return config.reminder12LocationX();
-		else if (reminderId == 13) return config.reminder13LocationX();
-		else if (reminderId == 14) return config.reminder14LocationX();
-		else if (reminderId == 15) return config.reminder15LocationX();
-		else if (reminderId == 16) return config.reminder16LocationX();
-		else if (reminderId == 17) return config.reminder17LocationX();
-		else if (reminderId == 18) return config.reminder18LocationX();
-		else if (reminderId == 19) return config.reminder19LocationX();
-		else if (reminderId == 20) return config.reminder20LocationX();
-		else if (reminderId == 21) return config.reminder21LocationX();
-		else if (reminderId == 22) return config.reminder22LocationX();
-		else if (reminderId == 23) return config.reminder23LocationX();
-		else if (reminderId == 24) return config.reminder24LocationX();
-		else if (reminderId == 25) return config.reminder25LocationX();
-		else if (reminderId == 26) return config.reminder26LocationX();
-		else if (reminderId == 27) return config.reminder27LocationX();
-		else if (reminderId == 28) return config.reminder28LocationX();
-		else if (reminderId == 29) return config.reminder29LocationX();
-		else if (reminderId == 30) return config.reminder30LocationX();
-		else if (reminderId == 31) return config.reminder31LocationX();
-		else if (reminderId == 32) return config.reminder32LocationX();
-		else if (reminderId == 33) return config.reminder33LocationX();
-		else if (reminderId == 34) return config.reminder34LocationX();
-		else if (reminderId == 35) return config.reminder35LocationX();
-		else if (reminderId == 36) return config.reminder36LocationX();
-		else if (reminderId == 37) return config.reminder37LocationX();
-		else if (reminderId == 38) return config.reminder38LocationX();
-		else if (reminderId == 39) return config.reminder39LocationX();
-		else if (reminderId == 40) return config.reminder40LocationX();
-		else if (reminderId == 41) return config.reminder41LocationX();
-		else if (reminderId == 42) return config.reminder42LocationX();
-		else if (reminderId == 43) return config.reminder43LocationX();
-		else if (reminderId == 44) return config.reminder44LocationX();
-		else if (reminderId == 45) return config.reminder45LocationX();
-		else if (reminderId == 46) return config.reminder46LocationX();
-		else if (reminderId == 47) return config.reminder47LocationX();
-		else if (reminderId == 48) return config.reminder48LocationX();
-		else if (reminderId == 49) return config.reminder49LocationX();
-		else if (reminderId == 50) return config.reminder50LocationX();
-		else if (reminderId == 51) return config.reminder51LocationX();
-		else if (reminderId == 52) return config.reminder52LocationX();
-		else if (reminderId == 53) return config.reminder53LocationX();
-		else if (reminderId == 54) return config.reminder54LocationX();
-		else if (reminderId == 55) return config.reminder55LocationX();
-		else if (reminderId == 56) return config.reminder56LocationX();
-		else if (reminderId == 57) return config.reminder57LocationX();
-		else if (reminderId == 58) return config.reminder58LocationX();
-		else if (reminderId == 59) return config.reminder59LocationX();
-		else if (reminderId == 60) return config.reminder60LocationX();
-		else if (reminderId == 61) return config.reminder61LocationX();
-		else if (reminderId == 62) return config.reminder62LocationX();
-		else if (reminderId == 63) return config.reminder63LocationX();
-		else if (reminderId == 64) return config.reminder64LocationX();
-		else if (reminderId == 65) return config.reminder65LocationX();
-		else if (reminderId == 66) return config.reminder66LocationX();
-		else if (reminderId == 67) return config.reminder67LocationX();
-		else if (reminderId == 68) return config.reminder68LocationX();
-		else if (reminderId == 69) return config.reminder69LocationX();
-		else if (reminderId == 70) return config.reminder70LocationX();
-		else if (reminderId == 71) return config.reminder71LocationX();
-		else if (reminderId == 72) return config.reminder72LocationX();
-		else if (reminderId == 73) return config.reminder73LocationX();
-		else if (reminderId == 74) return config.reminder74LocationX();
-		else if (reminderId == 75) return config.reminder75LocationX();
-		else if (reminderId == 76) return config.reminder76LocationX();
-		else if (reminderId == 77) return config.reminder77LocationX();
-		else if (reminderId == 78) return config.reminder78LocationX();
-		else if (reminderId == 79) return config.reminder79LocationX();
-		else if (reminderId == 80) return config.reminder80LocationX();
-		else if (reminderId == 81) return config.reminder81LocationX();
-		else if (reminderId == 82) return config.reminder82LocationX();
-		else if (reminderId == 83) return config.reminder83LocationX();
-		else if (reminderId == 84) return config.reminder84LocationX();
-		else if (reminderId == 85) return config.reminder85LocationX();
-		else if (reminderId == 86) return config.reminder86LocationX();
-		else if (reminderId == 87) return config.reminder87LocationX();
-		else if (reminderId == 88) return config.reminder88LocationX();
-		else if (reminderId == 89) return config.reminder89LocationX();
-		else if (reminderId == 90) return config.reminder90LocationX();
-		else if (reminderId == 91) return config.reminder91LocationX();
-		else if (reminderId == 92) return config.reminder92LocationX();
-		else if (reminderId == 93) return config.reminder93LocationX();
-		else if (reminderId == 94) return config.reminder94LocationX();
-		else if (reminderId == 95) return config.reminder95LocationX();
-		else if (reminderId == 96) return config.reminder96LocationX();
-		else if (reminderId == 97) return config.reminder97LocationX();
-		else if (reminderId == 98) return config.reminder98LocationX();
-		else if (reminderId == 99) return config.reminder99LocationX();
-		else if (reminderId == 100) return config.reminder100LocationX();
-		else return 0;
+		if (reminderId == 1) return config.reminder1Dates();
+		else if (reminderId == 2) return config.reminder2Dates();
+		else if (reminderId == 3) return config.reminder3Dates();
+		else if (reminderId == 4) return config.reminder4Dates();
+		else if (reminderId == 5) return config.reminder5Dates();
+		else if (reminderId == 6) return config.reminder6Dates();
+		else if (reminderId == 7) return config.reminder7Dates();
+		else if (reminderId == 8) return config.reminder8Dates();
+		else if (reminderId == 9) return config.reminder9Dates();
+		else if (reminderId == 10) return config.reminder10Dates();
+		else if (reminderId == 11) return config.reminder11Dates();
+		else if (reminderId == 12) return config.reminder12Dates();
+		else if (reminderId == 13) return config.reminder13Dates();
+		else if (reminderId == 14) return config.reminder14Dates();
+		else if (reminderId == 15) return config.reminder15Dates();
+		else if (reminderId == 16) return config.reminder16Dates();
+		else if (reminderId == 17) return config.reminder17Dates();
+		else if (reminderId == 18) return config.reminder18Dates();
+		else if (reminderId == 19) return config.reminder19Dates();
+		else if (reminderId == 20) return config.reminder20Dates();
+		else if (reminderId == 21) return config.reminder21Dates();
+		else if (reminderId == 22) return config.reminder22Dates();
+		else if (reminderId == 23) return config.reminder23Dates();
+		else if (reminderId == 24) return config.reminder24Dates();
+		else if (reminderId == 25) return config.reminder25Dates();
+		else if (reminderId == 26) return config.reminder26Dates();
+		else if (reminderId == 27) return config.reminder27Dates();
+		else if (reminderId == 28) return config.reminder28Dates();
+		else if (reminderId == 29) return config.reminder29Dates();
+		else if (reminderId == 30) return config.reminder30Dates();
+		else if (reminderId == 31) return config.reminder31Dates();
+		else if (reminderId == 32) return config.reminder32Dates();
+		else if (reminderId == 33) return config.reminder33Dates();
+		else if (reminderId == 34) return config.reminder34Dates();
+		else if (reminderId == 35) return config.reminder35Dates();
+		else if (reminderId == 36) return config.reminder36Dates();
+		else if (reminderId == 37) return config.reminder37Dates();
+		else if (reminderId == 38) return config.reminder38Dates();
+		else if (reminderId == 39) return config.reminder39Dates();
+		else if (reminderId == 40) return config.reminder40Dates();
+		else if (reminderId == 41) return config.reminder41Dates();
+		else if (reminderId == 42) return config.reminder42Dates();
+		else if (reminderId == 43) return config.reminder43Dates();
+		else if (reminderId == 44) return config.reminder44Dates();
+		else if (reminderId == 45) return config.reminder45Dates();
+		else if (reminderId == 46) return config.reminder46Dates();
+		else if (reminderId == 47) return config.reminder47Dates();
+		else if (reminderId == 48) return config.reminder48Dates();
+		else if (reminderId == 49) return config.reminder49Dates();
+		else if (reminderId == 50) return config.reminder50Dates();
+		else if (reminderId == 51) return config.reminder51Dates();
+		else if (reminderId == 52) return config.reminder52Dates();
+		else if (reminderId == 53) return config.reminder53Dates();
+		else if (reminderId == 54) return config.reminder54Dates();
+		else if (reminderId == 55) return config.reminder55Dates();
+		else if (reminderId == 56) return config.reminder56Dates();
+		else if (reminderId == 57) return config.reminder57Dates();
+		else if (reminderId == 58) return config.reminder58Dates();
+		else if (reminderId == 59) return config.reminder59Dates();
+		else if (reminderId == 60) return config.reminder60Dates();
+		else if (reminderId == 61) return config.reminder61Dates();
+		else if (reminderId == 62) return config.reminder62Dates();
+		else if (reminderId == 63) return config.reminder63Dates();
+		else if (reminderId == 64) return config.reminder64Dates();
+		else if (reminderId == 65) return config.reminder65Dates();
+		else if (reminderId == 66) return config.reminder66Dates();
+		else if (reminderId == 67) return config.reminder67Dates();
+		else if (reminderId == 68) return config.reminder68Dates();
+		else if (reminderId == 69) return config.reminder69Dates();
+		else if (reminderId == 70) return config.reminder70Dates();
+		else if (reminderId == 71) return config.reminder71Dates();
+		else if (reminderId == 72) return config.reminder72Dates();
+		else if (reminderId == 73) return config.reminder73Dates();
+		else if (reminderId == 74) return config.reminder74Dates();
+		else if (reminderId == 75) return config.reminder75Dates();
+		else if (reminderId == 76) return config.reminder76Dates();
+		else if (reminderId == 77) return config.reminder77Dates();
+		else if (reminderId == 78) return config.reminder78Dates();
+		else if (reminderId == 79) return config.reminder79Dates();
+		else if (reminderId == 80) return config.reminder80Dates();
+		else if (reminderId == 81) return config.reminder81Dates();
+		else if (reminderId == 82) return config.reminder82Dates();
+		else if (reminderId == 83) return config.reminder83Dates();
+		else if (reminderId == 84) return config.reminder84Dates();
+		else if (reminderId == 85) return config.reminder85Dates();
+		else if (reminderId == 86) return config.reminder86Dates();
+		else if (reminderId == 87) return config.reminder87Dates();
+		else if (reminderId == 88) return config.reminder88Dates();
+		else if (reminderId == 89) return config.reminder89Dates();
+		else if (reminderId == 90) return config.reminder90Dates();
+		else if (reminderId == 91) return config.reminder91Dates();
+		else if (reminderId == 92) return config.reminder92Dates();
+		else if (reminderId == 93) return config.reminder93Dates();
+		else if (reminderId == 94) return config.reminder94Dates();
+		else if (reminderId == 95) return config.reminder95Dates();
+		else if (reminderId == 96) return config.reminder96Dates();
+		else if (reminderId == 97) return config.reminder97Dates();
+		else if (reminderId == 98) return config.reminder98Dates();
+		else if (reminderId == 99) return config.reminder99Dates();
+		else if (reminderId == 100) return config.reminder100Dates();
+		else return "";
 	}
 
-	int getLocationY(int reminderId)
+	String getCoordinates(int reminderId)
 	{
-		if (reminderId == 1) return config.reminder1LocationY();
-		else if (reminderId == 2) return config.reminder2LocationY();
-		else if (reminderId == 3) return config.reminder3LocationY();
-		else if (reminderId == 4) return config.reminder4LocationY();
-		else if (reminderId == 5) return config.reminder5LocationY();
-		else if (reminderId == 6) return config.reminder6LocationY();
-		else if (reminderId == 7) return config.reminder7LocationY();
-		else if (reminderId == 8) return config.reminder8LocationY();
-		else if (reminderId == 9) return config.reminder9LocationY();
-		else if (reminderId == 10) return config.reminder10LocationY();
-		else if (reminderId == 11) return config.reminder11LocationY();
-		else if (reminderId == 12) return config.reminder12LocationY();
-		else if (reminderId == 13) return config.reminder13LocationY();
-		else if (reminderId == 14) return config.reminder14LocationY();
-		else if (reminderId == 15) return config.reminder15LocationY();
-		else if (reminderId == 16) return config.reminder16LocationY();
-		else if (reminderId == 17) return config.reminder17LocationY();
-		else if (reminderId == 18) return config.reminder18LocationY();
-		else if (reminderId == 19) return config.reminder19LocationY();
-		else if (reminderId == 20) return config.reminder20LocationY();
-		else if (reminderId == 21) return config.reminder21LocationY();
-		else if (reminderId == 22) return config.reminder22LocationY();
-		else if (reminderId == 23) return config.reminder23LocationY();
-		else if (reminderId == 24) return config.reminder24LocationY();
-		else if (reminderId == 25) return config.reminder25LocationY();
-		else if (reminderId == 26) return config.reminder26LocationY();
-		else if (reminderId == 27) return config.reminder27LocationY();
-		else if (reminderId == 28) return config.reminder28LocationY();
-		else if (reminderId == 29) return config.reminder29LocationY();
-		else if (reminderId == 30) return config.reminder30LocationY();
-		else if (reminderId == 31) return config.reminder31LocationY();
-		else if (reminderId == 32) return config.reminder32LocationY();
-		else if (reminderId == 33) return config.reminder33LocationY();
-		else if (reminderId == 34) return config.reminder34LocationY();
-		else if (reminderId == 35) return config.reminder35LocationY();
-		else if (reminderId == 36) return config.reminder36LocationY();
-		else if (reminderId == 37) return config.reminder37LocationY();
-		else if (reminderId == 38) return config.reminder38LocationY();
-		else if (reminderId == 39) return config.reminder39LocationY();
-		else if (reminderId == 40) return config.reminder40LocationY();
-		else if (reminderId == 41) return config.reminder41LocationY();
-		else if (reminderId == 42) return config.reminder42LocationY();
-		else if (reminderId == 43) return config.reminder43LocationY();
-		else if (reminderId == 44) return config.reminder44LocationY();
-		else if (reminderId == 45) return config.reminder45LocationY();
-		else if (reminderId == 46) return config.reminder46LocationY();
-		else if (reminderId == 47) return config.reminder47LocationY();
-		else if (reminderId == 48) return config.reminder48LocationY();
-		else if (reminderId == 49) return config.reminder49LocationY();
-		else if (reminderId == 50) return config.reminder50LocationY();
-		else if (reminderId == 51) return config.reminder51LocationY();
-		else if (reminderId == 52) return config.reminder52LocationY();
-		else if (reminderId == 53) return config.reminder53LocationY();
-		else if (reminderId == 54) return config.reminder54LocationY();
-		else if (reminderId == 55) return config.reminder55LocationY();
-		else if (reminderId == 56) return config.reminder56LocationY();
-		else if (reminderId == 57) return config.reminder57LocationY();
-		else if (reminderId == 58) return config.reminder58LocationY();
-		else if (reminderId == 59) return config.reminder59LocationY();
-		else if (reminderId == 60) return config.reminder60LocationY();
-		else if (reminderId == 61) return config.reminder61LocationY();
-		else if (reminderId == 62) return config.reminder62LocationY();
-		else if (reminderId == 63) return config.reminder63LocationY();
-		else if (reminderId == 64) return config.reminder64LocationY();
-		else if (reminderId == 65) return config.reminder65LocationY();
-		else if (reminderId == 66) return config.reminder66LocationY();
-		else if (reminderId == 67) return config.reminder67LocationY();
-		else if (reminderId == 68) return config.reminder68LocationY();
-		else if (reminderId == 69) return config.reminder69LocationY();
-		else if (reminderId == 70) return config.reminder70LocationY();
-		else if (reminderId == 71) return config.reminder71LocationY();
-		else if (reminderId == 72) return config.reminder72LocationY();
-		else if (reminderId == 73) return config.reminder73LocationY();
-		else if (reminderId == 74) return config.reminder74LocationY();
-		else if (reminderId == 75) return config.reminder75LocationY();
-		else if (reminderId == 76) return config.reminder76LocationY();
-		else if (reminderId == 77) return config.reminder77LocationY();
-		else if (reminderId == 78) return config.reminder78LocationY();
-		else if (reminderId == 79) return config.reminder79LocationY();
-		else if (reminderId == 80) return config.reminder80LocationY();
-		else if (reminderId == 81) return config.reminder81LocationY();
-		else if (reminderId == 82) return config.reminder82LocationY();
-		else if (reminderId == 83) return config.reminder83LocationY();
-		else if (reminderId == 84) return config.reminder84LocationY();
-		else if (reminderId == 85) return config.reminder85LocationY();
-		else if (reminderId == 86) return config.reminder86LocationY();
-		else if (reminderId == 87) return config.reminder87LocationY();
-		else if (reminderId == 88) return config.reminder88LocationY();
-		else if (reminderId == 89) return config.reminder89LocationY();
-		else if (reminderId == 90) return config.reminder90LocationY();
-		else if (reminderId == 91) return config.reminder91LocationY();
-		else if (reminderId == 92) return config.reminder92LocationY();
-		else if (reminderId == 93) return config.reminder93LocationY();
-		else if (reminderId == 94) return config.reminder94LocationY();
-		else if (reminderId == 95) return config.reminder95LocationY();
-		else if (reminderId == 96) return config.reminder96LocationY();
-		else if (reminderId == 97) return config.reminder97LocationY();
-		else if (reminderId == 98) return config.reminder98LocationY();
-		else if (reminderId == 99) return config.reminder99LocationY();
-		else if (reminderId == 100) return config.reminder100LocationY();
-		else return 0;
+		if (reminderId == 1) return config.reminder1Coordinates();
+		else if (reminderId == 2) return config.reminder2Coordinates();
+		else if (reminderId == 3) return config.reminder3Coordinates();
+		else if (reminderId == 4) return config.reminder4Coordinates();
+		else if (reminderId == 5) return config.reminder5Coordinates();
+		else if (reminderId == 6) return config.reminder6Coordinates();
+		else if (reminderId == 7) return config.reminder7Coordinates();
+		else if (reminderId == 8) return config.reminder8Coordinates();
+		else if (reminderId == 9) return config.reminder9Coordinates();
+		else if (reminderId == 10) return config.reminder10Coordinates();
+		else if (reminderId == 11) return config.reminder11Coordinates();
+		else if (reminderId == 12) return config.reminder12Coordinates();
+		else if (reminderId == 13) return config.reminder13Coordinates();
+		else if (reminderId == 14) return config.reminder14Coordinates();
+		else if (reminderId == 15) return config.reminder15Coordinates();
+		else if (reminderId == 16) return config.reminder16Coordinates();
+		else if (reminderId == 17) return config.reminder17Coordinates();
+		else if (reminderId == 18) return config.reminder18Coordinates();
+		else if (reminderId == 19) return config.reminder19Coordinates();
+		else if (reminderId == 20) return config.reminder20Coordinates();
+		else if (reminderId == 21) return config.reminder21Coordinates();
+		else if (reminderId == 22) return config.reminder22Coordinates();
+		else if (reminderId == 23) return config.reminder23Coordinates();
+		else if (reminderId == 24) return config.reminder24Coordinates();
+		else if (reminderId == 25) return config.reminder25Coordinates();
+		else if (reminderId == 26) return config.reminder26Coordinates();
+		else if (reminderId == 27) return config.reminder27Coordinates();
+		else if (reminderId == 28) return config.reminder28Coordinates();
+		else if (reminderId == 29) return config.reminder29Coordinates();
+		else if (reminderId == 30) return config.reminder30Coordinates();
+		else if (reminderId == 31) return config.reminder31Coordinates();
+		else if (reminderId == 32) return config.reminder32Coordinates();
+		else if (reminderId == 33) return config.reminder33Coordinates();
+		else if (reminderId == 34) return config.reminder34Coordinates();
+		else if (reminderId == 35) return config.reminder35Coordinates();
+		else if (reminderId == 36) return config.reminder36Coordinates();
+		else if (reminderId == 37) return config.reminder37Coordinates();
+		else if (reminderId == 38) return config.reminder38Coordinates();
+		else if (reminderId == 39) return config.reminder39Coordinates();
+		else if (reminderId == 40) return config.reminder40Coordinates();
+		else if (reminderId == 41) return config.reminder41Coordinates();
+		else if (reminderId == 42) return config.reminder42Coordinates();
+		else if (reminderId == 43) return config.reminder43Coordinates();
+		else if (reminderId == 44) return config.reminder44Coordinates();
+		else if (reminderId == 45) return config.reminder45Coordinates();
+		else if (reminderId == 46) return config.reminder46Coordinates();
+		else if (reminderId == 47) return config.reminder47Coordinates();
+		else if (reminderId == 48) return config.reminder48Coordinates();
+		else if (reminderId == 49) return config.reminder49Coordinates();
+		else if (reminderId == 50) return config.reminder50Coordinates();
+		else if (reminderId == 51) return config.reminder51Coordinates();
+		else if (reminderId == 52) return config.reminder52Coordinates();
+		else if (reminderId == 53) return config.reminder53Coordinates();
+		else if (reminderId == 54) return config.reminder54Coordinates();
+		else if (reminderId == 55) return config.reminder55Coordinates();
+		else if (reminderId == 56) return config.reminder56Coordinates();
+		else if (reminderId == 57) return config.reminder57Coordinates();
+		else if (reminderId == 58) return config.reminder58Coordinates();
+		else if (reminderId == 59) return config.reminder59Coordinates();
+		else if (reminderId == 60) return config.reminder60Coordinates();
+		else if (reminderId == 61) return config.reminder61Coordinates();
+		else if (reminderId == 62) return config.reminder62Coordinates();
+		else if (reminderId == 63) return config.reminder63Coordinates();
+		else if (reminderId == 64) return config.reminder64Coordinates();
+		else if (reminderId == 65) return config.reminder65Coordinates();
+		else if (reminderId == 66) return config.reminder66Coordinates();
+		else if (reminderId == 67) return config.reminder67Coordinates();
+		else if (reminderId == 68) return config.reminder68Coordinates();
+		else if (reminderId == 69) return config.reminder69Coordinates();
+		else if (reminderId == 70) return config.reminder70Coordinates();
+		else if (reminderId == 71) return config.reminder71Coordinates();
+		else if (reminderId == 72) return config.reminder72Coordinates();
+		else if (reminderId == 73) return config.reminder73Coordinates();
+		else if (reminderId == 74) return config.reminder74Coordinates();
+		else if (reminderId == 75) return config.reminder75Coordinates();
+		else if (reminderId == 76) return config.reminder76Coordinates();
+		else if (reminderId == 77) return config.reminder77Coordinates();
+		else if (reminderId == 78) return config.reminder78Coordinates();
+		else if (reminderId == 79) return config.reminder79Coordinates();
+		else if (reminderId == 80) return config.reminder80Coordinates();
+		else if (reminderId == 81) return config.reminder81Coordinates();
+		else if (reminderId == 82) return config.reminder82Coordinates();
+		else if (reminderId == 83) return config.reminder83Coordinates();
+		else if (reminderId == 84) return config.reminder84Coordinates();
+		else if (reminderId == 85) return config.reminder85Coordinates();
+		else if (reminderId == 86) return config.reminder86Coordinates();
+		else if (reminderId == 87) return config.reminder87Coordinates();
+		else if (reminderId == 88) return config.reminder88Coordinates();
+		else if (reminderId == 89) return config.reminder89Coordinates();
+		else if (reminderId == 90) return config.reminder90Coordinates();
+		else if (reminderId == 91) return config.reminder91Coordinates();
+		else if (reminderId == 92) return config.reminder92Coordinates();
+		else if (reminderId == 93) return config.reminder93Coordinates();
+		else if (reminderId == 94) return config.reminder94Coordinates();
+		else if (reminderId == 95) return config.reminder95Coordinates();
+		else if (reminderId == 96) return config.reminder96Coordinates();
+		else if (reminderId == 97) return config.reminder97Coordinates();
+		else if (reminderId == 98) return config.reminder98Coordinates();
+		else if (reminderId == 99) return config.reminder99Coordinates();
+		else if (reminderId == 100) return config.reminder100Coordinates();
+		else return "";
 	}
 
 	int getRadius(int reminderId)
@@ -1873,109 +1376,214 @@ public class RemindersPlugin extends Plugin {
 		else return 0;
 	}
 
-	int getRegionId(int reminderId)
+	String getGeoFences(int reminderId)
 	{
-		if (reminderId == 1) return config.reminder1RegionId();
-		else if (reminderId == 2) return config.reminder2RegionId();
-		else if (reminderId == 3) return config.reminder3RegionId();
-		else if (reminderId == 4) return config.reminder4RegionId();
-		else if (reminderId == 5) return config.reminder5RegionId();
-		else if (reminderId == 6) return config.reminder6RegionId();
-		else if (reminderId == 7) return config.reminder7RegionId();
-		else if (reminderId == 8) return config.reminder8RegionId();
-		else if (reminderId == 9) return config.reminder9RegionId();
-		else if (reminderId == 10) return config.reminder10RegionId();
-		else if (reminderId == 11) return config.reminder11RegionId();
-		else if (reminderId == 12) return config.reminder12RegionId();
-		else if (reminderId == 13) return config.reminder13RegionId();
-		else if (reminderId == 14) return config.reminder14RegionId();
-		else if (reminderId == 15) return config.reminder15RegionId();
-		else if (reminderId == 16) return config.reminder16RegionId();
-		else if (reminderId == 17) return config.reminder17RegionId();
-		else if (reminderId == 18) return config.reminder18RegionId();
-		else if (reminderId == 19) return config.reminder19RegionId();
-		else if (reminderId == 20) return config.reminder20RegionId();
-		else if (reminderId == 21) return config.reminder21RegionId();
-		else if (reminderId == 22) return config.reminder22RegionId();
-		else if (reminderId == 23) return config.reminder23RegionId();
-		else if (reminderId == 24) return config.reminder24RegionId();
-		else if (reminderId == 25) return config.reminder25RegionId();
-		else if (reminderId == 26) return config.reminder26RegionId();
-		else if (reminderId == 27) return config.reminder27RegionId();
-		else if (reminderId == 28) return config.reminder28RegionId();
-		else if (reminderId == 29) return config.reminder29RegionId();
-		else if (reminderId == 30) return config.reminder30RegionId();
-		else if (reminderId == 31) return config.reminder31RegionId();
-		else if (reminderId == 32) return config.reminder32RegionId();
-		else if (reminderId == 33) return config.reminder33RegionId();
-		else if (reminderId == 34) return config.reminder34RegionId();
-		else if (reminderId == 35) return config.reminder35RegionId();
-		else if (reminderId == 36) return config.reminder36RegionId();
-		else if (reminderId == 37) return config.reminder37RegionId();
-		else if (reminderId == 38) return config.reminder38RegionId();
-		else if (reminderId == 39) return config.reminder39RegionId();
-		else if (reminderId == 40) return config.reminder40RegionId();
-		else if (reminderId == 41) return config.reminder41RegionId();
-		else if (reminderId == 42) return config.reminder42RegionId();
-		else if (reminderId == 43) return config.reminder43RegionId();
-		else if (reminderId == 44) return config.reminder44RegionId();
-		else if (reminderId == 45) return config.reminder45RegionId();
-		else if (reminderId == 46) return config.reminder46RegionId();
-		else if (reminderId == 47) return config.reminder47RegionId();
-		else if (reminderId == 48) return config.reminder48RegionId();
-		else if (reminderId == 49) return config.reminder49RegionId();
-		else if (reminderId == 50) return config.reminder50RegionId();
-		else if (reminderId == 51) return config.reminder51RegionId();
-		else if (reminderId == 52) return config.reminder52RegionId();
-		else if (reminderId == 53) return config.reminder53RegionId();
-		else if (reminderId == 54) return config.reminder54RegionId();
-		else if (reminderId == 55) return config.reminder55RegionId();
-		else if (reminderId == 56) return config.reminder56RegionId();
-		else if (reminderId == 57) return config.reminder57RegionId();
-		else if (reminderId == 58) return config.reminder58RegionId();
-		else if (reminderId == 59) return config.reminder59RegionId();
-		else if (reminderId == 60) return config.reminder60RegionId();
-		else if (reminderId == 61) return config.reminder61RegionId();
-		else if (reminderId == 62) return config.reminder62RegionId();
-		else if (reminderId == 63) return config.reminder63RegionId();
-		else if (reminderId == 64) return config.reminder64RegionId();
-		else if (reminderId == 65) return config.reminder65RegionId();
-		else if (reminderId == 66) return config.reminder66RegionId();
-		else if (reminderId == 67) return config.reminder67RegionId();
-		else if (reminderId == 68) return config.reminder68RegionId();
-		else if (reminderId == 69) return config.reminder69RegionId();
-		else if (reminderId == 70) return config.reminder70RegionId();
-		else if (reminderId == 71) return config.reminder71RegionId();
-		else if (reminderId == 72) return config.reminder72RegionId();
-		else if (reminderId == 73) return config.reminder73RegionId();
-		else if (reminderId == 74) return config.reminder74RegionId();
-		else if (reminderId == 75) return config.reminder75RegionId();
-		else if (reminderId == 76) return config.reminder76RegionId();
-		else if (reminderId == 77) return config.reminder77RegionId();
-		else if (reminderId == 78) return config.reminder78RegionId();
-		else if (reminderId == 79) return config.reminder79RegionId();
-		else if (reminderId == 80) return config.reminder80RegionId();
-		else if (reminderId == 81) return config.reminder81RegionId();
-		else if (reminderId == 82) return config.reminder82RegionId();
-		else if (reminderId == 83) return config.reminder83RegionId();
-		else if (reminderId == 84) return config.reminder84RegionId();
-		else if (reminderId == 85) return config.reminder85RegionId();
-		else if (reminderId == 86) return config.reminder86RegionId();
-		else if (reminderId == 87) return config.reminder87RegionId();
-		else if (reminderId == 88) return config.reminder88RegionId();
-		else if (reminderId == 89) return config.reminder89RegionId();
-		else if (reminderId == 90) return config.reminder90RegionId();
-		else if (reminderId == 91) return config.reminder91RegionId();
-		else if (reminderId == 92) return config.reminder92RegionId();
-		else if (reminderId == 93) return config.reminder93RegionId();
-		else if (reminderId == 94) return config.reminder94RegionId();
-		else if (reminderId == 95) return config.reminder95RegionId();
-		else if (reminderId == 96) return config.reminder96RegionId();
-		else if (reminderId == 97) return config.reminder97RegionId();
-		else if (reminderId == 98) return config.reminder98RegionId();
-		else if (reminderId == 99) return config.reminder99RegionId();
-		else if (reminderId == 100) return config.reminder100RegionId();
-		else return 0;
+		if (reminderId == 1) return config.reminder1GeoFences();
+		else if (reminderId == 2) return config.reminder2GeoFences();
+		else if (reminderId == 3) return config.reminder3GeoFences();
+		else if (reminderId == 4) return config.reminder4GeoFences();
+		else if (reminderId == 5) return config.reminder5GeoFences();
+		else if (reminderId == 6) return config.reminder6GeoFences();
+		else if (reminderId == 7) return config.reminder7GeoFences();
+		else if (reminderId == 8) return config.reminder8GeoFences();
+		else if (reminderId == 9) return config.reminder9GeoFences();
+		else if (reminderId == 10) return config.reminder10GeoFences();
+		else if (reminderId == 11) return config.reminder11GeoFences();
+		else if (reminderId == 12) return config.reminder12GeoFences();
+		else if (reminderId == 13) return config.reminder13GeoFences();
+		else if (reminderId == 14) return config.reminder14GeoFences();
+		else if (reminderId == 15) return config.reminder15GeoFences();
+		else if (reminderId == 16) return config.reminder16GeoFences();
+		else if (reminderId == 17) return config.reminder17GeoFences();
+		else if (reminderId == 18) return config.reminder18GeoFences();
+		else if (reminderId == 19) return config.reminder19GeoFences();
+		else if (reminderId == 20) return config.reminder20GeoFences();
+		else if (reminderId == 21) return config.reminder21GeoFences();
+		else if (reminderId == 22) return config.reminder22GeoFences();
+		else if (reminderId == 23) return config.reminder23GeoFences();
+		else if (reminderId == 24) return config.reminder24GeoFences();
+		else if (reminderId == 25) return config.reminder25GeoFences();
+		else if (reminderId == 26) return config.reminder26GeoFences();
+		else if (reminderId == 27) return config.reminder27GeoFences();
+		else if (reminderId == 28) return config.reminder28GeoFences();
+		else if (reminderId == 29) return config.reminder29GeoFences();
+		else if (reminderId == 30) return config.reminder30GeoFences();
+		else if (reminderId == 31) return config.reminder31GeoFences();
+		else if (reminderId == 32) return config.reminder32GeoFences();
+		else if (reminderId == 33) return config.reminder33GeoFences();
+		else if (reminderId == 34) return config.reminder34GeoFences();
+		else if (reminderId == 35) return config.reminder35GeoFences();
+		else if (reminderId == 36) return config.reminder36GeoFences();
+		else if (reminderId == 37) return config.reminder37GeoFences();
+		else if (reminderId == 38) return config.reminder38GeoFences();
+		else if (reminderId == 39) return config.reminder39GeoFences();
+		else if (reminderId == 40) return config.reminder40GeoFences();
+		else if (reminderId == 41) return config.reminder41GeoFences();
+		else if (reminderId == 42) return config.reminder42GeoFences();
+		else if (reminderId == 43) return config.reminder43GeoFences();
+		else if (reminderId == 44) return config.reminder44GeoFences();
+		else if (reminderId == 45) return config.reminder45GeoFences();
+		else if (reminderId == 46) return config.reminder46GeoFences();
+		else if (reminderId == 47) return config.reminder47GeoFences();
+		else if (reminderId == 48) return config.reminder48GeoFences();
+		else if (reminderId == 49) return config.reminder49GeoFences();
+		else if (reminderId == 50) return config.reminder50GeoFences();
+		else if (reminderId == 51) return config.reminder51GeoFences();
+		else if (reminderId == 52) return config.reminder52GeoFences();
+		else if (reminderId == 53) return config.reminder53GeoFences();
+		else if (reminderId == 54) return config.reminder54GeoFences();
+		else if (reminderId == 55) return config.reminder55GeoFences();
+		else if (reminderId == 56) return config.reminder56GeoFences();
+		else if (reminderId == 57) return config.reminder57GeoFences();
+		else if (reminderId == 58) return config.reminder58GeoFences();
+		else if (reminderId == 59) return config.reminder59GeoFences();
+		else if (reminderId == 60) return config.reminder60GeoFences();
+		else if (reminderId == 61) return config.reminder61GeoFences();
+		else if (reminderId == 62) return config.reminder62GeoFences();
+		else if (reminderId == 63) return config.reminder63GeoFences();
+		else if (reminderId == 64) return config.reminder64GeoFences();
+		else if (reminderId == 65) return config.reminder65GeoFences();
+		else if (reminderId == 66) return config.reminder66GeoFences();
+		else if (reminderId == 67) return config.reminder67GeoFences();
+		else if (reminderId == 68) return config.reminder68GeoFences();
+		else if (reminderId == 69) return config.reminder69GeoFences();
+		else if (reminderId == 70) return config.reminder70GeoFences();
+		else if (reminderId == 71) return config.reminder71GeoFences();
+		else if (reminderId == 72) return config.reminder72GeoFences();
+		else if (reminderId == 73) return config.reminder73GeoFences();
+		else if (reminderId == 74) return config.reminder74GeoFences();
+		else if (reminderId == 75) return config.reminder75GeoFences();
+		else if (reminderId == 76) return config.reminder76GeoFences();
+		else if (reminderId == 77) return config.reminder77GeoFences();
+		else if (reminderId == 78) return config.reminder78GeoFences();
+		else if (reminderId == 79) return config.reminder79GeoFences();
+		else if (reminderId == 80) return config.reminder80GeoFences();
+		else if (reminderId == 81) return config.reminder81GeoFences();
+		else if (reminderId == 82) return config.reminder82GeoFences();
+		else if (reminderId == 83) return config.reminder83GeoFences();
+		else if (reminderId == 84) return config.reminder84GeoFences();
+		else if (reminderId == 85) return config.reminder85GeoFences();
+		else if (reminderId == 86) return config.reminder86GeoFences();
+		else if (reminderId == 87) return config.reminder87GeoFences();
+		else if (reminderId == 88) return config.reminder88GeoFences();
+		else if (reminderId == 89) return config.reminder89GeoFences();
+		else if (reminderId == 90) return config.reminder90GeoFences();
+		else if (reminderId == 91) return config.reminder91GeoFences();
+		else if (reminderId == 92) return config.reminder92GeoFences();
+		else if (reminderId == 93) return config.reminder93GeoFences();
+		else if (reminderId == 94) return config.reminder94GeoFences();
+		else if (reminderId == 95) return config.reminder95GeoFences();
+		else if (reminderId == 96) return config.reminder96GeoFences();
+		else if (reminderId == 97) return config.reminder97GeoFences();
+		else if (reminderId == 98) return config.reminder98GeoFences();
+		else if (reminderId == 99) return config.reminder99GeoFences();
+		else if (reminderId == 100) return config.reminder100GeoFences();
+		else return "";
+	}
+
+	String getRegionIds(int reminderId)
+	{
+		if (reminderId == 1) return config.reminder1RegionIds();
+		else if (reminderId == 2) return config.reminder2RegionIds();
+		else if (reminderId == 3) return config.reminder3RegionIds();
+		else if (reminderId == 4) return config.reminder4RegionIds();
+		else if (reminderId == 5) return config.reminder5RegionIds();
+		else if (reminderId == 6) return config.reminder6RegionIds();
+		else if (reminderId == 7) return config.reminder7RegionIds();
+		else if (reminderId == 8) return config.reminder8RegionIds();
+		else if (reminderId == 9) return config.reminder9RegionIds();
+		else if (reminderId == 10) return config.reminder10RegionIds();
+		else if (reminderId == 11) return config.reminder11RegionIds();
+		else if (reminderId == 12) return config.reminder12RegionIds();
+		else if (reminderId == 13) return config.reminder13RegionIds();
+		else if (reminderId == 14) return config.reminder14RegionIds();
+		else if (reminderId == 15) return config.reminder15RegionIds();
+		else if (reminderId == 16) return config.reminder16RegionIds();
+		else if (reminderId == 17) return config.reminder17RegionIds();
+		else if (reminderId == 18) return config.reminder18RegionIds();
+		else if (reminderId == 19) return config.reminder19RegionIds();
+		else if (reminderId == 20) return config.reminder20RegionIds();
+		else if (reminderId == 21) return config.reminder21RegionIds();
+		else if (reminderId == 22) return config.reminder22RegionIds();
+		else if (reminderId == 23) return config.reminder23RegionIds();
+		else if (reminderId == 24) return config.reminder24RegionIds();
+		else if (reminderId == 25) return config.reminder25RegionIds();
+		else if (reminderId == 26) return config.reminder26RegionIds();
+		else if (reminderId == 27) return config.reminder27RegionIds();
+		else if (reminderId == 28) return config.reminder28RegionIds();
+		else if (reminderId == 29) return config.reminder29RegionIds();
+		else if (reminderId == 30) return config.reminder30RegionIds();
+		else if (reminderId == 31) return config.reminder31RegionIds();
+		else if (reminderId == 32) return config.reminder32RegionIds();
+		else if (reminderId == 33) return config.reminder33RegionIds();
+		else if (reminderId == 34) return config.reminder34RegionIds();
+		else if (reminderId == 35) return config.reminder35RegionIds();
+		else if (reminderId == 36) return config.reminder36RegionIds();
+		else if (reminderId == 37) return config.reminder37RegionIds();
+		else if (reminderId == 38) return config.reminder38RegionIds();
+		else if (reminderId == 39) return config.reminder39RegionIds();
+		else if (reminderId == 40) return config.reminder40RegionIds();
+		else if (reminderId == 41) return config.reminder41RegionIds();
+		else if (reminderId == 42) return config.reminder42RegionIds();
+		else if (reminderId == 43) return config.reminder43RegionIds();
+		else if (reminderId == 44) return config.reminder44RegionIds();
+		else if (reminderId == 45) return config.reminder45RegionIds();
+		else if (reminderId == 46) return config.reminder46RegionIds();
+		else if (reminderId == 47) return config.reminder47RegionIds();
+		else if (reminderId == 48) return config.reminder48RegionIds();
+		else if (reminderId == 49) return config.reminder49RegionIds();
+		else if (reminderId == 50) return config.reminder50RegionIds();
+		else if (reminderId == 51) return config.reminder51RegionIds();
+		else if (reminderId == 52) return config.reminder52RegionIds();
+		else if (reminderId == 53) return config.reminder53RegionIds();
+		else if (reminderId == 54) return config.reminder54RegionIds();
+		else if (reminderId == 55) return config.reminder55RegionIds();
+		else if (reminderId == 56) return config.reminder56RegionIds();
+		else if (reminderId == 57) return config.reminder57RegionIds();
+		else if (reminderId == 58) return config.reminder58RegionIds();
+		else if (reminderId == 59) return config.reminder59RegionIds();
+		else if (reminderId == 60) return config.reminder60RegionIds();
+		else if (reminderId == 61) return config.reminder61RegionIds();
+		else if (reminderId == 62) return config.reminder62RegionIds();
+		else if (reminderId == 63) return config.reminder63RegionIds();
+		else if (reminderId == 64) return config.reminder64RegionIds();
+		else if (reminderId == 65) return config.reminder65RegionIds();
+		else if (reminderId == 66) return config.reminder66RegionIds();
+		else if (reminderId == 67) return config.reminder67RegionIds();
+		else if (reminderId == 68) return config.reminder68RegionIds();
+		else if (reminderId == 69) return config.reminder69RegionIds();
+		else if (reminderId == 70) return config.reminder70RegionIds();
+		else if (reminderId == 71) return config.reminder71RegionIds();
+		else if (reminderId == 72) return config.reminder72RegionIds();
+		else if (reminderId == 73) return config.reminder73RegionIds();
+		else if (reminderId == 74) return config.reminder74RegionIds();
+		else if (reminderId == 75) return config.reminder75RegionIds();
+		else if (reminderId == 76) return config.reminder76RegionIds();
+		else if (reminderId == 77) return config.reminder77RegionIds();
+		else if (reminderId == 78) return config.reminder78RegionIds();
+		else if (reminderId == 79) return config.reminder79RegionIds();
+		else if (reminderId == 80) return config.reminder80RegionIds();
+		else if (reminderId == 81) return config.reminder81RegionIds();
+		else if (reminderId == 82) return config.reminder82RegionIds();
+		else if (reminderId == 83) return config.reminder83RegionIds();
+		else if (reminderId == 84) return config.reminder84RegionIds();
+		else if (reminderId == 85) return config.reminder85RegionIds();
+		else if (reminderId == 86) return config.reminder86RegionIds();
+		else if (reminderId == 87) return config.reminder87RegionIds();
+		else if (reminderId == 88) return config.reminder88RegionIds();
+		else if (reminderId == 89) return config.reminder89RegionIds();
+		else if (reminderId == 90) return config.reminder90RegionIds();
+		else if (reminderId == 91) return config.reminder91RegionIds();
+		else if (reminderId == 92) return config.reminder92RegionIds();
+		else if (reminderId == 93) return config.reminder93RegionIds();
+		else if (reminderId == 94) return config.reminder94RegionIds();
+		else if (reminderId == 95) return config.reminder95RegionIds();
+		else if (reminderId == 96) return config.reminder96RegionIds();
+		else if (reminderId == 97) return config.reminder97RegionIds();
+		else if (reminderId == 98) return config.reminder98RegionIds();
+		else if (reminderId == 99) return config.reminder99RegionIds();
+		else if (reminderId == 100) return config.reminder100RegionIds();
+		else return "";
 	}
 
 	String getNpcIds(int reminderId)

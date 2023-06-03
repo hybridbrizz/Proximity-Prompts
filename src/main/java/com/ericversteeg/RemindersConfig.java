@@ -9,8 +9,7 @@ import net.runelite.client.config.ConfigSection;
 import java.awt.*;
 
 @ConfigGroup(RemindersConfig.GROUP)
-public interface RemindersConfig extends Config
-{
+public interface RemindersConfig extends Config {
 	String GROUP = "reminders_2";
 
 	@ConfigItem(
@@ -89,109 +88,55 @@ public interface RemindersConfig extends Config
 	default Color reminder1Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder1Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder1
-	)
-	default String reminder1Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder1Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder1
-	)
-	default boolean reminder1Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder1Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder1
-	)
-	default boolean reminder1Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder1Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder1
-	)
-	default boolean reminder1Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder1Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder1
-	)
-	default boolean reminder1Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder1Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder1
-	)
-	default boolean reminder1Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder1Saturday",
+			keyName = "reminder1Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder1
 	)
-	default boolean reminder1Saturday() { return false; }
+	default String reminder1Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder1Sunday",
+			keyName = "reminder1DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder1
 	)
-	default boolean reminder1Sunday() { return false; }
+	default String reminder1DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder1Date",
+			keyName = "reminder1Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder1
 	)
-	default String reminder1Date() { return ""; }
+	default String reminder1Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder1LocationX",
+			keyName = "reminder1Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder1
 	)
-	default int reminder1LocationX() { return 0; }
+	default String reminder1Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder1LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder1GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder1
 	)
-	default int reminder1LocationY() { return 0; }
+	default String reminder1GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder1Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder1
 	)
 	default int reminder1Radius() { return 0; }
@@ -200,16 +145,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder1RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder1
 	)
-	default int reminder1RegionId() { return 0; }
+	default String reminder1RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder1NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder1
 	)
 	default String reminder1NpcIds() { return ""; }
@@ -218,25 +163,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder1ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder1
 	)
 	default String reminder1ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder1Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder1
 	)
 	default int reminder1Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder1Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder1
 	)
 	default int reminder1Cooldown() { return 5; }
@@ -278,109 +223,55 @@ public interface RemindersConfig extends Config
 	default Color reminder2Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder2Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder2
-	)
-	default String reminder2Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder2Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder2
-	)
-	default boolean reminder2Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder2Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder2
-	)
-	default boolean reminder2Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder2Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder2
-	)
-	default boolean reminder2Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder2Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder2
-	)
-	default boolean reminder2Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder2Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder2
-	)
-	default boolean reminder2Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder2Saturday",
+			keyName = "reminder2Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder2
 	)
-	default boolean reminder2Saturday() { return false; }
+	default String reminder2Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder2Sunday",
+			keyName = "reminder2DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder2
 	)
-	default boolean reminder2Sunday() { return false; }
+	default String reminder2DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder2Date",
+			keyName = "reminder2Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder2
 	)
-	default String reminder2Date() { return ""; }
+	default String reminder2Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder2LocationX",
+			keyName = "reminder2Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder2
 	)
-	default int reminder2LocationX() { return 0; }
+	default String reminder2Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder2LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder2GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder2
 	)
-	default int reminder2LocationY() { return 0; }
+	default String reminder2GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder2Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder2
 	)
 	default int reminder2Radius() { return 0; }
@@ -389,16 +280,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder2RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder2
 	)
-	default int reminder2RegionId() { return 0; }
+	default String reminder2RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder2NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder2
 	)
 	default String reminder2NpcIds() { return ""; }
@@ -407,25 +298,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder2ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder2
 	)
 	default String reminder2ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder2Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder2
 	)
 	default int reminder2Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder2Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder2
 	)
 	default int reminder2Cooldown() { return 5; }
@@ -467,109 +358,55 @@ public interface RemindersConfig extends Config
 	default Color reminder3Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder3Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder3
-	)
-	default String reminder3Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder3Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder3
-	)
-	default boolean reminder3Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder3Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder3
-	)
-	default boolean reminder3Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder3Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder3
-	)
-	default boolean reminder3Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder3Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder3
-	)
-	default boolean reminder3Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder3Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder3
-	)
-	default boolean reminder3Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder3Saturday",
+			keyName = "reminder3Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder3
 	)
-	default boolean reminder3Saturday() { return false; }
+	default String reminder3Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder3Sunday",
+			keyName = "reminder3DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder3
 	)
-	default boolean reminder3Sunday() { return false; }
+	default String reminder3DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder3Date",
+			keyName = "reminder3Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder3
 	)
-	default String reminder3Date() { return ""; }
+	default String reminder3Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder3LocationX",
+			keyName = "reminder3Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder3
 	)
-	default int reminder3LocationX() { return 0; }
+	default String reminder3Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder3LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder3GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder3
 	)
-	default int reminder3LocationY() { return 0; }
+	default String reminder3GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder3Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder3
 	)
 	default int reminder3Radius() { return 0; }
@@ -578,16 +415,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder3RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder3
 	)
-	default int reminder3RegionId() { return 0; }
+	default String reminder3RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder3NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder3
 	)
 	default String reminder3NpcIds() { return ""; }
@@ -596,25 +433,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder3ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder3
 	)
 	default String reminder3ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder3Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder3
 	)
 	default int reminder3Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder3Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder3
 	)
 	default int reminder3Cooldown() { return 5; }
@@ -656,109 +493,55 @@ public interface RemindersConfig extends Config
 	default Color reminder4Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder4Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder4
-	)
-	default String reminder4Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder4Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder4
-	)
-	default boolean reminder4Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder4Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder4
-	)
-	default boolean reminder4Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder4Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder4
-	)
-	default boolean reminder4Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder4Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder4
-	)
-	default boolean reminder4Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder4Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder4
-	)
-	default boolean reminder4Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder4Saturday",
+			keyName = "reminder4Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder4
 	)
-	default boolean reminder4Saturday() { return false; }
+	default String reminder4Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder4Sunday",
+			keyName = "reminder4DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder4
 	)
-	default boolean reminder4Sunday() { return false; }
+	default String reminder4DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder4Date",
+			keyName = "reminder4Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder4
 	)
-	default String reminder4Date() { return ""; }
+	default String reminder4Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder4LocationX",
+			keyName = "reminder4Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder4
 	)
-	default int reminder4LocationX() { return 0; }
+	default String reminder4Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder4LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder4GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder4
 	)
-	default int reminder4LocationY() { return 0; }
+	default String reminder4GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder4Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder4
 	)
 	default int reminder4Radius() { return 0; }
@@ -767,16 +550,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder4RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder4
 	)
-	default int reminder4RegionId() { return 0; }
+	default String reminder4RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder4NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder4
 	)
 	default String reminder4NpcIds() { return ""; }
@@ -785,25 +568,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder4ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder4
 	)
 	default String reminder4ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder4Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder4
 	)
 	default int reminder4Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder4Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder4
 	)
 	default int reminder4Cooldown() { return 5; }
@@ -845,109 +628,55 @@ public interface RemindersConfig extends Config
 	default Color reminder5Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder5Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder5
-	)
-	default String reminder5Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder5Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder5
-	)
-	default boolean reminder5Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder5Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder5
-	)
-	default boolean reminder5Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder5Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder5
-	)
-	default boolean reminder5Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder5Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder5
-	)
-	default boolean reminder5Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder5Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder5
-	)
-	default boolean reminder5Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder5Saturday",
+			keyName = "reminder5Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder5
 	)
-	default boolean reminder5Saturday() { return false; }
+	default String reminder5Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder5Sunday",
+			keyName = "reminder5DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder5
 	)
-	default boolean reminder5Sunday() { return false; }
+	default String reminder5DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder5Date",
+			keyName = "reminder5Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder5
 	)
-	default String reminder5Date() { return ""; }
+	default String reminder5Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder5LocationX",
+			keyName = "reminder5Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder5
 	)
-	default int reminder5LocationX() { return 0; }
+	default String reminder5Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder5LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder5GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder5
 	)
-	default int reminder5LocationY() { return 0; }
+	default String reminder5GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder5Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder5
 	)
 	default int reminder5Radius() { return 0; }
@@ -956,16 +685,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder5RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder5
 	)
-	default int reminder5RegionId() { return 0; }
+	default String reminder5RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder5NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder5
 	)
 	default String reminder5NpcIds() { return ""; }
@@ -974,25 +703,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder5ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder5
 	)
 	default String reminder5ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder5Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder5
 	)
 	default int reminder5Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder5Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder5
 	)
 	default int reminder5Cooldown() { return 5; }
@@ -1034,109 +763,55 @@ public interface RemindersConfig extends Config
 	default Color reminder6Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder6Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder6
-	)
-	default String reminder6Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder6Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder6
-	)
-	default boolean reminder6Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder6Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder6
-	)
-	default boolean reminder6Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder6Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder6
-	)
-	default boolean reminder6Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder6Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder6
-	)
-	default boolean reminder6Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder6Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder6
-	)
-	default boolean reminder6Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder6Saturday",
+			keyName = "reminder6Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder6
 	)
-	default boolean reminder6Saturday() { return false; }
+	default String reminder6Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder6Sunday",
+			keyName = "reminder6DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder6
 	)
-	default boolean reminder6Sunday() { return false; }
+	default String reminder6DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder6Date",
+			keyName = "reminder6Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder6
 	)
-	default String reminder6Date() { return ""; }
+	default String reminder6Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder6LocationX",
+			keyName = "reminder6Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder6
 	)
-	default int reminder6LocationX() { return 0; }
+	default String reminder6Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder6LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder6GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder6
 	)
-	default int reminder6LocationY() { return 0; }
+	default String reminder6GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder6Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder6
 	)
 	default int reminder6Radius() { return 0; }
@@ -1145,16 +820,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder6RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder6
 	)
-	default int reminder6RegionId() { return 0; }
+	default String reminder6RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder6NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder6
 	)
 	default String reminder6NpcIds() { return ""; }
@@ -1163,25 +838,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder6ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder6
 	)
 	default String reminder6ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder6Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder6
 	)
 	default int reminder6Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder6Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder6
 	)
 	default int reminder6Cooldown() { return 5; }
@@ -1223,109 +898,55 @@ public interface RemindersConfig extends Config
 	default Color reminder7Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder7Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder7
-	)
-	default String reminder7Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder7Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder7
-	)
-	default boolean reminder7Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder7Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder7
-	)
-	default boolean reminder7Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder7Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder7
-	)
-	default boolean reminder7Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder7Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder7
-	)
-	default boolean reminder7Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder7Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder7
-	)
-	default boolean reminder7Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder7Saturday",
+			keyName = "reminder7Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder7
 	)
-	default boolean reminder7Saturday() { return false; }
+	default String reminder7Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder7Sunday",
+			keyName = "reminder7DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder7
 	)
-	default boolean reminder7Sunday() { return false; }
+	default String reminder7DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder7Date",
+			keyName = "reminder7Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder7
 	)
-	default String reminder7Date() { return ""; }
+	default String reminder7Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder7LocationX",
+			keyName = "reminder7Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder7
 	)
-	default int reminder7LocationX() { return 0; }
+	default String reminder7Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder7LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder7GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder7
 	)
-	default int reminder7LocationY() { return 0; }
+	default String reminder7GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder7Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder7
 	)
 	default int reminder7Radius() { return 0; }
@@ -1334,16 +955,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder7RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder7
 	)
-	default int reminder7RegionId() { return 0; }
+	default String reminder7RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder7NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder7
 	)
 	default String reminder7NpcIds() { return ""; }
@@ -1352,25 +973,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder7ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder7
 	)
 	default String reminder7ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder7Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder7
 	)
 	default int reminder7Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder7Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder7
 	)
 	default int reminder7Cooldown() { return 5; }
@@ -1412,109 +1033,55 @@ public interface RemindersConfig extends Config
 	default Color reminder8Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder8Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder8
-	)
-	default String reminder8Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder8Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder8
-	)
-	default boolean reminder8Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder8Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder8
-	)
-	default boolean reminder8Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder8Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder8
-	)
-	default boolean reminder8Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder8Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder8
-	)
-	default boolean reminder8Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder8Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder8
-	)
-	default boolean reminder8Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder8Saturday",
+			keyName = "reminder8Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder8
 	)
-	default boolean reminder8Saturday() { return false; }
+	default String reminder8Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder8Sunday",
+			keyName = "reminder8DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder8
 	)
-	default boolean reminder8Sunday() { return false; }
+	default String reminder8DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder8Date",
+			keyName = "reminder8Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder8
 	)
-	default String reminder8Date() { return ""; }
+	default String reminder8Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder8LocationX",
+			keyName = "reminder8Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder8
 	)
-	default int reminder8LocationX() { return 0; }
+	default String reminder8Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder8LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder8GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder8
 	)
-	default int reminder8LocationY() { return 0; }
+	default String reminder8GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder8Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder8
 	)
 	default int reminder8Radius() { return 0; }
@@ -1523,16 +1090,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder8RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder8
 	)
-	default int reminder8RegionId() { return 0; }
+	default String reminder8RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder8NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder8
 	)
 	default String reminder8NpcIds() { return ""; }
@@ -1541,25 +1108,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder8ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder8
 	)
 	default String reminder8ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder8Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder8
 	)
 	default int reminder8Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder8Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder8
 	)
 	default int reminder8Cooldown() { return 5; }
@@ -1601,109 +1168,55 @@ public interface RemindersConfig extends Config
 	default Color reminder9Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder9Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder9
-	)
-	default String reminder9Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder9Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder9
-	)
-	default boolean reminder9Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder9Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder9
-	)
-	default boolean reminder9Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder9Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder9
-	)
-	default boolean reminder9Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder9Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder9
-	)
-	default boolean reminder9Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder9Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder9
-	)
-	default boolean reminder9Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder9Saturday",
+			keyName = "reminder9Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder9
 	)
-	default boolean reminder9Saturday() { return false; }
+	default String reminder9Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder9Sunday",
+			keyName = "reminder9DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder9
 	)
-	default boolean reminder9Sunday() { return false; }
+	default String reminder9DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder9Date",
+			keyName = "reminder9Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder9
 	)
-	default String reminder9Date() { return ""; }
+	default String reminder9Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder9LocationX",
+			keyName = "reminder9Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder9
 	)
-	default int reminder9LocationX() { return 0; }
+	default String reminder9Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder9LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder9GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder9
 	)
-	default int reminder9LocationY() { return 0; }
+	default String reminder9GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder9Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder9
 	)
 	default int reminder9Radius() { return 0; }
@@ -1712,16 +1225,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder9RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder9
 	)
-	default int reminder9RegionId() { return 0; }
+	default String reminder9RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder9NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder9
 	)
 	default String reminder9NpcIds() { return ""; }
@@ -1730,25 +1243,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder9ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder9
 	)
 	default String reminder9ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder9Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder9
 	)
 	default int reminder9Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder9Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder9
 	)
 	default int reminder9Cooldown() { return 5; }
@@ -1790,109 +1303,55 @@ public interface RemindersConfig extends Config
 	default Color reminder10Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder10Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder10
-	)
-	default String reminder10Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder10Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder10
-	)
-	default boolean reminder10Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder10Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder10
-	)
-	default boolean reminder10Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder10Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder10
-	)
-	default boolean reminder10Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder10Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder10
-	)
-	default boolean reminder10Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder10Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder10
-	)
-	default boolean reminder10Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder10Saturday",
+			keyName = "reminder10Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder10
 	)
-	default boolean reminder10Saturday() { return false; }
+	default String reminder10Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder10Sunday",
+			keyName = "reminder10DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder10
 	)
-	default boolean reminder10Sunday() { return false; }
+	default String reminder10DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder10Date",
+			keyName = "reminder10Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder10
 	)
-	default String reminder10Date() { return ""; }
+	default String reminder10Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder10LocationX",
+			keyName = "reminder10Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder10
 	)
-	default int reminder10LocationX() { return 0; }
+	default String reminder10Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder10LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder10GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder10
 	)
-	default int reminder10LocationY() { return 0; }
+	default String reminder10GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder10Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder10
 	)
 	default int reminder10Radius() { return 0; }
@@ -1901,16 +1360,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder10RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder10
 	)
-	default int reminder10RegionId() { return 0; }
+	default String reminder10RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder10NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder10
 	)
 	default String reminder10NpcIds() { return ""; }
@@ -1919,25 +1378,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder10ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder10
 	)
 	default String reminder10ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder10Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder10
 	)
 	default int reminder10Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder10Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder10
 	)
 	default int reminder10Cooldown() { return 5; }
@@ -1979,109 +1438,55 @@ public interface RemindersConfig extends Config
 	default Color reminder11Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder11Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder11
-	)
-	default String reminder11Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder11Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder11
-	)
-	default boolean reminder11Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder11Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder11
-	)
-	default boolean reminder11Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder11Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder11
-	)
-	default boolean reminder11Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder11Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder11
-	)
-	default boolean reminder11Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder11Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder11
-	)
-	default boolean reminder11Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder11Saturday",
+			keyName = "reminder11Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder11
 	)
-	default boolean reminder11Saturday() { return false; }
+	default String reminder11Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder11Sunday",
+			keyName = "reminder11DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder11
 	)
-	default boolean reminder11Sunday() { return false; }
+	default String reminder11DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder11Date",
+			keyName = "reminder11Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder11
 	)
-	default String reminder11Date() { return ""; }
+	default String reminder11Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder11LocationX",
+			keyName = "reminder11Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder11
 	)
-	default int reminder11LocationX() { return 0; }
+	default String reminder11Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder11LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder11GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder11
 	)
-	default int reminder11LocationY() { return 0; }
+	default String reminder11GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder11Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder11
 	)
 	default int reminder11Radius() { return 0; }
@@ -2090,16 +1495,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder11RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder11
 	)
-	default int reminder11RegionId() { return 0; }
+	default String reminder11RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder11NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder11
 	)
 	default String reminder11NpcIds() { return ""; }
@@ -2108,25 +1513,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder11ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder11
 	)
 	default String reminder11ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder11Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder11
 	)
 	default int reminder11Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder11Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder11
 	)
 	default int reminder11Cooldown() { return 5; }
@@ -2168,109 +1573,55 @@ public interface RemindersConfig extends Config
 	default Color reminder12Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder12Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder12
-	)
-	default String reminder12Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder12Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder12
-	)
-	default boolean reminder12Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder12Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder12
-	)
-	default boolean reminder12Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder12Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder12
-	)
-	default boolean reminder12Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder12Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder12
-	)
-	default boolean reminder12Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder12Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder12
-	)
-	default boolean reminder12Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder12Saturday",
+			keyName = "reminder12Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder12
 	)
-	default boolean reminder12Saturday() { return false; }
+	default String reminder12Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder12Sunday",
+			keyName = "reminder12DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder12
 	)
-	default boolean reminder12Sunday() { return false; }
+	default String reminder12DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder12Date",
+			keyName = "reminder12Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder12
 	)
-	default String reminder12Date() { return ""; }
+	default String reminder12Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder12LocationX",
+			keyName = "reminder12Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder12
 	)
-	default int reminder12LocationX() { return 0; }
+	default String reminder12Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder12LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder12GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder12
 	)
-	default int reminder12LocationY() { return 0; }
+	default String reminder12GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder12Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder12
 	)
 	default int reminder12Radius() { return 0; }
@@ -2279,16 +1630,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder12RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder12
 	)
-	default int reminder12RegionId() { return 0; }
+	default String reminder12RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder12NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder12
 	)
 	default String reminder12NpcIds() { return ""; }
@@ -2297,25 +1648,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder12ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder12
 	)
 	default String reminder12ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder12Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder12
 	)
 	default int reminder12Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder12Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder12
 	)
 	default int reminder12Cooldown() { return 5; }
@@ -2357,109 +1708,55 @@ public interface RemindersConfig extends Config
 	default Color reminder13Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder13Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder13
-	)
-	default String reminder13Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder13Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder13
-	)
-	default boolean reminder13Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder13Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder13
-	)
-	default boolean reminder13Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder13Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder13
-	)
-	default boolean reminder13Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder13Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder13
-	)
-	default boolean reminder13Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder13Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder13
-	)
-	default boolean reminder13Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder13Saturday",
+			keyName = "reminder13Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder13
 	)
-	default boolean reminder13Saturday() { return false; }
+	default String reminder13Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder13Sunday",
+			keyName = "reminder13DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder13
 	)
-	default boolean reminder13Sunday() { return false; }
+	default String reminder13DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder13Date",
+			keyName = "reminder13Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder13
 	)
-	default String reminder13Date() { return ""; }
+	default String reminder13Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder13LocationX",
+			keyName = "reminder13Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder13
 	)
-	default int reminder13LocationX() { return 0; }
+	default String reminder13Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder13LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder13GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder13
 	)
-	default int reminder13LocationY() { return 0; }
+	default String reminder13GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder13Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder13
 	)
 	default int reminder13Radius() { return 0; }
@@ -2468,16 +1765,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder13RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder13
 	)
-	default int reminder13RegionId() { return 0; }
+	default String reminder13RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder13NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder13
 	)
 	default String reminder13NpcIds() { return ""; }
@@ -2486,25 +1783,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder13ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder13
 	)
 	default String reminder13ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder13Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder13
 	)
 	default int reminder13Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder13Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder13
 	)
 	default int reminder13Cooldown() { return 5; }
@@ -2546,109 +1843,55 @@ public interface RemindersConfig extends Config
 	default Color reminder14Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder14Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder14
-	)
-	default String reminder14Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder14Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder14
-	)
-	default boolean reminder14Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder14Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder14
-	)
-	default boolean reminder14Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder14Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder14
-	)
-	default boolean reminder14Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder14Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder14
-	)
-	default boolean reminder14Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder14Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder14
-	)
-	default boolean reminder14Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder14Saturday",
+			keyName = "reminder14Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder14
 	)
-	default boolean reminder14Saturday() { return false; }
+	default String reminder14Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder14Sunday",
+			keyName = "reminder14DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder14
 	)
-	default boolean reminder14Sunday() { return false; }
+	default String reminder14DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder14Date",
+			keyName = "reminder14Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder14
 	)
-	default String reminder14Date() { return ""; }
+	default String reminder14Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder14LocationX",
+			keyName = "reminder14Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder14
 	)
-	default int reminder14LocationX() { return 0; }
+	default String reminder14Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder14LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder14GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder14
 	)
-	default int reminder14LocationY() { return 0; }
+	default String reminder14GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder14Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder14
 	)
 	default int reminder14Radius() { return 0; }
@@ -2657,16 +1900,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder14RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder14
 	)
-	default int reminder14RegionId() { return 0; }
+	default String reminder14RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder14NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder14
 	)
 	default String reminder14NpcIds() { return ""; }
@@ -2675,25 +1918,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder14ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder14
 	)
 	default String reminder14ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder14Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder14
 	)
 	default int reminder14Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder14Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder14
 	)
 	default int reminder14Cooldown() { return 5; }
@@ -2735,109 +1978,55 @@ public interface RemindersConfig extends Config
 	default Color reminder15Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder15Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder15
-	)
-	default String reminder15Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder15Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder15
-	)
-	default boolean reminder15Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder15Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder15
-	)
-	default boolean reminder15Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder15Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder15
-	)
-	default boolean reminder15Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder15Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder15
-	)
-	default boolean reminder15Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder15Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder15
-	)
-	default boolean reminder15Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder15Saturday",
+			keyName = "reminder15Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder15
 	)
-	default boolean reminder15Saturday() { return false; }
+	default String reminder15Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder15Sunday",
+			keyName = "reminder15DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder15
 	)
-	default boolean reminder15Sunday() { return false; }
+	default String reminder15DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder15Date",
+			keyName = "reminder15Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder15
 	)
-	default String reminder15Date() { return ""; }
+	default String reminder15Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder15LocationX",
+			keyName = "reminder15Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder15
 	)
-	default int reminder15LocationX() { return 0; }
+	default String reminder15Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder15LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder15GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder15
 	)
-	default int reminder15LocationY() { return 0; }
+	default String reminder15GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder15Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder15
 	)
 	default int reminder15Radius() { return 0; }
@@ -2846,16 +2035,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder15RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder15
 	)
-	default int reminder15RegionId() { return 0; }
+	default String reminder15RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder15NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder15
 	)
 	default String reminder15NpcIds() { return ""; }
@@ -2864,25 +2053,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder15ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder15
 	)
 	default String reminder15ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder15Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder15
 	)
 	default int reminder15Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder15Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder15
 	)
 	default int reminder15Cooldown() { return 5; }
@@ -2924,109 +2113,55 @@ public interface RemindersConfig extends Config
 	default Color reminder16Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder16Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder16
-	)
-	default String reminder16Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder16Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder16
-	)
-	default boolean reminder16Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder16Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder16
-	)
-	default boolean reminder16Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder16Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder16
-	)
-	default boolean reminder16Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder16Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder16
-	)
-	default boolean reminder16Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder16Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder16
-	)
-	default boolean reminder16Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder16Saturday",
+			keyName = "reminder16Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder16
 	)
-	default boolean reminder16Saturday() { return false; }
+	default String reminder16Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder16Sunday",
+			keyName = "reminder16DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder16
 	)
-	default boolean reminder16Sunday() { return false; }
+	default String reminder16DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder16Date",
+			keyName = "reminder16Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder16
 	)
-	default String reminder16Date() { return ""; }
+	default String reminder16Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder16LocationX",
+			keyName = "reminder16Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder16
 	)
-	default int reminder16LocationX() { return 0; }
+	default String reminder16Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder16LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder16GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder16
 	)
-	default int reminder16LocationY() { return 0; }
+	default String reminder16GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder16Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder16
 	)
 	default int reminder16Radius() { return 0; }
@@ -3035,16 +2170,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder16RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder16
 	)
-	default int reminder16RegionId() { return 0; }
+	default String reminder16RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder16NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder16
 	)
 	default String reminder16NpcIds() { return ""; }
@@ -3053,25 +2188,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder16ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder16
 	)
 	default String reminder16ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder16Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder16
 	)
 	default int reminder16Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder16Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder16
 	)
 	default int reminder16Cooldown() { return 5; }
@@ -3113,109 +2248,55 @@ public interface RemindersConfig extends Config
 	default Color reminder17Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder17Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder17
-	)
-	default String reminder17Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder17Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder17
-	)
-	default boolean reminder17Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder17Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder17
-	)
-	default boolean reminder17Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder17Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder17
-	)
-	default boolean reminder17Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder17Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder17
-	)
-	default boolean reminder17Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder17Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder17
-	)
-	default boolean reminder17Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder17Saturday",
+			keyName = "reminder17Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder17
 	)
-	default boolean reminder17Saturday() { return false; }
+	default String reminder17Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder17Sunday",
+			keyName = "reminder17DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder17
 	)
-	default boolean reminder17Sunday() { return false; }
+	default String reminder17DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder17Date",
+			keyName = "reminder17Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder17
 	)
-	default String reminder17Date() { return ""; }
+	default String reminder17Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder17LocationX",
+			keyName = "reminder17Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder17
 	)
-	default int reminder17LocationX() { return 0; }
+	default String reminder17Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder17LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder17GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder17
 	)
-	default int reminder17LocationY() { return 0; }
+	default String reminder17GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder17Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder17
 	)
 	default int reminder17Radius() { return 0; }
@@ -3224,16 +2305,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder17RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder17
 	)
-	default int reminder17RegionId() { return 0; }
+	default String reminder17RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder17NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder17
 	)
 	default String reminder17NpcIds() { return ""; }
@@ -3242,25 +2323,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder17ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder17
 	)
 	default String reminder17ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder17Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder17
 	)
 	default int reminder17Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder17Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder17
 	)
 	default int reminder17Cooldown() { return 5; }
@@ -3302,109 +2383,55 @@ public interface RemindersConfig extends Config
 	default Color reminder18Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder18Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder18
-	)
-	default String reminder18Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder18Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder18
-	)
-	default boolean reminder18Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder18Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder18
-	)
-	default boolean reminder18Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder18Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder18
-	)
-	default boolean reminder18Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder18Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder18
-	)
-	default boolean reminder18Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder18Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder18
-	)
-	default boolean reminder18Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder18Saturday",
+			keyName = "reminder18Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder18
 	)
-	default boolean reminder18Saturday() { return false; }
+	default String reminder18Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder18Sunday",
+			keyName = "reminder18DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder18
 	)
-	default boolean reminder18Sunday() { return false; }
+	default String reminder18DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder18Date",
+			keyName = "reminder18Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder18
 	)
-	default String reminder18Date() { return ""; }
+	default String reminder18Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder18LocationX",
+			keyName = "reminder18Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder18
 	)
-	default int reminder18LocationX() { return 0; }
+	default String reminder18Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder18LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder18GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder18
 	)
-	default int reminder18LocationY() { return 0; }
+	default String reminder18GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder18Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder18
 	)
 	default int reminder18Radius() { return 0; }
@@ -3413,16 +2440,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder18RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder18
 	)
-	default int reminder18RegionId() { return 0; }
+	default String reminder18RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder18NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder18
 	)
 	default String reminder18NpcIds() { return ""; }
@@ -3431,25 +2458,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder18ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder18
 	)
 	default String reminder18ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder18Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder18
 	)
 	default int reminder18Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder18Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder18
 	)
 	default int reminder18Cooldown() { return 5; }
@@ -3491,109 +2518,55 @@ public interface RemindersConfig extends Config
 	default Color reminder19Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder19Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder19
-	)
-	default String reminder19Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder19Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder19
-	)
-	default boolean reminder19Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder19Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder19
-	)
-	default boolean reminder19Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder19Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder19
-	)
-	default boolean reminder19Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder19Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder19
-	)
-	default boolean reminder19Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder19Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder19
-	)
-	default boolean reminder19Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder19Saturday",
+			keyName = "reminder19Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder19
 	)
-	default boolean reminder19Saturday() { return false; }
+	default String reminder19Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder19Sunday",
+			keyName = "reminder19DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder19
 	)
-	default boolean reminder19Sunday() { return false; }
+	default String reminder19DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder19Date",
+			keyName = "reminder19Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder19
 	)
-	default String reminder19Date() { return ""; }
+	default String reminder19Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder19LocationX",
+			keyName = "reminder19Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder19
 	)
-	default int reminder19LocationX() { return 0; }
+	default String reminder19Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder19LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder19GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder19
 	)
-	default int reminder19LocationY() { return 0; }
+	default String reminder19GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder19Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder19
 	)
 	default int reminder19Radius() { return 0; }
@@ -3602,16 +2575,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder19RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder19
 	)
-	default int reminder19RegionId() { return 0; }
+	default String reminder19RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder19NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder19
 	)
 	default String reminder19NpcIds() { return ""; }
@@ -3620,25 +2593,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder19ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder19
 	)
 	default String reminder19ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder19Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder19
 	)
 	default int reminder19Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder19Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder19
 	)
 	default int reminder19Cooldown() { return 5; }
@@ -3680,109 +2653,55 @@ public interface RemindersConfig extends Config
 	default Color reminder20Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder20Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder20
-	)
-	default String reminder20Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder20Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder20
-	)
-	default boolean reminder20Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder20Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder20
-	)
-	default boolean reminder20Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder20Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder20
-	)
-	default boolean reminder20Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder20Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder20
-	)
-	default boolean reminder20Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder20Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder20
-	)
-	default boolean reminder20Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder20Saturday",
+			keyName = "reminder20Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder20
 	)
-	default boolean reminder20Saturday() { return false; }
+	default String reminder20Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder20Sunday",
+			keyName = "reminder20DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder20
 	)
-	default boolean reminder20Sunday() { return false; }
+	default String reminder20DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder20Date",
+			keyName = "reminder20Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder20
 	)
-	default String reminder20Date() { return ""; }
+	default String reminder20Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder20LocationX",
+			keyName = "reminder20Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder20
 	)
-	default int reminder20LocationX() { return 0; }
+	default String reminder20Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder20LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder20GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder20
 	)
-	default int reminder20LocationY() { return 0; }
+	default String reminder20GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder20Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder20
 	)
 	default int reminder20Radius() { return 0; }
@@ -3791,16 +2710,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder20RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder20
 	)
-	default int reminder20RegionId() { return 0; }
+	default String reminder20RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder20NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder20
 	)
 	default String reminder20NpcIds() { return ""; }
@@ -3809,25 +2728,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder20ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder20
 	)
 	default String reminder20ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder20Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder20
 	)
 	default int reminder20Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder20Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder20
 	)
 	default int reminder20Cooldown() { return 5; }
@@ -3869,109 +2788,55 @@ public interface RemindersConfig extends Config
 	default Color reminder21Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder21Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder21
-	)
-	default String reminder21Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder21Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder21
-	)
-	default boolean reminder21Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder21Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder21
-	)
-	default boolean reminder21Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder21Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder21
-	)
-	default boolean reminder21Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder21Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder21
-	)
-	default boolean reminder21Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder21Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder21
-	)
-	default boolean reminder21Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder21Saturday",
+			keyName = "reminder21Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder21
 	)
-	default boolean reminder21Saturday() { return false; }
+	default String reminder21Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder21Sunday",
+			keyName = "reminder21DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder21
 	)
-	default boolean reminder21Sunday() { return false; }
+	default String reminder21DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder21Date",
+			keyName = "reminder21Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder21
 	)
-	default String reminder21Date() { return ""; }
+	default String reminder21Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder21LocationX",
+			keyName = "reminder21Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder21
 	)
-	default int reminder21LocationX() { return 0; }
+	default String reminder21Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder21LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder21GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder21
 	)
-	default int reminder21LocationY() { return 0; }
+	default String reminder21GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder21Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder21
 	)
 	default int reminder21Radius() { return 0; }
@@ -3980,16 +2845,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder21RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder21
 	)
-	default int reminder21RegionId() { return 0; }
+	default String reminder21RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder21NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder21
 	)
 	default String reminder21NpcIds() { return ""; }
@@ -3998,25 +2863,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder21ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder21
 	)
 	default String reminder21ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder21Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder21
 	)
 	default int reminder21Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder21Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder21
 	)
 	default int reminder21Cooldown() { return 5; }
@@ -4058,109 +2923,55 @@ public interface RemindersConfig extends Config
 	default Color reminder22Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder22Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder22
-	)
-	default String reminder22Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder22Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder22
-	)
-	default boolean reminder22Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder22Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder22
-	)
-	default boolean reminder22Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder22Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder22
-	)
-	default boolean reminder22Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder22Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder22
-	)
-	default boolean reminder22Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder22Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder22
-	)
-	default boolean reminder22Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder22Saturday",
+			keyName = "reminder22Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder22
 	)
-	default boolean reminder22Saturday() { return false; }
+	default String reminder22Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder22Sunday",
+			keyName = "reminder22DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder22
 	)
-	default boolean reminder22Sunday() { return false; }
+	default String reminder22DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder22Date",
+			keyName = "reminder22Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder22
 	)
-	default String reminder22Date() { return ""; }
+	default String reminder22Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder22LocationX",
+			keyName = "reminder22Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder22
 	)
-	default int reminder22LocationX() { return 0; }
+	default String reminder22Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder22LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder22GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder22
 	)
-	default int reminder22LocationY() { return 0; }
+	default String reminder22GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder22Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder22
 	)
 	default int reminder22Radius() { return 0; }
@@ -4169,16 +2980,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder22RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder22
 	)
-	default int reminder22RegionId() { return 0; }
+	default String reminder22RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder22NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder22
 	)
 	default String reminder22NpcIds() { return ""; }
@@ -4187,25 +2998,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder22ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder22
 	)
 	default String reminder22ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder22Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder22
 	)
 	default int reminder22Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder22Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder22
 	)
 	default int reminder22Cooldown() { return 5; }
@@ -4247,109 +3058,55 @@ public interface RemindersConfig extends Config
 	default Color reminder23Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder23Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder23
-	)
-	default String reminder23Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder23Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder23
-	)
-	default boolean reminder23Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder23Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder23
-	)
-	default boolean reminder23Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder23Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder23
-	)
-	default boolean reminder23Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder23Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder23
-	)
-	default boolean reminder23Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder23Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder23
-	)
-	default boolean reminder23Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder23Saturday",
+			keyName = "reminder23Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder23
 	)
-	default boolean reminder23Saturday() { return false; }
+	default String reminder23Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder23Sunday",
+			keyName = "reminder23DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder23
 	)
-	default boolean reminder23Sunday() { return false; }
+	default String reminder23DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder23Date",
+			keyName = "reminder23Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder23
 	)
-	default String reminder23Date() { return ""; }
+	default String reminder23Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder23LocationX",
+			keyName = "reminder23Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder23
 	)
-	default int reminder23LocationX() { return 0; }
+	default String reminder23Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder23LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder23GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder23
 	)
-	default int reminder23LocationY() { return 0; }
+	default String reminder23GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder23Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder23
 	)
 	default int reminder23Radius() { return 0; }
@@ -4358,16 +3115,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder23RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder23
 	)
-	default int reminder23RegionId() { return 0; }
+	default String reminder23RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder23NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder23
 	)
 	default String reminder23NpcIds() { return ""; }
@@ -4376,25 +3133,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder23ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder23
 	)
 	default String reminder23ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder23Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder23
 	)
 	default int reminder23Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder23Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder23
 	)
 	default int reminder23Cooldown() { return 5; }
@@ -4436,109 +3193,55 @@ public interface RemindersConfig extends Config
 	default Color reminder24Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder24Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder24
-	)
-	default String reminder24Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder24Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder24
-	)
-	default boolean reminder24Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder24Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder24
-	)
-	default boolean reminder24Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder24Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder24
-	)
-	default boolean reminder24Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder24Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder24
-	)
-	default boolean reminder24Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder24Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder24
-	)
-	default boolean reminder24Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder24Saturday",
+			keyName = "reminder24Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder24
 	)
-	default boolean reminder24Saturday() { return false; }
+	default String reminder24Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder24Sunday",
+			keyName = "reminder24DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder24
 	)
-	default boolean reminder24Sunday() { return false; }
+	default String reminder24DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder24Date",
+			keyName = "reminder24Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder24
 	)
-	default String reminder24Date() { return ""; }
+	default String reminder24Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder24LocationX",
+			keyName = "reminder24Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder24
 	)
-	default int reminder24LocationX() { return 0; }
+	default String reminder24Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder24LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder24GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder24
 	)
-	default int reminder24LocationY() { return 0; }
+	default String reminder24GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder24Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder24
 	)
 	default int reminder24Radius() { return 0; }
@@ -4547,16 +3250,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder24RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder24
 	)
-	default int reminder24RegionId() { return 0; }
+	default String reminder24RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder24NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder24
 	)
 	default String reminder24NpcIds() { return ""; }
@@ -4565,25 +3268,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder24ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder24
 	)
 	default String reminder24ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder24Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder24
 	)
 	default int reminder24Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder24Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder24
 	)
 	default int reminder24Cooldown() { return 5; }
@@ -4625,109 +3328,55 @@ public interface RemindersConfig extends Config
 	default Color reminder25Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder25Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder25
-	)
-	default String reminder25Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder25Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder25
-	)
-	default boolean reminder25Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder25Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder25
-	)
-	default boolean reminder25Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder25Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder25
-	)
-	default boolean reminder25Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder25Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder25
-	)
-	default boolean reminder25Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder25Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder25
-	)
-	default boolean reminder25Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder25Saturday",
+			keyName = "reminder25Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder25
 	)
-	default boolean reminder25Saturday() { return false; }
+	default String reminder25Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder25Sunday",
+			keyName = "reminder25DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder25
 	)
-	default boolean reminder25Sunday() { return false; }
+	default String reminder25DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder25Date",
+			keyName = "reminder25Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder25
 	)
-	default String reminder25Date() { return ""; }
+	default String reminder25Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder25LocationX",
+			keyName = "reminder25Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder25
 	)
-	default int reminder25LocationX() { return 0; }
+	default String reminder25Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder25LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder25GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder25
 	)
-	default int reminder25LocationY() { return 0; }
+	default String reminder25GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder25Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder25
 	)
 	default int reminder25Radius() { return 0; }
@@ -4736,16 +3385,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder25RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder25
 	)
-	default int reminder25RegionId() { return 0; }
+	default String reminder25RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder25NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder25
 	)
 	default String reminder25NpcIds() { return ""; }
@@ -4754,25 +3403,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder25ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder25
 	)
 	default String reminder25ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder25Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder25
 	)
 	default int reminder25Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder25Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder25
 	)
 	default int reminder25Cooldown() { return 5; }
@@ -4814,109 +3463,55 @@ public interface RemindersConfig extends Config
 	default Color reminder26Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder26Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder26
-	)
-	default String reminder26Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder26Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder26
-	)
-	default boolean reminder26Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder26Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder26
-	)
-	default boolean reminder26Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder26Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder26
-	)
-	default boolean reminder26Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder26Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder26
-	)
-	default boolean reminder26Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder26Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder26
-	)
-	default boolean reminder26Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder26Saturday",
+			keyName = "reminder26Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder26
 	)
-	default boolean reminder26Saturday() { return false; }
+	default String reminder26Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder26Sunday",
+			keyName = "reminder26DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder26
 	)
-	default boolean reminder26Sunday() { return false; }
+	default String reminder26DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder26Date",
+			keyName = "reminder26Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder26
 	)
-	default String reminder26Date() { return ""; }
+	default String reminder26Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder26LocationX",
+			keyName = "reminder26Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder26
 	)
-	default int reminder26LocationX() { return 0; }
+	default String reminder26Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder26LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder26GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder26
 	)
-	default int reminder26LocationY() { return 0; }
+	default String reminder26GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder26Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder26
 	)
 	default int reminder26Radius() { return 0; }
@@ -4925,16 +3520,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder26RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder26
 	)
-	default int reminder26RegionId() { return 0; }
+	default String reminder26RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder26NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder26
 	)
 	default String reminder26NpcIds() { return ""; }
@@ -4943,25 +3538,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder26ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder26
 	)
 	default String reminder26ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder26Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder26
 	)
 	default int reminder26Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder26Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder26
 	)
 	default int reminder26Cooldown() { return 5; }
@@ -5003,109 +3598,55 @@ public interface RemindersConfig extends Config
 	default Color reminder27Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder27Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder27
-	)
-	default String reminder27Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder27Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder27
-	)
-	default boolean reminder27Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder27Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder27
-	)
-	default boolean reminder27Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder27Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder27
-	)
-	default boolean reminder27Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder27Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder27
-	)
-	default boolean reminder27Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder27Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder27
-	)
-	default boolean reminder27Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder27Saturday",
+			keyName = "reminder27Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder27
 	)
-	default boolean reminder27Saturday() { return false; }
+	default String reminder27Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder27Sunday",
+			keyName = "reminder27DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder27
 	)
-	default boolean reminder27Sunday() { return false; }
+	default String reminder27DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder27Date",
+			keyName = "reminder27Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder27
 	)
-	default String reminder27Date() { return ""; }
+	default String reminder27Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder27LocationX",
+			keyName = "reminder27Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder27
 	)
-	default int reminder27LocationX() { return 0; }
+	default String reminder27Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder27LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder27GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder27
 	)
-	default int reminder27LocationY() { return 0; }
+	default String reminder27GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder27Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder27
 	)
 	default int reminder27Radius() { return 0; }
@@ -5114,16 +3655,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder27RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder27
 	)
-	default int reminder27RegionId() { return 0; }
+	default String reminder27RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder27NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder27
 	)
 	default String reminder27NpcIds() { return ""; }
@@ -5132,25 +3673,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder27ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder27
 	)
 	default String reminder27ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder27Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder27
 	)
 	default int reminder27Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder27Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder27
 	)
 	default int reminder27Cooldown() { return 5; }
@@ -5192,109 +3733,55 @@ public interface RemindersConfig extends Config
 	default Color reminder28Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder28Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder28
-	)
-	default String reminder28Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder28Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder28
-	)
-	default boolean reminder28Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder28Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder28
-	)
-	default boolean reminder28Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder28Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder28
-	)
-	default boolean reminder28Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder28Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder28
-	)
-	default boolean reminder28Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder28Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder28
-	)
-	default boolean reminder28Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder28Saturday",
+			keyName = "reminder28Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder28
 	)
-	default boolean reminder28Saturday() { return false; }
+	default String reminder28Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder28Sunday",
+			keyName = "reminder28DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder28
 	)
-	default boolean reminder28Sunday() { return false; }
+	default String reminder28DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder28Date",
+			keyName = "reminder28Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder28
 	)
-	default String reminder28Date() { return ""; }
+	default String reminder28Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder28LocationX",
+			keyName = "reminder28Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder28
 	)
-	default int reminder28LocationX() { return 0; }
+	default String reminder28Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder28LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder28GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder28
 	)
-	default int reminder28LocationY() { return 0; }
+	default String reminder28GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder28Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder28
 	)
 	default int reminder28Radius() { return 0; }
@@ -5303,16 +3790,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder28RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder28
 	)
-	default int reminder28RegionId() { return 0; }
+	default String reminder28RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder28NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder28
 	)
 	default String reminder28NpcIds() { return ""; }
@@ -5321,25 +3808,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder28ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder28
 	)
 	default String reminder28ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder28Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder28
 	)
 	default int reminder28Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder28Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder28
 	)
 	default int reminder28Cooldown() { return 5; }
@@ -5381,109 +3868,55 @@ public interface RemindersConfig extends Config
 	default Color reminder29Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder29Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder29
-	)
-	default String reminder29Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder29Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder29
-	)
-	default boolean reminder29Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder29Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder29
-	)
-	default boolean reminder29Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder29Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder29
-	)
-	default boolean reminder29Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder29Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder29
-	)
-	default boolean reminder29Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder29Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder29
-	)
-	default boolean reminder29Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder29Saturday",
+			keyName = "reminder29Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder29
 	)
-	default boolean reminder29Saturday() { return false; }
+	default String reminder29Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder29Sunday",
+			keyName = "reminder29DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder29
 	)
-	default boolean reminder29Sunday() { return false; }
+	default String reminder29DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder29Date",
+			keyName = "reminder29Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder29
 	)
-	default String reminder29Date() { return ""; }
+	default String reminder29Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder29LocationX",
+			keyName = "reminder29Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder29
 	)
-	default int reminder29LocationX() { return 0; }
+	default String reminder29Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder29LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder29GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder29
 	)
-	default int reminder29LocationY() { return 0; }
+	default String reminder29GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder29Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder29
 	)
 	default int reminder29Radius() { return 0; }
@@ -5492,16 +3925,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder29RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder29
 	)
-	default int reminder29RegionId() { return 0; }
+	default String reminder29RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder29NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder29
 	)
 	default String reminder29NpcIds() { return ""; }
@@ -5510,25 +3943,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder29ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder29
 	)
 	default String reminder29ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder29Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder29
 	)
 	default int reminder29Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder29Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder29
 	)
 	default int reminder29Cooldown() { return 5; }
@@ -5570,109 +4003,55 @@ public interface RemindersConfig extends Config
 	default Color reminder30Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder30Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder30
-	)
-	default String reminder30Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder30Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder30
-	)
-	default boolean reminder30Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder30Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder30
-	)
-	default boolean reminder30Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder30Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder30
-	)
-	default boolean reminder30Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder30Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder30
-	)
-	default boolean reminder30Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder30Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder30
-	)
-	default boolean reminder30Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder30Saturday",
+			keyName = "reminder30Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder30
 	)
-	default boolean reminder30Saturday() { return false; }
+	default String reminder30Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder30Sunday",
+			keyName = "reminder30DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder30
 	)
-	default boolean reminder30Sunday() { return false; }
+	default String reminder30DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder30Date",
+			keyName = "reminder30Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder30
 	)
-	default String reminder30Date() { return ""; }
+	default String reminder30Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder30LocationX",
+			keyName = "reminder30Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder30
 	)
-	default int reminder30LocationX() { return 0; }
+	default String reminder30Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder30LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder30GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder30
 	)
-	default int reminder30LocationY() { return 0; }
+	default String reminder30GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder30Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder30
 	)
 	default int reminder30Radius() { return 0; }
@@ -5681,16 +4060,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder30RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder30
 	)
-	default int reminder30RegionId() { return 0; }
+	default String reminder30RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder30NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder30
 	)
 	default String reminder30NpcIds() { return ""; }
@@ -5699,25 +4078,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder30ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder30
 	)
 	default String reminder30ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder30Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder30
 	)
 	default int reminder30Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder30Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder30
 	)
 	default int reminder30Cooldown() { return 5; }
@@ -5759,109 +4138,55 @@ public interface RemindersConfig extends Config
 	default Color reminder31Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder31Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder31
-	)
-	default String reminder31Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder31Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder31
-	)
-	default boolean reminder31Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder31Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder31
-	)
-	default boolean reminder31Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder31Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder31
-	)
-	default boolean reminder31Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder31Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder31
-	)
-	default boolean reminder31Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder31Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder31
-	)
-	default boolean reminder31Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder31Saturday",
+			keyName = "reminder31Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder31
 	)
-	default boolean reminder31Saturday() { return false; }
+	default String reminder31Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder31Sunday",
+			keyName = "reminder31DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder31
 	)
-	default boolean reminder31Sunday() { return false; }
+	default String reminder31DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder31Date",
+			keyName = "reminder31Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder31
 	)
-	default String reminder31Date() { return ""; }
+	default String reminder31Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder31LocationX",
+			keyName = "reminder31Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder31
 	)
-	default int reminder31LocationX() { return 0; }
+	default String reminder31Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder31LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder31GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder31
 	)
-	default int reminder31LocationY() { return 0; }
+	default String reminder31GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder31Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder31
 	)
 	default int reminder31Radius() { return 0; }
@@ -5870,16 +4195,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder31RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder31
 	)
-	default int reminder31RegionId() { return 0; }
+	default String reminder31RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder31NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder31
 	)
 	default String reminder31NpcIds() { return ""; }
@@ -5888,25 +4213,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder31ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder31
 	)
 	default String reminder31ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder31Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder31
 	)
 	default int reminder31Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder31Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder31
 	)
 	default int reminder31Cooldown() { return 5; }
@@ -5948,109 +4273,55 @@ public interface RemindersConfig extends Config
 	default Color reminder32Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder32Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder32
-	)
-	default String reminder32Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder32Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder32
-	)
-	default boolean reminder32Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder32Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder32
-	)
-	default boolean reminder32Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder32Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder32
-	)
-	default boolean reminder32Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder32Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder32
-	)
-	default boolean reminder32Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder32Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder32
-	)
-	default boolean reminder32Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder32Saturday",
+			keyName = "reminder32Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder32
 	)
-	default boolean reminder32Saturday() { return false; }
+	default String reminder32Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder32Sunday",
+			keyName = "reminder32DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder32
 	)
-	default boolean reminder32Sunday() { return false; }
+	default String reminder32DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder32Date",
+			keyName = "reminder32Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder32
 	)
-	default String reminder32Date() { return ""; }
+	default String reminder32Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder32LocationX",
+			keyName = "reminder32Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder32
 	)
-	default int reminder32LocationX() { return 0; }
+	default String reminder32Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder32LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder32GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder32
 	)
-	default int reminder32LocationY() { return 0; }
+	default String reminder32GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder32Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder32
 	)
 	default int reminder32Radius() { return 0; }
@@ -6059,16 +4330,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder32RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder32
 	)
-	default int reminder32RegionId() { return 0; }
+	default String reminder32RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder32NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder32
 	)
 	default String reminder32NpcIds() { return ""; }
@@ -6077,25 +4348,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder32ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder32
 	)
 	default String reminder32ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder32Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder32
 	)
 	default int reminder32Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder32Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder32
 	)
 	default int reminder32Cooldown() { return 5; }
@@ -6137,109 +4408,55 @@ public interface RemindersConfig extends Config
 	default Color reminder33Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder33Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder33
-	)
-	default String reminder33Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder33Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder33
-	)
-	default boolean reminder33Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder33Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder33
-	)
-	default boolean reminder33Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder33Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder33
-	)
-	default boolean reminder33Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder33Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder33
-	)
-	default boolean reminder33Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder33Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder33
-	)
-	default boolean reminder33Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder33Saturday",
+			keyName = "reminder33Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder33
 	)
-	default boolean reminder33Saturday() { return false; }
+	default String reminder33Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder33Sunday",
+			keyName = "reminder33DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder33
 	)
-	default boolean reminder33Sunday() { return false; }
+	default String reminder33DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder33Date",
+			keyName = "reminder33Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder33
 	)
-	default String reminder33Date() { return ""; }
+	default String reminder33Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder33LocationX",
+			keyName = "reminder33Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder33
 	)
-	default int reminder33LocationX() { return 0; }
+	default String reminder33Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder33LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder33GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder33
 	)
-	default int reminder33LocationY() { return 0; }
+	default String reminder33GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder33Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder33
 	)
 	default int reminder33Radius() { return 0; }
@@ -6248,16 +4465,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder33RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder33
 	)
-	default int reminder33RegionId() { return 0; }
+	default String reminder33RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder33NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder33
 	)
 	default String reminder33NpcIds() { return ""; }
@@ -6266,25 +4483,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder33ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder33
 	)
 	default String reminder33ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder33Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder33
 	)
 	default int reminder33Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder33Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder33
 	)
 	default int reminder33Cooldown() { return 5; }
@@ -6326,109 +4543,55 @@ public interface RemindersConfig extends Config
 	default Color reminder34Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder34Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder34
-	)
-	default String reminder34Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder34Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder34
-	)
-	default boolean reminder34Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder34Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder34
-	)
-	default boolean reminder34Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder34Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder34
-	)
-	default boolean reminder34Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder34Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder34
-	)
-	default boolean reminder34Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder34Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder34
-	)
-	default boolean reminder34Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder34Saturday",
+			keyName = "reminder34Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder34
 	)
-	default boolean reminder34Saturday() { return false; }
+	default String reminder34Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder34Sunday",
+			keyName = "reminder34DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder34
 	)
-	default boolean reminder34Sunday() { return false; }
+	default String reminder34DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder34Date",
+			keyName = "reminder34Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder34
 	)
-	default String reminder34Date() { return ""; }
+	default String reminder34Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder34LocationX",
+			keyName = "reminder34Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder34
 	)
-	default int reminder34LocationX() { return 0; }
+	default String reminder34Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder34LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder34GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder34
 	)
-	default int reminder34LocationY() { return 0; }
+	default String reminder34GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder34Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder34
 	)
 	default int reminder34Radius() { return 0; }
@@ -6437,16 +4600,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder34RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder34
 	)
-	default int reminder34RegionId() { return 0; }
+	default String reminder34RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder34NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder34
 	)
 	default String reminder34NpcIds() { return ""; }
@@ -6455,25 +4618,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder34ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder34
 	)
 	default String reminder34ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder34Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder34
 	)
 	default int reminder34Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder34Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder34
 	)
 	default int reminder34Cooldown() { return 5; }
@@ -6515,109 +4678,55 @@ public interface RemindersConfig extends Config
 	default Color reminder35Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder35Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder35
-	)
-	default String reminder35Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder35Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder35
-	)
-	default boolean reminder35Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder35Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder35
-	)
-	default boolean reminder35Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder35Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder35
-	)
-	default boolean reminder35Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder35Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder35
-	)
-	default boolean reminder35Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder35Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder35
-	)
-	default boolean reminder35Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder35Saturday",
+			keyName = "reminder35Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder35
 	)
-	default boolean reminder35Saturday() { return false; }
+	default String reminder35Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder35Sunday",
+			keyName = "reminder35DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder35
 	)
-	default boolean reminder35Sunday() { return false; }
+	default String reminder35DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder35Date",
+			keyName = "reminder35Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder35
 	)
-	default String reminder35Date() { return ""; }
+	default String reminder35Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder35LocationX",
+			keyName = "reminder35Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder35
 	)
-	default int reminder35LocationX() { return 0; }
+	default String reminder35Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder35LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder35GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder35
 	)
-	default int reminder35LocationY() { return 0; }
+	default String reminder35GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder35Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder35
 	)
 	default int reminder35Radius() { return 0; }
@@ -6626,16 +4735,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder35RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder35
 	)
-	default int reminder35RegionId() { return 0; }
+	default String reminder35RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder35NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder35
 	)
 	default String reminder35NpcIds() { return ""; }
@@ -6644,25 +4753,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder35ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder35
 	)
 	default String reminder35ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder35Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder35
 	)
 	default int reminder35Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder35Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder35
 	)
 	default int reminder35Cooldown() { return 5; }
@@ -6704,109 +4813,55 @@ public interface RemindersConfig extends Config
 	default Color reminder36Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder36Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder36
-	)
-	default String reminder36Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder36Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder36
-	)
-	default boolean reminder36Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder36Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder36
-	)
-	default boolean reminder36Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder36Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder36
-	)
-	default boolean reminder36Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder36Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder36
-	)
-	default boolean reminder36Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder36Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder36
-	)
-	default boolean reminder36Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder36Saturday",
+			keyName = "reminder36Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder36
 	)
-	default boolean reminder36Saturday() { return false; }
+	default String reminder36Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder36Sunday",
+			keyName = "reminder36DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder36
 	)
-	default boolean reminder36Sunday() { return false; }
+	default String reminder36DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder36Date",
+			keyName = "reminder36Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder36
 	)
-	default String reminder36Date() { return ""; }
+	default String reminder36Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder36LocationX",
+			keyName = "reminder36Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder36
 	)
-	default int reminder36LocationX() { return 0; }
+	default String reminder36Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder36LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder36GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder36
 	)
-	default int reminder36LocationY() { return 0; }
+	default String reminder36GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder36Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder36
 	)
 	default int reminder36Radius() { return 0; }
@@ -6815,16 +4870,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder36RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder36
 	)
-	default int reminder36RegionId() { return 0; }
+	default String reminder36RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder36NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder36
 	)
 	default String reminder36NpcIds() { return ""; }
@@ -6833,25 +4888,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder36ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder36
 	)
 	default String reminder36ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder36Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder36
 	)
 	default int reminder36Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder36Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder36
 	)
 	default int reminder36Cooldown() { return 5; }
@@ -6893,109 +4948,55 @@ public interface RemindersConfig extends Config
 	default Color reminder37Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder37Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder37
-	)
-	default String reminder37Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder37Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder37
-	)
-	default boolean reminder37Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder37Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder37
-	)
-	default boolean reminder37Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder37Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder37
-	)
-	default boolean reminder37Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder37Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder37
-	)
-	default boolean reminder37Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder37Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder37
-	)
-	default boolean reminder37Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder37Saturday",
+			keyName = "reminder37Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder37
 	)
-	default boolean reminder37Saturday() { return false; }
+	default String reminder37Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder37Sunday",
+			keyName = "reminder37DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder37
 	)
-	default boolean reminder37Sunday() { return false; }
+	default String reminder37DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder37Date",
+			keyName = "reminder37Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder37
 	)
-	default String reminder37Date() { return ""; }
+	default String reminder37Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder37LocationX",
+			keyName = "reminder37Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder37
 	)
-	default int reminder37LocationX() { return 0; }
+	default String reminder37Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder37LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder37GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder37
 	)
-	default int reminder37LocationY() { return 0; }
+	default String reminder37GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder37Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder37
 	)
 	default int reminder37Radius() { return 0; }
@@ -7004,16 +5005,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder37RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder37
 	)
-	default int reminder37RegionId() { return 0; }
+	default String reminder37RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder37NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder37
 	)
 	default String reminder37NpcIds() { return ""; }
@@ -7022,25 +5023,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder37ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder37
 	)
 	default String reminder37ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder37Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder37
 	)
 	default int reminder37Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder37Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder37
 	)
 	default int reminder37Cooldown() { return 5; }
@@ -7082,109 +5083,55 @@ public interface RemindersConfig extends Config
 	default Color reminder38Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder38Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder38
-	)
-	default String reminder38Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder38Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder38
-	)
-	default boolean reminder38Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder38Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder38
-	)
-	default boolean reminder38Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder38Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder38
-	)
-	default boolean reminder38Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder38Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder38
-	)
-	default boolean reminder38Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder38Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder38
-	)
-	default boolean reminder38Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder38Saturday",
+			keyName = "reminder38Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder38
 	)
-	default boolean reminder38Saturday() { return false; }
+	default String reminder38Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder38Sunday",
+			keyName = "reminder38DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder38
 	)
-	default boolean reminder38Sunday() { return false; }
+	default String reminder38DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder38Date",
+			keyName = "reminder38Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder38
 	)
-	default String reminder38Date() { return ""; }
+	default String reminder38Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder38LocationX",
+			keyName = "reminder38Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder38
 	)
-	default int reminder38LocationX() { return 0; }
+	default String reminder38Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder38LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder38GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder38
 	)
-	default int reminder38LocationY() { return 0; }
+	default String reminder38GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder38Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder38
 	)
 	default int reminder38Radius() { return 0; }
@@ -7193,16 +5140,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder38RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder38
 	)
-	default int reminder38RegionId() { return 0; }
+	default String reminder38RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder38NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder38
 	)
 	default String reminder38NpcIds() { return ""; }
@@ -7211,25 +5158,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder38ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder38
 	)
 	default String reminder38ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder38Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder38
 	)
 	default int reminder38Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder38Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder38
 	)
 	default int reminder38Cooldown() { return 5; }
@@ -7271,109 +5218,55 @@ public interface RemindersConfig extends Config
 	default Color reminder39Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder39Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder39
-	)
-	default String reminder39Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder39Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder39
-	)
-	default boolean reminder39Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder39Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder39
-	)
-	default boolean reminder39Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder39Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder39
-	)
-	default boolean reminder39Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder39Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder39
-	)
-	default boolean reminder39Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder39Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder39
-	)
-	default boolean reminder39Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder39Saturday",
+			keyName = "reminder39Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder39
 	)
-	default boolean reminder39Saturday() { return false; }
+	default String reminder39Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder39Sunday",
+			keyName = "reminder39DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder39
 	)
-	default boolean reminder39Sunday() { return false; }
+	default String reminder39DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder39Date",
+			keyName = "reminder39Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder39
 	)
-	default String reminder39Date() { return ""; }
+	default String reminder39Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder39LocationX",
+			keyName = "reminder39Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder39
 	)
-	default int reminder39LocationX() { return 0; }
+	default String reminder39Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder39LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder39GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder39
 	)
-	default int reminder39LocationY() { return 0; }
+	default String reminder39GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder39Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder39
 	)
 	default int reminder39Radius() { return 0; }
@@ -7382,16 +5275,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder39RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder39
 	)
-	default int reminder39RegionId() { return 0; }
+	default String reminder39RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder39NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder39
 	)
 	default String reminder39NpcIds() { return ""; }
@@ -7400,25 +5293,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder39ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder39
 	)
 	default String reminder39ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder39Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder39
 	)
 	default int reminder39Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder39Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder39
 	)
 	default int reminder39Cooldown() { return 5; }
@@ -7460,109 +5353,55 @@ public interface RemindersConfig extends Config
 	default Color reminder40Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder40Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder40
-	)
-	default String reminder40Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder40Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder40
-	)
-	default boolean reminder40Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder40Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder40
-	)
-	default boolean reminder40Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder40Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder40
-	)
-	default boolean reminder40Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder40Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder40
-	)
-	default boolean reminder40Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder40Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder40
-	)
-	default boolean reminder40Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder40Saturday",
+			keyName = "reminder40Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder40
 	)
-	default boolean reminder40Saturday() { return false; }
+	default String reminder40Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder40Sunday",
+			keyName = "reminder40DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder40
 	)
-	default boolean reminder40Sunday() { return false; }
+	default String reminder40DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder40Date",
+			keyName = "reminder40Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder40
 	)
-	default String reminder40Date() { return ""; }
+	default String reminder40Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder40LocationX",
+			keyName = "reminder40Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder40
 	)
-	default int reminder40LocationX() { return 0; }
+	default String reminder40Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder40LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder40GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder40
 	)
-	default int reminder40LocationY() { return 0; }
+	default String reminder40GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder40Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder40
 	)
 	default int reminder40Radius() { return 0; }
@@ -7571,16 +5410,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder40RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder40
 	)
-	default int reminder40RegionId() { return 0; }
+	default String reminder40RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder40NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder40
 	)
 	default String reminder40NpcIds() { return ""; }
@@ -7589,25 +5428,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder40ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder40
 	)
 	default String reminder40ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder40Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder40
 	)
 	default int reminder40Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder40Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder40
 	)
 	default int reminder40Cooldown() { return 5; }
@@ -7649,109 +5488,55 @@ public interface RemindersConfig extends Config
 	default Color reminder41Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder41Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder41
-	)
-	default String reminder41Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder41Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder41
-	)
-	default boolean reminder41Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder41Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder41
-	)
-	default boolean reminder41Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder41Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder41
-	)
-	default boolean reminder41Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder41Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder41
-	)
-	default boolean reminder41Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder41Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder41
-	)
-	default boolean reminder41Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder41Saturday",
+			keyName = "reminder41Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder41
 	)
-	default boolean reminder41Saturday() { return false; }
+	default String reminder41Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder41Sunday",
+			keyName = "reminder41DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder41
 	)
-	default boolean reminder41Sunday() { return false; }
+	default String reminder41DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder41Date",
+			keyName = "reminder41Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder41
 	)
-	default String reminder41Date() { return ""; }
+	default String reminder41Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder41LocationX",
+			keyName = "reminder41Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder41
 	)
-	default int reminder41LocationX() { return 0; }
+	default String reminder41Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder41LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder41GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder41
 	)
-	default int reminder41LocationY() { return 0; }
+	default String reminder41GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder41Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder41
 	)
 	default int reminder41Radius() { return 0; }
@@ -7760,16 +5545,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder41RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder41
 	)
-	default int reminder41RegionId() { return 0; }
+	default String reminder41RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder41NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder41
 	)
 	default String reminder41NpcIds() { return ""; }
@@ -7778,25 +5563,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder41ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder41
 	)
 	default String reminder41ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder41Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder41
 	)
 	default int reminder41Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder41Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder41
 	)
 	default int reminder41Cooldown() { return 5; }
@@ -7838,109 +5623,55 @@ public interface RemindersConfig extends Config
 	default Color reminder42Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder42Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder42
-	)
-	default String reminder42Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder42Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder42
-	)
-	default boolean reminder42Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder42Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder42
-	)
-	default boolean reminder42Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder42Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder42
-	)
-	default boolean reminder42Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder42Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder42
-	)
-	default boolean reminder42Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder42Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder42
-	)
-	default boolean reminder42Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder42Saturday",
+			keyName = "reminder42Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder42
 	)
-	default boolean reminder42Saturday() { return false; }
+	default String reminder42Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder42Sunday",
+			keyName = "reminder42DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder42
 	)
-	default boolean reminder42Sunday() { return false; }
+	default String reminder42DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder42Date",
+			keyName = "reminder42Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder42
 	)
-	default String reminder42Date() { return ""; }
+	default String reminder42Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder42LocationX",
+			keyName = "reminder42Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder42
 	)
-	default int reminder42LocationX() { return 0; }
+	default String reminder42Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder42LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder42GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder42
 	)
-	default int reminder42LocationY() { return 0; }
+	default String reminder42GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder42Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder42
 	)
 	default int reminder42Radius() { return 0; }
@@ -7949,16 +5680,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder42RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder42
 	)
-	default int reminder42RegionId() { return 0; }
+	default String reminder42RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder42NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder42
 	)
 	default String reminder42NpcIds() { return ""; }
@@ -7967,25 +5698,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder42ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder42
 	)
 	default String reminder42ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder42Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder42
 	)
 	default int reminder42Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder42Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder42
 	)
 	default int reminder42Cooldown() { return 5; }
@@ -8027,109 +5758,55 @@ public interface RemindersConfig extends Config
 	default Color reminder43Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder43Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder43
-	)
-	default String reminder43Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder43Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder43
-	)
-	default boolean reminder43Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder43Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder43
-	)
-	default boolean reminder43Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder43Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder43
-	)
-	default boolean reminder43Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder43Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder43
-	)
-	default boolean reminder43Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder43Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder43
-	)
-	default boolean reminder43Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder43Saturday",
+			keyName = "reminder43Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder43
 	)
-	default boolean reminder43Saturday() { return false; }
+	default String reminder43Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder43Sunday",
+			keyName = "reminder43DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder43
 	)
-	default boolean reminder43Sunday() { return false; }
+	default String reminder43DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder43Date",
+			keyName = "reminder43Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder43
 	)
-	default String reminder43Date() { return ""; }
+	default String reminder43Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder43LocationX",
+			keyName = "reminder43Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder43
 	)
-	default int reminder43LocationX() { return 0; }
+	default String reminder43Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder43LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder43GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder43
 	)
-	default int reminder43LocationY() { return 0; }
+	default String reminder43GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder43Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder43
 	)
 	default int reminder43Radius() { return 0; }
@@ -8138,16 +5815,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder43RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder43
 	)
-	default int reminder43RegionId() { return 0; }
+	default String reminder43RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder43NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder43
 	)
 	default String reminder43NpcIds() { return ""; }
@@ -8156,25 +5833,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder43ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder43
 	)
 	default String reminder43ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder43Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder43
 	)
 	default int reminder43Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder43Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder43
 	)
 	default int reminder43Cooldown() { return 5; }
@@ -8216,109 +5893,55 @@ public interface RemindersConfig extends Config
 	default Color reminder44Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder44Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder44
-	)
-	default String reminder44Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder44Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder44
-	)
-	default boolean reminder44Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder44Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder44
-	)
-	default boolean reminder44Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder44Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder44
-	)
-	default boolean reminder44Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder44Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder44
-	)
-	default boolean reminder44Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder44Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder44
-	)
-	default boolean reminder44Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder44Saturday",
+			keyName = "reminder44Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder44
 	)
-	default boolean reminder44Saturday() { return false; }
+	default String reminder44Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder44Sunday",
+			keyName = "reminder44DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder44
 	)
-	default boolean reminder44Sunday() { return false; }
+	default String reminder44DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder44Date",
+			keyName = "reminder44Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder44
 	)
-	default String reminder44Date() { return ""; }
+	default String reminder44Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder44LocationX",
+			keyName = "reminder44Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder44
 	)
-	default int reminder44LocationX() { return 0; }
+	default String reminder44Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder44LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder44GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder44
 	)
-	default int reminder44LocationY() { return 0; }
+	default String reminder44GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder44Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder44
 	)
 	default int reminder44Radius() { return 0; }
@@ -8327,16 +5950,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder44RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder44
 	)
-	default int reminder44RegionId() { return 0; }
+	default String reminder44RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder44NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder44
 	)
 	default String reminder44NpcIds() { return ""; }
@@ -8345,25 +5968,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder44ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder44
 	)
 	default String reminder44ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder44Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder44
 	)
 	default int reminder44Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder44Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder44
 	)
 	default int reminder44Cooldown() { return 5; }
@@ -8405,109 +6028,55 @@ public interface RemindersConfig extends Config
 	default Color reminder45Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder45Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder45
-	)
-	default String reminder45Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder45Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder45
-	)
-	default boolean reminder45Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder45Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder45
-	)
-	default boolean reminder45Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder45Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder45
-	)
-	default boolean reminder45Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder45Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder45
-	)
-	default boolean reminder45Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder45Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder45
-	)
-	default boolean reminder45Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder45Saturday",
+			keyName = "reminder45Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder45
 	)
-	default boolean reminder45Saturday() { return false; }
+	default String reminder45Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder45Sunday",
+			keyName = "reminder45DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder45
 	)
-	default boolean reminder45Sunday() { return false; }
+	default String reminder45DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder45Date",
+			keyName = "reminder45Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder45
 	)
-	default String reminder45Date() { return ""; }
+	default String reminder45Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder45LocationX",
+			keyName = "reminder45Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder45
 	)
-	default int reminder45LocationX() { return 0; }
+	default String reminder45Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder45LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder45GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder45
 	)
-	default int reminder45LocationY() { return 0; }
+	default String reminder45GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder45Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder45
 	)
 	default int reminder45Radius() { return 0; }
@@ -8516,16 +6085,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder45RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder45
 	)
-	default int reminder45RegionId() { return 0; }
+	default String reminder45RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder45NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder45
 	)
 	default String reminder45NpcIds() { return ""; }
@@ -8534,25 +6103,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder45ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder45
 	)
 	default String reminder45ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder45Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder45
 	)
 	default int reminder45Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder45Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder45
 	)
 	default int reminder45Cooldown() { return 5; }
@@ -8594,109 +6163,55 @@ public interface RemindersConfig extends Config
 	default Color reminder46Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder46Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder46
-	)
-	default String reminder46Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder46Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder46
-	)
-	default boolean reminder46Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder46Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder46
-	)
-	default boolean reminder46Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder46Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder46
-	)
-	default boolean reminder46Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder46Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder46
-	)
-	default boolean reminder46Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder46Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder46
-	)
-	default boolean reminder46Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder46Saturday",
+			keyName = "reminder46Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder46
 	)
-	default boolean reminder46Saturday() { return false; }
+	default String reminder46Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder46Sunday",
+			keyName = "reminder46DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder46
 	)
-	default boolean reminder46Sunday() { return false; }
+	default String reminder46DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder46Date",
+			keyName = "reminder46Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder46
 	)
-	default String reminder46Date() { return ""; }
+	default String reminder46Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder46LocationX",
+			keyName = "reminder46Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder46
 	)
-	default int reminder46LocationX() { return 0; }
+	default String reminder46Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder46LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder46GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder46
 	)
-	default int reminder46LocationY() { return 0; }
+	default String reminder46GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder46Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder46
 	)
 	default int reminder46Radius() { return 0; }
@@ -8705,16 +6220,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder46RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder46
 	)
-	default int reminder46RegionId() { return 0; }
+	default String reminder46RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder46NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder46
 	)
 	default String reminder46NpcIds() { return ""; }
@@ -8723,25 +6238,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder46ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder46
 	)
 	default String reminder46ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder46Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder46
 	)
 	default int reminder46Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder46Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder46
 	)
 	default int reminder46Cooldown() { return 5; }
@@ -8783,109 +6298,55 @@ public interface RemindersConfig extends Config
 	default Color reminder47Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder47Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder47
-	)
-	default String reminder47Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder47Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder47
-	)
-	default boolean reminder47Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder47Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder47
-	)
-	default boolean reminder47Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder47Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder47
-	)
-	default boolean reminder47Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder47Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder47
-	)
-	default boolean reminder47Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder47Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder47
-	)
-	default boolean reminder47Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder47Saturday",
+			keyName = "reminder47Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder47
 	)
-	default boolean reminder47Saturday() { return false; }
+	default String reminder47Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder47Sunday",
+			keyName = "reminder47DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder47
 	)
-	default boolean reminder47Sunday() { return false; }
+	default String reminder47DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder47Date",
+			keyName = "reminder47Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder47
 	)
-	default String reminder47Date() { return ""; }
+	default String reminder47Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder47LocationX",
+			keyName = "reminder47Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder47
 	)
-	default int reminder47LocationX() { return 0; }
+	default String reminder47Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder47LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder47GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder47
 	)
-	default int reminder47LocationY() { return 0; }
+	default String reminder47GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder47Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder47
 	)
 	default int reminder47Radius() { return 0; }
@@ -8894,16 +6355,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder47RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder47
 	)
-	default int reminder47RegionId() { return 0; }
+	default String reminder47RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder47NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder47
 	)
 	default String reminder47NpcIds() { return ""; }
@@ -8912,25 +6373,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder47ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder47
 	)
 	default String reminder47ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder47Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder47
 	)
 	default int reminder47Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder47Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder47
 	)
 	default int reminder47Cooldown() { return 5; }
@@ -8972,109 +6433,55 @@ public interface RemindersConfig extends Config
 	default Color reminder48Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder48Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder48
-	)
-	default String reminder48Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder48Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder48
-	)
-	default boolean reminder48Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder48Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder48
-	)
-	default boolean reminder48Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder48Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder48
-	)
-	default boolean reminder48Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder48Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder48
-	)
-	default boolean reminder48Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder48Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder48
-	)
-	default boolean reminder48Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder48Saturday",
+			keyName = "reminder48Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder48
 	)
-	default boolean reminder48Saturday() { return false; }
+	default String reminder48Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder48Sunday",
+			keyName = "reminder48DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder48
 	)
-	default boolean reminder48Sunday() { return false; }
+	default String reminder48DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder48Date",
+			keyName = "reminder48Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder48
 	)
-	default String reminder48Date() { return ""; }
+	default String reminder48Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder48LocationX",
+			keyName = "reminder48Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder48
 	)
-	default int reminder48LocationX() { return 0; }
+	default String reminder48Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder48LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder48GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder48
 	)
-	default int reminder48LocationY() { return 0; }
+	default String reminder48GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder48Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder48
 	)
 	default int reminder48Radius() { return 0; }
@@ -9083,16 +6490,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder48RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder48
 	)
-	default int reminder48RegionId() { return 0; }
+	default String reminder48RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder48NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder48
 	)
 	default String reminder48NpcIds() { return ""; }
@@ -9101,25 +6508,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder48ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder48
 	)
 	default String reminder48ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder48Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder48
 	)
 	default int reminder48Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder48Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder48
 	)
 	default int reminder48Cooldown() { return 5; }
@@ -9161,109 +6568,55 @@ public interface RemindersConfig extends Config
 	default Color reminder49Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder49Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder49
-	)
-	default String reminder49Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder49Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder49
-	)
-	default boolean reminder49Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder49Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder49
-	)
-	default boolean reminder49Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder49Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder49
-	)
-	default boolean reminder49Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder49Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder49
-	)
-	default boolean reminder49Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder49Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder49
-	)
-	default boolean reminder49Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder49Saturday",
+			keyName = "reminder49Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder49
 	)
-	default boolean reminder49Saturday() { return false; }
+	default String reminder49Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder49Sunday",
+			keyName = "reminder49DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder49
 	)
-	default boolean reminder49Sunday() { return false; }
+	default String reminder49DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder49Date",
+			keyName = "reminder49Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder49
 	)
-	default String reminder49Date() { return ""; }
+	default String reminder49Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder49LocationX",
+			keyName = "reminder49Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder49
 	)
-	default int reminder49LocationX() { return 0; }
+	default String reminder49Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder49LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder49GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder49
 	)
-	default int reminder49LocationY() { return 0; }
+	default String reminder49GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder49Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder49
 	)
 	default int reminder49Radius() { return 0; }
@@ -9272,16 +6625,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder49RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder49
 	)
-	default int reminder49RegionId() { return 0; }
+	default String reminder49RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder49NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder49
 	)
 	default String reminder49NpcIds() { return ""; }
@@ -9290,25 +6643,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder49ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder49
 	)
 	default String reminder49ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder49Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder49
 	)
 	default int reminder49Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder49Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder49
 	)
 	default int reminder49Cooldown() { return 5; }
@@ -9350,109 +6703,55 @@ public interface RemindersConfig extends Config
 	default Color reminder50Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder50Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder50
-	)
-	default String reminder50Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder50Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder50
-	)
-	default boolean reminder50Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder50Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder50
-	)
-	default boolean reminder50Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder50Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder50
-	)
-	default boolean reminder50Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder50Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder50
-	)
-	default boolean reminder50Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder50Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder50
-	)
-	default boolean reminder50Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder50Saturday",
+			keyName = "reminder50Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder50
 	)
-	default boolean reminder50Saturday() { return false; }
+	default String reminder50Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder50Sunday",
+			keyName = "reminder50DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder50
 	)
-	default boolean reminder50Sunday() { return false; }
+	default String reminder50DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder50Date",
+			keyName = "reminder50Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder50
 	)
-	default String reminder50Date() { return ""; }
+	default String reminder50Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder50LocationX",
+			keyName = "reminder50Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder50
 	)
-	default int reminder50LocationX() { return 0; }
+	default String reminder50Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder50LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder50GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder50
 	)
-	default int reminder50LocationY() { return 0; }
+	default String reminder50GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder50Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder50
 	)
 	default int reminder50Radius() { return 0; }
@@ -9461,16 +6760,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder50RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder50
 	)
-	default int reminder50RegionId() { return 0; }
+	default String reminder50RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder50NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder50
 	)
 	default String reminder50NpcIds() { return ""; }
@@ -9479,25 +6778,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder50ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder50
 	)
 	default String reminder50ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder50Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder50
 	)
 	default int reminder50Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder50Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder50
 	)
 	default int reminder50Cooldown() { return 5; }
@@ -9539,109 +6838,55 @@ public interface RemindersConfig extends Config
 	default Color reminder51Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder51Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder51
-	)
-	default String reminder51Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder51Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder51
-	)
-	default boolean reminder51Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder51Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder51
-	)
-	default boolean reminder51Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder51Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder51
-	)
-	default boolean reminder51Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder51Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder51
-	)
-	default boolean reminder51Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder51Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder51
-	)
-	default boolean reminder51Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder51Saturday",
+			keyName = "reminder51Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder51
 	)
-	default boolean reminder51Saturday() { return false; }
+	default String reminder51Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder51Sunday",
+			keyName = "reminder51DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder51
 	)
-	default boolean reminder51Sunday() { return false; }
+	default String reminder51DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder51Date",
+			keyName = "reminder51Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder51
 	)
-	default String reminder51Date() { return ""; }
+	default String reminder51Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder51LocationX",
+			keyName = "reminder51Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder51
 	)
-	default int reminder51LocationX() { return 0; }
+	default String reminder51Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder51LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder51GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder51
 	)
-	default int reminder51LocationY() { return 0; }
+	default String reminder51GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder51Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder51
 	)
 	default int reminder51Radius() { return 0; }
@@ -9650,16 +6895,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder51RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder51
 	)
-	default int reminder51RegionId() { return 0; }
+	default String reminder51RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder51NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder51
 	)
 	default String reminder51NpcIds() { return ""; }
@@ -9668,25 +6913,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder51ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder51
 	)
 	default String reminder51ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder51Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder51
 	)
 	default int reminder51Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder51Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder51
 	)
 	default int reminder51Cooldown() { return 5; }
@@ -9728,109 +6973,55 @@ public interface RemindersConfig extends Config
 	default Color reminder52Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder52Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder52
-	)
-	default String reminder52Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder52Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder52
-	)
-	default boolean reminder52Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder52Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder52
-	)
-	default boolean reminder52Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder52Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder52
-	)
-	default boolean reminder52Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder52Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder52
-	)
-	default boolean reminder52Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder52Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder52
-	)
-	default boolean reminder52Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder52Saturday",
+			keyName = "reminder52Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder52
 	)
-	default boolean reminder52Saturday() { return false; }
+	default String reminder52Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder52Sunday",
+			keyName = "reminder52DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder52
 	)
-	default boolean reminder52Sunday() { return false; }
+	default String reminder52DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder52Date",
+			keyName = "reminder52Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder52
 	)
-	default String reminder52Date() { return ""; }
+	default String reminder52Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder52LocationX",
+			keyName = "reminder52Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder52
 	)
-	default int reminder52LocationX() { return 0; }
+	default String reminder52Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder52LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder52GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder52
 	)
-	default int reminder52LocationY() { return 0; }
+	default String reminder52GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder52Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder52
 	)
 	default int reminder52Radius() { return 0; }
@@ -9839,16 +7030,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder52RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder52
 	)
-	default int reminder52RegionId() { return 0; }
+	default String reminder52RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder52NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder52
 	)
 	default String reminder52NpcIds() { return ""; }
@@ -9857,25 +7048,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder52ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder52
 	)
 	default String reminder52ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder52Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder52
 	)
 	default int reminder52Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder52Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder52
 	)
 	default int reminder52Cooldown() { return 5; }
@@ -9917,109 +7108,55 @@ public interface RemindersConfig extends Config
 	default Color reminder53Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder53Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder53
-	)
-	default String reminder53Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder53Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder53
-	)
-	default boolean reminder53Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder53Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder53
-	)
-	default boolean reminder53Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder53Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder53
-	)
-	default boolean reminder53Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder53Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder53
-	)
-	default boolean reminder53Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder53Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder53
-	)
-	default boolean reminder53Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder53Saturday",
+			keyName = "reminder53Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder53
 	)
-	default boolean reminder53Saturday() { return false; }
+	default String reminder53Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder53Sunday",
+			keyName = "reminder53DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder53
 	)
-	default boolean reminder53Sunday() { return false; }
+	default String reminder53DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder53Date",
+			keyName = "reminder53Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder53
 	)
-	default String reminder53Date() { return ""; }
+	default String reminder53Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder53LocationX",
+			keyName = "reminder53Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder53
 	)
-	default int reminder53LocationX() { return 0; }
+	default String reminder53Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder53LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder53GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder53
 	)
-	default int reminder53LocationY() { return 0; }
+	default String reminder53GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder53Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder53
 	)
 	default int reminder53Radius() { return 0; }
@@ -10028,16 +7165,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder53RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder53
 	)
-	default int reminder53RegionId() { return 0; }
+	default String reminder53RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder53NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder53
 	)
 	default String reminder53NpcIds() { return ""; }
@@ -10046,25 +7183,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder53ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder53
 	)
 	default String reminder53ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder53Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder53
 	)
 	default int reminder53Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder53Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder53
 	)
 	default int reminder53Cooldown() { return 5; }
@@ -10106,109 +7243,55 @@ public interface RemindersConfig extends Config
 	default Color reminder54Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder54Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder54
-	)
-	default String reminder54Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder54Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder54
-	)
-	default boolean reminder54Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder54Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder54
-	)
-	default boolean reminder54Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder54Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder54
-	)
-	default boolean reminder54Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder54Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder54
-	)
-	default boolean reminder54Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder54Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder54
-	)
-	default boolean reminder54Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder54Saturday",
+			keyName = "reminder54Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder54
 	)
-	default boolean reminder54Saturday() { return false; }
+	default String reminder54Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder54Sunday",
+			keyName = "reminder54DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder54
 	)
-	default boolean reminder54Sunday() { return false; }
+	default String reminder54DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder54Date",
+			keyName = "reminder54Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder54
 	)
-	default String reminder54Date() { return ""; }
+	default String reminder54Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder54LocationX",
+			keyName = "reminder54Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder54
 	)
-	default int reminder54LocationX() { return 0; }
+	default String reminder54Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder54LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder54GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder54
 	)
-	default int reminder54LocationY() { return 0; }
+	default String reminder54GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder54Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder54
 	)
 	default int reminder54Radius() { return 0; }
@@ -10217,16 +7300,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder54RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder54
 	)
-	default int reminder54RegionId() { return 0; }
+	default String reminder54RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder54NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder54
 	)
 	default String reminder54NpcIds() { return ""; }
@@ -10235,25 +7318,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder54ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder54
 	)
 	default String reminder54ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder54Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder54
 	)
 	default int reminder54Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder54Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder54
 	)
 	default int reminder54Cooldown() { return 5; }
@@ -10295,109 +7378,55 @@ public interface RemindersConfig extends Config
 	default Color reminder55Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder55Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder55
-	)
-	default String reminder55Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder55Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder55
-	)
-	default boolean reminder55Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder55Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder55
-	)
-	default boolean reminder55Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder55Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder55
-	)
-	default boolean reminder55Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder55Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder55
-	)
-	default boolean reminder55Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder55Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder55
-	)
-	default boolean reminder55Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder55Saturday",
+			keyName = "reminder55Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder55
 	)
-	default boolean reminder55Saturday() { return false; }
+	default String reminder55Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder55Sunday",
+			keyName = "reminder55DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder55
 	)
-	default boolean reminder55Sunday() { return false; }
+	default String reminder55DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder55Date",
+			keyName = "reminder55Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder55
 	)
-	default String reminder55Date() { return ""; }
+	default String reminder55Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder55LocationX",
+			keyName = "reminder55Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder55
 	)
-	default int reminder55LocationX() { return 0; }
+	default String reminder55Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder55LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder55GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder55
 	)
-	default int reminder55LocationY() { return 0; }
+	default String reminder55GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder55Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder55
 	)
 	default int reminder55Radius() { return 0; }
@@ -10406,16 +7435,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder55RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder55
 	)
-	default int reminder55RegionId() { return 0; }
+	default String reminder55RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder55NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder55
 	)
 	default String reminder55NpcIds() { return ""; }
@@ -10424,25 +7453,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder55ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder55
 	)
 	default String reminder55ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder55Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder55
 	)
 	default int reminder55Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder55Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder55
 	)
 	default int reminder55Cooldown() { return 5; }
@@ -10484,109 +7513,55 @@ public interface RemindersConfig extends Config
 	default Color reminder56Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder56Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder56
-	)
-	default String reminder56Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder56Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder56
-	)
-	default boolean reminder56Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder56Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder56
-	)
-	default boolean reminder56Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder56Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder56
-	)
-	default boolean reminder56Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder56Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder56
-	)
-	default boolean reminder56Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder56Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder56
-	)
-	default boolean reminder56Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder56Saturday",
+			keyName = "reminder56Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder56
 	)
-	default boolean reminder56Saturday() { return false; }
+	default String reminder56Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder56Sunday",
+			keyName = "reminder56DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder56
 	)
-	default boolean reminder56Sunday() { return false; }
+	default String reminder56DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder56Date",
+			keyName = "reminder56Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder56
 	)
-	default String reminder56Date() { return ""; }
+	default String reminder56Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder56LocationX",
+			keyName = "reminder56Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder56
 	)
-	default int reminder56LocationX() { return 0; }
+	default String reminder56Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder56LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder56GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder56
 	)
-	default int reminder56LocationY() { return 0; }
+	default String reminder56GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder56Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder56
 	)
 	default int reminder56Radius() { return 0; }
@@ -10595,16 +7570,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder56RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder56
 	)
-	default int reminder56RegionId() { return 0; }
+	default String reminder56RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder56NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder56
 	)
 	default String reminder56NpcIds() { return ""; }
@@ -10613,25 +7588,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder56ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder56
 	)
 	default String reminder56ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder56Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder56
 	)
 	default int reminder56Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder56Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder56
 	)
 	default int reminder56Cooldown() { return 5; }
@@ -10673,109 +7648,55 @@ public interface RemindersConfig extends Config
 	default Color reminder57Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder57Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder57
-	)
-	default String reminder57Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder57Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder57
-	)
-	default boolean reminder57Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder57Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder57
-	)
-	default boolean reminder57Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder57Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder57
-	)
-	default boolean reminder57Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder57Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder57
-	)
-	default boolean reminder57Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder57Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder57
-	)
-	default boolean reminder57Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder57Saturday",
+			keyName = "reminder57Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder57
 	)
-	default boolean reminder57Saturday() { return false; }
+	default String reminder57Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder57Sunday",
+			keyName = "reminder57DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder57
 	)
-	default boolean reminder57Sunday() { return false; }
+	default String reminder57DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder57Date",
+			keyName = "reminder57Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder57
 	)
-	default String reminder57Date() { return ""; }
+	default String reminder57Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder57LocationX",
+			keyName = "reminder57Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder57
 	)
-	default int reminder57LocationX() { return 0; }
+	default String reminder57Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder57LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder57GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder57
 	)
-	default int reminder57LocationY() { return 0; }
+	default String reminder57GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder57Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder57
 	)
 	default int reminder57Radius() { return 0; }
@@ -10784,16 +7705,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder57RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder57
 	)
-	default int reminder57RegionId() { return 0; }
+	default String reminder57RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder57NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder57
 	)
 	default String reminder57NpcIds() { return ""; }
@@ -10802,25 +7723,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder57ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder57
 	)
 	default String reminder57ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder57Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder57
 	)
 	default int reminder57Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder57Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder57
 	)
 	default int reminder57Cooldown() { return 5; }
@@ -10862,109 +7783,55 @@ public interface RemindersConfig extends Config
 	default Color reminder58Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder58Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder58
-	)
-	default String reminder58Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder58Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder58
-	)
-	default boolean reminder58Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder58Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder58
-	)
-	default boolean reminder58Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder58Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder58
-	)
-	default boolean reminder58Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder58Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder58
-	)
-	default boolean reminder58Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder58Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder58
-	)
-	default boolean reminder58Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder58Saturday",
+			keyName = "reminder58Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder58
 	)
-	default boolean reminder58Saturday() { return false; }
+	default String reminder58Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder58Sunday",
+			keyName = "reminder58DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder58
 	)
-	default boolean reminder58Sunday() { return false; }
+	default String reminder58DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder58Date",
+			keyName = "reminder58Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder58
 	)
-	default String reminder58Date() { return ""; }
+	default String reminder58Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder58LocationX",
+			keyName = "reminder58Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder58
 	)
-	default int reminder58LocationX() { return 0; }
+	default String reminder58Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder58LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder58GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder58
 	)
-	default int reminder58LocationY() { return 0; }
+	default String reminder58GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder58Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder58
 	)
 	default int reminder58Radius() { return 0; }
@@ -10973,16 +7840,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder58RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder58
 	)
-	default int reminder58RegionId() { return 0; }
+	default String reminder58RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder58NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder58
 	)
 	default String reminder58NpcIds() { return ""; }
@@ -10991,25 +7858,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder58ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder58
 	)
 	default String reminder58ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder58Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder58
 	)
 	default int reminder58Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder58Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder58
 	)
 	default int reminder58Cooldown() { return 5; }
@@ -11051,109 +7918,55 @@ public interface RemindersConfig extends Config
 	default Color reminder59Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder59Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder59
-	)
-	default String reminder59Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder59Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder59
-	)
-	default boolean reminder59Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder59Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder59
-	)
-	default boolean reminder59Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder59Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder59
-	)
-	default boolean reminder59Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder59Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder59
-	)
-	default boolean reminder59Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder59Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder59
-	)
-	default boolean reminder59Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder59Saturday",
+			keyName = "reminder59Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder59
 	)
-	default boolean reminder59Saturday() { return false; }
+	default String reminder59Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder59Sunday",
+			keyName = "reminder59DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder59
 	)
-	default boolean reminder59Sunday() { return false; }
+	default String reminder59DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder59Date",
+			keyName = "reminder59Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder59
 	)
-	default String reminder59Date() { return ""; }
+	default String reminder59Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder59LocationX",
+			keyName = "reminder59Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder59
 	)
-	default int reminder59LocationX() { return 0; }
+	default String reminder59Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder59LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder59GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder59
 	)
-	default int reminder59LocationY() { return 0; }
+	default String reminder59GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder59Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder59
 	)
 	default int reminder59Radius() { return 0; }
@@ -11162,16 +7975,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder59RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder59
 	)
-	default int reminder59RegionId() { return 0; }
+	default String reminder59RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder59NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder59
 	)
 	default String reminder59NpcIds() { return ""; }
@@ -11180,25 +7993,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder59ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder59
 	)
 	default String reminder59ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder59Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder59
 	)
 	default int reminder59Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder59Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder59
 	)
 	default int reminder59Cooldown() { return 5; }
@@ -11240,109 +8053,55 @@ public interface RemindersConfig extends Config
 	default Color reminder60Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder60Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder60
-	)
-	default String reminder60Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder60Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder60
-	)
-	default boolean reminder60Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder60Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder60
-	)
-	default boolean reminder60Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder60Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder60
-	)
-	default boolean reminder60Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder60Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder60
-	)
-	default boolean reminder60Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder60Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder60
-	)
-	default boolean reminder60Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder60Saturday",
+			keyName = "reminder60Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder60
 	)
-	default boolean reminder60Saturday() { return false; }
+	default String reminder60Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder60Sunday",
+			keyName = "reminder60DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder60
 	)
-	default boolean reminder60Sunday() { return false; }
+	default String reminder60DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder60Date",
+			keyName = "reminder60Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder60
 	)
-	default String reminder60Date() { return ""; }
+	default String reminder60Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder60LocationX",
+			keyName = "reminder60Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder60
 	)
-	default int reminder60LocationX() { return 0; }
+	default String reminder60Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder60LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder60GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder60
 	)
-	default int reminder60LocationY() { return 0; }
+	default String reminder60GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder60Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder60
 	)
 	default int reminder60Radius() { return 0; }
@@ -11351,16 +8110,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder60RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder60
 	)
-	default int reminder60RegionId() { return 0; }
+	default String reminder60RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder60NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder60
 	)
 	default String reminder60NpcIds() { return ""; }
@@ -11369,25 +8128,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder60ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder60
 	)
 	default String reminder60ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder60Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder60
 	)
 	default int reminder60Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder60Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder60
 	)
 	default int reminder60Cooldown() { return 5; }
@@ -11429,109 +8188,55 @@ public interface RemindersConfig extends Config
 	default Color reminder61Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder61Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder61
-	)
-	default String reminder61Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder61Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder61
-	)
-	default boolean reminder61Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder61Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder61
-	)
-	default boolean reminder61Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder61Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder61
-	)
-	default boolean reminder61Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder61Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder61
-	)
-	default boolean reminder61Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder61Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder61
-	)
-	default boolean reminder61Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder61Saturday",
+			keyName = "reminder61Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder61
 	)
-	default boolean reminder61Saturday() { return false; }
+	default String reminder61Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder61Sunday",
+			keyName = "reminder61DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder61
 	)
-	default boolean reminder61Sunday() { return false; }
+	default String reminder61DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder61Date",
+			keyName = "reminder61Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder61
 	)
-	default String reminder61Date() { return ""; }
+	default String reminder61Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder61LocationX",
+			keyName = "reminder61Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder61
 	)
-	default int reminder61LocationX() { return 0; }
+	default String reminder61Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder61LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder61GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder61
 	)
-	default int reminder61LocationY() { return 0; }
+	default String reminder61GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder61Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder61
 	)
 	default int reminder61Radius() { return 0; }
@@ -11540,16 +8245,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder61RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder61
 	)
-	default int reminder61RegionId() { return 0; }
+	default String reminder61RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder61NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder61
 	)
 	default String reminder61NpcIds() { return ""; }
@@ -11558,25 +8263,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder61ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder61
 	)
 	default String reminder61ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder61Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder61
 	)
 	default int reminder61Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder61Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder61
 	)
 	default int reminder61Cooldown() { return 5; }
@@ -11618,109 +8323,55 @@ public interface RemindersConfig extends Config
 	default Color reminder62Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder62Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder62
-	)
-	default String reminder62Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder62Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder62
-	)
-	default boolean reminder62Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder62Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder62
-	)
-	default boolean reminder62Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder62Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder62
-	)
-	default boolean reminder62Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder62Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder62
-	)
-	default boolean reminder62Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder62Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder62
-	)
-	default boolean reminder62Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder62Saturday",
+			keyName = "reminder62Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder62
 	)
-	default boolean reminder62Saturday() { return false; }
+	default String reminder62Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder62Sunday",
+			keyName = "reminder62DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder62
 	)
-	default boolean reminder62Sunday() { return false; }
+	default String reminder62DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder62Date",
+			keyName = "reminder62Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder62
 	)
-	default String reminder62Date() { return ""; }
+	default String reminder62Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder62LocationX",
+			keyName = "reminder62Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder62
 	)
-	default int reminder62LocationX() { return 0; }
+	default String reminder62Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder62LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder62GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder62
 	)
-	default int reminder62LocationY() { return 0; }
+	default String reminder62GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder62Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder62
 	)
 	default int reminder62Radius() { return 0; }
@@ -11729,16 +8380,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder62RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder62
 	)
-	default int reminder62RegionId() { return 0; }
+	default String reminder62RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder62NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder62
 	)
 	default String reminder62NpcIds() { return ""; }
@@ -11747,25 +8398,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder62ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder62
 	)
 	default String reminder62ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder62Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder62
 	)
 	default int reminder62Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder62Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder62
 	)
 	default int reminder62Cooldown() { return 5; }
@@ -11807,109 +8458,55 @@ public interface RemindersConfig extends Config
 	default Color reminder63Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder63Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder63
-	)
-	default String reminder63Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder63Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder63
-	)
-	default boolean reminder63Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder63Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder63
-	)
-	default boolean reminder63Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder63Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder63
-	)
-	default boolean reminder63Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder63Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder63
-	)
-	default boolean reminder63Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder63Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder63
-	)
-	default boolean reminder63Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder63Saturday",
+			keyName = "reminder63Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder63
 	)
-	default boolean reminder63Saturday() { return false; }
+	default String reminder63Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder63Sunday",
+			keyName = "reminder63DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder63
 	)
-	default boolean reminder63Sunday() { return false; }
+	default String reminder63DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder63Date",
+			keyName = "reminder63Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder63
 	)
-	default String reminder63Date() { return ""; }
+	default String reminder63Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder63LocationX",
+			keyName = "reminder63Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder63
 	)
-	default int reminder63LocationX() { return 0; }
+	default String reminder63Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder63LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder63GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder63
 	)
-	default int reminder63LocationY() { return 0; }
+	default String reminder63GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder63Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder63
 	)
 	default int reminder63Radius() { return 0; }
@@ -11918,16 +8515,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder63RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder63
 	)
-	default int reminder63RegionId() { return 0; }
+	default String reminder63RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder63NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder63
 	)
 	default String reminder63NpcIds() { return ""; }
@@ -11936,25 +8533,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder63ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder63
 	)
 	default String reminder63ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder63Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder63
 	)
 	default int reminder63Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder63Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder63
 	)
 	default int reminder63Cooldown() { return 5; }
@@ -11996,109 +8593,55 @@ public interface RemindersConfig extends Config
 	default Color reminder64Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder64Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder64
-	)
-	default String reminder64Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder64Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder64
-	)
-	default boolean reminder64Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder64Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder64
-	)
-	default boolean reminder64Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder64Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder64
-	)
-	default boolean reminder64Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder64Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder64
-	)
-	default boolean reminder64Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder64Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder64
-	)
-	default boolean reminder64Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder64Saturday",
+			keyName = "reminder64Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder64
 	)
-	default boolean reminder64Saturday() { return false; }
+	default String reminder64Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder64Sunday",
+			keyName = "reminder64DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder64
 	)
-	default boolean reminder64Sunday() { return false; }
+	default String reminder64DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder64Date",
+			keyName = "reminder64Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder64
 	)
-	default String reminder64Date() { return ""; }
+	default String reminder64Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder64LocationX",
+			keyName = "reminder64Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder64
 	)
-	default int reminder64LocationX() { return 0; }
+	default String reminder64Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder64LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder64GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder64
 	)
-	default int reminder64LocationY() { return 0; }
+	default String reminder64GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder64Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder64
 	)
 	default int reminder64Radius() { return 0; }
@@ -12107,16 +8650,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder64RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder64
 	)
-	default int reminder64RegionId() { return 0; }
+	default String reminder64RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder64NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder64
 	)
 	default String reminder64NpcIds() { return ""; }
@@ -12125,25 +8668,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder64ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder64
 	)
 	default String reminder64ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder64Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder64
 	)
 	default int reminder64Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder64Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder64
 	)
 	default int reminder64Cooldown() { return 5; }
@@ -12185,109 +8728,55 @@ public interface RemindersConfig extends Config
 	default Color reminder65Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder65Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder65
-	)
-	default String reminder65Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder65Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder65
-	)
-	default boolean reminder65Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder65Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder65
-	)
-	default boolean reminder65Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder65Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder65
-	)
-	default boolean reminder65Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder65Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder65
-	)
-	default boolean reminder65Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder65Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder65
-	)
-	default boolean reminder65Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder65Saturday",
+			keyName = "reminder65Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder65
 	)
-	default boolean reminder65Saturday() { return false; }
+	default String reminder65Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder65Sunday",
+			keyName = "reminder65DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder65
 	)
-	default boolean reminder65Sunday() { return false; }
+	default String reminder65DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder65Date",
+			keyName = "reminder65Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder65
 	)
-	default String reminder65Date() { return ""; }
+	default String reminder65Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder65LocationX",
+			keyName = "reminder65Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder65
 	)
-	default int reminder65LocationX() { return 0; }
+	default String reminder65Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder65LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder65GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder65
 	)
-	default int reminder65LocationY() { return 0; }
+	default String reminder65GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder65Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder65
 	)
 	default int reminder65Radius() { return 0; }
@@ -12296,16 +8785,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder65RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder65
 	)
-	default int reminder65RegionId() { return 0; }
+	default String reminder65RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder65NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder65
 	)
 	default String reminder65NpcIds() { return ""; }
@@ -12314,25 +8803,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder65ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder65
 	)
 	default String reminder65ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder65Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder65
 	)
 	default int reminder65Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder65Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder65
 	)
 	default int reminder65Cooldown() { return 5; }
@@ -12374,109 +8863,55 @@ public interface RemindersConfig extends Config
 	default Color reminder66Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder66Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder66
-	)
-	default String reminder66Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder66Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder66
-	)
-	default boolean reminder66Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder66Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder66
-	)
-	default boolean reminder66Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder66Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder66
-	)
-	default boolean reminder66Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder66Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder66
-	)
-	default boolean reminder66Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder66Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder66
-	)
-	default boolean reminder66Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder66Saturday",
+			keyName = "reminder66Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder66
 	)
-	default boolean reminder66Saturday() { return false; }
+	default String reminder66Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder66Sunday",
+			keyName = "reminder66DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder66
 	)
-	default boolean reminder66Sunday() { return false; }
+	default String reminder66DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder66Date",
+			keyName = "reminder66Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder66
 	)
-	default String reminder66Date() { return ""; }
+	default String reminder66Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder66LocationX",
+			keyName = "reminder66Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder66
 	)
-	default int reminder66LocationX() { return 0; }
+	default String reminder66Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder66LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder66GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder66
 	)
-	default int reminder66LocationY() { return 0; }
+	default String reminder66GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder66Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder66
 	)
 	default int reminder66Radius() { return 0; }
@@ -12485,16 +8920,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder66RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder66
 	)
-	default int reminder66RegionId() { return 0; }
+	default String reminder66RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder66NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder66
 	)
 	default String reminder66NpcIds() { return ""; }
@@ -12503,25 +8938,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder66ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder66
 	)
 	default String reminder66ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder66Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder66
 	)
 	default int reminder66Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder66Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder66
 	)
 	default int reminder66Cooldown() { return 5; }
@@ -12563,109 +8998,55 @@ public interface RemindersConfig extends Config
 	default Color reminder67Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder67Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder67
-	)
-	default String reminder67Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder67Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder67
-	)
-	default boolean reminder67Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder67Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder67
-	)
-	default boolean reminder67Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder67Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder67
-	)
-	default boolean reminder67Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder67Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder67
-	)
-	default boolean reminder67Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder67Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder67
-	)
-	default boolean reminder67Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder67Saturday",
+			keyName = "reminder67Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder67
 	)
-	default boolean reminder67Saturday() { return false; }
+	default String reminder67Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder67Sunday",
+			keyName = "reminder67DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder67
 	)
-	default boolean reminder67Sunday() { return false; }
+	default String reminder67DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder67Date",
+			keyName = "reminder67Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder67
 	)
-	default String reminder67Date() { return ""; }
+	default String reminder67Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder67LocationX",
+			keyName = "reminder67Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder67
 	)
-	default int reminder67LocationX() { return 0; }
+	default String reminder67Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder67LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder67GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder67
 	)
-	default int reminder67LocationY() { return 0; }
+	default String reminder67GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder67Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder67
 	)
 	default int reminder67Radius() { return 0; }
@@ -12674,16 +9055,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder67RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder67
 	)
-	default int reminder67RegionId() { return 0; }
+	default String reminder67RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder67NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder67
 	)
 	default String reminder67NpcIds() { return ""; }
@@ -12692,25 +9073,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder67ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder67
 	)
 	default String reminder67ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder67Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder67
 	)
 	default int reminder67Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder67Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder67
 	)
 	default int reminder67Cooldown() { return 5; }
@@ -12752,109 +9133,55 @@ public interface RemindersConfig extends Config
 	default Color reminder68Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder68Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder68
-	)
-	default String reminder68Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder68Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder68
-	)
-	default boolean reminder68Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder68Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder68
-	)
-	default boolean reminder68Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder68Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder68
-	)
-	default boolean reminder68Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder68Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder68
-	)
-	default boolean reminder68Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder68Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder68
-	)
-	default boolean reminder68Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder68Saturday",
+			keyName = "reminder68Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder68
 	)
-	default boolean reminder68Saturday() { return false; }
+	default String reminder68Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder68Sunday",
+			keyName = "reminder68DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder68
 	)
-	default boolean reminder68Sunday() { return false; }
+	default String reminder68DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder68Date",
+			keyName = "reminder68Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder68
 	)
-	default String reminder68Date() { return ""; }
+	default String reminder68Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder68LocationX",
+			keyName = "reminder68Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder68
 	)
-	default int reminder68LocationX() { return 0; }
+	default String reminder68Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder68LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder68GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder68
 	)
-	default int reminder68LocationY() { return 0; }
+	default String reminder68GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder68Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder68
 	)
 	default int reminder68Radius() { return 0; }
@@ -12863,16 +9190,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder68RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder68
 	)
-	default int reminder68RegionId() { return 0; }
+	default String reminder68RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder68NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder68
 	)
 	default String reminder68NpcIds() { return ""; }
@@ -12881,25 +9208,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder68ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder68
 	)
 	default String reminder68ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder68Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder68
 	)
 	default int reminder68Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder68Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder68
 	)
 	default int reminder68Cooldown() { return 5; }
@@ -12941,109 +9268,55 @@ public interface RemindersConfig extends Config
 	default Color reminder69Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder69Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder69
-	)
-	default String reminder69Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder69Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder69
-	)
-	default boolean reminder69Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder69Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder69
-	)
-	default boolean reminder69Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder69Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder69
-	)
-	default boolean reminder69Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder69Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder69
-	)
-	default boolean reminder69Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder69Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder69
-	)
-	default boolean reminder69Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder69Saturday",
+			keyName = "reminder69Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder69
 	)
-	default boolean reminder69Saturday() { return false; }
+	default String reminder69Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder69Sunday",
+			keyName = "reminder69DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder69
 	)
-	default boolean reminder69Sunday() { return false; }
+	default String reminder69DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder69Date",
+			keyName = "reminder69Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder69
 	)
-	default String reminder69Date() { return ""; }
+	default String reminder69Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder69LocationX",
+			keyName = "reminder69Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder69
 	)
-	default int reminder69LocationX() { return 0; }
+	default String reminder69Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder69LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder69GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder69
 	)
-	default int reminder69LocationY() { return 0; }
+	default String reminder69GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder69Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder69
 	)
 	default int reminder69Radius() { return 0; }
@@ -13052,16 +9325,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder69RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder69
 	)
-	default int reminder69RegionId() { return 0; }
+	default String reminder69RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder69NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder69
 	)
 	default String reminder69NpcIds() { return ""; }
@@ -13070,25 +9343,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder69ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder69
 	)
 	default String reminder69ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder69Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder69
 	)
 	default int reminder69Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder69Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder69
 	)
 	default int reminder69Cooldown() { return 5; }
@@ -13130,109 +9403,55 @@ public interface RemindersConfig extends Config
 	default Color reminder70Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder70Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder70
-	)
-	default String reminder70Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder70Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder70
-	)
-	default boolean reminder70Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder70Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder70
-	)
-	default boolean reminder70Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder70Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder70
-	)
-	default boolean reminder70Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder70Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder70
-	)
-	default boolean reminder70Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder70Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder70
-	)
-	default boolean reminder70Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder70Saturday",
+			keyName = "reminder70Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder70
 	)
-	default boolean reminder70Saturday() { return false; }
+	default String reminder70Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder70Sunday",
+			keyName = "reminder70DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder70
 	)
-	default boolean reminder70Sunday() { return false; }
+	default String reminder70DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder70Date",
+			keyName = "reminder70Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder70
 	)
-	default String reminder70Date() { return ""; }
+	default String reminder70Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder70LocationX",
+			keyName = "reminder70Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder70
 	)
-	default int reminder70LocationX() { return 0; }
+	default String reminder70Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder70LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder70GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder70
 	)
-	default int reminder70LocationY() { return 0; }
+	default String reminder70GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder70Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder70
 	)
 	default int reminder70Radius() { return 0; }
@@ -13241,16 +9460,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder70RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder70
 	)
-	default int reminder70RegionId() { return 0; }
+	default String reminder70RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder70NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder70
 	)
 	default String reminder70NpcIds() { return ""; }
@@ -13259,25 +9478,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder70ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder70
 	)
 	default String reminder70ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder70Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder70
 	)
 	default int reminder70Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder70Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder70
 	)
 	default int reminder70Cooldown() { return 5; }
@@ -13319,109 +9538,55 @@ public interface RemindersConfig extends Config
 	default Color reminder71Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder71Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder71
-	)
-	default String reminder71Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder71Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder71
-	)
-	default boolean reminder71Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder71Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder71
-	)
-	default boolean reminder71Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder71Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder71
-	)
-	default boolean reminder71Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder71Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder71
-	)
-	default boolean reminder71Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder71Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder71
-	)
-	default boolean reminder71Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder71Saturday",
+			keyName = "reminder71Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder71
 	)
-	default boolean reminder71Saturday() { return false; }
+	default String reminder71Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder71Sunday",
+			keyName = "reminder71DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder71
 	)
-	default boolean reminder71Sunday() { return false; }
+	default String reminder71DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder71Date",
+			keyName = "reminder71Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder71
 	)
-	default String reminder71Date() { return ""; }
+	default String reminder71Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder71LocationX",
+			keyName = "reminder71Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder71
 	)
-	default int reminder71LocationX() { return 0; }
+	default String reminder71Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder71LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder71GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder71
 	)
-	default int reminder71LocationY() { return 0; }
+	default String reminder71GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder71Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder71
 	)
 	default int reminder71Radius() { return 0; }
@@ -13430,16 +9595,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder71RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder71
 	)
-	default int reminder71RegionId() { return 0; }
+	default String reminder71RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder71NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder71
 	)
 	default String reminder71NpcIds() { return ""; }
@@ -13448,25 +9613,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder71ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder71
 	)
 	default String reminder71ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder71Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder71
 	)
 	default int reminder71Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder71Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder71
 	)
 	default int reminder71Cooldown() { return 5; }
@@ -13508,109 +9673,55 @@ public interface RemindersConfig extends Config
 	default Color reminder72Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder72Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder72
-	)
-	default String reminder72Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder72Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder72
-	)
-	default boolean reminder72Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder72Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder72
-	)
-	default boolean reminder72Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder72Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder72
-	)
-	default boolean reminder72Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder72Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder72
-	)
-	default boolean reminder72Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder72Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder72
-	)
-	default boolean reminder72Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder72Saturday",
+			keyName = "reminder72Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder72
 	)
-	default boolean reminder72Saturday() { return false; }
+	default String reminder72Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder72Sunday",
+			keyName = "reminder72DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder72
 	)
-	default boolean reminder72Sunday() { return false; }
+	default String reminder72DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder72Date",
+			keyName = "reminder72Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder72
 	)
-	default String reminder72Date() { return ""; }
+	default String reminder72Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder72LocationX",
+			keyName = "reminder72Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder72
 	)
-	default int reminder72LocationX() { return 0; }
+	default String reminder72Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder72LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder72GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder72
 	)
-	default int reminder72LocationY() { return 0; }
+	default String reminder72GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder72Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder72
 	)
 	default int reminder72Radius() { return 0; }
@@ -13619,16 +9730,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder72RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder72
 	)
-	default int reminder72RegionId() { return 0; }
+	default String reminder72RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder72NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder72
 	)
 	default String reminder72NpcIds() { return ""; }
@@ -13637,25 +9748,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder72ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder72
 	)
 	default String reminder72ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder72Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder72
 	)
 	default int reminder72Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder72Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder72
 	)
 	default int reminder72Cooldown() { return 5; }
@@ -13697,109 +9808,55 @@ public interface RemindersConfig extends Config
 	default Color reminder73Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder73Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder73
-	)
-	default String reminder73Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder73Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder73
-	)
-	default boolean reminder73Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder73Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder73
-	)
-	default boolean reminder73Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder73Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder73
-	)
-	default boolean reminder73Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder73Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder73
-	)
-	default boolean reminder73Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder73Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder73
-	)
-	default boolean reminder73Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder73Saturday",
+			keyName = "reminder73Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder73
 	)
-	default boolean reminder73Saturday() { return false; }
+	default String reminder73Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder73Sunday",
+			keyName = "reminder73DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder73
 	)
-	default boolean reminder73Sunday() { return false; }
+	default String reminder73DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder73Date",
+			keyName = "reminder73Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder73
 	)
-	default String reminder73Date() { return ""; }
+	default String reminder73Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder73LocationX",
+			keyName = "reminder73Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder73
 	)
-	default int reminder73LocationX() { return 0; }
+	default String reminder73Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder73LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder73GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder73
 	)
-	default int reminder73LocationY() { return 0; }
+	default String reminder73GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder73Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder73
 	)
 	default int reminder73Radius() { return 0; }
@@ -13808,16 +9865,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder73RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder73
 	)
-	default int reminder73RegionId() { return 0; }
+	default String reminder73RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder73NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder73
 	)
 	default String reminder73NpcIds() { return ""; }
@@ -13826,25 +9883,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder73ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder73
 	)
 	default String reminder73ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder73Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder73
 	)
 	default int reminder73Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder73Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder73
 	)
 	default int reminder73Cooldown() { return 5; }
@@ -13886,109 +9943,55 @@ public interface RemindersConfig extends Config
 	default Color reminder74Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder74Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder74
-	)
-	default String reminder74Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder74Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder74
-	)
-	default boolean reminder74Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder74Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder74
-	)
-	default boolean reminder74Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder74Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder74
-	)
-	default boolean reminder74Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder74Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder74
-	)
-	default boolean reminder74Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder74Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder74
-	)
-	default boolean reminder74Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder74Saturday",
+			keyName = "reminder74Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder74
 	)
-	default boolean reminder74Saturday() { return false; }
+	default String reminder74Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder74Sunday",
+			keyName = "reminder74DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder74
 	)
-	default boolean reminder74Sunday() { return false; }
+	default String reminder74DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder74Date",
+			keyName = "reminder74Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder74
 	)
-	default String reminder74Date() { return ""; }
+	default String reminder74Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder74LocationX",
+			keyName = "reminder74Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder74
 	)
-	default int reminder74LocationX() { return 0; }
+	default String reminder74Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder74LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder74GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder74
 	)
-	default int reminder74LocationY() { return 0; }
+	default String reminder74GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder74Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder74
 	)
 	default int reminder74Radius() { return 0; }
@@ -13997,16 +10000,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder74RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder74
 	)
-	default int reminder74RegionId() { return 0; }
+	default String reminder74RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder74NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder74
 	)
 	default String reminder74NpcIds() { return ""; }
@@ -14015,25 +10018,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder74ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder74
 	)
 	default String reminder74ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder74Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder74
 	)
 	default int reminder74Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder74Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder74
 	)
 	default int reminder74Cooldown() { return 5; }
@@ -14075,109 +10078,55 @@ public interface RemindersConfig extends Config
 	default Color reminder75Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder75Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder75
-	)
-	default String reminder75Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder75Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder75
-	)
-	default boolean reminder75Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder75Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder75
-	)
-	default boolean reminder75Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder75Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder75
-	)
-	default boolean reminder75Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder75Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder75
-	)
-	default boolean reminder75Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder75Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder75
-	)
-	default boolean reminder75Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder75Saturday",
+			keyName = "reminder75Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder75
 	)
-	default boolean reminder75Saturday() { return false; }
+	default String reminder75Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder75Sunday",
+			keyName = "reminder75DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder75
 	)
-	default boolean reminder75Sunday() { return false; }
+	default String reminder75DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder75Date",
+			keyName = "reminder75Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder75
 	)
-	default String reminder75Date() { return ""; }
+	default String reminder75Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder75LocationX",
+			keyName = "reminder75Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder75
 	)
-	default int reminder75LocationX() { return 0; }
+	default String reminder75Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder75LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder75GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder75
 	)
-	default int reminder75LocationY() { return 0; }
+	default String reminder75GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder75Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder75
 	)
 	default int reminder75Radius() { return 0; }
@@ -14186,16 +10135,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder75RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder75
 	)
-	default int reminder75RegionId() { return 0; }
+	default String reminder75RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder75NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder75
 	)
 	default String reminder75NpcIds() { return ""; }
@@ -14204,25 +10153,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder75ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder75
 	)
 	default String reminder75ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder75Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder75
 	)
 	default int reminder75Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder75Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder75
 	)
 	default int reminder75Cooldown() { return 5; }
@@ -14264,109 +10213,55 @@ public interface RemindersConfig extends Config
 	default Color reminder76Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder76Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder76
-	)
-	default String reminder76Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder76Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder76
-	)
-	default boolean reminder76Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder76Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder76
-	)
-	default boolean reminder76Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder76Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder76
-	)
-	default boolean reminder76Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder76Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder76
-	)
-	default boolean reminder76Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder76Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder76
-	)
-	default boolean reminder76Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder76Saturday",
+			keyName = "reminder76Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder76
 	)
-	default boolean reminder76Saturday() { return false; }
+	default String reminder76Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder76Sunday",
+			keyName = "reminder76DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder76
 	)
-	default boolean reminder76Sunday() { return false; }
+	default String reminder76DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder76Date",
+			keyName = "reminder76Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder76
 	)
-	default String reminder76Date() { return ""; }
+	default String reminder76Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder76LocationX",
+			keyName = "reminder76Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder76
 	)
-	default int reminder76LocationX() { return 0; }
+	default String reminder76Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder76LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder76GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder76
 	)
-	default int reminder76LocationY() { return 0; }
+	default String reminder76GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder76Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder76
 	)
 	default int reminder76Radius() { return 0; }
@@ -14375,16 +10270,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder76RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder76
 	)
-	default int reminder76RegionId() { return 0; }
+	default String reminder76RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder76NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder76
 	)
 	default String reminder76NpcIds() { return ""; }
@@ -14393,25 +10288,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder76ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder76
 	)
 	default String reminder76ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder76Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder76
 	)
 	default int reminder76Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder76Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder76
 	)
 	default int reminder76Cooldown() { return 5; }
@@ -14453,109 +10348,55 @@ public interface RemindersConfig extends Config
 	default Color reminder77Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder77Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder77
-	)
-	default String reminder77Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder77Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder77
-	)
-	default boolean reminder77Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder77Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder77
-	)
-	default boolean reminder77Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder77Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder77
-	)
-	default boolean reminder77Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder77Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder77
-	)
-	default boolean reminder77Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder77Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder77
-	)
-	default boolean reminder77Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder77Saturday",
+			keyName = "reminder77Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder77
 	)
-	default boolean reminder77Saturday() { return false; }
+	default String reminder77Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder77Sunday",
+			keyName = "reminder77DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder77
 	)
-	default boolean reminder77Sunday() { return false; }
+	default String reminder77DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder77Date",
+			keyName = "reminder77Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder77
 	)
-	default String reminder77Date() { return ""; }
+	default String reminder77Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder77LocationX",
+			keyName = "reminder77Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder77
 	)
-	default int reminder77LocationX() { return 0; }
+	default String reminder77Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder77LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder77GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder77
 	)
-	default int reminder77LocationY() { return 0; }
+	default String reminder77GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder77Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder77
 	)
 	default int reminder77Radius() { return 0; }
@@ -14564,16 +10405,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder77RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder77
 	)
-	default int reminder77RegionId() { return 0; }
+	default String reminder77RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder77NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder77
 	)
 	default String reminder77NpcIds() { return ""; }
@@ -14582,25 +10423,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder77ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder77
 	)
 	default String reminder77ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder77Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder77
 	)
 	default int reminder77Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder77Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder77
 	)
 	default int reminder77Cooldown() { return 5; }
@@ -14642,109 +10483,55 @@ public interface RemindersConfig extends Config
 	default Color reminder78Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder78Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder78
-	)
-	default String reminder78Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder78Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder78
-	)
-	default boolean reminder78Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder78Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder78
-	)
-	default boolean reminder78Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder78Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder78
-	)
-	default boolean reminder78Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder78Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder78
-	)
-	default boolean reminder78Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder78Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder78
-	)
-	default boolean reminder78Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder78Saturday",
+			keyName = "reminder78Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder78
 	)
-	default boolean reminder78Saturday() { return false; }
+	default String reminder78Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder78Sunday",
+			keyName = "reminder78DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder78
 	)
-	default boolean reminder78Sunday() { return false; }
+	default String reminder78DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder78Date",
+			keyName = "reminder78Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder78
 	)
-	default String reminder78Date() { return ""; }
+	default String reminder78Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder78LocationX",
+			keyName = "reminder78Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder78
 	)
-	default int reminder78LocationX() { return 0; }
+	default String reminder78Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder78LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder78GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder78
 	)
-	default int reminder78LocationY() { return 0; }
+	default String reminder78GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder78Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder78
 	)
 	default int reminder78Radius() { return 0; }
@@ -14753,16 +10540,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder78RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder78
 	)
-	default int reminder78RegionId() { return 0; }
+	default String reminder78RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder78NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder78
 	)
 	default String reminder78NpcIds() { return ""; }
@@ -14771,25 +10558,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder78ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder78
 	)
 	default String reminder78ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder78Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder78
 	)
 	default int reminder78Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder78Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder78
 	)
 	default int reminder78Cooldown() { return 5; }
@@ -14831,109 +10618,55 @@ public interface RemindersConfig extends Config
 	default Color reminder79Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder79Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder79
-	)
-	default String reminder79Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder79Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder79
-	)
-	default boolean reminder79Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder79Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder79
-	)
-	default boolean reminder79Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder79Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder79
-	)
-	default boolean reminder79Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder79Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder79
-	)
-	default boolean reminder79Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder79Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder79
-	)
-	default boolean reminder79Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder79Saturday",
+			keyName = "reminder79Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder79
 	)
-	default boolean reminder79Saturday() { return false; }
+	default String reminder79Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder79Sunday",
+			keyName = "reminder79DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder79
 	)
-	default boolean reminder79Sunday() { return false; }
+	default String reminder79DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder79Date",
+			keyName = "reminder79Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder79
 	)
-	default String reminder79Date() { return ""; }
+	default String reminder79Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder79LocationX",
+			keyName = "reminder79Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder79
 	)
-	default int reminder79LocationX() { return 0; }
+	default String reminder79Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder79LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder79GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder79
 	)
-	default int reminder79LocationY() { return 0; }
+	default String reminder79GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder79Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder79
 	)
 	default int reminder79Radius() { return 0; }
@@ -14942,16 +10675,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder79RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder79
 	)
-	default int reminder79RegionId() { return 0; }
+	default String reminder79RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder79NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder79
 	)
 	default String reminder79NpcIds() { return ""; }
@@ -14960,25 +10693,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder79ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder79
 	)
 	default String reminder79ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder79Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder79
 	)
 	default int reminder79Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder79Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder79
 	)
 	default int reminder79Cooldown() { return 5; }
@@ -15020,109 +10753,55 @@ public interface RemindersConfig extends Config
 	default Color reminder80Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder80Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder80
-	)
-	default String reminder80Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder80Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder80
-	)
-	default boolean reminder80Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder80Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder80
-	)
-	default boolean reminder80Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder80Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder80
-	)
-	default boolean reminder80Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder80Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder80
-	)
-	default boolean reminder80Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder80Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder80
-	)
-	default boolean reminder80Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder80Saturday",
+			keyName = "reminder80Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder80
 	)
-	default boolean reminder80Saturday() { return false; }
+	default String reminder80Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder80Sunday",
+			keyName = "reminder80DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder80
 	)
-	default boolean reminder80Sunday() { return false; }
+	default String reminder80DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder80Date",
+			keyName = "reminder80Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder80
 	)
-	default String reminder80Date() { return ""; }
+	default String reminder80Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder80LocationX",
+			keyName = "reminder80Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder80
 	)
-	default int reminder80LocationX() { return 0; }
+	default String reminder80Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder80LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder80GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder80
 	)
-	default int reminder80LocationY() { return 0; }
+	default String reminder80GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder80Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder80
 	)
 	default int reminder80Radius() { return 0; }
@@ -15131,16 +10810,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder80RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder80
 	)
-	default int reminder80RegionId() { return 0; }
+	default String reminder80RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder80NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder80
 	)
 	default String reminder80NpcIds() { return ""; }
@@ -15149,25 +10828,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder80ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder80
 	)
 	default String reminder80ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder80Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder80
 	)
 	default int reminder80Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder80Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder80
 	)
 	default int reminder80Cooldown() { return 5; }
@@ -15209,109 +10888,55 @@ public interface RemindersConfig extends Config
 	default Color reminder81Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder81Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder81
-	)
-	default String reminder81Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder81Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder81
-	)
-	default boolean reminder81Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder81Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder81
-	)
-	default boolean reminder81Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder81Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder81
-	)
-	default boolean reminder81Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder81Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder81
-	)
-	default boolean reminder81Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder81Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder81
-	)
-	default boolean reminder81Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder81Saturday",
+			keyName = "reminder81Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder81
 	)
-	default boolean reminder81Saturday() { return false; }
+	default String reminder81Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder81Sunday",
+			keyName = "reminder81DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder81
 	)
-	default boolean reminder81Sunday() { return false; }
+	default String reminder81DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder81Date",
+			keyName = "reminder81Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder81
 	)
-	default String reminder81Date() { return ""; }
+	default String reminder81Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder81LocationX",
+			keyName = "reminder81Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder81
 	)
-	default int reminder81LocationX() { return 0; }
+	default String reminder81Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder81LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder81GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder81
 	)
-	default int reminder81LocationY() { return 0; }
+	default String reminder81GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder81Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder81
 	)
 	default int reminder81Radius() { return 0; }
@@ -15320,16 +10945,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder81RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder81
 	)
-	default int reminder81RegionId() { return 0; }
+	default String reminder81RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder81NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder81
 	)
 	default String reminder81NpcIds() { return ""; }
@@ -15338,25 +10963,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder81ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder81
 	)
 	default String reminder81ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder81Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder81
 	)
 	default int reminder81Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder81Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder81
 	)
 	default int reminder81Cooldown() { return 5; }
@@ -15398,109 +11023,55 @@ public interface RemindersConfig extends Config
 	default Color reminder82Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder82Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder82
-	)
-	default String reminder82Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder82Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder82
-	)
-	default boolean reminder82Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder82Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder82
-	)
-	default boolean reminder82Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder82Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder82
-	)
-	default boolean reminder82Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder82Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder82
-	)
-	default boolean reminder82Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder82Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder82
-	)
-	default boolean reminder82Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder82Saturday",
+			keyName = "reminder82Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder82
 	)
-	default boolean reminder82Saturday() { return false; }
+	default String reminder82Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder82Sunday",
+			keyName = "reminder82DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder82
 	)
-	default boolean reminder82Sunday() { return false; }
+	default String reminder82DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder82Date",
+			keyName = "reminder82Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder82
 	)
-	default String reminder82Date() { return ""; }
+	default String reminder82Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder82LocationX",
+			keyName = "reminder82Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder82
 	)
-	default int reminder82LocationX() { return 0; }
+	default String reminder82Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder82LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder82GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder82
 	)
-	default int reminder82LocationY() { return 0; }
+	default String reminder82GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder82Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder82
 	)
 	default int reminder82Radius() { return 0; }
@@ -15509,16 +11080,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder82RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder82
 	)
-	default int reminder82RegionId() { return 0; }
+	default String reminder82RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder82NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder82
 	)
 	default String reminder82NpcIds() { return ""; }
@@ -15527,25 +11098,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder82ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder82
 	)
 	default String reminder82ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder82Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder82
 	)
 	default int reminder82Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder82Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder82
 	)
 	default int reminder82Cooldown() { return 5; }
@@ -15587,109 +11158,55 @@ public interface RemindersConfig extends Config
 	default Color reminder83Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder83Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder83
-	)
-	default String reminder83Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder83Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder83
-	)
-	default boolean reminder83Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder83Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder83
-	)
-	default boolean reminder83Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder83Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder83
-	)
-	default boolean reminder83Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder83Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder83
-	)
-	default boolean reminder83Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder83Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder83
-	)
-	default boolean reminder83Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder83Saturday",
+			keyName = "reminder83Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder83
 	)
-	default boolean reminder83Saturday() { return false; }
+	default String reminder83Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder83Sunday",
+			keyName = "reminder83DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder83
 	)
-	default boolean reminder83Sunday() { return false; }
+	default String reminder83DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder83Date",
+			keyName = "reminder83Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder83
 	)
-	default String reminder83Date() { return ""; }
+	default String reminder83Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder83LocationX",
+			keyName = "reminder83Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder83
 	)
-	default int reminder83LocationX() { return 0; }
+	default String reminder83Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder83LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder83GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder83
 	)
-	default int reminder83LocationY() { return 0; }
+	default String reminder83GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder83Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder83
 	)
 	default int reminder83Radius() { return 0; }
@@ -15698,16 +11215,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder83RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder83
 	)
-	default int reminder83RegionId() { return 0; }
+	default String reminder83RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder83NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder83
 	)
 	default String reminder83NpcIds() { return ""; }
@@ -15716,25 +11233,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder83ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder83
 	)
 	default String reminder83ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder83Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder83
 	)
 	default int reminder83Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder83Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder83
 	)
 	default int reminder83Cooldown() { return 5; }
@@ -15776,109 +11293,55 @@ public interface RemindersConfig extends Config
 	default Color reminder84Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder84Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder84
-	)
-	default String reminder84Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder84Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder84
-	)
-	default boolean reminder84Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder84Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder84
-	)
-	default boolean reminder84Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder84Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder84
-	)
-	default boolean reminder84Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder84Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder84
-	)
-	default boolean reminder84Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder84Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder84
-	)
-	default boolean reminder84Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder84Saturday",
+			keyName = "reminder84Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder84
 	)
-	default boolean reminder84Saturday() { return false; }
+	default String reminder84Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder84Sunday",
+			keyName = "reminder84DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder84
 	)
-	default boolean reminder84Sunday() { return false; }
+	default String reminder84DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder84Date",
+			keyName = "reminder84Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder84
 	)
-	default String reminder84Date() { return ""; }
+	default String reminder84Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder84LocationX",
+			keyName = "reminder84Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder84
 	)
-	default int reminder84LocationX() { return 0; }
+	default String reminder84Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder84LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder84GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder84
 	)
-	default int reminder84LocationY() { return 0; }
+	default String reminder84GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder84Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder84
 	)
 	default int reminder84Radius() { return 0; }
@@ -15887,16 +11350,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder84RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder84
 	)
-	default int reminder84RegionId() { return 0; }
+	default String reminder84RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder84NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder84
 	)
 	default String reminder84NpcIds() { return ""; }
@@ -15905,25 +11368,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder84ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder84
 	)
 	default String reminder84ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder84Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder84
 	)
 	default int reminder84Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder84Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder84
 	)
 	default int reminder84Cooldown() { return 5; }
@@ -15965,109 +11428,55 @@ public interface RemindersConfig extends Config
 	default Color reminder85Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder85Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder85
-	)
-	default String reminder85Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder85Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder85
-	)
-	default boolean reminder85Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder85Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder85
-	)
-	default boolean reminder85Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder85Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder85
-	)
-	default boolean reminder85Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder85Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder85
-	)
-	default boolean reminder85Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder85Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder85
-	)
-	default boolean reminder85Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder85Saturday",
+			keyName = "reminder85Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder85
 	)
-	default boolean reminder85Saturday() { return false; }
+	default String reminder85Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder85Sunday",
+			keyName = "reminder85DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder85
 	)
-	default boolean reminder85Sunday() { return false; }
+	default String reminder85DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder85Date",
+			keyName = "reminder85Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder85
 	)
-	default String reminder85Date() { return ""; }
+	default String reminder85Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder85LocationX",
+			keyName = "reminder85Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder85
 	)
-	default int reminder85LocationX() { return 0; }
+	default String reminder85Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder85LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder85GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder85
 	)
-	default int reminder85LocationY() { return 0; }
+	default String reminder85GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder85Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder85
 	)
 	default int reminder85Radius() { return 0; }
@@ -16076,16 +11485,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder85RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder85
 	)
-	default int reminder85RegionId() { return 0; }
+	default String reminder85RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder85NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder85
 	)
 	default String reminder85NpcIds() { return ""; }
@@ -16094,25 +11503,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder85ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder85
 	)
 	default String reminder85ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder85Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder85
 	)
 	default int reminder85Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder85Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder85
 	)
 	default int reminder85Cooldown() { return 5; }
@@ -16154,109 +11563,55 @@ public interface RemindersConfig extends Config
 	default Color reminder86Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder86Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder86
-	)
-	default String reminder86Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder86Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder86
-	)
-	default boolean reminder86Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder86Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder86
-	)
-	default boolean reminder86Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder86Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder86
-	)
-	default boolean reminder86Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder86Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder86
-	)
-	default boolean reminder86Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder86Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder86
-	)
-	default boolean reminder86Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder86Saturday",
+			keyName = "reminder86Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder86
 	)
-	default boolean reminder86Saturday() { return false; }
+	default String reminder86Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder86Sunday",
+			keyName = "reminder86DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder86
 	)
-	default boolean reminder86Sunday() { return false; }
+	default String reminder86DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder86Date",
+			keyName = "reminder86Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder86
 	)
-	default String reminder86Date() { return ""; }
+	default String reminder86Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder86LocationX",
+			keyName = "reminder86Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder86
 	)
-	default int reminder86LocationX() { return 0; }
+	default String reminder86Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder86LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder86GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder86
 	)
-	default int reminder86LocationY() { return 0; }
+	default String reminder86GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder86Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder86
 	)
 	default int reminder86Radius() { return 0; }
@@ -16265,16 +11620,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder86RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder86
 	)
-	default int reminder86RegionId() { return 0; }
+	default String reminder86RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder86NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder86
 	)
 	default String reminder86NpcIds() { return ""; }
@@ -16283,25 +11638,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder86ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder86
 	)
 	default String reminder86ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder86Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder86
 	)
 	default int reminder86Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder86Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder86
 	)
 	default int reminder86Cooldown() { return 5; }
@@ -16343,109 +11698,55 @@ public interface RemindersConfig extends Config
 	default Color reminder87Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder87Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder87
-	)
-	default String reminder87Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder87Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder87
-	)
-	default boolean reminder87Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder87Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder87
-	)
-	default boolean reminder87Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder87Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder87
-	)
-	default boolean reminder87Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder87Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder87
-	)
-	default boolean reminder87Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder87Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder87
-	)
-	default boolean reminder87Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder87Saturday",
+			keyName = "reminder87Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder87
 	)
-	default boolean reminder87Saturday() { return false; }
+	default String reminder87Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder87Sunday",
+			keyName = "reminder87DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder87
 	)
-	default boolean reminder87Sunday() { return false; }
+	default String reminder87DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder87Date",
+			keyName = "reminder87Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder87
 	)
-	default String reminder87Date() { return ""; }
+	default String reminder87Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder87LocationX",
+			keyName = "reminder87Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder87
 	)
-	default int reminder87LocationX() { return 0; }
+	default String reminder87Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder87LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder87GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder87
 	)
-	default int reminder87LocationY() { return 0; }
+	default String reminder87GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder87Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder87
 	)
 	default int reminder87Radius() { return 0; }
@@ -16454,16 +11755,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder87RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder87
 	)
-	default int reminder87RegionId() { return 0; }
+	default String reminder87RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder87NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder87
 	)
 	default String reminder87NpcIds() { return ""; }
@@ -16472,25 +11773,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder87ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder87
 	)
 	default String reminder87ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder87Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder87
 	)
 	default int reminder87Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder87Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder87
 	)
 	default int reminder87Cooldown() { return 5; }
@@ -16532,109 +11833,55 @@ public interface RemindersConfig extends Config
 	default Color reminder88Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder88Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder88
-	)
-	default String reminder88Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder88Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder88
-	)
-	default boolean reminder88Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder88Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder88
-	)
-	default boolean reminder88Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder88Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder88
-	)
-	default boolean reminder88Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder88Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder88
-	)
-	default boolean reminder88Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder88Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder88
-	)
-	default boolean reminder88Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder88Saturday",
+			keyName = "reminder88Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder88
 	)
-	default boolean reminder88Saturday() { return false; }
+	default String reminder88Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder88Sunday",
+			keyName = "reminder88DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder88
 	)
-	default boolean reminder88Sunday() { return false; }
+	default String reminder88DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder88Date",
+			keyName = "reminder88Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder88
 	)
-	default String reminder88Date() { return ""; }
+	default String reminder88Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder88LocationX",
+			keyName = "reminder88Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder88
 	)
-	default int reminder88LocationX() { return 0; }
+	default String reminder88Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder88LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder88GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder88
 	)
-	default int reminder88LocationY() { return 0; }
+	default String reminder88GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder88Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder88
 	)
 	default int reminder88Radius() { return 0; }
@@ -16643,16 +11890,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder88RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder88
 	)
-	default int reminder88RegionId() { return 0; }
+	default String reminder88RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder88NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder88
 	)
 	default String reminder88NpcIds() { return ""; }
@@ -16661,25 +11908,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder88ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder88
 	)
 	default String reminder88ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder88Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder88
 	)
 	default int reminder88Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder88Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder88
 	)
 	default int reminder88Cooldown() { return 5; }
@@ -16721,109 +11968,55 @@ public interface RemindersConfig extends Config
 	default Color reminder89Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder89Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder89
-	)
-	default String reminder89Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder89Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder89
-	)
-	default boolean reminder89Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder89Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder89
-	)
-	default boolean reminder89Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder89Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder89
-	)
-	default boolean reminder89Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder89Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder89
-	)
-	default boolean reminder89Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder89Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder89
-	)
-	default boolean reminder89Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder89Saturday",
+			keyName = "reminder89Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder89
 	)
-	default boolean reminder89Saturday() { return false; }
+	default String reminder89Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder89Sunday",
+			keyName = "reminder89DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder89
 	)
-	default boolean reminder89Sunday() { return false; }
+	default String reminder89DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder89Date",
+			keyName = "reminder89Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder89
 	)
-	default String reminder89Date() { return ""; }
+	default String reminder89Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder89LocationX",
+			keyName = "reminder89Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder89
 	)
-	default int reminder89LocationX() { return 0; }
+	default String reminder89Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder89LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder89GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder89
 	)
-	default int reminder89LocationY() { return 0; }
+	default String reminder89GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder89Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder89
 	)
 	default int reminder89Radius() { return 0; }
@@ -16832,16 +12025,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder89RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder89
 	)
-	default int reminder89RegionId() { return 0; }
+	default String reminder89RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder89NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder89
 	)
 	default String reminder89NpcIds() { return ""; }
@@ -16850,25 +12043,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder89ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder89
 	)
 	default String reminder89ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder89Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder89
 	)
 	default int reminder89Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder89Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder89
 	)
 	default int reminder89Cooldown() { return 5; }
@@ -16910,109 +12103,55 @@ public interface RemindersConfig extends Config
 	default Color reminder90Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder90Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder90
-	)
-	default String reminder90Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder90Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder90
-	)
-	default boolean reminder90Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder90Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder90
-	)
-	default boolean reminder90Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder90Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder90
-	)
-	default boolean reminder90Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder90Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder90
-	)
-	default boolean reminder90Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder90Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder90
-	)
-	default boolean reminder90Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder90Saturday",
+			keyName = "reminder90Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder90
 	)
-	default boolean reminder90Saturday() { return false; }
+	default String reminder90Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder90Sunday",
+			keyName = "reminder90DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder90
 	)
-	default boolean reminder90Sunday() { return false; }
+	default String reminder90DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder90Date",
+			keyName = "reminder90Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder90
 	)
-	default String reminder90Date() { return ""; }
+	default String reminder90Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder90LocationX",
+			keyName = "reminder90Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder90
 	)
-	default int reminder90LocationX() { return 0; }
+	default String reminder90Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder90LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder90GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder90
 	)
-	default int reminder90LocationY() { return 0; }
+	default String reminder90GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder90Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder90
 	)
 	default int reminder90Radius() { return 0; }
@@ -17021,16 +12160,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder90RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder90
 	)
-	default int reminder90RegionId() { return 0; }
+	default String reminder90RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder90NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder90
 	)
 	default String reminder90NpcIds() { return ""; }
@@ -17039,25 +12178,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder90ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder90
 	)
 	default String reminder90ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder90Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder90
 	)
 	default int reminder90Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder90Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder90
 	)
 	default int reminder90Cooldown() { return 5; }
@@ -17099,109 +12238,55 @@ public interface RemindersConfig extends Config
 	default Color reminder91Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder91Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder91
-	)
-	default String reminder91Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder91Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder91
-	)
-	default boolean reminder91Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder91Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder91
-	)
-	default boolean reminder91Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder91Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder91
-	)
-	default boolean reminder91Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder91Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder91
-	)
-	default boolean reminder91Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder91Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder91
-	)
-	default boolean reminder91Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder91Saturday",
+			keyName = "reminder91Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder91
 	)
-	default boolean reminder91Saturday() { return false; }
+	default String reminder91Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder91Sunday",
+			keyName = "reminder91DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder91
 	)
-	default boolean reminder91Sunday() { return false; }
+	default String reminder91DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder91Date",
+			keyName = "reminder91Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder91
 	)
-	default String reminder91Date() { return ""; }
+	default String reminder91Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder91LocationX",
+			keyName = "reminder91Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder91
 	)
-	default int reminder91LocationX() { return 0; }
+	default String reminder91Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder91LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder91GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder91
 	)
-	default int reminder91LocationY() { return 0; }
+	default String reminder91GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder91Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder91
 	)
 	default int reminder91Radius() { return 0; }
@@ -17210,16 +12295,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder91RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder91
 	)
-	default int reminder91RegionId() { return 0; }
+	default String reminder91RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder91NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder91
 	)
 	default String reminder91NpcIds() { return ""; }
@@ -17228,25 +12313,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder91ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder91
 	)
 	default String reminder91ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder91Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder91
 	)
 	default int reminder91Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder91Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder91
 	)
 	default int reminder91Cooldown() { return 5; }
@@ -17288,109 +12373,55 @@ public interface RemindersConfig extends Config
 	default Color reminder92Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder92Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder92
-	)
-	default String reminder92Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder92Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder92
-	)
-	default boolean reminder92Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder92Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder92
-	)
-	default boolean reminder92Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder92Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder92
-	)
-	default boolean reminder92Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder92Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder92
-	)
-	default boolean reminder92Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder92Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder92
-	)
-	default boolean reminder92Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder92Saturday",
+			keyName = "reminder92Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder92
 	)
-	default boolean reminder92Saturday() { return false; }
+	default String reminder92Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder92Sunday",
+			keyName = "reminder92DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder92
 	)
-	default boolean reminder92Sunday() { return false; }
+	default String reminder92DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder92Date",
+			keyName = "reminder92Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder92
 	)
-	default String reminder92Date() { return ""; }
+	default String reminder92Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder92LocationX",
+			keyName = "reminder92Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder92
 	)
-	default int reminder92LocationX() { return 0; }
+	default String reminder92Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder92LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder92GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder92
 	)
-	default int reminder92LocationY() { return 0; }
+	default String reminder92GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder92Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder92
 	)
 	default int reminder92Radius() { return 0; }
@@ -17399,16 +12430,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder92RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder92
 	)
-	default int reminder92RegionId() { return 0; }
+	default String reminder92RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder92NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder92
 	)
 	default String reminder92NpcIds() { return ""; }
@@ -17417,25 +12448,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder92ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder92
 	)
 	default String reminder92ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder92Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder92
 	)
 	default int reminder92Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder92Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder92
 	)
 	default int reminder92Cooldown() { return 5; }
@@ -17477,109 +12508,55 @@ public interface RemindersConfig extends Config
 	default Color reminder93Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder93Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder93
-	)
-	default String reminder93Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder93Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder93
-	)
-	default boolean reminder93Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder93Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder93
-	)
-	default boolean reminder93Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder93Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder93
-	)
-	default boolean reminder93Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder93Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder93
-	)
-	default boolean reminder93Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder93Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder93
-	)
-	default boolean reminder93Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder93Saturday",
+			keyName = "reminder93Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder93
 	)
-	default boolean reminder93Saturday() { return false; }
+	default String reminder93Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder93Sunday",
+			keyName = "reminder93DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder93
 	)
-	default boolean reminder93Sunday() { return false; }
+	default String reminder93DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder93Date",
+			keyName = "reminder93Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder93
 	)
-	default String reminder93Date() { return ""; }
+	default String reminder93Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder93LocationX",
+			keyName = "reminder93Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder93
 	)
-	default int reminder93LocationX() { return 0; }
+	default String reminder93Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder93LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder93GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder93
 	)
-	default int reminder93LocationY() { return 0; }
+	default String reminder93GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder93Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder93
 	)
 	default int reminder93Radius() { return 0; }
@@ -17588,16 +12565,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder93RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder93
 	)
-	default int reminder93RegionId() { return 0; }
+	default String reminder93RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder93NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder93
 	)
 	default String reminder93NpcIds() { return ""; }
@@ -17606,25 +12583,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder93ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder93
 	)
 	default String reminder93ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder93Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder93
 	)
 	default int reminder93Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder93Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder93
 	)
 	default int reminder93Cooldown() { return 5; }
@@ -17666,109 +12643,55 @@ public interface RemindersConfig extends Config
 	default Color reminder94Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder94Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder94
-	)
-	default String reminder94Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder94Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder94
-	)
-	default boolean reminder94Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder94Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder94
-	)
-	default boolean reminder94Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder94Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder94
-	)
-	default boolean reminder94Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder94Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder94
-	)
-	default boolean reminder94Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder94Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder94
-	)
-	default boolean reminder94Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder94Saturday",
+			keyName = "reminder94Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder94
 	)
-	default boolean reminder94Saturday() { return false; }
+	default String reminder94Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder94Sunday",
+			keyName = "reminder94DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder94
 	)
-	default boolean reminder94Sunday() { return false; }
+	default String reminder94DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder94Date",
+			keyName = "reminder94Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder94
 	)
-	default String reminder94Date() { return ""; }
+	default String reminder94Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder94LocationX",
+			keyName = "reminder94Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder94
 	)
-	default int reminder94LocationX() { return 0; }
+	default String reminder94Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder94LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder94GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder94
 	)
-	default int reminder94LocationY() { return 0; }
+	default String reminder94GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder94Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder94
 	)
 	default int reminder94Radius() { return 0; }
@@ -17777,16 +12700,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder94RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder94
 	)
-	default int reminder94RegionId() { return 0; }
+	default String reminder94RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder94NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder94
 	)
 	default String reminder94NpcIds() { return ""; }
@@ -17795,25 +12718,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder94ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder94
 	)
 	default String reminder94ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder94Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder94
 	)
 	default int reminder94Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder94Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder94
 	)
 	default int reminder94Cooldown() { return 5; }
@@ -17855,109 +12778,55 @@ public interface RemindersConfig extends Config
 	default Color reminder95Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder95Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder95
-	)
-	default String reminder95Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder95Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder95
-	)
-	default boolean reminder95Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder95Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder95
-	)
-	default boolean reminder95Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder95Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder95
-	)
-	default boolean reminder95Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder95Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder95
-	)
-	default boolean reminder95Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder95Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder95
-	)
-	default boolean reminder95Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder95Saturday",
+			keyName = "reminder95Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder95
 	)
-	default boolean reminder95Saturday() { return false; }
+	default String reminder95Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder95Sunday",
+			keyName = "reminder95DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder95
 	)
-	default boolean reminder95Sunday() { return false; }
+	default String reminder95DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder95Date",
+			keyName = "reminder95Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder95
 	)
-	default String reminder95Date() { return ""; }
+	default String reminder95Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder95LocationX",
+			keyName = "reminder95Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder95
 	)
-	default int reminder95LocationX() { return 0; }
+	default String reminder95Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder95LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder95GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder95
 	)
-	default int reminder95LocationY() { return 0; }
+	default String reminder95GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder95Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder95
 	)
 	default int reminder95Radius() { return 0; }
@@ -17966,16 +12835,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder95RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder95
 	)
-	default int reminder95RegionId() { return 0; }
+	default String reminder95RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder95NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder95
 	)
 	default String reminder95NpcIds() { return ""; }
@@ -17984,25 +12853,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder95ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder95
 	)
 	default String reminder95ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder95Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder95
 	)
 	default int reminder95Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder95Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder95
 	)
 	default int reminder95Cooldown() { return 5; }
@@ -18044,109 +12913,55 @@ public interface RemindersConfig extends Config
 	default Color reminder96Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder96Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder96
-	)
-	default String reminder96Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder96Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder96
-	)
-	default boolean reminder96Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder96Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder96
-	)
-	default boolean reminder96Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder96Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder96
-	)
-	default boolean reminder96Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder96Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder96
-	)
-	default boolean reminder96Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder96Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder96
-	)
-	default boolean reminder96Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder96Saturday",
+			keyName = "reminder96Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder96
 	)
-	default boolean reminder96Saturday() { return false; }
+	default String reminder96Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder96Sunday",
+			keyName = "reminder96DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder96
 	)
-	default boolean reminder96Sunday() { return false; }
+	default String reminder96DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder96Date",
+			keyName = "reminder96Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder96
 	)
-	default String reminder96Date() { return ""; }
+	default String reminder96Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder96LocationX",
+			keyName = "reminder96Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder96
 	)
-	default int reminder96LocationX() { return 0; }
+	default String reminder96Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder96LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder96GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder96
 	)
-	default int reminder96LocationY() { return 0; }
+	default String reminder96GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder96Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder96
 	)
 	default int reminder96Radius() { return 0; }
@@ -18155,16 +12970,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder96RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder96
 	)
-	default int reminder96RegionId() { return 0; }
+	default String reminder96RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder96NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder96
 	)
 	default String reminder96NpcIds() { return ""; }
@@ -18173,25 +12988,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder96ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder96
 	)
 	default String reminder96ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder96Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder96
 	)
 	default int reminder96Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder96Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder96
 	)
 	default int reminder96Cooldown() { return 5; }
@@ -18233,109 +13048,55 @@ public interface RemindersConfig extends Config
 	default Color reminder97Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder97Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder97
-	)
-	default String reminder97Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder97Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder97
-	)
-	default boolean reminder97Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder97Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder97
-	)
-	default boolean reminder97Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder97Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder97
-	)
-	default boolean reminder97Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder97Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder97
-	)
-	default boolean reminder97Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder97Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder97
-	)
-	default boolean reminder97Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder97Saturday",
+			keyName = "reminder97Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder97
 	)
-	default boolean reminder97Saturday() { return false; }
+	default String reminder97Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder97Sunday",
+			keyName = "reminder97DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder97
 	)
-	default boolean reminder97Sunday() { return false; }
+	default String reminder97DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder97Date",
+			keyName = "reminder97Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder97
 	)
-	default String reminder97Date() { return ""; }
+	default String reminder97Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder97LocationX",
+			keyName = "reminder97Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder97
 	)
-	default int reminder97LocationX() { return 0; }
+	default String reminder97Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder97LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder97GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder97
 	)
-	default int reminder97LocationY() { return 0; }
+	default String reminder97GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder97Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder97
 	)
 	default int reminder97Radius() { return 0; }
@@ -18344,16 +13105,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder97RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder97
 	)
-	default int reminder97RegionId() { return 0; }
+	default String reminder97RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder97NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder97
 	)
 	default String reminder97NpcIds() { return ""; }
@@ -18362,25 +13123,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder97ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder97
 	)
 	default String reminder97ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder97Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder97
 	)
 	default int reminder97Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder97Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder97
 	)
 	default int reminder97Cooldown() { return 5; }
@@ -18422,109 +13183,55 @@ public interface RemindersConfig extends Config
 	default Color reminder98Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder98Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder98
-	)
-	default String reminder98Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder98Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder98
-	)
-	default boolean reminder98Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder98Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder98
-	)
-	default boolean reminder98Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder98Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder98
-	)
-	default boolean reminder98Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder98Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder98
-	)
-	default boolean reminder98Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder98Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder98
-	)
-	default boolean reminder98Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder98Saturday",
+			keyName = "reminder98Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder98
 	)
-	default boolean reminder98Saturday() { return false; }
+	default String reminder98Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder98Sunday",
+			keyName = "reminder98DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder98
 	)
-	default boolean reminder98Sunday() { return false; }
+	default String reminder98DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder98Date",
+			keyName = "reminder98Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder98
 	)
-	default String reminder98Date() { return ""; }
+	default String reminder98Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder98LocationX",
+			keyName = "reminder98Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder98
 	)
-	default int reminder98LocationX() { return 0; }
+	default String reminder98Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder98LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder98GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder98
 	)
-	default int reminder98LocationY() { return 0; }
+	default String reminder98GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder98Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder98
 	)
 	default int reminder98Radius() { return 0; }
@@ -18533,16 +13240,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder98RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder98
 	)
-	default int reminder98RegionId() { return 0; }
+	default String reminder98RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder98NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder98
 	)
 	default String reminder98NpcIds() { return ""; }
@@ -18551,25 +13258,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder98ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder98
 	)
 	default String reminder98ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder98Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder98
 	)
 	default int reminder98Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder98Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder98
 	)
 	default int reminder98Cooldown() { return 5; }
@@ -18611,109 +13318,55 @@ public interface RemindersConfig extends Config
 	default Color reminder99Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder99Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder99
-	)
-	default String reminder99Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder99Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder99
-	)
-	default boolean reminder99Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder99Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder99
-	)
-	default boolean reminder99Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder99Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder99
-	)
-	default boolean reminder99Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder99Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder99
-	)
-	default boolean reminder99Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder99Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder99
-	)
-	default boolean reminder99Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder99Saturday",
+			keyName = "reminder99Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder99
 	)
-	default boolean reminder99Saturday() { return false; }
+	default String reminder99Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder99Sunday",
+			keyName = "reminder99DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder99
 	)
-	default boolean reminder99Sunday() { return false; }
+	default String reminder99DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder99Date",
+			keyName = "reminder99Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder99
 	)
-	default String reminder99Date() { return ""; }
+	default String reminder99Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder99LocationX",
+			keyName = "reminder99Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder99
 	)
-	default int reminder99LocationX() { return 0; }
+	default String reminder99Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder99LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder99GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder99
 	)
-	default int reminder99LocationY() { return 0; }
+	default String reminder99GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder99Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder99
 	)
 	default int reminder99Radius() { return 0; }
@@ -18722,16 +13375,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder99RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder99
 	)
-	default int reminder99RegionId() { return 0; }
+	default String reminder99RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder99NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder99
 	)
 	default String reminder99NpcIds() { return ""; }
@@ -18740,25 +13393,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder99ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder99
 	)
 	default String reminder99ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder99Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder99
 	)
 	default int reminder99Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder99Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder99
 	)
 	default int reminder99Cooldown() { return 5; }
@@ -18800,109 +13453,55 @@ public interface RemindersConfig extends Config
 	default Color reminder100Color() { return Color.WHITE; }
 
 	@ConfigItem(
-			keyName = "reminder100Time",
-			position = 3,
-			name = "Time",
-			description = "Configures what time reminder is shown, e.g. 8:30am, 12:00pm.",
-			section = reminder100
-	)
-	default String reminder100Time() { return ""; }
-
-	@ConfigItem(
-			keyName = "reminder100Monday",
-			position = 4,
-			name = "Monday",
-			description = "Configures whether or not reminder is shown on Mondays.",
-			section = reminder100
-	)
-	default boolean reminder100Monday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder100Tuesday",
-			position = 5,
-			name = "Tuesday",
-			description = "Configures whether or not reminder is shown on Tuesdays.",
-			section = reminder100
-	)
-	default boolean reminder100Tuesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder100Wednesday",
-			position = 6,
-			name = "Wednesday",
-			description = "Configures whether or not reminder is shown on Wednesdays.",
-			section = reminder100
-	)
-	default boolean reminder100Wednesday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder100Thursday",
-			position = 7,
-			name = "Thursday",
-			description = "Configures whether or not reminder is shown on Thursdays.",
-			section = reminder100
-	)
-	default boolean reminder100Thursday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder100Friday",
-			position = 8,
-			name = "Friday",
-			description = "Configures whether or reminder is shown on Fridays.",
-			section = reminder100
-	)
-	default boolean reminder100Friday() { return false; }
-
-	@ConfigItem(
-			keyName = "reminder100Saturday",
+			keyName = "reminder100Times",
 			position = 9,
-			name = "Saturday",
-			description = "Configures whether or not reminder is shown on Saturdays.",
+			name = "Times",
+			description = "Configures what times reminder is shown, e.g. 8:30am, 12:00pm (comma separated).",
 			section = reminder100
 	)
-	default boolean reminder100Saturday() { return false; }
+	default String reminder100Times() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder100Sunday",
+			keyName = "reminder100DaysOfWeek",
 			position = 10,
-			name = "Sunday",
-			description = "Configures whether or not reminder is shown on Sundays.",
+			name = "Days of Week",
+			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder100
 	)
-	default boolean reminder100Sunday() { return false; }
+	default String reminder100DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder100Date",
+			keyName = "reminder100Dates",
 			position = 11,
-			name = "Date",
-			description = "Configures the date when reminder is shown, e.g. 04/30, 05/28/23",
+			name = "Dates",
+			description = "Configures what dates reminder is shown, e.g. 04/30, 05/28/23 (comma separated).",
 			section = reminder100
 	)
-	default String reminder100Date() { return ""; }
+	default String reminder100Dates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder100LocationX",
+			keyName = "reminder100Coordinates",
 			position = 12,
-			name = "Location X",
-			description = "Configures the x coordinate for when reminder is shown.",
+			name = "Coordinates",
+			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder100
 	)
-	default int reminder100LocationX() { return 0; }
+	default String reminder100Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder100LocationY",
-			position = 13,
-			name = "Location Y",
-			description = "Configures the y coordinate for when reminder is shown.",
+			keyName = "reminder100GeoFences",
+			position = 14,
+			name = "Geo Fences",
+			description = "Configures geo fences where reminder is shown (left, top, right, bottom), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder100
 	)
-	default int reminder100LocationY() { return 0; }
+	default String reminder100GeoFences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder100Radius",
-			position = 14,
-			name = "Location Radius",
-			description = "Configures how far from the location reminder is shown.",
+			position = 13,
+			name = "Coordinate Radius",
+			description = "Configures how far from coordinates reminder is shown.",
 			section = reminder100
 	)
 	default int reminder100Radius() { return 0; }
@@ -18911,16 +13510,16 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder100RegionId",
 			position = 15,
 			name = "Region ID",
-			description = "Configures the region id for when reminder is shown.",
+			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder100
 	)
-	default int reminder100RegionId() { return 0; }
+	default String reminder100RegionIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder100NpcIds",
 			position = 16,
 			name = "Npc IDs",
-			description = "Configures the npc ids for when reminder is shown.",
+			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder100
 	)
 	default String reminder100NpcIds() { return ""; }
@@ -18929,25 +13528,25 @@ public interface RemindersConfig extends Config
 			keyName = "Reminder100ItemIds",
 			position = 17,
 			name = "Item IDs",
-			description = "Configures the item ids for when reminder is shown.",
+			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder100
 	)
 	default String reminder100ItemIds() { return ""; }
 
 	@ConfigItem(
 			keyName = "Reminder100Duration",
-			position = 19,
+			position = 3,
 			name = "Duration",
-			description = "Configures the duration reminder is shown (minutes).",
+			description = "Configures the duration reminder is shown (in minutes).",
 			section = reminder100
 	)
 	default int reminder100Duration() { return 5; }
 
 	@ConfigItem(
 			keyName = "Reminder100Cooldown",
-			position = 20,
+			position = 4,
 			name = "Cooldown",
-			description = "Configures the cooldown before reminder can be shown again (minutes).",
+			description = "Configures the cooldown before reminder is shown again (in minutes).",
 			section = reminder100
 	)
 	default int reminder100Cooldown() { return 5; }
