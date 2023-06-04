@@ -1,6 +1,11 @@
 package com.ericversteeg;
 
+import com.ericversteeg.reminder.Reminder;
+import com.ericversteeg.reminder.Reminders;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.inject.Provides;
 import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
@@ -21,6 +26,7 @@ import javax.inject.Inject;
 import java.awt.*;
 import java.time.*;
 import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAdjuster;
 import java.util.*;
 import java.util.List;
 
@@ -46,7 +52,7 @@ public class RemindersPlugin extends Plugin {
 	@Inject
 	private ItemManager itemManager;
 
-	List<Integer> activeReminders = new LinkedList<>();
+	List<Reminder> activeReminders = new LinkedList<>();
 
 	ZoneOffset zoneOffset = ZoneId.systemDefault()
 			.getRules()
@@ -155,31 +161,149 @@ public class RemindersPlugin extends Plugin {
 		return false;
 	}
 
-	private List<Integer> getActiveReminders()
+	private List<Reminder> getActiveReminders()
 	{
 		long start = Instant.now().toEpochMilli();
 
-		List<Integer> activeList = new LinkedList<>();
+		List<Reminder> activeList = new ArrayList<>();
 
 		for (int i = 1; i <= 100; i++)
 		{
-			if (isEnable(i))
+			Reminder reminder = new Reminder();
+
+			reminder.enable = isEnable(i);
+			reminder.text = getText(i);
+			reminder.text = reminder.text
+					.substring(0, Math.min(reminder.text.length(), 255));
+			reminder.colur = getColor(i);
+			reminder.times = getTimes(i);
+			reminder.daysOfWeek = getDaysOfWeek(i);
+			reminder.dates = getDates(i);
+			reminder.coordinates = getCoordinates(i);
+			reminder.radius = getRadius(i);
+			reminder.geoFences = getGeoFences(i);
+			reminder.regionIds = getRegionIds(i);
+			reminder.npcIds = getNpcIds(i);
+			reminder.itemIds = getItemIds(i);
+
+			if (reminder.enable)
 			{
-				if ((checkTimes(i) && !matchesTimes(i)) ||
-					(checkDaysOfWeek(i) && !matchesDaysOfWeek(i)) ||
-					(checkDates(i) && !matchesDates(i)) ||
-					(checkCoordinates(i) && !matchesCoordinates(i)) ||
-					(checkGeoFences(i) && !matchesGeoFences(i)) ||
-					(checkRegions(i) && !matchesRegions(i)) ||
-					(checkNpcIds(i) && !matchesNpcIds(i)) ||
-					(checkItemIds(i) && !matchesItemIds(i))
+				if ((checkTimes(reminder.times) && !matchesTimes(reminder.times)) ||
+					(checkDaysOfWeek(reminder.daysOfWeek) && !matchesDaysOfWeek(reminder.daysOfWeek)) ||
+					(checkDates(reminder.dates) && !matchesDates(reminder.dates)) ||
+					(checkCoordinates(reminder.coordinates) && !matchesCoordinates(reminder.coordinates, reminder.radius)) ||
+					(checkGeoFences(reminder.geoFences) && !matchesGeoFences(reminder.geoFences)) ||
+					(checkRegions(reminder.regionIds) && !matchesRegions(reminder.regionIds)) ||
+					(checkNpcIds(reminder.npcIds) && !matchesNpcIds(reminder.npcIds)) ||
+					(checkItemIds(reminder.itemIds) && !matchesItemIds(reminder.itemIds))
 				)
 				{
 					continue;
 				}
 
-				activeList.add(i);
+				activeList.add(reminder);
 			}
+		}
+
+		try {
+			JsonArray jsonArray = gson.fromJson(config.customReminders(), JsonArray.class);
+			List<Reminder> reminders = new ArrayList<>();
+			for (JsonElement jsonElement: jsonArray)
+			{
+				JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+				Reminder reminder = new Reminder();
+
+				if (jsonObject.has("enable"))
+				{
+					reminder.enable = jsonObject.get("enable").getAsBoolean();
+				}
+
+				if (jsonObject.has("text"))
+				{
+					reminder.text = jsonObject.get("text").getAsString();
+					reminder.text = reminder.text
+							.substring(0, Math.min(reminder.text.length(), 255));
+				}
+
+				if (jsonObject.has("color"))
+				{
+					reminder.colorStr = jsonObject.get("color").getAsString();
+				}
+
+				if (jsonObject.has("times"))
+				{
+					reminder.times = toCsv(jsonObject.get("times").getAsJsonArray());
+				}
+
+				if (jsonObject.has("days_of_week"))
+				{
+					reminder.daysOfWeek = toCsv(jsonObject.get("days_of_week").getAsJsonArray());
+				}
+
+				if (jsonObject.has("dates"))
+				{
+					reminder.dates = toCsv(jsonObject.get("dates").getAsJsonArray());
+				}
+
+				if (jsonObject.has("coordinates"))
+				{
+					reminder.coordinates = toCsv(jsonObject.get("coordinates").getAsJsonArray());
+				}
+
+				if (jsonObject.has("radius"))
+				{
+					reminder.radius = jsonObject.get("radius").getAsInt();
+				}
+
+				if (jsonObject.has("geo_fences"))
+				{
+					reminder.geoFences = toCsv(jsonObject.get("geo_fences").getAsJsonArray());
+				}
+
+				if (jsonObject.has("region_ids"))
+				{
+					reminder.regionIds = toCsv(jsonObject.get("region_ids").getAsJsonArray());
+				}
+
+				if (jsonObject.has("npc_ids"))
+				{
+					reminder.npcIds = toCsv(jsonObject.get("npc_ids").getAsJsonArray());
+				}
+
+				if (jsonObject.has("item_ids"))
+				{
+					reminder.itemIds = toCsv(jsonObject.get("item_ids").getAsJsonArray());
+				}
+
+				reminders.add(reminder);
+			}
+
+			for (Reminder reminder: reminders)
+			{
+				if (reminder.enable)
+				{
+					if ((checkTimes(reminder.times) && !matchesTimes(reminder.times)) ||
+						(checkDaysOfWeek(reminder.daysOfWeek) && !matchesDaysOfWeek(reminder.daysOfWeek)) ||
+						(checkDates(reminder.dates) && !matchesDates(reminder.dates)) ||
+						(checkCoordinates(reminder.coordinates) && !matchesCoordinates(reminder.coordinates, reminder.radius)) ||
+						(checkGeoFences(reminder.geoFences) && !matchesGeoFences(reminder.geoFences)) ||
+						(checkRegions(reminder.regionIds) && !matchesRegions(reminder.regionIds)) ||
+						(checkNpcIds(reminder.npcIds) && !matchesNpcIds(reminder.npcIds)) ||
+						(checkItemIds(reminder.itemIds) && !matchesItemIds(reminder.itemIds))
+					)
+					{
+						continue;
+					}
+
+					activeList.add(reminder);
+				}
+			}
+		}
+		catch (Exception exception)
+		{
+			System.out.println(exception.getMessage());
+			return activeList;
 		}
 
 		System.out.println("Active list took " + (Instant.now().toEpochMilli() - start) + "ms");
@@ -187,45 +311,48 @@ public class RemindersPlugin extends Plugin {
 		return activeList;
 	}
 
-	private boolean checkTimes(int noteId)
+	private String toCsv(JsonArray jsonArray)
 	{
-		return !getTimes(noteId).isEmpty();
+		StringBuilder sb = new StringBuilder();
+
+		for (JsonElement jsonElement: jsonArray)
+		{
+			sb.append(jsonElement.getAsString());
+			sb.append(",");
+		}
+
+		return sb.substring(0, sb.length() - 1);
 	}
 
-	private boolean matchesTimes(int noteId)
+	private boolean checkTimes(String times)
+	{
+		return !times.isEmpty();
+	}
+
+	private boolean matchesTimes(String times)
 	{
 		try {
-			String [] times = getTimes(noteId).split(",");
+			String [] timeRanges = times.split(",");
 
-			for (String timeStr: times)
+			for (String timeRangeStr: timeRanges)
 			{
-				String [] timeParts = timeStr.split(":");
+				LocalDateTime startDateTime;
+				LocalDateTime endDateTime;
 
-				int h = Integer.parseInt(timeParts[0].trim());
-
-				String ma = timeParts[1].toLowerCase();
-
-				int m = Integer.parseInt(ma
-						.trim()
-						.replace("am", "")
-						.replace("pm", ""));
-
-
-				String aStr = ma
-						.trim()
-						.substring(ma.length() - 2, ma.length());
-
-				int a = 0;
-				if (aStr.equals("pm"))
+				if (!timeRangeStr.contains("-"))
 				{
-					a = 1;
+					startDateTime = toLocalDateTime(timeRangeStr);
+					endDateTime = startDateTime.plusMinutes(30);
+				}
+				else
+				{
+					String [] timeRangeParts = timeRangeStr.split("-");
+
+					startDateTime = toLocalDateTime(timeRangeParts[0]);
+					endDateTime = toLocalDateTime(timeRangeParts[1]);
 				}
 
-				boolean matches = dateTime.get(ChronoField.HOUR_OF_AMPM) == h
-						&& dateTime.get(ChronoField.MINUTE_OF_HOUR) == m
-						&& dateTime.get(ChronoField.AMPM_OF_DAY) == a;
-
-				if (matches)
+				if (dateTime.isAfter(startDateTime) && dateTime.isBefore(endDateTime))
 				{
 					return true;
 				}
@@ -240,21 +367,57 @@ public class RemindersPlugin extends Plugin {
 		}
 	}
 
-	private boolean checkDaysOfWeek(int noteId)
+	private LocalDateTime toLocalDateTime(String amPmTime)
 	{
-		return !getDaysOfWeek(noteId).isEmpty();
+		String [] timeParts = amPmTime.split(":");
+
+		int h = Integer.parseInt(timeParts[0].trim());
+
+		String ma = timeParts[1]
+				.toLowerCase()
+				.trim();
+
+		int m = Integer.parseInt(ma
+				.replace("am", "")
+				.replace("pm", ""));
+
+
+		String aStr = ma
+				.substring(ma.length() - 2);
+
+		if (aStr.equals("pm"))
+		{
+			if (h > 12)
+			{
+				h += 12;
+			}
+		}
+		else
+		{
+			if (h == 12)
+			{
+				h = 0;
+			}
+		}
+
+		return LocalDate.now(ZoneId.systemDefault()).atTime(h, m);
 	}
 
-	private boolean matchesDaysOfWeek(int noteId)
+	private boolean checkDaysOfWeek(String daysOfWeek)
+	{
+		return !daysOfWeek.isEmpty();
+	}
+
+	private boolean matchesDaysOfWeek(String daysOfWeekStr)
 	{
 		try {
-			String [] daysOfWeek = getDaysOfWeek(noteId).split(",");
+			String [] daysOfWeek = daysOfWeekStr.split(",");
 
 			for (String dayOfWeek: daysOfWeek)
 			{
 				String lcDayOfWeek = dayOfWeek.toLowerCase();
 				int d = 0;
-				if (lcDayOfWeek.startsWith("mo")) d = 7;
+				if (lcDayOfWeek.startsWith("mo")) d = 1;
 				else if (lcDayOfWeek.startsWith("tu")) d = 2;
 				else if (lcDayOfWeek.startsWith("we")) d = 3;
 				else if (lcDayOfWeek.startsWith("th")) d = 4;
@@ -279,41 +442,36 @@ public class RemindersPlugin extends Plugin {
 		}
 	}
 
-	private boolean checkDates(int noteId)
+	private boolean checkDates(String dates)
 	{
-		return !getDates(noteId).isEmpty();
+		return !dates.isEmpty();
 	}
 
-	private boolean matchesDates(int noteId)
+	private boolean matchesDates(String datesStr)
 	{
 		try {
-			String [] dates = getDates(noteId).split(",");
+			String [] dateRanges = datesStr.split(",");
 
-			for (String dateStr: dates)
+			for (String dateRangeOrStr: dateRanges)
 			{
-				String [] dateParts = dateStr.split("/");
+				LocalDate startLocalDate;
+				LocalDate endLocalDate;
 
-				int m = Integer.parseInt(dateParts[0].trim());
-				int d = Integer.parseInt(dateParts[1].trim());
-				int y = 0;
-
-				if (dateParts.length > 2)
+				if (dateRangeOrStr.contains("-"))
 				{
-					y = Integer.parseInt(dateParts[2].trim());
+					String [] dateRangeParts = dateRangeOrStr.split("-");
+
+					startLocalDate = toLocalDate(dateRangeParts[0]);
+					endLocalDate = toLocalDate(dateRangeParts[1]);
+				}
+				else
+				{
+					startLocalDate = toLocalDate(dateRangeOrStr);
+					endLocalDate = toLocalDate(dateRangeOrStr);
 				}
 
-				boolean matches = dateTime.get(ChronoField.MONTH_OF_YEAR) == m
-						&& dateTime.get(ChronoField.DAY_OF_MONTH) == d;
-
-				if (y > 0)
-				{
-					matches = matches && Integer.parseInt(
-							String.valueOf(
-									dateTime.get(ChronoField.YEAR))
-										.substring(2, 4)) == y;
-				}
-
-				if (matches)
+				if (startLocalDate.atStartOfDay().isBefore(dateTime)
+						&& endLocalDate.plusDays(1).atStartOfDay().isAfter(dateTime))
 				{
 					return true;
 				}
@@ -328,15 +486,31 @@ public class RemindersPlugin extends Plugin {
 		}
 	}
 
-	private boolean checkCoordinates(int noteId)
+	private LocalDate toLocalDate(String dateStr)
 	{
-		return !getCoordinates(noteId).isEmpty();
+		String [] dateParts = dateStr.split("/");
+
+		int m = Integer.parseInt(dateParts[0].trim());
+		int d = Integer.parseInt(dateParts[1].trim());
+
+		if (dateParts.length > 2)
+		{
+			int y = Integer.parseInt(dateParts[2].trim());
+			return LocalDate.of(y + 2000, m, d);
+		}
+
+		return LocalDate.of(dateTime.getYear(), m, d);
 	}
 
-	private boolean matchesCoordinates(int noteId)
+	private boolean checkCoordinates(String coordinates)
+	{
+		return !coordinates.isEmpty();
+	}
+
+	private boolean matchesCoordinates(String coordinatesStr, int radius)
 	{
 		try {
-			String [] coordinates = getCoordinates(noteId).split(",");
+			String [] coordinates = coordinatesStr.split(",");
 
 			int x = 0;
 			for (int i = 0; i < coordinates.length; i++)
@@ -359,7 +533,7 @@ public class RemindersPlugin extends Plugin {
 								Math.pow(y - worldPos.getY(), 2)
 				);
 
-				boolean matches = distance <= getRadius(noteId);
+				boolean matches = distance <= radius;
 
 				if (matches)
 				{
@@ -376,15 +550,15 @@ public class RemindersPlugin extends Plugin {
 		}
 	}
 
-	private boolean checkGeoFences(int noteId)
+	private boolean checkGeoFences(String geoFences)
 	{
-		return !getGeoFences(noteId).isEmpty();
+		return !geoFences.isEmpty();
 	}
 
-	private boolean matchesGeoFences(int noteId)
+	private boolean matchesGeoFences(String geoFences)
 	{
 		try {
-			String [] coordinates = getGeoFences(noteId).split(",");
+			String [] coordinates = geoFences.split(",");
 
 			int left = 0;
 			int top = 0;
@@ -432,15 +606,15 @@ public class RemindersPlugin extends Plugin {
 		}
 	}
 
-	private boolean checkRegions(int noteId)
+	private boolean checkRegions(String regionIds)
 	{
-		return !getRegionIds(noteId).isEmpty();
+		return !regionIds.isEmpty();
 	}
 
-	private boolean matchesRegions(int noteId)
+	private boolean matchesRegions(String regionIds)
 	{
 		try {
-			String [] ids = getRegionIds(noteId).split(",");
+			String [] ids = regionIds.split(",");
 
 			for (String idStr: ids)
 			{
@@ -462,15 +636,15 @@ public class RemindersPlugin extends Plugin {
 		}
 	}
 
-	private boolean checkNpcIds(int noteId)
+	private boolean checkNpcIds(String npcIds)
 	{
-		return !getNpcIds(noteId).isEmpty();
+		return !npcIds.isEmpty();
 	}
 
-	private boolean matchesNpcIds(int noteId)
+	private boolean matchesNpcIds(String npcIdsStr)
 	{
 		try {
-			String [] npcIds = getNpcIds(noteId).split(",");
+			String [] npcIds = npcIdsStr.split(",");
 
 			for (String npcIdStr: npcIds)
 			{
@@ -499,15 +673,15 @@ public class RemindersPlugin extends Plugin {
 		}
 	}
 
-	private boolean checkItemIds(int noteId)
+	private boolean checkItemIds(String itemIds)
 	{
-		return !getItemIds(noteId).isEmpty();
+		return !itemIds.isEmpty();
 	}
 
-	private boolean matchesItemIds(int noteId)
+	private boolean matchesItemIds(String itemIdsStr)
 	{
 		try {
-			String [] itemIds = getItemIds(noteId).split(",");
+			String [] itemIds = itemIdsStr.split(",");
 
 			for (String itemIdStr: itemIds)
 			{
@@ -1794,215 +1968,5 @@ public class RemindersPlugin extends Plugin {
 		else if (reminderId == 99) return config.reminder99ItemIds();
 		else if (reminderId == 100) return config.reminder100ItemIds();
 		else return "";
-	}
-
-	int getDuration(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1Duration();
-		else if (reminderId == 2) return config.reminder2Duration();
-		else if (reminderId == 3) return config.reminder3Duration();
-		else if (reminderId == 4) return config.reminder4Duration();
-		else if (reminderId == 5) return config.reminder5Duration();
-		else if (reminderId == 6) return config.reminder6Duration();
-		else if (reminderId == 7) return config.reminder7Duration();
-		else if (reminderId == 8) return config.reminder8Duration();
-		else if (reminderId == 9) return config.reminder9Duration();
-		else if (reminderId == 10) return config.reminder10Duration();
-		else if (reminderId == 11) return config.reminder11Duration();
-		else if (reminderId == 12) return config.reminder12Duration();
-		else if (reminderId == 13) return config.reminder13Duration();
-		else if (reminderId == 14) return config.reminder14Duration();
-		else if (reminderId == 15) return config.reminder15Duration();
-		else if (reminderId == 16) return config.reminder16Duration();
-		else if (reminderId == 17) return config.reminder17Duration();
-		else if (reminderId == 18) return config.reminder18Duration();
-		else if (reminderId == 19) return config.reminder19Duration();
-		else if (reminderId == 20) return config.reminder20Duration();
-		else if (reminderId == 21) return config.reminder21Duration();
-		else if (reminderId == 22) return config.reminder22Duration();
-		else if (reminderId == 23) return config.reminder23Duration();
-		else if (reminderId == 24) return config.reminder24Duration();
-		else if (reminderId == 25) return config.reminder25Duration();
-		else if (reminderId == 26) return config.reminder26Duration();
-		else if (reminderId == 27) return config.reminder27Duration();
-		else if (reminderId == 28) return config.reminder28Duration();
-		else if (reminderId == 29) return config.reminder29Duration();
-		else if (reminderId == 30) return config.reminder30Duration();
-		else if (reminderId == 31) return config.reminder31Duration();
-		else if (reminderId == 32) return config.reminder32Duration();
-		else if (reminderId == 33) return config.reminder33Duration();
-		else if (reminderId == 34) return config.reminder34Duration();
-		else if (reminderId == 35) return config.reminder35Duration();
-		else if (reminderId == 36) return config.reminder36Duration();
-		else if (reminderId == 37) return config.reminder37Duration();
-		else if (reminderId == 38) return config.reminder38Duration();
-		else if (reminderId == 39) return config.reminder39Duration();
-		else if (reminderId == 40) return config.reminder40Duration();
-		else if (reminderId == 41) return config.reminder41Duration();
-		else if (reminderId == 42) return config.reminder42Duration();
-		else if (reminderId == 43) return config.reminder43Duration();
-		else if (reminderId == 44) return config.reminder44Duration();
-		else if (reminderId == 45) return config.reminder45Duration();
-		else if (reminderId == 46) return config.reminder46Duration();
-		else if (reminderId == 47) return config.reminder47Duration();
-		else if (reminderId == 48) return config.reminder48Duration();
-		else if (reminderId == 49) return config.reminder49Duration();
-		else if (reminderId == 50) return config.reminder50Duration();
-		else if (reminderId == 51) return config.reminder51Duration();
-		else if (reminderId == 52) return config.reminder52Duration();
-		else if (reminderId == 53) return config.reminder53Duration();
-		else if (reminderId == 54) return config.reminder54Duration();
-		else if (reminderId == 55) return config.reminder55Duration();
-		else if (reminderId == 56) return config.reminder56Duration();
-		else if (reminderId == 57) return config.reminder57Duration();
-		else if (reminderId == 58) return config.reminder58Duration();
-		else if (reminderId == 59) return config.reminder59Duration();
-		else if (reminderId == 60) return config.reminder60Duration();
-		else if (reminderId == 61) return config.reminder61Duration();
-		else if (reminderId == 62) return config.reminder62Duration();
-		else if (reminderId == 63) return config.reminder63Duration();
-		else if (reminderId == 64) return config.reminder64Duration();
-		else if (reminderId == 65) return config.reminder65Duration();
-		else if (reminderId == 66) return config.reminder66Duration();
-		else if (reminderId == 67) return config.reminder67Duration();
-		else if (reminderId == 68) return config.reminder68Duration();
-		else if (reminderId == 69) return config.reminder69Duration();
-		else if (reminderId == 70) return config.reminder70Duration();
-		else if (reminderId == 71) return config.reminder71Duration();
-		else if (reminderId == 72) return config.reminder72Duration();
-		else if (reminderId == 73) return config.reminder73Duration();
-		else if (reminderId == 74) return config.reminder74Duration();
-		else if (reminderId == 75) return config.reminder75Duration();
-		else if (reminderId == 76) return config.reminder76Duration();
-		else if (reminderId == 77) return config.reminder77Duration();
-		else if (reminderId == 78) return config.reminder78Duration();
-		else if (reminderId == 79) return config.reminder79Duration();
-		else if (reminderId == 80) return config.reminder80Duration();
-		else if (reminderId == 81) return config.reminder81Duration();
-		else if (reminderId == 82) return config.reminder82Duration();
-		else if (reminderId == 83) return config.reminder83Duration();
-		else if (reminderId == 84) return config.reminder84Duration();
-		else if (reminderId == 85) return config.reminder85Duration();
-		else if (reminderId == 86) return config.reminder86Duration();
-		else if (reminderId == 87) return config.reminder87Duration();
-		else if (reminderId == 88) return config.reminder88Duration();
-		else if (reminderId == 89) return config.reminder89Duration();
-		else if (reminderId == 90) return config.reminder90Duration();
-		else if (reminderId == 91) return config.reminder91Duration();
-		else if (reminderId == 92) return config.reminder92Duration();
-		else if (reminderId == 93) return config.reminder93Duration();
-		else if (reminderId == 94) return config.reminder94Duration();
-		else if (reminderId == 95) return config.reminder95Duration();
-		else if (reminderId == 96) return config.reminder96Duration();
-		else if (reminderId == 97) return config.reminder97Duration();
-		else if (reminderId == 98) return config.reminder98Duration();
-		else if (reminderId == 99) return config.reminder99Duration();
-		else if (reminderId == 100) return config.reminder100Duration();
-		else return 0;
-	}
-
-	int getCooldown(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1Cooldown();
-		else if (reminderId == 2) return config.reminder2Cooldown();
-		else if (reminderId == 3) return config.reminder3Cooldown();
-		else if (reminderId == 4) return config.reminder4Cooldown();
-		else if (reminderId == 5) return config.reminder5Cooldown();
-		else if (reminderId == 6) return config.reminder6Cooldown();
-		else if (reminderId == 7) return config.reminder7Cooldown();
-		else if (reminderId == 8) return config.reminder8Cooldown();
-		else if (reminderId == 9) return config.reminder9Cooldown();
-		else if (reminderId == 10) return config.reminder10Cooldown();
-		else if (reminderId == 11) return config.reminder11Cooldown();
-		else if (reminderId == 12) return config.reminder12Cooldown();
-		else if (reminderId == 13) return config.reminder13Cooldown();
-		else if (reminderId == 14) return config.reminder14Cooldown();
-		else if (reminderId == 15) return config.reminder15Cooldown();
-		else if (reminderId == 16) return config.reminder16Cooldown();
-		else if (reminderId == 17) return config.reminder17Cooldown();
-		else if (reminderId == 18) return config.reminder18Cooldown();
-		else if (reminderId == 19) return config.reminder19Cooldown();
-		else if (reminderId == 20) return config.reminder20Cooldown();
-		else if (reminderId == 21) return config.reminder21Cooldown();
-		else if (reminderId == 22) return config.reminder22Cooldown();
-		else if (reminderId == 23) return config.reminder23Cooldown();
-		else if (reminderId == 24) return config.reminder24Cooldown();
-		else if (reminderId == 25) return config.reminder25Cooldown();
-		else if (reminderId == 26) return config.reminder26Cooldown();
-		else if (reminderId == 27) return config.reminder27Cooldown();
-		else if (reminderId == 28) return config.reminder28Cooldown();
-		else if (reminderId == 29) return config.reminder29Cooldown();
-		else if (reminderId == 30) return config.reminder30Cooldown();
-		else if (reminderId == 31) return config.reminder31Cooldown();
-		else if (reminderId == 32) return config.reminder32Cooldown();
-		else if (reminderId == 33) return config.reminder33Cooldown();
-		else if (reminderId == 34) return config.reminder34Cooldown();
-		else if (reminderId == 35) return config.reminder35Cooldown();
-		else if (reminderId == 36) return config.reminder36Cooldown();
-		else if (reminderId == 37) return config.reminder37Cooldown();
-		else if (reminderId == 38) return config.reminder38Cooldown();
-		else if (reminderId == 39) return config.reminder39Cooldown();
-		else if (reminderId == 40) return config.reminder40Cooldown();
-		else if (reminderId == 41) return config.reminder41Cooldown();
-		else if (reminderId == 42) return config.reminder42Cooldown();
-		else if (reminderId == 43) return config.reminder43Cooldown();
-		else if (reminderId == 44) return config.reminder44Cooldown();
-		else if (reminderId == 45) return config.reminder45Cooldown();
-		else if (reminderId == 46) return config.reminder46Cooldown();
-		else if (reminderId == 47) return config.reminder47Cooldown();
-		else if (reminderId == 48) return config.reminder48Cooldown();
-		else if (reminderId == 49) return config.reminder49Cooldown();
-		else if (reminderId == 50) return config.reminder50Cooldown();
-		else if (reminderId == 51) return config.reminder51Cooldown();
-		else if (reminderId == 52) return config.reminder52Cooldown();
-		else if (reminderId == 53) return config.reminder53Cooldown();
-		else if (reminderId == 54) return config.reminder54Cooldown();
-		else if (reminderId == 55) return config.reminder55Cooldown();
-		else if (reminderId == 56) return config.reminder56Cooldown();
-		else if (reminderId == 57) return config.reminder57Cooldown();
-		else if (reminderId == 58) return config.reminder58Cooldown();
-		else if (reminderId == 59) return config.reminder59Cooldown();
-		else if (reminderId == 60) return config.reminder60Cooldown();
-		else if (reminderId == 61) return config.reminder61Cooldown();
-		else if (reminderId == 62) return config.reminder62Cooldown();
-		else if (reminderId == 63) return config.reminder63Cooldown();
-		else if (reminderId == 64) return config.reminder64Cooldown();
-		else if (reminderId == 65) return config.reminder65Cooldown();
-		else if (reminderId == 66) return config.reminder66Cooldown();
-		else if (reminderId == 67) return config.reminder67Cooldown();
-		else if (reminderId == 68) return config.reminder68Cooldown();
-		else if (reminderId == 69) return config.reminder69Cooldown();
-		else if (reminderId == 70) return config.reminder70Cooldown();
-		else if (reminderId == 71) return config.reminder71Cooldown();
-		else if (reminderId == 72) return config.reminder72Cooldown();
-		else if (reminderId == 73) return config.reminder73Cooldown();
-		else if (reminderId == 74) return config.reminder74Cooldown();
-		else if (reminderId == 75) return config.reminder75Cooldown();
-		else if (reminderId == 76) return config.reminder76Cooldown();
-		else if (reminderId == 77) return config.reminder77Cooldown();
-		else if (reminderId == 78) return config.reminder78Cooldown();
-		else if (reminderId == 79) return config.reminder79Cooldown();
-		else if (reminderId == 80) return config.reminder80Cooldown();
-		else if (reminderId == 81) return config.reminder81Cooldown();
-		else if (reminderId == 82) return config.reminder82Cooldown();
-		else if (reminderId == 83) return config.reminder83Cooldown();
-		else if (reminderId == 84) return config.reminder84Cooldown();
-		else if (reminderId == 85) return config.reminder85Cooldown();
-		else if (reminderId == 86) return config.reminder86Cooldown();
-		else if (reminderId == 87) return config.reminder87Cooldown();
-		else if (reminderId == 88) return config.reminder88Cooldown();
-		else if (reminderId == 89) return config.reminder89Cooldown();
-		else if (reminderId == 90) return config.reminder90Cooldown();
-		else if (reminderId == 91) return config.reminder91Cooldown();
-		else if (reminderId == 92) return config.reminder92Cooldown();
-		else if (reminderId == 93) return config.reminder93Cooldown();
-		else if (reminderId == 94) return config.reminder94Cooldown();
-		else if (reminderId == 95) return config.reminder95Cooldown();
-		else if (reminderId == 96) return config.reminder96Cooldown();
-		else if (reminderId == 97) return config.reminder97Cooldown();
-		else if (reminderId == 98) return config.reminder98Cooldown();
-		else if (reminderId == 99) return config.reminder99Cooldown();
-		else if (reminderId == 100) return config.reminder100Cooldown();
-		else return 0;
 	}
 }

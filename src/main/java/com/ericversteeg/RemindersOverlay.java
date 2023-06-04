@@ -1,6 +1,7 @@
 package com.ericversteeg;
 
 import com.ericversteeg.config.AnchorType;
+import com.ericversteeg.reminder.Reminder;
 import net.runelite.api.Client;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.NPC;
@@ -63,7 +64,19 @@ class RemindersOverlay extends OverlayPanel {
 		int w = 140;
 		int h = 70;
 
-		graphics.setFont(FontManager.getRunescapeSmallFont());
+		TextSize textSize = config.textSize();
+		if (textSize == TextSize.SMALL)
+		{
+			graphics.setFont(FontManager.getRunescapeSmallFont());
+		}
+		else if (textSize == TextSize.LARGE)
+		{
+			graphics.setFont(FontManager.getRunescapeFont());
+		}
+		else
+		{
+			graphics.setFont(FontManager.getRunescapeBoldFont());
+		}
 
 		viewportWidget = getViewportWidget();
 
@@ -86,11 +99,26 @@ class RemindersOverlay extends OverlayPanel {
 
 		panelComponent.setPreferredLocation(new Point(anchorX, anchorY));
 
-		for (int id: plugin.activeReminders) {
-			String text = plugin.getText(id);
-			if (text.isEmpty()) continue;
+		for (Reminder reminder: plugin.activeReminders) {
+			String text = reminder.text;
+			if (text.trim().isEmpty()) continue;
 
-			Color color = plugin.getColor(id);
+			Color color;
+			if (reminder.colur != null)
+			{
+				color = reminder.colur;
+			}
+			else
+			{
+				try
+				{
+					color = Color.decode(reminder.colorStr);
+				}
+				catch (Exception exception)
+				{
+					color = Color.WHITE;
+				}
+			}
 
 			panelComponent.getChildren().add(
 					WeightedLineComponent.builder()
@@ -104,16 +132,18 @@ class RemindersOverlay extends OverlayPanel {
 			);
 		}
 
-		if (config.listIds())
+		if (config.idFinder())
 		{
-			renderIds();
+			renderIds(graphics);
 		}
 
 		return super.render(graphics);
 	}
 
-	private void renderIds()
+	private void renderIds(Graphics2D graphics)
 	{
+		graphics.setFont(FontManager.getRunescapeSmallFont());
+
 		panelComponent.getChildren().add(
 				LineComponent.builder()
 						.left("Location")
@@ -130,12 +160,12 @@ class RemindersOverlay extends OverlayPanel {
 						.build()
 		);
 
-		java.util.List<String> npcNames = new ArrayList<>();
+		java.util.List<Integer> npcIds = new ArrayList<>();
 		for (NPC npc: plugin.npcs)
 		{
 			if (npc.getId() == -1) continue;
 
-			if (!npcNames.contains(npc.getName()))
+			if (!npcIds.contains(npc.getId()))
 			{
 				panelComponent.getChildren().add(
 						LineComponent.builder()
@@ -144,7 +174,7 @@ class RemindersOverlay extends OverlayPanel {
 								.right(String.valueOf(npc.getId()))
 								.build()
 				);
-				npcNames.add(npc.getName());
+				npcIds.add(npc.getId());
 			}
 		}
 
