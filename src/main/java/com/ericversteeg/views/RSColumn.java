@@ -19,7 +19,7 @@ public class RSColumn extends RSViewGroup
         for (RSView view: subviews)
         {
             topGuide += view.getMarginTop();
-            applyPosition(
+            view.applyPosition(
                     new RSLayoutGuide.Builder()
                             .maxWidth(w)
                             .top(topGuide)
@@ -27,10 +27,18 @@ public class RSColumn extends RSViewGroup
                             .end(paddingEnd + view.getMarginEnd())
                             .build()
             );
+            topGuide += view.getH();
             topGuide += view.getMarginBottom();
         }
 
         h = topGuide + paddingBottom;
+        if (dimensionParams.getH() != WRAP_CONTENT)
+        {
+            if (h < dimensionParams.getH())
+            {
+                h = dimensionParams.getH();
+            }
+        }
 
         return new Dimension(w, h);
     }

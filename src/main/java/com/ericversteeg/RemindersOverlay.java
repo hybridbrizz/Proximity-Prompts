@@ -2,6 +2,9 @@ package com.ericversteeg;
 
 import com.ericversteeg.config.AnchorType;
 import com.ericversteeg.reminder.Reminder;
+import com.ericversteeg.views.RSColumn;
+import com.ericversteeg.views.RSView;
+import com.ericversteeg.views.RSViewOverlay;
 import net.runelite.api.Client;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.NPC;
@@ -20,7 +23,7 @@ import java.util.ArrayList;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-class RemindersOverlay extends OverlayPanel {
+class RemindersOverlay extends RSViewOverlay {
 
 	private final Client client;
 	private final RemindersPlugin plugin;
@@ -56,163 +59,195 @@ class RemindersOverlay extends OverlayPanel {
 		{
 			font = FontManager.getRunescapeSmallFont();
 		}
-	}
-
-	@Override
-	public Dimension render(Graphics2D graphics)
-	{
-		viewportWidget = getViewportWidget();
-
-		int w = 140;
-		int h = 70;
-
-		panelComponent.setPreferredSize(new Dimension(w, h));
-
-		TextSize textSize = config.textSize();
-		if (textSize == TextSize.SMALL)
-		{
-			graphics.setFont(FontManager.getRunescapeSmallFont());
-		}
-		else if (textSize == TextSize.LARGE)
-		{
-			graphics.setFont(FontManager.getRunescapeFont());
-		}
-		else
-		{
-			graphics.setFont(FontManager.getRunescapeBoldFont());
-		}
 
 		viewportWidget = getViewportWidget();
 
-		AnchorType anchorType = config.anchorType();
+		RSColumn column = new RSColumn(10, 120, 140, RSView.WRAP_CONTENT);
+		column.setBgColor(Color.decode("#45AB76"));
+		column.setPadding(5);
 
-		// once to get dimension
-		Dimension dimension = renderReminders(graphics, -10000, -10000, w, h);
+		RSColumn column2 = new RSColumn(0, 0, RSView.MATCH_PARENT, 50);
+		column2.setBgColor(new Color(0, 255, 0));
+		column2.setPadding(5);
+		column2.setMarginBottom(5);
 
-//		System.out.println("Height is " + dimension.height);
+		RSView view = new RSView(0, 0, RSView.MATCH_PARENT, 20);
+		view.setBgColor(new Color(255, 0, 0));
+		view.setMarginEnd(5);
+		view.setMarginBottom(5);
 
-		int anchorX = config.anchorX();
-		if (anchorType == AnchorType.TOP_RIGHT || anchorType == AnchorType.BOTTOM_RIGHT)
-		{
-			anchorX = viewportWidget.getCanvasLocation().getX() + viewportWidget.getWidth() + 28 - anchorX - dimension.width;
-		}
+		column2.addView(view);
 
-		int anchorY = config.anchorY();
-		if (anchorType == AnchorType.BOTTOM_LEFT || anchorType == AnchorType.BOTTOM_RIGHT)
-		{
-			anchorY = viewportWidget.getCanvasLocation().getY() + viewportWidget.getHeight() + 41 - anchorY - dimension.height;
-		}
+		column.addView(column2);
 
-//		System.out.println("Anchor Y " + anchorY);
+		view = new RSView(0, 0, RSView.MATCH_PARENT, 50);
+		view.setBgColor(new Color(255, 255, 0));
+		view.setMarginBottom(5);
 
-		// again in position
-		renderReminders(graphics, anchorX, anchorY, dimension.width, dimension.height);
+		column.addView(view);
 
-		return super.render(graphics);
+		view = new RSView(0, 0, RSView.MATCH_PARENT, 50);
+		view.setBgColor(new Color(0, 0, 255));
+
+		column.addView(view);
+
+		setRootView(column);
 	}
 
-	private Dimension renderReminders(Graphics2D graphics, int x, int y, int w, int h)
-	{
-		panelComponent.setPreferredLocation(new Point(x, y));
+//	@Override
+//	public Dimension render(Graphics2D graphics)
+//	{
+//
+////		int w = 140;
+////		int h = 70;
+////
+////		panelComponent.setPreferredSize(new Dimension(w, h));
+////
+////		TextSize textSize = config.textSize();
+////		if (textSize == TextSize.SMALL)
+////		{
+////			graphics.setFont(FontManager.getRunescapeSmallFont());
+////		}
+////		else if (textSize == TextSize.LARGE)
+////		{
+////			graphics.setFont(FontManager.getRunescapeFont());
+////		}
+////		else
+////		{
+////			graphics.setFont(FontManager.getRunescapeBoldFont());
+////		}
+////
+////		viewportWidget = getViewportWidget();
+////
+////		AnchorType anchorType = config.anchorType();
+////
+////		// once to get dimension
+////		Dimension dimension = renderReminders(graphics, -10000, -10000, w, h);
+////
+//////		System.out.println("Height is " + dimension.height);
+////
+////		int anchorX = config.anchorX();
+////		if (anchorType == AnchorType.TOP_RIGHT || anchorType == AnchorType.BOTTOM_RIGHT)
+////		{
+////			anchorX = viewportWidget.getCanvasLocation().getX() + viewportWidget.getWidth() + 28 - anchorX - dimension.width;
+////		}
+////
+////		int anchorY = config.anchorY();
+////		if (anchorType == AnchorType.BOTTOM_LEFT || anchorType == AnchorType.BOTTOM_RIGHT)
+////		{
+////			anchorY = viewportWidget.getCanvasLocation().getY() + viewportWidget.getHeight() + 41 - anchorY - dimension.height;
+////		}
+////
+//////		System.out.println("Anchor Y " + anchorY);
+////
+////		// again in position
+////		renderReminders(graphics, anchorX, anchorY, dimension.width, dimension.height);
+//
+//		return super.render(graphics);
+//	}
 
-		int maxReminders = config.maxReminders();
-		int i = 0;
-		for (Reminder reminder: plugin.activeReminders.stream()
-				.sorted(((o1, o2) -> (int) (o2.posted - o1.posted)))
-				.collect(Collectors.toList())) {
-			if (i == maxReminders) break;
-
-			String text = reminder.text;
-			if (text.trim().isEmpty()) continue;
-
-			Color color;
-			if (reminder.colur != null)
-			{
-				color = reminder.colur;
-			}
-			else
-			{
-				try
-				{
-					color = Color.decode(reminder.colorStr);
-				}
-				catch (Exception exception)
-				{
-					color = Color.WHITE;
-				}
-			}
-
-			panelComponent.getChildren().add(
-					WeightedLineComponent.builder()
-							.left("•")
-							.leftColor(color)
-							.right(text)
-							.rightColor(color)
-							.rightWeight(1f)
-							.rightAlignment(TextAlignment.LEADING)
-							.build()
-			);
-
-			i++;
-		}
-
-		if (config.idFinder())
-		{
-			renderIds();
-		}
-
-		return super.render(graphics);
-	}
-
-	private void renderIds()
-	{
-		panelComponent.getChildren().add(
-				LineComponent.builder()
-						.left("Location")
-						.leftColor(Color.GREEN)
-						.right(String.format("(%d, %d)", plugin.worldPos.getX(), plugin.worldPos.getY()))
-						.build()
-		);
-
-		panelComponent.getChildren().add(
-				LineComponent.builder()
-						.left("Region")
-						.leftColor(Color.GREEN)
-						.right(String.valueOf(plugin.regionId))
-						.build()
-		);
-
-		java.util.List<Integer> npcIds = new ArrayList<>();
-		for (NPC npc: plugin.npcs)
-		{
-			if (npc.getId() == -1) continue;
-
-			if (!npcIds.contains(npc.getId()))
-			{
-				panelComponent.getChildren().add(
-						LineComponent.builder()
-								.left(npc.getName())
-								.leftColor(Color.CYAN)
-								.right(String.valueOf(npc.getId()))
-								.build()
-				);
-				npcIds.add(npc.getId());
-			}
-		}
-
-		for (ItemComposition item: plugin.inventoryItems)
-		{
-			if (item.getId() == -1) continue;
-
-			panelComponent.getChildren().add(
-					LineComponent.builder()
-							.left(item.getName())
-							.leftColor(Color.YELLOW)
-							.right(String.valueOf(item.getId()))
-							.build()
-			);
-		}
-	}
+//	private Dimension renderReminders(Graphics2D graphics, int x, int y, int w, int h)
+//	{
+//		panelComponent.setPreferredLocation(new Point(x, y));
+//
+//		int maxReminders = config.maxReminders();
+//		int i = 0;
+//		for (Reminder reminder: plugin.activeReminders.stream()
+//				.sorted(((o1, o2) -> (int) (o2.posted - o1.posted)))
+//				.collect(Collectors.toList())) {
+//			if (i == maxReminders) break;
+//
+//			String text = reminder.text;
+//			if (text.trim().isEmpty()) continue;
+//
+//			Color color;
+//			if (reminder.colur != null)
+//			{
+//				color = reminder.colur;
+//			}
+//			else
+//			{
+//				try
+//				{
+//					color = Color.decode(reminder.colorStr);
+//				}
+//				catch (Exception exception)
+//				{
+//					color = Color.WHITE;
+//				}
+//			}
+//
+//			panelComponent.getChildren().add(
+//					WeightedLineComponent.builder()
+//							.left("•")
+//							.leftColor(color)
+//							.right(text)
+//							.rightColor(color)
+//							.rightWeight(1f)
+//							.rightAlignment(TextAlignment.LEADING)
+//							.build()
+//			);
+//
+//			i++;
+//		}
+//
+//		if (config.idFinder())
+//		{
+//			renderIds();
+//		}
+//
+//		return super.render(graphics);
+//	}
+//
+//	private void renderIds()
+//	{
+//		panelComponent.getChildren().add(
+//				LineComponent.builder()
+//						.left("Location")
+//						.leftColor(Color.GREEN)
+//						.right(String.format("(%d, %d)", plugin.worldPos.getX(), plugin.worldPos.getY()))
+//						.build()
+//		);
+//
+//		panelComponent.getChildren().add(
+//				LineComponent.builder()
+//						.left("Region")
+//						.leftColor(Color.GREEN)
+//						.right(String.valueOf(plugin.regionId))
+//						.build()
+//		);
+//
+//		java.util.List<Integer> npcIds = new ArrayList<>();
+//		for (NPC npc: plugin.npcs)
+//		{
+//			if (npc.getId() == -1) continue;
+//
+//			if (!npcIds.contains(npc.getId()))
+//			{
+//				panelComponent.getChildren().add(
+//						LineComponent.builder()
+//								.left(npc.getName())
+//								.leftColor(Color.CYAN)
+//								.right(String.valueOf(npc.getId()))
+//								.build()
+//				);
+//				npcIds.add(npc.getId());
+//			}
+//		}
+//
+//		for (ItemComposition item: plugin.inventoryItems)
+//		{
+//			if (item.getId() == -1) continue;
+//
+//			panelComponent.getChildren().add(
+//					LineComponent.builder()
+//							.left(item.getName())
+//							.leftColor(Color.YELLOW)
+//							.right(String.valueOf(item.getId()))
+//							.build()
+//			);
+//		}
+//	}
 
 	private Widget getViewportWidget()
 	{

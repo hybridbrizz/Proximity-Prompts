@@ -27,18 +27,18 @@ public class RSViewBorder implements RSRenderable
     }
 
     @Override
-    public void render(Graphics2D graphics)
+    public void render(Graphics2D graphics, Point origin)
     {
         graphics.setColor(outerColor);
-        graphics.drawRect(view.getX(), view.getY(), width, view.getH());
+        graphics.drawRect(origin.x + view.getX(), origin.y + view.getY(), width, view.getH());
 
         graphics.setColor(outerColor);
-        graphics.drawRect(view.getX() - 1, view.getY() - 1, view.getW() + 2, view.getH() + 2);
+        graphics.drawRect(origin.x + view.getX() - 1, origin.y + view.getY() - 1, view.getW() + 2, view.getH() + 2);
 
         if (innerColor != null)
         {
             graphics.setColor(innerColor);
-            graphics.drawRect(view.getX() + 1, view.getY() + 1, view.getW() - 2, view.getH() - 2);
+            graphics.drawRect(origin.x + view.getX() + 1, origin.y + view.getY() + 1, view.getW() - 2, view.getH() - 2);
         }
     }
 }

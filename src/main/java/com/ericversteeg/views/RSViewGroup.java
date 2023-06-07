@@ -43,6 +43,7 @@ abstract class RSViewGroup extends RSView
     public void addView(RSView view)
     {
         subviews.add(view);
+        view.setParent(this);
     }
 
     @Override
@@ -52,7 +53,7 @@ abstract class RSViewGroup extends RSView
 
         for (RSView view: subviews)
         {
-            view.render(graphics, origin);
+            view.render(graphics, new Point(origin.x + x, origin.y + y));
         }
     }
 
@@ -79,6 +80,14 @@ abstract class RSViewGroup extends RSView
     public int getPaddingBottom()
     {
         return paddingBottom;
+    }
+
+    public void setPadding(int padding)
+    {
+        paddingStart = padding;
+        paddingTop = padding;
+        paddingEnd = padding;
+        paddingBottom = padding;
     }
 
     public Dimension layout()
@@ -199,19 +208,5 @@ abstract class RSViewGroup extends RSView
         }
 
         return subviewGuides;
-    }
-
-    protected Map<RSLayoutGuide, Integer> guides(int w, int h, int s, int t, int e, int b)
-    {
-        Map<RSLayoutGuide, Integer> guides = new HashMap<>();
-
-        guides.put(RSLayoutGuide.MAX_WIDTH, w);
-        guides.put(RSLayoutGuide.MAX_HEIGHT, h);
-        guides.put(RSLayoutGuide.START, s);
-        guides.put(RSLayoutGuide.TOP, t);
-        guides.put(RSLayoutGuide.END, e);
-        guides.put(RSLayoutGuide.BOTTOM, b);
-
-        return guides;
     }
 }

@@ -18,7 +18,7 @@ public class RSViewOverlay extends Overlay
 
         rootView.layout();
 
-        rootView.render(graphics, new Point(rootView.getX(), rootView.getY()));
+        rootView.render(graphics, new Point(0, 0));
 
         return new Dimension(rootView.getW(), rootView.getH());
     }

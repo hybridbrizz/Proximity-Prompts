@@ -3,7 +3,7 @@ package com.ericversteeg.views;
 import java.awt.*;
 import java.util.Map;
 
-class RSView implements RSRenderable
+public class RSView implements RSRenderable
 {
     class DimensionParams
     {
@@ -28,8 +28,8 @@ class RSView implements RSRenderable
 
     protected DimensionParams dimensionParams;
 
-    public int MATCH_PARENT = -1;
-    public int WRAP_CONTENT = -2;
+    public static int MATCH_PARENT = -1;
+    public static int WRAP_CONTENT = -2;
 
     protected RSViewGroup.Gravity layoutGravity = null;
 
@@ -108,6 +108,36 @@ class RSView implements RSRenderable
     public int getMarginBottom()
     {
         return marginBottom;
+    }
+
+    public void setParent(RSViewGroup parent)
+    {
+        this.parent = parent;
+    }
+
+    public void setBgColor(Color bgColor)
+    {
+        this.bgColor = bgColor;
+    }
+
+    public void setMarginStart(int marginStart)
+    {
+        this.marginStart = marginStart;
+    }
+
+    public void setMarginTop(int marginTop)
+    {
+        this.marginTop = marginTop;
+    }
+
+    public void setMarginEnd(int marginEnd)
+    {
+        this.marginEnd = marginEnd;
+    }
+
+    public void setMarginBottom(int marginBottom)
+    {
+        this.marginBottom = marginBottom;
     }
 
     public RSView getParent()
@@ -216,11 +246,11 @@ class RSView implements RSRenderable
     public void render(Graphics2D graphics, Point origin)
     {
         graphics.setColor(bgColor);
-        graphics.drawRect(origin.x + x, origin.y + y, w, h);
+        graphics.fillRect(origin.x + x, origin.y + y, w, h);
 
         if (border != null)
         {
-            border.render(graphics);
+            border.render(graphics, origin);
         }
     }
 }
