@@ -32,7 +32,7 @@ import java.util.List;
 
 @PluginDescriptor(
 	name = "Reminders",
-	description = "Set reminders."
+	description = "Show reminders."
 )
 
 public class RemindersPlugin extends Plugin {
@@ -52,14 +52,7 @@ public class RemindersPlugin extends Plugin {
 	@Inject
 	private ItemManager itemManager;
 
-	List<Reminder> activeReminders = new LinkedList<>();
-
-	ZoneOffset zoneOffset = ZoneId.systemDefault()
-			.getRules()
-			.getOffset(
-					LocalDate.now()
-							.atStartOfDay()
-			);
+	List<Reminder> activeReminders = new ArrayList<>();
 
 	LocalDateTime dateTime = LocalDateTime.now(ZoneId.systemDefault());
 
@@ -171,6 +164,7 @@ public class RemindersPlugin extends Plugin {
 		{
 			Reminder reminder = new Reminder();
 
+			reminder.id = i;
 			reminder.enable = isEnable(i);
 			reminder.text = getText(i);
 			reminder.text = reminder.text
@@ -181,7 +175,7 @@ public class RemindersPlugin extends Plugin {
 			reminder.dates = getDates(i);
 			reminder.coordinates = getCoordinates(i);
 			reminder.radius = getRadius(i);
-			reminder.geoFences = getGeoFences(i);
+			reminder.geoFences = getGeofences(i);
 			reminder.regionIds = getRegionIds(i);
 			reminder.npcIds = getNpcIds(i);
 			reminder.itemIds = getItemIds(i);
@@ -201,6 +195,16 @@ public class RemindersPlugin extends Plugin {
 					continue;
 				}
 
+				Reminder currentActive = currentActiveReminder(reminder.id);
+				if (currentActive != null)
+				{
+					reminder.posted = currentActive.posted;
+				}
+				else
+				{
+					reminder.posted = Instant.now().toEpochMilli();
+				}
+
 				activeList.add(reminder);
 			}
 		}
@@ -208,11 +212,15 @@ public class RemindersPlugin extends Plugin {
 		try {
 			JsonArray jsonArray = gson.fromJson(config.customReminders(), JsonArray.class);
 			List<Reminder> reminders = new ArrayList<>();
+
+			int i = 0;
 			for (JsonElement jsonElement: jsonArray)
 			{
 				JsonObject jsonObject = jsonElement.getAsJsonObject();
 
 				Reminder reminder = new Reminder();
+
+				reminder.id = 100 + i;
 
 				if (jsonObject.has("enable"))
 				{
@@ -236,9 +244,9 @@ public class RemindersPlugin extends Plugin {
 					reminder.times = toCsv(jsonObject.get("times").getAsJsonArray());
 				}
 
-				if (jsonObject.has("days_of_week"))
+				if (jsonObject.has("days"))
 				{
-					reminder.daysOfWeek = toCsv(jsonObject.get("days_of_week").getAsJsonArray());
+					reminder.daysOfWeek = toCsv(jsonObject.get("days").getAsJsonArray());
 				}
 
 				if (jsonObject.has("dates"))
@@ -246,9 +254,9 @@ public class RemindersPlugin extends Plugin {
 					reminder.dates = toCsv(jsonObject.get("dates").getAsJsonArray());
 				}
 
-				if (jsonObject.has("coordinates"))
+				if (jsonObject.has("locations"))
 				{
-					reminder.coordinates = toCsv(jsonObject.get("coordinates").getAsJsonArray());
+					reminder.coordinates = toCsv(jsonObject.get("locations").getAsJsonArray());
 				}
 
 				if (jsonObject.has("radius"))
@@ -256,27 +264,39 @@ public class RemindersPlugin extends Plugin {
 					reminder.radius = jsonObject.get("radius").getAsInt();
 				}
 
-				if (jsonObject.has("geo_fences"))
+				if (jsonObject.has("geofences"))
 				{
-					reminder.geoFences = toCsv(jsonObject.get("geo_fences").getAsJsonArray());
+					reminder.geoFences = toCsv(jsonObject.get("geofences").getAsJsonArray());
 				}
 
-				if (jsonObject.has("region_ids"))
+				if (jsonObject.has("regions"))
 				{
-					reminder.regionIds = toCsv(jsonObject.get("region_ids").getAsJsonArray());
+					reminder.regionIds = toCsv(jsonObject.get("regions").getAsJsonArray());
 				}
 
-				if (jsonObject.has("npc_ids"))
+				if (jsonObject.has("npcs"))
 				{
-					reminder.npcIds = toCsv(jsonObject.get("npc_ids").getAsJsonArray());
+					reminder.npcIds = toCsv(jsonObject.get("npcs").getAsJsonArray());
 				}
 
-				if (jsonObject.has("item_ids"))
+				if (jsonObject.has("items"))
 				{
-					reminder.itemIds = toCsv(jsonObject.get("item_ids").getAsJsonArray());
+					reminder.itemIds = toCsv(jsonObject.get("items").getAsJsonArray());
+				}
+
+				Reminder currentActive = currentActiveReminder(reminder.id);
+				if (currentActive != null)
+				{
+					reminder.posted = currentActive.posted;
+				}
+				else
+				{
+					reminder.posted = Instant.now().toEpochMilli();
 				}
 
 				reminders.add(reminder);
+
+				i++;
 			}
 
 			for (Reminder reminder: reminders)
@@ -309,6 +329,18 @@ public class RemindersPlugin extends Plugin {
 		System.out.println("Active list took " + (Instant.now().toEpochMilli() - start) + "ms");
 
 		return activeList;
+	}
+
+	private Reminder currentActiveReminder(int id)
+	{
+		for (Reminder reminder: activeReminders)
+		{
+			if (reminder.id == id)
+			{
+				return reminder;
+			}
+		}
+		return null;
 	}
 
 	private String toCsv(JsonArray jsonArray)
@@ -387,7 +419,7 @@ public class RemindersPlugin extends Plugin {
 
 		if (aStr.equals("pm"))
 		{
-			if (h > 12)
+			if (h != 12)
 			{
 				h += 12;
 			}
@@ -1550,108 +1582,108 @@ public class RemindersPlugin extends Plugin {
 		else return 0;
 	}
 
-	String getGeoFences(int reminderId)
+	String getGeofences(int reminderId)
 	{
-		if (reminderId == 1) return config.reminder1GeoFences();
-		else if (reminderId == 2) return config.reminder2GeoFences();
-		else if (reminderId == 3) return config.reminder3GeoFences();
-		else if (reminderId == 4) return config.reminder4GeoFences();
-		else if (reminderId == 5) return config.reminder5GeoFences();
-		else if (reminderId == 6) return config.reminder6GeoFences();
-		else if (reminderId == 7) return config.reminder7GeoFences();
-		else if (reminderId == 8) return config.reminder8GeoFences();
-		else if (reminderId == 9) return config.reminder9GeoFences();
-		else if (reminderId == 10) return config.reminder10GeoFences();
-		else if (reminderId == 11) return config.reminder11GeoFences();
-		else if (reminderId == 12) return config.reminder12GeoFences();
-		else if (reminderId == 13) return config.reminder13GeoFences();
-		else if (reminderId == 14) return config.reminder14GeoFences();
-		else if (reminderId == 15) return config.reminder15GeoFences();
-		else if (reminderId == 16) return config.reminder16GeoFences();
-		else if (reminderId == 17) return config.reminder17GeoFences();
-		else if (reminderId == 18) return config.reminder18GeoFences();
-		else if (reminderId == 19) return config.reminder19GeoFences();
-		else if (reminderId == 20) return config.reminder20GeoFences();
-		else if (reminderId == 21) return config.reminder21GeoFences();
-		else if (reminderId == 22) return config.reminder22GeoFences();
-		else if (reminderId == 23) return config.reminder23GeoFences();
-		else if (reminderId == 24) return config.reminder24GeoFences();
-		else if (reminderId == 25) return config.reminder25GeoFences();
-		else if (reminderId == 26) return config.reminder26GeoFences();
-		else if (reminderId == 27) return config.reminder27GeoFences();
-		else if (reminderId == 28) return config.reminder28GeoFences();
-		else if (reminderId == 29) return config.reminder29GeoFences();
-		else if (reminderId == 30) return config.reminder30GeoFences();
-		else if (reminderId == 31) return config.reminder31GeoFences();
-		else if (reminderId == 32) return config.reminder32GeoFences();
-		else if (reminderId == 33) return config.reminder33GeoFences();
-		else if (reminderId == 34) return config.reminder34GeoFences();
-		else if (reminderId == 35) return config.reminder35GeoFences();
-		else if (reminderId == 36) return config.reminder36GeoFences();
-		else if (reminderId == 37) return config.reminder37GeoFences();
-		else if (reminderId == 38) return config.reminder38GeoFences();
-		else if (reminderId == 39) return config.reminder39GeoFences();
-		else if (reminderId == 40) return config.reminder40GeoFences();
-		else if (reminderId == 41) return config.reminder41GeoFences();
-		else if (reminderId == 42) return config.reminder42GeoFences();
-		else if (reminderId == 43) return config.reminder43GeoFences();
-		else if (reminderId == 44) return config.reminder44GeoFences();
-		else if (reminderId == 45) return config.reminder45GeoFences();
-		else if (reminderId == 46) return config.reminder46GeoFences();
-		else if (reminderId == 47) return config.reminder47GeoFences();
-		else if (reminderId == 48) return config.reminder48GeoFences();
-		else if (reminderId == 49) return config.reminder49GeoFences();
-		else if (reminderId == 50) return config.reminder50GeoFences();
-		else if (reminderId == 51) return config.reminder51GeoFences();
-		else if (reminderId == 52) return config.reminder52GeoFences();
-		else if (reminderId == 53) return config.reminder53GeoFences();
-		else if (reminderId == 54) return config.reminder54GeoFences();
-		else if (reminderId == 55) return config.reminder55GeoFences();
-		else if (reminderId == 56) return config.reminder56GeoFences();
-		else if (reminderId == 57) return config.reminder57GeoFences();
-		else if (reminderId == 58) return config.reminder58GeoFences();
-		else if (reminderId == 59) return config.reminder59GeoFences();
-		else if (reminderId == 60) return config.reminder60GeoFences();
-		else if (reminderId == 61) return config.reminder61GeoFences();
-		else if (reminderId == 62) return config.reminder62GeoFences();
-		else if (reminderId == 63) return config.reminder63GeoFences();
-		else if (reminderId == 64) return config.reminder64GeoFences();
-		else if (reminderId == 65) return config.reminder65GeoFences();
-		else if (reminderId == 66) return config.reminder66GeoFences();
-		else if (reminderId == 67) return config.reminder67GeoFences();
-		else if (reminderId == 68) return config.reminder68GeoFences();
-		else if (reminderId == 69) return config.reminder69GeoFences();
-		else if (reminderId == 70) return config.reminder70GeoFences();
-		else if (reminderId == 71) return config.reminder71GeoFences();
-		else if (reminderId == 72) return config.reminder72GeoFences();
-		else if (reminderId == 73) return config.reminder73GeoFences();
-		else if (reminderId == 74) return config.reminder74GeoFences();
-		else if (reminderId == 75) return config.reminder75GeoFences();
-		else if (reminderId == 76) return config.reminder76GeoFences();
-		else if (reminderId == 77) return config.reminder77GeoFences();
-		else if (reminderId == 78) return config.reminder78GeoFences();
-		else if (reminderId == 79) return config.reminder79GeoFences();
-		else if (reminderId == 80) return config.reminder80GeoFences();
-		else if (reminderId == 81) return config.reminder81GeoFences();
-		else if (reminderId == 82) return config.reminder82GeoFences();
-		else if (reminderId == 83) return config.reminder83GeoFences();
-		else if (reminderId == 84) return config.reminder84GeoFences();
-		else if (reminderId == 85) return config.reminder85GeoFences();
-		else if (reminderId == 86) return config.reminder86GeoFences();
-		else if (reminderId == 87) return config.reminder87GeoFences();
-		else if (reminderId == 88) return config.reminder88GeoFences();
-		else if (reminderId == 89) return config.reminder89GeoFences();
-		else if (reminderId == 90) return config.reminder90GeoFences();
-		else if (reminderId == 91) return config.reminder91GeoFences();
-		else if (reminderId == 92) return config.reminder92GeoFences();
-		else if (reminderId == 93) return config.reminder93GeoFences();
-		else if (reminderId == 94) return config.reminder94GeoFences();
-		else if (reminderId == 95) return config.reminder95GeoFences();
-		else if (reminderId == 96) return config.reminder96GeoFences();
-		else if (reminderId == 97) return config.reminder97GeoFences();
-		else if (reminderId == 98) return config.reminder98GeoFences();
-		else if (reminderId == 99) return config.reminder99GeoFences();
-		else if (reminderId == 100) return config.reminder100GeoFences();
+		if (reminderId == 1) return config.reminder1Geofences();
+		else if (reminderId == 2) return config.reminder2Geofences();
+		else if (reminderId == 3) return config.reminder3Geofences();
+		else if (reminderId == 4) return config.reminder4Geofences();
+		else if (reminderId == 5) return config.reminder5Geofences();
+		else if (reminderId == 6) return config.reminder6Geofences();
+		else if (reminderId == 7) return config.reminder7Geofences();
+		else if (reminderId == 8) return config.reminder8Geofences();
+		else if (reminderId == 9) return config.reminder9Geofences();
+		else if (reminderId == 10) return config.reminder10Geofences();
+		else if (reminderId == 11) return config.reminder11Geofences();
+		else if (reminderId == 12) return config.reminder12Geofences();
+		else if (reminderId == 13) return config.reminder13Geofences();
+		else if (reminderId == 14) return config.reminder14Geofences();
+		else if (reminderId == 15) return config.reminder15Geofences();
+		else if (reminderId == 16) return config.reminder16Geofences();
+		else if (reminderId == 17) return config.reminder17Geofences();
+		else if (reminderId == 18) return config.reminder18Geofences();
+		else if (reminderId == 19) return config.reminder19Geofences();
+		else if (reminderId == 20) return config.reminder20Geofences();
+		else if (reminderId == 21) return config.reminder21Geofences();
+		else if (reminderId == 22) return config.reminder22Geofences();
+		else if (reminderId == 23) return config.reminder23Geofences();
+		else if (reminderId == 24) return config.reminder24Geofences();
+		else if (reminderId == 25) return config.reminder25Geofences();
+		else if (reminderId == 26) return config.reminder26Geofences();
+		else if (reminderId == 27) return config.reminder27Geofences();
+		else if (reminderId == 28) return config.reminder28Geofences();
+		else if (reminderId == 29) return config.reminder29Geofences();
+		else if (reminderId == 30) return config.reminder30Geofences();
+		else if (reminderId == 31) return config.reminder31Geofences();
+		else if (reminderId == 32) return config.reminder32Geofences();
+		else if (reminderId == 33) return config.reminder33Geofences();
+		else if (reminderId == 34) return config.reminder34Geofences();
+		else if (reminderId == 35) return config.reminder35Geofences();
+		else if (reminderId == 36) return config.reminder36Geofences();
+		else if (reminderId == 37) return config.reminder37Geofences();
+		else if (reminderId == 38) return config.reminder38Geofences();
+		else if (reminderId == 39) return config.reminder39Geofences();
+		else if (reminderId == 40) return config.reminder40Geofences();
+		else if (reminderId == 41) return config.reminder41Geofences();
+		else if (reminderId == 42) return config.reminder42Geofences();
+		else if (reminderId == 43) return config.reminder43Geofences();
+		else if (reminderId == 44) return config.reminder44Geofences();
+		else if (reminderId == 45) return config.reminder45Geofences();
+		else if (reminderId == 46) return config.reminder46Geofences();
+		else if (reminderId == 47) return config.reminder47Geofences();
+		else if (reminderId == 48) return config.reminder48Geofences();
+		else if (reminderId == 49) return config.reminder49Geofences();
+		else if (reminderId == 50) return config.reminder50Geofences();
+		else if (reminderId == 51) return config.reminder51Geofences();
+		else if (reminderId == 52) return config.reminder52Geofences();
+		else if (reminderId == 53) return config.reminder53Geofences();
+		else if (reminderId == 54) return config.reminder54Geofences();
+		else if (reminderId == 55) return config.reminder55Geofences();
+		else if (reminderId == 56) return config.reminder56Geofences();
+		else if (reminderId == 57) return config.reminder57Geofences();
+		else if (reminderId == 58) return config.reminder58Geofences();
+		else if (reminderId == 59) return config.reminder59Geofences();
+		else if (reminderId == 60) return config.reminder60Geofences();
+		else if (reminderId == 61) return config.reminder61Geofences();
+		else if (reminderId == 62) return config.reminder62Geofences();
+		else if (reminderId == 63) return config.reminder63Geofences();
+		else if (reminderId == 64) return config.reminder64Geofences();
+		else if (reminderId == 65) return config.reminder65Geofences();
+		else if (reminderId == 66) return config.reminder66Geofences();
+		else if (reminderId == 67) return config.reminder67Geofences();
+		else if (reminderId == 68) return config.reminder68Geofences();
+		else if (reminderId == 69) return config.reminder69Geofences();
+		else if (reminderId == 70) return config.reminder70Geofences();
+		else if (reminderId == 71) return config.reminder71Geofences();
+		else if (reminderId == 72) return config.reminder72Geofences();
+		else if (reminderId == 73) return config.reminder73Geofences();
+		else if (reminderId == 74) return config.reminder74Geofences();
+		else if (reminderId == 75) return config.reminder75Geofences();
+		else if (reminderId == 76) return config.reminder76Geofences();
+		else if (reminderId == 77) return config.reminder77Geofences();
+		else if (reminderId == 78) return config.reminder78Geofences();
+		else if (reminderId == 79) return config.reminder79Geofences();
+		else if (reminderId == 80) return config.reminder80Geofences();
+		else if (reminderId == 81) return config.reminder81Geofences();
+		else if (reminderId == 82) return config.reminder82Geofences();
+		else if (reminderId == 83) return config.reminder83Geofences();
+		else if (reminderId == 84) return config.reminder84Geofences();
+		else if (reminderId == 85) return config.reminder85Geofences();
+		else if (reminderId == 86) return config.reminder86Geofences();
+		else if (reminderId == 87) return config.reminder87Geofences();
+		else if (reminderId == 88) return config.reminder88Geofences();
+		else if (reminderId == 89) return config.reminder89Geofences();
+		else if (reminderId == 90) return config.reminder90Geofences();
+		else if (reminderId == 91) return config.reminder91Geofences();
+		else if (reminderId == 92) return config.reminder92Geofences();
+		else if (reminderId == 93) return config.reminder93Geofences();
+		else if (reminderId == 94) return config.reminder94Geofences();
+		else if (reminderId == 95) return config.reminder95Geofences();
+		else if (reminderId == 96) return config.reminder96Geofences();
+		else if (reminderId == 97) return config.reminder97Geofences();
+		else if (reminderId == 98) return config.reminder98Geofences();
+		else if (reminderId == 99) return config.reminder99Geofences();
+		else if (reminderId == 100) return config.reminder100Geofences();
 		else return "";
 	}
 

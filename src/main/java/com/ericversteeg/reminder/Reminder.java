@@ -6,6 +6,10 @@ import java.awt.*;
 
 public class Reminder {
 
+    public int id;
+
+    public long posted = 0L;
+
     @SerializedName("enable")
     public boolean enable = false;
 

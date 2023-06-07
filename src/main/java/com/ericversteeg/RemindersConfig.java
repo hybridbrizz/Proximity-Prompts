@@ -10,7 +10,7 @@ import java.awt.*;
 
 @ConfigGroup(RemindersConfig.GROUP)
 public interface RemindersConfig extends Config {
-	String GROUP = "reminders_2";
+	String GROUP = "reminders_4";
 
 	@ConfigItem(
 			position = 1,
@@ -19,7 +19,7 @@ public interface RemindersConfig extends Config {
 			description = "Configure anchor."
 	)
 	default AnchorType anchorType() {
-		return AnchorType.TOP_RIGHT;
+		return AnchorType.TOP_LEFT;
 	}
 
 	@ConfigItem(
@@ -45,7 +45,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			position = 4,
 			keyName = "idFinder",
-			name = "ID Finder",
+			name = "Finder",
 			description = "Configures whether or not to show ids."
 	)
 	default boolean idFinder() {
@@ -65,8 +65,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			position = 6,
 			keyName = "max",
-			name = "Max Reminders",
-			description = "Configures the max amount of reminders."
+			name = "Max",
+			description = "Configures the max number of reminders."
 	)
 	default int maxReminders() {
 		return 5;
@@ -78,12 +78,12 @@ public interface RemindersConfig extends Config {
 			position = 20,
 			closedByDefault = true
 	)
-	String customReminders= "customRemindersSection";
+	String customReminders = "customRemindersSection";
 
 	@ConfigItem(
 			position = 0,
 			keyName = "customReminders",
-			name = "Custom Reminders",
+			name = "Json",
 			description = "Json array of reminders.",
 			section = customReminders
 
@@ -98,7 +98,7 @@ public interface RemindersConfig extends Config {
 				"      \"10:00pm\",\n" +
 				"      \"5:30pm-7:00pm\"\n" +
 				"    ],\n" +
-				"    \"days_of_week\": [\n" +
+				"    \"days\": [\n" +
 				"      \"Thu\",\n" +
 				"      \"Sat\"\n" +
 				"    ],\n" +
@@ -106,24 +106,24 @@ public interface RemindersConfig extends Config {
 				"      \"05/30/23\",\n" +
 				"      \"10/20\"\n" +
 				"    ],\n" +
-				"    \"coordinates\": [\n" +
+				"    \"locations\": [\n" +
 				"      \"(300, 400)\",\n" +
 				"      \"(1000, 750)\"\n" +
 				"    ],\n" +
 				"    \"radius\": 3,\n" +
-				"    \"geo_fences\": [\n" +
+				"    \"geofences\": [\n" +
 				"      \"(4000, 3000, 4500, 2500)\",\n" +
 				"      \"(500, 1000, 1500, 500)\"\n" +
 				"    ],\n" +
-				"    \"region_ids\": [\n" +
+				"    \"regions\": [\n" +
 				"      \"500\",\n" +
 				"      \"750\"\n" +
 				"    ],\n" +
-				"    \"npc_ids\": [\n" +
+				"    \"npcs\": [\n" +
 				"      \"300\",\n" +
 				"      \"400\"\n" +
 				"    ],\n" +
-				"    \"item_ids\": [\n" +
+				"    \"items\": [\n" +
 				"      \"1500\",\n" +
 				"      \"2000\"\n" +
 				"    ]\n" +
@@ -142,7 +142,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder1",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder1
 	)
@@ -178,7 +178,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder1DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder1
 	)
@@ -203,13 +203,13 @@ public interface RemindersConfig extends Config {
 	default String reminder1Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder1GeoFences",
+			keyName = "reminder1Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder1
 	)
-	default String reminder1GeoFences() { return ""; }
+	default String reminder1Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder1Radius",
@@ -223,7 +223,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder1RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder1
 	)
@@ -232,7 +232,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder1NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder1
 	)
@@ -241,7 +241,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder1ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder1
 	)
@@ -259,7 +259,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder2",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder2
 	)
@@ -295,7 +295,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder2DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder2
 	)
@@ -320,13 +320,13 @@ public interface RemindersConfig extends Config {
 	default String reminder2Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder2GeoFences",
+			keyName = "reminder2Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder2
 	)
-	default String reminder2GeoFences() { return ""; }
+	default String reminder2Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder2Radius",
@@ -340,7 +340,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder2RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder2
 	)
@@ -349,7 +349,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder2NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder2
 	)
@@ -358,7 +358,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder2ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder2
 	)
@@ -376,7 +376,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder3",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder3
 	)
@@ -412,7 +412,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder3DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder3
 	)
@@ -437,13 +437,13 @@ public interface RemindersConfig extends Config {
 	default String reminder3Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder3GeoFences",
+			keyName = "reminder3Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder3
 	)
-	default String reminder3GeoFences() { return ""; }
+	default String reminder3Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder3Radius",
@@ -457,7 +457,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder3RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder3
 	)
@@ -466,7 +466,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder3NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder3
 	)
@@ -475,7 +475,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder3ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder3
 	)
@@ -493,7 +493,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder4",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder4
 	)
@@ -529,7 +529,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder4DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder4
 	)
@@ -554,13 +554,13 @@ public interface RemindersConfig extends Config {
 	default String reminder4Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder4GeoFences",
+			keyName = "reminder4Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder4
 	)
-	default String reminder4GeoFences() { return ""; }
+	default String reminder4Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder4Radius",
@@ -574,7 +574,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder4RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder4
 	)
@@ -583,7 +583,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder4NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder4
 	)
@@ -592,7 +592,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder4ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder4
 	)
@@ -610,7 +610,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder5",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder5
 	)
@@ -646,7 +646,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder5DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder5
 	)
@@ -671,13 +671,13 @@ public interface RemindersConfig extends Config {
 	default String reminder5Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder5GeoFences",
+			keyName = "reminder5Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder5
 	)
-	default String reminder5GeoFences() { return ""; }
+	default String reminder5Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder5Radius",
@@ -691,7 +691,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder5RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder5
 	)
@@ -700,7 +700,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder5NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder5
 	)
@@ -709,7 +709,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder5ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder5
 	)
@@ -727,7 +727,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder6",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder6
 	)
@@ -763,7 +763,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder6DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder6
 	)
@@ -788,13 +788,13 @@ public interface RemindersConfig extends Config {
 	default String reminder6Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder6GeoFences",
+			keyName = "reminder6Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder6
 	)
-	default String reminder6GeoFences() { return ""; }
+	default String reminder6Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder6Radius",
@@ -808,7 +808,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder6RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder6
 	)
@@ -817,7 +817,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder6NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder6
 	)
@@ -826,7 +826,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder6ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder6
 	)
@@ -844,7 +844,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder7",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder7
 	)
@@ -880,7 +880,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder7DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder7
 	)
@@ -905,13 +905,13 @@ public interface RemindersConfig extends Config {
 	default String reminder7Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder7GeoFences",
+			keyName = "reminder7Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder7
 	)
-	default String reminder7GeoFences() { return ""; }
+	default String reminder7Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder7Radius",
@@ -925,7 +925,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder7RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder7
 	)
@@ -934,7 +934,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder7NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder7
 	)
@@ -943,7 +943,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder7ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder7
 	)
@@ -961,7 +961,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder8",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder8
 	)
@@ -997,7 +997,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder8DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder8
 	)
@@ -1022,13 +1022,13 @@ public interface RemindersConfig extends Config {
 	default String reminder8Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder8GeoFences",
+			keyName = "reminder8Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder8
 	)
-	default String reminder8GeoFences() { return ""; }
+	default String reminder8Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder8Radius",
@@ -1042,7 +1042,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder8RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder8
 	)
@@ -1051,7 +1051,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder8NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder8
 	)
@@ -1060,7 +1060,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder8ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder8
 	)
@@ -1078,7 +1078,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder9",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder9
 	)
@@ -1114,7 +1114,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder9DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder9
 	)
@@ -1139,13 +1139,13 @@ public interface RemindersConfig extends Config {
 	default String reminder9Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder9GeoFences",
+			keyName = "reminder9Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder9
 	)
-	default String reminder9GeoFences() { return ""; }
+	default String reminder9Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder9Radius",
@@ -1159,7 +1159,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder9RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder9
 	)
@@ -1168,7 +1168,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder9NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder9
 	)
@@ -1177,7 +1177,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder9ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder9
 	)
@@ -1195,7 +1195,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder10",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder10
 	)
@@ -1231,7 +1231,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder10DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder10
 	)
@@ -1256,13 +1256,13 @@ public interface RemindersConfig extends Config {
 	default String reminder10Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder10GeoFences",
+			keyName = "reminder10Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder10
 	)
-	default String reminder10GeoFences() { return ""; }
+	default String reminder10Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder10Radius",
@@ -1276,7 +1276,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder10RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder10
 	)
@@ -1285,7 +1285,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder10NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder10
 	)
@@ -1294,7 +1294,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder10ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder10
 	)
@@ -1312,7 +1312,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder11",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder11
 	)
@@ -1348,7 +1348,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder11DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder11
 	)
@@ -1373,13 +1373,13 @@ public interface RemindersConfig extends Config {
 	default String reminder11Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder11GeoFences",
+			keyName = "reminder11Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder11
 	)
-	default String reminder11GeoFences() { return ""; }
+	default String reminder11Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder11Radius",
@@ -1393,7 +1393,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder11RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder11
 	)
@@ -1402,7 +1402,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder11NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder11
 	)
@@ -1411,7 +1411,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder11ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder11
 	)
@@ -1429,7 +1429,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder12",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder12
 	)
@@ -1465,7 +1465,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder12DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder12
 	)
@@ -1490,13 +1490,13 @@ public interface RemindersConfig extends Config {
 	default String reminder12Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder12GeoFences",
+			keyName = "reminder12Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder12
 	)
-	default String reminder12GeoFences() { return ""; }
+	default String reminder12Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder12Radius",
@@ -1510,7 +1510,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder12RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder12
 	)
@@ -1519,7 +1519,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder12NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder12
 	)
@@ -1528,7 +1528,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder12ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder12
 	)
@@ -1546,7 +1546,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder13",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder13
 	)
@@ -1582,7 +1582,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder13DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder13
 	)
@@ -1607,13 +1607,13 @@ public interface RemindersConfig extends Config {
 	default String reminder13Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder13GeoFences",
+			keyName = "reminder13Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder13
 	)
-	default String reminder13GeoFences() { return ""; }
+	default String reminder13Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder13Radius",
@@ -1627,7 +1627,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder13RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder13
 	)
@@ -1636,7 +1636,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder13NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder13
 	)
@@ -1645,7 +1645,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder13ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder13
 	)
@@ -1663,7 +1663,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder14",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder14
 	)
@@ -1699,7 +1699,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder14DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder14
 	)
@@ -1724,13 +1724,13 @@ public interface RemindersConfig extends Config {
 	default String reminder14Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder14GeoFences",
+			keyName = "reminder14Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder14
 	)
-	default String reminder14GeoFences() { return ""; }
+	default String reminder14Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder14Radius",
@@ -1744,7 +1744,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder14RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder14
 	)
@@ -1753,7 +1753,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder14NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder14
 	)
@@ -1762,7 +1762,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder14ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder14
 	)
@@ -1780,7 +1780,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder15",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder15
 	)
@@ -1816,7 +1816,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder15DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder15
 	)
@@ -1841,13 +1841,13 @@ public interface RemindersConfig extends Config {
 	default String reminder15Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder15GeoFences",
+			keyName = "reminder15Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder15
 	)
-	default String reminder15GeoFences() { return ""; }
+	default String reminder15Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder15Radius",
@@ -1861,7 +1861,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder15RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder15
 	)
@@ -1870,7 +1870,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder15NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder15
 	)
@@ -1879,7 +1879,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder15ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder15
 	)
@@ -1897,7 +1897,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder16",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder16
 	)
@@ -1933,7 +1933,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder16DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder16
 	)
@@ -1958,13 +1958,13 @@ public interface RemindersConfig extends Config {
 	default String reminder16Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder16GeoFences",
+			keyName = "reminder16Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder16
 	)
-	default String reminder16GeoFences() { return ""; }
+	default String reminder16Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder16Radius",
@@ -1978,7 +1978,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder16RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder16
 	)
@@ -1987,7 +1987,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder16NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder16
 	)
@@ -1996,7 +1996,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder16ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder16
 	)
@@ -2014,7 +2014,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder17",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder17
 	)
@@ -2050,7 +2050,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder17DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder17
 	)
@@ -2075,13 +2075,13 @@ public interface RemindersConfig extends Config {
 	default String reminder17Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder17GeoFences",
+			keyName = "reminder17Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder17
 	)
-	default String reminder17GeoFences() { return ""; }
+	default String reminder17Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder17Radius",
@@ -2095,7 +2095,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder17RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder17
 	)
@@ -2104,7 +2104,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder17NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder17
 	)
@@ -2113,7 +2113,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder17ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder17
 	)
@@ -2131,7 +2131,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder18",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder18
 	)
@@ -2167,7 +2167,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder18DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder18
 	)
@@ -2192,13 +2192,13 @@ public interface RemindersConfig extends Config {
 	default String reminder18Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder18GeoFences",
+			keyName = "reminder18Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder18
 	)
-	default String reminder18GeoFences() { return ""; }
+	default String reminder18Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder18Radius",
@@ -2212,7 +2212,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder18RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder18
 	)
@@ -2221,7 +2221,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder18NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder18
 	)
@@ -2230,7 +2230,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder18ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder18
 	)
@@ -2248,7 +2248,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder19",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder19
 	)
@@ -2284,7 +2284,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder19DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder19
 	)
@@ -2309,13 +2309,13 @@ public interface RemindersConfig extends Config {
 	default String reminder19Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder19GeoFences",
+			keyName = "reminder19Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder19
 	)
-	default String reminder19GeoFences() { return ""; }
+	default String reminder19Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder19Radius",
@@ -2329,7 +2329,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder19RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder19
 	)
@@ -2338,7 +2338,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder19NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder19
 	)
@@ -2347,7 +2347,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder19ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder19
 	)
@@ -2365,7 +2365,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder20",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder20
 	)
@@ -2401,7 +2401,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder20DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder20
 	)
@@ -2426,13 +2426,13 @@ public interface RemindersConfig extends Config {
 	default String reminder20Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder20GeoFences",
+			keyName = "reminder20Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder20
 	)
-	default String reminder20GeoFences() { return ""; }
+	default String reminder20Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder20Radius",
@@ -2446,7 +2446,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder20RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder20
 	)
@@ -2455,7 +2455,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder20NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder20
 	)
@@ -2464,7 +2464,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder20ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder20
 	)
@@ -2482,7 +2482,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder21",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder21
 	)
@@ -2518,7 +2518,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder21DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder21
 	)
@@ -2543,13 +2543,13 @@ public interface RemindersConfig extends Config {
 	default String reminder21Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder21GeoFences",
+			keyName = "reminder21Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder21
 	)
-	default String reminder21GeoFences() { return ""; }
+	default String reminder21Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder21Radius",
@@ -2563,7 +2563,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder21RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder21
 	)
@@ -2572,7 +2572,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder21NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder21
 	)
@@ -2581,7 +2581,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder21ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder21
 	)
@@ -2599,7 +2599,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder22",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder22
 	)
@@ -2635,7 +2635,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder22DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder22
 	)
@@ -2660,13 +2660,13 @@ public interface RemindersConfig extends Config {
 	default String reminder22Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder22GeoFences",
+			keyName = "reminder22Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder22
 	)
-	default String reminder22GeoFences() { return ""; }
+	default String reminder22Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder22Radius",
@@ -2680,7 +2680,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder22RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder22
 	)
@@ -2689,7 +2689,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder22NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder22
 	)
@@ -2698,7 +2698,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder22ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder22
 	)
@@ -2716,7 +2716,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder23",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder23
 	)
@@ -2752,7 +2752,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder23DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder23
 	)
@@ -2777,13 +2777,13 @@ public interface RemindersConfig extends Config {
 	default String reminder23Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder23GeoFences",
+			keyName = "reminder23Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder23
 	)
-	default String reminder23GeoFences() { return ""; }
+	default String reminder23Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder23Radius",
@@ -2797,7 +2797,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder23RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder23
 	)
@@ -2806,7 +2806,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder23NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder23
 	)
@@ -2815,7 +2815,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder23ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder23
 	)
@@ -2833,7 +2833,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder24",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder24
 	)
@@ -2869,7 +2869,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder24DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder24
 	)
@@ -2894,13 +2894,13 @@ public interface RemindersConfig extends Config {
 	default String reminder24Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder24GeoFences",
+			keyName = "reminder24Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder24
 	)
-	default String reminder24GeoFences() { return ""; }
+	default String reminder24Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder24Radius",
@@ -2914,7 +2914,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder24RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder24
 	)
@@ -2923,7 +2923,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder24NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder24
 	)
@@ -2932,7 +2932,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder24ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder24
 	)
@@ -2950,7 +2950,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder25",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder25
 	)
@@ -2986,7 +2986,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder25DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder25
 	)
@@ -3011,13 +3011,13 @@ public interface RemindersConfig extends Config {
 	default String reminder25Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder25GeoFences",
+			keyName = "reminder25Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder25
 	)
-	default String reminder25GeoFences() { return ""; }
+	default String reminder25Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder25Radius",
@@ -3031,7 +3031,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder25RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder25
 	)
@@ -3040,7 +3040,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder25NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder25
 	)
@@ -3049,7 +3049,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder25ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder25
 	)
@@ -3067,7 +3067,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder26",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder26
 	)
@@ -3103,7 +3103,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder26DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder26
 	)
@@ -3128,13 +3128,13 @@ public interface RemindersConfig extends Config {
 	default String reminder26Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder26GeoFences",
+			keyName = "reminder26Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder26
 	)
-	default String reminder26GeoFences() { return ""; }
+	default String reminder26Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder26Radius",
@@ -3148,7 +3148,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder26RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder26
 	)
@@ -3157,7 +3157,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder26NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder26
 	)
@@ -3166,7 +3166,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder26ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder26
 	)
@@ -3184,7 +3184,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder27",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder27
 	)
@@ -3220,7 +3220,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder27DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder27
 	)
@@ -3245,13 +3245,13 @@ public interface RemindersConfig extends Config {
 	default String reminder27Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder27GeoFences",
+			keyName = "reminder27Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder27
 	)
-	default String reminder27GeoFences() { return ""; }
+	default String reminder27Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder27Radius",
@@ -3265,7 +3265,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder27RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder27
 	)
@@ -3274,7 +3274,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder27NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder27
 	)
@@ -3283,7 +3283,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder27ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder27
 	)
@@ -3301,7 +3301,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder28",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder28
 	)
@@ -3337,7 +3337,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder28DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder28
 	)
@@ -3362,13 +3362,13 @@ public interface RemindersConfig extends Config {
 	default String reminder28Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder28GeoFences",
+			keyName = "reminder28Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder28
 	)
-	default String reminder28GeoFences() { return ""; }
+	default String reminder28Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder28Radius",
@@ -3382,7 +3382,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder28RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder28
 	)
@@ -3391,7 +3391,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder28NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder28
 	)
@@ -3400,7 +3400,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder28ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder28
 	)
@@ -3418,7 +3418,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder29",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder29
 	)
@@ -3454,7 +3454,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder29DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder29
 	)
@@ -3479,13 +3479,13 @@ public interface RemindersConfig extends Config {
 	default String reminder29Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder29GeoFences",
+			keyName = "reminder29Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder29
 	)
-	default String reminder29GeoFences() { return ""; }
+	default String reminder29Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder29Radius",
@@ -3499,7 +3499,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder29RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder29
 	)
@@ -3508,7 +3508,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder29NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder29
 	)
@@ -3517,7 +3517,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder29ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder29
 	)
@@ -3535,7 +3535,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder30",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder30
 	)
@@ -3571,7 +3571,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder30DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder30
 	)
@@ -3596,13 +3596,13 @@ public interface RemindersConfig extends Config {
 	default String reminder30Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder30GeoFences",
+			keyName = "reminder30Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder30
 	)
-	default String reminder30GeoFences() { return ""; }
+	default String reminder30Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder30Radius",
@@ -3616,7 +3616,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder30RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder30
 	)
@@ -3625,7 +3625,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder30NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder30
 	)
@@ -3634,7 +3634,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder30ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder30
 	)
@@ -3652,7 +3652,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder31",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder31
 	)
@@ -3688,7 +3688,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder31DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder31
 	)
@@ -3713,13 +3713,13 @@ public interface RemindersConfig extends Config {
 	default String reminder31Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder31GeoFences",
+			keyName = "reminder31Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder31
 	)
-	default String reminder31GeoFences() { return ""; }
+	default String reminder31Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder31Radius",
@@ -3733,7 +3733,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder31RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder31
 	)
@@ -3742,7 +3742,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder31NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder31
 	)
@@ -3751,7 +3751,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder31ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder31
 	)
@@ -3769,7 +3769,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder32",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder32
 	)
@@ -3805,7 +3805,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder32DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder32
 	)
@@ -3830,13 +3830,13 @@ public interface RemindersConfig extends Config {
 	default String reminder32Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder32GeoFences",
+			keyName = "reminder32Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder32
 	)
-	default String reminder32GeoFences() { return ""; }
+	default String reminder32Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder32Radius",
@@ -3850,7 +3850,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder32RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder32
 	)
@@ -3859,7 +3859,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder32NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder32
 	)
@@ -3868,7 +3868,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder32ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder32
 	)
@@ -3886,7 +3886,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder33",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder33
 	)
@@ -3922,7 +3922,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder33DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder33
 	)
@@ -3947,13 +3947,13 @@ public interface RemindersConfig extends Config {
 	default String reminder33Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder33GeoFences",
+			keyName = "reminder33Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder33
 	)
-	default String reminder33GeoFences() { return ""; }
+	default String reminder33Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder33Radius",
@@ -3967,7 +3967,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder33RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder33
 	)
@@ -3976,7 +3976,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder33NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder33
 	)
@@ -3985,7 +3985,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder33ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder33
 	)
@@ -4003,7 +4003,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder34",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder34
 	)
@@ -4039,7 +4039,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder34DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder34
 	)
@@ -4064,13 +4064,13 @@ public interface RemindersConfig extends Config {
 	default String reminder34Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder34GeoFences",
+			keyName = "reminder34Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder34
 	)
-	default String reminder34GeoFences() { return ""; }
+	default String reminder34Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder34Radius",
@@ -4084,7 +4084,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder34RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder34
 	)
@@ -4093,7 +4093,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder34NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder34
 	)
@@ -4102,7 +4102,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder34ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder34
 	)
@@ -4120,7 +4120,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder35",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder35
 	)
@@ -4156,7 +4156,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder35DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder35
 	)
@@ -4181,13 +4181,13 @@ public interface RemindersConfig extends Config {
 	default String reminder35Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder35GeoFences",
+			keyName = "reminder35Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder35
 	)
-	default String reminder35GeoFences() { return ""; }
+	default String reminder35Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder35Radius",
@@ -4201,7 +4201,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder35RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder35
 	)
@@ -4210,7 +4210,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder35NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder35
 	)
@@ -4219,7 +4219,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder35ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder35
 	)
@@ -4237,7 +4237,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder36",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder36
 	)
@@ -4273,7 +4273,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder36DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder36
 	)
@@ -4298,13 +4298,13 @@ public interface RemindersConfig extends Config {
 	default String reminder36Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder36GeoFences",
+			keyName = "reminder36Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder36
 	)
-	default String reminder36GeoFences() { return ""; }
+	default String reminder36Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder36Radius",
@@ -4318,7 +4318,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder36RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder36
 	)
@@ -4327,7 +4327,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder36NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder36
 	)
@@ -4336,7 +4336,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder36ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder36
 	)
@@ -4354,7 +4354,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder37",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder37
 	)
@@ -4390,7 +4390,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder37DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder37
 	)
@@ -4415,13 +4415,13 @@ public interface RemindersConfig extends Config {
 	default String reminder37Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder37GeoFences",
+			keyName = "reminder37Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder37
 	)
-	default String reminder37GeoFences() { return ""; }
+	default String reminder37Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder37Radius",
@@ -4435,7 +4435,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder37RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder37
 	)
@@ -4444,7 +4444,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder37NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder37
 	)
@@ -4453,7 +4453,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder37ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder37
 	)
@@ -4471,7 +4471,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder38",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder38
 	)
@@ -4507,7 +4507,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder38DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder38
 	)
@@ -4532,13 +4532,13 @@ public interface RemindersConfig extends Config {
 	default String reminder38Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder38GeoFences",
+			keyName = "reminder38Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder38
 	)
-	default String reminder38GeoFences() { return ""; }
+	default String reminder38Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder38Radius",
@@ -4552,7 +4552,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder38RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder38
 	)
@@ -4561,7 +4561,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder38NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder38
 	)
@@ -4570,7 +4570,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder38ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder38
 	)
@@ -4588,7 +4588,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder39",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder39
 	)
@@ -4624,7 +4624,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder39DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder39
 	)
@@ -4649,13 +4649,13 @@ public interface RemindersConfig extends Config {
 	default String reminder39Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder39GeoFences",
+			keyName = "reminder39Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder39
 	)
-	default String reminder39GeoFences() { return ""; }
+	default String reminder39Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder39Radius",
@@ -4669,7 +4669,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder39RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder39
 	)
@@ -4678,7 +4678,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder39NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder39
 	)
@@ -4687,7 +4687,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder39ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder39
 	)
@@ -4705,7 +4705,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder40",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder40
 	)
@@ -4741,7 +4741,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder40DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder40
 	)
@@ -4766,13 +4766,13 @@ public interface RemindersConfig extends Config {
 	default String reminder40Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder40GeoFences",
+			keyName = "reminder40Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder40
 	)
-	default String reminder40GeoFences() { return ""; }
+	default String reminder40Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder40Radius",
@@ -4786,7 +4786,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder40RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder40
 	)
@@ -4795,7 +4795,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder40NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder40
 	)
@@ -4804,7 +4804,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder40ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder40
 	)
@@ -4822,7 +4822,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder41",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder41
 	)
@@ -4858,7 +4858,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder41DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder41
 	)
@@ -4883,13 +4883,13 @@ public interface RemindersConfig extends Config {
 	default String reminder41Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder41GeoFences",
+			keyName = "reminder41Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder41
 	)
-	default String reminder41GeoFences() { return ""; }
+	default String reminder41Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder41Radius",
@@ -4903,7 +4903,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder41RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder41
 	)
@@ -4912,7 +4912,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder41NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder41
 	)
@@ -4921,7 +4921,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder41ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder41
 	)
@@ -4939,7 +4939,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder42",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder42
 	)
@@ -4975,7 +4975,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder42DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder42
 	)
@@ -5000,13 +5000,13 @@ public interface RemindersConfig extends Config {
 	default String reminder42Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder42GeoFences",
+			keyName = "reminder42Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder42
 	)
-	default String reminder42GeoFences() { return ""; }
+	default String reminder42Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder42Radius",
@@ -5020,7 +5020,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder42RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder42
 	)
@@ -5029,7 +5029,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder42NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder42
 	)
@@ -5038,7 +5038,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder42ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder42
 	)
@@ -5056,7 +5056,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder43",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder43
 	)
@@ -5092,7 +5092,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder43DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder43
 	)
@@ -5117,13 +5117,13 @@ public interface RemindersConfig extends Config {
 	default String reminder43Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder43GeoFences",
+			keyName = "reminder43Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder43
 	)
-	default String reminder43GeoFences() { return ""; }
+	default String reminder43Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder43Radius",
@@ -5137,7 +5137,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder43RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder43
 	)
@@ -5146,7 +5146,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder43NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder43
 	)
@@ -5155,7 +5155,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder43ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder43
 	)
@@ -5173,7 +5173,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder44",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder44
 	)
@@ -5209,7 +5209,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder44DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder44
 	)
@@ -5234,13 +5234,13 @@ public interface RemindersConfig extends Config {
 	default String reminder44Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder44GeoFences",
+			keyName = "reminder44Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder44
 	)
-	default String reminder44GeoFences() { return ""; }
+	default String reminder44Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder44Radius",
@@ -5254,7 +5254,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder44RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder44
 	)
@@ -5263,7 +5263,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder44NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder44
 	)
@@ -5272,7 +5272,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder44ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder44
 	)
@@ -5290,7 +5290,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder45",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder45
 	)
@@ -5326,7 +5326,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder45DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder45
 	)
@@ -5351,13 +5351,13 @@ public interface RemindersConfig extends Config {
 	default String reminder45Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder45GeoFences",
+			keyName = "reminder45Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder45
 	)
-	default String reminder45GeoFences() { return ""; }
+	default String reminder45Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder45Radius",
@@ -5371,7 +5371,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder45RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder45
 	)
@@ -5380,7 +5380,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder45NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder45
 	)
@@ -5389,7 +5389,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder45ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder45
 	)
@@ -5407,7 +5407,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder46",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder46
 	)
@@ -5443,7 +5443,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder46DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder46
 	)
@@ -5468,13 +5468,13 @@ public interface RemindersConfig extends Config {
 	default String reminder46Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder46GeoFences",
+			keyName = "reminder46Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder46
 	)
-	default String reminder46GeoFences() { return ""; }
+	default String reminder46Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder46Radius",
@@ -5488,7 +5488,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder46RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder46
 	)
@@ -5497,7 +5497,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder46NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder46
 	)
@@ -5506,7 +5506,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder46ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder46
 	)
@@ -5524,7 +5524,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder47",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder47
 	)
@@ -5560,7 +5560,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder47DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder47
 	)
@@ -5585,13 +5585,13 @@ public interface RemindersConfig extends Config {
 	default String reminder47Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder47GeoFences",
+			keyName = "reminder47Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder47
 	)
-	default String reminder47GeoFences() { return ""; }
+	default String reminder47Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder47Radius",
@@ -5605,7 +5605,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder47RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder47
 	)
@@ -5614,7 +5614,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder47NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder47
 	)
@@ -5623,7 +5623,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder47ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder47
 	)
@@ -5641,7 +5641,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder48",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder48
 	)
@@ -5677,7 +5677,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder48DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder48
 	)
@@ -5702,13 +5702,13 @@ public interface RemindersConfig extends Config {
 	default String reminder48Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder48GeoFences",
+			keyName = "reminder48Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder48
 	)
-	default String reminder48GeoFences() { return ""; }
+	default String reminder48Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder48Radius",
@@ -5722,7 +5722,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder48RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder48
 	)
@@ -5731,7 +5731,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder48NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder48
 	)
@@ -5740,7 +5740,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder48ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder48
 	)
@@ -5758,7 +5758,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder49",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder49
 	)
@@ -5794,7 +5794,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder49DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder49
 	)
@@ -5819,13 +5819,13 @@ public interface RemindersConfig extends Config {
 	default String reminder49Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder49GeoFences",
+			keyName = "reminder49Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder49
 	)
-	default String reminder49GeoFences() { return ""; }
+	default String reminder49Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder49Radius",
@@ -5839,7 +5839,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder49RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder49
 	)
@@ -5848,7 +5848,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder49NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder49
 	)
@@ -5857,7 +5857,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder49ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder49
 	)
@@ -5875,7 +5875,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder50",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder50
 	)
@@ -5911,7 +5911,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder50DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder50
 	)
@@ -5936,13 +5936,13 @@ public interface RemindersConfig extends Config {
 	default String reminder50Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder50GeoFences",
+			keyName = "reminder50Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder50
 	)
-	default String reminder50GeoFences() { return ""; }
+	default String reminder50Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder50Radius",
@@ -5956,7 +5956,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder50RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder50
 	)
@@ -5965,7 +5965,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder50NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder50
 	)
@@ -5974,7 +5974,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder50ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder50
 	)
@@ -5992,7 +5992,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder51",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder51
 	)
@@ -6028,7 +6028,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder51DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder51
 	)
@@ -6053,13 +6053,13 @@ public interface RemindersConfig extends Config {
 	default String reminder51Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder51GeoFences",
+			keyName = "reminder51Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder51
 	)
-	default String reminder51GeoFences() { return ""; }
+	default String reminder51Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder51Radius",
@@ -6073,7 +6073,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder51RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder51
 	)
@@ -6082,7 +6082,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder51NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder51
 	)
@@ -6091,7 +6091,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder51ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder51
 	)
@@ -6109,7 +6109,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder52",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder52
 	)
@@ -6145,7 +6145,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder52DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder52
 	)
@@ -6170,13 +6170,13 @@ public interface RemindersConfig extends Config {
 	default String reminder52Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder52GeoFences",
+			keyName = "reminder52Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder52
 	)
-	default String reminder52GeoFences() { return ""; }
+	default String reminder52Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder52Radius",
@@ -6190,7 +6190,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder52RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder52
 	)
@@ -6199,7 +6199,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder52NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder52
 	)
@@ -6208,7 +6208,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder52ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder52
 	)
@@ -6226,7 +6226,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder53",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder53
 	)
@@ -6262,7 +6262,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder53DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder53
 	)
@@ -6287,13 +6287,13 @@ public interface RemindersConfig extends Config {
 	default String reminder53Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder53GeoFences",
+			keyName = "reminder53Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder53
 	)
-	default String reminder53GeoFences() { return ""; }
+	default String reminder53Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder53Radius",
@@ -6307,7 +6307,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder53RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder53
 	)
@@ -6316,7 +6316,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder53NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder53
 	)
@@ -6325,7 +6325,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder53ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder53
 	)
@@ -6343,7 +6343,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder54",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder54
 	)
@@ -6379,7 +6379,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder54DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder54
 	)
@@ -6404,13 +6404,13 @@ public interface RemindersConfig extends Config {
 	default String reminder54Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder54GeoFences",
+			keyName = "reminder54Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder54
 	)
-	default String reminder54GeoFences() { return ""; }
+	default String reminder54Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder54Radius",
@@ -6424,7 +6424,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder54RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder54
 	)
@@ -6433,7 +6433,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder54NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder54
 	)
@@ -6442,7 +6442,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder54ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder54
 	)
@@ -6460,7 +6460,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder55",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder55
 	)
@@ -6496,7 +6496,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder55DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder55
 	)
@@ -6521,13 +6521,13 @@ public interface RemindersConfig extends Config {
 	default String reminder55Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder55GeoFences",
+			keyName = "reminder55Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder55
 	)
-	default String reminder55GeoFences() { return ""; }
+	default String reminder55Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder55Radius",
@@ -6541,7 +6541,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder55RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder55
 	)
@@ -6550,7 +6550,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder55NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder55
 	)
@@ -6559,7 +6559,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder55ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder55
 	)
@@ -6577,7 +6577,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder56",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder56
 	)
@@ -6613,7 +6613,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder56DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder56
 	)
@@ -6638,13 +6638,13 @@ public interface RemindersConfig extends Config {
 	default String reminder56Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder56GeoFences",
+			keyName = "reminder56Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder56
 	)
-	default String reminder56GeoFences() { return ""; }
+	default String reminder56Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder56Radius",
@@ -6658,7 +6658,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder56RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder56
 	)
@@ -6667,7 +6667,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder56NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder56
 	)
@@ -6676,7 +6676,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder56ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder56
 	)
@@ -6694,7 +6694,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder57",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder57
 	)
@@ -6730,7 +6730,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder57DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder57
 	)
@@ -6755,13 +6755,13 @@ public interface RemindersConfig extends Config {
 	default String reminder57Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder57GeoFences",
+			keyName = "reminder57Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder57
 	)
-	default String reminder57GeoFences() { return ""; }
+	default String reminder57Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder57Radius",
@@ -6775,7 +6775,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder57RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder57
 	)
@@ -6784,7 +6784,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder57NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder57
 	)
@@ -6793,7 +6793,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder57ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder57
 	)
@@ -6811,7 +6811,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder58",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder58
 	)
@@ -6847,7 +6847,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder58DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder58
 	)
@@ -6872,13 +6872,13 @@ public interface RemindersConfig extends Config {
 	default String reminder58Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder58GeoFences",
+			keyName = "reminder58Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder58
 	)
-	default String reminder58GeoFences() { return ""; }
+	default String reminder58Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder58Radius",
@@ -6892,7 +6892,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder58RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder58
 	)
@@ -6901,7 +6901,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder58NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder58
 	)
@@ -6910,7 +6910,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder58ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder58
 	)
@@ -6928,7 +6928,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder59",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder59
 	)
@@ -6964,7 +6964,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder59DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder59
 	)
@@ -6989,13 +6989,13 @@ public interface RemindersConfig extends Config {
 	default String reminder59Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder59GeoFences",
+			keyName = "reminder59Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder59
 	)
-	default String reminder59GeoFences() { return ""; }
+	default String reminder59Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder59Radius",
@@ -7009,7 +7009,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder59RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder59
 	)
@@ -7018,7 +7018,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder59NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder59
 	)
@@ -7027,7 +7027,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder59ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder59
 	)
@@ -7045,7 +7045,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder60",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder60
 	)
@@ -7081,7 +7081,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder60DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder60
 	)
@@ -7106,13 +7106,13 @@ public interface RemindersConfig extends Config {
 	default String reminder60Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder60GeoFences",
+			keyName = "reminder60Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder60
 	)
-	default String reminder60GeoFences() { return ""; }
+	default String reminder60Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder60Radius",
@@ -7126,7 +7126,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder60RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder60
 	)
@@ -7135,7 +7135,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder60NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder60
 	)
@@ -7144,7 +7144,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder60ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder60
 	)
@@ -7162,7 +7162,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder61",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder61
 	)
@@ -7198,7 +7198,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder61DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder61
 	)
@@ -7223,13 +7223,13 @@ public interface RemindersConfig extends Config {
 	default String reminder61Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder61GeoFences",
+			keyName = "reminder61Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder61
 	)
-	default String reminder61GeoFences() { return ""; }
+	default String reminder61Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder61Radius",
@@ -7243,7 +7243,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder61RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder61
 	)
@@ -7252,7 +7252,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder61NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder61
 	)
@@ -7261,7 +7261,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder61ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder61
 	)
@@ -7279,7 +7279,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder62",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder62
 	)
@@ -7315,7 +7315,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder62DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder62
 	)
@@ -7340,13 +7340,13 @@ public interface RemindersConfig extends Config {
 	default String reminder62Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder62GeoFences",
+			keyName = "reminder62Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder62
 	)
-	default String reminder62GeoFences() { return ""; }
+	default String reminder62Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder62Radius",
@@ -7360,7 +7360,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder62RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder62
 	)
@@ -7369,7 +7369,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder62NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder62
 	)
@@ -7378,7 +7378,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder62ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder62
 	)
@@ -7396,7 +7396,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder63",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder63
 	)
@@ -7432,7 +7432,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder63DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder63
 	)
@@ -7457,13 +7457,13 @@ public interface RemindersConfig extends Config {
 	default String reminder63Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder63GeoFences",
+			keyName = "reminder63Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder63
 	)
-	default String reminder63GeoFences() { return ""; }
+	default String reminder63Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder63Radius",
@@ -7477,7 +7477,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder63RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder63
 	)
@@ -7486,7 +7486,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder63NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder63
 	)
@@ -7495,7 +7495,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder63ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder63
 	)
@@ -7513,7 +7513,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder64",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder64
 	)
@@ -7549,7 +7549,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder64DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder64
 	)
@@ -7574,13 +7574,13 @@ public interface RemindersConfig extends Config {
 	default String reminder64Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder64GeoFences",
+			keyName = "reminder64Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder64
 	)
-	default String reminder64GeoFences() { return ""; }
+	default String reminder64Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder64Radius",
@@ -7594,7 +7594,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder64RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder64
 	)
@@ -7603,7 +7603,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder64NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder64
 	)
@@ -7612,7 +7612,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder64ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder64
 	)
@@ -7630,7 +7630,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder65",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder65
 	)
@@ -7666,7 +7666,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder65DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder65
 	)
@@ -7691,13 +7691,13 @@ public interface RemindersConfig extends Config {
 	default String reminder65Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder65GeoFences",
+			keyName = "reminder65Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder65
 	)
-	default String reminder65GeoFences() { return ""; }
+	default String reminder65Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder65Radius",
@@ -7711,7 +7711,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder65RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder65
 	)
@@ -7720,7 +7720,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder65NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder65
 	)
@@ -7729,7 +7729,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder65ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder65
 	)
@@ -7747,7 +7747,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder66",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder66
 	)
@@ -7783,7 +7783,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder66DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder66
 	)
@@ -7808,13 +7808,13 @@ public interface RemindersConfig extends Config {
 	default String reminder66Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder66GeoFences",
+			keyName = "reminder66Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder66
 	)
-	default String reminder66GeoFences() { return ""; }
+	default String reminder66Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder66Radius",
@@ -7828,7 +7828,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder66RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder66
 	)
@@ -7837,7 +7837,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder66NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder66
 	)
@@ -7846,7 +7846,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder66ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder66
 	)
@@ -7864,7 +7864,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder67",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder67
 	)
@@ -7900,7 +7900,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder67DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder67
 	)
@@ -7925,13 +7925,13 @@ public interface RemindersConfig extends Config {
 	default String reminder67Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder67GeoFences",
+			keyName = "reminder67Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder67
 	)
-	default String reminder67GeoFences() { return ""; }
+	default String reminder67Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder67Radius",
@@ -7945,7 +7945,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder67RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder67
 	)
@@ -7954,7 +7954,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder67NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder67
 	)
@@ -7963,7 +7963,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder67ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder67
 	)
@@ -7981,7 +7981,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder68",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder68
 	)
@@ -8017,7 +8017,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder68DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder68
 	)
@@ -8042,13 +8042,13 @@ public interface RemindersConfig extends Config {
 	default String reminder68Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder68GeoFences",
+			keyName = "reminder68Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder68
 	)
-	default String reminder68GeoFences() { return ""; }
+	default String reminder68Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder68Radius",
@@ -8062,7 +8062,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder68RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder68
 	)
@@ -8071,7 +8071,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder68NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder68
 	)
@@ -8080,7 +8080,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder68ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder68
 	)
@@ -8098,7 +8098,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder69",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder69
 	)
@@ -8134,7 +8134,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder69DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder69
 	)
@@ -8159,13 +8159,13 @@ public interface RemindersConfig extends Config {
 	default String reminder69Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder69GeoFences",
+			keyName = "reminder69Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder69
 	)
-	default String reminder69GeoFences() { return ""; }
+	default String reminder69Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder69Radius",
@@ -8179,7 +8179,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder69RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder69
 	)
@@ -8188,7 +8188,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder69NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder69
 	)
@@ -8197,7 +8197,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder69ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder69
 	)
@@ -8215,7 +8215,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder70",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder70
 	)
@@ -8251,7 +8251,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder70DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder70
 	)
@@ -8276,13 +8276,13 @@ public interface RemindersConfig extends Config {
 	default String reminder70Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder70GeoFences",
+			keyName = "reminder70Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder70
 	)
-	default String reminder70GeoFences() { return ""; }
+	default String reminder70Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder70Radius",
@@ -8296,7 +8296,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder70RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder70
 	)
@@ -8305,7 +8305,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder70NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder70
 	)
@@ -8314,7 +8314,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder70ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder70
 	)
@@ -8332,7 +8332,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder71",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder71
 	)
@@ -8368,7 +8368,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder71DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder71
 	)
@@ -8393,13 +8393,13 @@ public interface RemindersConfig extends Config {
 	default String reminder71Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder71GeoFences",
+			keyName = "reminder71Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder71
 	)
-	default String reminder71GeoFences() { return ""; }
+	default String reminder71Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder71Radius",
@@ -8413,7 +8413,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder71RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder71
 	)
@@ -8422,7 +8422,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder71NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder71
 	)
@@ -8431,7 +8431,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder71ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder71
 	)
@@ -8449,7 +8449,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder72",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder72
 	)
@@ -8485,7 +8485,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder72DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder72
 	)
@@ -8510,13 +8510,13 @@ public interface RemindersConfig extends Config {
 	default String reminder72Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder72GeoFences",
+			keyName = "reminder72Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder72
 	)
-	default String reminder72GeoFences() { return ""; }
+	default String reminder72Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder72Radius",
@@ -8530,7 +8530,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder72RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder72
 	)
@@ -8539,7 +8539,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder72NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder72
 	)
@@ -8548,7 +8548,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder72ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder72
 	)
@@ -8566,7 +8566,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder73",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder73
 	)
@@ -8602,7 +8602,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder73DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder73
 	)
@@ -8627,13 +8627,13 @@ public interface RemindersConfig extends Config {
 	default String reminder73Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder73GeoFences",
+			keyName = "reminder73Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder73
 	)
-	default String reminder73GeoFences() { return ""; }
+	default String reminder73Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder73Radius",
@@ -8647,7 +8647,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder73RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder73
 	)
@@ -8656,7 +8656,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder73NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder73
 	)
@@ -8665,7 +8665,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder73ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder73
 	)
@@ -8683,7 +8683,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder74",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder74
 	)
@@ -8719,7 +8719,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder74DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder74
 	)
@@ -8744,13 +8744,13 @@ public interface RemindersConfig extends Config {
 	default String reminder74Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder74GeoFences",
+			keyName = "reminder74Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder74
 	)
-	default String reminder74GeoFences() { return ""; }
+	default String reminder74Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder74Radius",
@@ -8764,7 +8764,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder74RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder74
 	)
@@ -8773,7 +8773,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder74NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder74
 	)
@@ -8782,7 +8782,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder74ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder74
 	)
@@ -8800,7 +8800,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder75",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder75
 	)
@@ -8836,7 +8836,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder75DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder75
 	)
@@ -8861,13 +8861,13 @@ public interface RemindersConfig extends Config {
 	default String reminder75Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder75GeoFences",
+			keyName = "reminder75Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder75
 	)
-	default String reminder75GeoFences() { return ""; }
+	default String reminder75Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder75Radius",
@@ -8881,7 +8881,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder75RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder75
 	)
@@ -8890,7 +8890,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder75NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder75
 	)
@@ -8899,7 +8899,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder75ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder75
 	)
@@ -8917,7 +8917,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder76",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder76
 	)
@@ -8953,7 +8953,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder76DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder76
 	)
@@ -8978,13 +8978,13 @@ public interface RemindersConfig extends Config {
 	default String reminder76Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder76GeoFences",
+			keyName = "reminder76Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder76
 	)
-	default String reminder76GeoFences() { return ""; }
+	default String reminder76Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder76Radius",
@@ -8998,7 +8998,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder76RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder76
 	)
@@ -9007,7 +9007,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder76NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder76
 	)
@@ -9016,7 +9016,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder76ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder76
 	)
@@ -9034,7 +9034,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder77",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder77
 	)
@@ -9070,7 +9070,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder77DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder77
 	)
@@ -9095,13 +9095,13 @@ public interface RemindersConfig extends Config {
 	default String reminder77Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder77GeoFences",
+			keyName = "reminder77Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder77
 	)
-	default String reminder77GeoFences() { return ""; }
+	default String reminder77Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder77Radius",
@@ -9115,7 +9115,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder77RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder77
 	)
@@ -9124,7 +9124,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder77NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder77
 	)
@@ -9133,7 +9133,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder77ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder77
 	)
@@ -9151,7 +9151,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder78",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder78
 	)
@@ -9187,7 +9187,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder78DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder78
 	)
@@ -9212,13 +9212,13 @@ public interface RemindersConfig extends Config {
 	default String reminder78Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder78GeoFences",
+			keyName = "reminder78Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder78
 	)
-	default String reminder78GeoFences() { return ""; }
+	default String reminder78Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder78Radius",
@@ -9232,7 +9232,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder78RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder78
 	)
@@ -9241,7 +9241,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder78NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder78
 	)
@@ -9250,7 +9250,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder78ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder78
 	)
@@ -9268,7 +9268,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder79",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder79
 	)
@@ -9304,7 +9304,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder79DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder79
 	)
@@ -9329,13 +9329,13 @@ public interface RemindersConfig extends Config {
 	default String reminder79Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder79GeoFences",
+			keyName = "reminder79Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder79
 	)
-	default String reminder79GeoFences() { return ""; }
+	default String reminder79Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder79Radius",
@@ -9349,7 +9349,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder79RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder79
 	)
@@ -9358,7 +9358,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder79NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder79
 	)
@@ -9367,7 +9367,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder79ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder79
 	)
@@ -9385,7 +9385,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder80",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder80
 	)
@@ -9421,7 +9421,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder80DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder80
 	)
@@ -9446,13 +9446,13 @@ public interface RemindersConfig extends Config {
 	default String reminder80Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder80GeoFences",
+			keyName = "reminder80Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder80
 	)
-	default String reminder80GeoFences() { return ""; }
+	default String reminder80Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder80Radius",
@@ -9466,7 +9466,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder80RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder80
 	)
@@ -9475,7 +9475,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder80NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder80
 	)
@@ -9484,7 +9484,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder80ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder80
 	)
@@ -9502,7 +9502,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder81",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder81
 	)
@@ -9538,7 +9538,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder81DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder81
 	)
@@ -9563,13 +9563,13 @@ public interface RemindersConfig extends Config {
 	default String reminder81Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder81GeoFences",
+			keyName = "reminder81Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder81
 	)
-	default String reminder81GeoFences() { return ""; }
+	default String reminder81Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder81Radius",
@@ -9583,7 +9583,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder81RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder81
 	)
@@ -9592,7 +9592,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder81NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder81
 	)
@@ -9601,7 +9601,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder81ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder81
 	)
@@ -9619,7 +9619,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder82",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder82
 	)
@@ -9655,7 +9655,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder82DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder82
 	)
@@ -9680,13 +9680,13 @@ public interface RemindersConfig extends Config {
 	default String reminder82Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder82GeoFences",
+			keyName = "reminder82Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder82
 	)
-	default String reminder82GeoFences() { return ""; }
+	default String reminder82Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder82Radius",
@@ -9700,7 +9700,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder82RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder82
 	)
@@ -9709,7 +9709,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder82NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder82
 	)
@@ -9718,7 +9718,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder82ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder82
 	)
@@ -9736,7 +9736,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder83",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder83
 	)
@@ -9772,7 +9772,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder83DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder83
 	)
@@ -9797,13 +9797,13 @@ public interface RemindersConfig extends Config {
 	default String reminder83Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder83GeoFences",
+			keyName = "reminder83Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder83
 	)
-	default String reminder83GeoFences() { return ""; }
+	default String reminder83Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder83Radius",
@@ -9817,7 +9817,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder83RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder83
 	)
@@ -9826,7 +9826,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder83NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder83
 	)
@@ -9835,7 +9835,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder83ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder83
 	)
@@ -9853,7 +9853,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder84",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder84
 	)
@@ -9889,7 +9889,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder84DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder84
 	)
@@ -9914,13 +9914,13 @@ public interface RemindersConfig extends Config {
 	default String reminder84Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder84GeoFences",
+			keyName = "reminder84Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder84
 	)
-	default String reminder84GeoFences() { return ""; }
+	default String reminder84Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder84Radius",
@@ -9934,7 +9934,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder84RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder84
 	)
@@ -9943,7 +9943,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder84NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder84
 	)
@@ -9952,7 +9952,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder84ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder84
 	)
@@ -9970,7 +9970,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder85",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder85
 	)
@@ -10006,7 +10006,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder85DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder85
 	)
@@ -10031,13 +10031,13 @@ public interface RemindersConfig extends Config {
 	default String reminder85Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder85GeoFences",
+			keyName = "reminder85Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder85
 	)
-	default String reminder85GeoFences() { return ""; }
+	default String reminder85Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder85Radius",
@@ -10051,7 +10051,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder85RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder85
 	)
@@ -10060,7 +10060,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder85NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder85
 	)
@@ -10069,7 +10069,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder85ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder85
 	)
@@ -10087,7 +10087,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder86",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder86
 	)
@@ -10123,7 +10123,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder86DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder86
 	)
@@ -10148,13 +10148,13 @@ public interface RemindersConfig extends Config {
 	default String reminder86Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder86GeoFences",
+			keyName = "reminder86Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder86
 	)
-	default String reminder86GeoFences() { return ""; }
+	default String reminder86Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder86Radius",
@@ -10168,7 +10168,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder86RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder86
 	)
@@ -10177,7 +10177,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder86NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder86
 	)
@@ -10186,7 +10186,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder86ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder86
 	)
@@ -10204,7 +10204,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder87",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder87
 	)
@@ -10240,7 +10240,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder87DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder87
 	)
@@ -10265,13 +10265,13 @@ public interface RemindersConfig extends Config {
 	default String reminder87Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder87GeoFences",
+			keyName = "reminder87Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder87
 	)
-	default String reminder87GeoFences() { return ""; }
+	default String reminder87Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder87Radius",
@@ -10285,7 +10285,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder87RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder87
 	)
@@ -10294,7 +10294,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder87NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder87
 	)
@@ -10303,7 +10303,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder87ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder87
 	)
@@ -10321,7 +10321,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder88",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder88
 	)
@@ -10357,7 +10357,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder88DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder88
 	)
@@ -10382,13 +10382,13 @@ public interface RemindersConfig extends Config {
 	default String reminder88Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder88GeoFences",
+			keyName = "reminder88Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder88
 	)
-	default String reminder88GeoFences() { return ""; }
+	default String reminder88Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder88Radius",
@@ -10402,7 +10402,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder88RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder88
 	)
@@ -10411,7 +10411,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder88NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder88
 	)
@@ -10420,7 +10420,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder88ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder88
 	)
@@ -10438,7 +10438,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder89",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder89
 	)
@@ -10474,7 +10474,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder89DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder89
 	)
@@ -10499,13 +10499,13 @@ public interface RemindersConfig extends Config {
 	default String reminder89Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder89GeoFences",
+			keyName = "reminder89Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder89
 	)
-	default String reminder89GeoFences() { return ""; }
+	default String reminder89Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder89Radius",
@@ -10519,7 +10519,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder89RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder89
 	)
@@ -10528,7 +10528,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder89NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder89
 	)
@@ -10537,7 +10537,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder89ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder89
 	)
@@ -10555,7 +10555,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder90",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder90
 	)
@@ -10591,7 +10591,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder90DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder90
 	)
@@ -10616,13 +10616,13 @@ public interface RemindersConfig extends Config {
 	default String reminder90Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder90GeoFences",
+			keyName = "reminder90Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder90
 	)
-	default String reminder90GeoFences() { return ""; }
+	default String reminder90Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder90Radius",
@@ -10636,7 +10636,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder90RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder90
 	)
@@ -10645,7 +10645,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder90NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder90
 	)
@@ -10654,7 +10654,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder90ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder90
 	)
@@ -10672,7 +10672,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder91",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder91
 	)
@@ -10708,7 +10708,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder91DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder91
 	)
@@ -10733,13 +10733,13 @@ public interface RemindersConfig extends Config {
 	default String reminder91Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder91GeoFences",
+			keyName = "reminder91Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder91
 	)
-	default String reminder91GeoFences() { return ""; }
+	default String reminder91Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder91Radius",
@@ -10753,7 +10753,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder91RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder91
 	)
@@ -10762,7 +10762,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder91NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder91
 	)
@@ -10771,7 +10771,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder91ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder91
 	)
@@ -10789,7 +10789,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder92",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder92
 	)
@@ -10825,7 +10825,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder92DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder92
 	)
@@ -10850,13 +10850,13 @@ public interface RemindersConfig extends Config {
 	default String reminder92Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder92GeoFences",
+			keyName = "reminder92Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder92
 	)
-	default String reminder92GeoFences() { return ""; }
+	default String reminder92Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder92Radius",
@@ -10870,7 +10870,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder92RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder92
 	)
@@ -10879,7 +10879,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder92NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder92
 	)
@@ -10888,7 +10888,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder92ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder92
 	)
@@ -10906,7 +10906,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder93",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder93
 	)
@@ -10942,7 +10942,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder93DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder93
 	)
@@ -10967,13 +10967,13 @@ public interface RemindersConfig extends Config {
 	default String reminder93Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder93GeoFences",
+			keyName = "reminder93Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder93
 	)
-	default String reminder93GeoFences() { return ""; }
+	default String reminder93Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder93Radius",
@@ -10987,7 +10987,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder93RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder93
 	)
@@ -10996,7 +10996,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder93NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder93
 	)
@@ -11005,7 +11005,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder93ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder93
 	)
@@ -11023,7 +11023,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder94",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder94
 	)
@@ -11059,7 +11059,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder94DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder94
 	)
@@ -11084,13 +11084,13 @@ public interface RemindersConfig extends Config {
 	default String reminder94Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder94GeoFences",
+			keyName = "reminder94Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder94
 	)
-	default String reminder94GeoFences() { return ""; }
+	default String reminder94Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder94Radius",
@@ -11104,7 +11104,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder94RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder94
 	)
@@ -11113,7 +11113,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder94NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder94
 	)
@@ -11122,7 +11122,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder94ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder94
 	)
@@ -11140,7 +11140,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder95",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder95
 	)
@@ -11176,7 +11176,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder95DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder95
 	)
@@ -11201,13 +11201,13 @@ public interface RemindersConfig extends Config {
 	default String reminder95Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder95GeoFences",
+			keyName = "reminder95Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder95
 	)
-	default String reminder95GeoFences() { return ""; }
+	default String reminder95Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder95Radius",
@@ -11221,7 +11221,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder95RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder95
 	)
@@ -11230,7 +11230,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder95NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder95
 	)
@@ -11239,7 +11239,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder95ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder95
 	)
@@ -11257,7 +11257,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder96",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder96
 	)
@@ -11293,7 +11293,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder96DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder96
 	)
@@ -11318,13 +11318,13 @@ public interface RemindersConfig extends Config {
 	default String reminder96Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder96GeoFences",
+			keyName = "reminder96Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder96
 	)
-	default String reminder96GeoFences() { return ""; }
+	default String reminder96Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder96Radius",
@@ -11338,7 +11338,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder96RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder96
 	)
@@ -11347,7 +11347,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder96NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder96
 	)
@@ -11356,7 +11356,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder96ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder96
 	)
@@ -11374,7 +11374,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder97",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder97
 	)
@@ -11410,7 +11410,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder97DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder97
 	)
@@ -11435,13 +11435,13 @@ public interface RemindersConfig extends Config {
 	default String reminder97Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder97GeoFences",
+			keyName = "reminder97Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder97
 	)
-	default String reminder97GeoFences() { return ""; }
+	default String reminder97Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder97Radius",
@@ -11455,7 +11455,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder97RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder97
 	)
@@ -11464,7 +11464,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder97NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder97
 	)
@@ -11473,7 +11473,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder97ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder97
 	)
@@ -11491,7 +11491,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder98",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder98
 	)
@@ -11527,7 +11527,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder98DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder98
 	)
@@ -11552,13 +11552,13 @@ public interface RemindersConfig extends Config {
 	default String reminder98Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder98GeoFences",
+			keyName = "reminder98Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder98
 	)
-	default String reminder98GeoFences() { return ""; }
+	default String reminder98Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder98Radius",
@@ -11572,7 +11572,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder98RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder98
 	)
@@ -11581,7 +11581,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder98NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder98
 	)
@@ -11590,7 +11590,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder98ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder98
 	)
@@ -11608,7 +11608,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder99",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder99
 	)
@@ -11644,7 +11644,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder99DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder99
 	)
@@ -11669,13 +11669,13 @@ public interface RemindersConfig extends Config {
 	default String reminder99Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder99GeoFences",
+			keyName = "reminder99Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder99
 	)
-	default String reminder99GeoFences() { return ""; }
+	default String reminder99Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder99Radius",
@@ -11689,7 +11689,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder99RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder99
 	)
@@ -11698,7 +11698,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder99NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder99
 	)
@@ -11707,7 +11707,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder99ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder99
 	)
@@ -11725,7 +11725,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "enableReminder100",
 			position = 0,
-			name = "Enabled",
+			name = "Enable",
 			description = "Configures whether or not reminder is enabled.",
 			section = reminder100
 	)
@@ -11761,7 +11761,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder100DaysOfWeek",
 			position = 10,
-			name = "Day of Week",
+			name = "Day",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder100
 	)
@@ -11786,13 +11786,13 @@ public interface RemindersConfig extends Config {
 	default String reminder100Coordinates() { return ""; }
 
 	@ConfigItem(
-			keyName = "reminder100GeoFences",
+			keyName = "reminder100Geofences",
 			position = 14,
-			name = "Geo Fence",
-			description = "Configures geo fences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
+			name = "Geofence",
+			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder100
 	)
-	default String reminder100GeoFences() { return ""; }
+	default String reminder100Geofences() { return ""; }
 
 	@ConfigItem(
 			keyName = "reminder100Radius",
@@ -11806,7 +11806,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder100RegionId",
 			position = 15,
-			name = "Region ID",
+			name = "Region",
 			description = "Configures region ids for when reminder is shown (comma separated).",
 			section = reminder100
 	)
@@ -11815,7 +11815,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder100NpcIds",
 			position = 16,
-			name = "Npc ID",
+			name = "Npc",
 			description = "Configures the npc ids for when reminder is shown (comma separated).",
 			section = reminder100
 	)
@@ -11824,7 +11824,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder100ItemIds",
 			position = 17,
-			name = "Item ID",
+			name = "Item",
 			description = "Configures the item ids for when reminder is shown (comma separated).",
 			section = reminder100
 	)

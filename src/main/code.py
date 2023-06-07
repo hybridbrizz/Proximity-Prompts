@@ -13,12 +13,10 @@ configInfo = [
     ["Dates", "String"],
     ["Coordinates", "String"],
     ["Radius", "int"],
-    ["GeoFences", "String"],
+    ["Geofences", "String"],
     ["RegionIds", "String"],
     ["NpcIds", "String"],
-    ["ItemIds", "String"],
-    ["Duration", "int"],
-    ["Cooldown", "int"]
+    ["ItemIds", "String"]
 ]
 
 for info in configInfo:
