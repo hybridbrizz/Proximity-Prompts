@@ -38,6 +38,8 @@ public class RSView implements RSRenderable
     protected int w;
     protected int h;
 
+    private Float weight = null;
+
     protected int marginStart = 0;
     protected int marginTop = 0;
     protected int marginEnd = 0;
@@ -85,9 +87,29 @@ public class RSView implements RSRenderable
         return w;
     }
 
+    public void setW(int w)
+    {
+        this.w = w;
+    }
+
     public int getH()
     {
         return h;
+    }
+
+    public void setH(int h)
+    {
+        this.h = h;
+    }
+
+    public Float getWeight()
+    {
+        return weight;
+    }
+
+    public void setWeight(Float weight)
+    {
+        this.weight = weight;
     }
 
     public int getMarginStart()

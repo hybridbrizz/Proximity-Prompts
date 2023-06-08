@@ -62,16 +62,17 @@ class RemindersOverlay extends RSViewOverlay {
 
 		viewportWidget = getViewportWidget();
 
-		RSColumn column = new RSColumn(10, 120, 140, RSView.WRAP_CONTENT);
+		RSColumn column = new RSColumn(10, 120, 140, 300);
 		column.setBgColor(Color.decode("#45AB76"));
 		column.setPadding(5);
 
 		RSColumn column2 = new RSColumn(0, 0, RSView.MATCH_PARENT, 50);
 		column2.setBgColor(new Color(0, 255, 0));
+		column2.setWeight(2f);
 		column2.setPadding(5);
 		column2.setMarginBottom(5);
 
-		RSView view = new RSView(0, 0, RSView.MATCH_PARENT, 20);
+		RSView view = new RSView(0, 0, RSView.MATCH_PARENT, 0);
 		view.setBgColor(new Color(255, 0, 0));
 		view.setMarginEnd(5);
 		view.setMarginBottom(5);
@@ -80,13 +81,15 @@ class RemindersOverlay extends RSViewOverlay {
 
 		column.addView(column2);
 
-		view = new RSView(0, 0, RSView.MATCH_PARENT, 50);
+		view = new RSView(0, 0, RSView.MATCH_PARENT, 0);
+		view.setWeight(2f);
 		view.setBgColor(new Color(255, 255, 0));
 		view.setMarginBottom(5);
 
 		column.addView(view);
 
-		view = new RSView(0, 0, RSView.MATCH_PARENT, 50);
+		view = new RSView(0, 0, RSView.MATCH_PARENT, 0);
+		view.setWeight(3f);
 		view.setBgColor(new Color(0, 0, 255));
 
 		column.addView(view);

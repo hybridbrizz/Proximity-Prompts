@@ -98,7 +98,7 @@ abstract class RSViewGroup extends RSView
         );
     }
 
-    abstract protected Dimension layoutSubviews(Map<RSLayoutGuide, Integer> guides);
+    abstract protected Map<RSLayoutGuide, Integer> layoutSubviews(Map<RSLayoutGuide, Integer> guides);
 
     @Override
     protected Dimension applyDimension(Map<RSLayoutGuide, Integer> guides) {
@@ -110,8 +110,85 @@ abstract class RSViewGroup extends RSView
             );
         }
 
-        // layout subviews (x, y) and return total measured size
-        return layoutSubviews(guides);
+        // layout subviews (x, y)
+        Map<RSLayoutGuide, Integer> layoutGuides = layoutSubviews(guides);
+
+        // measure (w, h)
+        if (dimensionParams.getW() == WRAP_CONTENT
+                && layoutGuides.containsKey(RSLayoutGuide.END))
+        {
+            w = layoutGuides.get(RSLayoutGuide.END);
+        }
+        else
+        {
+            w = measureWidth(guides);
+        }
+
+        if (dimensionParams.getH() == WRAP_CONTENT
+                && layoutGuides.containsKey(RSLayoutGuide.BOTTOM))
+        {
+            h = layoutGuides.get(RSLayoutGuide.BOTTOM);
+        }
+        else
+        {
+            h = measureHeight(guides);
+        }
+
+        // apply height weights
+        if (dimensionParams.getH() != WRAP_CONTENT)
+        {
+            Integer bottomGuide = layoutGuides.get(RSLayoutGuide.BOTTOM);
+            if (bottomGuide != null)
+            {
+                float totalWeight = 0;
+                int totalAddedHeight = 0;
+                int weightHeight = measureHeight(guides) - bottomGuide;
+
+                for (RSView view: subviews)
+                {
+                    if (view.getWeight() != null)
+                    {
+                        totalWeight += view.getWeight();
+                    }
+                }
+
+                if (totalWeight > 0)
+                {
+                    for (RSView view: subviews)
+                    {
+                        view.setY(view.getY() + totalAddedHeight);
+
+                        Float weight = view.getWeight();
+                        if (weight != null)
+                        {
+                            int height = (int) (weight / totalWeight * weightHeight);
+                            view.setH(height);
+                            totalAddedHeight += height;
+                        }
+                    }
+
+                    int truncatedHeight = weightHeight - totalAddedHeight;
+                    boolean foundView = false;
+
+                    for (RSView view: subviews)
+                    {
+                        if (getWeight() != null && !foundView)
+                        {
+                            view.setH(view.getH()
+                                    + truncatedHeight);
+                            foundView = true;
+                        }
+
+                        if (foundView)
+                        {
+                            view.setY(view.getY() + truncatedHeight);
+                        }
+                    }
+                }
+            }
+        }
+
+        return new Dimension(w, h);
     }
 
     @Override

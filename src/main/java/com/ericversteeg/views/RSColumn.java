@@ -1,6 +1,5 @@
 package com.ericversteeg.views;
 
-import java.awt.*;
 import java.util.Map;
 
 public class RSColumn extends RSViewGroup
@@ -11,13 +10,18 @@ public class RSColumn extends RSViewGroup
     }
 
     @Override
-    protected Dimension layoutSubviews(Map<RSLayoutGuide, Integer> guides)
+    protected Map<RSLayoutGuide, Integer> layoutSubviews(Map<RSLayoutGuide, Integer> guides)
     {
         w = measureWidth(guides);
 
         int topGuide = paddingTop;
         for (RSView view: subviews)
         {
+            if (view.getWeight() != null)
+            {
+                view.setH(0);
+            }
+
             topGuide += view.getMarginTop();
             view.applyPosition(
                     new RSLayoutGuide.Builder()
@@ -31,15 +35,8 @@ public class RSColumn extends RSViewGroup
             topGuide += view.getMarginBottom();
         }
 
-        h = topGuide + paddingBottom;
-        if (dimensionParams.getH() != WRAP_CONTENT)
-        {
-            if (h < dimensionParams.getH())
-            {
-                h = dimensionParams.getH();
-            }
-        }
+        int bottomGuide = topGuide + paddingBottom;
 
-        return new Dimension(w, h);
+        return new RSLayoutGuide.Builder().bottom(bottomGuide).build();
     }
 }
