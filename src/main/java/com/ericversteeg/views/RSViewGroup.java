@@ -262,26 +262,32 @@ abstract class RSViewGroup extends RSView
     {
         Map<RSLayoutGuide, Integer> subviewGuides = new HashMap<>();
 
-        if (guides.containsKey(RSLayoutGuide.MAX_WIDTH))
+        if (dimensionParams.getW() != WRAP_CONTENT)
         {
-            int wGuide = guides.get(RSLayoutGuide.MAX_WIDTH);
-            if (dimensionParams.getW() != WRAP_CONTENT)
+            int wGuide = dimensionParams.getW();
+            if (dimensionParams.getW() == MATCH_PARENT
+                    && guides.containsKey(RSLayoutGuide.MAX_WIDTH))
             {
-                subviewGuides.put(RSLayoutGuide.MAX_WIDTH, wGuide
-                        - view.getMarginStart() - view.getMarginEnd()
-                        - getPaddingStart() - getPaddingEnd());
+                wGuide = guides.get(RSLayoutGuide.MAX_WIDTH);
             }
+
+            subviewGuides.put(RSLayoutGuide.MAX_WIDTH, wGuide
+                    - view.getMarginStart() - view.getMarginEnd()
+                    - getPaddingStart() - getPaddingEnd());
         }
 
-        if (guides.containsKey(RSLayoutGuide.MAX_HEIGHT))
+        if (dimensionParams.getH() != WRAP_CONTENT)
         {
-            int hGuide = guides.get(RSLayoutGuide.MAX_HEIGHT);
-            if (dimensionParams.getH() != WRAP_CONTENT)
+            int hGuide = dimensionParams.getH();
+            if (dimensionParams.getH() == MATCH_PARENT
+                    && guides.containsKey(RSLayoutGuide.MAX_HEIGHT))
             {
-                subviewGuides.put(RSLayoutGuide.MAX_HEIGHT, hGuide
-                        - view.getMarginTop() - view.getMarginBottom()
-                        - getPaddingTop() - getPaddingBottom());
+                hGuide = guides.get(RSLayoutGuide.MAX_HEIGHT);
             }
+
+            subviewGuides.put(RSLayoutGuide.MAX_HEIGHT, hGuide
+                    - view.getMarginTop() - view.getMarginBottom()
+                    - getPaddingTop() - getPaddingBottom());
         }
 
         return subviewGuides;
