@@ -2,9 +2,7 @@ package com.ericversteeg;
 
 import com.ericversteeg.config.AnchorType;
 import com.ericversteeg.reminder.Reminder;
-import com.ericversteeg.views.RSColumn;
-import com.ericversteeg.views.RSView;
-import com.ericversteeg.views.RSViewOverlay;
+import com.ericversteeg.views.*;
 import net.runelite.api.Client;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.NPC;
@@ -62,11 +60,11 @@ class RemindersOverlay extends RSViewOverlay {
 
 		viewportWidget = getViewportWidget();
 
-		RSColumn column = new RSColumn(10, 120, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT);
+		RSRow column = new RSRow(10, 120, 500, 50);
 		column.setBgColor(Color.decode("#45AB76"));
 		column.setPadding(5);
 
-		RSColumn column2 = new RSColumn(0, 0, 140, 50);
+		RSColumn column2 = new RSColumn(0, 0, 120, RSView.MATCH_PARENT);
 		column2.setBgColor(new Color(0, 255, 0));
 		column2.setPadding(5);
 		column2.setMarginBottom(5);
@@ -80,14 +78,30 @@ class RemindersOverlay extends RSViewOverlay {
 
 		column.addView(column2);
 
-		view = new RSView(0, 0, 140, 50);
-		view.setBgColor(new Color(255, 255, 0));
+		RSBox box = new RSBox(0, 0, 140, RSView.MATCH_PARENT);
+		box.setBgColor(new Color(255, 255, 0));
+		//view.setMarginBottom(5);
+		box.setWeight(4f);
+
+		view = new RSView(0, 0, 20, 20);
+		view.setBgColor(Color.ORANGE);
+		view.setLayoutGravity(RSViewGroup.Gravity.CENTER);
+
+		box.addView(view);
+
+		view = new RSView(0, 0, 20, 20);
+		view.setBgColor(Color.ORANGE);
+		view.setLayoutGravity(RSViewGroup.Gravity.BOTTOM_END);
 		view.setMarginBottom(5);
+		view.setMarginEnd(5);
 
-		column.addView(view);
+		box.addView(view);
 
-		view = new RSView(0, 0, 140, 50);
+		column.addView(box);
+
+		view = new RSView(0, 0, 140, RSView.MATCH_PARENT);
 		view.setBgColor(new Color(0, 0, 255));
+		view.setWeight(1f);
 
 		column.addView(view);
 

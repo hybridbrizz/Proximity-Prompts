@@ -20,9 +20,19 @@ public class RSView implements RSRenderable
             return w;
         }
 
+        public void setW(int w)
+        {
+            this.w = w;
+        }
+
         public int getH()
         {
             return h;
+        }
+
+        public void setH(int h)
+        {
+            this.h = h;
         }
     }
 
@@ -222,6 +232,7 @@ public class RSView implements RSRenderable
             case END:
             case TOP_END:
             case BOTTOM_END:
+                System.out.println("x = " + x + ", w = " + w);
                 x = guideOrThrow(RSLayoutGuide.END, guides) - w;
                 break;
         }

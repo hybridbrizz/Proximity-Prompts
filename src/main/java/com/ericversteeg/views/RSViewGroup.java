@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-abstract class RSViewGroup extends RSView
+public abstract class RSViewGroup extends RSView
 {
-    enum Gravity
+    public enum Gravity
     {
         START,
         TOP_START,
@@ -134,6 +134,74 @@ abstract class RSViewGroup extends RSView
             h = measureHeight(guides);
         }
 
+        // apply width weights
+        if (dimensionParams.getW() != WRAP_CONTENT)
+        {
+            Integer endGuide = layoutGuides.get(RSLayoutGuide.END);
+            if (endGuide != null)
+            {
+                float totalWeight = 0;
+                int totalAddedWidth = 0;
+                int weightWidth = measureWidth(guides) - endGuide;
+
+                for (RSView view: subviews)
+                {
+                    if (view.getWeight() != null)
+                    {
+                        totalWeight += view.getWeight();
+                    }
+                }
+
+                if (totalWeight > 0)
+                {
+                    for (RSView view: subviews)
+                    {
+                        view.setX(view.getX() + totalAddedWidth);
+
+                        Float weight = view.getWeight();
+                        if (weight != null)
+                        {
+                            int width = (int) (weight / totalWeight * weightWidth);
+                            view.setW(width);
+
+                            if (view instanceof RSViewGroup)
+                            {
+                                view.dimensionParams.setW(width);
+                                view.applyDimension(subviewMaxDimensionGuides(guides, view));
+                            }
+
+                            totalAddedWidth += width;
+                        }
+                    }
+
+                    int truncatedWidth = weightWidth - totalAddedWidth;
+                    boolean foundView = false;
+
+                    for (RSView view: subviews)
+                    {
+                        if (getWeight() != null && !foundView)
+                        {
+                            view.setW(view.getW()
+                                    + truncatedWidth);
+
+                            if (view instanceof RSViewGroup)
+                            {
+                                view.dimensionParams.setW(view.getW());
+                                view.applyDimension(subviewMaxDimensionGuides(guides, view));
+                            }
+
+                            foundView = true;
+                        }
+
+                        if (foundView)
+                        {
+                            view.setX(view.getX() + truncatedWidth);
+                        }
+                    }
+                }
+            }
+        }
+
         // apply height weights
         if (dimensionParams.getH() != WRAP_CONTENT)
         {
@@ -163,6 +231,13 @@ abstract class RSViewGroup extends RSView
                         {
                             int height = (int) (weight / totalWeight * weightHeight);
                             view.setH(height);
+
+                            if (view instanceof RSViewGroup)
+                            {
+                                view.dimensionParams.setH(view.getH());
+                                view.applyDimension(subviewMaxDimensionGuides(guides, view));
+                            }
+
                             totalAddedHeight += height;
                         }
                     }
@@ -176,6 +251,13 @@ abstract class RSViewGroup extends RSView
                         {
                             view.setH(view.getH()
                                     + truncatedHeight);
+
+                            if (view instanceof RSViewGroup)
+                            {
+                                view.dimensionParams.setH(view.getH());
+                                view.applyDimension(subviewMaxDimensionGuides(guides, view));
+                            }
+
                             foundView = true;
                         }
 
