@@ -55,6 +55,11 @@ public class RSView implements RSRenderable
     protected int marginEnd = 0;
     protected int marginBottom = 0;
 
+    protected int paddingStart = 0;
+    protected int paddingTop = 0;
+    protected int paddingEnd = 0;
+    protected int paddingBottom = 0;
+
     protected Color bgColor = new Color(0, 0, 0, 0);
     protected RSViewBorder border;
 

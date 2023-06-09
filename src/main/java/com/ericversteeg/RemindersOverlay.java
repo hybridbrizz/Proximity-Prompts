@@ -60,50 +60,64 @@ class RemindersOverlay extends RSViewOverlay {
 
 		viewportWidget = getViewportWidget();
 
-		RSRow column = new RSRow(10, 120, 500, 50);
-		column.setBgColor(Color.decode("#45AB76"));
-		column.setPadding(5);
+//		RSRow column = new RSRow(10, 120, 500, 50);
+//		column.setBgColor(Color.decode("#45AB76"));
+//		column.setPadding(5);
+//
+//		RSColumn column2 = new RSColumn(0, 0, 120, RSView.MATCH_PARENT);
+//		column2.setBgColor(new Color(0, 255, 0));
+//		column2.setPadding(5);
+//		column2.setMarginBottom(5);
+//
+//		RSView view = new RSView(0, 0, RSView.MATCH_PARENT, 20);
+//		view.setBgColor(new Color(255, 0, 0));
+//		view.setMarginEnd(5);
+//		view.setMarginBottom(5);
+//
+//		column2.addView(view);
+//
+//		column.addView(column2);
+//
+//		RSBox box = new RSBox(0, 0, 140, RSView.MATCH_PARENT);
+//		box.setBgColor(new Color(255, 255, 0));
+//		//view.setMarginBottom(5);
+//		box.setWeight(4f);
+//
+//		view = new RSView(0, 0, 20, 20);
+//		view.setBgColor(Color.ORANGE);
+//		view.setLayoutGravity(RSViewGroup.Gravity.CENTER);
+//
+//		box.addView(view);
+//
+//		view = new RSView(0, 0, 20, 20);
+//		view.setBgColor(Color.ORANGE);
+//		view.setLayoutGravity(RSViewGroup.Gravity.BOTTOM_END);
+//		view.setMarginBottom(5);
+//		view.setMarginEnd(5);
+//
+//		box.addView(view);
+//
+//		column.addView(box);
+//
+//		view = new RSView(0, 0, 140, RSView.MATCH_PARENT);
+//		view.setBgColor(new Color(0, 0, 255));
+//		view.setWeight(1f);
+//
+//		column.addView(view);
+//
+//		setRootView(column);
+	}
 
-		RSColumn column2 = new RSColumn(0, 0, 120, RSView.MATCH_PARENT);
-		column2.setBgColor(new Color(0, 255, 0));
-		column2.setPadding(5);
-		column2.setMarginBottom(5);
+	void setupViews()
+	{
+		RSColumn column = new RSColumn(10, 120, 140, RSView.WRAP_CONTENT);
+		column.setBgColor(Color.GREEN);
 
-		RSView view = new RSView(0, 0, RSView.MATCH_PARENT, 20);
-		view.setBgColor(new Color(255, 0, 0));
-		view.setMarginEnd(5);
-		view.setMarginBottom(5);
+		RSTextView textView = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, FontManager.getRunescapeFont());
+		textView.setTextColor(Color.WHITE);
+		textView.setText("Fairly involved text that is many words so who knows. Few words here");
 
-		column2.addView(view);
-
-		column.addView(column2);
-
-		RSBox box = new RSBox(0, 0, 140, RSView.MATCH_PARENT);
-		box.setBgColor(new Color(255, 255, 0));
-		//view.setMarginBottom(5);
-		box.setWeight(4f);
-
-		view = new RSView(0, 0, 20, 20);
-		view.setBgColor(Color.ORANGE);
-		view.setLayoutGravity(RSViewGroup.Gravity.CENTER);
-
-		box.addView(view);
-
-		view = new RSView(0, 0, 20, 20);
-		view.setBgColor(Color.ORANGE);
-		view.setLayoutGravity(RSViewGroup.Gravity.BOTTOM_END);
-		view.setMarginBottom(5);
-		view.setMarginEnd(5);
-
-		box.addView(view);
-
-		column.addView(box);
-
-		view = new RSView(0, 0, 140, RSView.MATCH_PARENT);
-		view.setBgColor(new Color(0, 0, 255));
-		view.setWeight(1f);
-
-		column.addView(view);
+		column.addView(textView);
 
 		setRootView(column);
 	}

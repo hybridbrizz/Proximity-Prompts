@@ -73,6 +73,8 @@ public class RemindersPlugin extends Plugin {
 	@Override
 	protected void startUp() throws Exception {
 		overlayManager.add(overlay);
+
+		overlay.setupViews();
 	}
 
 	@Override

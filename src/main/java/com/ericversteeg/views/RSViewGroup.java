@@ -25,11 +25,6 @@ public abstract class RSViewGroup extends RSView
 
     protected List<RSView> subviews = new ArrayList<>();
 
-    protected int paddingStart = 0;
-    protected int paddingTop = 0;
-    protected int paddingEnd = 0;
-    protected int paddingBottom = 0;
-
     public RSViewGroup(int x, int y, int w, int h)
     {
         super(x, y, w, h);
