@@ -11,10 +11,7 @@ import com.google.inject.Provides;
 import net.runelite.api.*;
 import net.runelite.api.coords.LocalPoint;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.events.GameTick;
-import net.runelite.api.events.NpcChanged;
-import net.runelite.api.events.NpcDespawned;
-import net.runelite.api.events.NpcSpawned;
+import net.runelite.api.events.*;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
@@ -30,6 +27,8 @@ import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAdjuster;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @PluginDescriptor(
 	name = "Reminders",
@@ -63,6 +62,8 @@ public class RemindersPlugin extends Plugin {
 	int lastRegionId = 0;
 
 	List<NPC> npcs = new ArrayList<>();
+
+	List<ChatMessage> chatMessages = new ArrayList<>();
 
 	List<ItemComposition> inventoryItems = new ArrayList<>();
 
@@ -145,6 +146,10 @@ public class RemindersPlugin extends Plugin {
 		npcs.remove(npc);
 	}
 
+	@Subscribe
+	public void onChatMessage(ChatMessage chatMessage) {
+		chatMessages.add(chatMessage);
+	}
 
 	private boolean npcsContainsName(String name) {
 		for (NPC npc : npcs) {
@@ -191,6 +196,7 @@ public class RemindersPlugin extends Plugin {
 			reminder.regionIds = getRegionIds(i);
 			reminder.npcIds = getNpcIds(i);
 			reminder.itemIds = getItemIds(i);
+			reminder.chatPatterns = getChatMessages(i);
 
 			reminders.add(reminder);
 		}
@@ -269,6 +275,11 @@ public class RemindersPlugin extends Plugin {
 					reminder.itemIds = toCsv(jsonObject.get("items").getAsJsonArray());
 				}
 
+				if (jsonObject.has("chat_patterns"))
+				{
+					reminder.itemIds = toCsv(jsonObject.get("chat_patterns").getAsJsonArray());
+				}
+
 				Reminder currentActive = currentActiveReminder(reminder.id);
 				if (currentActive != null)
 				{
@@ -316,7 +327,8 @@ public class RemindersPlugin extends Plugin {
 					(checkGeoFences(reminder.geoFences) && !matchesGeoFences(reminder.geoFences)) ||
 					(checkRegions(reminder.regionIds) && !matchesRegions(reminder.regionIds)) ||
 					(checkNpcIds(reminder.npcIds) && !matchesNpcIds(reminder.npcIds)) ||
-					(checkItemIds(reminder.itemIds) && !matchesItemIds(reminder.itemIds)))
+					(checkItemIds(reminder.itemIds) && !matchesItemIds(reminder.itemIds)) ||
+					(checkChatMessages(reminder.chatPatterns) && !matchesChatMessages(reminder.chatPatterns)))
 				)
 				{
 					Reminder currentActive = currentActiveReminder(reminder.id);
@@ -364,6 +376,8 @@ public class RemindersPlugin extends Plugin {
 				}
 			}
 		}
+
+		chatMessages.clear();
 
 		System.out.println("Get active took " + (Instant.now().toEpochMilli() - start) + "ms");
 
@@ -770,6 +784,39 @@ public class RemindersPlugin extends Plugin {
 				if (matches)
 				{
 					return true;
+				}
+			}
+
+			return false;
+		}
+		catch (Exception exception)
+		{
+			return false;
+		}
+	}
+
+	private boolean checkChatMessages(String chatMessages)
+	{
+		return !chatMessages.isEmpty();
+	}
+
+	private boolean matchesChatMessages(String chatMessagesStr)
+	{
+		try {
+			String [] chatPatterns = chatMessagesStr.split(",");
+
+			for (String chatPattern: chatPatterns)
+			{
+				chatPattern = chatPattern.trim();
+
+				for (ChatMessage chatMessage: chatMessages)
+				{
+					Matcher matcher = Pattern.compile(chatPattern)
+							.matcher(chatMessage.getMessage());
+
+					if (matcher.find()) {
+						return true;
+					}
 				}
 			}
 
@@ -2353,6 +2400,111 @@ public class RemindersPlugin extends Plugin {
 		else if (reminderId == 98) return config.reminder98ItemIds();
 		else if (reminderId == 99) return config.reminder99ItemIds();
 		else if (reminderId == 100) return config.reminder100ItemIds();
+		else return "";
+	}
+
+	String getChatMessages(int reminderId)
+	{
+		if (reminderId == 1) return config.reminder1ChatMessages();
+		else if (reminderId == 2) return config.reminder2ChatMessages();
+		else if (reminderId == 3) return config.reminder3ChatMessages();
+		else if (reminderId == 4) return config.reminder4ChatMessages();
+		else if (reminderId == 5) return config.reminder5ChatMessages();
+		else if (reminderId == 6) return config.reminder6ChatMessages();
+		else if (reminderId == 7) return config.reminder7ChatMessages();
+		else if (reminderId == 8) return config.reminder8ChatMessages();
+		else if (reminderId == 9) return config.reminder9ChatMessages();
+		else if (reminderId == 10) return config.reminder10ChatMessages();
+		else if (reminderId == 11) return config.reminder11ChatMessages();
+		else if (reminderId == 12) return config.reminder12ChatMessages();
+		else if (reminderId == 13) return config.reminder13ChatMessages();
+		else if (reminderId == 14) return config.reminder14ChatMessages();
+		else if (reminderId == 15) return config.reminder15ChatMessages();
+		else if (reminderId == 16) return config.reminder16ChatMessages();
+		else if (reminderId == 17) return config.reminder17ChatMessages();
+		else if (reminderId == 18) return config.reminder18ChatMessages();
+		else if (reminderId == 19) return config.reminder19ChatMessages();
+		else if (reminderId == 20) return config.reminder20ChatMessages();
+		else if (reminderId == 21) return config.reminder21ChatMessages();
+		else if (reminderId == 22) return config.reminder22ChatMessages();
+		else if (reminderId == 23) return config.reminder23ChatMessages();
+		else if (reminderId == 24) return config.reminder24ChatMessages();
+		else if (reminderId == 25) return config.reminder25ChatMessages();
+		else if (reminderId == 26) return config.reminder26ChatMessages();
+		else if (reminderId == 27) return config.reminder27ChatMessages();
+		else if (reminderId == 28) return config.reminder28ChatMessages();
+		else if (reminderId == 29) return config.reminder29ChatMessages();
+		else if (reminderId == 30) return config.reminder30ChatMessages();
+		else if (reminderId == 31) return config.reminder31ChatMessages();
+		else if (reminderId == 32) return config.reminder32ChatMessages();
+		else if (reminderId == 33) return config.reminder33ChatMessages();
+		else if (reminderId == 34) return config.reminder34ChatMessages();
+		else if (reminderId == 35) return config.reminder35ChatMessages();
+		else if (reminderId == 36) return config.reminder36ChatMessages();
+		else if (reminderId == 37) return config.reminder37ChatMessages();
+		else if (reminderId == 38) return config.reminder38ChatMessages();
+		else if (reminderId == 39) return config.reminder39ChatMessages();
+		else if (reminderId == 40) return config.reminder40ChatMessages();
+		else if (reminderId == 41) return config.reminder41ChatMessages();
+		else if (reminderId == 42) return config.reminder42ChatMessages();
+		else if (reminderId == 43) return config.reminder43ChatMessages();
+		else if (reminderId == 44) return config.reminder44ChatMessages();
+		else if (reminderId == 45) return config.reminder45ChatMessages();
+		else if (reminderId == 46) return config.reminder46ChatMessages();
+		else if (reminderId == 47) return config.reminder47ChatMessages();
+		else if (reminderId == 48) return config.reminder48ChatMessages();
+		else if (reminderId == 49) return config.reminder49ChatMessages();
+		else if (reminderId == 50) return config.reminder50ChatMessages();
+		else if (reminderId == 51) return config.reminder51ChatMessages();
+		else if (reminderId == 52) return config.reminder52ChatMessages();
+		else if (reminderId == 53) return config.reminder53ChatMessages();
+		else if (reminderId == 54) return config.reminder54ChatMessages();
+		else if (reminderId == 55) return config.reminder55ChatMessages();
+		else if (reminderId == 56) return config.reminder56ChatMessages();
+		else if (reminderId == 57) return config.reminder57ChatMessages();
+		else if (reminderId == 58) return config.reminder58ChatMessages();
+		else if (reminderId == 59) return config.reminder59ChatMessages();
+		else if (reminderId == 60) return config.reminder60ChatMessages();
+		else if (reminderId == 61) return config.reminder61ChatMessages();
+		else if (reminderId == 62) return config.reminder62ChatMessages();
+		else if (reminderId == 63) return config.reminder63ChatMessages();
+		else if (reminderId == 64) return config.reminder64ChatMessages();
+		else if (reminderId == 65) return config.reminder65ChatMessages();
+		else if (reminderId == 66) return config.reminder66ChatMessages();
+		else if (reminderId == 67) return config.reminder67ChatMessages();
+		else if (reminderId == 68) return config.reminder68ChatMessages();
+		else if (reminderId == 69) return config.reminder69ChatMessages();
+		else if (reminderId == 70) return config.reminder70ChatMessages();
+		else if (reminderId == 71) return config.reminder71ChatMessages();
+		else if (reminderId == 72) return config.reminder72ChatMessages();
+		else if (reminderId == 73) return config.reminder73ChatMessages();
+		else if (reminderId == 74) return config.reminder74ChatMessages();
+		else if (reminderId == 75) return config.reminder75ChatMessages();
+		else if (reminderId == 76) return config.reminder76ChatMessages();
+		else if (reminderId == 77) return config.reminder77ChatMessages();
+		else if (reminderId == 78) return config.reminder78ChatMessages();
+		else if (reminderId == 79) return config.reminder79ChatMessages();
+		else if (reminderId == 80) return config.reminder80ChatMessages();
+		else if (reminderId == 81) return config.reminder81ChatMessages();
+		else if (reminderId == 82) return config.reminder82ChatMessages();
+		else if (reminderId == 83) return config.reminder83ChatMessages();
+		else if (reminderId == 84) return config.reminder84ChatMessages();
+		else if (reminderId == 85) return config.reminder85ChatMessages();
+		else if (reminderId == 86) return config.reminder86ChatMessages();
+		else if (reminderId == 87) return config.reminder87ChatMessages();
+		else if (reminderId == 88) return config.reminder88ChatMessages();
+		else if (reminderId == 89) return config.reminder89ChatMessages();
+		else if (reminderId == 90) return config.reminder90ChatMessages();
+		else if (reminderId == 91) return config.reminder91ChatMessages();
+		else if (reminderId == 92) return config.reminder92ChatMessages();
+		else if (reminderId == 93) return config.reminder93ChatMessages();
+		else if (reminderId == 94) return config.reminder94ChatMessages();
+		else if (reminderId == 95) return config.reminder95ChatMessages();
+		else if (reminderId == 96) return config.reminder96ChatMessages();
+		else if (reminderId == 97) return config.reminder97ChatMessages();
+		else if (reminderId == 98) return config.reminder98ChatMessages();
+		else if (reminderId == 99) return config.reminder99ChatMessages();
+		else if (reminderId == 100) return config.reminder100ChatMessages();
 		else return "";
 	}
 }

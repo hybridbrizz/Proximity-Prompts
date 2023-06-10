@@ -62,6 +62,9 @@ public class Reminder {
     @SerializedName("item_ids")
     public String itemIds = "";
 
+    @SerializedName("chat_patterns")
+    public String chatPatterns = "";
+
     public long getDurationMillis() {
         if (timeUnit == TIME_UNIT_SECONDS)
         {

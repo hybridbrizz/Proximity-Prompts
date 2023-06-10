@@ -20,6 +20,7 @@ configInfo = [
     ["RegionIds", "String"],
     ["NpcIds", "String"],
     ["ItemIds", "String"],
+    ["ChatMessages", "String"]
 ]
 
 for info in configInfo:
