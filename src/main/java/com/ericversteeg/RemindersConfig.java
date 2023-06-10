@@ -45,6 +45,16 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			position = 4,
+			keyName = "width",
+			name = "Width",
+			description = "Configures the width."
+	)
+	default int width() {
+		return 140;
+	}
+
+	@ConfigItem(
+			position = 5,
 			keyName = "idFinder",
 			name = "Finder",
 			description = "Configures whether or not to show ids."
@@ -54,7 +64,7 @@ public interface RemindersConfig extends Config {
 	}
 
 	@ConfigItem(
-			position = 5,
+			position = 6,
 			keyName = "textSize",
 			name = "Text Size",
 			description = "Configures the text size."
@@ -64,7 +74,7 @@ public interface RemindersConfig extends Config {
 	}
 
 	@ConfigItem(
-			position = 6,
+			position = 7,
 			keyName = "max",
 			name = "Max",
 			description = "Configures the max number of reminders."
@@ -95,11 +105,15 @@ public interface RemindersConfig extends Config {
 				"    \"enable\": false,\n" +
 				"    \"text\": \"Reminder text.\",\n" +
 				"    \"color\": \"#00FFFF\",\n" +
+				"    \"duration\": 0,\n" +
+				"    \"cooldown\": 0,\n" +
+				"    \"time_unit\": 1,\n" +
+				"    \"notify\": false,\n" +
 				"    \"times\": [\n" +
 				"      \"10:00pm\",\n" +
 				"      \"5:30pm-7:00pm\"\n" +
 				"    ],\n" +
-				"    \"days\": [\n" +
+				"    \"days_of_week\": [\n" +
 				"      \"Thu\",\n" +
 				"      \"Sat\"\n" +
 				"    ],\n" +
@@ -107,7 +121,7 @@ public interface RemindersConfig extends Config {
 				"      \"05/30/23\",\n" +
 				"      \"10/20\"\n" +
 				"    ],\n" +
-				"    \"locations\": [\n" +
+				"    \"coordinates\": [\n" +
 				"      \"(300, 400)\",\n" +
 				"      \"(1000, 750)\"\n" +
 				"    ],\n" +
@@ -116,17 +130,21 @@ public interface RemindersConfig extends Config {
 				"      \"(4000, 3000, 4500, 2500)\",\n" +
 				"      \"(500, 1000, 1500, 500)\"\n" +
 				"    ],\n" +
-				"    \"regions\": [\n" +
+				"    \"region_ids\": [\n" +
 				"      \"500\",\n" +
 				"      \"750\"\n" +
 				"    ],\n" +
-				"    \"npcs\": [\n" +
+				"    \"npc_ids\": [\n" +
 				"      \"300\",\n" +
 				"      \"400\"\n" +
 				"    ],\n" +
-				"    \"items\": [\n" +
+				"    \"item_ids\": [\n" +
 				"      \"1500\",\n" +
 				"      \"2000\"\n" +
+				"    ],\n" +
+				"    \"chat_patterns\": [\n" +
+				"      \"text\",\n" +
+				"      \"regex\"\n" +
 				"    ]\n" +
 				"  }  \n" +
 				"]";
@@ -171,7 +189,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder1Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder1
 	)
 	default String reminder1Times() { return ""; }
@@ -225,7 +243,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder1RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder1
 	)
 	default String reminder1RegionIds() { return ""; }
@@ -234,7 +252,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder1NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder1
 	)
 	default String reminder1NpcIds() { return ""; }
@@ -243,7 +261,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder1ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder1
 	)
 	default String reminder1ItemIds() { return ""; }
@@ -267,7 +285,7 @@ public interface RemindersConfig extends Config {
 	default int reminder1Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder1timeUnit",
+			keyName = "Reminder1TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -276,13 +294,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder1TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder1chatMessages",
+			keyName = "Reminder1ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder1
 	)
-	default String reminder1ChatMessages() { return ""; }
+	default String reminder1ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder1Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder1
+	)
+	default boolean reminder1Notify() { return false; }
 
 
 	@ConfigSection(
@@ -324,7 +351,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder2Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder2
 	)
 	default String reminder2Times() { return ""; }
@@ -378,7 +405,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder2RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder2
 	)
 	default String reminder2RegionIds() { return ""; }
@@ -387,7 +414,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder2NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder2
 	)
 	default String reminder2NpcIds() { return ""; }
@@ -396,7 +423,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder2ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder2
 	)
 	default String reminder2ItemIds() { return ""; }
@@ -420,7 +447,7 @@ public interface RemindersConfig extends Config {
 	default int reminder2Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder2timeUnit",
+			keyName = "Reminder2TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -429,13 +456,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder2TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder2chatMessages",
+			keyName = "Reminder2ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder2
 	)
-	default String reminder2ChatMessages() { return ""; }
+	default String reminder2ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder2Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder2
+	)
+	default boolean reminder2Notify() { return false; }
 
 
 	@ConfigSection(
@@ -477,7 +513,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder3Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder3
 	)
 	default String reminder3Times() { return ""; }
@@ -531,7 +567,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder3RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder3
 	)
 	default String reminder3RegionIds() { return ""; }
@@ -540,7 +576,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder3NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder3
 	)
 	default String reminder3NpcIds() { return ""; }
@@ -549,7 +585,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder3ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder3
 	)
 	default String reminder3ItemIds() { return ""; }
@@ -573,7 +609,7 @@ public interface RemindersConfig extends Config {
 	default int reminder3Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder3timeUnit",
+			keyName = "Reminder3TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -582,13 +618,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder3TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder3chatMessages",
+			keyName = "Reminder3ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder3
 	)
-	default String reminder3ChatMessages() { return ""; }
+	default String reminder3ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder3Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder3
+	)
+	default boolean reminder3Notify() { return false; }
 
 
 	@ConfigSection(
@@ -630,7 +675,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder4Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder4
 	)
 	default String reminder4Times() { return ""; }
@@ -684,7 +729,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder4RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder4
 	)
 	default String reminder4RegionIds() { return ""; }
@@ -693,7 +738,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder4NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder4
 	)
 	default String reminder4NpcIds() { return ""; }
@@ -702,7 +747,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder4ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder4
 	)
 	default String reminder4ItemIds() { return ""; }
@@ -726,7 +771,7 @@ public interface RemindersConfig extends Config {
 	default int reminder4Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder4timeUnit",
+			keyName = "Reminder4TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -735,13 +780,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder4TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder4chatMessages",
+			keyName = "Reminder4ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder4
 	)
-	default String reminder4ChatMessages() { return ""; }
+	default String reminder4ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder4Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder4
+	)
+	default boolean reminder4Notify() { return false; }
 
 
 	@ConfigSection(
@@ -783,7 +837,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder5Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder5
 	)
 	default String reminder5Times() { return ""; }
@@ -837,7 +891,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder5RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder5
 	)
 	default String reminder5RegionIds() { return ""; }
@@ -846,7 +900,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder5NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder5
 	)
 	default String reminder5NpcIds() { return ""; }
@@ -855,7 +909,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder5ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder5
 	)
 	default String reminder5ItemIds() { return ""; }
@@ -879,7 +933,7 @@ public interface RemindersConfig extends Config {
 	default int reminder5Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder5timeUnit",
+			keyName = "Reminder5TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -888,13 +942,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder5TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder5chatMessages",
+			keyName = "Reminder5ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder5
 	)
-	default String reminder5ChatMessages() { return ""; }
+	default String reminder5ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder5Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder5
+	)
+	default boolean reminder5Notify() { return false; }
 
 
 	@ConfigSection(
@@ -936,7 +999,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder6Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder6
 	)
 	default String reminder6Times() { return ""; }
@@ -990,7 +1053,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder6RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder6
 	)
 	default String reminder6RegionIds() { return ""; }
@@ -999,7 +1062,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder6NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder6
 	)
 	default String reminder6NpcIds() { return ""; }
@@ -1008,7 +1071,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder6ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder6
 	)
 	default String reminder6ItemIds() { return ""; }
@@ -1032,7 +1095,7 @@ public interface RemindersConfig extends Config {
 	default int reminder6Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder6timeUnit",
+			keyName = "Reminder6TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -1041,13 +1104,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder6TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder6chatMessages",
+			keyName = "Reminder6ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder6
 	)
-	default String reminder6ChatMessages() { return ""; }
+	default String reminder6ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder6Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder6
+	)
+	default boolean reminder6Notify() { return false; }
 
 
 	@ConfigSection(
@@ -1089,7 +1161,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder7Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder7
 	)
 	default String reminder7Times() { return ""; }
@@ -1143,7 +1215,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder7RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder7
 	)
 	default String reminder7RegionIds() { return ""; }
@@ -1152,7 +1224,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder7NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder7
 	)
 	default String reminder7NpcIds() { return ""; }
@@ -1161,7 +1233,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder7ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder7
 	)
 	default String reminder7ItemIds() { return ""; }
@@ -1185,7 +1257,7 @@ public interface RemindersConfig extends Config {
 	default int reminder7Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder7timeUnit",
+			keyName = "Reminder7TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -1194,13 +1266,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder7TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder7chatMessages",
+			keyName = "Reminder7ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder7
 	)
-	default String reminder7ChatMessages() { return ""; }
+	default String reminder7ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder7Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder7
+	)
+	default boolean reminder7Notify() { return false; }
 
 
 	@ConfigSection(
@@ -1242,7 +1323,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder8Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder8
 	)
 	default String reminder8Times() { return ""; }
@@ -1296,7 +1377,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder8RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder8
 	)
 	default String reminder8RegionIds() { return ""; }
@@ -1305,7 +1386,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder8NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder8
 	)
 	default String reminder8NpcIds() { return ""; }
@@ -1314,7 +1395,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder8ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder8
 	)
 	default String reminder8ItemIds() { return ""; }
@@ -1338,7 +1419,7 @@ public interface RemindersConfig extends Config {
 	default int reminder8Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder8timeUnit",
+			keyName = "Reminder8TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -1347,13 +1428,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder8TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder8chatMessages",
+			keyName = "Reminder8ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder8
 	)
-	default String reminder8ChatMessages() { return ""; }
+	default String reminder8ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder8Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder8
+	)
+	default boolean reminder8Notify() { return false; }
 
 
 	@ConfigSection(
@@ -1395,7 +1485,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder9Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder9
 	)
 	default String reminder9Times() { return ""; }
@@ -1449,7 +1539,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder9RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder9
 	)
 	default String reminder9RegionIds() { return ""; }
@@ -1458,7 +1548,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder9NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder9
 	)
 	default String reminder9NpcIds() { return ""; }
@@ -1467,7 +1557,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder9ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder9
 	)
 	default String reminder9ItemIds() { return ""; }
@@ -1491,7 +1581,7 @@ public interface RemindersConfig extends Config {
 	default int reminder9Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder9timeUnit",
+			keyName = "Reminder9TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -1500,13 +1590,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder9TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder9chatMessages",
+			keyName = "Reminder9ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder9
 	)
-	default String reminder9ChatMessages() { return ""; }
+	default String reminder9ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder9Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder9
+	)
+	default boolean reminder9Notify() { return false; }
 
 
 	@ConfigSection(
@@ -1548,7 +1647,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder10Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder10
 	)
 	default String reminder10Times() { return ""; }
@@ -1602,7 +1701,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder10RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder10
 	)
 	default String reminder10RegionIds() { return ""; }
@@ -1611,7 +1710,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder10NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder10
 	)
 	default String reminder10NpcIds() { return ""; }
@@ -1620,7 +1719,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder10ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder10
 	)
 	default String reminder10ItemIds() { return ""; }
@@ -1644,7 +1743,7 @@ public interface RemindersConfig extends Config {
 	default int reminder10Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder10timeUnit",
+			keyName = "Reminder10TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -1653,13 +1752,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder10TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder10chatMessages",
+			keyName = "Reminder10ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder10
 	)
-	default String reminder10ChatMessages() { return ""; }
+	default String reminder10ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder10Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder10
+	)
+	default boolean reminder10Notify() { return false; }
 
 
 	@ConfigSection(
@@ -1701,7 +1809,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder11Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder11
 	)
 	default String reminder11Times() { return ""; }
@@ -1755,7 +1863,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder11RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder11
 	)
 	default String reminder11RegionIds() { return ""; }
@@ -1764,7 +1872,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder11NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder11
 	)
 	default String reminder11NpcIds() { return ""; }
@@ -1773,7 +1881,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder11ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder11
 	)
 	default String reminder11ItemIds() { return ""; }
@@ -1797,7 +1905,7 @@ public interface RemindersConfig extends Config {
 	default int reminder11Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder11timeUnit",
+			keyName = "Reminder11TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -1806,13 +1914,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder11TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder11chatMessages",
+			keyName = "Reminder11ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder11
 	)
-	default String reminder11ChatMessages() { return ""; }
+	default String reminder11ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder11Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder11
+	)
+	default boolean reminder11Notify() { return false; }
 
 
 	@ConfigSection(
@@ -1854,7 +1971,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder12Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder12
 	)
 	default String reminder12Times() { return ""; }
@@ -1908,7 +2025,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder12RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder12
 	)
 	default String reminder12RegionIds() { return ""; }
@@ -1917,7 +2034,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder12NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder12
 	)
 	default String reminder12NpcIds() { return ""; }
@@ -1926,7 +2043,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder12ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder12
 	)
 	default String reminder12ItemIds() { return ""; }
@@ -1950,7 +2067,7 @@ public interface RemindersConfig extends Config {
 	default int reminder12Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder12timeUnit",
+			keyName = "Reminder12TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -1959,13 +2076,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder12TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder12chatMessages",
+			keyName = "Reminder12ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder12
 	)
-	default String reminder12ChatMessages() { return ""; }
+	default String reminder12ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder12Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder12
+	)
+	default boolean reminder12Notify() { return false; }
 
 
 	@ConfigSection(
@@ -2007,7 +2133,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder13Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder13
 	)
 	default String reminder13Times() { return ""; }
@@ -2061,7 +2187,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder13RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder13
 	)
 	default String reminder13RegionIds() { return ""; }
@@ -2070,7 +2196,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder13NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder13
 	)
 	default String reminder13NpcIds() { return ""; }
@@ -2079,7 +2205,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder13ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder13
 	)
 	default String reminder13ItemIds() { return ""; }
@@ -2103,7 +2229,7 @@ public interface RemindersConfig extends Config {
 	default int reminder13Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder13timeUnit",
+			keyName = "Reminder13TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -2112,13 +2238,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder13TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder13chatMessages",
+			keyName = "Reminder13ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder13
 	)
-	default String reminder13ChatMessages() { return ""; }
+	default String reminder13ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder13Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder13
+	)
+	default boolean reminder13Notify() { return false; }
 
 
 	@ConfigSection(
@@ -2160,7 +2295,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder14Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder14
 	)
 	default String reminder14Times() { return ""; }
@@ -2214,7 +2349,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder14RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder14
 	)
 	default String reminder14RegionIds() { return ""; }
@@ -2223,7 +2358,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder14NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder14
 	)
 	default String reminder14NpcIds() { return ""; }
@@ -2232,7 +2367,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder14ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder14
 	)
 	default String reminder14ItemIds() { return ""; }
@@ -2256,7 +2391,7 @@ public interface RemindersConfig extends Config {
 	default int reminder14Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder14timeUnit",
+			keyName = "Reminder14TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -2265,13 +2400,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder14TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder14chatMessages",
+			keyName = "Reminder14ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder14
 	)
-	default String reminder14ChatMessages() { return ""; }
+	default String reminder14ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder14Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder14
+	)
+	default boolean reminder14Notify() { return false; }
 
 
 	@ConfigSection(
@@ -2313,7 +2457,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder15Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder15
 	)
 	default String reminder15Times() { return ""; }
@@ -2367,7 +2511,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder15RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder15
 	)
 	default String reminder15RegionIds() { return ""; }
@@ -2376,7 +2520,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder15NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder15
 	)
 	default String reminder15NpcIds() { return ""; }
@@ -2385,7 +2529,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder15ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder15
 	)
 	default String reminder15ItemIds() { return ""; }
@@ -2409,7 +2553,7 @@ public interface RemindersConfig extends Config {
 	default int reminder15Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder15timeUnit",
+			keyName = "Reminder15TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -2418,13 +2562,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder15TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder15chatMessages",
+			keyName = "Reminder15ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder15
 	)
-	default String reminder15ChatMessages() { return ""; }
+	default String reminder15ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder15Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder15
+	)
+	default boolean reminder15Notify() { return false; }
 
 
 	@ConfigSection(
@@ -2466,7 +2619,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder16Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder16
 	)
 	default String reminder16Times() { return ""; }
@@ -2520,7 +2673,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder16RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder16
 	)
 	default String reminder16RegionIds() { return ""; }
@@ -2529,7 +2682,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder16NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder16
 	)
 	default String reminder16NpcIds() { return ""; }
@@ -2538,7 +2691,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder16ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder16
 	)
 	default String reminder16ItemIds() { return ""; }
@@ -2562,7 +2715,7 @@ public interface RemindersConfig extends Config {
 	default int reminder16Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder16timeUnit",
+			keyName = "Reminder16TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -2571,13 +2724,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder16TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder16chatMessages",
+			keyName = "Reminder16ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder16
 	)
-	default String reminder16ChatMessages() { return ""; }
+	default String reminder16ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder16Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder16
+	)
+	default boolean reminder16Notify() { return false; }
 
 
 	@ConfigSection(
@@ -2619,7 +2781,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder17Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder17
 	)
 	default String reminder17Times() { return ""; }
@@ -2673,7 +2835,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder17RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder17
 	)
 	default String reminder17RegionIds() { return ""; }
@@ -2682,7 +2844,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder17NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder17
 	)
 	default String reminder17NpcIds() { return ""; }
@@ -2691,7 +2853,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder17ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder17
 	)
 	default String reminder17ItemIds() { return ""; }
@@ -2715,7 +2877,7 @@ public interface RemindersConfig extends Config {
 	default int reminder17Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder17timeUnit",
+			keyName = "Reminder17TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -2724,13 +2886,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder17TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder17chatMessages",
+			keyName = "Reminder17ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder17
 	)
-	default String reminder17ChatMessages() { return ""; }
+	default String reminder17ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder17Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder17
+	)
+	default boolean reminder17Notify() { return false; }
 
 
 	@ConfigSection(
@@ -2772,7 +2943,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder18Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder18
 	)
 	default String reminder18Times() { return ""; }
@@ -2826,7 +2997,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder18RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder18
 	)
 	default String reminder18RegionIds() { return ""; }
@@ -2835,7 +3006,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder18NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder18
 	)
 	default String reminder18NpcIds() { return ""; }
@@ -2844,7 +3015,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder18ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder18
 	)
 	default String reminder18ItemIds() { return ""; }
@@ -2868,7 +3039,7 @@ public interface RemindersConfig extends Config {
 	default int reminder18Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder18timeUnit",
+			keyName = "Reminder18TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -2877,13 +3048,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder18TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder18chatMessages",
+			keyName = "Reminder18ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder18
 	)
-	default String reminder18ChatMessages() { return ""; }
+	default String reminder18ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder18Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder18
+	)
+	default boolean reminder18Notify() { return false; }
 
 
 	@ConfigSection(
@@ -2925,7 +3105,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder19Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder19
 	)
 	default String reminder19Times() { return ""; }
@@ -2979,7 +3159,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder19RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder19
 	)
 	default String reminder19RegionIds() { return ""; }
@@ -2988,7 +3168,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder19NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder19
 	)
 	default String reminder19NpcIds() { return ""; }
@@ -2997,7 +3177,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder19ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder19
 	)
 	default String reminder19ItemIds() { return ""; }
@@ -3021,7 +3201,7 @@ public interface RemindersConfig extends Config {
 	default int reminder19Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder19timeUnit",
+			keyName = "Reminder19TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -3030,13 +3210,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder19TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder19chatMessages",
+			keyName = "Reminder19ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder19
 	)
-	default String reminder19ChatMessages() { return ""; }
+	default String reminder19ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder19Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder19
+	)
+	default boolean reminder19Notify() { return false; }
 
 
 	@ConfigSection(
@@ -3078,7 +3267,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder20Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder20
 	)
 	default String reminder20Times() { return ""; }
@@ -3132,7 +3321,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder20RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder20
 	)
 	default String reminder20RegionIds() { return ""; }
@@ -3141,7 +3330,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder20NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder20
 	)
 	default String reminder20NpcIds() { return ""; }
@@ -3150,7 +3339,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder20ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder20
 	)
 	default String reminder20ItemIds() { return ""; }
@@ -3174,7 +3363,7 @@ public interface RemindersConfig extends Config {
 	default int reminder20Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder20timeUnit",
+			keyName = "Reminder20TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -3183,13 +3372,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder20TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder20chatMessages",
+			keyName = "Reminder20ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder20
 	)
-	default String reminder20ChatMessages() { return ""; }
+	default String reminder20ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder20Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder20
+	)
+	default boolean reminder20Notify() { return false; }
 
 
 	@ConfigSection(
@@ -3231,7 +3429,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder21Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder21
 	)
 	default String reminder21Times() { return ""; }
@@ -3285,7 +3483,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder21RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder21
 	)
 	default String reminder21RegionIds() { return ""; }
@@ -3294,7 +3492,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder21NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder21
 	)
 	default String reminder21NpcIds() { return ""; }
@@ -3303,7 +3501,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder21ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder21
 	)
 	default String reminder21ItemIds() { return ""; }
@@ -3327,7 +3525,7 @@ public interface RemindersConfig extends Config {
 	default int reminder21Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder21timeUnit",
+			keyName = "Reminder21TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -3336,13 +3534,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder21TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder21chatMessages",
+			keyName = "Reminder21ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder21
 	)
-	default String reminder21ChatMessages() { return ""; }
+	default String reminder21ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder21Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder21
+	)
+	default boolean reminder21Notify() { return false; }
 
 
 	@ConfigSection(
@@ -3384,7 +3591,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder22Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder22
 	)
 	default String reminder22Times() { return ""; }
@@ -3438,7 +3645,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder22RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder22
 	)
 	default String reminder22RegionIds() { return ""; }
@@ -3447,7 +3654,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder22NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder22
 	)
 	default String reminder22NpcIds() { return ""; }
@@ -3456,7 +3663,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder22ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder22
 	)
 	default String reminder22ItemIds() { return ""; }
@@ -3480,7 +3687,7 @@ public interface RemindersConfig extends Config {
 	default int reminder22Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder22timeUnit",
+			keyName = "Reminder22TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -3489,13 +3696,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder22TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder22chatMessages",
+			keyName = "Reminder22ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder22
 	)
-	default String reminder22ChatMessages() { return ""; }
+	default String reminder22ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder22Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder22
+	)
+	default boolean reminder22Notify() { return false; }
 
 
 	@ConfigSection(
@@ -3537,7 +3753,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder23Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder23
 	)
 	default String reminder23Times() { return ""; }
@@ -3591,7 +3807,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder23RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder23
 	)
 	default String reminder23RegionIds() { return ""; }
@@ -3600,7 +3816,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder23NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder23
 	)
 	default String reminder23NpcIds() { return ""; }
@@ -3609,7 +3825,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder23ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder23
 	)
 	default String reminder23ItemIds() { return ""; }
@@ -3633,7 +3849,7 @@ public interface RemindersConfig extends Config {
 	default int reminder23Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder23timeUnit",
+			keyName = "Reminder23TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -3642,13 +3858,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder23TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder23chatMessages",
+			keyName = "Reminder23ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder23
 	)
-	default String reminder23ChatMessages() { return ""; }
+	default String reminder23ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder23Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder23
+	)
+	default boolean reminder23Notify() { return false; }
 
 
 	@ConfigSection(
@@ -3690,7 +3915,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder24Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder24
 	)
 	default String reminder24Times() { return ""; }
@@ -3744,7 +3969,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder24RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder24
 	)
 	default String reminder24RegionIds() { return ""; }
@@ -3753,7 +3978,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder24NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder24
 	)
 	default String reminder24NpcIds() { return ""; }
@@ -3762,7 +3987,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder24ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder24
 	)
 	default String reminder24ItemIds() { return ""; }
@@ -3786,7 +4011,7 @@ public interface RemindersConfig extends Config {
 	default int reminder24Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder24timeUnit",
+			keyName = "Reminder24TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -3795,13 +4020,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder24TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder24chatMessages",
+			keyName = "Reminder24ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder24
 	)
-	default String reminder24ChatMessages() { return ""; }
+	default String reminder24ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder24Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder24
+	)
+	default boolean reminder24Notify() { return false; }
 
 
 	@ConfigSection(
@@ -3843,7 +4077,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder25Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder25
 	)
 	default String reminder25Times() { return ""; }
@@ -3897,7 +4131,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder25RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder25
 	)
 	default String reminder25RegionIds() { return ""; }
@@ -3906,7 +4140,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder25NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder25
 	)
 	default String reminder25NpcIds() { return ""; }
@@ -3915,7 +4149,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder25ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder25
 	)
 	default String reminder25ItemIds() { return ""; }
@@ -3939,7 +4173,7 @@ public interface RemindersConfig extends Config {
 	default int reminder25Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder25timeUnit",
+			keyName = "Reminder25TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -3948,13 +4182,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder25TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder25chatMessages",
+			keyName = "Reminder25ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder25
 	)
-	default String reminder25ChatMessages() { return ""; }
+	default String reminder25ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder25Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder25
+	)
+	default boolean reminder25Notify() { return false; }
 
 
 	@ConfigSection(
@@ -3996,7 +4239,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder26Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder26
 	)
 	default String reminder26Times() { return ""; }
@@ -4050,7 +4293,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder26RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder26
 	)
 	default String reminder26RegionIds() { return ""; }
@@ -4059,7 +4302,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder26NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder26
 	)
 	default String reminder26NpcIds() { return ""; }
@@ -4068,7 +4311,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder26ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder26
 	)
 	default String reminder26ItemIds() { return ""; }
@@ -4092,7 +4335,7 @@ public interface RemindersConfig extends Config {
 	default int reminder26Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder26timeUnit",
+			keyName = "Reminder26TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -4101,13 +4344,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder26TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder26chatMessages",
+			keyName = "Reminder26ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder26
 	)
-	default String reminder26ChatMessages() { return ""; }
+	default String reminder26ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder26Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder26
+	)
+	default boolean reminder26Notify() { return false; }
 
 
 	@ConfigSection(
@@ -4149,7 +4401,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder27Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder27
 	)
 	default String reminder27Times() { return ""; }
@@ -4203,7 +4455,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder27RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder27
 	)
 	default String reminder27RegionIds() { return ""; }
@@ -4212,7 +4464,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder27NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder27
 	)
 	default String reminder27NpcIds() { return ""; }
@@ -4221,7 +4473,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder27ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder27
 	)
 	default String reminder27ItemIds() { return ""; }
@@ -4245,7 +4497,7 @@ public interface RemindersConfig extends Config {
 	default int reminder27Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder27timeUnit",
+			keyName = "Reminder27TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -4254,13 +4506,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder27TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder27chatMessages",
+			keyName = "Reminder27ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder27
 	)
-	default String reminder27ChatMessages() { return ""; }
+	default String reminder27ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder27Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder27
+	)
+	default boolean reminder27Notify() { return false; }
 
 
 	@ConfigSection(
@@ -4302,7 +4563,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder28Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder28
 	)
 	default String reminder28Times() { return ""; }
@@ -4356,7 +4617,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder28RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder28
 	)
 	default String reminder28RegionIds() { return ""; }
@@ -4365,7 +4626,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder28NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder28
 	)
 	default String reminder28NpcIds() { return ""; }
@@ -4374,7 +4635,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder28ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder28
 	)
 	default String reminder28ItemIds() { return ""; }
@@ -4398,7 +4659,7 @@ public interface RemindersConfig extends Config {
 	default int reminder28Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder28timeUnit",
+			keyName = "Reminder28TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -4407,13 +4668,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder28TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder28chatMessages",
+			keyName = "Reminder28ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder28
 	)
-	default String reminder28ChatMessages() { return ""; }
+	default String reminder28ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder28Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder28
+	)
+	default boolean reminder28Notify() { return false; }
 
 
 	@ConfigSection(
@@ -4455,7 +4725,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder29Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder29
 	)
 	default String reminder29Times() { return ""; }
@@ -4509,7 +4779,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder29RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder29
 	)
 	default String reminder29RegionIds() { return ""; }
@@ -4518,7 +4788,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder29NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder29
 	)
 	default String reminder29NpcIds() { return ""; }
@@ -4527,7 +4797,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder29ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder29
 	)
 	default String reminder29ItemIds() { return ""; }
@@ -4551,7 +4821,7 @@ public interface RemindersConfig extends Config {
 	default int reminder29Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder29timeUnit",
+			keyName = "Reminder29TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -4560,13 +4830,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder29TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder29chatMessages",
+			keyName = "Reminder29ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder29
 	)
-	default String reminder29ChatMessages() { return ""; }
+	default String reminder29ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder29Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder29
+	)
+	default boolean reminder29Notify() { return false; }
 
 
 	@ConfigSection(
@@ -4608,7 +4887,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder30Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder30
 	)
 	default String reminder30Times() { return ""; }
@@ -4662,7 +4941,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder30RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder30
 	)
 	default String reminder30RegionIds() { return ""; }
@@ -4671,7 +4950,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder30NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder30
 	)
 	default String reminder30NpcIds() { return ""; }
@@ -4680,7 +4959,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder30ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder30
 	)
 	default String reminder30ItemIds() { return ""; }
@@ -4704,7 +4983,7 @@ public interface RemindersConfig extends Config {
 	default int reminder30Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder30timeUnit",
+			keyName = "Reminder30TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -4713,13 +4992,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder30TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder30chatMessages",
+			keyName = "Reminder30ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder30
 	)
-	default String reminder30ChatMessages() { return ""; }
+	default String reminder30ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder30Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder30
+	)
+	default boolean reminder30Notify() { return false; }
 
 
 	@ConfigSection(
@@ -4761,7 +5049,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder31Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder31
 	)
 	default String reminder31Times() { return ""; }
@@ -4815,7 +5103,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder31RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder31
 	)
 	default String reminder31RegionIds() { return ""; }
@@ -4824,7 +5112,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder31NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder31
 	)
 	default String reminder31NpcIds() { return ""; }
@@ -4833,7 +5121,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder31ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder31
 	)
 	default String reminder31ItemIds() { return ""; }
@@ -4857,7 +5145,7 @@ public interface RemindersConfig extends Config {
 	default int reminder31Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder31timeUnit",
+			keyName = "Reminder31TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -4866,13 +5154,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder31TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder31chatMessages",
+			keyName = "Reminder31ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder31
 	)
-	default String reminder31ChatMessages() { return ""; }
+	default String reminder31ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder31Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder31
+	)
+	default boolean reminder31Notify() { return false; }
 
 
 	@ConfigSection(
@@ -4914,7 +5211,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder32Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder32
 	)
 	default String reminder32Times() { return ""; }
@@ -4968,7 +5265,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder32RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder32
 	)
 	default String reminder32RegionIds() { return ""; }
@@ -4977,7 +5274,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder32NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder32
 	)
 	default String reminder32NpcIds() { return ""; }
@@ -4986,7 +5283,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder32ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder32
 	)
 	default String reminder32ItemIds() { return ""; }
@@ -5010,7 +5307,7 @@ public interface RemindersConfig extends Config {
 	default int reminder32Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder32timeUnit",
+			keyName = "Reminder32TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -5019,13 +5316,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder32TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder32chatMessages",
+			keyName = "Reminder32ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder32
 	)
-	default String reminder32ChatMessages() { return ""; }
+	default String reminder32ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder32Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder32
+	)
+	default boolean reminder32Notify() { return false; }
 
 
 	@ConfigSection(
@@ -5067,7 +5373,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder33Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder33
 	)
 	default String reminder33Times() { return ""; }
@@ -5121,7 +5427,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder33RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder33
 	)
 	default String reminder33RegionIds() { return ""; }
@@ -5130,7 +5436,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder33NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder33
 	)
 	default String reminder33NpcIds() { return ""; }
@@ -5139,7 +5445,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder33ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder33
 	)
 	default String reminder33ItemIds() { return ""; }
@@ -5163,7 +5469,7 @@ public interface RemindersConfig extends Config {
 	default int reminder33Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder33timeUnit",
+			keyName = "Reminder33TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -5172,13 +5478,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder33TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder33chatMessages",
+			keyName = "Reminder33ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder33
 	)
-	default String reminder33ChatMessages() { return ""; }
+	default String reminder33ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder33Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder33
+	)
+	default boolean reminder33Notify() { return false; }
 
 
 	@ConfigSection(
@@ -5220,7 +5535,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder34Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder34
 	)
 	default String reminder34Times() { return ""; }
@@ -5274,7 +5589,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder34RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder34
 	)
 	default String reminder34RegionIds() { return ""; }
@@ -5283,7 +5598,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder34NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder34
 	)
 	default String reminder34NpcIds() { return ""; }
@@ -5292,7 +5607,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder34ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder34
 	)
 	default String reminder34ItemIds() { return ""; }
@@ -5316,7 +5631,7 @@ public interface RemindersConfig extends Config {
 	default int reminder34Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder34timeUnit",
+			keyName = "Reminder34TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -5325,13 +5640,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder34TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder34chatMessages",
+			keyName = "Reminder34ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder34
 	)
-	default String reminder34ChatMessages() { return ""; }
+	default String reminder34ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder34Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder34
+	)
+	default boolean reminder34Notify() { return false; }
 
 
 	@ConfigSection(
@@ -5373,7 +5697,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder35Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder35
 	)
 	default String reminder35Times() { return ""; }
@@ -5427,7 +5751,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder35RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder35
 	)
 	default String reminder35RegionIds() { return ""; }
@@ -5436,7 +5760,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder35NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder35
 	)
 	default String reminder35NpcIds() { return ""; }
@@ -5445,7 +5769,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder35ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder35
 	)
 	default String reminder35ItemIds() { return ""; }
@@ -5469,7 +5793,7 @@ public interface RemindersConfig extends Config {
 	default int reminder35Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder35timeUnit",
+			keyName = "Reminder35TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -5478,13 +5802,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder35TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder35chatMessages",
+			keyName = "Reminder35ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder35
 	)
-	default String reminder35ChatMessages() { return ""; }
+	default String reminder35ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder35Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder35
+	)
+	default boolean reminder35Notify() { return false; }
 
 
 	@ConfigSection(
@@ -5526,7 +5859,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder36Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder36
 	)
 	default String reminder36Times() { return ""; }
@@ -5580,7 +5913,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder36RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder36
 	)
 	default String reminder36RegionIds() { return ""; }
@@ -5589,7 +5922,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder36NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder36
 	)
 	default String reminder36NpcIds() { return ""; }
@@ -5598,7 +5931,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder36ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder36
 	)
 	default String reminder36ItemIds() { return ""; }
@@ -5622,7 +5955,7 @@ public interface RemindersConfig extends Config {
 	default int reminder36Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder36timeUnit",
+			keyName = "Reminder36TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -5631,13 +5964,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder36TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder36chatMessages",
+			keyName = "Reminder36ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder36
 	)
-	default String reminder36ChatMessages() { return ""; }
+	default String reminder36ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder36Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder36
+	)
+	default boolean reminder36Notify() { return false; }
 
 
 	@ConfigSection(
@@ -5679,7 +6021,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder37Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder37
 	)
 	default String reminder37Times() { return ""; }
@@ -5733,7 +6075,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder37RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder37
 	)
 	default String reminder37RegionIds() { return ""; }
@@ -5742,7 +6084,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder37NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder37
 	)
 	default String reminder37NpcIds() { return ""; }
@@ -5751,7 +6093,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder37ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder37
 	)
 	default String reminder37ItemIds() { return ""; }
@@ -5775,7 +6117,7 @@ public interface RemindersConfig extends Config {
 	default int reminder37Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder37timeUnit",
+			keyName = "Reminder37TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -5784,13 +6126,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder37TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder37chatMessages",
+			keyName = "Reminder37ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder37
 	)
-	default String reminder37ChatMessages() { return ""; }
+	default String reminder37ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder37Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder37
+	)
+	default boolean reminder37Notify() { return false; }
 
 
 	@ConfigSection(
@@ -5832,7 +6183,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder38Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder38
 	)
 	default String reminder38Times() { return ""; }
@@ -5886,7 +6237,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder38RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder38
 	)
 	default String reminder38RegionIds() { return ""; }
@@ -5895,7 +6246,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder38NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder38
 	)
 	default String reminder38NpcIds() { return ""; }
@@ -5904,7 +6255,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder38ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder38
 	)
 	default String reminder38ItemIds() { return ""; }
@@ -5928,7 +6279,7 @@ public interface RemindersConfig extends Config {
 	default int reminder38Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder38timeUnit",
+			keyName = "Reminder38TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -5937,13 +6288,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder38TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder38chatMessages",
+			keyName = "Reminder38ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder38
 	)
-	default String reminder38ChatMessages() { return ""; }
+	default String reminder38ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder38Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder38
+	)
+	default boolean reminder38Notify() { return false; }
 
 
 	@ConfigSection(
@@ -5985,7 +6345,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder39Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder39
 	)
 	default String reminder39Times() { return ""; }
@@ -6039,7 +6399,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder39RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder39
 	)
 	default String reminder39RegionIds() { return ""; }
@@ -6048,7 +6408,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder39NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder39
 	)
 	default String reminder39NpcIds() { return ""; }
@@ -6057,7 +6417,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder39ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder39
 	)
 	default String reminder39ItemIds() { return ""; }
@@ -6081,7 +6441,7 @@ public interface RemindersConfig extends Config {
 	default int reminder39Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder39timeUnit",
+			keyName = "Reminder39TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -6090,13 +6450,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder39TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder39chatMessages",
+			keyName = "Reminder39ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder39
 	)
-	default String reminder39ChatMessages() { return ""; }
+	default String reminder39ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder39Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder39
+	)
+	default boolean reminder39Notify() { return false; }
 
 
 	@ConfigSection(
@@ -6138,7 +6507,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder40Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder40
 	)
 	default String reminder40Times() { return ""; }
@@ -6192,7 +6561,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder40RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder40
 	)
 	default String reminder40RegionIds() { return ""; }
@@ -6201,7 +6570,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder40NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder40
 	)
 	default String reminder40NpcIds() { return ""; }
@@ -6210,7 +6579,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder40ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder40
 	)
 	default String reminder40ItemIds() { return ""; }
@@ -6234,7 +6603,7 @@ public interface RemindersConfig extends Config {
 	default int reminder40Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder40timeUnit",
+			keyName = "Reminder40TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -6243,13 +6612,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder40TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder40chatMessages",
+			keyName = "Reminder40ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder40
 	)
-	default String reminder40ChatMessages() { return ""; }
+	default String reminder40ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder40Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder40
+	)
+	default boolean reminder40Notify() { return false; }
 
 
 	@ConfigSection(
@@ -6291,7 +6669,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder41Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder41
 	)
 	default String reminder41Times() { return ""; }
@@ -6345,7 +6723,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder41RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder41
 	)
 	default String reminder41RegionIds() { return ""; }
@@ -6354,7 +6732,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder41NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder41
 	)
 	default String reminder41NpcIds() { return ""; }
@@ -6363,7 +6741,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder41ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder41
 	)
 	default String reminder41ItemIds() { return ""; }
@@ -6387,7 +6765,7 @@ public interface RemindersConfig extends Config {
 	default int reminder41Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder41timeUnit",
+			keyName = "Reminder41TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -6396,13 +6774,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder41TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder41chatMessages",
+			keyName = "Reminder41ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder41
 	)
-	default String reminder41ChatMessages() { return ""; }
+	default String reminder41ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder41Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder41
+	)
+	default boolean reminder41Notify() { return false; }
 
 
 	@ConfigSection(
@@ -6444,7 +6831,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder42Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder42
 	)
 	default String reminder42Times() { return ""; }
@@ -6498,7 +6885,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder42RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder42
 	)
 	default String reminder42RegionIds() { return ""; }
@@ -6507,7 +6894,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder42NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder42
 	)
 	default String reminder42NpcIds() { return ""; }
@@ -6516,7 +6903,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder42ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder42
 	)
 	default String reminder42ItemIds() { return ""; }
@@ -6540,7 +6927,7 @@ public interface RemindersConfig extends Config {
 	default int reminder42Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder42timeUnit",
+			keyName = "Reminder42TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -6549,13 +6936,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder42TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder42chatMessages",
+			keyName = "Reminder42ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder42
 	)
-	default String reminder42ChatMessages() { return ""; }
+	default String reminder42ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder42Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder42
+	)
+	default boolean reminder42Notify() { return false; }
 
 
 	@ConfigSection(
@@ -6597,7 +6993,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder43Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder43
 	)
 	default String reminder43Times() { return ""; }
@@ -6651,7 +7047,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder43RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder43
 	)
 	default String reminder43RegionIds() { return ""; }
@@ -6660,7 +7056,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder43NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder43
 	)
 	default String reminder43NpcIds() { return ""; }
@@ -6669,7 +7065,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder43ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder43
 	)
 	default String reminder43ItemIds() { return ""; }
@@ -6693,7 +7089,7 @@ public interface RemindersConfig extends Config {
 	default int reminder43Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder43timeUnit",
+			keyName = "Reminder43TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -6702,13 +7098,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder43TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder43chatMessages",
+			keyName = "Reminder43ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder43
 	)
-	default String reminder43ChatMessages() { return ""; }
+	default String reminder43ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder43Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder43
+	)
+	default boolean reminder43Notify() { return false; }
 
 
 	@ConfigSection(
@@ -6750,7 +7155,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder44Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder44
 	)
 	default String reminder44Times() { return ""; }
@@ -6804,7 +7209,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder44RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder44
 	)
 	default String reminder44RegionIds() { return ""; }
@@ -6813,7 +7218,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder44NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder44
 	)
 	default String reminder44NpcIds() { return ""; }
@@ -6822,7 +7227,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder44ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder44
 	)
 	default String reminder44ItemIds() { return ""; }
@@ -6846,7 +7251,7 @@ public interface RemindersConfig extends Config {
 	default int reminder44Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder44timeUnit",
+			keyName = "Reminder44TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -6855,13 +7260,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder44TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder44chatMessages",
+			keyName = "Reminder44ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder44
 	)
-	default String reminder44ChatMessages() { return ""; }
+	default String reminder44ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder44Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder44
+	)
+	default boolean reminder44Notify() { return false; }
 
 
 	@ConfigSection(
@@ -6903,7 +7317,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder45Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder45
 	)
 	default String reminder45Times() { return ""; }
@@ -6957,7 +7371,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder45RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder45
 	)
 	default String reminder45RegionIds() { return ""; }
@@ -6966,7 +7380,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder45NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder45
 	)
 	default String reminder45NpcIds() { return ""; }
@@ -6975,7 +7389,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder45ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder45
 	)
 	default String reminder45ItemIds() { return ""; }
@@ -6999,7 +7413,7 @@ public interface RemindersConfig extends Config {
 	default int reminder45Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder45timeUnit",
+			keyName = "Reminder45TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -7008,13 +7422,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder45TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder45chatMessages",
+			keyName = "Reminder45ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder45
 	)
-	default String reminder45ChatMessages() { return ""; }
+	default String reminder45ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder45Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder45
+	)
+	default boolean reminder45Notify() { return false; }
 
 
 	@ConfigSection(
@@ -7056,7 +7479,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder46Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder46
 	)
 	default String reminder46Times() { return ""; }
@@ -7110,7 +7533,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder46RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder46
 	)
 	default String reminder46RegionIds() { return ""; }
@@ -7119,7 +7542,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder46NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder46
 	)
 	default String reminder46NpcIds() { return ""; }
@@ -7128,7 +7551,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder46ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder46
 	)
 	default String reminder46ItemIds() { return ""; }
@@ -7152,7 +7575,7 @@ public interface RemindersConfig extends Config {
 	default int reminder46Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder46timeUnit",
+			keyName = "Reminder46TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -7161,13 +7584,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder46TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder46chatMessages",
+			keyName = "Reminder46ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder46
 	)
-	default String reminder46ChatMessages() { return ""; }
+	default String reminder46ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder46Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder46
+	)
+	default boolean reminder46Notify() { return false; }
 
 
 	@ConfigSection(
@@ -7209,7 +7641,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder47Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder47
 	)
 	default String reminder47Times() { return ""; }
@@ -7263,7 +7695,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder47RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder47
 	)
 	default String reminder47RegionIds() { return ""; }
@@ -7272,7 +7704,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder47NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder47
 	)
 	default String reminder47NpcIds() { return ""; }
@@ -7281,7 +7713,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder47ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder47
 	)
 	default String reminder47ItemIds() { return ""; }
@@ -7305,7 +7737,7 @@ public interface RemindersConfig extends Config {
 	default int reminder47Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder47timeUnit",
+			keyName = "Reminder47TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -7314,13 +7746,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder47TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder47chatMessages",
+			keyName = "Reminder47ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder47
 	)
-	default String reminder47ChatMessages() { return ""; }
+	default String reminder47ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder47Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder47
+	)
+	default boolean reminder47Notify() { return false; }
 
 
 	@ConfigSection(
@@ -7362,7 +7803,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder48Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder48
 	)
 	default String reminder48Times() { return ""; }
@@ -7416,7 +7857,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder48RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder48
 	)
 	default String reminder48RegionIds() { return ""; }
@@ -7425,7 +7866,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder48NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder48
 	)
 	default String reminder48NpcIds() { return ""; }
@@ -7434,7 +7875,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder48ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder48
 	)
 	default String reminder48ItemIds() { return ""; }
@@ -7458,7 +7899,7 @@ public interface RemindersConfig extends Config {
 	default int reminder48Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder48timeUnit",
+			keyName = "Reminder48TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -7467,13 +7908,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder48TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder48chatMessages",
+			keyName = "Reminder48ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder48
 	)
-	default String reminder48ChatMessages() { return ""; }
+	default String reminder48ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder48Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder48
+	)
+	default boolean reminder48Notify() { return false; }
 
 
 	@ConfigSection(
@@ -7515,7 +7965,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder49Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder49
 	)
 	default String reminder49Times() { return ""; }
@@ -7569,7 +8019,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder49RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder49
 	)
 	default String reminder49RegionIds() { return ""; }
@@ -7578,7 +8028,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder49NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder49
 	)
 	default String reminder49NpcIds() { return ""; }
@@ -7587,7 +8037,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder49ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder49
 	)
 	default String reminder49ItemIds() { return ""; }
@@ -7611,7 +8061,7 @@ public interface RemindersConfig extends Config {
 	default int reminder49Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder49timeUnit",
+			keyName = "Reminder49TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -7620,13 +8070,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder49TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder49chatMessages",
+			keyName = "Reminder49ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder49
 	)
-	default String reminder49ChatMessages() { return ""; }
+	default String reminder49ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder49Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder49
+	)
+	default boolean reminder49Notify() { return false; }
 
 
 	@ConfigSection(
@@ -7668,7 +8127,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder50Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder50
 	)
 	default String reminder50Times() { return ""; }
@@ -7722,7 +8181,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder50RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder50
 	)
 	default String reminder50RegionIds() { return ""; }
@@ -7731,7 +8190,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder50NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder50
 	)
 	default String reminder50NpcIds() { return ""; }
@@ -7740,7 +8199,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder50ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder50
 	)
 	default String reminder50ItemIds() { return ""; }
@@ -7764,7 +8223,7 @@ public interface RemindersConfig extends Config {
 	default int reminder50Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder50timeUnit",
+			keyName = "Reminder50TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -7773,13 +8232,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder50TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder50chatMessages",
+			keyName = "Reminder50ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder50
 	)
-	default String reminder50ChatMessages() { return ""; }
+	default String reminder50ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder50Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder50
+	)
+	default boolean reminder50Notify() { return false; }
 
 
 	@ConfigSection(
@@ -7821,7 +8289,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder51Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder51
 	)
 	default String reminder51Times() { return ""; }
@@ -7875,7 +8343,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder51RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder51
 	)
 	default String reminder51RegionIds() { return ""; }
@@ -7884,7 +8352,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder51NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder51
 	)
 	default String reminder51NpcIds() { return ""; }
@@ -7893,7 +8361,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder51ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder51
 	)
 	default String reminder51ItemIds() { return ""; }
@@ -7917,7 +8385,7 @@ public interface RemindersConfig extends Config {
 	default int reminder51Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder51timeUnit",
+			keyName = "Reminder51TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -7926,13 +8394,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder51TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder51chatMessages",
+			keyName = "Reminder51ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder51
 	)
-	default String reminder51ChatMessages() { return ""; }
+	default String reminder51ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder51Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder51
+	)
+	default boolean reminder51Notify() { return false; }
 
 
 	@ConfigSection(
@@ -7974,7 +8451,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder52Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder52
 	)
 	default String reminder52Times() { return ""; }
@@ -8028,7 +8505,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder52RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder52
 	)
 	default String reminder52RegionIds() { return ""; }
@@ -8037,7 +8514,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder52NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder52
 	)
 	default String reminder52NpcIds() { return ""; }
@@ -8046,7 +8523,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder52ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder52
 	)
 	default String reminder52ItemIds() { return ""; }
@@ -8070,7 +8547,7 @@ public interface RemindersConfig extends Config {
 	default int reminder52Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder52timeUnit",
+			keyName = "Reminder52TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -8079,13 +8556,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder52TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder52chatMessages",
+			keyName = "Reminder52ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder52
 	)
-	default String reminder52ChatMessages() { return ""; }
+	default String reminder52ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder52Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder52
+	)
+	default boolean reminder52Notify() { return false; }
 
 
 	@ConfigSection(
@@ -8127,7 +8613,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder53Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder53
 	)
 	default String reminder53Times() { return ""; }
@@ -8181,7 +8667,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder53RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder53
 	)
 	default String reminder53RegionIds() { return ""; }
@@ -8190,7 +8676,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder53NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder53
 	)
 	default String reminder53NpcIds() { return ""; }
@@ -8199,7 +8685,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder53ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder53
 	)
 	default String reminder53ItemIds() { return ""; }
@@ -8223,7 +8709,7 @@ public interface RemindersConfig extends Config {
 	default int reminder53Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder53timeUnit",
+			keyName = "Reminder53TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -8232,13 +8718,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder53TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder53chatMessages",
+			keyName = "Reminder53ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder53
 	)
-	default String reminder53ChatMessages() { return ""; }
+	default String reminder53ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder53Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder53
+	)
+	default boolean reminder53Notify() { return false; }
 
 
 	@ConfigSection(
@@ -8280,7 +8775,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder54Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder54
 	)
 	default String reminder54Times() { return ""; }
@@ -8334,7 +8829,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder54RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder54
 	)
 	default String reminder54RegionIds() { return ""; }
@@ -8343,7 +8838,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder54NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder54
 	)
 	default String reminder54NpcIds() { return ""; }
@@ -8352,7 +8847,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder54ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder54
 	)
 	default String reminder54ItemIds() { return ""; }
@@ -8376,7 +8871,7 @@ public interface RemindersConfig extends Config {
 	default int reminder54Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder54timeUnit",
+			keyName = "Reminder54TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -8385,13 +8880,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder54TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder54chatMessages",
+			keyName = "Reminder54ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder54
 	)
-	default String reminder54ChatMessages() { return ""; }
+	default String reminder54ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder54Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder54
+	)
+	default boolean reminder54Notify() { return false; }
 
 
 	@ConfigSection(
@@ -8433,7 +8937,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder55Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder55
 	)
 	default String reminder55Times() { return ""; }
@@ -8487,7 +8991,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder55RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder55
 	)
 	default String reminder55RegionIds() { return ""; }
@@ -8496,7 +9000,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder55NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder55
 	)
 	default String reminder55NpcIds() { return ""; }
@@ -8505,7 +9009,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder55ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder55
 	)
 	default String reminder55ItemIds() { return ""; }
@@ -8529,7 +9033,7 @@ public interface RemindersConfig extends Config {
 	default int reminder55Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder55timeUnit",
+			keyName = "Reminder55TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -8538,13 +9042,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder55TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder55chatMessages",
+			keyName = "Reminder55ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder55
 	)
-	default String reminder55ChatMessages() { return ""; }
+	default String reminder55ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder55Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder55
+	)
+	default boolean reminder55Notify() { return false; }
 
 
 	@ConfigSection(
@@ -8586,7 +9099,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder56Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder56
 	)
 	default String reminder56Times() { return ""; }
@@ -8640,7 +9153,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder56RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder56
 	)
 	default String reminder56RegionIds() { return ""; }
@@ -8649,7 +9162,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder56NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder56
 	)
 	default String reminder56NpcIds() { return ""; }
@@ -8658,7 +9171,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder56ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder56
 	)
 	default String reminder56ItemIds() { return ""; }
@@ -8682,7 +9195,7 @@ public interface RemindersConfig extends Config {
 	default int reminder56Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder56timeUnit",
+			keyName = "Reminder56TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -8691,13 +9204,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder56TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder56chatMessages",
+			keyName = "Reminder56ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder56
 	)
-	default String reminder56ChatMessages() { return ""; }
+	default String reminder56ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder56Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder56
+	)
+	default boolean reminder56Notify() { return false; }
 
 
 	@ConfigSection(
@@ -8739,7 +9261,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder57Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder57
 	)
 	default String reminder57Times() { return ""; }
@@ -8793,7 +9315,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder57RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder57
 	)
 	default String reminder57RegionIds() { return ""; }
@@ -8802,7 +9324,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder57NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder57
 	)
 	default String reminder57NpcIds() { return ""; }
@@ -8811,7 +9333,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder57ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder57
 	)
 	default String reminder57ItemIds() { return ""; }
@@ -8835,7 +9357,7 @@ public interface RemindersConfig extends Config {
 	default int reminder57Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder57timeUnit",
+			keyName = "Reminder57TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -8844,13 +9366,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder57TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder57chatMessages",
+			keyName = "Reminder57ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder57
 	)
-	default String reminder57ChatMessages() { return ""; }
+	default String reminder57ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder57Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder57
+	)
+	default boolean reminder57Notify() { return false; }
 
 
 	@ConfigSection(
@@ -8892,7 +9423,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder58Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder58
 	)
 	default String reminder58Times() { return ""; }
@@ -8946,7 +9477,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder58RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder58
 	)
 	default String reminder58RegionIds() { return ""; }
@@ -8955,7 +9486,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder58NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder58
 	)
 	default String reminder58NpcIds() { return ""; }
@@ -8964,7 +9495,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder58ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder58
 	)
 	default String reminder58ItemIds() { return ""; }
@@ -8988,7 +9519,7 @@ public interface RemindersConfig extends Config {
 	default int reminder58Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder58timeUnit",
+			keyName = "Reminder58TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -8997,13 +9528,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder58TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder58chatMessages",
+			keyName = "Reminder58ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder58
 	)
-	default String reminder58ChatMessages() { return ""; }
+	default String reminder58ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder58Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder58
+	)
+	default boolean reminder58Notify() { return false; }
 
 
 	@ConfigSection(
@@ -9045,7 +9585,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder59Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder59
 	)
 	default String reminder59Times() { return ""; }
@@ -9099,7 +9639,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder59RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder59
 	)
 	default String reminder59RegionIds() { return ""; }
@@ -9108,7 +9648,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder59NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder59
 	)
 	default String reminder59NpcIds() { return ""; }
@@ -9117,7 +9657,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder59ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder59
 	)
 	default String reminder59ItemIds() { return ""; }
@@ -9141,7 +9681,7 @@ public interface RemindersConfig extends Config {
 	default int reminder59Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder59timeUnit",
+			keyName = "Reminder59TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -9150,13 +9690,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder59TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder59chatMessages",
+			keyName = "Reminder59ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder59
 	)
-	default String reminder59ChatMessages() { return ""; }
+	default String reminder59ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder59Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder59
+	)
+	default boolean reminder59Notify() { return false; }
 
 
 	@ConfigSection(
@@ -9198,7 +9747,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder60Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder60
 	)
 	default String reminder60Times() { return ""; }
@@ -9252,7 +9801,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder60RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder60
 	)
 	default String reminder60RegionIds() { return ""; }
@@ -9261,7 +9810,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder60NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder60
 	)
 	default String reminder60NpcIds() { return ""; }
@@ -9270,7 +9819,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder60ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder60
 	)
 	default String reminder60ItemIds() { return ""; }
@@ -9294,7 +9843,7 @@ public interface RemindersConfig extends Config {
 	default int reminder60Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder60timeUnit",
+			keyName = "Reminder60TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -9303,13 +9852,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder60TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder60chatMessages",
+			keyName = "Reminder60ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder60
 	)
-	default String reminder60ChatMessages() { return ""; }
+	default String reminder60ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder60Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder60
+	)
+	default boolean reminder60Notify() { return false; }
 
 
 	@ConfigSection(
@@ -9351,7 +9909,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder61Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder61
 	)
 	default String reminder61Times() { return ""; }
@@ -9405,7 +9963,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder61RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder61
 	)
 	default String reminder61RegionIds() { return ""; }
@@ -9414,7 +9972,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder61NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder61
 	)
 	default String reminder61NpcIds() { return ""; }
@@ -9423,7 +9981,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder61ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder61
 	)
 	default String reminder61ItemIds() { return ""; }
@@ -9447,7 +10005,7 @@ public interface RemindersConfig extends Config {
 	default int reminder61Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder61timeUnit",
+			keyName = "Reminder61TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -9456,13 +10014,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder61TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder61chatMessages",
+			keyName = "Reminder61ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder61
 	)
-	default String reminder61ChatMessages() { return ""; }
+	default String reminder61ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder61Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder61
+	)
+	default boolean reminder61Notify() { return false; }
 
 
 	@ConfigSection(
@@ -9504,7 +10071,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder62Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder62
 	)
 	default String reminder62Times() { return ""; }
@@ -9558,7 +10125,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder62RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder62
 	)
 	default String reminder62RegionIds() { return ""; }
@@ -9567,7 +10134,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder62NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder62
 	)
 	default String reminder62NpcIds() { return ""; }
@@ -9576,7 +10143,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder62ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder62
 	)
 	default String reminder62ItemIds() { return ""; }
@@ -9600,7 +10167,7 @@ public interface RemindersConfig extends Config {
 	default int reminder62Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder62timeUnit",
+			keyName = "Reminder62TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -9609,13 +10176,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder62TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder62chatMessages",
+			keyName = "Reminder62ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder62
 	)
-	default String reminder62ChatMessages() { return ""; }
+	default String reminder62ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder62Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder62
+	)
+	default boolean reminder62Notify() { return false; }
 
 
 	@ConfigSection(
@@ -9657,7 +10233,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder63Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder63
 	)
 	default String reminder63Times() { return ""; }
@@ -9711,7 +10287,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder63RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder63
 	)
 	default String reminder63RegionIds() { return ""; }
@@ -9720,7 +10296,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder63NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder63
 	)
 	default String reminder63NpcIds() { return ""; }
@@ -9729,7 +10305,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder63ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder63
 	)
 	default String reminder63ItemIds() { return ""; }
@@ -9753,7 +10329,7 @@ public interface RemindersConfig extends Config {
 	default int reminder63Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder63timeUnit",
+			keyName = "Reminder63TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -9762,13 +10338,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder63TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder63chatMessages",
+			keyName = "Reminder63ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder63
 	)
-	default String reminder63ChatMessages() { return ""; }
+	default String reminder63ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder63Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder63
+	)
+	default boolean reminder63Notify() { return false; }
 
 
 	@ConfigSection(
@@ -9810,7 +10395,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder64Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder64
 	)
 	default String reminder64Times() { return ""; }
@@ -9864,7 +10449,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder64RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder64
 	)
 	default String reminder64RegionIds() { return ""; }
@@ -9873,7 +10458,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder64NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder64
 	)
 	default String reminder64NpcIds() { return ""; }
@@ -9882,7 +10467,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder64ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder64
 	)
 	default String reminder64ItemIds() { return ""; }
@@ -9906,7 +10491,7 @@ public interface RemindersConfig extends Config {
 	default int reminder64Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder64timeUnit",
+			keyName = "Reminder64TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -9915,13 +10500,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder64TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder64chatMessages",
+			keyName = "Reminder64ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder64
 	)
-	default String reminder64ChatMessages() { return ""; }
+	default String reminder64ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder64Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder64
+	)
+	default boolean reminder64Notify() { return false; }
 
 
 	@ConfigSection(
@@ -9963,7 +10557,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder65Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder65
 	)
 	default String reminder65Times() { return ""; }
@@ -10017,7 +10611,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder65RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder65
 	)
 	default String reminder65RegionIds() { return ""; }
@@ -10026,7 +10620,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder65NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder65
 	)
 	default String reminder65NpcIds() { return ""; }
@@ -10035,7 +10629,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder65ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder65
 	)
 	default String reminder65ItemIds() { return ""; }
@@ -10059,7 +10653,7 @@ public interface RemindersConfig extends Config {
 	default int reminder65Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder65timeUnit",
+			keyName = "Reminder65TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -10068,13 +10662,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder65TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder65chatMessages",
+			keyName = "Reminder65ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder65
 	)
-	default String reminder65ChatMessages() { return ""; }
+	default String reminder65ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder65Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder65
+	)
+	default boolean reminder65Notify() { return false; }
 
 
 	@ConfigSection(
@@ -10116,7 +10719,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder66Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder66
 	)
 	default String reminder66Times() { return ""; }
@@ -10170,7 +10773,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder66RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder66
 	)
 	default String reminder66RegionIds() { return ""; }
@@ -10179,7 +10782,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder66NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder66
 	)
 	default String reminder66NpcIds() { return ""; }
@@ -10188,7 +10791,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder66ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder66
 	)
 	default String reminder66ItemIds() { return ""; }
@@ -10212,7 +10815,7 @@ public interface RemindersConfig extends Config {
 	default int reminder66Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder66timeUnit",
+			keyName = "Reminder66TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -10221,13 +10824,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder66TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder66chatMessages",
+			keyName = "Reminder66ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder66
 	)
-	default String reminder66ChatMessages() { return ""; }
+	default String reminder66ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder66Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder66
+	)
+	default boolean reminder66Notify() { return false; }
 
 
 	@ConfigSection(
@@ -10269,7 +10881,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder67Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder67
 	)
 	default String reminder67Times() { return ""; }
@@ -10323,7 +10935,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder67RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder67
 	)
 	default String reminder67RegionIds() { return ""; }
@@ -10332,7 +10944,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder67NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder67
 	)
 	default String reminder67NpcIds() { return ""; }
@@ -10341,7 +10953,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder67ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder67
 	)
 	default String reminder67ItemIds() { return ""; }
@@ -10365,7 +10977,7 @@ public interface RemindersConfig extends Config {
 	default int reminder67Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder67timeUnit",
+			keyName = "Reminder67TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -10374,13 +10986,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder67TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder67chatMessages",
+			keyName = "Reminder67ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder67
 	)
-	default String reminder67ChatMessages() { return ""; }
+	default String reminder67ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder67Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder67
+	)
+	default boolean reminder67Notify() { return false; }
 
 
 	@ConfigSection(
@@ -10422,7 +11043,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder68Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder68
 	)
 	default String reminder68Times() { return ""; }
@@ -10476,7 +11097,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder68RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder68
 	)
 	default String reminder68RegionIds() { return ""; }
@@ -10485,7 +11106,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder68NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder68
 	)
 	default String reminder68NpcIds() { return ""; }
@@ -10494,7 +11115,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder68ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder68
 	)
 	default String reminder68ItemIds() { return ""; }
@@ -10518,7 +11139,7 @@ public interface RemindersConfig extends Config {
 	default int reminder68Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder68timeUnit",
+			keyName = "Reminder68TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -10527,13 +11148,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder68TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder68chatMessages",
+			keyName = "Reminder68ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder68
 	)
-	default String reminder68ChatMessages() { return ""; }
+	default String reminder68ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder68Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder68
+	)
+	default boolean reminder68Notify() { return false; }
 
 
 	@ConfigSection(
@@ -10575,7 +11205,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder69Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder69
 	)
 	default String reminder69Times() { return ""; }
@@ -10629,7 +11259,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder69RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder69
 	)
 	default String reminder69RegionIds() { return ""; }
@@ -10638,7 +11268,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder69NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder69
 	)
 	default String reminder69NpcIds() { return ""; }
@@ -10647,7 +11277,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder69ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder69
 	)
 	default String reminder69ItemIds() { return ""; }
@@ -10671,7 +11301,7 @@ public interface RemindersConfig extends Config {
 	default int reminder69Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder69timeUnit",
+			keyName = "Reminder69TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -10680,13 +11310,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder69TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder69chatMessages",
+			keyName = "Reminder69ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder69
 	)
-	default String reminder69ChatMessages() { return ""; }
+	default String reminder69ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder69Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder69
+	)
+	default boolean reminder69Notify() { return false; }
 
 
 	@ConfigSection(
@@ -10728,7 +11367,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder70Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder70
 	)
 	default String reminder70Times() { return ""; }
@@ -10782,7 +11421,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder70RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder70
 	)
 	default String reminder70RegionIds() { return ""; }
@@ -10791,7 +11430,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder70NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder70
 	)
 	default String reminder70NpcIds() { return ""; }
@@ -10800,7 +11439,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder70ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder70
 	)
 	default String reminder70ItemIds() { return ""; }
@@ -10824,7 +11463,7 @@ public interface RemindersConfig extends Config {
 	default int reminder70Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder70timeUnit",
+			keyName = "Reminder70TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -10833,13 +11472,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder70TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder70chatMessages",
+			keyName = "Reminder70ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder70
 	)
-	default String reminder70ChatMessages() { return ""; }
+	default String reminder70ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder70Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder70
+	)
+	default boolean reminder70Notify() { return false; }
 
 
 	@ConfigSection(
@@ -10881,7 +11529,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder71Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder71
 	)
 	default String reminder71Times() { return ""; }
@@ -10935,7 +11583,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder71RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder71
 	)
 	default String reminder71RegionIds() { return ""; }
@@ -10944,7 +11592,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder71NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder71
 	)
 	default String reminder71NpcIds() { return ""; }
@@ -10953,7 +11601,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder71ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder71
 	)
 	default String reminder71ItemIds() { return ""; }
@@ -10977,7 +11625,7 @@ public interface RemindersConfig extends Config {
 	default int reminder71Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder71timeUnit",
+			keyName = "Reminder71TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -10986,13 +11634,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder71TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder71chatMessages",
+			keyName = "Reminder71ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder71
 	)
-	default String reminder71ChatMessages() { return ""; }
+	default String reminder71ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder71Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder71
+	)
+	default boolean reminder71Notify() { return false; }
 
 
 	@ConfigSection(
@@ -11034,7 +11691,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder72Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder72
 	)
 	default String reminder72Times() { return ""; }
@@ -11088,7 +11745,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder72RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder72
 	)
 	default String reminder72RegionIds() { return ""; }
@@ -11097,7 +11754,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder72NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder72
 	)
 	default String reminder72NpcIds() { return ""; }
@@ -11106,7 +11763,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder72ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder72
 	)
 	default String reminder72ItemIds() { return ""; }
@@ -11130,7 +11787,7 @@ public interface RemindersConfig extends Config {
 	default int reminder72Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder72timeUnit",
+			keyName = "Reminder72TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -11139,13 +11796,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder72TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder72chatMessages",
+			keyName = "Reminder72ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder72
 	)
-	default String reminder72ChatMessages() { return ""; }
+	default String reminder72ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder72Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder72
+	)
+	default boolean reminder72Notify() { return false; }
 
 
 	@ConfigSection(
@@ -11187,7 +11853,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder73Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder73
 	)
 	default String reminder73Times() { return ""; }
@@ -11241,7 +11907,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder73RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder73
 	)
 	default String reminder73RegionIds() { return ""; }
@@ -11250,7 +11916,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder73NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder73
 	)
 	default String reminder73NpcIds() { return ""; }
@@ -11259,7 +11925,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder73ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder73
 	)
 	default String reminder73ItemIds() { return ""; }
@@ -11283,7 +11949,7 @@ public interface RemindersConfig extends Config {
 	default int reminder73Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder73timeUnit",
+			keyName = "Reminder73TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -11292,13 +11958,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder73TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder73chatMessages",
+			keyName = "Reminder73ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder73
 	)
-	default String reminder73ChatMessages() { return ""; }
+	default String reminder73ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder73Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder73
+	)
+	default boolean reminder73Notify() { return false; }
 
 
 	@ConfigSection(
@@ -11340,7 +12015,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder74Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder74
 	)
 	default String reminder74Times() { return ""; }
@@ -11394,7 +12069,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder74RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder74
 	)
 	default String reminder74RegionIds() { return ""; }
@@ -11403,7 +12078,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder74NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder74
 	)
 	default String reminder74NpcIds() { return ""; }
@@ -11412,7 +12087,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder74ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder74
 	)
 	default String reminder74ItemIds() { return ""; }
@@ -11436,7 +12111,7 @@ public interface RemindersConfig extends Config {
 	default int reminder74Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder74timeUnit",
+			keyName = "Reminder74TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -11445,13 +12120,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder74TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder74chatMessages",
+			keyName = "Reminder74ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder74
 	)
-	default String reminder74ChatMessages() { return ""; }
+	default String reminder74ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder74Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder74
+	)
+	default boolean reminder74Notify() { return false; }
 
 
 	@ConfigSection(
@@ -11493,7 +12177,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder75Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder75
 	)
 	default String reminder75Times() { return ""; }
@@ -11547,7 +12231,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder75RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder75
 	)
 	default String reminder75RegionIds() { return ""; }
@@ -11556,7 +12240,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder75NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder75
 	)
 	default String reminder75NpcIds() { return ""; }
@@ -11565,7 +12249,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder75ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder75
 	)
 	default String reminder75ItemIds() { return ""; }
@@ -11589,7 +12273,7 @@ public interface RemindersConfig extends Config {
 	default int reminder75Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder75timeUnit",
+			keyName = "Reminder75TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -11598,13 +12282,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder75TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder75chatMessages",
+			keyName = "Reminder75ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder75
 	)
-	default String reminder75ChatMessages() { return ""; }
+	default String reminder75ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder75Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder75
+	)
+	default boolean reminder75Notify() { return false; }
 
 
 	@ConfigSection(
@@ -11646,7 +12339,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder76Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder76
 	)
 	default String reminder76Times() { return ""; }
@@ -11700,7 +12393,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder76RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder76
 	)
 	default String reminder76RegionIds() { return ""; }
@@ -11709,7 +12402,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder76NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder76
 	)
 	default String reminder76NpcIds() { return ""; }
@@ -11718,7 +12411,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder76ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder76
 	)
 	default String reminder76ItemIds() { return ""; }
@@ -11742,7 +12435,7 @@ public interface RemindersConfig extends Config {
 	default int reminder76Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder76timeUnit",
+			keyName = "Reminder76TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -11751,13 +12444,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder76TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder76chatMessages",
+			keyName = "Reminder76ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder76
 	)
-	default String reminder76ChatMessages() { return ""; }
+	default String reminder76ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder76Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder76
+	)
+	default boolean reminder76Notify() { return false; }
 
 
 	@ConfigSection(
@@ -11799,7 +12501,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder77Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder77
 	)
 	default String reminder77Times() { return ""; }
@@ -11853,7 +12555,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder77RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder77
 	)
 	default String reminder77RegionIds() { return ""; }
@@ -11862,7 +12564,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder77NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder77
 	)
 	default String reminder77NpcIds() { return ""; }
@@ -11871,7 +12573,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder77ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder77
 	)
 	default String reminder77ItemIds() { return ""; }
@@ -11895,7 +12597,7 @@ public interface RemindersConfig extends Config {
 	default int reminder77Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder77timeUnit",
+			keyName = "Reminder77TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -11904,13 +12606,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder77TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder77chatMessages",
+			keyName = "Reminder77ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder77
 	)
-	default String reminder77ChatMessages() { return ""; }
+	default String reminder77ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder77Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder77
+	)
+	default boolean reminder77Notify() { return false; }
 
 
 	@ConfigSection(
@@ -11952,7 +12663,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder78Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder78
 	)
 	default String reminder78Times() { return ""; }
@@ -12006,7 +12717,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder78RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder78
 	)
 	default String reminder78RegionIds() { return ""; }
@@ -12015,7 +12726,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder78NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder78
 	)
 	default String reminder78NpcIds() { return ""; }
@@ -12024,7 +12735,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder78ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder78
 	)
 	default String reminder78ItemIds() { return ""; }
@@ -12048,7 +12759,7 @@ public interface RemindersConfig extends Config {
 	default int reminder78Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder78timeUnit",
+			keyName = "Reminder78TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -12057,13 +12768,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder78TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder78chatMessages",
+			keyName = "Reminder78ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder78
 	)
-	default String reminder78ChatMessages() { return ""; }
+	default String reminder78ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder78Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder78
+	)
+	default boolean reminder78Notify() { return false; }
 
 
 	@ConfigSection(
@@ -12105,7 +12825,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder79Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder79
 	)
 	default String reminder79Times() { return ""; }
@@ -12159,7 +12879,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder79RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder79
 	)
 	default String reminder79RegionIds() { return ""; }
@@ -12168,7 +12888,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder79NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder79
 	)
 	default String reminder79NpcIds() { return ""; }
@@ -12177,7 +12897,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder79ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder79
 	)
 	default String reminder79ItemIds() { return ""; }
@@ -12201,7 +12921,7 @@ public interface RemindersConfig extends Config {
 	default int reminder79Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder79timeUnit",
+			keyName = "Reminder79TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -12210,13 +12930,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder79TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder79chatMessages",
+			keyName = "Reminder79ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder79
 	)
-	default String reminder79ChatMessages() { return ""; }
+	default String reminder79ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder79Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder79
+	)
+	default boolean reminder79Notify() { return false; }
 
 
 	@ConfigSection(
@@ -12258,7 +12987,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder80Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder80
 	)
 	default String reminder80Times() { return ""; }
@@ -12312,7 +13041,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder80RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder80
 	)
 	default String reminder80RegionIds() { return ""; }
@@ -12321,7 +13050,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder80NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder80
 	)
 	default String reminder80NpcIds() { return ""; }
@@ -12330,7 +13059,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder80ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder80
 	)
 	default String reminder80ItemIds() { return ""; }
@@ -12354,7 +13083,7 @@ public interface RemindersConfig extends Config {
 	default int reminder80Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder80timeUnit",
+			keyName = "Reminder80TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -12363,13 +13092,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder80TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder80chatMessages",
+			keyName = "Reminder80ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder80
 	)
-	default String reminder80ChatMessages() { return ""; }
+	default String reminder80ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder80Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder80
+	)
+	default boolean reminder80Notify() { return false; }
 
 
 	@ConfigSection(
@@ -12411,7 +13149,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder81Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder81
 	)
 	default String reminder81Times() { return ""; }
@@ -12465,7 +13203,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder81RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder81
 	)
 	default String reminder81RegionIds() { return ""; }
@@ -12474,7 +13212,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder81NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder81
 	)
 	default String reminder81NpcIds() { return ""; }
@@ -12483,7 +13221,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder81ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder81
 	)
 	default String reminder81ItemIds() { return ""; }
@@ -12507,7 +13245,7 @@ public interface RemindersConfig extends Config {
 	default int reminder81Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder81timeUnit",
+			keyName = "Reminder81TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -12516,13 +13254,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder81TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder81chatMessages",
+			keyName = "Reminder81ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder81
 	)
-	default String reminder81ChatMessages() { return ""; }
+	default String reminder81ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder81Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder81
+	)
+	default boolean reminder81Notify() { return false; }
 
 
 	@ConfigSection(
@@ -12564,7 +13311,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder82Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder82
 	)
 	default String reminder82Times() { return ""; }
@@ -12618,7 +13365,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder82RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder82
 	)
 	default String reminder82RegionIds() { return ""; }
@@ -12627,7 +13374,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder82NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder82
 	)
 	default String reminder82NpcIds() { return ""; }
@@ -12636,7 +13383,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder82ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder82
 	)
 	default String reminder82ItemIds() { return ""; }
@@ -12660,7 +13407,7 @@ public interface RemindersConfig extends Config {
 	default int reminder82Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder82timeUnit",
+			keyName = "Reminder82TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -12669,13 +13416,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder82TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder82chatMessages",
+			keyName = "Reminder82ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder82
 	)
-	default String reminder82ChatMessages() { return ""; }
+	default String reminder82ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder82Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder82
+	)
+	default boolean reminder82Notify() { return false; }
 
 
 	@ConfigSection(
@@ -12717,7 +13473,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder83Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder83
 	)
 	default String reminder83Times() { return ""; }
@@ -12771,7 +13527,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder83RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder83
 	)
 	default String reminder83RegionIds() { return ""; }
@@ -12780,7 +13536,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder83NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder83
 	)
 	default String reminder83NpcIds() { return ""; }
@@ -12789,7 +13545,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder83ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder83
 	)
 	default String reminder83ItemIds() { return ""; }
@@ -12813,7 +13569,7 @@ public interface RemindersConfig extends Config {
 	default int reminder83Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder83timeUnit",
+			keyName = "Reminder83TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -12822,13 +13578,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder83TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder83chatMessages",
+			keyName = "Reminder83ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder83
 	)
-	default String reminder83ChatMessages() { return ""; }
+	default String reminder83ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder83Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder83
+	)
+	default boolean reminder83Notify() { return false; }
 
 
 	@ConfigSection(
@@ -12870,7 +13635,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder84Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder84
 	)
 	default String reminder84Times() { return ""; }
@@ -12924,7 +13689,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder84RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder84
 	)
 	default String reminder84RegionIds() { return ""; }
@@ -12933,7 +13698,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder84NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder84
 	)
 	default String reminder84NpcIds() { return ""; }
@@ -12942,7 +13707,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder84ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder84
 	)
 	default String reminder84ItemIds() { return ""; }
@@ -12966,7 +13731,7 @@ public interface RemindersConfig extends Config {
 	default int reminder84Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder84timeUnit",
+			keyName = "Reminder84TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -12975,13 +13740,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder84TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder84chatMessages",
+			keyName = "Reminder84ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder84
 	)
-	default String reminder84ChatMessages() { return ""; }
+	default String reminder84ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder84Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder84
+	)
+	default boolean reminder84Notify() { return false; }
 
 
 	@ConfigSection(
@@ -13023,7 +13797,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder85Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder85
 	)
 	default String reminder85Times() { return ""; }
@@ -13077,7 +13851,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder85RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder85
 	)
 	default String reminder85RegionIds() { return ""; }
@@ -13086,7 +13860,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder85NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder85
 	)
 	default String reminder85NpcIds() { return ""; }
@@ -13095,7 +13869,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder85ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder85
 	)
 	default String reminder85ItemIds() { return ""; }
@@ -13119,7 +13893,7 @@ public interface RemindersConfig extends Config {
 	default int reminder85Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder85timeUnit",
+			keyName = "Reminder85TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -13128,13 +13902,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder85TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder85chatMessages",
+			keyName = "Reminder85ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder85
 	)
-	default String reminder85ChatMessages() { return ""; }
+	default String reminder85ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder85Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder85
+	)
+	default boolean reminder85Notify() { return false; }
 
 
 	@ConfigSection(
@@ -13176,7 +13959,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder86Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder86
 	)
 	default String reminder86Times() { return ""; }
@@ -13230,7 +14013,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder86RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder86
 	)
 	default String reminder86RegionIds() { return ""; }
@@ -13239,7 +14022,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder86NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder86
 	)
 	default String reminder86NpcIds() { return ""; }
@@ -13248,7 +14031,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder86ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder86
 	)
 	default String reminder86ItemIds() { return ""; }
@@ -13272,7 +14055,7 @@ public interface RemindersConfig extends Config {
 	default int reminder86Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder86timeUnit",
+			keyName = "Reminder86TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -13281,13 +14064,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder86TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder86chatMessages",
+			keyName = "Reminder86ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder86
 	)
-	default String reminder86ChatMessages() { return ""; }
+	default String reminder86ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder86Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder86
+	)
+	default boolean reminder86Notify() { return false; }
 
 
 	@ConfigSection(
@@ -13329,7 +14121,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder87Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder87
 	)
 	default String reminder87Times() { return ""; }
@@ -13383,7 +14175,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder87RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder87
 	)
 	default String reminder87RegionIds() { return ""; }
@@ -13392,7 +14184,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder87NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder87
 	)
 	default String reminder87NpcIds() { return ""; }
@@ -13401,7 +14193,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder87ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder87
 	)
 	default String reminder87ItemIds() { return ""; }
@@ -13425,7 +14217,7 @@ public interface RemindersConfig extends Config {
 	default int reminder87Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder87timeUnit",
+			keyName = "Reminder87TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -13434,13 +14226,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder87TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder87chatMessages",
+			keyName = "Reminder87ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder87
 	)
-	default String reminder87ChatMessages() { return ""; }
+	default String reminder87ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder87Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder87
+	)
+	default boolean reminder87Notify() { return false; }
 
 
 	@ConfigSection(
@@ -13482,7 +14283,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder88Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder88
 	)
 	default String reminder88Times() { return ""; }
@@ -13536,7 +14337,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder88RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder88
 	)
 	default String reminder88RegionIds() { return ""; }
@@ -13545,7 +14346,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder88NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder88
 	)
 	default String reminder88NpcIds() { return ""; }
@@ -13554,7 +14355,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder88ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder88
 	)
 	default String reminder88ItemIds() { return ""; }
@@ -13578,7 +14379,7 @@ public interface RemindersConfig extends Config {
 	default int reminder88Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder88timeUnit",
+			keyName = "Reminder88TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -13587,13 +14388,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder88TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder88chatMessages",
+			keyName = "Reminder88ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder88
 	)
-	default String reminder88ChatMessages() { return ""; }
+	default String reminder88ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder88Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder88
+	)
+	default boolean reminder88Notify() { return false; }
 
 
 	@ConfigSection(
@@ -13635,7 +14445,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder89Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder89
 	)
 	default String reminder89Times() { return ""; }
@@ -13689,7 +14499,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder89RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder89
 	)
 	default String reminder89RegionIds() { return ""; }
@@ -13698,7 +14508,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder89NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder89
 	)
 	default String reminder89NpcIds() { return ""; }
@@ -13707,7 +14517,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder89ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder89
 	)
 	default String reminder89ItemIds() { return ""; }
@@ -13731,7 +14541,7 @@ public interface RemindersConfig extends Config {
 	default int reminder89Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder89timeUnit",
+			keyName = "Reminder89TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -13740,13 +14550,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder89TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder89chatMessages",
+			keyName = "Reminder89ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder89
 	)
-	default String reminder89ChatMessages() { return ""; }
+	default String reminder89ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder89Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder89
+	)
+	default boolean reminder89Notify() { return false; }
 
 
 	@ConfigSection(
@@ -13788,7 +14607,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder90Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder90
 	)
 	default String reminder90Times() { return ""; }
@@ -13842,7 +14661,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder90RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder90
 	)
 	default String reminder90RegionIds() { return ""; }
@@ -13851,7 +14670,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder90NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder90
 	)
 	default String reminder90NpcIds() { return ""; }
@@ -13860,7 +14679,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder90ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder90
 	)
 	default String reminder90ItemIds() { return ""; }
@@ -13884,7 +14703,7 @@ public interface RemindersConfig extends Config {
 	default int reminder90Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder90timeUnit",
+			keyName = "Reminder90TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -13893,13 +14712,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder90TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder90chatMessages",
+			keyName = "Reminder90ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder90
 	)
-	default String reminder90ChatMessages() { return ""; }
+	default String reminder90ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder90Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder90
+	)
+	default boolean reminder90Notify() { return false; }
 
 
 	@ConfigSection(
@@ -13941,7 +14769,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder91Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder91
 	)
 	default String reminder91Times() { return ""; }
@@ -13995,7 +14823,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder91RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder91
 	)
 	default String reminder91RegionIds() { return ""; }
@@ -14004,7 +14832,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder91NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder91
 	)
 	default String reminder91NpcIds() { return ""; }
@@ -14013,7 +14841,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder91ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder91
 	)
 	default String reminder91ItemIds() { return ""; }
@@ -14037,7 +14865,7 @@ public interface RemindersConfig extends Config {
 	default int reminder91Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder91timeUnit",
+			keyName = "Reminder91TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -14046,13 +14874,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder91TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder91chatMessages",
+			keyName = "Reminder91ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder91
 	)
-	default String reminder91ChatMessages() { return ""; }
+	default String reminder91ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder91Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder91
+	)
+	default boolean reminder91Notify() { return false; }
 
 
 	@ConfigSection(
@@ -14094,7 +14931,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder92Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder92
 	)
 	default String reminder92Times() { return ""; }
@@ -14148,7 +14985,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder92RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder92
 	)
 	default String reminder92RegionIds() { return ""; }
@@ -14157,7 +14994,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder92NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder92
 	)
 	default String reminder92NpcIds() { return ""; }
@@ -14166,7 +15003,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder92ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder92
 	)
 	default String reminder92ItemIds() { return ""; }
@@ -14190,7 +15027,7 @@ public interface RemindersConfig extends Config {
 	default int reminder92Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder92timeUnit",
+			keyName = "Reminder92TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -14199,13 +15036,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder92TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder92chatMessages",
+			keyName = "Reminder92ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder92
 	)
-	default String reminder92ChatMessages() { return ""; }
+	default String reminder92ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder92Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder92
+	)
+	default boolean reminder92Notify() { return false; }
 
 
 	@ConfigSection(
@@ -14247,7 +15093,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder93Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder93
 	)
 	default String reminder93Times() { return ""; }
@@ -14301,7 +15147,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder93RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder93
 	)
 	default String reminder93RegionIds() { return ""; }
@@ -14310,7 +15156,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder93NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder93
 	)
 	default String reminder93NpcIds() { return ""; }
@@ -14319,7 +15165,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder93ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder93
 	)
 	default String reminder93ItemIds() { return ""; }
@@ -14343,7 +15189,7 @@ public interface RemindersConfig extends Config {
 	default int reminder93Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder93timeUnit",
+			keyName = "Reminder93TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -14352,13 +15198,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder93TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder93chatMessages",
+			keyName = "Reminder93ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder93
 	)
-	default String reminder93ChatMessages() { return ""; }
+	default String reminder93ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder93Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder93
+	)
+	default boolean reminder93Notify() { return false; }
 
 
 	@ConfigSection(
@@ -14400,7 +15255,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder94Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder94
 	)
 	default String reminder94Times() { return ""; }
@@ -14454,7 +15309,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder94RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder94
 	)
 	default String reminder94RegionIds() { return ""; }
@@ -14463,7 +15318,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder94NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder94
 	)
 	default String reminder94NpcIds() { return ""; }
@@ -14472,7 +15327,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder94ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder94
 	)
 	default String reminder94ItemIds() { return ""; }
@@ -14496,7 +15351,7 @@ public interface RemindersConfig extends Config {
 	default int reminder94Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder94timeUnit",
+			keyName = "Reminder94TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -14505,13 +15360,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder94TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder94chatMessages",
+			keyName = "Reminder94ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder94
 	)
-	default String reminder94ChatMessages() { return ""; }
+	default String reminder94ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder94Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder94
+	)
+	default boolean reminder94Notify() { return false; }
 
 
 	@ConfigSection(
@@ -14553,7 +15417,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder95Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder95
 	)
 	default String reminder95Times() { return ""; }
@@ -14607,7 +15471,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder95RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder95
 	)
 	default String reminder95RegionIds() { return ""; }
@@ -14616,7 +15480,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder95NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder95
 	)
 	default String reminder95NpcIds() { return ""; }
@@ -14625,7 +15489,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder95ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder95
 	)
 	default String reminder95ItemIds() { return ""; }
@@ -14649,7 +15513,7 @@ public interface RemindersConfig extends Config {
 	default int reminder95Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder95timeUnit",
+			keyName = "Reminder95TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -14658,13 +15522,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder95TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder95chatMessages",
+			keyName = "Reminder95ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder95
 	)
-	default String reminder95ChatMessages() { return ""; }
+	default String reminder95ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder95Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder95
+	)
+	default boolean reminder95Notify() { return false; }
 
 
 	@ConfigSection(
@@ -14706,7 +15579,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder96Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder96
 	)
 	default String reminder96Times() { return ""; }
@@ -14760,7 +15633,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder96RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder96
 	)
 	default String reminder96RegionIds() { return ""; }
@@ -14769,7 +15642,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder96NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder96
 	)
 	default String reminder96NpcIds() { return ""; }
@@ -14778,7 +15651,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder96ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder96
 	)
 	default String reminder96ItemIds() { return ""; }
@@ -14802,7 +15675,7 @@ public interface RemindersConfig extends Config {
 	default int reminder96Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder96timeUnit",
+			keyName = "Reminder96TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -14811,13 +15684,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder96TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder96chatMessages",
+			keyName = "Reminder96ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder96
 	)
-	default String reminder96ChatMessages() { return ""; }
+	default String reminder96ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder96Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder96
+	)
+	default boolean reminder96Notify() { return false; }
 
 
 	@ConfigSection(
@@ -14859,7 +15741,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder97Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder97
 	)
 	default String reminder97Times() { return ""; }
@@ -14913,7 +15795,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder97RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder97
 	)
 	default String reminder97RegionIds() { return ""; }
@@ -14922,7 +15804,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder97NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder97
 	)
 	default String reminder97NpcIds() { return ""; }
@@ -14931,7 +15813,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder97ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder97
 	)
 	default String reminder97ItemIds() { return ""; }
@@ -14955,7 +15837,7 @@ public interface RemindersConfig extends Config {
 	default int reminder97Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder97timeUnit",
+			keyName = "Reminder97TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -14964,13 +15846,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder97TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder97chatMessages",
+			keyName = "Reminder97ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder97
 	)
-	default String reminder97ChatMessages() { return ""; }
+	default String reminder97ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder97Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder97
+	)
+	default boolean reminder97Notify() { return false; }
 
 
 	@ConfigSection(
@@ -15012,7 +15903,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder98Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder98
 	)
 	default String reminder98Times() { return ""; }
@@ -15066,7 +15957,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder98RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder98
 	)
 	default String reminder98RegionIds() { return ""; }
@@ -15075,7 +15966,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder98NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder98
 	)
 	default String reminder98NpcIds() { return ""; }
@@ -15084,7 +15975,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder98ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder98
 	)
 	default String reminder98ItemIds() { return ""; }
@@ -15108,7 +15999,7 @@ public interface RemindersConfig extends Config {
 	default int reminder98Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder98timeUnit",
+			keyName = "Reminder98TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -15117,13 +16008,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder98TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder98chatMessages",
+			keyName = "Reminder98ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder98
 	)
-	default String reminder98ChatMessages() { return ""; }
+	default String reminder98ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder98Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder98
+	)
+	default boolean reminder98Notify() { return false; }
 
 
 	@ConfigSection(
@@ -15165,7 +16065,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder99Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder99
 	)
 	default String reminder99Times() { return ""; }
@@ -15219,7 +16119,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder99RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder99
 	)
 	default String reminder99RegionIds() { return ""; }
@@ -15228,7 +16128,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder99NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder99
 	)
 	default String reminder99NpcIds() { return ""; }
@@ -15237,7 +16137,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder99ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder99
 	)
 	default String reminder99ItemIds() { return ""; }
@@ -15261,7 +16161,7 @@ public interface RemindersConfig extends Config {
 	default int reminder99Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder99timeUnit",
+			keyName = "Reminder99TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -15270,13 +16170,22 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder99TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder99chatMessages",
+			keyName = "Reminder99ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder99
 	)
-	default String reminder99ChatMessages() { return ""; }
+	default String reminder99ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder99Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder99
+	)
+	default boolean reminder99Notify() { return false; }
 
 
 	@ConfigSection(
@@ -15318,7 +16227,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder100Times",
 			position = 30,
 			name = "Times of Day",
-			description = "Configures what time reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
+			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder100
 	)
 	default String reminder100Times() { return ""; }
@@ -15372,7 +16281,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder100RegionId",
 			position = 15,
 			name = "Inside Regions",
-			description = "Configures region ids for when reminder is shown (comma separated).",
+			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder100
 	)
 	default String reminder100RegionIds() { return ""; }
@@ -15381,7 +16290,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder100NpcIds",
 			position = 16,
 			name = "Npcs Spawned",
-			description = "Configures the npc ids for when reminder is shown (comma separated).",
+			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder100
 	)
 	default String reminder100NpcIds() { return ""; }
@@ -15390,7 +16299,7 @@ public interface RemindersConfig extends Config {
 			keyName = "Reminder100ItemIds",
 			position = 17,
 			name = "Items in Inventory",
-			description = "Configures the item ids for when reminder is shown (comma separated).",
+			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder100
 	)
 	default String reminder100ItemIds() { return ""; }
@@ -15414,7 +16323,7 @@ public interface RemindersConfig extends Config {
 	default int reminder100Cooldown() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder100timeUnit",
+			keyName = "Reminder100TimeUnit",
 			position = 5,
 			name = "Time Unit",
 			description = "Configures the time unit for duration and cooldown.",
@@ -15423,11 +16332,20 @@ public interface RemindersConfig extends Config {
 	default TimeUnit reminder100TimeUnit() { return TimeUnit.SECONDS; }
 
 	@ConfigItem(
-			keyName = "Reminder100chatMessages",
+			keyName = "Reminder100ChatPatterns",
 			position = 18,
-			name = "On Chat Message",
+			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder100
 	)
-	default String reminder100ChatMessages() { return ""; }
+	default String reminder100ChatPatterns() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder100Notification",
+			position = 6,
+			name = "Notification",
+			description = "Configures whether or not to show a background notification.",
+			section = reminder100
+	)
+	default boolean reminder100Notify() { return false; }
 }

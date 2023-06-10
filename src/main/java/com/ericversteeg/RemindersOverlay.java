@@ -5,8 +5,6 @@ import com.ericversteeg.views.*;
 import net.runelite.api.Client;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.NPC;
-import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
@@ -123,16 +121,21 @@ class RemindersOverlay extends RSViewOverlay {
 			font = FontManager.getRunescapeBoldFont();
 		}
 
-		RSColumn panel = new RSColumn(10, 120, 140, RSView.WRAP_CONTENT);
+		int panelWidth = config.width();
+
+		RSColumn panel = new RSColumn(10, 120, panelWidth, RSView.WRAP_CONTENT);
 		panel.setBgColor(panelBackgroundColor);
 		panel.addBorder(innerBorderColor, outerBorderColor);
 		panel.setPadding(4);
 
 		int maxReminders = config.maxReminders();
 		int activeCount = 0;
-		for (Reminder reminder: plugin.activeReminders.stream()
+
+		java.util.List<Reminder> reminders = plugin.activeReminders.stream()
 				.sorted(((o1, o2) -> (int) (o2.posted - o1.posted)))
-				.collect(Collectors.toList())) {
+				.collect(Collectors.toList());
+
+		for (Reminder reminder: reminders) {
 			if (activeCount == maxReminders) break;
 
 			String text = reminder.text;
@@ -156,7 +159,7 @@ class RemindersOverlay extends RSViewOverlay {
 			}
 
 			RSRow row = new RSRow(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
-			if (activeCount + 1 < maxReminders)
+			if (activeCount + 1 < Math.min(reminders.size(), maxReminders))
 			{
 				row.setMarginBottom(5);
 			}

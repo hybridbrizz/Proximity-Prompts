@@ -11,6 +11,7 @@ configInfo = [
     ["Duration", "int"],
     ["Cooldown", "int"],
     ["TimeUnit", "TimeUnit"],
+    ["Notify", "boolean"],
     ["Times", "String"],
     ["DaysOfWeek", "String"],
     ["Dates", "String"],
@@ -20,7 +21,7 @@ configInfo = [
     ["RegionIds", "String"],
     ["NpcIds", "String"],
     ["ItemIds", "String"],
-    ["ChatMessages", "String"]
+    ["ChatPatterns", "String"]
 ]
 
 for info in configInfo:

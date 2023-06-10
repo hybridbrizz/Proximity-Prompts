@@ -25,6 +25,11 @@ public class Reminder {
     @SerializedName("timeunit")
     public int timeUnit = 0;
 
+    @SerializedName("notify")
+    public boolean notify = false;
+
+    public long lastNotified;
+
     public boolean active = true;
 
     @SerializedName("text")
@@ -50,7 +55,7 @@ public class Reminder {
     @SerializedName("radius")
     public int radius = 0;
 
-    @SerializedName("geo_fences")
+    @SerializedName("geofences")
     public String geoFences = "";
 
     @SerializedName("region_ids")
