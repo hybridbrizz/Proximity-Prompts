@@ -129,11 +129,11 @@ class RemindersOverlay extends RSViewOverlay {
 		panel.setPadding(4);
 
 		int maxReminders = config.maxReminders();
-		int i = 0;
+		int activeCount = 0;
 		for (Reminder reminder: plugin.activeReminders.stream()
 				.sorted(((o1, o2) -> (int) (o2.posted - o1.posted)))
 				.collect(Collectors.toList())) {
-			if (i == maxReminders) break;
+			if (activeCount == maxReminders) break;
 
 			String text = reminder.text;
 			if (text.trim().isEmpty()) continue;
@@ -156,7 +156,7 @@ class RemindersOverlay extends RSViewOverlay {
 			}
 
 			RSRow row = new RSRow(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
-			if (i + 1 < maxReminders)
+			if (activeCount + 1 < maxReminders)
 			{
 				row.setMarginBottom(5);
 			}
@@ -179,18 +179,23 @@ class RemindersOverlay extends RSViewOverlay {
 
 			panel.addView(row);
 
-			i++;
+			activeCount++;
 		}
 
 		if (config.idFinder())
 		{
 			renderIds(panel);
 		}
+		else if (activeCount == 0)
+		{
+			setRootView(null);
+			return;
+		}
 
 		setRootView(panel);
 		setAnchor(client, config.anchorType(), config.anchorX(), config.anchorY());
 
-		System.out.println("View setup in " + (Instant.now().toEpochMilli() - start) + "ms");
+		//System.out.println("View setup in " + (Instant.now().toEpochMilli() - start) + "ms");
 	}
 
 	private void renderIds(RSColumn panel)
@@ -282,97 +287,6 @@ class RemindersOverlay extends RSViewOverlay {
 		updateViews();
 		return super.render(graphics);
 	}
-//
-////		int w = 140;
-////		int h = 70;
-////
-////		panelComponent.setPreferredSize(new Dimension(w, h));
-////
-////		TextSize textSize = config.textSize();
-////		if (textSize == TextSize.SMALL)
-////		{
-////			graphics.setFont(FontManager.getRunescapeSmallFont());
-////		}
-////		else if (textSize == TextSize.LARGE)
-////		{
-////			graphics.setFont(FontManager.getRunescapeFont());
-////		}
-////		else
-////		{
-////			graphics.setFont(FontManager.getRunescapeBoldFont());
-////		}
-////
-////		viewportWidget = getViewportWidget();
-////
-////		AnchorType anchorType = config.anchorType();
-////
-////		// once to get dimension
-////		Dimension dimension = renderReminders(graphics, -10000, -10000, w, h);
-////
-//////		System.out.println("Height is " + dimension.height);
-////
-
-////
-//////		System.out.println("Anchor Y " + anchorY);
-////
-////		// again in position
-////		renderReminders(graphics, anchorX, anchorY, dimension.width, dimension.height);
-//
-//		return super.render(graphics);
-//	}
-
-//	private Dimension renderReminders(Graphics2D graphics, int x, int y, int w, int h)
-//	{
-//		panelComponent.setPreferredLocation(new Point(x, y));
-//
-//		int maxReminders = config.maxReminders();
-//		int i = 0;
-//		for (Reminder reminder: plugin.activeReminders.stream()
-//				.sorted(((o1, o2) -> (int) (o2.posted - o1.posted)))
-//				.collect(Collectors.toList())) {
-//			if (i == maxReminders) break;
-//
-//			String text = reminder.text;
-//			if (text.trim().isEmpty()) continue;
-//
-//			Color color;
-//			if (reminder.colur != null)
-//			{
-//				color = reminder.colur;
-//			}
-//			else
-//			{
-//				try
-//				{
-//					color = Color.decode(reminder.colorStr);
-//				}
-//				catch (Exception exception)
-//				{
-//					color = Color.WHITE;
-//				}
-//			}
-//
-//			panelComponent.getChildren().add(
-//					WeightedLineComponent.builder()
-//							.left("•")
-//							.leftColor(color)
-//							.right(text)
-//							.rightColor(color)
-//							.rightWeight(1f)
-//							.rightAlignment(TextAlignment.LEADING)
-//							.build()
-//			);
-//
-//			i++;
-//		}
-//
-//		if (config.idFinder())
-//		{
-//			renderIds();
-//		}
-//
-//		return super.render(graphics);
-//	}
 
 	private String printItems() {
 		StringBuilder sb = new StringBuilder();

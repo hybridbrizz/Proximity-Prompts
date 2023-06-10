@@ -29,7 +29,7 @@ public class RSViewOverlay extends Overlay
             return new Dimension(0, 0);
         }
 
-        long start = Instant.now().toEpochMilli();
+        //long start = Instant.now().toEpochMilli();
 
         applyFonts(rootView, graphics);
 
@@ -55,7 +55,7 @@ public class RSViewOverlay extends Overlay
 
         rootView.render(graphics, new Point(0, 0));
 
-        System.out.println("Render in " + (Instant.now().toEpochMilli() - start) + "ms");
+        //System.out.println("Render in " + (Instant.now().toEpochMilli() - start) + "ms");
 
         return new Dimension(rootView.getW(), rootView.getH());
     }

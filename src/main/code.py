@@ -8,6 +8,9 @@ configInfo = [
     ["Enable", "boolean"],
     ["Text", "String"],
     ["Color", "Color"],
+    ["Duration", "int"],
+    ["Cooldown", "int"],
+    ["TimeUnit", "TimeUnit"],
     ["Times", "String"],
     ["DaysOfWeek", "String"],
     ["Dates", "String"],
@@ -16,7 +19,7 @@ configInfo = [
     ["Geofences", "String"],
     ["RegionIds", "String"],
     ["NpcIds", "String"],
-    ["ItemIds", "String"]
+    ["ItemIds", "String"],
 ]
 
 for info in configInfo:

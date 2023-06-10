@@ -1,5 +1,6 @@
 package com.ericversteeg;
 
+import com.ericversteeg.config.TimeUnit;
 import com.ericversteeg.views.RSAnchorType;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
@@ -9,7 +10,8 @@ import net.runelite.client.config.ConfigSection;
 import java.awt.*;
 
 @ConfigGroup(RemindersConfig.GROUP)
-public interface RemindersConfig extends Config {
+public interface RemindersConfig extends Config
+{
 	String GROUP = "reminders_4";
 
 	@ConfigItem(
@@ -196,8 +198,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder1Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder1
 	)
 	default String reminder1Coordinates() { return ""; }
@@ -215,7 +217,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder1Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder1
 	)
 	default int reminder1Radius() { return 0; }
@@ -246,6 +248,33 @@ public interface RemindersConfig extends Config {
 			section = reminder1
 	)
 	default String reminder1ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder1Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder1
+	)
+	default int reminder1Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder1Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder1
+	)
+	default int reminder1Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder1timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder1
+	)
+	default TimeUnit reminder1TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -313,8 +342,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder2Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder2
 	)
 	default String reminder2Coordinates() { return ""; }
@@ -332,7 +361,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder2Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder2
 	)
 	default int reminder2Radius() { return 0; }
@@ -363,6 +392,33 @@ public interface RemindersConfig extends Config {
 			section = reminder2
 	)
 	default String reminder2ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder2Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder2
+	)
+	default int reminder2Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder2Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder2
+	)
+	default int reminder2Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder2timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder2
+	)
+	default TimeUnit reminder2TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -430,8 +486,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder3Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder3
 	)
 	default String reminder3Coordinates() { return ""; }
@@ -449,7 +505,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder3Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder3
 	)
 	default int reminder3Radius() { return 0; }
@@ -480,6 +536,33 @@ public interface RemindersConfig extends Config {
 			section = reminder3
 	)
 	default String reminder3ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder3Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder3
+	)
+	default int reminder3Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder3Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder3
+	)
+	default int reminder3Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder3timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder3
+	)
+	default TimeUnit reminder3TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -547,8 +630,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder4Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder4
 	)
 	default String reminder4Coordinates() { return ""; }
@@ -566,7 +649,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder4Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder4
 	)
 	default int reminder4Radius() { return 0; }
@@ -597,6 +680,33 @@ public interface RemindersConfig extends Config {
 			section = reminder4
 	)
 	default String reminder4ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder4Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder4
+	)
+	default int reminder4Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder4Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder4
+	)
+	default int reminder4Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder4timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder4
+	)
+	default TimeUnit reminder4TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -664,8 +774,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder5Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder5
 	)
 	default String reminder5Coordinates() { return ""; }
@@ -683,7 +793,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder5Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder5
 	)
 	default int reminder5Radius() { return 0; }
@@ -714,6 +824,33 @@ public interface RemindersConfig extends Config {
 			section = reminder5
 	)
 	default String reminder5ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder5Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder5
+	)
+	default int reminder5Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder5Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder5
+	)
+	default int reminder5Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder5timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder5
+	)
+	default TimeUnit reminder5TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -781,8 +918,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder6Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder6
 	)
 	default String reminder6Coordinates() { return ""; }
@@ -800,7 +937,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder6Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder6
 	)
 	default int reminder6Radius() { return 0; }
@@ -831,6 +968,33 @@ public interface RemindersConfig extends Config {
 			section = reminder6
 	)
 	default String reminder6ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder6Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder6
+	)
+	default int reminder6Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder6Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder6
+	)
+	default int reminder6Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder6timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder6
+	)
+	default TimeUnit reminder6TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -898,8 +1062,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder7Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder7
 	)
 	default String reminder7Coordinates() { return ""; }
@@ -917,7 +1081,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder7Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder7
 	)
 	default int reminder7Radius() { return 0; }
@@ -948,6 +1112,33 @@ public interface RemindersConfig extends Config {
 			section = reminder7
 	)
 	default String reminder7ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder7Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder7
+	)
+	default int reminder7Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder7Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder7
+	)
+	default int reminder7Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder7timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder7
+	)
+	default TimeUnit reminder7TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -1015,8 +1206,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder8Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder8
 	)
 	default String reminder8Coordinates() { return ""; }
@@ -1034,7 +1225,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder8Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder8
 	)
 	default int reminder8Radius() { return 0; }
@@ -1065,6 +1256,33 @@ public interface RemindersConfig extends Config {
 			section = reminder8
 	)
 	default String reminder8ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder8Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder8
+	)
+	default int reminder8Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder8Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder8
+	)
+	default int reminder8Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder8timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder8
+	)
+	default TimeUnit reminder8TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -1132,8 +1350,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder9Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder9
 	)
 	default String reminder9Coordinates() { return ""; }
@@ -1151,7 +1369,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder9Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder9
 	)
 	default int reminder9Radius() { return 0; }
@@ -1182,6 +1400,33 @@ public interface RemindersConfig extends Config {
 			section = reminder9
 	)
 	default String reminder9ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder9Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder9
+	)
+	default int reminder9Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder9Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder9
+	)
+	default int reminder9Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder9timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder9
+	)
+	default TimeUnit reminder9TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -1249,8 +1494,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder10Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder10
 	)
 	default String reminder10Coordinates() { return ""; }
@@ -1268,7 +1513,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder10Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder10
 	)
 	default int reminder10Radius() { return 0; }
@@ -1299,6 +1544,33 @@ public interface RemindersConfig extends Config {
 			section = reminder10
 	)
 	default String reminder10ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder10Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder10
+	)
+	default int reminder10Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder10Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder10
+	)
+	default int reminder10Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder10timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder10
+	)
+	default TimeUnit reminder10TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -1366,8 +1638,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder11Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder11
 	)
 	default String reminder11Coordinates() { return ""; }
@@ -1385,7 +1657,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder11Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder11
 	)
 	default int reminder11Radius() { return 0; }
@@ -1416,6 +1688,33 @@ public interface RemindersConfig extends Config {
 			section = reminder11
 	)
 	default String reminder11ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder11Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder11
+	)
+	default int reminder11Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder11Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder11
+	)
+	default int reminder11Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder11timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder11
+	)
+	default TimeUnit reminder11TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -1483,8 +1782,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder12Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder12
 	)
 	default String reminder12Coordinates() { return ""; }
@@ -1502,7 +1801,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder12Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder12
 	)
 	default int reminder12Radius() { return 0; }
@@ -1533,6 +1832,33 @@ public interface RemindersConfig extends Config {
 			section = reminder12
 	)
 	default String reminder12ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder12Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder12
+	)
+	default int reminder12Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder12Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder12
+	)
+	default int reminder12Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder12timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder12
+	)
+	default TimeUnit reminder12TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -1600,8 +1926,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder13Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder13
 	)
 	default String reminder13Coordinates() { return ""; }
@@ -1619,7 +1945,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder13Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder13
 	)
 	default int reminder13Radius() { return 0; }
@@ -1650,6 +1976,33 @@ public interface RemindersConfig extends Config {
 			section = reminder13
 	)
 	default String reminder13ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder13Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder13
+	)
+	default int reminder13Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder13Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder13
+	)
+	default int reminder13Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder13timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder13
+	)
+	default TimeUnit reminder13TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -1717,8 +2070,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder14Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder14
 	)
 	default String reminder14Coordinates() { return ""; }
@@ -1736,7 +2089,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder14Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder14
 	)
 	default int reminder14Radius() { return 0; }
@@ -1767,6 +2120,33 @@ public interface RemindersConfig extends Config {
 			section = reminder14
 	)
 	default String reminder14ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder14Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder14
+	)
+	default int reminder14Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder14Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder14
+	)
+	default int reminder14Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder14timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder14
+	)
+	default TimeUnit reminder14TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -1834,8 +2214,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder15Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder15
 	)
 	default String reminder15Coordinates() { return ""; }
@@ -1853,7 +2233,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder15Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder15
 	)
 	default int reminder15Radius() { return 0; }
@@ -1884,6 +2264,33 @@ public interface RemindersConfig extends Config {
 			section = reminder15
 	)
 	default String reminder15ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder15Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder15
+	)
+	default int reminder15Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder15Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder15
+	)
+	default int reminder15Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder15timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder15
+	)
+	default TimeUnit reminder15TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -1951,8 +2358,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder16Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder16
 	)
 	default String reminder16Coordinates() { return ""; }
@@ -1970,7 +2377,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder16Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder16
 	)
 	default int reminder16Radius() { return 0; }
@@ -2001,6 +2408,33 @@ public interface RemindersConfig extends Config {
 			section = reminder16
 	)
 	default String reminder16ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder16Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder16
+	)
+	default int reminder16Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder16Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder16
+	)
+	default int reminder16Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder16timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder16
+	)
+	default TimeUnit reminder16TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -2068,8 +2502,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder17Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder17
 	)
 	default String reminder17Coordinates() { return ""; }
@@ -2087,7 +2521,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder17Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder17
 	)
 	default int reminder17Radius() { return 0; }
@@ -2118,6 +2552,33 @@ public interface RemindersConfig extends Config {
 			section = reminder17
 	)
 	default String reminder17ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder17Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder17
+	)
+	default int reminder17Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder17Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder17
+	)
+	default int reminder17Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder17timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder17
+	)
+	default TimeUnit reminder17TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -2185,8 +2646,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder18Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder18
 	)
 	default String reminder18Coordinates() { return ""; }
@@ -2204,7 +2665,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder18Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder18
 	)
 	default int reminder18Radius() { return 0; }
@@ -2235,6 +2696,33 @@ public interface RemindersConfig extends Config {
 			section = reminder18
 	)
 	default String reminder18ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder18Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder18
+	)
+	default int reminder18Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder18Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder18
+	)
+	default int reminder18Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder18timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder18
+	)
+	default TimeUnit reminder18TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -2302,8 +2790,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder19Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder19
 	)
 	default String reminder19Coordinates() { return ""; }
@@ -2321,7 +2809,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder19Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder19
 	)
 	default int reminder19Radius() { return 0; }
@@ -2352,6 +2840,33 @@ public interface RemindersConfig extends Config {
 			section = reminder19
 	)
 	default String reminder19ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder19Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder19
+	)
+	default int reminder19Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder19Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder19
+	)
+	default int reminder19Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder19timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder19
+	)
+	default TimeUnit reminder19TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -2419,8 +2934,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder20Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder20
 	)
 	default String reminder20Coordinates() { return ""; }
@@ -2438,7 +2953,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder20Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder20
 	)
 	default int reminder20Radius() { return 0; }
@@ -2469,6 +2984,33 @@ public interface RemindersConfig extends Config {
 			section = reminder20
 	)
 	default String reminder20ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder20Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder20
+	)
+	default int reminder20Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder20Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder20
+	)
+	default int reminder20Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder20timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder20
+	)
+	default TimeUnit reminder20TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -2536,8 +3078,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder21Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder21
 	)
 	default String reminder21Coordinates() { return ""; }
@@ -2555,7 +3097,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder21Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder21
 	)
 	default int reminder21Radius() { return 0; }
@@ -2586,6 +3128,33 @@ public interface RemindersConfig extends Config {
 			section = reminder21
 	)
 	default String reminder21ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder21Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder21
+	)
+	default int reminder21Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder21Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder21
+	)
+	default int reminder21Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder21timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder21
+	)
+	default TimeUnit reminder21TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -2653,8 +3222,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder22Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder22
 	)
 	default String reminder22Coordinates() { return ""; }
@@ -2672,7 +3241,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder22Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder22
 	)
 	default int reminder22Radius() { return 0; }
@@ -2703,6 +3272,33 @@ public interface RemindersConfig extends Config {
 			section = reminder22
 	)
 	default String reminder22ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder22Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder22
+	)
+	default int reminder22Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder22Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder22
+	)
+	default int reminder22Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder22timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder22
+	)
+	default TimeUnit reminder22TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -2770,8 +3366,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder23Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder23
 	)
 	default String reminder23Coordinates() { return ""; }
@@ -2789,7 +3385,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder23Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder23
 	)
 	default int reminder23Radius() { return 0; }
@@ -2820,6 +3416,33 @@ public interface RemindersConfig extends Config {
 			section = reminder23
 	)
 	default String reminder23ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder23Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder23
+	)
+	default int reminder23Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder23Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder23
+	)
+	default int reminder23Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder23timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder23
+	)
+	default TimeUnit reminder23TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -2887,8 +3510,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder24Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder24
 	)
 	default String reminder24Coordinates() { return ""; }
@@ -2906,7 +3529,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder24Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder24
 	)
 	default int reminder24Radius() { return 0; }
@@ -2937,6 +3560,33 @@ public interface RemindersConfig extends Config {
 			section = reminder24
 	)
 	default String reminder24ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder24Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder24
+	)
+	default int reminder24Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder24Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder24
+	)
+	default int reminder24Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder24timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder24
+	)
+	default TimeUnit reminder24TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -3004,8 +3654,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder25Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder25
 	)
 	default String reminder25Coordinates() { return ""; }
@@ -3023,7 +3673,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder25Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder25
 	)
 	default int reminder25Radius() { return 0; }
@@ -3054,6 +3704,33 @@ public interface RemindersConfig extends Config {
 			section = reminder25
 	)
 	default String reminder25ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder25Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder25
+	)
+	default int reminder25Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder25Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder25
+	)
+	default int reminder25Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder25timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder25
+	)
+	default TimeUnit reminder25TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -3121,8 +3798,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder26Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder26
 	)
 	default String reminder26Coordinates() { return ""; }
@@ -3140,7 +3817,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder26Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder26
 	)
 	default int reminder26Radius() { return 0; }
@@ -3171,6 +3848,33 @@ public interface RemindersConfig extends Config {
 			section = reminder26
 	)
 	default String reminder26ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder26Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder26
+	)
+	default int reminder26Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder26Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder26
+	)
+	default int reminder26Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder26timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder26
+	)
+	default TimeUnit reminder26TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -3238,8 +3942,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder27Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder27
 	)
 	default String reminder27Coordinates() { return ""; }
@@ -3257,7 +3961,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder27Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder27
 	)
 	default int reminder27Radius() { return 0; }
@@ -3288,6 +3992,33 @@ public interface RemindersConfig extends Config {
 			section = reminder27
 	)
 	default String reminder27ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder27Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder27
+	)
+	default int reminder27Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder27Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder27
+	)
+	default int reminder27Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder27timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder27
+	)
+	default TimeUnit reminder27TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -3355,8 +4086,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder28Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder28
 	)
 	default String reminder28Coordinates() { return ""; }
@@ -3374,7 +4105,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder28Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder28
 	)
 	default int reminder28Radius() { return 0; }
@@ -3405,6 +4136,33 @@ public interface RemindersConfig extends Config {
 			section = reminder28
 	)
 	default String reminder28ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder28Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder28
+	)
+	default int reminder28Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder28Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder28
+	)
+	default int reminder28Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder28timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder28
+	)
+	default TimeUnit reminder28TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -3472,8 +4230,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder29Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder29
 	)
 	default String reminder29Coordinates() { return ""; }
@@ -3491,7 +4249,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder29Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder29
 	)
 	default int reminder29Radius() { return 0; }
@@ -3522,6 +4280,33 @@ public interface RemindersConfig extends Config {
 			section = reminder29
 	)
 	default String reminder29ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder29Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder29
+	)
+	default int reminder29Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder29Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder29
+	)
+	default int reminder29Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder29timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder29
+	)
+	default TimeUnit reminder29TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -3589,8 +4374,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder30Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder30
 	)
 	default String reminder30Coordinates() { return ""; }
@@ -3608,7 +4393,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder30Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder30
 	)
 	default int reminder30Radius() { return 0; }
@@ -3639,6 +4424,33 @@ public interface RemindersConfig extends Config {
 			section = reminder30
 	)
 	default String reminder30ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder30Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder30
+	)
+	default int reminder30Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder30Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder30
+	)
+	default int reminder30Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder30timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder30
+	)
+	default TimeUnit reminder30TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -3706,8 +4518,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder31Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder31
 	)
 	default String reminder31Coordinates() { return ""; }
@@ -3725,7 +4537,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder31Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder31
 	)
 	default int reminder31Radius() { return 0; }
@@ -3756,6 +4568,33 @@ public interface RemindersConfig extends Config {
 			section = reminder31
 	)
 	default String reminder31ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder31Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder31
+	)
+	default int reminder31Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder31Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder31
+	)
+	default int reminder31Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder31timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder31
+	)
+	default TimeUnit reminder31TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -3823,8 +4662,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder32Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder32
 	)
 	default String reminder32Coordinates() { return ""; }
@@ -3842,7 +4681,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder32Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder32
 	)
 	default int reminder32Radius() { return 0; }
@@ -3873,6 +4712,33 @@ public interface RemindersConfig extends Config {
 			section = reminder32
 	)
 	default String reminder32ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder32Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder32
+	)
+	default int reminder32Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder32Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder32
+	)
+	default int reminder32Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder32timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder32
+	)
+	default TimeUnit reminder32TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -3940,8 +4806,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder33Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder33
 	)
 	default String reminder33Coordinates() { return ""; }
@@ -3959,7 +4825,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder33Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder33
 	)
 	default int reminder33Radius() { return 0; }
@@ -3990,6 +4856,33 @@ public interface RemindersConfig extends Config {
 			section = reminder33
 	)
 	default String reminder33ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder33Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder33
+	)
+	default int reminder33Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder33Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder33
+	)
+	default int reminder33Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder33timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder33
+	)
+	default TimeUnit reminder33TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -4057,8 +4950,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder34Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder34
 	)
 	default String reminder34Coordinates() { return ""; }
@@ -4076,7 +4969,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder34Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder34
 	)
 	default int reminder34Radius() { return 0; }
@@ -4107,6 +5000,33 @@ public interface RemindersConfig extends Config {
 			section = reminder34
 	)
 	default String reminder34ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder34Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder34
+	)
+	default int reminder34Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder34Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder34
+	)
+	default int reminder34Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder34timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder34
+	)
+	default TimeUnit reminder34TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -4174,8 +5094,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder35Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder35
 	)
 	default String reminder35Coordinates() { return ""; }
@@ -4193,7 +5113,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder35Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder35
 	)
 	default int reminder35Radius() { return 0; }
@@ -4224,6 +5144,33 @@ public interface RemindersConfig extends Config {
 			section = reminder35
 	)
 	default String reminder35ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder35Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder35
+	)
+	default int reminder35Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder35Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder35
+	)
+	default int reminder35Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder35timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder35
+	)
+	default TimeUnit reminder35TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -4291,8 +5238,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder36Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder36
 	)
 	default String reminder36Coordinates() { return ""; }
@@ -4310,7 +5257,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder36Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder36
 	)
 	default int reminder36Radius() { return 0; }
@@ -4341,6 +5288,33 @@ public interface RemindersConfig extends Config {
 			section = reminder36
 	)
 	default String reminder36ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder36Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder36
+	)
+	default int reminder36Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder36Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder36
+	)
+	default int reminder36Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder36timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder36
+	)
+	default TimeUnit reminder36TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -4408,8 +5382,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder37Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder37
 	)
 	default String reminder37Coordinates() { return ""; }
@@ -4427,7 +5401,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder37Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder37
 	)
 	default int reminder37Radius() { return 0; }
@@ -4458,6 +5432,33 @@ public interface RemindersConfig extends Config {
 			section = reminder37
 	)
 	default String reminder37ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder37Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder37
+	)
+	default int reminder37Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder37Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder37
+	)
+	default int reminder37Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder37timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder37
+	)
+	default TimeUnit reminder37TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -4525,8 +5526,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder38Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder38
 	)
 	default String reminder38Coordinates() { return ""; }
@@ -4544,7 +5545,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder38Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder38
 	)
 	default int reminder38Radius() { return 0; }
@@ -4575,6 +5576,33 @@ public interface RemindersConfig extends Config {
 			section = reminder38
 	)
 	default String reminder38ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder38Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder38
+	)
+	default int reminder38Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder38Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder38
+	)
+	default int reminder38Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder38timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder38
+	)
+	default TimeUnit reminder38TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -4642,8 +5670,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder39Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder39
 	)
 	default String reminder39Coordinates() { return ""; }
@@ -4661,7 +5689,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder39Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder39
 	)
 	default int reminder39Radius() { return 0; }
@@ -4692,6 +5720,33 @@ public interface RemindersConfig extends Config {
 			section = reminder39
 	)
 	default String reminder39ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder39Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder39
+	)
+	default int reminder39Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder39Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder39
+	)
+	default int reminder39Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder39timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder39
+	)
+	default TimeUnit reminder39TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -4759,8 +5814,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder40Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder40
 	)
 	default String reminder40Coordinates() { return ""; }
@@ -4778,7 +5833,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder40Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder40
 	)
 	default int reminder40Radius() { return 0; }
@@ -4809,6 +5864,33 @@ public interface RemindersConfig extends Config {
 			section = reminder40
 	)
 	default String reminder40ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder40Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder40
+	)
+	default int reminder40Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder40Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder40
+	)
+	default int reminder40Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder40timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder40
+	)
+	default TimeUnit reminder40TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -4876,8 +5958,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder41Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder41
 	)
 	default String reminder41Coordinates() { return ""; }
@@ -4895,7 +5977,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder41Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder41
 	)
 	default int reminder41Radius() { return 0; }
@@ -4926,6 +6008,33 @@ public interface RemindersConfig extends Config {
 			section = reminder41
 	)
 	default String reminder41ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder41Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder41
+	)
+	default int reminder41Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder41Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder41
+	)
+	default int reminder41Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder41timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder41
+	)
+	default TimeUnit reminder41TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -4993,8 +6102,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder42Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder42
 	)
 	default String reminder42Coordinates() { return ""; }
@@ -5012,7 +6121,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder42Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder42
 	)
 	default int reminder42Radius() { return 0; }
@@ -5043,6 +6152,33 @@ public interface RemindersConfig extends Config {
 			section = reminder42
 	)
 	default String reminder42ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder42Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder42
+	)
+	default int reminder42Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder42Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder42
+	)
+	default int reminder42Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder42timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder42
+	)
+	default TimeUnit reminder42TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -5110,8 +6246,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder43Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder43
 	)
 	default String reminder43Coordinates() { return ""; }
@@ -5129,7 +6265,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder43Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder43
 	)
 	default int reminder43Radius() { return 0; }
@@ -5160,6 +6296,33 @@ public interface RemindersConfig extends Config {
 			section = reminder43
 	)
 	default String reminder43ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder43Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder43
+	)
+	default int reminder43Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder43Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder43
+	)
+	default int reminder43Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder43timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder43
+	)
+	default TimeUnit reminder43TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -5227,8 +6390,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder44Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder44
 	)
 	default String reminder44Coordinates() { return ""; }
@@ -5246,7 +6409,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder44Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder44
 	)
 	default int reminder44Radius() { return 0; }
@@ -5277,6 +6440,33 @@ public interface RemindersConfig extends Config {
 			section = reminder44
 	)
 	default String reminder44ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder44Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder44
+	)
+	default int reminder44Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder44Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder44
+	)
+	default int reminder44Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder44timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder44
+	)
+	default TimeUnit reminder44TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -5344,8 +6534,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder45Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder45
 	)
 	default String reminder45Coordinates() { return ""; }
@@ -5363,7 +6553,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder45Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder45
 	)
 	default int reminder45Radius() { return 0; }
@@ -5394,6 +6584,33 @@ public interface RemindersConfig extends Config {
 			section = reminder45
 	)
 	default String reminder45ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder45Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder45
+	)
+	default int reminder45Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder45Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder45
+	)
+	default int reminder45Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder45timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder45
+	)
+	default TimeUnit reminder45TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -5461,8 +6678,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder46Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder46
 	)
 	default String reminder46Coordinates() { return ""; }
@@ -5480,7 +6697,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder46Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder46
 	)
 	default int reminder46Radius() { return 0; }
@@ -5511,6 +6728,33 @@ public interface RemindersConfig extends Config {
 			section = reminder46
 	)
 	default String reminder46ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder46Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder46
+	)
+	default int reminder46Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder46Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder46
+	)
+	default int reminder46Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder46timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder46
+	)
+	default TimeUnit reminder46TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -5578,8 +6822,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder47Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder47
 	)
 	default String reminder47Coordinates() { return ""; }
@@ -5597,7 +6841,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder47Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder47
 	)
 	default int reminder47Radius() { return 0; }
@@ -5628,6 +6872,33 @@ public interface RemindersConfig extends Config {
 			section = reminder47
 	)
 	default String reminder47ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder47Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder47
+	)
+	default int reminder47Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder47Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder47
+	)
+	default int reminder47Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder47timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder47
+	)
+	default TimeUnit reminder47TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -5695,8 +6966,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder48Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder48
 	)
 	default String reminder48Coordinates() { return ""; }
@@ -5714,7 +6985,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder48Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder48
 	)
 	default int reminder48Radius() { return 0; }
@@ -5745,6 +7016,33 @@ public interface RemindersConfig extends Config {
 			section = reminder48
 	)
 	default String reminder48ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder48Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder48
+	)
+	default int reminder48Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder48Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder48
+	)
+	default int reminder48Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder48timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder48
+	)
+	default TimeUnit reminder48TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -5812,8 +7110,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder49Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder49
 	)
 	default String reminder49Coordinates() { return ""; }
@@ -5831,7 +7129,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder49Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder49
 	)
 	default int reminder49Radius() { return 0; }
@@ -5862,6 +7160,33 @@ public interface RemindersConfig extends Config {
 			section = reminder49
 	)
 	default String reminder49ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder49Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder49
+	)
+	default int reminder49Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder49Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder49
+	)
+	default int reminder49Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder49timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder49
+	)
+	default TimeUnit reminder49TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -5929,8 +7254,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder50Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder50
 	)
 	default String reminder50Coordinates() { return ""; }
@@ -5948,7 +7273,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder50Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder50
 	)
 	default int reminder50Radius() { return 0; }
@@ -5979,6 +7304,33 @@ public interface RemindersConfig extends Config {
 			section = reminder50
 	)
 	default String reminder50ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder50Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder50
+	)
+	default int reminder50Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder50Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder50
+	)
+	default int reminder50Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder50timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder50
+	)
+	default TimeUnit reminder50TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -6046,8 +7398,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder51Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder51
 	)
 	default String reminder51Coordinates() { return ""; }
@@ -6065,7 +7417,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder51Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder51
 	)
 	default int reminder51Radius() { return 0; }
@@ -6096,6 +7448,33 @@ public interface RemindersConfig extends Config {
 			section = reminder51
 	)
 	default String reminder51ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder51Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder51
+	)
+	default int reminder51Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder51Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder51
+	)
+	default int reminder51Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder51timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder51
+	)
+	default TimeUnit reminder51TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -6163,8 +7542,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder52Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder52
 	)
 	default String reminder52Coordinates() { return ""; }
@@ -6182,7 +7561,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder52Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder52
 	)
 	default int reminder52Radius() { return 0; }
@@ -6213,6 +7592,33 @@ public interface RemindersConfig extends Config {
 			section = reminder52
 	)
 	default String reminder52ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder52Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder52
+	)
+	default int reminder52Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder52Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder52
+	)
+	default int reminder52Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder52timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder52
+	)
+	default TimeUnit reminder52TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -6280,8 +7686,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder53Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder53
 	)
 	default String reminder53Coordinates() { return ""; }
@@ -6299,7 +7705,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder53Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder53
 	)
 	default int reminder53Radius() { return 0; }
@@ -6330,6 +7736,33 @@ public interface RemindersConfig extends Config {
 			section = reminder53
 	)
 	default String reminder53ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder53Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder53
+	)
+	default int reminder53Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder53Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder53
+	)
+	default int reminder53Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder53timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder53
+	)
+	default TimeUnit reminder53TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -6397,8 +7830,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder54Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder54
 	)
 	default String reminder54Coordinates() { return ""; }
@@ -6416,7 +7849,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder54Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder54
 	)
 	default int reminder54Radius() { return 0; }
@@ -6447,6 +7880,33 @@ public interface RemindersConfig extends Config {
 			section = reminder54
 	)
 	default String reminder54ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder54Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder54
+	)
+	default int reminder54Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder54Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder54
+	)
+	default int reminder54Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder54timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder54
+	)
+	default TimeUnit reminder54TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -6514,8 +7974,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder55Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder55
 	)
 	default String reminder55Coordinates() { return ""; }
@@ -6533,7 +7993,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder55Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder55
 	)
 	default int reminder55Radius() { return 0; }
@@ -6564,6 +8024,33 @@ public interface RemindersConfig extends Config {
 			section = reminder55
 	)
 	default String reminder55ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder55Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder55
+	)
+	default int reminder55Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder55Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder55
+	)
+	default int reminder55Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder55timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder55
+	)
+	default TimeUnit reminder55TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -6631,8 +8118,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder56Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder56
 	)
 	default String reminder56Coordinates() { return ""; }
@@ -6650,7 +8137,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder56Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder56
 	)
 	default int reminder56Radius() { return 0; }
@@ -6681,6 +8168,33 @@ public interface RemindersConfig extends Config {
 			section = reminder56
 	)
 	default String reminder56ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder56Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder56
+	)
+	default int reminder56Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder56Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder56
+	)
+	default int reminder56Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder56timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder56
+	)
+	default TimeUnit reminder56TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -6748,8 +8262,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder57Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder57
 	)
 	default String reminder57Coordinates() { return ""; }
@@ -6767,7 +8281,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder57Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder57
 	)
 	default int reminder57Radius() { return 0; }
@@ -6798,6 +8312,33 @@ public interface RemindersConfig extends Config {
 			section = reminder57
 	)
 	default String reminder57ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder57Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder57
+	)
+	default int reminder57Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder57Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder57
+	)
+	default int reminder57Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder57timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder57
+	)
+	default TimeUnit reminder57TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -6865,8 +8406,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder58Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder58
 	)
 	default String reminder58Coordinates() { return ""; }
@@ -6884,7 +8425,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder58Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder58
 	)
 	default int reminder58Radius() { return 0; }
@@ -6915,6 +8456,33 @@ public interface RemindersConfig extends Config {
 			section = reminder58
 	)
 	default String reminder58ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder58Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder58
+	)
+	default int reminder58Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder58Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder58
+	)
+	default int reminder58Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder58timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder58
+	)
+	default TimeUnit reminder58TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -6982,8 +8550,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder59Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder59
 	)
 	default String reminder59Coordinates() { return ""; }
@@ -7001,7 +8569,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder59Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder59
 	)
 	default int reminder59Radius() { return 0; }
@@ -7032,6 +8600,33 @@ public interface RemindersConfig extends Config {
 			section = reminder59
 	)
 	default String reminder59ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder59Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder59
+	)
+	default int reminder59Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder59Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder59
+	)
+	default int reminder59Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder59timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder59
+	)
+	default TimeUnit reminder59TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -7099,8 +8694,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder60Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder60
 	)
 	default String reminder60Coordinates() { return ""; }
@@ -7118,7 +8713,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder60Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder60
 	)
 	default int reminder60Radius() { return 0; }
@@ -7149,6 +8744,33 @@ public interface RemindersConfig extends Config {
 			section = reminder60
 	)
 	default String reminder60ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder60Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder60
+	)
+	default int reminder60Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder60Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder60
+	)
+	default int reminder60Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder60timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder60
+	)
+	default TimeUnit reminder60TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -7216,8 +8838,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder61Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder61
 	)
 	default String reminder61Coordinates() { return ""; }
@@ -7235,7 +8857,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder61Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder61
 	)
 	default int reminder61Radius() { return 0; }
@@ -7266,6 +8888,33 @@ public interface RemindersConfig extends Config {
 			section = reminder61
 	)
 	default String reminder61ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder61Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder61
+	)
+	default int reminder61Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder61Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder61
+	)
+	default int reminder61Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder61timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder61
+	)
+	default TimeUnit reminder61TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -7333,8 +8982,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder62Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder62
 	)
 	default String reminder62Coordinates() { return ""; }
@@ -7352,7 +9001,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder62Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder62
 	)
 	default int reminder62Radius() { return 0; }
@@ -7383,6 +9032,33 @@ public interface RemindersConfig extends Config {
 			section = reminder62
 	)
 	default String reminder62ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder62Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder62
+	)
+	default int reminder62Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder62Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder62
+	)
+	default int reminder62Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder62timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder62
+	)
+	default TimeUnit reminder62TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -7450,8 +9126,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder63Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder63
 	)
 	default String reminder63Coordinates() { return ""; }
@@ -7469,7 +9145,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder63Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder63
 	)
 	default int reminder63Radius() { return 0; }
@@ -7500,6 +9176,33 @@ public interface RemindersConfig extends Config {
 			section = reminder63
 	)
 	default String reminder63ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder63Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder63
+	)
+	default int reminder63Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder63Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder63
+	)
+	default int reminder63Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder63timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder63
+	)
+	default TimeUnit reminder63TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -7567,8 +9270,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder64Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder64
 	)
 	default String reminder64Coordinates() { return ""; }
@@ -7586,7 +9289,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder64Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder64
 	)
 	default int reminder64Radius() { return 0; }
@@ -7617,6 +9320,33 @@ public interface RemindersConfig extends Config {
 			section = reminder64
 	)
 	default String reminder64ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder64Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder64
+	)
+	default int reminder64Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder64Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder64
+	)
+	default int reminder64Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder64timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder64
+	)
+	default TimeUnit reminder64TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -7684,8 +9414,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder65Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder65
 	)
 	default String reminder65Coordinates() { return ""; }
@@ -7703,7 +9433,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder65Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder65
 	)
 	default int reminder65Radius() { return 0; }
@@ -7734,6 +9464,33 @@ public interface RemindersConfig extends Config {
 			section = reminder65
 	)
 	default String reminder65ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder65Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder65
+	)
+	default int reminder65Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder65Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder65
+	)
+	default int reminder65Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder65timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder65
+	)
+	default TimeUnit reminder65TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -7801,8 +9558,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder66Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder66
 	)
 	default String reminder66Coordinates() { return ""; }
@@ -7820,7 +9577,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder66Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder66
 	)
 	default int reminder66Radius() { return 0; }
@@ -7851,6 +9608,33 @@ public interface RemindersConfig extends Config {
 			section = reminder66
 	)
 	default String reminder66ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder66Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder66
+	)
+	default int reminder66Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder66Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder66
+	)
+	default int reminder66Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder66timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder66
+	)
+	default TimeUnit reminder66TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -7918,8 +9702,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder67Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder67
 	)
 	default String reminder67Coordinates() { return ""; }
@@ -7937,7 +9721,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder67Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder67
 	)
 	default int reminder67Radius() { return 0; }
@@ -7968,6 +9752,33 @@ public interface RemindersConfig extends Config {
 			section = reminder67
 	)
 	default String reminder67ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder67Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder67
+	)
+	default int reminder67Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder67Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder67
+	)
+	default int reminder67Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder67timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder67
+	)
+	default TimeUnit reminder67TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -8035,8 +9846,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder68Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder68
 	)
 	default String reminder68Coordinates() { return ""; }
@@ -8054,7 +9865,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder68Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder68
 	)
 	default int reminder68Radius() { return 0; }
@@ -8085,6 +9896,33 @@ public interface RemindersConfig extends Config {
 			section = reminder68
 	)
 	default String reminder68ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder68Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder68
+	)
+	default int reminder68Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder68Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder68
+	)
+	default int reminder68Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder68timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder68
+	)
+	default TimeUnit reminder68TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -8152,8 +9990,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder69Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder69
 	)
 	default String reminder69Coordinates() { return ""; }
@@ -8171,7 +10009,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder69Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder69
 	)
 	default int reminder69Radius() { return 0; }
@@ -8202,6 +10040,33 @@ public interface RemindersConfig extends Config {
 			section = reminder69
 	)
 	default String reminder69ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder69Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder69
+	)
+	default int reminder69Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder69Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder69
+	)
+	default int reminder69Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder69timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder69
+	)
+	default TimeUnit reminder69TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -8269,8 +10134,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder70Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder70
 	)
 	default String reminder70Coordinates() { return ""; }
@@ -8288,7 +10153,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder70Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder70
 	)
 	default int reminder70Radius() { return 0; }
@@ -8319,6 +10184,33 @@ public interface RemindersConfig extends Config {
 			section = reminder70
 	)
 	default String reminder70ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder70Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder70
+	)
+	default int reminder70Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder70Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder70
+	)
+	default int reminder70Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder70timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder70
+	)
+	default TimeUnit reminder70TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -8386,8 +10278,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder71Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder71
 	)
 	default String reminder71Coordinates() { return ""; }
@@ -8405,7 +10297,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder71Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder71
 	)
 	default int reminder71Radius() { return 0; }
@@ -8436,6 +10328,33 @@ public interface RemindersConfig extends Config {
 			section = reminder71
 	)
 	default String reminder71ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder71Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder71
+	)
+	default int reminder71Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder71Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder71
+	)
+	default int reminder71Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder71timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder71
+	)
+	default TimeUnit reminder71TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -8503,8 +10422,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder72Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder72
 	)
 	default String reminder72Coordinates() { return ""; }
@@ -8522,7 +10441,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder72Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder72
 	)
 	default int reminder72Radius() { return 0; }
@@ -8553,6 +10472,33 @@ public interface RemindersConfig extends Config {
 			section = reminder72
 	)
 	default String reminder72ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder72Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder72
+	)
+	default int reminder72Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder72Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder72
+	)
+	default int reminder72Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder72timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder72
+	)
+	default TimeUnit reminder72TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -8620,8 +10566,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder73Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder73
 	)
 	default String reminder73Coordinates() { return ""; }
@@ -8639,7 +10585,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder73Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder73
 	)
 	default int reminder73Radius() { return 0; }
@@ -8670,6 +10616,33 @@ public interface RemindersConfig extends Config {
 			section = reminder73
 	)
 	default String reminder73ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder73Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder73
+	)
+	default int reminder73Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder73Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder73
+	)
+	default int reminder73Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder73timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder73
+	)
+	default TimeUnit reminder73TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -8737,8 +10710,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder74Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder74
 	)
 	default String reminder74Coordinates() { return ""; }
@@ -8756,7 +10729,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder74Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder74
 	)
 	default int reminder74Radius() { return 0; }
@@ -8787,6 +10760,33 @@ public interface RemindersConfig extends Config {
 			section = reminder74
 	)
 	default String reminder74ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder74Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder74
+	)
+	default int reminder74Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder74Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder74
+	)
+	default int reminder74Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder74timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder74
+	)
+	default TimeUnit reminder74TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -8854,8 +10854,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder75Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder75
 	)
 	default String reminder75Coordinates() { return ""; }
@@ -8873,7 +10873,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder75Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder75
 	)
 	default int reminder75Radius() { return 0; }
@@ -8904,6 +10904,33 @@ public interface RemindersConfig extends Config {
 			section = reminder75
 	)
 	default String reminder75ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder75Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder75
+	)
+	default int reminder75Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder75Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder75
+	)
+	default int reminder75Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder75timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder75
+	)
+	default TimeUnit reminder75TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -8971,8 +10998,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder76Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder76
 	)
 	default String reminder76Coordinates() { return ""; }
@@ -8990,7 +11017,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder76Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder76
 	)
 	default int reminder76Radius() { return 0; }
@@ -9021,6 +11048,33 @@ public interface RemindersConfig extends Config {
 			section = reminder76
 	)
 	default String reminder76ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder76Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder76
+	)
+	default int reminder76Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder76Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder76
+	)
+	default int reminder76Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder76timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder76
+	)
+	default TimeUnit reminder76TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -9088,8 +11142,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder77Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder77
 	)
 	default String reminder77Coordinates() { return ""; }
@@ -9107,7 +11161,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder77Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder77
 	)
 	default int reminder77Radius() { return 0; }
@@ -9138,6 +11192,33 @@ public interface RemindersConfig extends Config {
 			section = reminder77
 	)
 	default String reminder77ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder77Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder77
+	)
+	default int reminder77Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder77Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder77
+	)
+	default int reminder77Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder77timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder77
+	)
+	default TimeUnit reminder77TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -9205,8 +11286,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder78Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder78
 	)
 	default String reminder78Coordinates() { return ""; }
@@ -9224,7 +11305,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder78Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder78
 	)
 	default int reminder78Radius() { return 0; }
@@ -9255,6 +11336,33 @@ public interface RemindersConfig extends Config {
 			section = reminder78
 	)
 	default String reminder78ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder78Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder78
+	)
+	default int reminder78Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder78Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder78
+	)
+	default int reminder78Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder78timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder78
+	)
+	default TimeUnit reminder78TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -9322,8 +11430,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder79Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder79
 	)
 	default String reminder79Coordinates() { return ""; }
@@ -9341,7 +11449,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder79Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder79
 	)
 	default int reminder79Radius() { return 0; }
@@ -9372,6 +11480,33 @@ public interface RemindersConfig extends Config {
 			section = reminder79
 	)
 	default String reminder79ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder79Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder79
+	)
+	default int reminder79Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder79Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder79
+	)
+	default int reminder79Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder79timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder79
+	)
+	default TimeUnit reminder79TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -9439,8 +11574,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder80Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder80
 	)
 	default String reminder80Coordinates() { return ""; }
@@ -9458,7 +11593,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder80Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder80
 	)
 	default int reminder80Radius() { return 0; }
@@ -9489,6 +11624,33 @@ public interface RemindersConfig extends Config {
 			section = reminder80
 	)
 	default String reminder80ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder80Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder80
+	)
+	default int reminder80Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder80Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder80
+	)
+	default int reminder80Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder80timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder80
+	)
+	default TimeUnit reminder80TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -9556,8 +11718,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder81Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder81
 	)
 	default String reminder81Coordinates() { return ""; }
@@ -9575,7 +11737,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder81Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder81
 	)
 	default int reminder81Radius() { return 0; }
@@ -9606,6 +11768,33 @@ public interface RemindersConfig extends Config {
 			section = reminder81
 	)
 	default String reminder81ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder81Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder81
+	)
+	default int reminder81Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder81Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder81
+	)
+	default int reminder81Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder81timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder81
+	)
+	default TimeUnit reminder81TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -9673,8 +11862,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder82Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder82
 	)
 	default String reminder82Coordinates() { return ""; }
@@ -9692,7 +11881,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder82Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder82
 	)
 	default int reminder82Radius() { return 0; }
@@ -9723,6 +11912,33 @@ public interface RemindersConfig extends Config {
 			section = reminder82
 	)
 	default String reminder82ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder82Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder82
+	)
+	default int reminder82Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder82Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder82
+	)
+	default int reminder82Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder82timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder82
+	)
+	default TimeUnit reminder82TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -9790,8 +12006,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder83Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder83
 	)
 	default String reminder83Coordinates() { return ""; }
@@ -9809,7 +12025,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder83Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder83
 	)
 	default int reminder83Radius() { return 0; }
@@ -9840,6 +12056,33 @@ public interface RemindersConfig extends Config {
 			section = reminder83
 	)
 	default String reminder83ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder83Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder83
+	)
+	default int reminder83Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder83Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder83
+	)
+	default int reminder83Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder83timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder83
+	)
+	default TimeUnit reminder83TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -9907,8 +12150,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder84Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder84
 	)
 	default String reminder84Coordinates() { return ""; }
@@ -9926,7 +12169,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder84Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder84
 	)
 	default int reminder84Radius() { return 0; }
@@ -9957,6 +12200,33 @@ public interface RemindersConfig extends Config {
 			section = reminder84
 	)
 	default String reminder84ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder84Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder84
+	)
+	default int reminder84Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder84Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder84
+	)
+	default int reminder84Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder84timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder84
+	)
+	default TimeUnit reminder84TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -10024,8 +12294,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder85Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder85
 	)
 	default String reminder85Coordinates() { return ""; }
@@ -10043,7 +12313,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder85Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder85
 	)
 	default int reminder85Radius() { return 0; }
@@ -10074,6 +12344,33 @@ public interface RemindersConfig extends Config {
 			section = reminder85
 	)
 	default String reminder85ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder85Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder85
+	)
+	default int reminder85Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder85Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder85
+	)
+	default int reminder85Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder85timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder85
+	)
+	default TimeUnit reminder85TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -10141,8 +12438,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder86Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder86
 	)
 	default String reminder86Coordinates() { return ""; }
@@ -10160,7 +12457,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder86Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder86
 	)
 	default int reminder86Radius() { return 0; }
@@ -10191,6 +12488,33 @@ public interface RemindersConfig extends Config {
 			section = reminder86
 	)
 	default String reminder86ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder86Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder86
+	)
+	default int reminder86Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder86Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder86
+	)
+	default int reminder86Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder86timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder86
+	)
+	default TimeUnit reminder86TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -10258,8 +12582,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder87Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder87
 	)
 	default String reminder87Coordinates() { return ""; }
@@ -10277,7 +12601,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder87Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder87
 	)
 	default int reminder87Radius() { return 0; }
@@ -10308,6 +12632,33 @@ public interface RemindersConfig extends Config {
 			section = reminder87
 	)
 	default String reminder87ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder87Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder87
+	)
+	default int reminder87Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder87Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder87
+	)
+	default int reminder87Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder87timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder87
+	)
+	default TimeUnit reminder87TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -10375,8 +12726,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder88Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder88
 	)
 	default String reminder88Coordinates() { return ""; }
@@ -10394,7 +12745,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder88Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder88
 	)
 	default int reminder88Radius() { return 0; }
@@ -10425,6 +12776,33 @@ public interface RemindersConfig extends Config {
 			section = reminder88
 	)
 	default String reminder88ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder88Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder88
+	)
+	default int reminder88Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder88Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder88
+	)
+	default int reminder88Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder88timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder88
+	)
+	default TimeUnit reminder88TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -10492,8 +12870,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder89Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder89
 	)
 	default String reminder89Coordinates() { return ""; }
@@ -10511,7 +12889,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder89Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder89
 	)
 	default int reminder89Radius() { return 0; }
@@ -10542,6 +12920,33 @@ public interface RemindersConfig extends Config {
 			section = reminder89
 	)
 	default String reminder89ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder89Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder89
+	)
+	default int reminder89Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder89Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder89
+	)
+	default int reminder89Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder89timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder89
+	)
+	default TimeUnit reminder89TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -10609,8 +13014,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder90Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder90
 	)
 	default String reminder90Coordinates() { return ""; }
@@ -10628,7 +13033,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder90Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder90
 	)
 	default int reminder90Radius() { return 0; }
@@ -10659,6 +13064,33 @@ public interface RemindersConfig extends Config {
 			section = reminder90
 	)
 	default String reminder90ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder90Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder90
+	)
+	default int reminder90Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder90Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder90
+	)
+	default int reminder90Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder90timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder90
+	)
+	default TimeUnit reminder90TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -10726,8 +13158,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder91Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder91
 	)
 	default String reminder91Coordinates() { return ""; }
@@ -10745,7 +13177,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder91Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder91
 	)
 	default int reminder91Radius() { return 0; }
@@ -10776,6 +13208,33 @@ public interface RemindersConfig extends Config {
 			section = reminder91
 	)
 	default String reminder91ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder91Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder91
+	)
+	default int reminder91Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder91Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder91
+	)
+	default int reminder91Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder91timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder91
+	)
+	default TimeUnit reminder91TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -10843,8 +13302,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder92Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder92
 	)
 	default String reminder92Coordinates() { return ""; }
@@ -10862,7 +13321,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder92Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder92
 	)
 	default int reminder92Radius() { return 0; }
@@ -10893,6 +13352,33 @@ public interface RemindersConfig extends Config {
 			section = reminder92
 	)
 	default String reminder92ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder92Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder92
+	)
+	default int reminder92Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder92Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder92
+	)
+	default int reminder92Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder92timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder92
+	)
+	default TimeUnit reminder92TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -10960,8 +13446,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder93Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder93
 	)
 	default String reminder93Coordinates() { return ""; }
@@ -10979,7 +13465,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder93Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder93
 	)
 	default int reminder93Radius() { return 0; }
@@ -11010,6 +13496,33 @@ public interface RemindersConfig extends Config {
 			section = reminder93
 	)
 	default String reminder93ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder93Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder93
+	)
+	default int reminder93Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder93Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder93
+	)
+	default int reminder93Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder93timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder93
+	)
+	default TimeUnit reminder93TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -11077,8 +13590,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder94Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder94
 	)
 	default String reminder94Coordinates() { return ""; }
@@ -11096,7 +13609,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder94Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder94
 	)
 	default int reminder94Radius() { return 0; }
@@ -11127,6 +13640,33 @@ public interface RemindersConfig extends Config {
 			section = reminder94
 	)
 	default String reminder94ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder94Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder94
+	)
+	default int reminder94Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder94Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder94
+	)
+	default int reminder94Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder94timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder94
+	)
+	default TimeUnit reminder94TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -11194,8 +13734,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder95Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder95
 	)
 	default String reminder95Coordinates() { return ""; }
@@ -11213,7 +13753,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder95Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder95
 	)
 	default int reminder95Radius() { return 0; }
@@ -11244,6 +13784,33 @@ public interface RemindersConfig extends Config {
 			section = reminder95
 	)
 	default String reminder95ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder95Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder95
+	)
+	default int reminder95Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder95Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder95
+	)
+	default int reminder95Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder95timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder95
+	)
+	default TimeUnit reminder95TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -11311,8 +13878,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder96Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder96
 	)
 	default String reminder96Coordinates() { return ""; }
@@ -11330,7 +13897,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder96Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder96
 	)
 	default int reminder96Radius() { return 0; }
@@ -11361,6 +13928,33 @@ public interface RemindersConfig extends Config {
 			section = reminder96
 	)
 	default String reminder96ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder96Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder96
+	)
+	default int reminder96Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder96Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder96
+	)
+	default int reminder96Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder96timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder96
+	)
+	default TimeUnit reminder96TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -11428,8 +14022,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder97Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder97
 	)
 	default String reminder97Coordinates() { return ""; }
@@ -11447,7 +14041,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder97Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder97
 	)
 	default int reminder97Radius() { return 0; }
@@ -11478,6 +14072,33 @@ public interface RemindersConfig extends Config {
 			section = reminder97
 	)
 	default String reminder97ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder97Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder97
+	)
+	default int reminder97Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder97Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder97
+	)
+	default int reminder97Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder97timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder97
+	)
+	default TimeUnit reminder97TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -11545,8 +14166,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder98Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder98
 	)
 	default String reminder98Coordinates() { return ""; }
@@ -11564,7 +14185,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder98Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder98
 	)
 	default int reminder98Radius() { return 0; }
@@ -11595,6 +14216,33 @@ public interface RemindersConfig extends Config {
 			section = reminder98
 	)
 	default String reminder98ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder98Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder98
+	)
+	default int reminder98Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder98Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder98
+	)
+	default int reminder98Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder98timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder98
+	)
+	default TimeUnit reminder98TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -11662,8 +14310,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder99Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder99
 	)
 	default String reminder99Coordinates() { return ""; }
@@ -11681,7 +14329,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder99Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder99
 	)
 	default int reminder99Radius() { return 0; }
@@ -11712,6 +14360,33 @@ public interface RemindersConfig extends Config {
 			section = reminder99
 	)
 	default String reminder99ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder99Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder99
+	)
+	default int reminder99Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder99Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder99
+	)
+	default int reminder99Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder99timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder99
+	)
+	default TimeUnit reminder99TimeUnit() { return TimeUnit.SECONDS; }
 
 
 	@ConfigSection(
@@ -11779,8 +14454,8 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "reminder100Coordinates",
 			position = 12,
-			name = "Coordinate",
-			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
+			name = "Location",
+			description = "Configures locations where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder100
 	)
 	default String reminder100Coordinates() { return ""; }
@@ -11798,7 +14473,7 @@ public interface RemindersConfig extends Config {
 			keyName = "reminder100Radius",
 			position = 13,
 			name = "Radius",
-			description = "Configures how far from coordinates reminder is shown.",
+			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder100
 	)
 	default int reminder100Radius() { return 0; }
@@ -11829,4 +14504,31 @@ public interface RemindersConfig extends Config {
 			section = reminder100
 	)
 	default String reminder100ItemIds() { return ""; }
+
+	@ConfigItem(
+			keyName = "Reminder100Duration",
+			position = 3,
+			name = "Duration",
+			description = "Configures the duration for reminder (Duration 0, Cooldown 0 = infinite).",
+			section = reminder100
+	)
+	default int reminder100Duration() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder100Cooldown",
+			position = 4,
+			name = "Cooldown",
+			description = "Configures how long to wait before reminder can be shown again.",
+			section = reminder100
+	)
+	default int reminder100Cooldown() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder100timeUnit",
+			position = 5,
+			name = "Time Unit",
+			description = "Configures the time unit for duration and cooldown.",
+			section = reminder100
+	)
+	default TimeUnit reminder100TimeUnit() { return TimeUnit.SECONDS; }
 }
