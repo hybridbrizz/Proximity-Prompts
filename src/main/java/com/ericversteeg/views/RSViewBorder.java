@@ -5,22 +5,19 @@ import java.awt.*;
 public class RSViewBorder implements RSRenderable
 {
     private RSView view;
-    private int width;
     private Color innerColor;
     private Color outerColor;
 
-    public RSViewBorder(RSView view, int width, Color color)
+    public RSViewBorder(RSView view, Color color)
     {
         this.view = view;
-        this.width = width;
 
         outerColor = color;
     }
 
-    public RSViewBorder(RSView view, int width, Color innerColor, Color outerColor)
+    public RSViewBorder(RSView view, Color innerColor, Color outerColor)
     {
         this.view = view;
-        this.width = width;
 
         this.innerColor = innerColor;
         this.outerColor = outerColor;
@@ -30,7 +27,7 @@ public class RSViewBorder implements RSRenderable
     public void render(Graphics2D graphics, Point origin)
     {
         graphics.setColor(outerColor);
-        graphics.drawRect(origin.x + view.getX(), origin.y + view.getY(), width, view.getH());
+        graphics.drawRect(origin.x + view.getX(), origin.y + view.getY(), view.getW(), view.getH());
 
         graphics.setColor(outerColor);
         graphics.drawRect(origin.x + view.getX() - 1, origin.y + view.getY() - 1, view.getW() + 2, view.getH() + 2);

@@ -12,6 +12,7 @@ import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPanel;
 import net.runelite.client.ui.overlay.OverlayPosition;
+import net.runelite.client.ui.overlay.components.ComponentConstants;
 import net.runelite.client.ui.overlay.components.LineComponent;
 
 import javax.inject.Inject;
@@ -31,6 +32,10 @@ class RemindersOverlay extends RSViewOverlay {
 	private Font font;
 	private int anchorX;
 	private int anchorY;
+
+	private Color panelBackgroundColor = ComponentConstants.STANDARD_BACKGROUND_COLOR;
+	private Color outerBorderColor = new Color(57, 41, 13, 124);
+	private Color innerBorderColor = new Color(147, 141, 130, 37);
 
 	@Inject
 	private RemindersOverlay(
@@ -108,23 +113,176 @@ class RemindersOverlay extends RSViewOverlay {
 //		setRootView(column);
 	}
 
-	void setupViews()
+	void updateViews()
 	{
-		RSColumn column = new RSColumn(10, 120, 140, RSView.WRAP_CONTENT);
-		column.setBgColor(Color.GREEN);
+		TextSize textSize = config.textSize();
+		if (textSize == TextSize.SMALL)
+		{
+			font = FontManager.getRunescapeSmallFont();
+		}
+		else if (textSize == TextSize.LARGE)
+		{
+			font = FontManager.getRunescapeFont();
+		}
+		else
+		{
+			font = FontManager.getRunescapeBoldFont();
+		}
 
-		RSTextView textView = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, FontManager.getRunescapeFont());
-		textView.setTextColor(Color.WHITE);
-		textView.setText("Fairly involved text that is many words so who knows. Few words here");
+		RSColumn panel = new RSColumn(10, 120, 140, RSView.WRAP_CONTENT);
+		panel.setBgColor(panelBackgroundColor);
+		panel.addBorder(innerBorderColor, outerBorderColor);
+		panel.setPadding(4);
 
-		column.addView(textView);
+		int maxReminders = config.maxReminders();
+		int i = 0;
+		for (Reminder reminder: plugin.activeReminders.stream()
+				.sorted(((o1, o2) -> (int) (o2.posted - o1.posted)))
+				.collect(Collectors.toList())) {
+			if (i == maxReminders) break;
 
-		setRootView(column);
+			String text = reminder.text;
+			if (text.trim().isEmpty()) continue;
+
+			Color color;
+			if (reminder.colur != null)
+			{
+				color = reminder.colur;
+			}
+			else
+			{
+				try
+				{
+					color = Color.decode(reminder.colorStr);
+				}
+				catch (Exception exception)
+				{
+					color = Color.WHITE;
+				}
+			}
+
+			RSRow row = new RSRow(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
+			if (i + 1 < maxReminders)
+			{
+				row.setMarginBottom(5);
+			}
+
+			RSTextView leftText = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, font);
+
+			leftText.setTextColor(color);
+			leftText.setText("•");
+			leftText.setMarginEnd(3);
+
+			row.addView(leftText);
+
+			RSTextView rightText = new RSTextView(0, 0, 0, RSView.WRAP_CONTENT, font);
+
+			rightText.setTextColor(color);
+			rightText.setText(text);
+			rightText.setWeight(1f);
+
+			row.addView(rightText);
+
+			panel.addView(row);
+
+			i++;
+		}
+
+		if (config.idFinder())
+		{
+			renderIds(panel);
+		}
+
+		setRootView(panel);
 	}
 
-//	@Override
-//	public Dimension render(Graphics2D graphics)
-//	{
+	private void renderIds(RSColumn panel)
+	{
+		RSBox box = new RSBox(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
+
+		RSTextView left = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, font);
+		left.setTextColor(Color.GREEN);
+		left.setText("Location");
+		left.setLayoutGravity(RSViewGroup.Gravity.START);
+
+		RSTextView right = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, font);
+		right.setText(String.format("(%d, %d)", plugin.worldPos.getX(), plugin.worldPos.getY()));
+		right.setLayoutGravity(RSViewGroup.Gravity.END);
+
+		box.addView(left);
+		box.addView(right);
+
+		panel.addView(box);
+
+		box = new RSBox(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
+
+		left = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, font);
+		left.setTextColor(Color.GREEN);
+		left.setText("Region");
+		left.setLayoutGravity(RSViewGroup.Gravity.START);
+
+		right = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, font);
+		right.setText(String.valueOf(plugin.regionId));
+		right.setLayoutGravity(RSViewGroup.Gravity.END);
+
+		box.addView(left);
+		box.addView(right);
+
+		panel.addView(box);
+
+		java.util.List<Integer> npcIds = new ArrayList<>();
+		for (NPC npc: plugin.npcs)
+		{
+			if (npc.getId() == -1) continue;
+
+			if (!npcIds.contains(npc.getId()))
+			{
+				RSRow row = new RSRow(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
+
+				left = new RSTextView(0, 0, 0, RSView.WRAP_CONTENT, font);
+				left.setTextColor(Color.CYAN);
+				left.setText(npc.getName());
+				left.setWeight(1f);
+
+				right = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, font);
+				right.setText(String.valueOf(npc.getId()));
+
+				row.addView(left);
+				row.addView(right);
+
+				panel.addView(row);
+
+				npcIds.add(npc.getId());
+			}
+		}
+
+		for (ItemComposition item: plugin.inventoryItems)
+		{
+			if (item.getId() == -1) continue;
+
+			RSRow row = new RSRow(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
+
+			left = new RSTextView(0, 0, 0, RSView.WRAP_CONTENT, font);
+			left.setTextColor(Color.YELLOW);
+			left.setText(item.getName());
+			left.setWeight(1f);
+
+			right = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, font);
+			right.setText(String.valueOf(item.getId()));
+
+			row.addView(left);
+			row.addView(right);
+
+			panel.addView(row);
+		}
+	}
+
+	@Override
+	public Dimension render(Graphics2D graphics)
+	{
+		updateViews();
+		return super.render(graphics);
+	}
 //
 ////		int w = 140;
 ////		int h = 70;
@@ -225,56 +383,6 @@ class RemindersOverlay extends RSViewOverlay {
 //		}
 //
 //		return super.render(graphics);
-//	}
-//
-//	private void renderIds()
-//	{
-//		panelComponent.getChildren().add(
-//				LineComponent.builder()
-//						.left("Location")
-//						.leftColor(Color.GREEN)
-//						.right(String.format("(%d, %d)", plugin.worldPos.getX(), plugin.worldPos.getY()))
-//						.build()
-//		);
-//
-//		panelComponent.getChildren().add(
-//				LineComponent.builder()
-//						.left("Region")
-//						.leftColor(Color.GREEN)
-//						.right(String.valueOf(plugin.regionId))
-//						.build()
-//		);
-//
-//		java.util.List<Integer> npcIds = new ArrayList<>();
-//		for (NPC npc: plugin.npcs)
-//		{
-//			if (npc.getId() == -1) continue;
-//
-//			if (!npcIds.contains(npc.getId()))
-//			{
-//				panelComponent.getChildren().add(
-//						LineComponent.builder()
-//								.left(npc.getName())
-//								.leftColor(Color.CYAN)
-//								.right(String.valueOf(npc.getId()))
-//								.build()
-//				);
-//				npcIds.add(npc.getId());
-//			}
-//		}
-//
-//		for (ItemComposition item: plugin.inventoryItems)
-//		{
-//			if (item.getId() == -1) continue;
-//
-//			panelComponent.getChildren().add(
-//					LineComponent.builder()
-//							.left(item.getName())
-//							.leftColor(Color.YELLOW)
-//							.right(String.valueOf(item.getId()))
-//							.build()
-//			);
-//		}
 //	}
 
 	private Widget getViewportWidget()

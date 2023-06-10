@@ -106,28 +106,9 @@ public abstract class RSViewGroup extends RSView
         }
 
         // layout subviews (x, y)
-        Map<RSLayoutGuide, Integer> layoutGuides = layoutSubviews(guides);
+        Map<RSLayoutGuide, Integer> layoutGuides = layoutSubviewsAndResize(guides);
 
-        // measure (w, h)
-        if (dimensionParams.getW() == WRAP_CONTENT
-                && layoutGuides.containsKey(RSLayoutGuide.END))
-        {
-            w = layoutGuides.get(RSLayoutGuide.END);
-        }
-        else
-        {
-            w = measureWidth(guides);
-        }
-
-        if (dimensionParams.getH() == WRAP_CONTENT
-                && layoutGuides.containsKey(RSLayoutGuide.BOTTOM))
-        {
-            h = layoutGuides.get(RSLayoutGuide.BOTTOM);
-        }
-        else
-        {
-            h = measureHeight(guides);
-        }
+        boolean appliedWeight = false;
 
         // apply width weights
         if (dimensionParams.getW() != WRAP_CONTENT)
@@ -159,11 +140,11 @@ public abstract class RSViewGroup extends RSView
                             int width = (int) (weight / totalWeight * weightWidth);
                             view.setW(width);
 
-                            if (view instanceof RSViewGroup)
-                            {
-                                view.dimensionParams.setW(width);
-                                view.applyDimension(subviewMaxDimensionGuides(guides, view));
-                            }
+                            view.dimensionParams.setW(width);
+                            view.applyDimension(subviewMaxDimensionGuides(guides, view));
+                            view.getWeightParams().setWeight(null);
+
+                            appliedWeight = true;
 
                             totalAddedWidth += width;
                         }
@@ -179,11 +160,8 @@ public abstract class RSViewGroup extends RSView
                             view.setW(view.getW()
                                     + truncatedWidth);
 
-                            if (view instanceof RSViewGroup)
-                            {
-                                view.dimensionParams.setW(view.getW());
-                                view.applyDimension(subviewMaxDimensionGuides(guides, view));
-                            }
+                            view.dimensionParams.setW(view.getW());
+                            view.applyDimension(subviewMaxDimensionGuides(guides, view));
 
                             foundView = true;
                         }
@@ -227,11 +205,11 @@ public abstract class RSViewGroup extends RSView
                             int height = (int) (weight / totalWeight * weightHeight);
                             view.setH(height);
 
-                            if (view instanceof RSViewGroup)
-                            {
-                                view.dimensionParams.setH(view.getH());
-                                view.applyDimension(subviewMaxDimensionGuides(guides, view));
-                            }
+                            view.dimensionParams.setH(view.getH());
+                            view.applyDimension(subviewMaxDimensionGuides(guides, view));
+                            view.getWeightParams().setWeight(null);
+
+                            appliedWeight = true;
 
                             totalAddedHeight += height;
                         }
@@ -247,11 +225,8 @@ public abstract class RSViewGroup extends RSView
                             view.setH(view.getH()
                                     + truncatedHeight);
 
-                            if (view instanceof RSViewGroup)
-                            {
-                                view.dimensionParams.setH(view.getH());
-                                view.applyDimension(subviewMaxDimensionGuides(guides, view));
-                            }
+                            view.dimensionParams.setH(view.getH());
+                            view.applyDimension(subviewMaxDimensionGuides(guides, view));
 
                             foundView = true;
                         }
@@ -265,7 +240,43 @@ public abstract class RSViewGroup extends RSView
             }
         }
 
+        // if weight was applied
+        // layout subviews again
+        if (appliedWeight)
+        {
+            System.out.println("Layout subviews again.");
+            layoutSubviewsAndResize(guides);
+        }
+
         return new Dimension(w, h);
+    }
+
+    private Map<RSLayoutGuide, Integer> layoutSubviewsAndResize(Map<RSLayoutGuide, Integer> guides)
+    {
+        Map<RSLayoutGuide, Integer> layoutGuides = layoutSubviews(guides);
+
+        // measure (w, h)
+        if (dimensionParams.getW() == WRAP_CONTENT
+                && layoutGuides.containsKey(RSLayoutGuide.END))
+        {
+            w = layoutGuides.get(RSLayoutGuide.END);
+        }
+        else
+        {
+            w = measureWidth(guides);
+        }
+
+        if (dimensionParams.getH() == WRAP_CONTENT
+                && layoutGuides.containsKey(RSLayoutGuide.BOTTOM))
+        {
+            h = layoutGuides.get(RSLayoutGuide.BOTTOM);
+        }
+        else
+        {
+            h = measureHeight(guides);
+        }
+
+        return layoutGuides;
     }
 
     @Override

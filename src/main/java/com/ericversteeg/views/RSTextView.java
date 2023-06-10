@@ -45,27 +45,29 @@ public class RSTextView extends RSView
         int strWidth = fontMetrics.stringWidth(text);
         Integer guide = guides.get(RSLayoutGuide.MAX_WIDTH);
 
-        if (guide != null)
+        if (dimensionParams.getW() != WRAP_CONTENT)
         {
-            int checkWidth = guide - paddingStart - paddingEnd;
-            if (strWidth > checkWidth)
+            if (guide != null && dimensionParams.getW() == MATCH_PARENT)
             {
-                lineWidth = checkWidth;
+                lineWidth = guide - paddingStart - paddingEnd;
+                return lineWidth;
             }
-            return Math.min(guide, strWidth);
+
+            lineWidth = dimensionParams.getW() - paddingStart - paddingEnd;
+        }
+        else
+        {
+            lineWidth = strWidth;
         }
 
-        return paddingStart + strWidth + paddingEnd;
+        return paddingStart + lineWidth + paddingEnd;
     }
 
     @Override
     public int measureHeight(Map<RSLayoutGuide, Integer> guides)
     {
         int height = fontMetrics.getHeight();
-        if (lineWidth > 0)
-        {
-            height *= getNumLines(lineWidth);
-        }
+        height *= getNumLines(lineWidth);
 
         return paddingTop + height + paddingBottom;
     }
@@ -87,7 +89,13 @@ public class RSTextView extends RSView
         int line = 1;
         for (String word: words)
         {
-            if (fontMetrics.stringWidth(sb + " " + word) > maxWidth)
+            String space = " ";
+            if (word.equals(words[words.length - 1]))
+            {
+                space = "";
+            }
+
+            if (fontMetrics.stringWidth(sb + space + word) > maxWidth)
             {
                 textComponent.setPosition(new Point(start.x,
                         start.y + line * fontMetrics.getHeight()));
@@ -118,7 +126,13 @@ public class RSTextView extends RSView
 
         for (String word: words)
         {
-            if (fontMetrics.stringWidth(sb + " " + word) > maxWidth)
+            String space = " ";
+            if (word.equals(words[words.length - 1]))
+            {
+                space = "";
+            }
+
+            if (fontMetrics.stringWidth(sb + space + word) > maxWidth)
             {
                 lines += 1;
                 sb = new StringBuilder();

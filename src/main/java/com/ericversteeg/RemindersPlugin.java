@@ -73,8 +73,6 @@ public class RemindersPlugin extends Plugin {
 	@Override
 	protected void startUp() throws Exception {
 		overlayManager.add(overlay);
-
-		overlay.setupViews();
 	}
 
 	@Override
@@ -97,6 +95,8 @@ public class RemindersPlugin extends Plugin {
 		dateTime = LocalDateTime.now(ZoneId.systemDefault());
 
 		activeReminders = getActiveReminders();
+
+		overlay.updateViews();
 
 		inventoryItems.clear();
 

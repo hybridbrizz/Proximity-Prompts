@@ -17,7 +17,8 @@ public class RSRow extends RSViewGroup
         int startGuide = paddingTop;
         for (RSView view: subviews)
         {
-            if (view.getWeight() != null)
+            if (view.getWeightParams() != null
+                    && view.getWeightParams().getWeight() != null)
             {
                 view.setW(0);
             }

@@ -17,9 +17,10 @@ public class RSColumn extends RSViewGroup
         int topGuide = paddingTop;
         for (RSView view: subviews)
         {
-            if (view.getWeight() != null)
+            if (view.getWeightParams() != null
+                    && view.getWeightParams().getWeight() != null)
             {
-                view.setH(0);
+                view.setW(0);
             }
 
             topGuide += view.getMarginTop();

@@ -36,6 +36,26 @@ public class RSView implements RSRenderable
         }
     }
 
+    class WeightParams
+    {
+        private Float weight;
+
+        public WeightParams(Float weight)
+        {
+            this.weight = weight;
+        }
+
+        public Float getWeight()
+        {
+            return weight;
+        }
+
+        public void setWeight(Float weight)
+        {
+            this.weight = weight;
+        }
+    }
+
     protected DimensionParams dimensionParams;
 
     public static int MATCH_PARENT = -1;
@@ -49,6 +69,7 @@ public class RSView implements RSRenderable
     protected int h;
 
     private Float weight = null;
+    private WeightParams weightParams = null;
 
     protected int marginStart = 0;
     protected int marginTop = 0;
@@ -70,6 +91,16 @@ public class RSView implements RSRenderable
         this.dimensionParams = new DimensionParams(w, h);
         this.x = x;
         this.y = y;
+    }
+
+    public void addBorder(Color color)
+    {
+        border = new RSViewBorder(this, color);
+    }
+
+    public void addBorder(Color innerColor, Color outerColor)
+    {
+        border = new RSViewBorder(this, innerColor, outerColor);
     }
 
     public void setLayoutGravity(RSViewGroup.Gravity layoutGravity)
@@ -125,7 +156,10 @@ public class RSView implements RSRenderable
     public void setWeight(Float weight)
     {
         this.weight = weight;
+        weightParams = new WeightParams(weight);
     }
+
+    public WeightParams getWeightParams() { return weightParams; }
 
     public int getMarginStart()
     {
@@ -237,7 +271,6 @@ public class RSView implements RSRenderable
             case END:
             case TOP_END:
             case BOTTOM_END:
-                System.out.println("x = " + x + ", w = " + w);
                 x = guideOrThrow(RSLayoutGuide.END, guides) - w;
                 break;
         }
