@@ -1,11 +1,11 @@
-package com.ericversteeg.config;
+package com.ericversteeg.views;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum AnchorType
+public enum RSAnchorType
 {
     TOP_LEFT,
     TOP_RIGHT,

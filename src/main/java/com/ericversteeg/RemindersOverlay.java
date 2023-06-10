@@ -1,6 +1,5 @@
 package com.ericversteeg;
 
-import com.ericversteeg.config.AnchorType;
 import com.ericversteeg.reminder.Reminder;
 import com.ericversteeg.views.*;
 import net.runelite.api.Client;
@@ -10,16 +9,14 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
-import net.runelite.client.ui.overlay.OverlayPanel;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.components.ComponentConstants;
-import net.runelite.client.ui.overlay.components.LineComponent;
 
 import javax.inject.Inject;
 import java.awt.*;
 import java.io.InputStream;
+import java.time.Instant;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 class RemindersOverlay extends RSViewOverlay {
@@ -28,10 +25,7 @@ class RemindersOverlay extends RSViewOverlay {
 	private final RemindersPlugin plugin;
 	private final RemindersConfig config;
 
-	Widget viewportWidget;
 	private Font font;
-	private int anchorX;
-	private int anchorY;
 
 	private Color panelBackgroundColor = ComponentConstants.STANDARD_BACKGROUND_COLOR;
 	private Color outerBorderColor = new Color(57, 41, 13, 124);
@@ -62,8 +56,6 @@ class RemindersOverlay extends RSViewOverlay {
 		{
 			font = FontManager.getRunescapeSmallFont();
 		}
-
-		viewportWidget = getViewportWidget();
 
 //		RSRow column = new RSRow(10, 120, 500, 50);
 //		column.setBgColor(Color.decode("#45AB76"));
@@ -115,6 +107,8 @@ class RemindersOverlay extends RSViewOverlay {
 
 	void updateViews()
 	{
+		long start = Instant.now().toEpochMilli();
+
 		TextSize textSize = config.textSize();
 		if (textSize == TextSize.SMALL)
 		{
@@ -194,6 +188,9 @@ class RemindersOverlay extends RSViewOverlay {
 		}
 
 		setRootView(panel);
+		setAnchor(client, config.anchorType(), config.anchorX(), config.anchorY());
+
+		System.out.println("View setup in " + (Instant.now().toEpochMilli() - start) + "ms");
 	}
 
 	private void renderIds(RSColumn panel)
@@ -246,6 +243,7 @@ class RemindersOverlay extends RSViewOverlay {
 
 				right = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, font);
 				right.setText(String.valueOf(npc.getId()));
+				right.setMarginStart(10);
 
 				row.addView(left);
 				row.addView(right);
@@ -269,6 +267,7 @@ class RemindersOverlay extends RSViewOverlay {
 
 			right = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, font);
 			right.setText(String.valueOf(item.getId()));
+			right.setMarginStart(10);
 
 			row.addView(left);
 			row.addView(right);
@@ -312,17 +311,7 @@ class RemindersOverlay extends RSViewOverlay {
 ////
 //////		System.out.println("Height is " + dimension.height);
 ////
-////		int anchorX = config.anchorX();
-////		if (anchorType == AnchorType.TOP_RIGHT || anchorType == AnchorType.BOTTOM_RIGHT)
-////		{
-////			anchorX = viewportWidget.getCanvasLocation().getX() + viewportWidget.getWidth() + 28 - anchorX - dimension.width;
-////		}
-////
-////		int anchorY = config.anchorY();
-////		if (anchorType == AnchorType.BOTTOM_LEFT || anchorType == AnchorType.BOTTOM_RIGHT)
-////		{
-////			anchorY = viewportWidget.getCanvasLocation().getY() + viewportWidget.getHeight() + 41 - anchorY - dimension.height;
-////		}
+
 ////
 //////		System.out.println("Anchor Y " + anchorY);
 ////
@@ -384,22 +373,6 @@ class RemindersOverlay extends RSViewOverlay {
 //
 //		return super.render(graphics);
 //	}
-
-	private Widget getViewportWidget()
-	{
-		Widget widget;
-
-		widget = client.getWidget(WidgetInfo.RESIZABLE_VIEWPORT_INTERFACE_CONTAINER);
-		if (widget != null) return widget;
-
-		widget = client.getWidget(WidgetInfo.RESIZABLE_VIEWPORT_BOTTOM_LINE_INTERFACE_CONTAINER);
-		if (widget != null) return widget;
-
-		widget = client.getWidget(WidgetInfo.FIXED_VIEWPORT_INTERFACE_CONTAINER);
-		if (widget != null) return widget;
-
-		return client.getWidget(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER);
-	}
 
 	private String printItems() {
 		StringBuilder sb = new StringBuilder();

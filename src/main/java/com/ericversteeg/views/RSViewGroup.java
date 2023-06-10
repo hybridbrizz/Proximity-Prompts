@@ -244,7 +244,6 @@ public abstract class RSViewGroup extends RSView
         // layout subviews again
         if (appliedWeight)
         {
-            System.out.println("Layout subviews again.");
             layoutSubviewsAndResize(guides);
         }
 

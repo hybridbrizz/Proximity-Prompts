@@ -1,6 +1,6 @@
 package com.ericversteeg;
 
-import com.ericversteeg.config.AnchorType;
+import com.ericversteeg.views.RSAnchorType;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
@@ -18,8 +18,8 @@ public interface RemindersConfig extends Config {
 			name = "Anchor",
 			description = "Configure anchor."
 	)
-	default AnchorType anchorType() {
-		return AnchorType.TOP_LEFT;
+	default RSAnchorType anchorType() {
+		return RSAnchorType.TOP_LEFT;
 	}
 
 	@ConfigItem(

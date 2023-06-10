@@ -96,7 +96,7 @@ public class RemindersPlugin extends Plugin {
 
 		activeReminders = getActiveReminders();
 
-		overlay.updateViews();
+		//overlay.updateViews();
 
 		inventoryItems.clear();
 
@@ -211,122 +211,122 @@ public class RemindersPlugin extends Plugin {
 			}
 		}
 
-		try {
-			JsonArray jsonArray = gson.fromJson(config.customReminders(), JsonArray.class);
-			List<Reminder> reminders = new ArrayList<>();
-
-			int i = 0;
-			for (JsonElement jsonElement: jsonArray)
-			{
-				JsonObject jsonObject = jsonElement.getAsJsonObject();
-
-				Reminder reminder = new Reminder();
-
-				reminder.id = 100 + i;
-
-				if (jsonObject.has("enable"))
-				{
-					reminder.enable = jsonObject.get("enable").getAsBoolean();
-				}
-
-				if (jsonObject.has("text"))
-				{
-					reminder.text = jsonObject.get("text").getAsString();
-					reminder.text = reminder.text
-							.substring(0, Math.min(reminder.text.length(), 255));
-				}
-
-				if (jsonObject.has("color"))
-				{
-					reminder.colorStr = jsonObject.get("color").getAsString();
-				}
-
-				if (jsonObject.has("times"))
-				{
-					reminder.times = toCsv(jsonObject.get("times").getAsJsonArray());
-				}
-
-				if (jsonObject.has("days"))
-				{
-					reminder.daysOfWeek = toCsv(jsonObject.get("days").getAsJsonArray());
-				}
-
-				if (jsonObject.has("dates"))
-				{
-					reminder.dates = toCsv(jsonObject.get("dates").getAsJsonArray());
-				}
-
-				if (jsonObject.has("locations"))
-				{
-					reminder.coordinates = toCsv(jsonObject.get("locations").getAsJsonArray());
-				}
-
-				if (jsonObject.has("radius"))
-				{
-					reminder.radius = jsonObject.get("radius").getAsInt();
-				}
-
-				if (jsonObject.has("geofences"))
-				{
-					reminder.geoFences = toCsv(jsonObject.get("geofences").getAsJsonArray());
-				}
-
-				if (jsonObject.has("regions"))
-				{
-					reminder.regionIds = toCsv(jsonObject.get("regions").getAsJsonArray());
-				}
-
-				if (jsonObject.has("npcs"))
-				{
-					reminder.npcIds = toCsv(jsonObject.get("npcs").getAsJsonArray());
-				}
-
-				if (jsonObject.has("items"))
-				{
-					reminder.itemIds = toCsv(jsonObject.get("items").getAsJsonArray());
-				}
-
-				Reminder currentActive = currentActiveReminder(reminder.id);
-				if (currentActive != null)
-				{
-					reminder.posted = currentActive.posted;
-				}
-				else
-				{
-					reminder.posted = Instant.now().toEpochMilli();
-				}
-
-				reminders.add(reminder);
-
-				i++;
-			}
-
-			for (Reminder reminder: reminders)
-			{
-				if (reminder.enable)
-				{
-					if ((checkTimes(reminder.times) && !matchesTimes(reminder.times)) ||
-						(checkDaysOfWeek(reminder.daysOfWeek) && !matchesDaysOfWeek(reminder.daysOfWeek)) ||
-						(checkDates(reminder.dates) && !matchesDates(reminder.dates)) ||
-						(checkCoordinates(reminder.coordinates) && !matchesCoordinates(reminder.coordinates, reminder.radius)) ||
-						(checkGeoFences(reminder.geoFences) && !matchesGeoFences(reminder.geoFences)) ||
-						(checkRegions(reminder.regionIds) && !matchesRegions(reminder.regionIds)) ||
-						(checkNpcIds(reminder.npcIds) && !matchesNpcIds(reminder.npcIds)) ||
-						(checkItemIds(reminder.itemIds) && !matchesItemIds(reminder.itemIds))
-					)
-					{
-						continue;
-					}
-
-					activeList.add(reminder);
-				}
-			}
-		}
-		catch (Exception exception)
-		{
-			System.out.println(exception.getMessage());
-			return activeList;
-		}
+//		try {
+//			JsonArray jsonArray = gson.fromJson(config.customReminders(), JsonArray.class);
+//			List<Reminder> reminders = new ArrayList<>();
+//
+//			int i = 0;
+//			for (JsonElement jsonElement: jsonArray)
+//			{
+//				JsonObject jsonObject = jsonElement.getAsJsonObject();
+//
+//				Reminder reminder = new Reminder();
+//
+//				reminder.id = 100 + i;
+//
+//				if (jsonObject.has("enable"))
+//				{
+//					reminder.enable = jsonObject.get("enable").getAsBoolean();
+//				}
+//
+//				if (jsonObject.has("text"))
+//				{
+//					reminder.text = jsonObject.get("text").getAsString();
+//					reminder.text = reminder.text
+//							.substring(0, Math.min(reminder.text.length(), 255));
+//				}
+//
+//				if (jsonObject.has("color"))
+//				{
+//					reminder.colorStr = jsonObject.get("color").getAsString();
+//				}
+//
+//				if (jsonObject.has("times"))
+//				{
+//					reminder.times = toCsv(jsonObject.get("times").getAsJsonArray());
+//				}
+//
+//				if (jsonObject.has("days"))
+//				{
+//					reminder.daysOfWeek = toCsv(jsonObject.get("days").getAsJsonArray());
+//				}
+//
+//				if (jsonObject.has("dates"))
+//				{
+//					reminder.dates = toCsv(jsonObject.get("dates").getAsJsonArray());
+//				}
+//
+//				if (jsonObject.has("locations"))
+//				{
+//					reminder.coordinates = toCsv(jsonObject.get("locations").getAsJsonArray());
+//				}
+//
+//				if (jsonObject.has("radius"))
+//				{
+//					reminder.radius = jsonObject.get("radius").getAsInt();
+//				}
+//
+//				if (jsonObject.has("geofences"))
+//				{
+//					reminder.geoFences = toCsv(jsonObject.get("geofences").getAsJsonArray());
+//				}
+//
+//				if (jsonObject.has("regions"))
+//				{
+//					reminder.regionIds = toCsv(jsonObject.get("regions").getAsJsonArray());
+//				}
+//
+//				if (jsonObject.has("npcs"))
+//				{
+//					reminder.npcIds = toCsv(jsonObject.get("npcs").getAsJsonArray());
+//				}
+//
+//				if (jsonObject.has("items"))
+//				{
+//					reminder.itemIds = toCsv(jsonObject.get("items").getAsJsonArray());
+//				}
+//
+//				Reminder currentActive = currentActiveReminder(reminder.id);
+//				if (currentActive != null)
+//				{
+//					reminder.posted = currentActive.posted;
+//				}
+//				else
+//				{
+//					reminder.posted = Instant.now().toEpochMilli();
+//				}
+//
+//				reminders.add(reminder);
+//
+//				i++;
+//			}
+//
+//			for (Reminder reminder: reminders)
+//			{
+//				if (reminder.enable)
+//				{
+//					if ((checkTimes(reminder.times) && !matchesTimes(reminder.times)) ||
+//						(checkDaysOfWeek(reminder.daysOfWeek) && !matchesDaysOfWeek(reminder.daysOfWeek)) ||
+//						(checkDates(reminder.dates) && !matchesDates(reminder.dates)) ||
+//						(checkCoordinates(reminder.coordinates) && !matchesCoordinates(reminder.coordinates, reminder.radius)) ||
+//						(checkGeoFences(reminder.geoFences) && !matchesGeoFences(reminder.geoFences)) ||
+//						(checkRegions(reminder.regionIds) && !matchesRegions(reminder.regionIds)) ||
+//						(checkNpcIds(reminder.npcIds) && !matchesNpcIds(reminder.npcIds)) ||
+//						(checkItemIds(reminder.itemIds) && !matchesItemIds(reminder.itemIds))
+//					)
+//					{
+//						continue;
+//					}
+//
+//					activeList.add(reminder);
+//				}
+//			}
+//		}
+//		catch (Exception exception)
+//		{
+//			System.out.println(exception.getMessage());
+//			return activeList;
+//		}
 
 		System.out.println("Active list took " + (Instant.now().toEpochMilli() - start) + "ms");
 
