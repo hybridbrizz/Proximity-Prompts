@@ -2,6 +2,7 @@ package com.ericversteeg;
 
 import com.ericversteeg.config.TimeUnit;
 import com.ericversteeg.views.RSAnchorType;
+import com.ericversteeg.views.RSViewGroup;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
@@ -347,6 +348,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder1PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder1ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder1
+	)
+	default RSViewGroup.Gravity reminder1ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder2",
 			description = "Reminder 2",
@@ -543,6 +553,15 @@ public interface RemindersConfig extends Config {
 			section = reminder2
 	)
 	default int reminder2PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder2ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder2
+	)
+	default RSViewGroup.Gravity reminder2ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder3",
@@ -741,6 +760,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder3PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder3ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder3
+	)
+	default RSViewGroup.Gravity reminder3ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder4",
 			description = "Reminder 4",
@@ -937,6 +965,15 @@ public interface RemindersConfig extends Config {
 			section = reminder4
 	)
 	default int reminder4PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder4ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder4
+	)
+	default RSViewGroup.Gravity reminder4ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder5",
@@ -1135,6 +1172,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder5PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder5ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder5
+	)
+	default RSViewGroup.Gravity reminder5ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder6",
 			description = "Reminder 6",
@@ -1331,6 +1377,15 @@ public interface RemindersConfig extends Config {
 			section = reminder6
 	)
 	default int reminder6PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder6ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder6
+	)
+	default RSViewGroup.Gravity reminder6ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder7",
@@ -1529,6 +1584,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder7PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder7ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder7
+	)
+	default RSViewGroup.Gravity reminder7ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder8",
 			description = "Reminder 8",
@@ -1725,6 +1789,15 @@ public interface RemindersConfig extends Config {
 			section = reminder8
 	)
 	default int reminder8PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder8ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder8
+	)
+	default RSViewGroup.Gravity reminder8ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder9",
@@ -1923,6 +1996,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder9PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder9ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder9
+	)
+	default RSViewGroup.Gravity reminder9ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder10",
 			description = "Reminder 10",
@@ -2119,6 +2201,15 @@ public interface RemindersConfig extends Config {
 			section = reminder10
 	)
 	default int reminder10PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder10ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder10
+	)
+	default RSViewGroup.Gravity reminder10ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder11",
@@ -2317,6 +2408,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder11PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder11ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder11
+	)
+	default RSViewGroup.Gravity reminder11ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder12",
 			description = "Reminder 12",
@@ -2513,6 +2613,15 @@ public interface RemindersConfig extends Config {
 			section = reminder12
 	)
 	default int reminder12PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder12ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder12
+	)
+	default RSViewGroup.Gravity reminder12ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder13",
@@ -2711,6 +2820,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder13PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder13ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder13
+	)
+	default RSViewGroup.Gravity reminder13ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder14",
 			description = "Reminder 14",
@@ -2907,6 +3025,15 @@ public interface RemindersConfig extends Config {
 			section = reminder14
 	)
 	default int reminder14PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder14ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder14
+	)
+	default RSViewGroup.Gravity reminder14ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder15",
@@ -3105,6 +3232,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder15PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder15ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder15
+	)
+	default RSViewGroup.Gravity reminder15ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder16",
 			description = "Reminder 16",
@@ -3301,6 +3437,15 @@ public interface RemindersConfig extends Config {
 			section = reminder16
 	)
 	default int reminder16PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder16ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder16
+	)
+	default RSViewGroup.Gravity reminder16ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder17",
@@ -3499,6 +3644,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder17PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder17ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder17
+	)
+	default RSViewGroup.Gravity reminder17ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder18",
 			description = "Reminder 18",
@@ -3695,6 +3849,15 @@ public interface RemindersConfig extends Config {
 			section = reminder18
 	)
 	default int reminder18PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder18ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder18
+	)
+	default RSViewGroup.Gravity reminder18ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder19",
@@ -3893,6 +4056,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder19PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder19ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder19
+	)
+	default RSViewGroup.Gravity reminder19ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder20",
 			description = "Reminder 20",
@@ -4089,6 +4261,15 @@ public interface RemindersConfig extends Config {
 			section = reminder20
 	)
 	default int reminder20PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder20ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder20
+	)
+	default RSViewGroup.Gravity reminder20ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder21",
@@ -4287,6 +4468,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder21PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder21ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder21
+	)
+	default RSViewGroup.Gravity reminder21ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder22",
 			description = "Reminder 22",
@@ -4483,6 +4673,15 @@ public interface RemindersConfig extends Config {
 			section = reminder22
 	)
 	default int reminder22PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder22ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder22
+	)
+	default RSViewGroup.Gravity reminder22ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder23",
@@ -4681,6 +4880,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder23PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder23ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder23
+	)
+	default RSViewGroup.Gravity reminder23ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder24",
 			description = "Reminder 24",
@@ -4877,6 +5085,15 @@ public interface RemindersConfig extends Config {
 			section = reminder24
 	)
 	default int reminder24PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder24ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder24
+	)
+	default RSViewGroup.Gravity reminder24ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder25",
@@ -5075,6 +5292,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder25PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder25ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder25
+	)
+	default RSViewGroup.Gravity reminder25ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder26",
 			description = "Reminder 26",
@@ -5271,6 +5497,15 @@ public interface RemindersConfig extends Config {
 			section = reminder26
 	)
 	default int reminder26PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder26ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder26
+	)
+	default RSViewGroup.Gravity reminder26ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder27",
@@ -5469,6 +5704,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder27PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder27ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder27
+	)
+	default RSViewGroup.Gravity reminder27ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder28",
 			description = "Reminder 28",
@@ -5665,6 +5909,15 @@ public interface RemindersConfig extends Config {
 			section = reminder28
 	)
 	default int reminder28PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder28ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder28
+	)
+	default RSViewGroup.Gravity reminder28ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder29",
@@ -5863,6 +6116,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder29PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder29ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder29
+	)
+	default RSViewGroup.Gravity reminder29ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder30",
 			description = "Reminder 30",
@@ -6059,6 +6321,15 @@ public interface RemindersConfig extends Config {
 			section = reminder30
 	)
 	default int reminder30PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder30ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder30
+	)
+	default RSViewGroup.Gravity reminder30ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder31",
@@ -6257,6 +6528,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder31PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder31ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder31
+	)
+	default RSViewGroup.Gravity reminder31ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder32",
 			description = "Reminder 32",
@@ -6453,6 +6733,15 @@ public interface RemindersConfig extends Config {
 			section = reminder32
 	)
 	default int reminder32PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder32ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder32
+	)
+	default RSViewGroup.Gravity reminder32ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder33",
@@ -6651,6 +6940,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder33PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder33ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder33
+	)
+	default RSViewGroup.Gravity reminder33ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder34",
 			description = "Reminder 34",
@@ -6847,6 +7145,15 @@ public interface RemindersConfig extends Config {
 			section = reminder34
 	)
 	default int reminder34PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder34ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder34
+	)
+	default RSViewGroup.Gravity reminder34ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder35",
@@ -7045,6 +7352,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder35PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder35ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder35
+	)
+	default RSViewGroup.Gravity reminder35ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder36",
 			description = "Reminder 36",
@@ -7241,6 +7557,15 @@ public interface RemindersConfig extends Config {
 			section = reminder36
 	)
 	default int reminder36PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder36ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder36
+	)
+	default RSViewGroup.Gravity reminder36ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder37",
@@ -7439,6 +7764,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder37PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder37ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder37
+	)
+	default RSViewGroup.Gravity reminder37ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder38",
 			description = "Reminder 38",
@@ -7635,6 +7969,15 @@ public interface RemindersConfig extends Config {
 			section = reminder38
 	)
 	default int reminder38PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder38ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder38
+	)
+	default RSViewGroup.Gravity reminder38ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder39",
@@ -7833,6 +8176,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder39PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder39ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder39
+	)
+	default RSViewGroup.Gravity reminder39ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder40",
 			description = "Reminder 40",
@@ -8029,6 +8381,15 @@ public interface RemindersConfig extends Config {
 			section = reminder40
 	)
 	default int reminder40PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder40ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder40
+	)
+	default RSViewGroup.Gravity reminder40ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder41",
@@ -8227,6 +8588,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder41PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder41ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder41
+	)
+	default RSViewGroup.Gravity reminder41ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder42",
 			description = "Reminder 42",
@@ -8423,6 +8793,15 @@ public interface RemindersConfig extends Config {
 			section = reminder42
 	)
 	default int reminder42PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder42ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder42
+	)
+	default RSViewGroup.Gravity reminder42ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder43",
@@ -8621,6 +9000,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder43PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder43ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder43
+	)
+	default RSViewGroup.Gravity reminder43ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder44",
 			description = "Reminder 44",
@@ -8817,6 +9205,15 @@ public interface RemindersConfig extends Config {
 			section = reminder44
 	)
 	default int reminder44PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder44ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder44
+	)
+	default RSViewGroup.Gravity reminder44ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder45",
@@ -9015,6 +9412,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder45PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder45ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder45
+	)
+	default RSViewGroup.Gravity reminder45ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder46",
 			description = "Reminder 46",
@@ -9211,6 +9617,15 @@ public interface RemindersConfig extends Config {
 			section = reminder46
 	)
 	default int reminder46PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder46ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder46
+	)
+	default RSViewGroup.Gravity reminder46ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder47",
@@ -9409,6 +9824,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder47PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder47ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder47
+	)
+	default RSViewGroup.Gravity reminder47ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder48",
 			description = "Reminder 48",
@@ -9605,6 +10029,15 @@ public interface RemindersConfig extends Config {
 			section = reminder48
 	)
 	default int reminder48PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder48ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder48
+	)
+	default RSViewGroup.Gravity reminder48ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder49",
@@ -9803,6 +10236,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder49PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder49ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder49
+	)
+	default RSViewGroup.Gravity reminder49ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder50",
 			description = "Reminder 50",
@@ -9999,6 +10441,15 @@ public interface RemindersConfig extends Config {
 			section = reminder50
 	)
 	default int reminder50PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder50ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder50
+	)
+	default RSViewGroup.Gravity reminder50ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder51",
@@ -10197,6 +10648,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder51PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder51ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder51
+	)
+	default RSViewGroup.Gravity reminder51ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder52",
 			description = "Reminder 52",
@@ -10393,6 +10853,15 @@ public interface RemindersConfig extends Config {
 			section = reminder52
 	)
 	default int reminder52PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder52ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder52
+	)
+	default RSViewGroup.Gravity reminder52ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder53",
@@ -10591,6 +11060,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder53PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder53ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder53
+	)
+	default RSViewGroup.Gravity reminder53ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder54",
 			description = "Reminder 54",
@@ -10787,6 +11265,15 @@ public interface RemindersConfig extends Config {
 			section = reminder54
 	)
 	default int reminder54PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder54ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder54
+	)
+	default RSViewGroup.Gravity reminder54ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder55",
@@ -10985,6 +11472,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder55PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder55ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder55
+	)
+	default RSViewGroup.Gravity reminder55ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder56",
 			description = "Reminder 56",
@@ -11181,6 +11677,15 @@ public interface RemindersConfig extends Config {
 			section = reminder56
 	)
 	default int reminder56PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder56ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder56
+	)
+	default RSViewGroup.Gravity reminder56ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder57",
@@ -11379,6 +11884,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder57PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder57ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder57
+	)
+	default RSViewGroup.Gravity reminder57ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder58",
 			description = "Reminder 58",
@@ -11575,6 +12089,15 @@ public interface RemindersConfig extends Config {
 			section = reminder58
 	)
 	default int reminder58PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder58ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder58
+	)
+	default RSViewGroup.Gravity reminder58ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder59",
@@ -11773,6 +12296,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder59PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder59ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder59
+	)
+	default RSViewGroup.Gravity reminder59ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder60",
 			description = "Reminder 60",
@@ -11969,6 +12501,15 @@ public interface RemindersConfig extends Config {
 			section = reminder60
 	)
 	default int reminder60PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder60ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder60
+	)
+	default RSViewGroup.Gravity reminder60ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder61",
@@ -12167,6 +12708,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder61PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder61ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder61
+	)
+	default RSViewGroup.Gravity reminder61ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder62",
 			description = "Reminder 62",
@@ -12363,6 +12913,15 @@ public interface RemindersConfig extends Config {
 			section = reminder62
 	)
 	default int reminder62PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder62ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder62
+	)
+	default RSViewGroup.Gravity reminder62ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder63",
@@ -12561,6 +13120,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder63PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder63ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder63
+	)
+	default RSViewGroup.Gravity reminder63ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder64",
 			description = "Reminder 64",
@@ -12757,6 +13325,15 @@ public interface RemindersConfig extends Config {
 			section = reminder64
 	)
 	default int reminder64PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder64ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder64
+	)
+	default RSViewGroup.Gravity reminder64ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder65",
@@ -12955,6 +13532,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder65PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder65ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder65
+	)
+	default RSViewGroup.Gravity reminder65ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder66",
 			description = "Reminder 66",
@@ -13151,6 +13737,15 @@ public interface RemindersConfig extends Config {
 			section = reminder66
 	)
 	default int reminder66PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder66ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder66
+	)
+	default RSViewGroup.Gravity reminder66ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder67",
@@ -13349,6 +13944,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder67PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder67ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder67
+	)
+	default RSViewGroup.Gravity reminder67ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder68",
 			description = "Reminder 68",
@@ -13545,6 +14149,15 @@ public interface RemindersConfig extends Config {
 			section = reminder68
 	)
 	default int reminder68PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder68ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder68
+	)
+	default RSViewGroup.Gravity reminder68ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder69",
@@ -13743,6 +14356,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder69PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder69ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder69
+	)
+	default RSViewGroup.Gravity reminder69ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder70",
 			description = "Reminder 70",
@@ -13939,6 +14561,15 @@ public interface RemindersConfig extends Config {
 			section = reminder70
 	)
 	default int reminder70PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder70ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder70
+	)
+	default RSViewGroup.Gravity reminder70ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder71",
@@ -14137,6 +14768,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder71PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder71ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder71
+	)
+	default RSViewGroup.Gravity reminder71ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder72",
 			description = "Reminder 72",
@@ -14333,6 +14973,15 @@ public interface RemindersConfig extends Config {
 			section = reminder72
 	)
 	default int reminder72PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder72ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder72
+	)
+	default RSViewGroup.Gravity reminder72ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder73",
@@ -14531,6 +15180,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder73PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder73ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder73
+	)
+	default RSViewGroup.Gravity reminder73ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder74",
 			description = "Reminder 74",
@@ -14727,6 +15385,15 @@ public interface RemindersConfig extends Config {
 			section = reminder74
 	)
 	default int reminder74PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder74ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder74
+	)
+	default RSViewGroup.Gravity reminder74ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder75",
@@ -14925,6 +15592,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder75PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder75ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder75
+	)
+	default RSViewGroup.Gravity reminder75ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder76",
 			description = "Reminder 76",
@@ -15121,6 +15797,15 @@ public interface RemindersConfig extends Config {
 			section = reminder76
 	)
 	default int reminder76PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder76ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder76
+	)
+	default RSViewGroup.Gravity reminder76ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder77",
@@ -15319,6 +16004,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder77PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder77ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder77
+	)
+	default RSViewGroup.Gravity reminder77ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder78",
 			description = "Reminder 78",
@@ -15515,6 +16209,15 @@ public interface RemindersConfig extends Config {
 			section = reminder78
 	)
 	default int reminder78PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder78ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder78
+	)
+	default RSViewGroup.Gravity reminder78ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder79",
@@ -15713,6 +16416,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder79PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder79ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder79
+	)
+	default RSViewGroup.Gravity reminder79ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder80",
 			description = "Reminder 80",
@@ -15909,6 +16621,15 @@ public interface RemindersConfig extends Config {
 			section = reminder80
 	)
 	default int reminder80PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder80ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder80
+	)
+	default RSViewGroup.Gravity reminder80ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder81",
@@ -16107,6 +16828,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder81PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder81ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder81
+	)
+	default RSViewGroup.Gravity reminder81ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder82",
 			description = "Reminder 82",
@@ -16303,6 +17033,15 @@ public interface RemindersConfig extends Config {
 			section = reminder82
 	)
 	default int reminder82PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder82ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder82
+	)
+	default RSViewGroup.Gravity reminder82ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder83",
@@ -16501,6 +17240,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder83PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder83ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder83
+	)
+	default RSViewGroup.Gravity reminder83ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder84",
 			description = "Reminder 84",
@@ -16697,6 +17445,15 @@ public interface RemindersConfig extends Config {
 			section = reminder84
 	)
 	default int reminder84PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder84ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder84
+	)
+	default RSViewGroup.Gravity reminder84ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder85",
@@ -16895,6 +17652,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder85PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder85ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder85
+	)
+	default RSViewGroup.Gravity reminder85ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder86",
 			description = "Reminder 86",
@@ -17091,6 +17857,15 @@ public interface RemindersConfig extends Config {
 			section = reminder86
 	)
 	default int reminder86PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder86ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder86
+	)
+	default RSViewGroup.Gravity reminder86ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder87",
@@ -17289,6 +18064,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder87PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder87ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder87
+	)
+	default RSViewGroup.Gravity reminder87ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder88",
 			description = "Reminder 88",
@@ -17485,6 +18269,15 @@ public interface RemindersConfig extends Config {
 			section = reminder88
 	)
 	default int reminder88PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder88ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder88
+	)
+	default RSViewGroup.Gravity reminder88ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder89",
@@ -17683,6 +18476,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder89PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder89ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder89
+	)
+	default RSViewGroup.Gravity reminder89ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder90",
 			description = "Reminder 90",
@@ -17879,6 +18681,15 @@ public interface RemindersConfig extends Config {
 			section = reminder90
 	)
 	default int reminder90PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder90ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder90
+	)
+	default RSViewGroup.Gravity reminder90ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder91",
@@ -18077,6 +18888,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder91PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder91ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder91
+	)
+	default RSViewGroup.Gravity reminder91ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder92",
 			description = "Reminder 92",
@@ -18273,6 +19093,15 @@ public interface RemindersConfig extends Config {
 			section = reminder92
 	)
 	default int reminder92PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder92ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder92
+	)
+	default RSViewGroup.Gravity reminder92ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder93",
@@ -18471,6 +19300,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder93PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder93ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder93
+	)
+	default RSViewGroup.Gravity reminder93ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder94",
 			description = "Reminder 94",
@@ -18667,6 +19505,15 @@ public interface RemindersConfig extends Config {
 			section = reminder94
 	)
 	default int reminder94PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder94ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder94
+	)
+	default RSViewGroup.Gravity reminder94ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder95",
@@ -18865,6 +19712,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder95PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder95ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder95
+	)
+	default RSViewGroup.Gravity reminder95ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder96",
 			description = "Reminder 96",
@@ -19061,6 +19917,15 @@ public interface RemindersConfig extends Config {
 			section = reminder96
 	)
 	default int reminder96PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder96ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder96
+	)
+	default RSViewGroup.Gravity reminder96ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder97",
@@ -19259,6 +20124,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder97PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder97ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder97
+	)
+	default RSViewGroup.Gravity reminder97ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder98",
 			description = "Reminder 98",
@@ -19455,6 +20329,15 @@ public interface RemindersConfig extends Config {
 			section = reminder98
 	)
 	default int reminder98PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder98ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder98
+	)
+	default RSViewGroup.Gravity reminder98ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
 	@ConfigSection(
 			name = "Reminder99",
@@ -19653,6 +20536,15 @@ public interface RemindersConfig extends Config {
 	)
 	default int reminder99PanelAnchorY() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder99ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder99
+	)
+	default RSViewGroup.Gravity reminder99ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
 	@ConfigSection(
 			name = "Reminder100",
 			description = "Reminder 100",
@@ -19849,4 +20741,13 @@ public interface RemindersConfig extends Config {
 			section = reminder100
 	)
 	default int reminder100PanelAnchorY() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder100ImageAlignment",
+			position = 11,
+			name = "Image Alignment",
+			description = "Configures the image alignment.",
+			section = reminder100
+	)
+	default RSViewGroup.Gravity reminder100ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 }

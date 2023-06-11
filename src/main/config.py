@@ -195,6 +195,15 @@ line248 = '            section = {lcName}'
 line249 = '      )'
 line250 = '      default int {lcName}PanelAnchorY() {{ return 0; }}'
 line251 = ''
+line252 = '      @ConfigItem('
+line253 = '            keyName = "{ucName}ImageAlignment",'
+line254 = '            position = 11,'
+line255 = '            name = "Image Alignment",'
+line256 = '            description = "Configures the image alignment.",'
+line257 = '            section = {lcName}'
+line258 = '      )'
+line259 = '      default RSViewGroup.Gravity {lcName}ImageAlignment() {{ return RSViewGroup.Gravity.TOP_START; }}'
+line260 = ''
 
 
 config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n" + line6 + "\n" + line7 + "\n" + line8 + \
@@ -229,10 +238,11 @@ config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n
          "\n" + line236 + "\n" + line237 + "\n" + line238 + "\n" + line239 + "\n" + line240 + \
          "\n" + line241 + "\n" + line242 + "\n" + line243 + "\n" + line244 + "\n" + line245 + \
          "\n" + line246 + "\n" + line247 + "\n" + line248 + "\n" + line249 + "\n" + line250 + \
-         "\n" + line251
+         "\n" + line251 + "\n" + line252 + "\n" + line253 + "\n" + line254 + "\n" + line255 + \
+         "\n" + line256 + "\n" + line257 + "\n" + line258 + "\n" + line259 + "\n" + line260
 
 # string = ""
-# for i in range(216, 252):
+# for i in range(250, 261):
 #     string += "\"\\n\" + line" + str(i) + " + "
 #     if i % 5 == 0:
 #         string += "\\\n"

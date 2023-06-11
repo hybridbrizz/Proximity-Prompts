@@ -221,6 +221,7 @@ class RemindersOverlay extends RSViewOverlay {
 
 		textView.setTextColor(color);
 		textView.setText(text);
+		textView.setImage(24, 24, plugin.getImageAlignment(reminder.id));
 
 		panel.addView(textView);
 

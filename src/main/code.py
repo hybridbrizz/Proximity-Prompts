@@ -25,7 +25,8 @@ configInfo = [
     ["SeparatePanel", "boolean"],
     ["PanelAnchorType", "RSAnchorType"],
     ["PanelAnchorX", "int"],
-    ["PanelAnchorY", "int"]
+    ["PanelAnchorY", "int"],
+    ["ImageAlignment", "RSViewGroup.Gravity"]
 ]
 
 for info in configInfo:
