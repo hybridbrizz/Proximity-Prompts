@@ -4,10 +4,7 @@ import com.ericversteeg.config.ColorAnimationType;
 import com.ericversteeg.config.TimeUnit;
 import com.ericversteeg.views.RSAnchorType;
 import com.ericversteeg.views.RSViewGroup;
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.ConfigSection;
+import net.runelite.client.config.*;
 
 import java.awt.*;
 
@@ -58,7 +55,7 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			position = 5,
 			keyName = "idFinder",
-			name = "Finder",
+			name = "ID Finder",
 			description = "Configures whether or not to show ids."
 	)
 	default boolean idFinder() {
@@ -350,17 +347,8 @@ public interface RemindersConfig extends Config {
 	default int reminder1PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder1ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder1
-	)
-	default RSViewGroup.Gravity reminder1ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder1ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder1
@@ -378,7 +366,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder1Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder1
@@ -387,7 +375,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder1AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder1
@@ -396,12 +384,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder1CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder1
 	)
 	default int reminder1CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder1PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder1
+	)
+	default int reminder1PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder1ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder1
+	)
+	default Color reminder1ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder1PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder1
+	)
+	default TextSize reminder1PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder2",
@@ -601,17 +618,8 @@ public interface RemindersConfig extends Config {
 	default int reminder2PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder2ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder2
-	)
-	default RSViewGroup.Gravity reminder2ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder2ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder2
@@ -629,7 +637,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder2Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder2
@@ -638,7 +646,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder2AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder2
@@ -647,12 +655,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder2CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder2
 	)
 	default int reminder2CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder2PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder2
+	)
+	default int reminder2PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder2ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder2
+	)
+	default Color reminder2ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder2PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder2
+	)
+	default TextSize reminder2PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder3",
@@ -852,17 +889,8 @@ public interface RemindersConfig extends Config {
 	default int reminder3PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder3ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder3
-	)
-	default RSViewGroup.Gravity reminder3ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder3ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder3
@@ -880,7 +908,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder3Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder3
@@ -889,7 +917,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder3AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder3
@@ -898,12 +926,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder3CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder3
 	)
 	default int reminder3CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder3PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder3
+	)
+	default int reminder3PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder3ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder3
+	)
+	default Color reminder3ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder3PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder3
+	)
+	default TextSize reminder3PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder4",
@@ -1103,17 +1160,8 @@ public interface RemindersConfig extends Config {
 	default int reminder4PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder4ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder4
-	)
-	default RSViewGroup.Gravity reminder4ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder4ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder4
@@ -1131,7 +1179,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder4Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder4
@@ -1140,7 +1188,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder4AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder4
@@ -1149,12 +1197,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder4CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder4
 	)
 	default int reminder4CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder4PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder4
+	)
+	default int reminder4PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder4ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder4
+	)
+	default Color reminder4ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder4PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder4
+	)
+	default TextSize reminder4PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder5",
@@ -1354,17 +1431,8 @@ public interface RemindersConfig extends Config {
 	default int reminder5PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder5ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder5
-	)
-	default RSViewGroup.Gravity reminder5ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder5ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder5
@@ -1382,7 +1450,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder5Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder5
@@ -1391,7 +1459,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder5AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder5
@@ -1400,12 +1468,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder5CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder5
 	)
 	default int reminder5CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder5PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder5
+	)
+	default int reminder5PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder5ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder5
+	)
+	default Color reminder5ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder5PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder5
+	)
+	default TextSize reminder5PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder6",
@@ -1605,17 +1702,8 @@ public interface RemindersConfig extends Config {
 	default int reminder6PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder6ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder6
-	)
-	default RSViewGroup.Gravity reminder6ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder6ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder6
@@ -1633,7 +1721,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder6Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder6
@@ -1642,7 +1730,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder6AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder6
@@ -1651,12 +1739,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder6CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder6
 	)
 	default int reminder6CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder6PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder6
+	)
+	default int reminder6PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder6ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder6
+	)
+	default Color reminder6ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder6PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder6
+	)
+	default TextSize reminder6PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder7",
@@ -1856,17 +1973,8 @@ public interface RemindersConfig extends Config {
 	default int reminder7PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder7ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder7
-	)
-	default RSViewGroup.Gravity reminder7ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder7ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder7
@@ -1884,7 +1992,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder7Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder7
@@ -1893,7 +2001,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder7AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder7
@@ -1902,12 +2010,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder7CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder7
 	)
 	default int reminder7CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder7PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder7
+	)
+	default int reminder7PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder7ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder7
+	)
+	default Color reminder7ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder7PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder7
+	)
+	default TextSize reminder7PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder8",
@@ -2107,17 +2244,8 @@ public interface RemindersConfig extends Config {
 	default int reminder8PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder8ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder8
-	)
-	default RSViewGroup.Gravity reminder8ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder8ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder8
@@ -2135,7 +2263,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder8Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder8
@@ -2144,7 +2272,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder8AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder8
@@ -2153,12 +2281,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder8CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder8
 	)
 	default int reminder8CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder8PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder8
+	)
+	default int reminder8PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder8ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder8
+	)
+	default Color reminder8ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder8PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder8
+	)
+	default TextSize reminder8PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder9",
@@ -2358,17 +2515,8 @@ public interface RemindersConfig extends Config {
 	default int reminder9PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder9ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder9
-	)
-	default RSViewGroup.Gravity reminder9ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder9ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder9
@@ -2386,7 +2534,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder9Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder9
@@ -2395,7 +2543,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder9AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder9
@@ -2404,12 +2552,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder9CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder9
 	)
 	default int reminder9CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder9PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder9
+	)
+	default int reminder9PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder9ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder9
+	)
+	default Color reminder9ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder9PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder9
+	)
+	default TextSize reminder9PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder10",
@@ -2609,17 +2786,8 @@ public interface RemindersConfig extends Config {
 	default int reminder10PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder10ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder10
-	)
-	default RSViewGroup.Gravity reminder10ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder10ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder10
@@ -2637,7 +2805,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder10Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder10
@@ -2646,7 +2814,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder10AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder10
@@ -2655,12 +2823,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder10CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder10
 	)
 	default int reminder10CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder10PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder10
+	)
+	default int reminder10PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder10ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder10
+	)
+	default Color reminder10ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder10PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder10
+	)
+	default TextSize reminder10PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder11",
@@ -2860,17 +3057,8 @@ public interface RemindersConfig extends Config {
 	default int reminder11PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder11ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder11
-	)
-	default RSViewGroup.Gravity reminder11ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder11ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder11
@@ -2888,7 +3076,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder11Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder11
@@ -2897,7 +3085,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder11AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder11
@@ -2906,12 +3094,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder11CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder11
 	)
 	default int reminder11CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder11PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder11
+	)
+	default int reminder11PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder11ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder11
+	)
+	default Color reminder11ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder11PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder11
+	)
+	default TextSize reminder11PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder12",
@@ -3111,17 +3328,8 @@ public interface RemindersConfig extends Config {
 	default int reminder12PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder12ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder12
-	)
-	default RSViewGroup.Gravity reminder12ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder12ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder12
@@ -3139,7 +3347,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder12Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder12
@@ -3148,7 +3356,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder12AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder12
@@ -3157,12 +3365,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder12CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder12
 	)
 	default int reminder12CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder12PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder12
+	)
+	default int reminder12PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder12ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder12
+	)
+	default Color reminder12ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder12PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder12
+	)
+	default TextSize reminder12PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder13",
@@ -3362,17 +3599,8 @@ public interface RemindersConfig extends Config {
 	default int reminder13PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder13ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder13
-	)
-	default RSViewGroup.Gravity reminder13ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder13ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder13
@@ -3390,7 +3618,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder13Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder13
@@ -3399,7 +3627,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder13AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder13
@@ -3408,12 +3636,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder13CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder13
 	)
 	default int reminder13CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder13PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder13
+	)
+	default int reminder13PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder13ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder13
+	)
+	default Color reminder13ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder13PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder13
+	)
+	default TextSize reminder13PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder14",
@@ -3613,17 +3870,8 @@ public interface RemindersConfig extends Config {
 	default int reminder14PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder14ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder14
-	)
-	default RSViewGroup.Gravity reminder14ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder14ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder14
@@ -3641,7 +3889,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder14Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder14
@@ -3650,7 +3898,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder14AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder14
@@ -3659,12 +3907,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder14CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder14
 	)
 	default int reminder14CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder14PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder14
+	)
+	default int reminder14PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder14ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder14
+	)
+	default Color reminder14ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder14PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder14
+	)
+	default TextSize reminder14PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder15",
@@ -3864,17 +4141,8 @@ public interface RemindersConfig extends Config {
 	default int reminder15PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder15ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder15
-	)
-	default RSViewGroup.Gravity reminder15ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder15ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder15
@@ -3892,7 +4160,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder15Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder15
@@ -3901,7 +4169,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder15AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder15
@@ -3910,12 +4178,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder15CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder15
 	)
 	default int reminder15CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder15PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder15
+	)
+	default int reminder15PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder15ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder15
+	)
+	default Color reminder15ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder15PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder15
+	)
+	default TextSize reminder15PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder16",
@@ -4115,17 +4412,8 @@ public interface RemindersConfig extends Config {
 	default int reminder16PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder16ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder16
-	)
-	default RSViewGroup.Gravity reminder16ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder16ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder16
@@ -4143,7 +4431,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder16Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder16
@@ -4152,7 +4440,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder16AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder16
@@ -4161,12 +4449,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder16CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder16
 	)
 	default int reminder16CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder16PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder16
+	)
+	default int reminder16PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder16ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder16
+	)
+	default Color reminder16ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder16PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder16
+	)
+	default TextSize reminder16PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder17",
@@ -4366,17 +4683,8 @@ public interface RemindersConfig extends Config {
 	default int reminder17PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder17ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder17
-	)
-	default RSViewGroup.Gravity reminder17ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder17ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder17
@@ -4394,7 +4702,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder17Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder17
@@ -4403,7 +4711,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder17AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder17
@@ -4412,12 +4720,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder17CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder17
 	)
 	default int reminder17CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder17PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder17
+	)
+	default int reminder17PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder17ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder17
+	)
+	default Color reminder17ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder17PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder17
+	)
+	default TextSize reminder17PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder18",
@@ -4617,17 +4954,8 @@ public interface RemindersConfig extends Config {
 	default int reminder18PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder18ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder18
-	)
-	default RSViewGroup.Gravity reminder18ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder18ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder18
@@ -4645,7 +4973,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder18Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder18
@@ -4654,7 +4982,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder18AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder18
@@ -4663,12 +4991,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder18CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder18
 	)
 	default int reminder18CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder18PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder18
+	)
+	default int reminder18PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder18ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder18
+	)
+	default Color reminder18ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder18PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder18
+	)
+	default TextSize reminder18PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder19",
@@ -4868,17 +5225,8 @@ public interface RemindersConfig extends Config {
 	default int reminder19PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder19ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder19
-	)
-	default RSViewGroup.Gravity reminder19ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder19ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder19
@@ -4896,7 +5244,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder19Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder19
@@ -4905,7 +5253,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder19AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder19
@@ -4914,12 +5262,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder19CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder19
 	)
 	default int reminder19CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder19PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder19
+	)
+	default int reminder19PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder19ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder19
+	)
+	default Color reminder19ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder19PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder19
+	)
+	default TextSize reminder19PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder20",
@@ -5119,17 +5496,8 @@ public interface RemindersConfig extends Config {
 	default int reminder20PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder20ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder20
-	)
-	default RSViewGroup.Gravity reminder20ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder20ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder20
@@ -5147,7 +5515,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder20Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder20
@@ -5156,7 +5524,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder20AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder20
@@ -5165,12 +5533,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder20CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder20
 	)
 	default int reminder20CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder20PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder20
+	)
+	default int reminder20PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder20ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder20
+	)
+	default Color reminder20ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder20PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder20
+	)
+	default TextSize reminder20PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder21",
@@ -5370,17 +5767,8 @@ public interface RemindersConfig extends Config {
 	default int reminder21PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder21ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder21
-	)
-	default RSViewGroup.Gravity reminder21ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder21ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder21
@@ -5398,7 +5786,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder21Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder21
@@ -5407,7 +5795,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder21AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder21
@@ -5416,12 +5804,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder21CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder21
 	)
 	default int reminder21CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder21PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder21
+	)
+	default int reminder21PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder21ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder21
+	)
+	default Color reminder21ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder21PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder21
+	)
+	default TextSize reminder21PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder22",
@@ -5621,17 +6038,8 @@ public interface RemindersConfig extends Config {
 	default int reminder22PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder22ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder22
-	)
-	default RSViewGroup.Gravity reminder22ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder22ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder22
@@ -5649,7 +6057,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder22Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder22
@@ -5658,7 +6066,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder22AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder22
@@ -5667,12 +6075,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder22CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder22
 	)
 	default int reminder22CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder22PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder22
+	)
+	default int reminder22PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder22ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder22
+	)
+	default Color reminder22ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder22PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder22
+	)
+	default TextSize reminder22PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder23",
@@ -5872,17 +6309,8 @@ public interface RemindersConfig extends Config {
 	default int reminder23PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder23ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder23
-	)
-	default RSViewGroup.Gravity reminder23ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder23ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder23
@@ -5900,7 +6328,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder23Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder23
@@ -5909,7 +6337,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder23AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder23
@@ -5918,12 +6346,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder23CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder23
 	)
 	default int reminder23CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder23PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder23
+	)
+	default int reminder23PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder23ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder23
+	)
+	default Color reminder23ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder23PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder23
+	)
+	default TextSize reminder23PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder24",
@@ -6123,17 +6580,8 @@ public interface RemindersConfig extends Config {
 	default int reminder24PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder24ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder24
-	)
-	default RSViewGroup.Gravity reminder24ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder24ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder24
@@ -6151,7 +6599,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder24Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder24
@@ -6160,7 +6608,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder24AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder24
@@ -6169,12 +6617,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder24CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder24
 	)
 	default int reminder24CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder24PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder24
+	)
+	default int reminder24PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder24ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder24
+	)
+	default Color reminder24ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder24PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder24
+	)
+	default TextSize reminder24PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder25",
@@ -6374,17 +6851,8 @@ public interface RemindersConfig extends Config {
 	default int reminder25PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder25ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder25
-	)
-	default RSViewGroup.Gravity reminder25ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder25ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder25
@@ -6402,7 +6870,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder25Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder25
@@ -6411,7 +6879,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder25AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder25
@@ -6420,12 +6888,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder25CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder25
 	)
 	default int reminder25CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder25PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder25
+	)
+	default int reminder25PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder25ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder25
+	)
+	default Color reminder25ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder25PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder25
+	)
+	default TextSize reminder25PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder26",
@@ -6625,17 +7122,8 @@ public interface RemindersConfig extends Config {
 	default int reminder26PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder26ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder26
-	)
-	default RSViewGroup.Gravity reminder26ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder26ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder26
@@ -6653,7 +7141,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder26Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder26
@@ -6662,7 +7150,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder26AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder26
@@ -6671,12 +7159,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder26CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder26
 	)
 	default int reminder26CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder26PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder26
+	)
+	default int reminder26PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder26ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder26
+	)
+	default Color reminder26ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder26PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder26
+	)
+	default TextSize reminder26PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder27",
@@ -6876,17 +7393,8 @@ public interface RemindersConfig extends Config {
 	default int reminder27PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder27ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder27
-	)
-	default RSViewGroup.Gravity reminder27ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder27ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder27
@@ -6904,7 +7412,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder27Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder27
@@ -6913,7 +7421,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder27AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder27
@@ -6922,12 +7430,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder27CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder27
 	)
 	default int reminder27CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder27PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder27
+	)
+	default int reminder27PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder27ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder27
+	)
+	default Color reminder27ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder27PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder27
+	)
+	default TextSize reminder27PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder28",
@@ -7127,17 +7664,8 @@ public interface RemindersConfig extends Config {
 	default int reminder28PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder28ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder28
-	)
-	default RSViewGroup.Gravity reminder28ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder28ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder28
@@ -7155,7 +7683,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder28Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder28
@@ -7164,7 +7692,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder28AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder28
@@ -7173,12 +7701,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder28CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder28
 	)
 	default int reminder28CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder28PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder28
+	)
+	default int reminder28PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder28ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder28
+	)
+	default Color reminder28ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder28PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder28
+	)
+	default TextSize reminder28PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder29",
@@ -7378,17 +7935,8 @@ public interface RemindersConfig extends Config {
 	default int reminder29PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder29ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder29
-	)
-	default RSViewGroup.Gravity reminder29ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder29ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder29
@@ -7406,7 +7954,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder29Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder29
@@ -7415,7 +7963,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder29AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder29
@@ -7424,12 +7972,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder29CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder29
 	)
 	default int reminder29CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder29PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder29
+	)
+	default int reminder29PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder29ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder29
+	)
+	default Color reminder29ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder29PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder29
+	)
+	default TextSize reminder29PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder30",
@@ -7629,17 +8206,8 @@ public interface RemindersConfig extends Config {
 	default int reminder30PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder30ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder30
-	)
-	default RSViewGroup.Gravity reminder30ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder30ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder30
@@ -7657,7 +8225,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder30Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder30
@@ -7666,7 +8234,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder30AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder30
@@ -7675,12 +8243,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder30CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder30
 	)
 	default int reminder30CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder30PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder30
+	)
+	default int reminder30PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder30ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder30
+	)
+	default Color reminder30ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder30PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder30
+	)
+	default TextSize reminder30PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder31",
@@ -7880,17 +8477,8 @@ public interface RemindersConfig extends Config {
 	default int reminder31PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder31ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder31
-	)
-	default RSViewGroup.Gravity reminder31ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder31ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder31
@@ -7908,7 +8496,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder31Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder31
@@ -7917,7 +8505,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder31AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder31
@@ -7926,12 +8514,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder31CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder31
 	)
 	default int reminder31CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder31PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder31
+	)
+	default int reminder31PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder31ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder31
+	)
+	default Color reminder31ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder31PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder31
+	)
+	default TextSize reminder31PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder32",
@@ -8131,17 +8748,8 @@ public interface RemindersConfig extends Config {
 	default int reminder32PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder32ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder32
-	)
-	default RSViewGroup.Gravity reminder32ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder32ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder32
@@ -8159,7 +8767,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder32Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder32
@@ -8168,7 +8776,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder32AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder32
@@ -8177,12 +8785,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder32CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder32
 	)
 	default int reminder32CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder32PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder32
+	)
+	default int reminder32PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder32ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder32
+	)
+	default Color reminder32ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder32PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder32
+	)
+	default TextSize reminder32PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder33",
@@ -8382,17 +9019,8 @@ public interface RemindersConfig extends Config {
 	default int reminder33PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder33ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder33
-	)
-	default RSViewGroup.Gravity reminder33ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder33ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder33
@@ -8410,7 +9038,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder33Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder33
@@ -8419,7 +9047,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder33AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder33
@@ -8428,12 +9056,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder33CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder33
 	)
 	default int reminder33CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder33PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder33
+	)
+	default int reminder33PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder33ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder33
+	)
+	default Color reminder33ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder33PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder33
+	)
+	default TextSize reminder33PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder34",
@@ -8633,17 +9290,8 @@ public interface RemindersConfig extends Config {
 	default int reminder34PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder34ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder34
-	)
-	default RSViewGroup.Gravity reminder34ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder34ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder34
@@ -8661,7 +9309,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder34Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder34
@@ -8670,7 +9318,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder34AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder34
@@ -8679,12 +9327,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder34CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder34
 	)
 	default int reminder34CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder34PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder34
+	)
+	default int reminder34PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder34ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder34
+	)
+	default Color reminder34ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder34PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder34
+	)
+	default TextSize reminder34PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder35",
@@ -8884,17 +9561,8 @@ public interface RemindersConfig extends Config {
 	default int reminder35PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder35ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder35
-	)
-	default RSViewGroup.Gravity reminder35ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder35ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder35
@@ -8912,7 +9580,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder35Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder35
@@ -8921,7 +9589,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder35AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder35
@@ -8930,12 +9598,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder35CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder35
 	)
 	default int reminder35CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder35PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder35
+	)
+	default int reminder35PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder35ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder35
+	)
+	default Color reminder35ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder35PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder35
+	)
+	default TextSize reminder35PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder36",
@@ -9135,17 +9832,8 @@ public interface RemindersConfig extends Config {
 	default int reminder36PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder36ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder36
-	)
-	default RSViewGroup.Gravity reminder36ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder36ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder36
@@ -9163,7 +9851,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder36Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder36
@@ -9172,7 +9860,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder36AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder36
@@ -9181,12 +9869,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder36CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder36
 	)
 	default int reminder36CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder36PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder36
+	)
+	default int reminder36PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder36ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder36
+	)
+	default Color reminder36ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder36PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder36
+	)
+	default TextSize reminder36PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder37",
@@ -9386,17 +10103,8 @@ public interface RemindersConfig extends Config {
 	default int reminder37PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder37ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder37
-	)
-	default RSViewGroup.Gravity reminder37ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder37ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder37
@@ -9414,7 +10122,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder37Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder37
@@ -9423,7 +10131,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder37AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder37
@@ -9432,12 +10140,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder37CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder37
 	)
 	default int reminder37CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder37PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder37
+	)
+	default int reminder37PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder37ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder37
+	)
+	default Color reminder37ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder37PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder37
+	)
+	default TextSize reminder37PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder38",
@@ -9637,17 +10374,8 @@ public interface RemindersConfig extends Config {
 	default int reminder38PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder38ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder38
-	)
-	default RSViewGroup.Gravity reminder38ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder38ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder38
@@ -9665,7 +10393,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder38Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder38
@@ -9674,7 +10402,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder38AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder38
@@ -9683,12 +10411,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder38CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder38
 	)
 	default int reminder38CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder38PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder38
+	)
+	default int reminder38PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder38ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder38
+	)
+	default Color reminder38ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder38PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder38
+	)
+	default TextSize reminder38PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder39",
@@ -9888,17 +10645,8 @@ public interface RemindersConfig extends Config {
 	default int reminder39PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder39ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder39
-	)
-	default RSViewGroup.Gravity reminder39ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder39ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder39
@@ -9916,7 +10664,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder39Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder39
@@ -9925,7 +10673,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder39AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder39
@@ -9934,12 +10682,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder39CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder39
 	)
 	default int reminder39CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder39PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder39
+	)
+	default int reminder39PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder39ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder39
+	)
+	default Color reminder39ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder39PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder39
+	)
+	default TextSize reminder39PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder40",
@@ -10139,17 +10916,8 @@ public interface RemindersConfig extends Config {
 	default int reminder40PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder40ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder40
-	)
-	default RSViewGroup.Gravity reminder40ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder40ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder40
@@ -10167,7 +10935,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder40Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder40
@@ -10176,7 +10944,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder40AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder40
@@ -10185,12 +10953,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder40CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder40
 	)
 	default int reminder40CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder40PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder40
+	)
+	default int reminder40PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder40ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder40
+	)
+	default Color reminder40ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder40PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder40
+	)
+	default TextSize reminder40PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder41",
@@ -10390,17 +11187,8 @@ public interface RemindersConfig extends Config {
 	default int reminder41PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder41ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder41
-	)
-	default RSViewGroup.Gravity reminder41ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder41ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder41
@@ -10418,7 +11206,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder41Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder41
@@ -10427,7 +11215,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder41AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder41
@@ -10436,12 +11224,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder41CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder41
 	)
 	default int reminder41CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder41PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder41
+	)
+	default int reminder41PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder41ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder41
+	)
+	default Color reminder41ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder41PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder41
+	)
+	default TextSize reminder41PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder42",
@@ -10641,17 +11458,8 @@ public interface RemindersConfig extends Config {
 	default int reminder42PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder42ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder42
-	)
-	default RSViewGroup.Gravity reminder42ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder42ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder42
@@ -10669,7 +11477,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder42Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder42
@@ -10678,7 +11486,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder42AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder42
@@ -10687,12 +11495,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder42CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder42
 	)
 	default int reminder42CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder42PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder42
+	)
+	default int reminder42PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder42ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder42
+	)
+	default Color reminder42ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder42PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder42
+	)
+	default TextSize reminder42PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder43",
@@ -10892,17 +11729,8 @@ public interface RemindersConfig extends Config {
 	default int reminder43PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder43ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder43
-	)
-	default RSViewGroup.Gravity reminder43ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder43ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder43
@@ -10920,7 +11748,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder43Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder43
@@ -10929,7 +11757,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder43AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder43
@@ -10938,12 +11766,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder43CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder43
 	)
 	default int reminder43CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder43PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder43
+	)
+	default int reminder43PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder43ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder43
+	)
+	default Color reminder43ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder43PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder43
+	)
+	default TextSize reminder43PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder44",
@@ -11143,17 +12000,8 @@ public interface RemindersConfig extends Config {
 	default int reminder44PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder44ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder44
-	)
-	default RSViewGroup.Gravity reminder44ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder44ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder44
@@ -11171,7 +12019,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder44Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder44
@@ -11180,7 +12028,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder44AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder44
@@ -11189,12 +12037,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder44CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder44
 	)
 	default int reminder44CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder44PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder44
+	)
+	default int reminder44PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder44ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder44
+	)
+	default Color reminder44ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder44PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder44
+	)
+	default TextSize reminder44PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder45",
@@ -11394,17 +12271,8 @@ public interface RemindersConfig extends Config {
 	default int reminder45PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder45ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder45
-	)
-	default RSViewGroup.Gravity reminder45ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder45ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder45
@@ -11422,7 +12290,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder45Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder45
@@ -11431,7 +12299,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder45AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder45
@@ -11440,12 +12308,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder45CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder45
 	)
 	default int reminder45CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder45PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder45
+	)
+	default int reminder45PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder45ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder45
+	)
+	default Color reminder45ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder45PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder45
+	)
+	default TextSize reminder45PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder46",
@@ -11645,17 +12542,8 @@ public interface RemindersConfig extends Config {
 	default int reminder46PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder46ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder46
-	)
-	default RSViewGroup.Gravity reminder46ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder46ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder46
@@ -11673,7 +12561,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder46Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder46
@@ -11682,7 +12570,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder46AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder46
@@ -11691,12 +12579,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder46CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder46
 	)
 	default int reminder46CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder46PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder46
+	)
+	default int reminder46PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder46ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder46
+	)
+	default Color reminder46ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder46PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder46
+	)
+	default TextSize reminder46PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder47",
@@ -11896,17 +12813,8 @@ public interface RemindersConfig extends Config {
 	default int reminder47PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder47ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder47
-	)
-	default RSViewGroup.Gravity reminder47ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder47ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder47
@@ -11924,7 +12832,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder47Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder47
@@ -11933,7 +12841,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder47AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder47
@@ -11942,12 +12850,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder47CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder47
 	)
 	default int reminder47CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder47PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder47
+	)
+	default int reminder47PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder47ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder47
+	)
+	default Color reminder47ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder47PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder47
+	)
+	default TextSize reminder47PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder48",
@@ -12147,17 +13084,8 @@ public interface RemindersConfig extends Config {
 	default int reminder48PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder48ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder48
-	)
-	default RSViewGroup.Gravity reminder48ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder48ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder48
@@ -12175,7 +13103,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder48Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder48
@@ -12184,7 +13112,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder48AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder48
@@ -12193,12 +13121,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder48CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder48
 	)
 	default int reminder48CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder48PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder48
+	)
+	default int reminder48PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder48ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder48
+	)
+	default Color reminder48ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder48PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder48
+	)
+	default TextSize reminder48PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder49",
@@ -12398,17 +13355,8 @@ public interface RemindersConfig extends Config {
 	default int reminder49PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder49ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder49
-	)
-	default RSViewGroup.Gravity reminder49ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder49ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder49
@@ -12426,7 +13374,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder49Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder49
@@ -12435,7 +13383,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder49AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder49
@@ -12444,12 +13392,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder49CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder49
 	)
 	default int reminder49CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder49PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder49
+	)
+	default int reminder49PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder49ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder49
+	)
+	default Color reminder49ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder49PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder49
+	)
+	default TextSize reminder49PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder50",
@@ -12649,17 +13626,8 @@ public interface RemindersConfig extends Config {
 	default int reminder50PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder50ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder50
-	)
-	default RSViewGroup.Gravity reminder50ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder50ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder50
@@ -12677,7 +13645,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder50Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder50
@@ -12686,7 +13654,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder50AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder50
@@ -12695,12 +13663,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder50CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder50
 	)
 	default int reminder50CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder50PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder50
+	)
+	default int reminder50PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder50ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder50
+	)
+	default Color reminder50ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder50PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder50
+	)
+	default TextSize reminder50PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder51",
@@ -12900,17 +13897,8 @@ public interface RemindersConfig extends Config {
 	default int reminder51PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder51ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder51
-	)
-	default RSViewGroup.Gravity reminder51ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder51ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder51
@@ -12928,7 +13916,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder51Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder51
@@ -12937,7 +13925,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder51AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder51
@@ -12946,12 +13934,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder51CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder51
 	)
 	default int reminder51CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder51PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder51
+	)
+	default int reminder51PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder51ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder51
+	)
+	default Color reminder51ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder51PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder51
+	)
+	default TextSize reminder51PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder52",
@@ -13151,17 +14168,8 @@ public interface RemindersConfig extends Config {
 	default int reminder52PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder52ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder52
-	)
-	default RSViewGroup.Gravity reminder52ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder52ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder52
@@ -13179,7 +14187,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder52Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder52
@@ -13188,7 +14196,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder52AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder52
@@ -13197,12 +14205,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder52CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder52
 	)
 	default int reminder52CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder52PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder52
+	)
+	default int reminder52PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder52ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder52
+	)
+	default Color reminder52ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder52PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder52
+	)
+	default TextSize reminder52PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder53",
@@ -13402,17 +14439,8 @@ public interface RemindersConfig extends Config {
 	default int reminder53PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder53ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder53
-	)
-	default RSViewGroup.Gravity reminder53ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder53ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder53
@@ -13430,7 +14458,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder53Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder53
@@ -13439,7 +14467,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder53AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder53
@@ -13448,12 +14476,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder53CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder53
 	)
 	default int reminder53CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder53PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder53
+	)
+	default int reminder53PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder53ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder53
+	)
+	default Color reminder53ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder53PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder53
+	)
+	default TextSize reminder53PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder54",
@@ -13653,17 +14710,8 @@ public interface RemindersConfig extends Config {
 	default int reminder54PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder54ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder54
-	)
-	default RSViewGroup.Gravity reminder54ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder54ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder54
@@ -13681,7 +14729,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder54Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder54
@@ -13690,7 +14738,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder54AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder54
@@ -13699,12 +14747,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder54CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder54
 	)
 	default int reminder54CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder54PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder54
+	)
+	default int reminder54PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder54ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder54
+	)
+	default Color reminder54ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder54PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder54
+	)
+	default TextSize reminder54PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder55",
@@ -13904,17 +14981,8 @@ public interface RemindersConfig extends Config {
 	default int reminder55PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder55ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder55
-	)
-	default RSViewGroup.Gravity reminder55ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder55ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder55
@@ -13932,7 +15000,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder55Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder55
@@ -13941,7 +15009,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder55AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder55
@@ -13950,12 +15018,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder55CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder55
 	)
 	default int reminder55CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder55PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder55
+	)
+	default int reminder55PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder55ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder55
+	)
+	default Color reminder55ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder55PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder55
+	)
+	default TextSize reminder55PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder56",
@@ -14155,17 +15252,8 @@ public interface RemindersConfig extends Config {
 	default int reminder56PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder56ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder56
-	)
-	default RSViewGroup.Gravity reminder56ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder56ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder56
@@ -14183,7 +15271,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder56Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder56
@@ -14192,7 +15280,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder56AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder56
@@ -14201,12 +15289,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder56CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder56
 	)
 	default int reminder56CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder56PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder56
+	)
+	default int reminder56PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder56ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder56
+	)
+	default Color reminder56ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder56PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder56
+	)
+	default TextSize reminder56PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder57",
@@ -14406,17 +15523,8 @@ public interface RemindersConfig extends Config {
 	default int reminder57PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder57ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder57
-	)
-	default RSViewGroup.Gravity reminder57ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder57ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder57
@@ -14434,7 +15542,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder57Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder57
@@ -14443,7 +15551,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder57AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder57
@@ -14452,12 +15560,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder57CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder57
 	)
 	default int reminder57CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder57PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder57
+	)
+	default int reminder57PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder57ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder57
+	)
+	default Color reminder57ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder57PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder57
+	)
+	default TextSize reminder57PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder58",
@@ -14657,17 +15794,8 @@ public interface RemindersConfig extends Config {
 	default int reminder58PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder58ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder58
-	)
-	default RSViewGroup.Gravity reminder58ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder58ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder58
@@ -14685,7 +15813,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder58Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder58
@@ -14694,7 +15822,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder58AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder58
@@ -14703,12 +15831,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder58CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder58
 	)
 	default int reminder58CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder58PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder58
+	)
+	default int reminder58PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder58ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder58
+	)
+	default Color reminder58ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder58PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder58
+	)
+	default TextSize reminder58PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder59",
@@ -14908,17 +16065,8 @@ public interface RemindersConfig extends Config {
 	default int reminder59PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder59ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder59
-	)
-	default RSViewGroup.Gravity reminder59ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder59ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder59
@@ -14936,7 +16084,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder59Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder59
@@ -14945,7 +16093,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder59AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder59
@@ -14954,12 +16102,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder59CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder59
 	)
 	default int reminder59CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder59PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder59
+	)
+	default int reminder59PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder59ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder59
+	)
+	default Color reminder59ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder59PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder59
+	)
+	default TextSize reminder59PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder60",
@@ -15159,17 +16336,8 @@ public interface RemindersConfig extends Config {
 	default int reminder60PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder60ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder60
-	)
-	default RSViewGroup.Gravity reminder60ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder60ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder60
@@ -15187,7 +16355,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder60Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder60
@@ -15196,7 +16364,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder60AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder60
@@ -15205,12 +16373,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder60CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder60
 	)
 	default int reminder60CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder60PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder60
+	)
+	default int reminder60PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder60ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder60
+	)
+	default Color reminder60ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder60PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder60
+	)
+	default TextSize reminder60PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder61",
@@ -15410,17 +16607,8 @@ public interface RemindersConfig extends Config {
 	default int reminder61PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder61ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder61
-	)
-	default RSViewGroup.Gravity reminder61ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder61ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder61
@@ -15438,7 +16626,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder61Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder61
@@ -15447,7 +16635,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder61AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder61
@@ -15456,12 +16644,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder61CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder61
 	)
 	default int reminder61CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder61PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder61
+	)
+	default int reminder61PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder61ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder61
+	)
+	default Color reminder61ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder61PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder61
+	)
+	default TextSize reminder61PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder62",
@@ -15661,17 +16878,8 @@ public interface RemindersConfig extends Config {
 	default int reminder62PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder62ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder62
-	)
-	default RSViewGroup.Gravity reminder62ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder62ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder62
@@ -15689,7 +16897,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder62Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder62
@@ -15698,7 +16906,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder62AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder62
@@ -15707,12 +16915,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder62CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder62
 	)
 	default int reminder62CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder62PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder62
+	)
+	default int reminder62PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder62ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder62
+	)
+	default Color reminder62ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder62PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder62
+	)
+	default TextSize reminder62PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder63",
@@ -15912,17 +17149,8 @@ public interface RemindersConfig extends Config {
 	default int reminder63PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder63ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder63
-	)
-	default RSViewGroup.Gravity reminder63ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder63ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder63
@@ -15940,7 +17168,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder63Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder63
@@ -15949,7 +17177,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder63AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder63
@@ -15958,12 +17186,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder63CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder63
 	)
 	default int reminder63CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder63PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder63
+	)
+	default int reminder63PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder63ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder63
+	)
+	default Color reminder63ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder63PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder63
+	)
+	default TextSize reminder63PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder64",
@@ -16163,17 +17420,8 @@ public interface RemindersConfig extends Config {
 	default int reminder64PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder64ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder64
-	)
-	default RSViewGroup.Gravity reminder64ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder64ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder64
@@ -16191,7 +17439,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder64Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder64
@@ -16200,7 +17448,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder64AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder64
@@ -16209,12 +17457,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder64CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder64
 	)
 	default int reminder64CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder64PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder64
+	)
+	default int reminder64PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder64ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder64
+	)
+	default Color reminder64ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder64PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder64
+	)
+	default TextSize reminder64PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder65",
@@ -16414,17 +17691,8 @@ public interface RemindersConfig extends Config {
 	default int reminder65PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder65ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder65
-	)
-	default RSViewGroup.Gravity reminder65ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder65ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder65
@@ -16442,7 +17710,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder65Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder65
@@ -16451,7 +17719,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder65AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder65
@@ -16460,12 +17728,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder65CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder65
 	)
 	default int reminder65CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder65PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder65
+	)
+	default int reminder65PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder65ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder65
+	)
+	default Color reminder65ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder65PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder65
+	)
+	default TextSize reminder65PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder66",
@@ -16665,17 +17962,8 @@ public interface RemindersConfig extends Config {
 	default int reminder66PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder66ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder66
-	)
-	default RSViewGroup.Gravity reminder66ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder66ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder66
@@ -16693,7 +17981,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder66Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder66
@@ -16702,7 +17990,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder66AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder66
@@ -16711,12 +17999,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder66CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder66
 	)
 	default int reminder66CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder66PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder66
+	)
+	default int reminder66PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder66ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder66
+	)
+	default Color reminder66ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder66PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder66
+	)
+	default TextSize reminder66PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder67",
@@ -16916,17 +18233,8 @@ public interface RemindersConfig extends Config {
 	default int reminder67PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder67ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder67
-	)
-	default RSViewGroup.Gravity reminder67ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder67ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder67
@@ -16944,7 +18252,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder67Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder67
@@ -16953,7 +18261,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder67AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder67
@@ -16962,12 +18270,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder67CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder67
 	)
 	default int reminder67CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder67PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder67
+	)
+	default int reminder67PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder67ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder67
+	)
+	default Color reminder67ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder67PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder67
+	)
+	default TextSize reminder67PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder68",
@@ -17167,17 +18504,8 @@ public interface RemindersConfig extends Config {
 	default int reminder68PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder68ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder68
-	)
-	default RSViewGroup.Gravity reminder68ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder68ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder68
@@ -17195,7 +18523,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder68Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder68
@@ -17204,7 +18532,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder68AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder68
@@ -17213,12 +18541,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder68CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder68
 	)
 	default int reminder68CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder68PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder68
+	)
+	default int reminder68PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder68ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder68
+	)
+	default Color reminder68ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder68PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder68
+	)
+	default TextSize reminder68PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder69",
@@ -17418,17 +18775,8 @@ public interface RemindersConfig extends Config {
 	default int reminder69PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder69ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder69
-	)
-	default RSViewGroup.Gravity reminder69ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder69ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder69
@@ -17446,7 +18794,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder69Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder69
@@ -17455,7 +18803,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder69AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder69
@@ -17464,12 +18812,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder69CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder69
 	)
 	default int reminder69CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder69PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder69
+	)
+	default int reminder69PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder69ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder69
+	)
+	default Color reminder69ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder69PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder69
+	)
+	default TextSize reminder69PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder70",
@@ -17669,17 +19046,8 @@ public interface RemindersConfig extends Config {
 	default int reminder70PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder70ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder70
-	)
-	default RSViewGroup.Gravity reminder70ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder70ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder70
@@ -17697,7 +19065,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder70Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder70
@@ -17706,7 +19074,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder70AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder70
@@ -17715,12 +19083,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder70CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder70
 	)
 	default int reminder70CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder70PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder70
+	)
+	default int reminder70PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder70ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder70
+	)
+	default Color reminder70ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder70PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder70
+	)
+	default TextSize reminder70PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder71",
@@ -17920,17 +19317,8 @@ public interface RemindersConfig extends Config {
 	default int reminder71PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder71ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder71
-	)
-	default RSViewGroup.Gravity reminder71ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder71ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder71
@@ -17948,7 +19336,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder71Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder71
@@ -17957,7 +19345,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder71AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder71
@@ -17966,12 +19354,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder71CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder71
 	)
 	default int reminder71CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder71PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder71
+	)
+	default int reminder71PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder71ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder71
+	)
+	default Color reminder71ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder71PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder71
+	)
+	default TextSize reminder71PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder72",
@@ -18171,17 +19588,8 @@ public interface RemindersConfig extends Config {
 	default int reminder72PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder72ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder72
-	)
-	default RSViewGroup.Gravity reminder72ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder72ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder72
@@ -18199,7 +19607,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder72Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder72
@@ -18208,7 +19616,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder72AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder72
@@ -18217,12 +19625,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder72CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder72
 	)
 	default int reminder72CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder72PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder72
+	)
+	default int reminder72PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder72ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder72
+	)
+	default Color reminder72ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder72PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder72
+	)
+	default TextSize reminder72PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder73",
@@ -18422,17 +19859,8 @@ public interface RemindersConfig extends Config {
 	default int reminder73PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder73ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder73
-	)
-	default RSViewGroup.Gravity reminder73ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder73ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder73
@@ -18450,7 +19878,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder73Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder73
@@ -18459,7 +19887,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder73AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder73
@@ -18468,12 +19896,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder73CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder73
 	)
 	default int reminder73CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder73PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder73
+	)
+	default int reminder73PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder73ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder73
+	)
+	default Color reminder73ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder73PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder73
+	)
+	default TextSize reminder73PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder74",
@@ -18673,17 +20130,8 @@ public interface RemindersConfig extends Config {
 	default int reminder74PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder74ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder74
-	)
-	default RSViewGroup.Gravity reminder74ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder74ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder74
@@ -18701,7 +20149,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder74Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder74
@@ -18710,7 +20158,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder74AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder74
@@ -18719,12 +20167,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder74CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder74
 	)
 	default int reminder74CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder74PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder74
+	)
+	default int reminder74PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder74ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder74
+	)
+	default Color reminder74ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder74PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder74
+	)
+	default TextSize reminder74PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder75",
@@ -18924,17 +20401,8 @@ public interface RemindersConfig extends Config {
 	default int reminder75PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder75ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder75
-	)
-	default RSViewGroup.Gravity reminder75ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder75ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder75
@@ -18952,7 +20420,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder75Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder75
@@ -18961,7 +20429,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder75AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder75
@@ -18970,12 +20438,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder75CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder75
 	)
 	default int reminder75CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder75PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder75
+	)
+	default int reminder75PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder75ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder75
+	)
+	default Color reminder75ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder75PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder75
+	)
+	default TextSize reminder75PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder76",
@@ -19175,17 +20672,8 @@ public interface RemindersConfig extends Config {
 	default int reminder76PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder76ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder76
-	)
-	default RSViewGroup.Gravity reminder76ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder76ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder76
@@ -19203,7 +20691,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder76Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder76
@@ -19212,7 +20700,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder76AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder76
@@ -19221,12 +20709,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder76CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder76
 	)
 	default int reminder76CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder76PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder76
+	)
+	default int reminder76PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder76ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder76
+	)
+	default Color reminder76ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder76PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder76
+	)
+	default TextSize reminder76PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder77",
@@ -19426,17 +20943,8 @@ public interface RemindersConfig extends Config {
 	default int reminder77PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder77ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder77
-	)
-	default RSViewGroup.Gravity reminder77ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder77ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder77
@@ -19454,7 +20962,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder77Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder77
@@ -19463,7 +20971,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder77AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder77
@@ -19472,12 +20980,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder77CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder77
 	)
 	default int reminder77CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder77PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder77
+	)
+	default int reminder77PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder77ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder77
+	)
+	default Color reminder77ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder77PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder77
+	)
+	default TextSize reminder77PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder78",
@@ -19677,17 +21214,8 @@ public interface RemindersConfig extends Config {
 	default int reminder78PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder78ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder78
-	)
-	default RSViewGroup.Gravity reminder78ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder78ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder78
@@ -19705,7 +21233,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder78Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder78
@@ -19714,7 +21242,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder78AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder78
@@ -19723,12 +21251,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder78CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder78
 	)
 	default int reminder78CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder78PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder78
+	)
+	default int reminder78PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder78ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder78
+	)
+	default Color reminder78ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder78PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder78
+	)
+	default TextSize reminder78PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder79",
@@ -19928,17 +21485,8 @@ public interface RemindersConfig extends Config {
 	default int reminder79PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder79ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder79
-	)
-	default RSViewGroup.Gravity reminder79ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder79ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder79
@@ -19956,7 +21504,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder79Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder79
@@ -19965,7 +21513,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder79AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder79
@@ -19974,12 +21522,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder79CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder79
 	)
 	default int reminder79CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder79PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder79
+	)
+	default int reminder79PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder79ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder79
+	)
+	default Color reminder79ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder79PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder79
+	)
+	default TextSize reminder79PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder80",
@@ -20179,17 +21756,8 @@ public interface RemindersConfig extends Config {
 	default int reminder80PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder80ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder80
-	)
-	default RSViewGroup.Gravity reminder80ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder80ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder80
@@ -20207,7 +21775,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder80Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder80
@@ -20216,7 +21784,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder80AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder80
@@ -20225,12 +21793,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder80CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder80
 	)
 	default int reminder80CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder80PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder80
+	)
+	default int reminder80PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder80ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder80
+	)
+	default Color reminder80ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder80PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder80
+	)
+	default TextSize reminder80PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder81",
@@ -20430,17 +22027,8 @@ public interface RemindersConfig extends Config {
 	default int reminder81PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder81ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder81
-	)
-	default RSViewGroup.Gravity reminder81ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder81ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder81
@@ -20458,7 +22046,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder81Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder81
@@ -20467,7 +22055,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder81AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder81
@@ -20476,12 +22064,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder81CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder81
 	)
 	default int reminder81CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder81PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder81
+	)
+	default int reminder81PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder81ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder81
+	)
+	default Color reminder81ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder81PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder81
+	)
+	default TextSize reminder81PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder82",
@@ -20681,17 +22298,8 @@ public interface RemindersConfig extends Config {
 	default int reminder82PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder82ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder82
-	)
-	default RSViewGroup.Gravity reminder82ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder82ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder82
@@ -20709,7 +22317,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder82Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder82
@@ -20718,7 +22326,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder82AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder82
@@ -20727,12 +22335,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder82CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder82
 	)
 	default int reminder82CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder82PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder82
+	)
+	default int reminder82PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder82ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder82
+	)
+	default Color reminder82ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder82PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder82
+	)
+	default TextSize reminder82PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder83",
@@ -20932,17 +22569,8 @@ public interface RemindersConfig extends Config {
 	default int reminder83PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder83ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder83
-	)
-	default RSViewGroup.Gravity reminder83ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder83ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder83
@@ -20960,7 +22588,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder83Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder83
@@ -20969,7 +22597,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder83AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder83
@@ -20978,12 +22606,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder83CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder83
 	)
 	default int reminder83CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder83PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder83
+	)
+	default int reminder83PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder83ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder83
+	)
+	default Color reminder83ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder83PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder83
+	)
+	default TextSize reminder83PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder84",
@@ -21183,17 +22840,8 @@ public interface RemindersConfig extends Config {
 	default int reminder84PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder84ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder84
-	)
-	default RSViewGroup.Gravity reminder84ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder84ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder84
@@ -21211,7 +22859,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder84Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder84
@@ -21220,7 +22868,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder84AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder84
@@ -21229,12 +22877,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder84CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder84
 	)
 	default int reminder84CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder84PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder84
+	)
+	default int reminder84PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder84ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder84
+	)
+	default Color reminder84ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder84PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder84
+	)
+	default TextSize reminder84PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder85",
@@ -21434,17 +23111,8 @@ public interface RemindersConfig extends Config {
 	default int reminder85PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder85ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder85
-	)
-	default RSViewGroup.Gravity reminder85ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder85ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder85
@@ -21462,7 +23130,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder85Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder85
@@ -21471,7 +23139,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder85AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder85
@@ -21480,12 +23148,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder85CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder85
 	)
 	default int reminder85CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder85PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder85
+	)
+	default int reminder85PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder85ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder85
+	)
+	default Color reminder85ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder85PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder85
+	)
+	default TextSize reminder85PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder86",
@@ -21685,17 +23382,8 @@ public interface RemindersConfig extends Config {
 	default int reminder86PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder86ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder86
-	)
-	default RSViewGroup.Gravity reminder86ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder86ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder86
@@ -21713,7 +23401,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder86Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder86
@@ -21722,7 +23410,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder86AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder86
@@ -21731,12 +23419,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder86CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder86
 	)
 	default int reminder86CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder86PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder86
+	)
+	default int reminder86PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder86ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder86
+	)
+	default Color reminder86ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder86PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder86
+	)
+	default TextSize reminder86PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder87",
@@ -21936,17 +23653,8 @@ public interface RemindersConfig extends Config {
 	default int reminder87PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder87ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder87
-	)
-	default RSViewGroup.Gravity reminder87ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder87ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder87
@@ -21964,7 +23672,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder87Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder87
@@ -21973,7 +23681,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder87AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder87
@@ -21982,12 +23690,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder87CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder87
 	)
 	default int reminder87CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder87PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder87
+	)
+	default int reminder87PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder87ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder87
+	)
+	default Color reminder87ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder87PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder87
+	)
+	default TextSize reminder87PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder88",
@@ -22187,17 +23924,8 @@ public interface RemindersConfig extends Config {
 	default int reminder88PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder88ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder88
-	)
-	default RSViewGroup.Gravity reminder88ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder88ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder88
@@ -22215,7 +23943,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder88Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder88
@@ -22224,7 +23952,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder88AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder88
@@ -22233,12 +23961,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder88CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder88
 	)
 	default int reminder88CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder88PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder88
+	)
+	default int reminder88PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder88ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder88
+	)
+	default Color reminder88ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder88PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder88
+	)
+	default TextSize reminder88PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder89",
@@ -22438,17 +24195,8 @@ public interface RemindersConfig extends Config {
 	default int reminder89PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder89ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder89
-	)
-	default RSViewGroup.Gravity reminder89ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder89ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder89
@@ -22466,7 +24214,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder89Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder89
@@ -22475,7 +24223,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder89AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder89
@@ -22484,12 +24232,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder89CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder89
 	)
 	default int reminder89CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder89PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder89
+	)
+	default int reminder89PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder89ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder89
+	)
+	default Color reminder89ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder89PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder89
+	)
+	default TextSize reminder89PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder90",
@@ -22689,17 +24466,8 @@ public interface RemindersConfig extends Config {
 	default int reminder90PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder90ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder90
-	)
-	default RSViewGroup.Gravity reminder90ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder90ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder90
@@ -22717,7 +24485,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder90Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder90
@@ -22726,7 +24494,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder90AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder90
@@ -22735,12 +24503,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder90CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder90
 	)
 	default int reminder90CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder90PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder90
+	)
+	default int reminder90PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder90ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder90
+	)
+	default Color reminder90ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder90PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder90
+	)
+	default TextSize reminder90PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder91",
@@ -22940,17 +24737,8 @@ public interface RemindersConfig extends Config {
 	default int reminder91PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder91ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder91
-	)
-	default RSViewGroup.Gravity reminder91ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder91ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder91
@@ -22968,7 +24756,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder91Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder91
@@ -22977,7 +24765,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder91AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder91
@@ -22986,12 +24774,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder91CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder91
 	)
 	default int reminder91CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder91PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder91
+	)
+	default int reminder91PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder91ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder91
+	)
+	default Color reminder91ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder91PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder91
+	)
+	default TextSize reminder91PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder92",
@@ -23191,17 +25008,8 @@ public interface RemindersConfig extends Config {
 	default int reminder92PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder92ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder92
-	)
-	default RSViewGroup.Gravity reminder92ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder92ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder92
@@ -23219,7 +25027,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder92Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder92
@@ -23228,7 +25036,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder92AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder92
@@ -23237,12 +25045,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder92CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder92
 	)
 	default int reminder92CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder92PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder92
+	)
+	default int reminder92PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder92ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder92
+	)
+	default Color reminder92ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder92PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder92
+	)
+	default TextSize reminder92PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder93",
@@ -23442,17 +25279,8 @@ public interface RemindersConfig extends Config {
 	default int reminder93PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder93ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder93
-	)
-	default RSViewGroup.Gravity reminder93ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder93ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder93
@@ -23470,7 +25298,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder93Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder93
@@ -23479,7 +25307,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder93AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder93
@@ -23488,12 +25316,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder93CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder93
 	)
 	default int reminder93CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder93PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder93
+	)
+	default int reminder93PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder93ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder93
+	)
+	default Color reminder93ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder93PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder93
+	)
+	default TextSize reminder93PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder94",
@@ -23693,17 +25550,8 @@ public interface RemindersConfig extends Config {
 	default int reminder94PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder94ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder94
-	)
-	default RSViewGroup.Gravity reminder94ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder94ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder94
@@ -23721,7 +25569,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder94Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder94
@@ -23730,7 +25578,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder94AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder94
@@ -23739,12 +25587,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder94CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder94
 	)
 	default int reminder94CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder94PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder94
+	)
+	default int reminder94PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder94ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder94
+	)
+	default Color reminder94ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder94PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder94
+	)
+	default TextSize reminder94PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder95",
@@ -23944,17 +25821,8 @@ public interface RemindersConfig extends Config {
 	default int reminder95PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder95ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder95
-	)
-	default RSViewGroup.Gravity reminder95ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder95ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder95
@@ -23972,7 +25840,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder95Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder95
@@ -23981,7 +25849,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder95AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder95
@@ -23990,12 +25858,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder95CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder95
 	)
 	default int reminder95CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder95PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder95
+	)
+	default int reminder95PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder95ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder95
+	)
+	default Color reminder95ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder95PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder95
+	)
+	default TextSize reminder95PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder96",
@@ -24195,17 +26092,8 @@ public interface RemindersConfig extends Config {
 	default int reminder96PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder96ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder96
-	)
-	default RSViewGroup.Gravity reminder96ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder96ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder96
@@ -24223,7 +26111,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder96Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder96
@@ -24232,7 +26120,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder96AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder96
@@ -24241,12 +26129,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder96CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder96
 	)
 	default int reminder96CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder96PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder96
+	)
+	default int reminder96PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder96ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder96
+	)
+	default Color reminder96ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder96PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder96
+	)
+	default TextSize reminder96PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder97",
@@ -24446,17 +26363,8 @@ public interface RemindersConfig extends Config {
 	default int reminder97PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder97ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder97
-	)
-	default RSViewGroup.Gravity reminder97ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder97ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder97
@@ -24474,7 +26382,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder97Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder97
@@ -24483,7 +26391,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder97AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder97
@@ -24492,12 +26400,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder97CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder97
 	)
 	default int reminder97CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder97PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder97
+	)
+	default int reminder97PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder97ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder97
+	)
+	default Color reminder97ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder97PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder97
+	)
+	default TextSize reminder97PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder98",
@@ -24697,17 +26634,8 @@ public interface RemindersConfig extends Config {
 	default int reminder98PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder98ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder98
-	)
-	default RSViewGroup.Gravity reminder98ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder98ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder98
@@ -24725,7 +26653,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder98Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder98
@@ -24734,7 +26662,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder98AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder98
@@ -24743,12 +26671,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder98CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder98
 	)
 	default int reminder98CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder98PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder98
+	)
+	default int reminder98PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder98ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder98
+	)
+	default Color reminder98ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder98PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder98
+	)
+	default TextSize reminder98PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder99",
@@ -24948,17 +26905,8 @@ public interface RemindersConfig extends Config {
 	default int reminder99PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder99ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder99
-	)
-	default RSViewGroup.Gravity reminder99ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder99ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder99
@@ -24976,7 +26924,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder99Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder99
@@ -24985,7 +26933,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder99AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder99
@@ -24994,12 +26942,41 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder99CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder99
 	)
 	default int reminder99CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder99PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder99
+	)
+	default int reminder99PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder99ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder99
+	)
+	default Color reminder99ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder99PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder99
+	)
+	default TextSize reminder99PanelTextSize() { return TextSize.SMALL; }
 
 	@ConfigSection(
 			name = "Reminder100",
@@ -25199,17 +27176,8 @@ public interface RemindersConfig extends Config {
 	default int reminder100PanelAnchorY() { return 0; }
 
 	@ConfigItem(
-			keyName = "Reminder100ImageAlignment",
-			position = 11,
-			name = "Image Alignment",
-			description = "Configures the image alignment.",
-			section = reminder100
-	)
-	default RSViewGroup.Gravity reminder100ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
-
-	@ConfigItem(
 			keyName = "Reminder100ImageId",
-			position = 12,
+			position = 14,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder100
@@ -25227,7 +27195,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder100Animate",
-			position = 14,
+			position = 16,
 			name = "Animate",
 			description = "Configures whether or not to animate.",
 			section = reminder100
@@ -25236,7 +27204,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder100AnimationType",
-			position = 15,
+			position = 17,
 			name = "Animation Type",
 			description = "Configures the animation type.",
 			section = reminder100
@@ -25245,10 +27213,39 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder100CycleDuration",
-			position = 16,
-			name = "Cycle Duration",
+			position = 18,
+			name = "Animation Duration",
 			description = "Configures the cycle duration for animation.",
 			section = reminder100
 	)
 	default int reminder100CycleDuration() { return 2; }
+
+	@ConfigItem(
+			keyName = "Reminder100PanelWidth",
+			position = 11,
+			name = "Panel Width",
+			description = "Configures width for panel.",
+			section = reminder100
+	)
+	default int reminder100PanelWidth() { return 140; }
+
+	@Alpha
+	@ConfigItem(
+			keyName = "Reminder100ImageBackgroundColor",
+			position = 15,
+			name = "Image Background Color",
+			description = "Configures the background color for image.",
+			section = reminder100
+	)
+	default Color reminder100ImageBgColor() { return new Color(0, 0, 0, 0); }
+
+
+	@ConfigItem(
+			keyName = "Reminder100PanelTextSize",
+			position = 12,
+			name = "Panel Text Size",
+			description = "Configures the text Size.",
+			section = reminder100
+	)
+	default TextSize reminder100PanelTextSize() { return TextSize.SMALL; }
 }

@@ -115,19 +115,7 @@ class RemindersOverlay extends RSViewOverlay {
 
 		long start = Instant.now().toEpochMilli();
 
-		TextSize textSize = config.textSize();
-		if (textSize == TextSize.SMALL)
-		{
-			font = FontManager.getRunescapeSmallFont();
-		}
-		else if (textSize == TextSize.LARGE)
-		{
-			font = FontManager.getRunescapeFont();
-		}
-		else
-		{
-			font = FontManager.getRunescapeBoldFont();
-		}
+		font = fontForTextSize(config.textSize());
 
 		int panelWidth = config.width();
 
@@ -200,7 +188,7 @@ class RemindersOverlay extends RSViewOverlay {
 				BufferedImage image = itemManager.getImage(imageId);
 				if (image != null)
 				{
-					int imageWidth = 0;
+					int imageWidth;
 					if (config.textSize() == TextSize.SMALL)
 					{
 						imageWidth = 24;
@@ -211,7 +199,8 @@ class RemindersOverlay extends RSViewOverlay {
 					}
 
 					image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
-					rightText.setImage(image, imageWidth, imageWidth, plugin.getImageAlignment(reminder.id));
+					rightText.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
+					rightText.setImageBgColor(plugin.getImageBgColor(reminder.id));
 				}
 			}
 
@@ -244,12 +233,13 @@ class RemindersOverlay extends RSViewOverlay {
 	{
 		String text = reminder.text;
 
-		RSRow panel = new RSRow(10, 120, config.width(), RSView.WRAP_CONTENT);
+		RSRow panel = new RSRow(10, 120, plugin.getPanelWidth(reminder.id), RSView.WRAP_CONTENT);
 		panel.setBgColor(panelBackgroundColor);
 		panel.addBorder(innerBorderColor, outerBorderColor);
 		panel.setPadding(4);
 
-		RSTextView textView = new RSTextView(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT, font);
+		RSTextView textView = new RSTextView(0, 0, RSView.MATCH_PARENT,
+				RSView.WRAP_CONTENT, fontForTextSize(plugin.getPanelTextSize(reminder.id)));
 
 		textView.setTextColor(color);
 		textView.setText(text);
@@ -262,8 +252,8 @@ class RemindersOverlay extends RSViewOverlay {
 			BufferedImage image = itemManager.getImage(imageId);
 			if (image != null)
 			{
-				int imageWidth = 0;
-				if (config.textSize() == TextSize.SMALL)
+				int imageWidth;
+				if (plugin.getPanelTextSize(reminder.id) == TextSize.SMALL)
 				{
 					imageWidth = 24;
 				}
@@ -273,7 +263,8 @@ class RemindersOverlay extends RSViewOverlay {
 				}
 
 				image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
-				textView.setImage(image, imageWidth, imageWidth, plugin.getImageAlignment(reminder.id));
+				textView.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
+				textView.setImageBgColor(plugin.getImageBgColor(reminder.id));
 			}
 		}
 
@@ -367,6 +358,25 @@ class RemindersOverlay extends RSViewOverlay {
 
 			panel.addView(row);
 		}
+	}
+
+	private Font fontForTextSize(TextSize textSize)
+	{
+		Font font;
+		if (textSize == TextSize.SMALL)
+		{
+			font = FontManager.getRunescapeSmallFont();
+		}
+		else if (textSize == TextSize.LARGE)
+		{
+			font = FontManager.getRunescapeFont();
+		}
+		else
+		{
+			font = FontManager.getRunescapeBoldFont();
+		}
+
+		return font;
 	}
 
 	@Override

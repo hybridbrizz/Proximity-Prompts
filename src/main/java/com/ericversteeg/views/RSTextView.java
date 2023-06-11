@@ -20,6 +20,7 @@ public class RSTextView extends RSView
     private int lineHeight = 0;
     private boolean hasImage = false;
     private BufferedImage image;
+    private Color imageBgColor = new Color(0, 0, 0, 0);
     private int imageX = 0;
     private int imageY = 0;
     private int imageW = 0;
@@ -51,7 +52,6 @@ public class RSTextView extends RSView
     public void setTextColor(Color color)
     {
         textColor = color;
-        textComponent.setColor(color);
     }
 
     public void setImage(BufferedImage image, int width, int height, RSViewGroup.Gravity gravity)
@@ -61,6 +61,11 @@ public class RSTextView extends RSView
         imageH = height;
         imageGravity = gravity;
         hasImage = true;
+    }
+
+    public void setImageBgColor(Color imageBgColor)
+    {
+        this.imageBgColor = imageBgColor;
     }
 
     private int imageX(int imageW, RSViewGroup.Gravity gravity)
@@ -163,18 +168,20 @@ public class RSTextView extends RSView
     {
         super.render(graphics, origin);
 
+        graphics.setFont(font);
+
         if (hasImage)
         {
             charRenderLinesImage(graphics, lineWidth, new Point(origin.x + x + paddingStart,
                     origin.y + y + paddingTop));
 
-            graphics.setColor(Color.GREEN);
+            graphics.setColor(imageBgColor);
+
+            graphics.fillRect(origin.x + x + paddingStart + imageX,
+                    origin.y + y + paddingTop + imageY, imageW, imageH);
 
             graphics.drawImage(image, origin.x + x + paddingStart + imageX,
                     origin.y + y + paddingTop + imageY, null);
-
-//            graphics.fillRect(origin.x + x + paddingStart + imageX,
-//                    origin.y + y + paddingTop + imageY, imageW, imageH);
         }
         else
         {
@@ -199,6 +206,8 @@ public class RSTextView extends RSView
 
         boolean readColor = false;
         Map<Integer, Color> colorPositions = new HashMap<>();
+
+        setColor(textColor);
 
         for (int i = 0; i < chars.length; i++)
         {
@@ -239,8 +248,6 @@ public class RSTextView extends RSView
 
                 if (rx + sw > maxWidth)
                 {
-                    //System.out.println("Moving " + word + " onto next line because " + rx + " + " + sw + " > " + maxWidth);
-
                     rx = 0;
                     ry += lineHeight;
                 }
@@ -250,7 +257,7 @@ public class RSTextView extends RSView
                     Color color = colorPositions.get(rIndex);
                     if (color != null)
                     {
-                        textComponent.setColor(color);
+                        setColor(color);
                     }
 
                     textComponent.setPosition(new Point(start.x + rx,start.y + ry));
@@ -265,7 +272,7 @@ public class RSTextView extends RSView
                 Color color = colorPositions.get(rIndex);
                 if (color != null)
                 {
-                    textComponent.setColor(color);
+                    setColor(color);
                 }
 
                 cIndex += 1;
@@ -299,6 +306,8 @@ public class RSTextView extends RSView
 
         imageX = imageX(imageW, imageGravity);
         imageY = imageY(imageH, imageGravity);
+
+        setColor(textColor);
 
         for (int i = 0; i < chars.length; i++)
         {
@@ -381,18 +390,7 @@ public class RSTextView extends RSView
                     Color color = colorPositions.get(rIndex);
                     if (color != null)
                     {
-                        if (animatesColor)
-                        {
-                            float percent = (Instant.now().toEpochMilli() % animationCycleMillis) / ((float) animationCycleMillis);
-
-                            Color [] triadicColors = getTriadicColors(color);
-                            Color animatedColor = getInterpolatedColor(getColorPair(triadicColors, percent), triadicColors.length, percent);
-                            textComponent.setColor(animatedColor);
-                        }
-                        else
-                        {
-                            textComponent.setColor(color);
-                        }
+                        setColor(color);
                     }
 
                     textComponent.setPosition(new Point(start.x + rx,start.y + ry));
@@ -407,18 +405,7 @@ public class RSTextView extends RSView
                 Color color = colorPositions.get(rIndex);
                 if (color != null)
                 {
-                    if (animatesColor)
-                    {
-                        float percent = (Instant.now().toEpochMilli() % animationCycleMillis) / ((float) animationCycleMillis);
-
-                        Color [] triadicColors = getTriadicColors(color);
-                        Color animatedColor = getInterpolatedColor(getColorPair(triadicColors, percent), triadicColors.length, percent);
-                        textComponent.setColor(animatedColor);
-                    }
-                    else
-                    {
-                        textComponent.setColor(color);
-                    }
+                    setColor(color);
                 }
 
                 cIndex += 1;
@@ -426,6 +413,22 @@ public class RSTextView extends RSView
 
                 sb = new StringBuilder();
             }
+        }
+    }
+
+    private void setColor(Color color)
+    {
+        if (animatesColor)
+        {
+            float percent = (Instant.now().toEpochMilli() % animationCycleMillis) / ((float) animationCycleMillis);
+
+            Color [] triadicColors = getTriadicColors(color);
+            Color animatedColor = getInterpolatedColor(getColorPair(triadicColors, percent), triadicColors.length, percent);
+            textComponent.setColor(animatedColor);
+        }
+        else
+        {
+            textComponent.setColor(color);
         }
     }
 
@@ -611,7 +614,14 @@ public class RSTextView extends RSView
             }
         }
 
-        return ry / lineHeight;
+        if (hasImage)
+        {
+            return Math.max(ry / lineHeight, 2);
+        }
+        else
+        {
+            return ry / lineHeight;
+        }
     }
 
     Color getColor(char c)

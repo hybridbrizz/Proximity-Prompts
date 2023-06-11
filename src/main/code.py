@@ -5,33 +5,36 @@ line4  = '    else return {defaultReturn};'
 line5  = '}'
 
 configInfo = [
-    ["Enable", "boolean"],
-    ["Text", "String"],
-    ["Color", "Color"],
-    ["Duration", "int"],
-    ["Cooldown", "int"],
-    ["TimeUnit", "TimeUnit"],
-    ["Notify", "boolean"],
-    ["Times", "String"],
-    ["DaysOfWeek", "String"],
-    ["Dates", "String"],
-    ["Coordinates", "String"],
-    ["Radius", "int"],
-    ["Geofences", "String"],
-    ["RegionIds", "String"],
-    ["NpcIds", "String"],
-    ["ItemIds", "String"],
-    ["ChatPatterns", "String"],
-    ["SeparatePanel", "boolean"],
-    ["PanelAnchorType", "RSAnchorType"],
-    ["PanelAnchorX", "int"],
-    ["PanelAnchorY", "int"],
-    ["Image", "boolean"],
-    ["ImageAlignment", "RSViewGroup.Gravity"],
-    ["ImageId", "int"],
-    ["Animate", "boolean"],
-    ["AnimationType", "ColorAnimationType"],
-    ["CycleDuration", "int"]
+    # ["Enable", "boolean"],
+    # ["Text", "String"],
+    # ["Color", "Color"],
+    # ["Duration", "int"],
+    # ["Cooldown", "int"],
+    # ["TimeUnit", "TimeUnit"],
+    # ["Notify", "boolean"],
+    # ["Times", "String"],
+    # ["DaysOfWeek", "String"],
+    # ["Dates", "String"],
+    # ["Coordinates", "String"],
+    # ["Radius", "int"],
+    # ["Geofences", "String"],
+    # ["RegionIds", "String"],
+    # ["NpcIds", "String"],
+    # ["ItemIds", "String"],
+    # ["ChatPatterns", "String"],
+    # ["SeparatePanel", "boolean"],
+    # ["PanelAnchorType", "RSAnchorType"],
+    # ["PanelAnchorX", "int"],
+    # ["PanelAnchorY", "int"],
+    # ["Image", "boolean"],
+    # ["ImageAlignment", "RSViewGroup.Gravity"],
+    # ["ImageId", "int"],
+    # ["Animate", "boolean"],
+    # ["AnimationType", "ColorAnimationType"],
+    # ["CycleDuration", "int"],
+    ["PanelWidth", "int"],
+    ["ImageBgColor", "Color"],
+    ["PanelTextSize", "TextSize"]
 ]
 
 for info in configInfo:
@@ -67,6 +70,8 @@ for info in configInfo:
         default_return = "ColorAnimationType.ANALOGOUS"
     elif type == "RSViewGroup.Gravity":
         default_return = "RSViewGroup.Gravity.TOP_START"
+    elif type == "TextSize":
+        default_return = "TextSize.SMALL"
 
     print(line4.format(defaultReturn=default_return))
     print(line5)

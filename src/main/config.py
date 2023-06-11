@@ -144,8 +144,8 @@ line197 = ''
 line198 = '      @ConfigItem('
 line199 = '            keyName = "{ucName}ChatPatterns",'
 line200 = '            position = 36,'
-line201 = '            name = "Chat Patterns",'
-line202 = '            description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",'
+line201 = '            name = "Message Patterns",'
+line202 = '            description = "Configures text or regex patterns to match in messages to show reminder. (comma seperated)",'
 line203 = '            section = {lcName}'
 line204 = '      )'
 line205 = '      default String {lcName}ChatPatterns() {{ return ""; }}'
@@ -195,18 +195,9 @@ line248 = '            section = {lcName}'
 line249 = '      )'
 line250 = '      default int {lcName}PanelAnchorY() {{ return 0; }}'
 line251 = ''
-line252 = '      @ConfigItem('
-line253 = '            keyName = "{ucName}ImageAlignment",'
-line254 = '            position = 11,'
-line255 = '            name = "Image Alignment",'
-line256 = '            description = "Configures the image alignment.",'
-line257 = '            section = {lcName}'
-line258 = '      )'
-line259 = '      default RSViewGroup.Gravity {lcName}ImageAlignment() {{ return RSViewGroup.Gravity.TOP_START; }}'
-line260 = ''
 line261 = '      @ConfigItem('
 line262 = '            keyName = "{ucName}ImageId",'
-line263 = '            position = 12,'
+line263 = '            position = 14,'
 line264 = '            name = "Image ID",'
 line265 = '            description = "Configures the image id.",'
 line266 = '            section = {lcName}'
@@ -224,7 +215,7 @@ line277 = '      default boolean {lcName}Image() {{ return false; }}'
 line278 = ''
 line279 = '      @ConfigItem('
 line280 = '            keyName = "{ucName}Animate",'
-line281 = '            position = 14,'
+line281 = '            position = 16,'
 line282 = '            name = "Animate",'
 line283 = '            description = "Configures whether or not to animate.",'
 line284 = '            section = {lcName}'
@@ -233,7 +224,7 @@ line286 = '      default boolean {lcName}Animate() {{ return false; }}'
 line287 = ''
 line288 = '      @ConfigItem('
 line289 = '            keyName = "{ucName}AnimationType",'
-line290 = '            position = 15,'
+line290 = '            position = 17,'
 line291 = '            name = "Animation Type",'
 line292 = '            description = "Configures the animation type.",'
 line293 = '            section = {lcName}'
@@ -242,13 +233,42 @@ line295 = '      default ColorAnimationType {lcName}AnimationType() {{ return Co
 line296 = ''
 line297 = '      @ConfigItem('
 line298 = '            keyName = "{ucName}CycleDuration",'
-line299 = '            position = 16,'
-line300 = '            name = "Cycle Duration",'
+line299 = '            position = 18,'
+line300 = '            name = "Animation Duration",'
 line301 = '            description = "Configures the cycle duration for animation.",'
 line302 = '            section = {lcName}'
 line303 = '      )'
 line304 = '      default int {lcName}CycleDuration() {{ return 2; }}'
 line305 = ''
+line306 = '      @ConfigItem('
+line307 = '            keyName = "{ucName}PanelWidth",'
+line308 = '            position = 11,'
+line309 = '            name = "Panel Width",'
+line310 = '            description = "Configures width for panel.",'
+line311 = '            section = {lcName}'
+line312 = '      )'
+line313 = '      default int {lcName}PanelWidth() {{ return 140; }}'
+line314 = ''
+line315 = '      @Alpha'
+line316 = '      @ConfigItem('
+line317 = '            keyName = "{ucName}ImageBackgroundColor",'
+line318 = '            position = 15,'
+line319 = '            name = "Image Background Color",'
+line320 = '            description = "Configures the background color for image.",'
+line321 = '            section = {lcName}'
+line322 = '      )'
+line323 = '      default Color {lcName}ImageBgColor() {{ return new Color(0, 0, 0, 0); }}'
+line324 = ''
+line325 = ''
+line326 = '      @ConfigItem('
+line327 = '            keyName = "{ucName}PanelTextSize",'
+line328 = '            position = 12,'
+line329 = '            name = "Panel Text Size",'
+line330 = '            description = "Configures the text Size.",'
+line331 = '            section = {lcName}'
+line332 = '      )'
+line333 = '      default TextSize {lcName}PanelTextSize() {{ return TextSize.SMALL; }}'
+line334 = ''
 
 
 config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n" + line6 + "\n" + line7 + "\n" + line8 + \
@@ -282,9 +302,7 @@ config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n
          "\n" + line231 + "\n" + line232 + "\n" + line233 + "\n" + line234 + "\n" + line235 + \
          "\n" + line236 + "\n" + line237 + "\n" + line238 + "\n" + line239 + "\n" + line240 + \
          "\n" + line241 + "\n" + line242 + "\n" + line243 + "\n" + line244 + "\n" + line245 + \
-         "\n" + line246 + "\n" + line247 + "\n" + line248 + "\n" + line249 + "\n" + line250 + \
-         "\n" + line251 + "\n" + line252 + "\n" + line253 + "\n" + line254 + "\n" + line255 + \
-         "\n" + line256 + "\n" + line257 + "\n" + line258 + "\n" + line259 + "\n" + line260 + \
+         "\n" + line246 + "\n" + line247 + "\n" + line248 + "\n" + line249 + "\n" + line250 + "\n" + line251 + \
          "\n" + line261 + "\n" + line262 + "\n" + line263 + "\n" + line264 + "\n" + line265 + \
          "\n" + line266 + "\n" + line267 + "\n" + line268 + "\n" + line269 + "\n" + line270 + \
          "\n" + line271 + "\n" + line272 + "\n" + line273 + "\n" + line274 + "\n" + line275 + \
@@ -293,10 +311,16 @@ config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n
          "\n" + line286 + "\n" + line287 + "\n" + line288 + "\n" + line289 + "\n" + line290 + \
          "\n" + line291 + "\n" + line292 + "\n" + line293 + "\n" + line294 + "\n" + line295 + \
          "\n" + line296 + "\n" + line297 + "\n" + line298 + "\n" + line299 + "\n" + line300 + \
-         "\n" + line301 + "\n" + line302 + "\n" + line303 + "\n" + line304 + "\n" + line305
+         "\n" + line301 + "\n" + line302 + "\n" + line303 + "\n" + line304 + "\n" + line305 + \
+         "\n" + line306 + "\n" + line307 + "\n" + line308 + "\n" + line309 + "\n" + line310 + \
+         "\n" + line311 + "\n" + line312 + "\n" + line313 + "\n" + line314 + "\n" + line315 + \
+         "\n" + line316 + "\n" + line317 + "\n" + line318 + "\n" + line319 + "\n" + line320 + \
+         "\n" + line321 + "\n" + line322 + "\n" + line323 + "\n" + line324 + "\n" + line325 + \
+         "\n" + line326 + "\n" + line327 + "\n" + line328 + "\n" + line329 + "\n" + line330 + \
+         "\n" + line331 + "\n" + line332 + "\n" + line333 + "\n" + line334
 
 # string = ""
-# for i in range(296, 306):
+# for i in range(306, 335):
 #     string += "\"\\n\" + line" + str(i) + " + "
 #     if i % 5 == 0:
 #         string += "\\\n"
