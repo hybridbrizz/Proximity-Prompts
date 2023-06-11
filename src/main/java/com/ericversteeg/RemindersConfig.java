@@ -1,5 +1,6 @@
 package com.ericversteeg;
 
+import com.ericversteeg.config.ColorAnimationType;
 import com.ericversteeg.config.TimeUnit;
 import com.ericversteeg.views.RSAnchorType;
 import com.ericversteeg.views.RSViewGroup;
@@ -188,7 +189,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder1Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder1
@@ -197,7 +198,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder1DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder1
@@ -206,7 +207,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder1Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder1
@@ -215,7 +216,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder1Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder1
@@ -224,7 +225,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder1Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder1
@@ -233,7 +234,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder1Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder1
@@ -242,7 +243,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder1RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder1
@@ -251,7 +252,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder1NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder1
@@ -260,7 +261,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder1ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder1
@@ -296,7 +297,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder1ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder1
@@ -359,12 +360,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder1ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder1
 	)
 	default int reminder1ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder1Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder1
+	)
+	default boolean reminder1Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder1Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder1
+	)
+	default boolean reminder1Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder1AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder1
+	)
+	default ColorAnimationType reminder1AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder1CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder1
+	)
+	default int reminder1CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder2",
@@ -403,7 +440,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder2Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder2
@@ -412,7 +449,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder2DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder2
@@ -421,7 +458,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder2Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder2
@@ -430,7 +467,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder2Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder2
@@ -439,7 +476,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder2Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder2
@@ -448,7 +485,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder2Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder2
@@ -457,7 +494,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder2RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder2
@@ -466,7 +503,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder2NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder2
@@ -475,7 +512,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder2ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder2
@@ -511,7 +548,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder2ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder2
@@ -574,12 +611,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder2ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder2
 	)
 	default int reminder2ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder2Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder2
+	)
+	default boolean reminder2Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder2Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder2
+	)
+	default boolean reminder2Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder2AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder2
+	)
+	default ColorAnimationType reminder2AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder2CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder2
+	)
+	default int reminder2CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder3",
@@ -618,7 +691,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder3Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder3
@@ -627,7 +700,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder3DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder3
@@ -636,7 +709,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder3Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder3
@@ -645,7 +718,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder3Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder3
@@ -654,7 +727,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder3Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder3
@@ -663,7 +736,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder3Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder3
@@ -672,7 +745,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder3RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder3
@@ -681,7 +754,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder3NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder3
@@ -690,7 +763,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder3ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder3
@@ -726,7 +799,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder3ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder3
@@ -789,12 +862,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder3ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder3
 	)
 	default int reminder3ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder3Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder3
+	)
+	default boolean reminder3Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder3Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder3
+	)
+	default boolean reminder3Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder3AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder3
+	)
+	default ColorAnimationType reminder3AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder3CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder3
+	)
+	default int reminder3CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder4",
@@ -833,7 +942,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder4Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder4
@@ -842,7 +951,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder4DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder4
@@ -851,7 +960,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder4Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder4
@@ -860,7 +969,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder4Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder4
@@ -869,7 +978,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder4Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder4
@@ -878,7 +987,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder4Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder4
@@ -887,7 +996,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder4RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder4
@@ -896,7 +1005,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder4NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder4
@@ -905,7 +1014,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder4ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder4
@@ -941,7 +1050,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder4ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder4
@@ -1004,12 +1113,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder4ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder4
 	)
 	default int reminder4ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder4Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder4
+	)
+	default boolean reminder4Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder4Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder4
+	)
+	default boolean reminder4Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder4AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder4
+	)
+	default ColorAnimationType reminder4AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder4CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder4
+	)
+	default int reminder4CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder5",
@@ -1048,7 +1193,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder5Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder5
@@ -1057,7 +1202,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder5DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder5
@@ -1066,7 +1211,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder5Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder5
@@ -1075,7 +1220,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder5Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder5
@@ -1084,7 +1229,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder5Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder5
@@ -1093,7 +1238,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder5Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder5
@@ -1102,7 +1247,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder5RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder5
@@ -1111,7 +1256,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder5NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder5
@@ -1120,7 +1265,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder5ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder5
@@ -1156,7 +1301,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder5ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder5
@@ -1219,12 +1364,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder5ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder5
 	)
 	default int reminder5ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder5Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder5
+	)
+	default boolean reminder5Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder5Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder5
+	)
+	default boolean reminder5Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder5AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder5
+	)
+	default ColorAnimationType reminder5AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder5CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder5
+	)
+	default int reminder5CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder6",
@@ -1263,7 +1444,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder6Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder6
@@ -1272,7 +1453,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder6DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder6
@@ -1281,7 +1462,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder6Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder6
@@ -1290,7 +1471,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder6Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder6
@@ -1299,7 +1480,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder6Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder6
@@ -1308,7 +1489,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder6Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder6
@@ -1317,7 +1498,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder6RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder6
@@ -1326,7 +1507,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder6NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder6
@@ -1335,7 +1516,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder6ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder6
@@ -1371,7 +1552,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder6ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder6
@@ -1434,12 +1615,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder6ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder6
 	)
 	default int reminder6ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder6Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder6
+	)
+	default boolean reminder6Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder6Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder6
+	)
+	default boolean reminder6Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder6AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder6
+	)
+	default ColorAnimationType reminder6AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder6CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder6
+	)
+	default int reminder6CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder7",
@@ -1478,7 +1695,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder7Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder7
@@ -1487,7 +1704,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder7DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder7
@@ -1496,7 +1713,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder7Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder7
@@ -1505,7 +1722,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder7Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder7
@@ -1514,7 +1731,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder7Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder7
@@ -1523,7 +1740,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder7Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder7
@@ -1532,7 +1749,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder7RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder7
@@ -1541,7 +1758,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder7NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder7
@@ -1550,7 +1767,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder7ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder7
@@ -1586,7 +1803,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder7ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder7
@@ -1649,12 +1866,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder7ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder7
 	)
 	default int reminder7ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder7Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder7
+	)
+	default boolean reminder7Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder7Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder7
+	)
+	default boolean reminder7Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder7AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder7
+	)
+	default ColorAnimationType reminder7AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder7CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder7
+	)
+	default int reminder7CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder8",
@@ -1693,7 +1946,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder8Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder8
@@ -1702,7 +1955,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder8DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder8
@@ -1711,7 +1964,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder8Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder8
@@ -1720,7 +1973,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder8Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder8
@@ -1729,7 +1982,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder8Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder8
@@ -1738,7 +1991,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder8Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder8
@@ -1747,7 +2000,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder8RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder8
@@ -1756,7 +2009,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder8NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder8
@@ -1765,7 +2018,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder8ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder8
@@ -1801,7 +2054,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder8ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder8
@@ -1864,12 +2117,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder8ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder8
 	)
 	default int reminder8ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder8Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder8
+	)
+	default boolean reminder8Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder8Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder8
+	)
+	default boolean reminder8Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder8AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder8
+	)
+	default ColorAnimationType reminder8AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder8CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder8
+	)
+	default int reminder8CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder9",
@@ -1908,7 +2197,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder9Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder9
@@ -1917,7 +2206,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder9DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder9
@@ -1926,7 +2215,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder9Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder9
@@ -1935,7 +2224,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder9Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder9
@@ -1944,7 +2233,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder9Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder9
@@ -1953,7 +2242,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder9Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder9
@@ -1962,7 +2251,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder9RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder9
@@ -1971,7 +2260,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder9NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder9
@@ -1980,7 +2269,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder9ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder9
@@ -2016,7 +2305,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder9ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder9
@@ -2079,12 +2368,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder9ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder9
 	)
 	default int reminder9ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder9Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder9
+	)
+	default boolean reminder9Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder9Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder9
+	)
+	default boolean reminder9Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder9AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder9
+	)
+	default ColorAnimationType reminder9AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder9CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder9
+	)
+	default int reminder9CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder10",
@@ -2123,7 +2448,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder10Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder10
@@ -2132,7 +2457,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder10DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder10
@@ -2141,7 +2466,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder10Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder10
@@ -2150,7 +2475,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder10Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder10
@@ -2159,7 +2484,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder10Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder10
@@ -2168,7 +2493,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder10Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder10
@@ -2177,7 +2502,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder10RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder10
@@ -2186,7 +2511,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder10NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder10
@@ -2195,7 +2520,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder10ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder10
@@ -2231,7 +2556,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder10ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder10
@@ -2294,12 +2619,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder10ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder10
 	)
 	default int reminder10ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder10Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder10
+	)
+	default boolean reminder10Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder10Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder10
+	)
+	default boolean reminder10Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder10AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder10
+	)
+	default ColorAnimationType reminder10AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder10CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder10
+	)
+	default int reminder10CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder11",
@@ -2338,7 +2699,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder11Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder11
@@ -2347,7 +2708,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder11DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder11
@@ -2356,7 +2717,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder11Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder11
@@ -2365,7 +2726,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder11Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder11
@@ -2374,7 +2735,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder11Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder11
@@ -2383,7 +2744,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder11Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder11
@@ -2392,7 +2753,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder11RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder11
@@ -2401,7 +2762,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder11NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder11
@@ -2410,7 +2771,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder11ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder11
@@ -2446,7 +2807,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder11ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder11
@@ -2509,12 +2870,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder11ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder11
 	)
 	default int reminder11ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder11Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder11
+	)
+	default boolean reminder11Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder11Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder11
+	)
+	default boolean reminder11Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder11AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder11
+	)
+	default ColorAnimationType reminder11AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder11CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder11
+	)
+	default int reminder11CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder12",
@@ -2553,7 +2950,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder12Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder12
@@ -2562,7 +2959,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder12DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder12
@@ -2571,7 +2968,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder12Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder12
@@ -2580,7 +2977,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder12Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder12
@@ -2589,7 +2986,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder12Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder12
@@ -2598,7 +2995,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder12Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder12
@@ -2607,7 +3004,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder12RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder12
@@ -2616,7 +3013,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder12NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder12
@@ -2625,7 +3022,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder12ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder12
@@ -2661,7 +3058,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder12ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder12
@@ -2724,12 +3121,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder12ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder12
 	)
 	default int reminder12ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder12Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder12
+	)
+	default boolean reminder12Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder12Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder12
+	)
+	default boolean reminder12Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder12AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder12
+	)
+	default ColorAnimationType reminder12AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder12CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder12
+	)
+	default int reminder12CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder13",
@@ -2768,7 +3201,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder13Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder13
@@ -2777,7 +3210,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder13DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder13
@@ -2786,7 +3219,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder13Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder13
@@ -2795,7 +3228,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder13Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder13
@@ -2804,7 +3237,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder13Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder13
@@ -2813,7 +3246,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder13Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder13
@@ -2822,7 +3255,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder13RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder13
@@ -2831,7 +3264,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder13NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder13
@@ -2840,7 +3273,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder13ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder13
@@ -2876,7 +3309,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder13ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder13
@@ -2939,12 +3372,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder13ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder13
 	)
 	default int reminder13ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder13Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder13
+	)
+	default boolean reminder13Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder13Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder13
+	)
+	default boolean reminder13Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder13AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder13
+	)
+	default ColorAnimationType reminder13AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder13CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder13
+	)
+	default int reminder13CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder14",
@@ -2983,7 +3452,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder14Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder14
@@ -2992,7 +3461,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder14DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder14
@@ -3001,7 +3470,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder14Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder14
@@ -3010,7 +3479,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder14Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder14
@@ -3019,7 +3488,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder14Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder14
@@ -3028,7 +3497,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder14Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder14
@@ -3037,7 +3506,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder14RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder14
@@ -3046,7 +3515,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder14NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder14
@@ -3055,7 +3524,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder14ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder14
@@ -3091,7 +3560,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder14ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder14
@@ -3154,12 +3623,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder14ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder14
 	)
 	default int reminder14ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder14Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder14
+	)
+	default boolean reminder14Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder14Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder14
+	)
+	default boolean reminder14Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder14AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder14
+	)
+	default ColorAnimationType reminder14AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder14CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder14
+	)
+	default int reminder14CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder15",
@@ -3198,7 +3703,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder15Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder15
@@ -3207,7 +3712,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder15DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder15
@@ -3216,7 +3721,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder15Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder15
@@ -3225,7 +3730,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder15Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder15
@@ -3234,7 +3739,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder15Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder15
@@ -3243,7 +3748,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder15Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder15
@@ -3252,7 +3757,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder15RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder15
@@ -3261,7 +3766,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder15NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder15
@@ -3270,7 +3775,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder15ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder15
@@ -3306,7 +3811,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder15ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder15
@@ -3369,12 +3874,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder15ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder15
 	)
 	default int reminder15ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder15Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder15
+	)
+	default boolean reminder15Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder15Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder15
+	)
+	default boolean reminder15Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder15AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder15
+	)
+	default ColorAnimationType reminder15AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder15CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder15
+	)
+	default int reminder15CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder16",
@@ -3413,7 +3954,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder16Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder16
@@ -3422,7 +3963,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder16DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder16
@@ -3431,7 +3972,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder16Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder16
@@ -3440,7 +3981,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder16Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder16
@@ -3449,7 +3990,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder16Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder16
@@ -3458,7 +3999,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder16Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder16
@@ -3467,7 +4008,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder16RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder16
@@ -3476,7 +4017,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder16NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder16
@@ -3485,7 +4026,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder16ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder16
@@ -3521,7 +4062,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder16ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder16
@@ -3584,12 +4125,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder16ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder16
 	)
 	default int reminder16ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder16Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder16
+	)
+	default boolean reminder16Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder16Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder16
+	)
+	default boolean reminder16Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder16AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder16
+	)
+	default ColorAnimationType reminder16AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder16CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder16
+	)
+	default int reminder16CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder17",
@@ -3628,7 +4205,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder17Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder17
@@ -3637,7 +4214,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder17DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder17
@@ -3646,7 +4223,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder17Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder17
@@ -3655,7 +4232,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder17Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder17
@@ -3664,7 +4241,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder17Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder17
@@ -3673,7 +4250,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder17Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder17
@@ -3682,7 +4259,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder17RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder17
@@ -3691,7 +4268,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder17NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder17
@@ -3700,7 +4277,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder17ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder17
@@ -3736,7 +4313,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder17ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder17
@@ -3799,12 +4376,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder17ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder17
 	)
 	default int reminder17ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder17Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder17
+	)
+	default boolean reminder17Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder17Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder17
+	)
+	default boolean reminder17Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder17AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder17
+	)
+	default ColorAnimationType reminder17AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder17CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder17
+	)
+	default int reminder17CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder18",
@@ -3843,7 +4456,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder18Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder18
@@ -3852,7 +4465,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder18DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder18
@@ -3861,7 +4474,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder18Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder18
@@ -3870,7 +4483,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder18Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder18
@@ -3879,7 +4492,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder18Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder18
@@ -3888,7 +4501,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder18Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder18
@@ -3897,7 +4510,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder18RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder18
@@ -3906,7 +4519,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder18NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder18
@@ -3915,7 +4528,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder18ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder18
@@ -3951,7 +4564,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder18ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder18
@@ -4014,12 +4627,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder18ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder18
 	)
 	default int reminder18ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder18Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder18
+	)
+	default boolean reminder18Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder18Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder18
+	)
+	default boolean reminder18Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder18AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder18
+	)
+	default ColorAnimationType reminder18AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder18CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder18
+	)
+	default int reminder18CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder19",
@@ -4058,7 +4707,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder19Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder19
@@ -4067,7 +4716,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder19DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder19
@@ -4076,7 +4725,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder19Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder19
@@ -4085,7 +4734,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder19Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder19
@@ -4094,7 +4743,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder19Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder19
@@ -4103,7 +4752,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder19Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder19
@@ -4112,7 +4761,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder19RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder19
@@ -4121,7 +4770,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder19NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder19
@@ -4130,7 +4779,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder19ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder19
@@ -4166,7 +4815,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder19ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder19
@@ -4229,12 +4878,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder19ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder19
 	)
 	default int reminder19ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder19Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder19
+	)
+	default boolean reminder19Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder19Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder19
+	)
+	default boolean reminder19Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder19AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder19
+	)
+	default ColorAnimationType reminder19AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder19CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder19
+	)
+	default int reminder19CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder20",
@@ -4273,7 +4958,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder20Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder20
@@ -4282,7 +4967,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder20DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder20
@@ -4291,7 +4976,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder20Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder20
@@ -4300,7 +4985,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder20Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder20
@@ -4309,7 +4994,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder20Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder20
@@ -4318,7 +5003,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder20Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder20
@@ -4327,7 +5012,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder20RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder20
@@ -4336,7 +5021,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder20NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder20
@@ -4345,7 +5030,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder20ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder20
@@ -4381,7 +5066,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder20ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder20
@@ -4444,12 +5129,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder20ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder20
 	)
 	default int reminder20ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder20Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder20
+	)
+	default boolean reminder20Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder20Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder20
+	)
+	default boolean reminder20Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder20AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder20
+	)
+	default ColorAnimationType reminder20AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder20CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder20
+	)
+	default int reminder20CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder21",
@@ -4488,7 +5209,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder21Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder21
@@ -4497,7 +5218,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder21DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder21
@@ -4506,7 +5227,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder21Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder21
@@ -4515,7 +5236,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder21Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder21
@@ -4524,7 +5245,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder21Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder21
@@ -4533,7 +5254,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder21Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder21
@@ -4542,7 +5263,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder21RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder21
@@ -4551,7 +5272,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder21NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder21
@@ -4560,7 +5281,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder21ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder21
@@ -4596,7 +5317,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder21ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder21
@@ -4659,12 +5380,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder21ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder21
 	)
 	default int reminder21ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder21Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder21
+	)
+	default boolean reminder21Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder21Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder21
+	)
+	default boolean reminder21Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder21AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder21
+	)
+	default ColorAnimationType reminder21AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder21CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder21
+	)
+	default int reminder21CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder22",
@@ -4703,7 +5460,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder22Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder22
@@ -4712,7 +5469,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder22DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder22
@@ -4721,7 +5478,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder22Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder22
@@ -4730,7 +5487,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder22Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder22
@@ -4739,7 +5496,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder22Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder22
@@ -4748,7 +5505,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder22Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder22
@@ -4757,7 +5514,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder22RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder22
@@ -4766,7 +5523,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder22NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder22
@@ -4775,7 +5532,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder22ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder22
@@ -4811,7 +5568,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder22ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder22
@@ -4874,12 +5631,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder22ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder22
 	)
 	default int reminder22ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder22Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder22
+	)
+	default boolean reminder22Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder22Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder22
+	)
+	default boolean reminder22Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder22AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder22
+	)
+	default ColorAnimationType reminder22AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder22CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder22
+	)
+	default int reminder22CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder23",
@@ -4918,7 +5711,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder23Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder23
@@ -4927,7 +5720,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder23DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder23
@@ -4936,7 +5729,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder23Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder23
@@ -4945,7 +5738,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder23Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder23
@@ -4954,7 +5747,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder23Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder23
@@ -4963,7 +5756,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder23Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder23
@@ -4972,7 +5765,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder23RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder23
@@ -4981,7 +5774,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder23NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder23
@@ -4990,7 +5783,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder23ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder23
@@ -5026,7 +5819,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder23ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder23
@@ -5089,12 +5882,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder23ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder23
 	)
 	default int reminder23ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder23Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder23
+	)
+	default boolean reminder23Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder23Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder23
+	)
+	default boolean reminder23Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder23AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder23
+	)
+	default ColorAnimationType reminder23AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder23CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder23
+	)
+	default int reminder23CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder24",
@@ -5133,7 +5962,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder24Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder24
@@ -5142,7 +5971,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder24DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder24
@@ -5151,7 +5980,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder24Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder24
@@ -5160,7 +5989,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder24Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder24
@@ -5169,7 +5998,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder24Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder24
@@ -5178,7 +6007,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder24Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder24
@@ -5187,7 +6016,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder24RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder24
@@ -5196,7 +6025,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder24NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder24
@@ -5205,7 +6034,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder24ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder24
@@ -5241,7 +6070,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder24ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder24
@@ -5304,12 +6133,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder24ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder24
 	)
 	default int reminder24ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder24Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder24
+	)
+	default boolean reminder24Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder24Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder24
+	)
+	default boolean reminder24Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder24AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder24
+	)
+	default ColorAnimationType reminder24AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder24CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder24
+	)
+	default int reminder24CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder25",
@@ -5348,7 +6213,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder25Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder25
@@ -5357,7 +6222,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder25DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder25
@@ -5366,7 +6231,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder25Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder25
@@ -5375,7 +6240,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder25Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder25
@@ -5384,7 +6249,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder25Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder25
@@ -5393,7 +6258,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder25Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder25
@@ -5402,7 +6267,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder25RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder25
@@ -5411,7 +6276,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder25NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder25
@@ -5420,7 +6285,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder25ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder25
@@ -5456,7 +6321,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder25ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder25
@@ -5519,12 +6384,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder25ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder25
 	)
 	default int reminder25ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder25Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder25
+	)
+	default boolean reminder25Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder25Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder25
+	)
+	default boolean reminder25Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder25AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder25
+	)
+	default ColorAnimationType reminder25AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder25CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder25
+	)
+	default int reminder25CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder26",
@@ -5563,7 +6464,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder26Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder26
@@ -5572,7 +6473,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder26DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder26
@@ -5581,7 +6482,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder26Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder26
@@ -5590,7 +6491,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder26Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder26
@@ -5599,7 +6500,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder26Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder26
@@ -5608,7 +6509,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder26Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder26
@@ -5617,7 +6518,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder26RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder26
@@ -5626,7 +6527,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder26NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder26
@@ -5635,7 +6536,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder26ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder26
@@ -5671,7 +6572,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder26ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder26
@@ -5734,12 +6635,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder26ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder26
 	)
 	default int reminder26ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder26Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder26
+	)
+	default boolean reminder26Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder26Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder26
+	)
+	default boolean reminder26Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder26AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder26
+	)
+	default ColorAnimationType reminder26AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder26CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder26
+	)
+	default int reminder26CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder27",
@@ -5778,7 +6715,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder27Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder27
@@ -5787,7 +6724,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder27DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder27
@@ -5796,7 +6733,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder27Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder27
@@ -5805,7 +6742,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder27Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder27
@@ -5814,7 +6751,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder27Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder27
@@ -5823,7 +6760,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder27Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder27
@@ -5832,7 +6769,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder27RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder27
@@ -5841,7 +6778,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder27NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder27
@@ -5850,7 +6787,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder27ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder27
@@ -5886,7 +6823,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder27ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder27
@@ -5949,12 +6886,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder27ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder27
 	)
 	default int reminder27ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder27Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder27
+	)
+	default boolean reminder27Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder27Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder27
+	)
+	default boolean reminder27Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder27AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder27
+	)
+	default ColorAnimationType reminder27AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder27CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder27
+	)
+	default int reminder27CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder28",
@@ -5993,7 +6966,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder28Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder28
@@ -6002,7 +6975,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder28DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder28
@@ -6011,7 +6984,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder28Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder28
@@ -6020,7 +6993,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder28Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder28
@@ -6029,7 +7002,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder28Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder28
@@ -6038,7 +7011,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder28Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder28
@@ -6047,7 +7020,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder28RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder28
@@ -6056,7 +7029,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder28NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder28
@@ -6065,7 +7038,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder28ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder28
@@ -6101,7 +7074,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder28ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder28
@@ -6164,12 +7137,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder28ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder28
 	)
 	default int reminder28ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder28Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder28
+	)
+	default boolean reminder28Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder28Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder28
+	)
+	default boolean reminder28Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder28AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder28
+	)
+	default ColorAnimationType reminder28AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder28CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder28
+	)
+	default int reminder28CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder29",
@@ -6208,7 +7217,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder29Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder29
@@ -6217,7 +7226,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder29DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder29
@@ -6226,7 +7235,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder29Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder29
@@ -6235,7 +7244,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder29Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder29
@@ -6244,7 +7253,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder29Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder29
@@ -6253,7 +7262,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder29Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder29
@@ -6262,7 +7271,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder29RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder29
@@ -6271,7 +7280,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder29NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder29
@@ -6280,7 +7289,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder29ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder29
@@ -6316,7 +7325,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder29ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder29
@@ -6379,12 +7388,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder29ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder29
 	)
 	default int reminder29ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder29Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder29
+	)
+	default boolean reminder29Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder29Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder29
+	)
+	default boolean reminder29Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder29AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder29
+	)
+	default ColorAnimationType reminder29AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder29CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder29
+	)
+	default int reminder29CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder30",
@@ -6423,7 +7468,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder30Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder30
@@ -6432,7 +7477,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder30DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder30
@@ -6441,7 +7486,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder30Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder30
@@ -6450,7 +7495,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder30Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder30
@@ -6459,7 +7504,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder30Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder30
@@ -6468,7 +7513,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder30Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder30
@@ -6477,7 +7522,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder30RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder30
@@ -6486,7 +7531,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder30NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder30
@@ -6495,7 +7540,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder30ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder30
@@ -6531,7 +7576,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder30ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder30
@@ -6594,12 +7639,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder30ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder30
 	)
 	default int reminder30ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder30Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder30
+	)
+	default boolean reminder30Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder30Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder30
+	)
+	default boolean reminder30Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder30AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder30
+	)
+	default ColorAnimationType reminder30AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder30CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder30
+	)
+	default int reminder30CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder31",
@@ -6638,7 +7719,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder31Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder31
@@ -6647,7 +7728,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder31DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder31
@@ -6656,7 +7737,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder31Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder31
@@ -6665,7 +7746,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder31Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder31
@@ -6674,7 +7755,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder31Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder31
@@ -6683,7 +7764,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder31Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder31
@@ -6692,7 +7773,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder31RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder31
@@ -6701,7 +7782,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder31NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder31
@@ -6710,7 +7791,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder31ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder31
@@ -6746,7 +7827,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder31ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder31
@@ -6809,12 +7890,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder31ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder31
 	)
 	default int reminder31ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder31Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder31
+	)
+	default boolean reminder31Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder31Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder31
+	)
+	default boolean reminder31Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder31AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder31
+	)
+	default ColorAnimationType reminder31AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder31CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder31
+	)
+	default int reminder31CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder32",
@@ -6853,7 +7970,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder32Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder32
@@ -6862,7 +7979,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder32DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder32
@@ -6871,7 +7988,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder32Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder32
@@ -6880,7 +7997,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder32Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder32
@@ -6889,7 +8006,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder32Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder32
@@ -6898,7 +8015,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder32Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder32
@@ -6907,7 +8024,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder32RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder32
@@ -6916,7 +8033,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder32NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder32
@@ -6925,7 +8042,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder32ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder32
@@ -6961,7 +8078,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder32ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder32
@@ -7024,12 +8141,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder32ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder32
 	)
 	default int reminder32ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder32Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder32
+	)
+	default boolean reminder32Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder32Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder32
+	)
+	default boolean reminder32Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder32AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder32
+	)
+	default ColorAnimationType reminder32AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder32CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder32
+	)
+	default int reminder32CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder33",
@@ -7068,7 +8221,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder33Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder33
@@ -7077,7 +8230,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder33DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder33
@@ -7086,7 +8239,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder33Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder33
@@ -7095,7 +8248,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder33Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder33
@@ -7104,7 +8257,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder33Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder33
@@ -7113,7 +8266,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder33Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder33
@@ -7122,7 +8275,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder33RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder33
@@ -7131,7 +8284,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder33NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder33
@@ -7140,7 +8293,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder33ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder33
@@ -7176,7 +8329,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder33ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder33
@@ -7239,12 +8392,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder33ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder33
 	)
 	default int reminder33ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder33Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder33
+	)
+	default boolean reminder33Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder33Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder33
+	)
+	default boolean reminder33Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder33AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder33
+	)
+	default ColorAnimationType reminder33AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder33CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder33
+	)
+	default int reminder33CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder34",
@@ -7283,7 +8472,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder34Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder34
@@ -7292,7 +8481,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder34DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder34
@@ -7301,7 +8490,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder34Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder34
@@ -7310,7 +8499,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder34Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder34
@@ -7319,7 +8508,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder34Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder34
@@ -7328,7 +8517,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder34Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder34
@@ -7337,7 +8526,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder34RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder34
@@ -7346,7 +8535,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder34NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder34
@@ -7355,7 +8544,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder34ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder34
@@ -7391,7 +8580,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder34ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder34
@@ -7454,12 +8643,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder34ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder34
 	)
 	default int reminder34ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder34Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder34
+	)
+	default boolean reminder34Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder34Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder34
+	)
+	default boolean reminder34Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder34AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder34
+	)
+	default ColorAnimationType reminder34AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder34CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder34
+	)
+	default int reminder34CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder35",
@@ -7498,7 +8723,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder35Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder35
@@ -7507,7 +8732,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder35DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder35
@@ -7516,7 +8741,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder35Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder35
@@ -7525,7 +8750,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder35Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder35
@@ -7534,7 +8759,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder35Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder35
@@ -7543,7 +8768,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder35Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder35
@@ -7552,7 +8777,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder35RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder35
@@ -7561,7 +8786,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder35NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder35
@@ -7570,7 +8795,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder35ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder35
@@ -7606,7 +8831,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder35ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder35
@@ -7669,12 +8894,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder35ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder35
 	)
 	default int reminder35ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder35Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder35
+	)
+	default boolean reminder35Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder35Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder35
+	)
+	default boolean reminder35Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder35AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder35
+	)
+	default ColorAnimationType reminder35AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder35CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder35
+	)
+	default int reminder35CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder36",
@@ -7713,7 +8974,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder36Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder36
@@ -7722,7 +8983,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder36DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder36
@@ -7731,7 +8992,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder36Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder36
@@ -7740,7 +9001,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder36Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder36
@@ -7749,7 +9010,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder36Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder36
@@ -7758,7 +9019,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder36Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder36
@@ -7767,7 +9028,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder36RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder36
@@ -7776,7 +9037,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder36NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder36
@@ -7785,7 +9046,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder36ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder36
@@ -7821,7 +9082,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder36ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder36
@@ -7884,12 +9145,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder36ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder36
 	)
 	default int reminder36ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder36Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder36
+	)
+	default boolean reminder36Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder36Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder36
+	)
+	default boolean reminder36Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder36AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder36
+	)
+	default ColorAnimationType reminder36AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder36CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder36
+	)
+	default int reminder36CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder37",
@@ -7928,7 +9225,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder37Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder37
@@ -7937,7 +9234,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder37DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder37
@@ -7946,7 +9243,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder37Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder37
@@ -7955,7 +9252,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder37Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder37
@@ -7964,7 +9261,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder37Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder37
@@ -7973,7 +9270,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder37Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder37
@@ -7982,7 +9279,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder37RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder37
@@ -7991,7 +9288,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder37NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder37
@@ -8000,7 +9297,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder37ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder37
@@ -8036,7 +9333,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder37ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder37
@@ -8099,12 +9396,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder37ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder37
 	)
 	default int reminder37ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder37Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder37
+	)
+	default boolean reminder37Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder37Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder37
+	)
+	default boolean reminder37Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder37AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder37
+	)
+	default ColorAnimationType reminder37AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder37CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder37
+	)
+	default int reminder37CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder38",
@@ -8143,7 +9476,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder38Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder38
@@ -8152,7 +9485,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder38DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder38
@@ -8161,7 +9494,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder38Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder38
@@ -8170,7 +9503,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder38Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder38
@@ -8179,7 +9512,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder38Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder38
@@ -8188,7 +9521,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder38Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder38
@@ -8197,7 +9530,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder38RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder38
@@ -8206,7 +9539,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder38NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder38
@@ -8215,7 +9548,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder38ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder38
@@ -8251,7 +9584,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder38ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder38
@@ -8314,12 +9647,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder38ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder38
 	)
 	default int reminder38ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder38Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder38
+	)
+	default boolean reminder38Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder38Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder38
+	)
+	default boolean reminder38Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder38AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder38
+	)
+	default ColorAnimationType reminder38AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder38CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder38
+	)
+	default int reminder38CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder39",
@@ -8358,7 +9727,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder39Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder39
@@ -8367,7 +9736,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder39DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder39
@@ -8376,7 +9745,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder39Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder39
@@ -8385,7 +9754,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder39Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder39
@@ -8394,7 +9763,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder39Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder39
@@ -8403,7 +9772,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder39Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder39
@@ -8412,7 +9781,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder39RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder39
@@ -8421,7 +9790,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder39NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder39
@@ -8430,7 +9799,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder39ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder39
@@ -8466,7 +9835,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder39ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder39
@@ -8529,12 +9898,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder39ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder39
 	)
 	default int reminder39ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder39Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder39
+	)
+	default boolean reminder39Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder39Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder39
+	)
+	default boolean reminder39Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder39AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder39
+	)
+	default ColorAnimationType reminder39AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder39CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder39
+	)
+	default int reminder39CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder40",
@@ -8573,7 +9978,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder40Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder40
@@ -8582,7 +9987,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder40DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder40
@@ -8591,7 +9996,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder40Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder40
@@ -8600,7 +10005,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder40Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder40
@@ -8609,7 +10014,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder40Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder40
@@ -8618,7 +10023,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder40Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder40
@@ -8627,7 +10032,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder40RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder40
@@ -8636,7 +10041,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder40NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder40
@@ -8645,7 +10050,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder40ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder40
@@ -8681,7 +10086,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder40ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder40
@@ -8744,12 +10149,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder40ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder40
 	)
 	default int reminder40ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder40Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder40
+	)
+	default boolean reminder40Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder40Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder40
+	)
+	default boolean reminder40Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder40AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder40
+	)
+	default ColorAnimationType reminder40AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder40CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder40
+	)
+	default int reminder40CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder41",
@@ -8788,7 +10229,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder41Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder41
@@ -8797,7 +10238,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder41DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder41
@@ -8806,7 +10247,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder41Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder41
@@ -8815,7 +10256,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder41Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder41
@@ -8824,7 +10265,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder41Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder41
@@ -8833,7 +10274,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder41Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder41
@@ -8842,7 +10283,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder41RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder41
@@ -8851,7 +10292,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder41NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder41
@@ -8860,7 +10301,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder41ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder41
@@ -8896,7 +10337,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder41ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder41
@@ -8959,12 +10400,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder41ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder41
 	)
 	default int reminder41ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder41Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder41
+	)
+	default boolean reminder41Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder41Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder41
+	)
+	default boolean reminder41Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder41AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder41
+	)
+	default ColorAnimationType reminder41AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder41CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder41
+	)
+	default int reminder41CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder42",
@@ -9003,7 +10480,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder42Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder42
@@ -9012,7 +10489,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder42DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder42
@@ -9021,7 +10498,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder42Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder42
@@ -9030,7 +10507,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder42Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder42
@@ -9039,7 +10516,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder42Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder42
@@ -9048,7 +10525,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder42Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder42
@@ -9057,7 +10534,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder42RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder42
@@ -9066,7 +10543,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder42NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder42
@@ -9075,7 +10552,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder42ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder42
@@ -9111,7 +10588,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder42ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder42
@@ -9174,12 +10651,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder42ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder42
 	)
 	default int reminder42ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder42Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder42
+	)
+	default boolean reminder42Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder42Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder42
+	)
+	default boolean reminder42Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder42AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder42
+	)
+	default ColorAnimationType reminder42AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder42CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder42
+	)
+	default int reminder42CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder43",
@@ -9218,7 +10731,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder43Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder43
@@ -9227,7 +10740,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder43DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder43
@@ -9236,7 +10749,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder43Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder43
@@ -9245,7 +10758,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder43Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder43
@@ -9254,7 +10767,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder43Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder43
@@ -9263,7 +10776,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder43Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder43
@@ -9272,7 +10785,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder43RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder43
@@ -9281,7 +10794,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder43NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder43
@@ -9290,7 +10803,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder43ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder43
@@ -9326,7 +10839,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder43ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder43
@@ -9389,12 +10902,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder43ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder43
 	)
 	default int reminder43ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder43Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder43
+	)
+	default boolean reminder43Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder43Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder43
+	)
+	default boolean reminder43Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder43AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder43
+	)
+	default ColorAnimationType reminder43AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder43CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder43
+	)
+	default int reminder43CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder44",
@@ -9433,7 +10982,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder44Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder44
@@ -9442,7 +10991,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder44DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder44
@@ -9451,7 +11000,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder44Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder44
@@ -9460,7 +11009,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder44Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder44
@@ -9469,7 +11018,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder44Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder44
@@ -9478,7 +11027,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder44Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder44
@@ -9487,7 +11036,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder44RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder44
@@ -9496,7 +11045,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder44NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder44
@@ -9505,7 +11054,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder44ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder44
@@ -9541,7 +11090,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder44ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder44
@@ -9604,12 +11153,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder44ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder44
 	)
 	default int reminder44ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder44Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder44
+	)
+	default boolean reminder44Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder44Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder44
+	)
+	default boolean reminder44Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder44AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder44
+	)
+	default ColorAnimationType reminder44AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder44CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder44
+	)
+	default int reminder44CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder45",
@@ -9648,7 +11233,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder45Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder45
@@ -9657,7 +11242,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder45DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder45
@@ -9666,7 +11251,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder45Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder45
@@ -9675,7 +11260,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder45Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder45
@@ -9684,7 +11269,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder45Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder45
@@ -9693,7 +11278,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder45Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder45
@@ -9702,7 +11287,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder45RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder45
@@ -9711,7 +11296,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder45NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder45
@@ -9720,7 +11305,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder45ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder45
@@ -9756,7 +11341,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder45ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder45
@@ -9819,12 +11404,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder45ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder45
 	)
 	default int reminder45ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder45Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder45
+	)
+	default boolean reminder45Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder45Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder45
+	)
+	default boolean reminder45Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder45AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder45
+	)
+	default ColorAnimationType reminder45AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder45CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder45
+	)
+	default int reminder45CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder46",
@@ -9863,7 +11484,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder46Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder46
@@ -9872,7 +11493,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder46DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder46
@@ -9881,7 +11502,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder46Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder46
@@ -9890,7 +11511,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder46Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder46
@@ -9899,7 +11520,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder46Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder46
@@ -9908,7 +11529,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder46Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder46
@@ -9917,7 +11538,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder46RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder46
@@ -9926,7 +11547,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder46NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder46
@@ -9935,7 +11556,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder46ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder46
@@ -9971,7 +11592,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder46ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder46
@@ -10034,12 +11655,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder46ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder46
 	)
 	default int reminder46ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder46Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder46
+	)
+	default boolean reminder46Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder46Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder46
+	)
+	default boolean reminder46Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder46AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder46
+	)
+	default ColorAnimationType reminder46AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder46CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder46
+	)
+	default int reminder46CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder47",
@@ -10078,7 +11735,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder47Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder47
@@ -10087,7 +11744,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder47DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder47
@@ -10096,7 +11753,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder47Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder47
@@ -10105,7 +11762,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder47Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder47
@@ -10114,7 +11771,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder47Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder47
@@ -10123,7 +11780,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder47Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder47
@@ -10132,7 +11789,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder47RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder47
@@ -10141,7 +11798,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder47NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder47
@@ -10150,7 +11807,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder47ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder47
@@ -10186,7 +11843,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder47ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder47
@@ -10249,12 +11906,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder47ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder47
 	)
 	default int reminder47ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder47Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder47
+	)
+	default boolean reminder47Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder47Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder47
+	)
+	default boolean reminder47Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder47AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder47
+	)
+	default ColorAnimationType reminder47AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder47CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder47
+	)
+	default int reminder47CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder48",
@@ -10293,7 +11986,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder48Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder48
@@ -10302,7 +11995,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder48DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder48
@@ -10311,7 +12004,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder48Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder48
@@ -10320,7 +12013,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder48Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder48
@@ -10329,7 +12022,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder48Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder48
@@ -10338,7 +12031,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder48Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder48
@@ -10347,7 +12040,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder48RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder48
@@ -10356,7 +12049,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder48NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder48
@@ -10365,7 +12058,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder48ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder48
@@ -10401,7 +12094,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder48ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder48
@@ -10464,12 +12157,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder48ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder48
 	)
 	default int reminder48ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder48Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder48
+	)
+	default boolean reminder48Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder48Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder48
+	)
+	default boolean reminder48Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder48AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder48
+	)
+	default ColorAnimationType reminder48AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder48CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder48
+	)
+	default int reminder48CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder49",
@@ -10508,7 +12237,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder49Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder49
@@ -10517,7 +12246,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder49DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder49
@@ -10526,7 +12255,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder49Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder49
@@ -10535,7 +12264,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder49Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder49
@@ -10544,7 +12273,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder49Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder49
@@ -10553,7 +12282,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder49Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder49
@@ -10562,7 +12291,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder49RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder49
@@ -10571,7 +12300,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder49NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder49
@@ -10580,7 +12309,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder49ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder49
@@ -10616,7 +12345,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder49ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder49
@@ -10679,12 +12408,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder49ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder49
 	)
 	default int reminder49ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder49Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder49
+	)
+	default boolean reminder49Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder49Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder49
+	)
+	default boolean reminder49Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder49AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder49
+	)
+	default ColorAnimationType reminder49AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder49CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder49
+	)
+	default int reminder49CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder50",
@@ -10723,7 +12488,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder50Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder50
@@ -10732,7 +12497,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder50DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder50
@@ -10741,7 +12506,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder50Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder50
@@ -10750,7 +12515,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder50Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder50
@@ -10759,7 +12524,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder50Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder50
@@ -10768,7 +12533,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder50Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder50
@@ -10777,7 +12542,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder50RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder50
@@ -10786,7 +12551,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder50NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder50
@@ -10795,7 +12560,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder50ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder50
@@ -10831,7 +12596,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder50ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder50
@@ -10894,12 +12659,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder50ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder50
 	)
 	default int reminder50ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder50Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder50
+	)
+	default boolean reminder50Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder50Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder50
+	)
+	default boolean reminder50Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder50AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder50
+	)
+	default ColorAnimationType reminder50AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder50CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder50
+	)
+	default int reminder50CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder51",
@@ -10938,7 +12739,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder51Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder51
@@ -10947,7 +12748,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder51DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder51
@@ -10956,7 +12757,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder51Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder51
@@ -10965,7 +12766,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder51Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder51
@@ -10974,7 +12775,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder51Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder51
@@ -10983,7 +12784,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder51Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder51
@@ -10992,7 +12793,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder51RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder51
@@ -11001,7 +12802,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder51NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder51
@@ -11010,7 +12811,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder51ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder51
@@ -11046,7 +12847,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder51ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder51
@@ -11109,12 +12910,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder51ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder51
 	)
 	default int reminder51ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder51Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder51
+	)
+	default boolean reminder51Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder51Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder51
+	)
+	default boolean reminder51Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder51AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder51
+	)
+	default ColorAnimationType reminder51AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder51CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder51
+	)
+	default int reminder51CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder52",
@@ -11153,7 +12990,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder52Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder52
@@ -11162,7 +12999,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder52DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder52
@@ -11171,7 +13008,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder52Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder52
@@ -11180,7 +13017,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder52Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder52
@@ -11189,7 +13026,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder52Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder52
@@ -11198,7 +13035,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder52Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder52
@@ -11207,7 +13044,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder52RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder52
@@ -11216,7 +13053,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder52NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder52
@@ -11225,7 +13062,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder52ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder52
@@ -11261,7 +13098,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder52ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder52
@@ -11324,12 +13161,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder52ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder52
 	)
 	default int reminder52ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder52Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder52
+	)
+	default boolean reminder52Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder52Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder52
+	)
+	default boolean reminder52Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder52AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder52
+	)
+	default ColorAnimationType reminder52AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder52CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder52
+	)
+	default int reminder52CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder53",
@@ -11368,7 +13241,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder53Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder53
@@ -11377,7 +13250,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder53DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder53
@@ -11386,7 +13259,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder53Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder53
@@ -11395,7 +13268,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder53Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder53
@@ -11404,7 +13277,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder53Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder53
@@ -11413,7 +13286,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder53Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder53
@@ -11422,7 +13295,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder53RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder53
@@ -11431,7 +13304,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder53NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder53
@@ -11440,7 +13313,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder53ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder53
@@ -11476,7 +13349,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder53ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder53
@@ -11539,12 +13412,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder53ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder53
 	)
 	default int reminder53ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder53Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder53
+	)
+	default boolean reminder53Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder53Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder53
+	)
+	default boolean reminder53Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder53AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder53
+	)
+	default ColorAnimationType reminder53AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder53CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder53
+	)
+	default int reminder53CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder54",
@@ -11583,7 +13492,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder54Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder54
@@ -11592,7 +13501,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder54DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder54
@@ -11601,7 +13510,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder54Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder54
@@ -11610,7 +13519,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder54Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder54
@@ -11619,7 +13528,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder54Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder54
@@ -11628,7 +13537,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder54Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder54
@@ -11637,7 +13546,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder54RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder54
@@ -11646,7 +13555,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder54NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder54
@@ -11655,7 +13564,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder54ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder54
@@ -11691,7 +13600,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder54ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder54
@@ -11754,12 +13663,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder54ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder54
 	)
 	default int reminder54ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder54Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder54
+	)
+	default boolean reminder54Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder54Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder54
+	)
+	default boolean reminder54Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder54AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder54
+	)
+	default ColorAnimationType reminder54AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder54CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder54
+	)
+	default int reminder54CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder55",
@@ -11798,7 +13743,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder55Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder55
@@ -11807,7 +13752,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder55DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder55
@@ -11816,7 +13761,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder55Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder55
@@ -11825,7 +13770,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder55Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder55
@@ -11834,7 +13779,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder55Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder55
@@ -11843,7 +13788,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder55Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder55
@@ -11852,7 +13797,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder55RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder55
@@ -11861,7 +13806,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder55NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder55
@@ -11870,7 +13815,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder55ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder55
@@ -11906,7 +13851,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder55ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder55
@@ -11969,12 +13914,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder55ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder55
 	)
 	default int reminder55ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder55Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder55
+	)
+	default boolean reminder55Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder55Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder55
+	)
+	default boolean reminder55Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder55AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder55
+	)
+	default ColorAnimationType reminder55AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder55CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder55
+	)
+	default int reminder55CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder56",
@@ -12013,7 +13994,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder56Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder56
@@ -12022,7 +14003,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder56DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder56
@@ -12031,7 +14012,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder56Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder56
@@ -12040,7 +14021,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder56Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder56
@@ -12049,7 +14030,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder56Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder56
@@ -12058,7 +14039,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder56Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder56
@@ -12067,7 +14048,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder56RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder56
@@ -12076,7 +14057,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder56NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder56
@@ -12085,7 +14066,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder56ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder56
@@ -12121,7 +14102,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder56ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder56
@@ -12184,12 +14165,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder56ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder56
 	)
 	default int reminder56ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder56Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder56
+	)
+	default boolean reminder56Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder56Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder56
+	)
+	default boolean reminder56Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder56AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder56
+	)
+	default ColorAnimationType reminder56AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder56CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder56
+	)
+	default int reminder56CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder57",
@@ -12228,7 +14245,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder57Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder57
@@ -12237,7 +14254,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder57DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder57
@@ -12246,7 +14263,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder57Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder57
@@ -12255,7 +14272,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder57Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder57
@@ -12264,7 +14281,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder57Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder57
@@ -12273,7 +14290,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder57Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder57
@@ -12282,7 +14299,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder57RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder57
@@ -12291,7 +14308,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder57NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder57
@@ -12300,7 +14317,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder57ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder57
@@ -12336,7 +14353,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder57ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder57
@@ -12399,12 +14416,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder57ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder57
 	)
 	default int reminder57ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder57Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder57
+	)
+	default boolean reminder57Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder57Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder57
+	)
+	default boolean reminder57Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder57AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder57
+	)
+	default ColorAnimationType reminder57AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder57CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder57
+	)
+	default int reminder57CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder58",
@@ -12443,7 +14496,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder58Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder58
@@ -12452,7 +14505,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder58DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder58
@@ -12461,7 +14514,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder58Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder58
@@ -12470,7 +14523,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder58Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder58
@@ -12479,7 +14532,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder58Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder58
@@ -12488,7 +14541,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder58Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder58
@@ -12497,7 +14550,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder58RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder58
@@ -12506,7 +14559,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder58NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder58
@@ -12515,7 +14568,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder58ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder58
@@ -12551,7 +14604,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder58ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder58
@@ -12614,12 +14667,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder58ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder58
 	)
 	default int reminder58ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder58Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder58
+	)
+	default boolean reminder58Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder58Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder58
+	)
+	default boolean reminder58Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder58AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder58
+	)
+	default ColorAnimationType reminder58AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder58CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder58
+	)
+	default int reminder58CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder59",
@@ -12658,7 +14747,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder59Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder59
@@ -12667,7 +14756,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder59DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder59
@@ -12676,7 +14765,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder59Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder59
@@ -12685,7 +14774,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder59Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder59
@@ -12694,7 +14783,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder59Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder59
@@ -12703,7 +14792,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder59Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder59
@@ -12712,7 +14801,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder59RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder59
@@ -12721,7 +14810,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder59NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder59
@@ -12730,7 +14819,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder59ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder59
@@ -12766,7 +14855,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder59ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder59
@@ -12829,12 +14918,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder59ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder59
 	)
 	default int reminder59ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder59Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder59
+	)
+	default boolean reminder59Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder59Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder59
+	)
+	default boolean reminder59Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder59AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder59
+	)
+	default ColorAnimationType reminder59AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder59CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder59
+	)
+	default int reminder59CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder60",
@@ -12873,7 +14998,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder60Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder60
@@ -12882,7 +15007,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder60DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder60
@@ -12891,7 +15016,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder60Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder60
@@ -12900,7 +15025,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder60Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder60
@@ -12909,7 +15034,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder60Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder60
@@ -12918,7 +15043,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder60Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder60
@@ -12927,7 +15052,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder60RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder60
@@ -12936,7 +15061,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder60NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder60
@@ -12945,7 +15070,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder60ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder60
@@ -12981,7 +15106,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder60ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder60
@@ -13044,12 +15169,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder60ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder60
 	)
 	default int reminder60ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder60Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder60
+	)
+	default boolean reminder60Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder60Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder60
+	)
+	default boolean reminder60Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder60AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder60
+	)
+	default ColorAnimationType reminder60AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder60CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder60
+	)
+	default int reminder60CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder61",
@@ -13088,7 +15249,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder61Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder61
@@ -13097,7 +15258,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder61DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder61
@@ -13106,7 +15267,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder61Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder61
@@ -13115,7 +15276,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder61Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder61
@@ -13124,7 +15285,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder61Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder61
@@ -13133,7 +15294,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder61Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder61
@@ -13142,7 +15303,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder61RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder61
@@ -13151,7 +15312,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder61NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder61
@@ -13160,7 +15321,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder61ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder61
@@ -13196,7 +15357,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder61ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder61
@@ -13259,12 +15420,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder61ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder61
 	)
 	default int reminder61ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder61Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder61
+	)
+	default boolean reminder61Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder61Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder61
+	)
+	default boolean reminder61Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder61AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder61
+	)
+	default ColorAnimationType reminder61AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder61CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder61
+	)
+	default int reminder61CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder62",
@@ -13303,7 +15500,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder62Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder62
@@ -13312,7 +15509,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder62DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder62
@@ -13321,7 +15518,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder62Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder62
@@ -13330,7 +15527,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder62Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder62
@@ -13339,7 +15536,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder62Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder62
@@ -13348,7 +15545,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder62Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder62
@@ -13357,7 +15554,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder62RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder62
@@ -13366,7 +15563,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder62NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder62
@@ -13375,7 +15572,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder62ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder62
@@ -13411,7 +15608,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder62ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder62
@@ -13474,12 +15671,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder62ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder62
 	)
 	default int reminder62ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder62Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder62
+	)
+	default boolean reminder62Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder62Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder62
+	)
+	default boolean reminder62Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder62AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder62
+	)
+	default ColorAnimationType reminder62AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder62CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder62
+	)
+	default int reminder62CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder63",
@@ -13518,7 +15751,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder63Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder63
@@ -13527,7 +15760,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder63DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder63
@@ -13536,7 +15769,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder63Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder63
@@ -13545,7 +15778,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder63Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder63
@@ -13554,7 +15787,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder63Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder63
@@ -13563,7 +15796,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder63Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder63
@@ -13572,7 +15805,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder63RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder63
@@ -13581,7 +15814,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder63NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder63
@@ -13590,7 +15823,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder63ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder63
@@ -13626,7 +15859,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder63ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder63
@@ -13689,12 +15922,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder63ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder63
 	)
 	default int reminder63ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder63Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder63
+	)
+	default boolean reminder63Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder63Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder63
+	)
+	default boolean reminder63Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder63AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder63
+	)
+	default ColorAnimationType reminder63AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder63CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder63
+	)
+	default int reminder63CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder64",
@@ -13733,7 +16002,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder64Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder64
@@ -13742,7 +16011,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder64DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder64
@@ -13751,7 +16020,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder64Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder64
@@ -13760,7 +16029,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder64Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder64
@@ -13769,7 +16038,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder64Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder64
@@ -13778,7 +16047,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder64Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder64
@@ -13787,7 +16056,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder64RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder64
@@ -13796,7 +16065,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder64NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder64
@@ -13805,7 +16074,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder64ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder64
@@ -13841,7 +16110,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder64ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder64
@@ -13904,12 +16173,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder64ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder64
 	)
 	default int reminder64ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder64Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder64
+	)
+	default boolean reminder64Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder64Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder64
+	)
+	default boolean reminder64Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder64AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder64
+	)
+	default ColorAnimationType reminder64AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder64CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder64
+	)
+	default int reminder64CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder65",
@@ -13948,7 +16253,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder65Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder65
@@ -13957,7 +16262,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder65DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder65
@@ -13966,7 +16271,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder65Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder65
@@ -13975,7 +16280,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder65Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder65
@@ -13984,7 +16289,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder65Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder65
@@ -13993,7 +16298,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder65Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder65
@@ -14002,7 +16307,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder65RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder65
@@ -14011,7 +16316,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder65NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder65
@@ -14020,7 +16325,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder65ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder65
@@ -14056,7 +16361,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder65ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder65
@@ -14119,12 +16424,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder65ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder65
 	)
 	default int reminder65ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder65Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder65
+	)
+	default boolean reminder65Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder65Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder65
+	)
+	default boolean reminder65Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder65AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder65
+	)
+	default ColorAnimationType reminder65AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder65CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder65
+	)
+	default int reminder65CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder66",
@@ -14163,7 +16504,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder66Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder66
@@ -14172,7 +16513,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder66DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder66
@@ -14181,7 +16522,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder66Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder66
@@ -14190,7 +16531,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder66Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder66
@@ -14199,7 +16540,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder66Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder66
@@ -14208,7 +16549,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder66Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder66
@@ -14217,7 +16558,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder66RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder66
@@ -14226,7 +16567,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder66NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder66
@@ -14235,7 +16576,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder66ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder66
@@ -14271,7 +16612,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder66ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder66
@@ -14334,12 +16675,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder66ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder66
 	)
 	default int reminder66ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder66Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder66
+	)
+	default boolean reminder66Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder66Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder66
+	)
+	default boolean reminder66Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder66AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder66
+	)
+	default ColorAnimationType reminder66AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder66CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder66
+	)
+	default int reminder66CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder67",
@@ -14378,7 +16755,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder67Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder67
@@ -14387,7 +16764,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder67DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder67
@@ -14396,7 +16773,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder67Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder67
@@ -14405,7 +16782,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder67Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder67
@@ -14414,7 +16791,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder67Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder67
@@ -14423,7 +16800,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder67Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder67
@@ -14432,7 +16809,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder67RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder67
@@ -14441,7 +16818,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder67NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder67
@@ -14450,7 +16827,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder67ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder67
@@ -14486,7 +16863,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder67ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder67
@@ -14549,12 +16926,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder67ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder67
 	)
 	default int reminder67ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder67Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder67
+	)
+	default boolean reminder67Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder67Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder67
+	)
+	default boolean reminder67Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder67AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder67
+	)
+	default ColorAnimationType reminder67AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder67CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder67
+	)
+	default int reminder67CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder68",
@@ -14593,7 +17006,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder68Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder68
@@ -14602,7 +17015,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder68DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder68
@@ -14611,7 +17024,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder68Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder68
@@ -14620,7 +17033,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder68Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder68
@@ -14629,7 +17042,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder68Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder68
@@ -14638,7 +17051,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder68Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder68
@@ -14647,7 +17060,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder68RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder68
@@ -14656,7 +17069,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder68NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder68
@@ -14665,7 +17078,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder68ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder68
@@ -14701,7 +17114,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder68ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder68
@@ -14764,12 +17177,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder68ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder68
 	)
 	default int reminder68ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder68Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder68
+	)
+	default boolean reminder68Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder68Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder68
+	)
+	default boolean reminder68Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder68AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder68
+	)
+	default ColorAnimationType reminder68AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder68CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder68
+	)
+	default int reminder68CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder69",
@@ -14808,7 +17257,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder69Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder69
@@ -14817,7 +17266,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder69DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder69
@@ -14826,7 +17275,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder69Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder69
@@ -14835,7 +17284,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder69Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder69
@@ -14844,7 +17293,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder69Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder69
@@ -14853,7 +17302,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder69Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder69
@@ -14862,7 +17311,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder69RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder69
@@ -14871,7 +17320,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder69NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder69
@@ -14880,7 +17329,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder69ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder69
@@ -14916,7 +17365,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder69ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder69
@@ -14979,12 +17428,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder69ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder69
 	)
 	default int reminder69ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder69Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder69
+	)
+	default boolean reminder69Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder69Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder69
+	)
+	default boolean reminder69Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder69AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder69
+	)
+	default ColorAnimationType reminder69AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder69CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder69
+	)
+	default int reminder69CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder70",
@@ -15023,7 +17508,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder70Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder70
@@ -15032,7 +17517,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder70DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder70
@@ -15041,7 +17526,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder70Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder70
@@ -15050,7 +17535,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder70Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder70
@@ -15059,7 +17544,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder70Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder70
@@ -15068,7 +17553,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder70Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder70
@@ -15077,7 +17562,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder70RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder70
@@ -15086,7 +17571,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder70NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder70
@@ -15095,7 +17580,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder70ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder70
@@ -15131,7 +17616,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder70ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder70
@@ -15194,12 +17679,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder70ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder70
 	)
 	default int reminder70ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder70Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder70
+	)
+	default boolean reminder70Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder70Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder70
+	)
+	default boolean reminder70Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder70AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder70
+	)
+	default ColorAnimationType reminder70AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder70CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder70
+	)
+	default int reminder70CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder71",
@@ -15238,7 +17759,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder71Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder71
@@ -15247,7 +17768,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder71DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder71
@@ -15256,7 +17777,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder71Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder71
@@ -15265,7 +17786,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder71Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder71
@@ -15274,7 +17795,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder71Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder71
@@ -15283,7 +17804,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder71Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder71
@@ -15292,7 +17813,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder71RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder71
@@ -15301,7 +17822,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder71NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder71
@@ -15310,7 +17831,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder71ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder71
@@ -15346,7 +17867,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder71ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder71
@@ -15409,12 +17930,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder71ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder71
 	)
 	default int reminder71ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder71Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder71
+	)
+	default boolean reminder71Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder71Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder71
+	)
+	default boolean reminder71Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder71AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder71
+	)
+	default ColorAnimationType reminder71AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder71CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder71
+	)
+	default int reminder71CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder72",
@@ -15453,7 +18010,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder72Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder72
@@ -15462,7 +18019,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder72DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder72
@@ -15471,7 +18028,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder72Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder72
@@ -15480,7 +18037,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder72Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder72
@@ -15489,7 +18046,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder72Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder72
@@ -15498,7 +18055,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder72Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder72
@@ -15507,7 +18064,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder72RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder72
@@ -15516,7 +18073,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder72NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder72
@@ -15525,7 +18082,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder72ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder72
@@ -15561,7 +18118,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder72ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder72
@@ -15624,12 +18181,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder72ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder72
 	)
 	default int reminder72ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder72Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder72
+	)
+	default boolean reminder72Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder72Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder72
+	)
+	default boolean reminder72Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder72AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder72
+	)
+	default ColorAnimationType reminder72AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder72CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder72
+	)
+	default int reminder72CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder73",
@@ -15668,7 +18261,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder73Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder73
@@ -15677,7 +18270,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder73DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder73
@@ -15686,7 +18279,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder73Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder73
@@ -15695,7 +18288,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder73Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder73
@@ -15704,7 +18297,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder73Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder73
@@ -15713,7 +18306,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder73Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder73
@@ -15722,7 +18315,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder73RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder73
@@ -15731,7 +18324,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder73NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder73
@@ -15740,7 +18333,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder73ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder73
@@ -15776,7 +18369,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder73ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder73
@@ -15839,12 +18432,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder73ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder73
 	)
 	default int reminder73ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder73Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder73
+	)
+	default boolean reminder73Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder73Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder73
+	)
+	default boolean reminder73Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder73AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder73
+	)
+	default ColorAnimationType reminder73AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder73CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder73
+	)
+	default int reminder73CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder74",
@@ -15883,7 +18512,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder74Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder74
@@ -15892,7 +18521,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder74DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder74
@@ -15901,7 +18530,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder74Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder74
@@ -15910,7 +18539,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder74Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder74
@@ -15919,7 +18548,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder74Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder74
@@ -15928,7 +18557,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder74Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder74
@@ -15937,7 +18566,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder74RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder74
@@ -15946,7 +18575,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder74NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder74
@@ -15955,7 +18584,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder74ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder74
@@ -15991,7 +18620,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder74ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder74
@@ -16054,12 +18683,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder74ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder74
 	)
 	default int reminder74ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder74Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder74
+	)
+	default boolean reminder74Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder74Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder74
+	)
+	default boolean reminder74Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder74AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder74
+	)
+	default ColorAnimationType reminder74AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder74CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder74
+	)
+	default int reminder74CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder75",
@@ -16098,7 +18763,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder75Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder75
@@ -16107,7 +18772,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder75DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder75
@@ -16116,7 +18781,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder75Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder75
@@ -16125,7 +18790,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder75Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder75
@@ -16134,7 +18799,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder75Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder75
@@ -16143,7 +18808,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder75Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder75
@@ -16152,7 +18817,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder75RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder75
@@ -16161,7 +18826,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder75NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder75
@@ -16170,7 +18835,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder75ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder75
@@ -16206,7 +18871,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder75ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder75
@@ -16269,12 +18934,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder75ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder75
 	)
 	default int reminder75ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder75Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder75
+	)
+	default boolean reminder75Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder75Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder75
+	)
+	default boolean reminder75Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder75AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder75
+	)
+	default ColorAnimationType reminder75AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder75CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder75
+	)
+	default int reminder75CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder76",
@@ -16313,7 +19014,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder76Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder76
@@ -16322,7 +19023,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder76DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder76
@@ -16331,7 +19032,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder76Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder76
@@ -16340,7 +19041,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder76Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder76
@@ -16349,7 +19050,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder76Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder76
@@ -16358,7 +19059,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder76Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder76
@@ -16367,7 +19068,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder76RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder76
@@ -16376,7 +19077,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder76NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder76
@@ -16385,7 +19086,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder76ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder76
@@ -16421,7 +19122,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder76ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder76
@@ -16484,12 +19185,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder76ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder76
 	)
 	default int reminder76ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder76Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder76
+	)
+	default boolean reminder76Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder76Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder76
+	)
+	default boolean reminder76Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder76AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder76
+	)
+	default ColorAnimationType reminder76AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder76CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder76
+	)
+	default int reminder76CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder77",
@@ -16528,7 +19265,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder77Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder77
@@ -16537,7 +19274,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder77DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder77
@@ -16546,7 +19283,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder77Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder77
@@ -16555,7 +19292,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder77Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder77
@@ -16564,7 +19301,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder77Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder77
@@ -16573,7 +19310,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder77Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder77
@@ -16582,7 +19319,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder77RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder77
@@ -16591,7 +19328,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder77NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder77
@@ -16600,7 +19337,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder77ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder77
@@ -16636,7 +19373,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder77ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder77
@@ -16699,12 +19436,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder77ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder77
 	)
 	default int reminder77ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder77Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder77
+	)
+	default boolean reminder77Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder77Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder77
+	)
+	default boolean reminder77Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder77AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder77
+	)
+	default ColorAnimationType reminder77AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder77CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder77
+	)
+	default int reminder77CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder78",
@@ -16743,7 +19516,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder78Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder78
@@ -16752,7 +19525,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder78DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder78
@@ -16761,7 +19534,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder78Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder78
@@ -16770,7 +19543,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder78Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder78
@@ -16779,7 +19552,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder78Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder78
@@ -16788,7 +19561,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder78Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder78
@@ -16797,7 +19570,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder78RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder78
@@ -16806,7 +19579,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder78NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder78
@@ -16815,7 +19588,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder78ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder78
@@ -16851,7 +19624,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder78ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder78
@@ -16914,12 +19687,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder78ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder78
 	)
 	default int reminder78ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder78Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder78
+	)
+	default boolean reminder78Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder78Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder78
+	)
+	default boolean reminder78Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder78AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder78
+	)
+	default ColorAnimationType reminder78AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder78CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder78
+	)
+	default int reminder78CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder79",
@@ -16958,7 +19767,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder79Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder79
@@ -16967,7 +19776,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder79DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder79
@@ -16976,7 +19785,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder79Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder79
@@ -16985,7 +19794,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder79Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder79
@@ -16994,7 +19803,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder79Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder79
@@ -17003,7 +19812,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder79Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder79
@@ -17012,7 +19821,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder79RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder79
@@ -17021,7 +19830,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder79NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder79
@@ -17030,7 +19839,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder79ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder79
@@ -17066,7 +19875,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder79ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder79
@@ -17129,12 +19938,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder79ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder79
 	)
 	default int reminder79ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder79Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder79
+	)
+	default boolean reminder79Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder79Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder79
+	)
+	default boolean reminder79Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder79AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder79
+	)
+	default ColorAnimationType reminder79AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder79CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder79
+	)
+	default int reminder79CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder80",
@@ -17173,7 +20018,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder80Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder80
@@ -17182,7 +20027,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder80DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder80
@@ -17191,7 +20036,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder80Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder80
@@ -17200,7 +20045,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder80Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder80
@@ -17209,7 +20054,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder80Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder80
@@ -17218,7 +20063,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder80Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder80
@@ -17227,7 +20072,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder80RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder80
@@ -17236,7 +20081,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder80NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder80
@@ -17245,7 +20090,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder80ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder80
@@ -17281,7 +20126,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder80ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder80
@@ -17344,12 +20189,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder80ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder80
 	)
 	default int reminder80ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder80Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder80
+	)
+	default boolean reminder80Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder80Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder80
+	)
+	default boolean reminder80Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder80AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder80
+	)
+	default ColorAnimationType reminder80AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder80CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder80
+	)
+	default int reminder80CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder81",
@@ -17388,7 +20269,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder81Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder81
@@ -17397,7 +20278,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder81DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder81
@@ -17406,7 +20287,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder81Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder81
@@ -17415,7 +20296,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder81Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder81
@@ -17424,7 +20305,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder81Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder81
@@ -17433,7 +20314,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder81Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder81
@@ -17442,7 +20323,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder81RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder81
@@ -17451,7 +20332,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder81NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder81
@@ -17460,7 +20341,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder81ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder81
@@ -17496,7 +20377,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder81ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder81
@@ -17559,12 +20440,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder81ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder81
 	)
 	default int reminder81ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder81Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder81
+	)
+	default boolean reminder81Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder81Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder81
+	)
+	default boolean reminder81Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder81AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder81
+	)
+	default ColorAnimationType reminder81AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder81CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder81
+	)
+	default int reminder81CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder82",
@@ -17603,7 +20520,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder82Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder82
@@ -17612,7 +20529,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder82DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder82
@@ -17621,7 +20538,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder82Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder82
@@ -17630,7 +20547,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder82Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder82
@@ -17639,7 +20556,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder82Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder82
@@ -17648,7 +20565,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder82Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder82
@@ -17657,7 +20574,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder82RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder82
@@ -17666,7 +20583,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder82NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder82
@@ -17675,7 +20592,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder82ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder82
@@ -17711,7 +20628,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder82ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder82
@@ -17774,12 +20691,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder82ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder82
 	)
 	default int reminder82ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder82Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder82
+	)
+	default boolean reminder82Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder82Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder82
+	)
+	default boolean reminder82Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder82AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder82
+	)
+	default ColorAnimationType reminder82AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder82CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder82
+	)
+	default int reminder82CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder83",
@@ -17818,7 +20771,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder83Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder83
@@ -17827,7 +20780,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder83DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder83
@@ -17836,7 +20789,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder83Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder83
@@ -17845,7 +20798,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder83Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder83
@@ -17854,7 +20807,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder83Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder83
@@ -17863,7 +20816,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder83Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder83
@@ -17872,7 +20825,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder83RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder83
@@ -17881,7 +20834,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder83NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder83
@@ -17890,7 +20843,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder83ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder83
@@ -17926,7 +20879,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder83ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder83
@@ -17989,12 +20942,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder83ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder83
 	)
 	default int reminder83ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder83Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder83
+	)
+	default boolean reminder83Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder83Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder83
+	)
+	default boolean reminder83Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder83AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder83
+	)
+	default ColorAnimationType reminder83AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder83CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder83
+	)
+	default int reminder83CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder84",
@@ -18033,7 +21022,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder84Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder84
@@ -18042,7 +21031,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder84DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder84
@@ -18051,7 +21040,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder84Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder84
@@ -18060,7 +21049,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder84Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder84
@@ -18069,7 +21058,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder84Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder84
@@ -18078,7 +21067,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder84Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder84
@@ -18087,7 +21076,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder84RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder84
@@ -18096,7 +21085,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder84NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder84
@@ -18105,7 +21094,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder84ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder84
@@ -18141,7 +21130,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder84ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder84
@@ -18204,12 +21193,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder84ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder84
 	)
 	default int reminder84ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder84Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder84
+	)
+	default boolean reminder84Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder84Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder84
+	)
+	default boolean reminder84Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder84AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder84
+	)
+	default ColorAnimationType reminder84AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder84CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder84
+	)
+	default int reminder84CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder85",
@@ -18248,7 +21273,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder85Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder85
@@ -18257,7 +21282,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder85DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder85
@@ -18266,7 +21291,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder85Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder85
@@ -18275,7 +21300,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder85Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder85
@@ -18284,7 +21309,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder85Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder85
@@ -18293,7 +21318,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder85Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder85
@@ -18302,7 +21327,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder85RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder85
@@ -18311,7 +21336,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder85NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder85
@@ -18320,7 +21345,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder85ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder85
@@ -18356,7 +21381,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder85ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder85
@@ -18419,12 +21444,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder85ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder85
 	)
 	default int reminder85ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder85Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder85
+	)
+	default boolean reminder85Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder85Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder85
+	)
+	default boolean reminder85Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder85AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder85
+	)
+	default ColorAnimationType reminder85AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder85CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder85
+	)
+	default int reminder85CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder86",
@@ -18463,7 +21524,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder86Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder86
@@ -18472,7 +21533,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder86DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder86
@@ -18481,7 +21542,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder86Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder86
@@ -18490,7 +21551,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder86Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder86
@@ -18499,7 +21560,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder86Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder86
@@ -18508,7 +21569,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder86Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder86
@@ -18517,7 +21578,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder86RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder86
@@ -18526,7 +21587,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder86NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder86
@@ -18535,7 +21596,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder86ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder86
@@ -18571,7 +21632,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder86ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder86
@@ -18634,12 +21695,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder86ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder86
 	)
 	default int reminder86ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder86Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder86
+	)
+	default boolean reminder86Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder86Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder86
+	)
+	default boolean reminder86Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder86AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder86
+	)
+	default ColorAnimationType reminder86AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder86CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder86
+	)
+	default int reminder86CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder87",
@@ -18678,7 +21775,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder87Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder87
@@ -18687,7 +21784,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder87DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder87
@@ -18696,7 +21793,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder87Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder87
@@ -18705,7 +21802,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder87Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder87
@@ -18714,7 +21811,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder87Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder87
@@ -18723,7 +21820,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder87Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder87
@@ -18732,7 +21829,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder87RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder87
@@ -18741,7 +21838,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder87NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder87
@@ -18750,7 +21847,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder87ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder87
@@ -18786,7 +21883,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder87ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder87
@@ -18849,12 +21946,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder87ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder87
 	)
 	default int reminder87ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder87Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder87
+	)
+	default boolean reminder87Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder87Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder87
+	)
+	default boolean reminder87Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder87AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder87
+	)
+	default ColorAnimationType reminder87AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder87CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder87
+	)
+	default int reminder87CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder88",
@@ -18893,7 +22026,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder88Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder88
@@ -18902,7 +22035,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder88DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder88
@@ -18911,7 +22044,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder88Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder88
@@ -18920,7 +22053,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder88Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder88
@@ -18929,7 +22062,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder88Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder88
@@ -18938,7 +22071,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder88Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder88
@@ -18947,7 +22080,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder88RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder88
@@ -18956,7 +22089,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder88NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder88
@@ -18965,7 +22098,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder88ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder88
@@ -19001,7 +22134,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder88ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder88
@@ -19064,12 +22197,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder88ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder88
 	)
 	default int reminder88ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder88Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder88
+	)
+	default boolean reminder88Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder88Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder88
+	)
+	default boolean reminder88Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder88AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder88
+	)
+	default ColorAnimationType reminder88AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder88CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder88
+	)
+	default int reminder88CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder89",
@@ -19108,7 +22277,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder89Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder89
@@ -19117,7 +22286,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder89DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder89
@@ -19126,7 +22295,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder89Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder89
@@ -19135,7 +22304,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder89Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder89
@@ -19144,7 +22313,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder89Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder89
@@ -19153,7 +22322,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder89Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder89
@@ -19162,7 +22331,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder89RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder89
@@ -19171,7 +22340,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder89NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder89
@@ -19180,7 +22349,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder89ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder89
@@ -19216,7 +22385,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder89ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder89
@@ -19279,12 +22448,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder89ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder89
 	)
 	default int reminder89ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder89Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder89
+	)
+	default boolean reminder89Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder89Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder89
+	)
+	default boolean reminder89Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder89AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder89
+	)
+	default ColorAnimationType reminder89AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder89CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder89
+	)
+	default int reminder89CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder90",
@@ -19323,7 +22528,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder90Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder90
@@ -19332,7 +22537,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder90DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder90
@@ -19341,7 +22546,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder90Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder90
@@ -19350,7 +22555,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder90Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder90
@@ -19359,7 +22564,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder90Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder90
@@ -19368,7 +22573,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder90Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder90
@@ -19377,7 +22582,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder90RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder90
@@ -19386,7 +22591,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder90NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder90
@@ -19395,7 +22600,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder90ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder90
@@ -19431,7 +22636,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder90ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder90
@@ -19494,12 +22699,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder90ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder90
 	)
 	default int reminder90ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder90Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder90
+	)
+	default boolean reminder90Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder90Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder90
+	)
+	default boolean reminder90Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder90AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder90
+	)
+	default ColorAnimationType reminder90AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder90CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder90
+	)
+	default int reminder90CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder91",
@@ -19538,7 +22779,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder91Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder91
@@ -19547,7 +22788,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder91DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder91
@@ -19556,7 +22797,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder91Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder91
@@ -19565,7 +22806,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder91Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder91
@@ -19574,7 +22815,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder91Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder91
@@ -19583,7 +22824,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder91Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder91
@@ -19592,7 +22833,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder91RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder91
@@ -19601,7 +22842,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder91NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder91
@@ -19610,7 +22851,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder91ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder91
@@ -19646,7 +22887,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder91ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder91
@@ -19709,12 +22950,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder91ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder91
 	)
 	default int reminder91ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder91Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder91
+	)
+	default boolean reminder91Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder91Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder91
+	)
+	default boolean reminder91Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder91AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder91
+	)
+	default ColorAnimationType reminder91AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder91CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder91
+	)
+	default int reminder91CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder92",
@@ -19753,7 +23030,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder92Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder92
@@ -19762,7 +23039,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder92DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder92
@@ -19771,7 +23048,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder92Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder92
@@ -19780,7 +23057,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder92Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder92
@@ -19789,7 +23066,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder92Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder92
@@ -19798,7 +23075,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder92Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder92
@@ -19807,7 +23084,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder92RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder92
@@ -19816,7 +23093,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder92NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder92
@@ -19825,7 +23102,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder92ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder92
@@ -19861,7 +23138,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder92ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder92
@@ -19924,12 +23201,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder92ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder92
 	)
 	default int reminder92ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder92Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder92
+	)
+	default boolean reminder92Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder92Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder92
+	)
+	default boolean reminder92Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder92AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder92
+	)
+	default ColorAnimationType reminder92AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder92CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder92
+	)
+	default int reminder92CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder93",
@@ -19968,7 +23281,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder93Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder93
@@ -19977,7 +23290,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder93DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder93
@@ -19986,7 +23299,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder93Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder93
@@ -19995,7 +23308,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder93Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder93
@@ -20004,7 +23317,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder93Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder93
@@ -20013,7 +23326,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder93Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder93
@@ -20022,7 +23335,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder93RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder93
@@ -20031,7 +23344,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder93NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder93
@@ -20040,7 +23353,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder93ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder93
@@ -20076,7 +23389,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder93ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder93
@@ -20139,12 +23452,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder93ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder93
 	)
 	default int reminder93ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder93Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder93
+	)
+	default boolean reminder93Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder93Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder93
+	)
+	default boolean reminder93Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder93AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder93
+	)
+	default ColorAnimationType reminder93AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder93CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder93
+	)
+	default int reminder93CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder94",
@@ -20183,7 +23532,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder94Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder94
@@ -20192,7 +23541,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder94DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder94
@@ -20201,7 +23550,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder94Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder94
@@ -20210,7 +23559,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder94Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder94
@@ -20219,7 +23568,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder94Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder94
@@ -20228,7 +23577,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder94Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder94
@@ -20237,7 +23586,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder94RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder94
@@ -20246,7 +23595,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder94NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder94
@@ -20255,7 +23604,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder94ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder94
@@ -20291,7 +23640,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder94ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder94
@@ -20354,12 +23703,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder94ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder94
 	)
 	default int reminder94ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder94Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder94
+	)
+	default boolean reminder94Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder94Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder94
+	)
+	default boolean reminder94Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder94AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder94
+	)
+	default ColorAnimationType reminder94AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder94CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder94
+	)
+	default int reminder94CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder95",
@@ -20398,7 +23783,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder95Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder95
@@ -20407,7 +23792,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder95DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder95
@@ -20416,7 +23801,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder95Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder95
@@ -20425,7 +23810,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder95Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder95
@@ -20434,7 +23819,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder95Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder95
@@ -20443,7 +23828,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder95Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder95
@@ -20452,7 +23837,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder95RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder95
@@ -20461,7 +23846,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder95NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder95
@@ -20470,7 +23855,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder95ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder95
@@ -20506,7 +23891,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder95ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder95
@@ -20569,12 +23954,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder95ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder95
 	)
 	default int reminder95ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder95Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder95
+	)
+	default boolean reminder95Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder95Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder95
+	)
+	default boolean reminder95Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder95AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder95
+	)
+	default ColorAnimationType reminder95AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder95CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder95
+	)
+	default int reminder95CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder96",
@@ -20613,7 +24034,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder96Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder96
@@ -20622,7 +24043,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder96DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder96
@@ -20631,7 +24052,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder96Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder96
@@ -20640,7 +24061,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder96Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder96
@@ -20649,7 +24070,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder96Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder96
@@ -20658,7 +24079,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder96Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder96
@@ -20667,7 +24088,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder96RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder96
@@ -20676,7 +24097,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder96NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder96
@@ -20685,7 +24106,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder96ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder96
@@ -20721,7 +24142,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder96ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder96
@@ -20784,12 +24205,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder96ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder96
 	)
 	default int reminder96ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder96Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder96
+	)
+	default boolean reminder96Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder96Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder96
+	)
+	default boolean reminder96Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder96AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder96
+	)
+	default ColorAnimationType reminder96AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder96CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder96
+	)
+	default int reminder96CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder97",
@@ -20828,7 +24285,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder97Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder97
@@ -20837,7 +24294,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder97DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder97
@@ -20846,7 +24303,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder97Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder97
@@ -20855,7 +24312,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder97Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder97
@@ -20864,7 +24321,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder97Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder97
@@ -20873,7 +24330,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder97Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder97
@@ -20882,7 +24339,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder97RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder97
@@ -20891,7 +24348,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder97NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder97
@@ -20900,7 +24357,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder97ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder97
@@ -20936,7 +24393,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder97ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder97
@@ -20999,12 +24456,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder97ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder97
 	)
 	default int reminder97ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder97Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder97
+	)
+	default boolean reminder97Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder97Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder97
+	)
+	default boolean reminder97Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder97AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder97
+	)
+	default ColorAnimationType reminder97AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder97CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder97
+	)
+	default int reminder97CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder98",
@@ -21043,7 +24536,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder98Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder98
@@ -21052,7 +24545,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder98DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder98
@@ -21061,7 +24554,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder98Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder98
@@ -21070,7 +24563,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder98Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder98
@@ -21079,7 +24572,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder98Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder98
@@ -21088,7 +24581,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder98Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder98
@@ -21097,7 +24590,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder98RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder98
@@ -21106,7 +24599,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder98NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder98
@@ -21115,7 +24608,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder98ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder98
@@ -21151,7 +24644,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder98ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder98
@@ -21214,12 +24707,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder98ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder98
 	)
 	default int reminder98ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder98Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder98
+	)
+	default boolean reminder98Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder98Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder98
+	)
+	default boolean reminder98Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder98AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder98
+	)
+	default ColorAnimationType reminder98AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder98CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder98
+	)
+	default int reminder98CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder99",
@@ -21258,7 +24787,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder99Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder99
@@ -21267,7 +24796,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder99DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder99
@@ -21276,7 +24805,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder99Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder99
@@ -21285,7 +24814,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder99Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder99
@@ -21294,7 +24823,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder99Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder99
@@ -21303,7 +24832,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder99Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder99
@@ -21312,7 +24841,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder99RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder99
@@ -21321,7 +24850,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder99NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder99
@@ -21330,7 +24859,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder99ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder99
@@ -21366,7 +24895,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder99ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder99
@@ -21429,12 +24958,48 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder99ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder99
 	)
 	default int reminder99ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder99Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder99
+	)
+	default boolean reminder99Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder99Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder99
+	)
+	default boolean reminder99Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder99AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder99
+	)
+	default ColorAnimationType reminder99AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder99CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder99
+	)
+	default int reminder99CycleDuration() { return 2; }
 
 	@ConfigSection(
 			name = "Reminder100",
@@ -21473,7 +25038,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder100Times",
-			position = 30,
+			position = 37,
 			name = "Times of Day",
 			description = "Configures what times reminder is shown. Set times 10:00pm, 7:30pm or spans 8:30am-12:00pm, 10:00pm-1:00am. (comma separated).",
 			section = reminder100
@@ -21482,7 +25047,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder100DaysOfWeek",
-			position = 31,
+			position = 38,
 			name = "Days of Week",
 			description = "Configures what days of week reminder is shown, e.g. Mon, Thu (comma separated).",
 			section = reminder100
@@ -21491,7 +25056,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder100Datess",
-			position = 32,
+			position = 39,
 			name = "Calendar Dates",
 			description = "Configures what dates reminder is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
 			section = reminder100
@@ -21500,7 +25065,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder100Coordinates",
-			position = 12,
+			position = 30,
 			name = "Near Coordinates",
 			description = "Configures coordinates where reminder is shown (x, y), e.g. (40, 50), (1000, 750) (comma separated).",
 			section = reminder100
@@ -21509,7 +25074,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder100Geofences",
-			position = 14,
+			position = 31,
 			name = "Inside Geofences",
 			description = "Configures geofences where reminder is shown (west, north, east, south), e.g. (40, 50, 1000, 750) (comma separated).",
 			section = reminder100
@@ -21518,7 +25083,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "reminder100Radius",
-			position = 13,
+			position = 32,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates reminder is shown.",
 			section = reminder100
@@ -21527,7 +25092,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder100RegionId",
-			position = 15,
+			position = 33,
 			name = "Inside Regions",
 			description = "Configures region ids when reminder is shown (comma separated).",
 			section = reminder100
@@ -21536,7 +25101,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder100NpcIds",
-			position = 16,
+			position = 34,
 			name = "Npcs Spawned",
 			description = "Configures the npc ids when spawned reminder is shown (comma separated).",
 			section = reminder100
@@ -21545,7 +25110,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder100ItemIds",
-			position = 17,
+			position = 35,
 			name = "Items in Inventory",
 			description = "Configures the item ids in inventory for when reminder is shown (comma separated).",
 			section = reminder100
@@ -21581,7 +25146,7 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder100ChatPatterns",
-			position = 18,
+			position = 36,
 			name = "Chat Patterns",
 			description = "Configures what text or regex patterns to match in chat messages to show reminder. (comma seperated)",
 			section = reminder100
@@ -21644,10 +25209,46 @@ public interface RemindersConfig extends Config {
 
 	@ConfigItem(
 			keyName = "Reminder100ImageId",
-			position = 11,
+			position = 12,
 			name = "Image ID",
 			description = "Configures the image id.",
 			section = reminder100
 	)
 	default int reminder100ImageId() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder100Image",
+			position = 13,
+			name = "Image",
+			description = "Configures whether or not the reminder has an image.",
+			section = reminder100
+	)
+	default boolean reminder100Image() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder100Animate",
+			position = 14,
+			name = "Animate",
+			description = "Configures whether or not to animate.",
+			section = reminder100
+	)
+	default boolean reminder100Animate() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder100AnimationType",
+			position = 15,
+			name = "Animation Type",
+			description = "Configures the animation type.",
+			section = reminder100
+	)
+	default ColorAnimationType reminder100AnimationType() { return ColorAnimationType.ANALOGOUS; }
+
+	@ConfigItem(
+			keyName = "Reminder100CycleDuration",
+			position = 16,
+			name = "Cycle Duration",
+			description = "Configures the cycle duration for animation.",
+			section = reminder100
+	)
+	default int reminder100CycleDuration() { return 2; }
 }

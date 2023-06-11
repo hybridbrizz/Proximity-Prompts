@@ -5,29 +5,33 @@ line4  = '    else return {defaultReturn};'
 line5  = '}'
 
 configInfo = [
-    # ["Enable", "boolean"],
-    # ["Text", "String"],
-    # ["Color", "Color"],
-    # ["Duration", "int"],
-    # ["Cooldown", "int"],
-    # ["TimeUnit", "TimeUnit"],
-    # ["Notify", "boolean"],
-    # ["Times", "String"],
-    # ["DaysOfWeek", "String"],
-    # ["Dates", "String"],
-    # ["Coordinates", "String"],
-    # ["Radius", "int"],
-    # ["Geofences", "String"],
-    # ["RegionIds", "String"],
-    # ["NpcIds", "String"],
-    # ["ItemIds", "String"],
-    # ["ChatPatterns", "String"],
-    # ["SeparatePanel", "boolean"],
-    # ["PanelAnchorType", "RSAnchorType"],
-    # ["PanelAnchorX", "int"],
-    # ["PanelAnchorY", "int"],
-    # ["ImageAlignment", "RSViewGroup.Gravity"]
-    ["ImageId", "int"]
+    ["Enable", "boolean"],
+    ["Text", "String"],
+    ["Color", "Color"],
+    ["Duration", "int"],
+    ["Cooldown", "int"],
+    ["TimeUnit", "TimeUnit"],
+    ["Notify", "boolean"],
+    ["Times", "String"],
+    ["DaysOfWeek", "String"],
+    ["Dates", "String"],
+    ["Coordinates", "String"],
+    ["Radius", "int"],
+    ["Geofences", "String"],
+    ["RegionIds", "String"],
+    ["NpcIds", "String"],
+    ["ItemIds", "String"],
+    ["ChatPatterns", "String"],
+    ["SeparatePanel", "boolean"],
+    ["PanelAnchorType", "RSAnchorType"],
+    ["PanelAnchorX", "int"],
+    ["PanelAnchorY", "int"],
+    ["Image", "boolean"],
+    ["ImageAlignment", "RSViewGroup.Gravity"],
+    ["ImageId", "int"],
+    ["Animate", "boolean"],
+    ["AnimationType", "ColorAnimationType"],
+    ["CycleDuration", "int"]
 ]
 
 for info in configInfo:
@@ -55,8 +59,14 @@ for info in configInfo:
         default_return = "0"
     elif type == "Color":
         default_return = "Color.WHITE"
-    elif type == "RSAnchorTYpe":
+    elif type == "RSAnchorType":
         default_return = "RSAnchorType.TOP_LEFT"
+    elif type == "TimeUnit":
+        default_return = "TimeUnit.SECONDS"
+    elif type == "ColorAnimationType":
+        default_return = "ColorAnimationType.ANALOGOUS"
+    elif type == "RSViewGroup.Gravity":
+        default_return = "RSViewGroup.Gravity.TOP_START"
 
     print(line4.format(defaultReturn=default_return))
     print(line5)

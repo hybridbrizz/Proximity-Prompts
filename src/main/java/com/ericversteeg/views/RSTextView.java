@@ -4,6 +4,7 @@ import net.runelite.client.ui.overlay.components.TextComponent;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -14,6 +15,7 @@ public class RSTextView extends RSView
     private FontMetrics fontMetrics;
     private Font font;
     private String text = "";
+    private Color textColor = Color.WHITE;
     private int numLines = 1;
     private int lineHeight = 0;
     private boolean hasImage = false;
@@ -23,6 +25,8 @@ public class RSTextView extends RSView
     private int imageW = 0;
     private int imageH = 0;
     private RSViewGroup.Gravity imageGravity;
+    private boolean animatesColor = false;
+    private long animationCycleMillis = 10000L;
 
     public RSTextView(int x, int y, int w, int h, Font font) {
         super(x, y, w, h);
@@ -46,6 +50,7 @@ public class RSTextView extends RSView
 
     public void setTextColor(Color color)
     {
+        textColor = color;
         textComponent.setColor(color);
     }
 
@@ -96,6 +101,16 @@ public class RSTextView extends RSView
                 return h - paddingTop - paddingBottom - imageH;
         }
         return 0;
+    }
+
+    public void setAnimatesColor(boolean animatesColor)
+    {
+        this.animatesColor = animatesColor;
+    }
+
+    public void setAnimationCycleDuration(int duration)
+    {
+        animationCycleMillis = duration * 1000L;
     }
 
     private int lineWidth = 0;
@@ -264,7 +279,6 @@ public class RSTextView extends RSView
     private void charRenderLinesImage(Graphics2D graphics, int maxWidth, Point start)
     {
         char [] chars = text.replace("\\s+", " ").toCharArray();
-        System.out.println("Text = " + text);
 
         int rx = 0;
         int ry = lineHeight;
@@ -367,7 +381,18 @@ public class RSTextView extends RSView
                     Color color = colorPositions.get(rIndex);
                     if (color != null)
                     {
-                        textComponent.setColor(color);
+                        if (animatesColor)
+                        {
+                            float percent = (Instant.now().toEpochMilli() % animationCycleMillis) / ((float) animationCycleMillis);
+
+                            Color [] triadicColors = getTriadicColors(color);
+                            Color animatedColor = getInterpolatedColor(getColorPair(triadicColors, percent), triadicColors.length, percent);
+                            textComponent.setColor(animatedColor);
+                        }
+                        else
+                        {
+                            textComponent.setColor(color);
+                        }
                     }
 
                     textComponent.setPosition(new Point(start.x + rx,start.y + ry));
@@ -382,7 +407,18 @@ public class RSTextView extends RSView
                 Color color = colorPositions.get(rIndex);
                 if (color != null)
                 {
-                    textComponent.setColor(color);
+                    if (animatesColor)
+                    {
+                        float percent = (Instant.now().toEpochMilli() % animationCycleMillis) / ((float) animationCycleMillis);
+
+                        Color [] triadicColors = getTriadicColors(color);
+                        Color animatedColor = getInterpolatedColor(getColorPair(triadicColors, percent), triadicColors.length, percent);
+                        textComponent.setColor(animatedColor);
+                    }
+                    else
+                    {
+                        textComponent.setColor(color);
+                    }
                 }
 
                 cIndex += 1;
@@ -489,7 +525,6 @@ public class RSTextView extends RSView
     private int getNumLinesImage(int maxWidth)
     {
         String str = Pattern.compile("\\^\\w").matcher(text).replaceAll("");
-        System.out.println("Str = " + str);
 
         char [] chars = str.replace("\\s+", " ").toCharArray();
 
@@ -621,6 +656,49 @@ public class RSTextView extends RSView
         {
             return Color.ORANGE;
         }
+        else if (c == '0')
+        {
+            return textColor;
+        }
         return Color.WHITE;
+    }
+
+    private Color [] getTriadicColors(Color color)
+    {
+        float [] hsb = Color.RGBtoHSB(color.getRed(), color.getGreen(), color.getBlue(), null);
+
+        float hue = hsb[0];
+
+        float triHue = (hue + 120f) % 360f;
+        float triHue2 = (hue + 240f) % 360f;
+
+        Color triColor = Color.getHSBColor(triHue / 360f, hsb[1], hsb[2]);
+        Color triColor2 = Color.getHSBColor(triHue2 / 360f, hsb[1], hsb[2]);
+
+        return new Color [] {color, triColor, triColor2};
+    }
+
+    private Color [] getColorPair(Color [] colors, float percent)
+    {
+        int count = colors.length;
+
+        int index = (int) (percent / (1f / colors.length));
+        int index2 = (index + 1) % count;
+
+        return new Color [] {colors[index], colors[index2]};
+    }
+
+    private Color getInterpolatedColor(Color [] colorPair, int colorCount, float percent)
+    {
+        float t = (percent % (1f / colorCount) / (1f / colorCount));
+
+        Color sColor = colorPair[0];
+        Color eColor = colorPair[1];
+
+        int r = (int) (sColor.getRed() * (1 - t) + eColor.getRed() * t);
+        int g = (int) (sColor.getGreen() * (1 - t) + eColor.getGreen() * t);
+        int b = (int) (sColor.getBlue() * (1 - t) + eColor.getBlue() * t);
+
+        return new Color(r, g, b);
     }
 }

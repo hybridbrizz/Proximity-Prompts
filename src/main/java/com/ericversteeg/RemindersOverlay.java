@@ -192,8 +192,10 @@ class RemindersOverlay extends RSViewOverlay {
 			rightText.setText(text);
 			rightText.setWeight(1f);
 
+			boolean isImage = plugin.isImage(reminder.id);
 			int imageId = plugin.getImageId(reminder.id);
-			if (imageId > 0)
+
+			if (isImage && imageId > 0)
 			{
 				BufferedImage image = itemManager.getImage(imageId);
 				if (image != null)
@@ -212,6 +214,9 @@ class RemindersOverlay extends RSViewOverlay {
 					rightText.setImage(image, imageWidth, imageWidth, plugin.getImageAlignment(reminder.id));
 				}
 			}
+
+			rightText.setAnimatesColor(plugin.isAnimate(reminder.id));
+			rightText.setAnimationCycleDuration(plugin.getCycleDuration(reminder.id));
 
 			row.addView(rightText);
 
@@ -249,8 +254,10 @@ class RemindersOverlay extends RSViewOverlay {
 		textView.setTextColor(color);
 		textView.setText(text);
 
+		boolean isImage = plugin.isImage(reminder.id);
 		int imageId = plugin.getImageId(reminder.id);
-		if (imageId > 0)
+
+		if (isImage && imageId > 0)
 		{
 			BufferedImage image = itemManager.getImage(imageId);
 			if (image != null)
@@ -269,6 +276,9 @@ class RemindersOverlay extends RSViewOverlay {
 				textView.setImage(image, imageWidth, imageWidth, plugin.getImageAlignment(reminder.id));
 			}
 		}
+
+		textView.setAnimatesColor(plugin.isAnimate(reminder.id));
+		textView.setAnimationCycleDuration(plugin.getCycleDuration(reminder.id));
 
 		panel.addView(textView);
 
