@@ -5,13 +5,16 @@ import com.ericversteeg.views.*;
 import net.runelite.api.Client;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.NPC;
+import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
 import net.runelite.client.ui.overlay.components.ComponentConstants;
+import net.runelite.client.util.ImageUtil;
 
 import javax.inject.Inject;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
 class RemindersOverlay extends RSViewOverlay {
 
 	private final Client client;
+	private final ItemManager itemManager;
 	private final RemindersPlugin plugin;
 	private final RemindersConfig config;
 
@@ -32,6 +36,7 @@ class RemindersOverlay extends RSViewOverlay {
 	@Inject
 	private RemindersOverlay(
 			Client client,
+			ItemManager itemManager,
 			RemindersPlugin plugin,
 			RemindersConfig config)
 	{
@@ -39,6 +44,7 @@ class RemindersOverlay extends RSViewOverlay {
 		setLayer(OverlayLayer.ABOVE_WIDGETS);
 
 		this.client = client;
+		this.itemManager = itemManager;
 		this.plugin = plugin;
 		this.config = config;
 
@@ -160,8 +166,6 @@ class RemindersOverlay extends RSViewOverlay {
 				}
 			}
 
-			activeCount++;
-
 			if (plugin.isSeparatePanel(reminder.id))
 			{
 				renderReminderPanel(reminder, color);
@@ -188,9 +192,32 @@ class RemindersOverlay extends RSViewOverlay {
 			rightText.setText(text);
 			rightText.setWeight(1f);
 
+			int imageId = plugin.getImageId(reminder.id);
+			if (imageId > 0)
+			{
+				BufferedImage image = itemManager.getImage(imageId);
+				if (image != null)
+				{
+					int imageWidth = 0;
+					if (config.textSize() == TextSize.SMALL)
+					{
+						imageWidth = 24;
+					}
+					else
+					{
+						imageWidth = 32;
+					}
+
+					image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
+					rightText.setImage(image, imageWidth, imageWidth, plugin.getImageAlignment(reminder.id));
+				}
+			}
+
 			row.addView(rightText);
 
 			panel.addView(row);
+
+			activeCount++;
 		}
 
 		if (config.idFinder())
@@ -221,7 +248,27 @@ class RemindersOverlay extends RSViewOverlay {
 
 		textView.setTextColor(color);
 		textView.setText(text);
-		textView.setImage(24, 24, plugin.getImageAlignment(reminder.id));
+
+		int imageId = plugin.getImageId(reminder.id);
+		if (imageId > 0)
+		{
+			BufferedImage image = itemManager.getImage(imageId);
+			if (image != null)
+			{
+				int imageWidth = 0;
+				if (config.textSize() == TextSize.SMALL)
+				{
+					imageWidth = 24;
+				}
+				else
+				{
+					imageWidth = 32;
+				}
+
+				image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
+				textView.setImage(image, imageWidth, imageWidth, plugin.getImageAlignment(reminder.id));
+			}
+		}
 
 		panel.addView(textView);
 

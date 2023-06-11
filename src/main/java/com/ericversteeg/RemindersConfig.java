@@ -357,6 +357,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder1ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder1ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder1
+	)
+	default int reminder1ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder2",
 			description = "Reminder 2",
@@ -562,6 +571,15 @@ public interface RemindersConfig extends Config {
 			section = reminder2
 	)
 	default RSViewGroup.Gravity reminder2ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder2ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder2
+	)
+	default int reminder2ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder3",
@@ -769,6 +787,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder3ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder3ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder3
+	)
+	default int reminder3ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder4",
 			description = "Reminder 4",
@@ -974,6 +1001,15 @@ public interface RemindersConfig extends Config {
 			section = reminder4
 	)
 	default RSViewGroup.Gravity reminder4ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder4ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder4
+	)
+	default int reminder4ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder5",
@@ -1181,6 +1217,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder5ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder5ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder5
+	)
+	default int reminder5ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder6",
 			description = "Reminder 6",
@@ -1386,6 +1431,15 @@ public interface RemindersConfig extends Config {
 			section = reminder6
 	)
 	default RSViewGroup.Gravity reminder6ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder6ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder6
+	)
+	default int reminder6ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder7",
@@ -1593,6 +1647,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder7ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder7ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder7
+	)
+	default int reminder7ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder8",
 			description = "Reminder 8",
@@ -1798,6 +1861,15 @@ public interface RemindersConfig extends Config {
 			section = reminder8
 	)
 	default RSViewGroup.Gravity reminder8ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder8ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder8
+	)
+	default int reminder8ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder9",
@@ -2005,6 +2077,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder9ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder9ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder9
+	)
+	default int reminder9ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder10",
 			description = "Reminder 10",
@@ -2210,6 +2291,15 @@ public interface RemindersConfig extends Config {
 			section = reminder10
 	)
 	default RSViewGroup.Gravity reminder10ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder10ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder10
+	)
+	default int reminder10ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder11",
@@ -2417,6 +2507,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder11ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder11ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder11
+	)
+	default int reminder11ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder12",
 			description = "Reminder 12",
@@ -2622,6 +2721,15 @@ public interface RemindersConfig extends Config {
 			section = reminder12
 	)
 	default RSViewGroup.Gravity reminder12ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder12ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder12
+	)
+	default int reminder12ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder13",
@@ -2829,6 +2937,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder13ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder13ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder13
+	)
+	default int reminder13ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder14",
 			description = "Reminder 14",
@@ -3034,6 +3151,15 @@ public interface RemindersConfig extends Config {
 			section = reminder14
 	)
 	default RSViewGroup.Gravity reminder14ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder14ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder14
+	)
+	default int reminder14ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder15",
@@ -3241,6 +3367,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder15ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder15ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder15
+	)
+	default int reminder15ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder16",
 			description = "Reminder 16",
@@ -3446,6 +3581,15 @@ public interface RemindersConfig extends Config {
 			section = reminder16
 	)
 	default RSViewGroup.Gravity reminder16ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder16ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder16
+	)
+	default int reminder16ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder17",
@@ -3653,6 +3797,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder17ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder17ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder17
+	)
+	default int reminder17ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder18",
 			description = "Reminder 18",
@@ -3858,6 +4011,15 @@ public interface RemindersConfig extends Config {
 			section = reminder18
 	)
 	default RSViewGroup.Gravity reminder18ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder18ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder18
+	)
+	default int reminder18ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder19",
@@ -4065,6 +4227,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder19ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder19ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder19
+	)
+	default int reminder19ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder20",
 			description = "Reminder 20",
@@ -4270,6 +4441,15 @@ public interface RemindersConfig extends Config {
 			section = reminder20
 	)
 	default RSViewGroup.Gravity reminder20ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder20ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder20
+	)
+	default int reminder20ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder21",
@@ -4477,6 +4657,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder21ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder21ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder21
+	)
+	default int reminder21ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder22",
 			description = "Reminder 22",
@@ -4682,6 +4871,15 @@ public interface RemindersConfig extends Config {
 			section = reminder22
 	)
 	default RSViewGroup.Gravity reminder22ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder22ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder22
+	)
+	default int reminder22ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder23",
@@ -4889,6 +5087,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder23ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder23ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder23
+	)
+	default int reminder23ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder24",
 			description = "Reminder 24",
@@ -5094,6 +5301,15 @@ public interface RemindersConfig extends Config {
 			section = reminder24
 	)
 	default RSViewGroup.Gravity reminder24ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder24ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder24
+	)
+	default int reminder24ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder25",
@@ -5301,6 +5517,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder25ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder25ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder25
+	)
+	default int reminder25ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder26",
 			description = "Reminder 26",
@@ -5506,6 +5731,15 @@ public interface RemindersConfig extends Config {
 			section = reminder26
 	)
 	default RSViewGroup.Gravity reminder26ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder26ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder26
+	)
+	default int reminder26ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder27",
@@ -5713,6 +5947,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder27ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder27ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder27
+	)
+	default int reminder27ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder28",
 			description = "Reminder 28",
@@ -5918,6 +6161,15 @@ public interface RemindersConfig extends Config {
 			section = reminder28
 	)
 	default RSViewGroup.Gravity reminder28ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder28ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder28
+	)
+	default int reminder28ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder29",
@@ -6125,6 +6377,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder29ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder29ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder29
+	)
+	default int reminder29ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder30",
 			description = "Reminder 30",
@@ -6330,6 +6591,15 @@ public interface RemindersConfig extends Config {
 			section = reminder30
 	)
 	default RSViewGroup.Gravity reminder30ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder30ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder30
+	)
+	default int reminder30ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder31",
@@ -6537,6 +6807,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder31ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder31ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder31
+	)
+	default int reminder31ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder32",
 			description = "Reminder 32",
@@ -6742,6 +7021,15 @@ public interface RemindersConfig extends Config {
 			section = reminder32
 	)
 	default RSViewGroup.Gravity reminder32ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder32ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder32
+	)
+	default int reminder32ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder33",
@@ -6949,6 +7237,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder33ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder33ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder33
+	)
+	default int reminder33ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder34",
 			description = "Reminder 34",
@@ -7154,6 +7451,15 @@ public interface RemindersConfig extends Config {
 			section = reminder34
 	)
 	default RSViewGroup.Gravity reminder34ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder34ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder34
+	)
+	default int reminder34ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder35",
@@ -7361,6 +7667,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder35ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder35ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder35
+	)
+	default int reminder35ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder36",
 			description = "Reminder 36",
@@ -7566,6 +7881,15 @@ public interface RemindersConfig extends Config {
 			section = reminder36
 	)
 	default RSViewGroup.Gravity reminder36ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder36ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder36
+	)
+	default int reminder36ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder37",
@@ -7773,6 +8097,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder37ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder37ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder37
+	)
+	default int reminder37ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder38",
 			description = "Reminder 38",
@@ -7978,6 +8311,15 @@ public interface RemindersConfig extends Config {
 			section = reminder38
 	)
 	default RSViewGroup.Gravity reminder38ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder38ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder38
+	)
+	default int reminder38ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder39",
@@ -8185,6 +8527,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder39ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder39ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder39
+	)
+	default int reminder39ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder40",
 			description = "Reminder 40",
@@ -8390,6 +8741,15 @@ public interface RemindersConfig extends Config {
 			section = reminder40
 	)
 	default RSViewGroup.Gravity reminder40ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder40ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder40
+	)
+	default int reminder40ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder41",
@@ -8597,6 +8957,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder41ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder41ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder41
+	)
+	default int reminder41ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder42",
 			description = "Reminder 42",
@@ -8802,6 +9171,15 @@ public interface RemindersConfig extends Config {
 			section = reminder42
 	)
 	default RSViewGroup.Gravity reminder42ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder42ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder42
+	)
+	default int reminder42ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder43",
@@ -9009,6 +9387,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder43ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder43ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder43
+	)
+	default int reminder43ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder44",
 			description = "Reminder 44",
@@ -9214,6 +9601,15 @@ public interface RemindersConfig extends Config {
 			section = reminder44
 	)
 	default RSViewGroup.Gravity reminder44ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder44ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder44
+	)
+	default int reminder44ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder45",
@@ -9421,6 +9817,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder45ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder45ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder45
+	)
+	default int reminder45ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder46",
 			description = "Reminder 46",
@@ -9626,6 +10031,15 @@ public interface RemindersConfig extends Config {
 			section = reminder46
 	)
 	default RSViewGroup.Gravity reminder46ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder46ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder46
+	)
+	default int reminder46ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder47",
@@ -9833,6 +10247,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder47ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder47ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder47
+	)
+	default int reminder47ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder48",
 			description = "Reminder 48",
@@ -10038,6 +10461,15 @@ public interface RemindersConfig extends Config {
 			section = reminder48
 	)
 	default RSViewGroup.Gravity reminder48ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder48ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder48
+	)
+	default int reminder48ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder49",
@@ -10245,6 +10677,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder49ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder49ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder49
+	)
+	default int reminder49ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder50",
 			description = "Reminder 50",
@@ -10450,6 +10891,15 @@ public interface RemindersConfig extends Config {
 			section = reminder50
 	)
 	default RSViewGroup.Gravity reminder50ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder50ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder50
+	)
+	default int reminder50ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder51",
@@ -10657,6 +11107,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder51ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder51ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder51
+	)
+	default int reminder51ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder52",
 			description = "Reminder 52",
@@ -10862,6 +11321,15 @@ public interface RemindersConfig extends Config {
 			section = reminder52
 	)
 	default RSViewGroup.Gravity reminder52ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder52ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder52
+	)
+	default int reminder52ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder53",
@@ -11069,6 +11537,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder53ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder53ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder53
+	)
+	default int reminder53ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder54",
 			description = "Reminder 54",
@@ -11274,6 +11751,15 @@ public interface RemindersConfig extends Config {
 			section = reminder54
 	)
 	default RSViewGroup.Gravity reminder54ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder54ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder54
+	)
+	default int reminder54ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder55",
@@ -11481,6 +11967,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder55ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder55ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder55
+	)
+	default int reminder55ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder56",
 			description = "Reminder 56",
@@ -11686,6 +12181,15 @@ public interface RemindersConfig extends Config {
 			section = reminder56
 	)
 	default RSViewGroup.Gravity reminder56ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder56ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder56
+	)
+	default int reminder56ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder57",
@@ -11893,6 +12397,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder57ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder57ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder57
+	)
+	default int reminder57ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder58",
 			description = "Reminder 58",
@@ -12098,6 +12611,15 @@ public interface RemindersConfig extends Config {
 			section = reminder58
 	)
 	default RSViewGroup.Gravity reminder58ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder58ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder58
+	)
+	default int reminder58ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder59",
@@ -12305,6 +12827,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder59ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder59ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder59
+	)
+	default int reminder59ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder60",
 			description = "Reminder 60",
@@ -12510,6 +13041,15 @@ public interface RemindersConfig extends Config {
 			section = reminder60
 	)
 	default RSViewGroup.Gravity reminder60ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder60ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder60
+	)
+	default int reminder60ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder61",
@@ -12717,6 +13257,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder61ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder61ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder61
+	)
+	default int reminder61ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder62",
 			description = "Reminder 62",
@@ -12922,6 +13471,15 @@ public interface RemindersConfig extends Config {
 			section = reminder62
 	)
 	default RSViewGroup.Gravity reminder62ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder62ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder62
+	)
+	default int reminder62ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder63",
@@ -13129,6 +13687,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder63ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder63ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder63
+	)
+	default int reminder63ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder64",
 			description = "Reminder 64",
@@ -13334,6 +13901,15 @@ public interface RemindersConfig extends Config {
 			section = reminder64
 	)
 	default RSViewGroup.Gravity reminder64ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder64ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder64
+	)
+	default int reminder64ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder65",
@@ -13541,6 +14117,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder65ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder65ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder65
+	)
+	default int reminder65ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder66",
 			description = "Reminder 66",
@@ -13746,6 +14331,15 @@ public interface RemindersConfig extends Config {
 			section = reminder66
 	)
 	default RSViewGroup.Gravity reminder66ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder66ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder66
+	)
+	default int reminder66ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder67",
@@ -13953,6 +14547,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder67ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder67ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder67
+	)
+	default int reminder67ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder68",
 			description = "Reminder 68",
@@ -14158,6 +14761,15 @@ public interface RemindersConfig extends Config {
 			section = reminder68
 	)
 	default RSViewGroup.Gravity reminder68ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder68ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder68
+	)
+	default int reminder68ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder69",
@@ -14365,6 +14977,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder69ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder69ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder69
+	)
+	default int reminder69ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder70",
 			description = "Reminder 70",
@@ -14570,6 +15191,15 @@ public interface RemindersConfig extends Config {
 			section = reminder70
 	)
 	default RSViewGroup.Gravity reminder70ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder70ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder70
+	)
+	default int reminder70ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder71",
@@ -14777,6 +15407,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder71ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder71ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder71
+	)
+	default int reminder71ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder72",
 			description = "Reminder 72",
@@ -14982,6 +15621,15 @@ public interface RemindersConfig extends Config {
 			section = reminder72
 	)
 	default RSViewGroup.Gravity reminder72ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder72ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder72
+	)
+	default int reminder72ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder73",
@@ -15189,6 +15837,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder73ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder73ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder73
+	)
+	default int reminder73ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder74",
 			description = "Reminder 74",
@@ -15394,6 +16051,15 @@ public interface RemindersConfig extends Config {
 			section = reminder74
 	)
 	default RSViewGroup.Gravity reminder74ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder74ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder74
+	)
+	default int reminder74ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder75",
@@ -15601,6 +16267,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder75ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder75ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder75
+	)
+	default int reminder75ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder76",
 			description = "Reminder 76",
@@ -15806,6 +16481,15 @@ public interface RemindersConfig extends Config {
 			section = reminder76
 	)
 	default RSViewGroup.Gravity reminder76ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder76ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder76
+	)
+	default int reminder76ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder77",
@@ -16013,6 +16697,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder77ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder77ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder77
+	)
+	default int reminder77ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder78",
 			description = "Reminder 78",
@@ -16218,6 +16911,15 @@ public interface RemindersConfig extends Config {
 			section = reminder78
 	)
 	default RSViewGroup.Gravity reminder78ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder78ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder78
+	)
+	default int reminder78ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder79",
@@ -16425,6 +17127,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder79ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder79ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder79
+	)
+	default int reminder79ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder80",
 			description = "Reminder 80",
@@ -16630,6 +17341,15 @@ public interface RemindersConfig extends Config {
 			section = reminder80
 	)
 	default RSViewGroup.Gravity reminder80ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder80ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder80
+	)
+	default int reminder80ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder81",
@@ -16837,6 +17557,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder81ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder81ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder81
+	)
+	default int reminder81ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder82",
 			description = "Reminder 82",
@@ -17042,6 +17771,15 @@ public interface RemindersConfig extends Config {
 			section = reminder82
 	)
 	default RSViewGroup.Gravity reminder82ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder82ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder82
+	)
+	default int reminder82ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder83",
@@ -17249,6 +17987,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder83ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder83ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder83
+	)
+	default int reminder83ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder84",
 			description = "Reminder 84",
@@ -17454,6 +18201,15 @@ public interface RemindersConfig extends Config {
 			section = reminder84
 	)
 	default RSViewGroup.Gravity reminder84ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder84ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder84
+	)
+	default int reminder84ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder85",
@@ -17661,6 +18417,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder85ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder85ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder85
+	)
+	default int reminder85ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder86",
 			description = "Reminder 86",
@@ -17866,6 +18631,15 @@ public interface RemindersConfig extends Config {
 			section = reminder86
 	)
 	default RSViewGroup.Gravity reminder86ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder86ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder86
+	)
+	default int reminder86ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder87",
@@ -18073,6 +18847,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder87ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder87ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder87
+	)
+	default int reminder87ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder88",
 			description = "Reminder 88",
@@ -18278,6 +19061,15 @@ public interface RemindersConfig extends Config {
 			section = reminder88
 	)
 	default RSViewGroup.Gravity reminder88ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder88ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder88
+	)
+	default int reminder88ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder89",
@@ -18485,6 +19277,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder89ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder89ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder89
+	)
+	default int reminder89ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder90",
 			description = "Reminder 90",
@@ -18690,6 +19491,15 @@ public interface RemindersConfig extends Config {
 			section = reminder90
 	)
 	default RSViewGroup.Gravity reminder90ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder90ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder90
+	)
+	default int reminder90ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder91",
@@ -18897,6 +19707,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder91ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder91ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder91
+	)
+	default int reminder91ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder92",
 			description = "Reminder 92",
@@ -19102,6 +19921,15 @@ public interface RemindersConfig extends Config {
 			section = reminder92
 	)
 	default RSViewGroup.Gravity reminder92ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder92ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder92
+	)
+	default int reminder92ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder93",
@@ -19309,6 +20137,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder93ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder93ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder93
+	)
+	default int reminder93ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder94",
 			description = "Reminder 94",
@@ -19514,6 +20351,15 @@ public interface RemindersConfig extends Config {
 			section = reminder94
 	)
 	default RSViewGroup.Gravity reminder94ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder94ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder94
+	)
+	default int reminder94ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder95",
@@ -19721,6 +20567,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder95ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder95ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder95
+	)
+	default int reminder95ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder96",
 			description = "Reminder 96",
@@ -19926,6 +20781,15 @@ public interface RemindersConfig extends Config {
 			section = reminder96
 	)
 	default RSViewGroup.Gravity reminder96ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder96ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder96
+	)
+	default int reminder96ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder97",
@@ -20133,6 +20997,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder97ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder97ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder97
+	)
+	default int reminder97ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder98",
 			description = "Reminder 98",
@@ -20338,6 +21211,15 @@ public interface RemindersConfig extends Config {
 			section = reminder98
 	)
 	default RSViewGroup.Gravity reminder98ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder98ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder98
+	)
+	default int reminder98ImageId() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder99",
@@ -20545,6 +21427,15 @@ public interface RemindersConfig extends Config {
 	)
 	default RSViewGroup.Gravity reminder99ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
 
+	@ConfigItem(
+			keyName = "Reminder99ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder99
+	)
+	default int reminder99ImageId() { return 0; }
+
 	@ConfigSection(
 			name = "Reminder100",
 			description = "Reminder 100",
@@ -20750,4 +21641,13 @@ public interface RemindersConfig extends Config {
 			section = reminder100
 	)
 	default RSViewGroup.Gravity reminder100ImageAlignment() { return RSViewGroup.Gravity.TOP_START; }
+
+	@ConfigItem(
+			keyName = "Reminder100ImageId",
+			position = 11,
+			name = "Image ID",
+			description = "Configures the image id.",
+			section = reminder100
+	)
+	default int reminder100ImageId() { return 0; }
 }

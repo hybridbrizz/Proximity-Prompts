@@ -3,6 +3,7 @@ package com.ericversteeg.views;
 import net.runelite.client.ui.overlay.components.TextComponent;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -16,6 +17,7 @@ public class RSTextView extends RSView
     private int numLines = 1;
     private int lineHeight = 0;
     private boolean hasImage = false;
+    private BufferedImage image;
     private int imageX = 0;
     private int imageY = 0;
     private int imageW = 0;
@@ -47,8 +49,9 @@ public class RSTextView extends RSView
         textComponent.setColor(color);
     }
 
-    public void setImage(int width, int height, RSViewGroup.Gravity gravity)
+    public void setImage(BufferedImage image, int width, int height, RSViewGroup.Gravity gravity)
     {
+        this.image = image;
         imageW = width;
         imageH = height;
         imageGravity = gravity;
@@ -124,6 +127,8 @@ public class RSTextView extends RSView
     @Override
     public int measureHeight(Map<RSLayoutGuide, Integer> guides)
     {
+        lineHeight = fontMetrics.getHeight();
+
         if (hasImage)
         {
             numLines = getNumLinesImage(lineWidth);
@@ -133,7 +138,6 @@ public class RSTextView extends RSView
             numLines = getNumLines(lineWidth);
         }
 
-        lineHeight = fontMetrics.getHeight();
         int height = lineHeight * numLines;
 
         return paddingTop + height + paddingBottom;
@@ -150,8 +154,12 @@ public class RSTextView extends RSView
                     origin.y + y + paddingTop));
 
             graphics.setColor(Color.GREEN);
-            graphics.fillRect(origin.x + x + paddingStart + imageX,
-                    origin.y + y + paddingTop + imageY, imageW, imageH);
+
+            graphics.drawImage(image, origin.x + x + paddingStart + imageX,
+                    origin.y + y + paddingTop + imageY, null);
+
+//            graphics.fillRect(origin.x + x + paddingStart + imageX,
+//                    origin.y + y + paddingTop + imageY, imageW, imageH);
         }
         else
         {
@@ -165,7 +173,7 @@ public class RSTextView extends RSView
         char [] chars = text.replace("\\s+", " ").toCharArray();
 
         int rx = 0;
-        int ry = fontMetrics.getHeight();
+        int ry = lineHeight;
 
         int cIndex = 0;
         int rIndex = 0;
@@ -219,7 +227,7 @@ public class RSTextView extends RSView
                     //System.out.println("Moving " + word + " onto next line because " + rx + " + " + sw + " > " + maxWidth);
 
                     rx = 0;
-                    ry += fontMetrics.getHeight();
+                    ry += lineHeight;
                 }
 
                 for (char sc: word.toCharArray())
@@ -256,9 +264,10 @@ public class RSTextView extends RSView
     private void charRenderLinesImage(Graphics2D graphics, int maxWidth, Point start)
     {
         char [] chars = text.replace("\\s+", " ").toCharArray();
+        System.out.println("Text = " + text);
 
         int rx = 0;
-        int ry = fontMetrics.getHeight();
+        int ry = lineHeight;
 
         int cIndex = 0;
         int rIndex = 0;
@@ -336,14 +345,14 @@ public class RSTextView extends RSView
                         if (rx + sw > maxWidth - imageW - 3)
                         {
                             rx = 0;
-                            ry += fontMetrics.getHeight();
+                            ry += lineHeight;
                         }
                     }
                 }
 
                 if (rx + sw > maxWidth)
                 {
-                    ry += fontMetrics.getHeight();
+                    ry += lineHeight;
                     isHeightRange = isImageHeightRange(ry - lineHeight);
 
                     rx = 0;
@@ -429,8 +438,6 @@ public class RSTextView extends RSView
     {
         String str = Pattern.compile("\\^\\w").matcher(text).replaceAll("");
 
-        System.out.println("|" + str + "|");
-
         char [] chars = str.replace("\\s+", " ").toCharArray();
 
         int rx = 0;
@@ -482,11 +489,12 @@ public class RSTextView extends RSView
     private int getNumLinesImage(int maxWidth)
     {
         String str = Pattern.compile("\\^\\w").matcher(text).replaceAll("");
+        System.out.println("Str = " + str);
+
         char [] chars = str.replace("\\s+", " ").toCharArray();
 
         int rx = 0;
-        int ry = fontMetrics.getHeight();
-        int lines = 1;
+        int ry = lineHeight;
 
         int spaceWidth = fontMetrics.stringWidth(" ");
 
@@ -533,7 +541,7 @@ public class RSTextView extends RSView
                     {
                         if (rx + sw > imageStart - 3)
                         {
-                            rx += imageW + 3;
+                            rx = imageX + imageW + 3;
                         }
                     }
                     else if (horizontalGravity == RSViewGroup.Gravity.END)
@@ -541,16 +549,14 @@ public class RSTextView extends RSView
                         if (rx + sw > maxWidth - imageW - 3)
                         {
                             rx = 0;
-                            ry += fontMetrics.getHeight();
-                            lines += 1;
+                            ry += lineHeight;
                         }
                     }
                 }
 
                 if (rx + sw > maxWidth)
                 {
-                    ry += fontMetrics.getHeight();
-                    lines += 1;
+                    ry += lineHeight;
                     isHeightRange = isImageHeightRange(ry - lineHeight);
 
                     rx = 0;
@@ -569,7 +575,8 @@ public class RSTextView extends RSView
                 sb = new StringBuilder();
             }
         }
-        return lines;
+
+        return ry / lineHeight;
     }
 
     Color getColor(char c)

@@ -5,28 +5,29 @@ line4  = '    else return {defaultReturn};'
 line5  = '}'
 
 configInfo = [
-    ["Enable", "boolean"],
-    ["Text", "String"],
-    ["Color", "Color"],
-    ["Duration", "int"],
-    ["Cooldown", "int"],
-    ["TimeUnit", "TimeUnit"],
-    ["Notify", "boolean"],
-    ["Times", "String"],
-    ["DaysOfWeek", "String"],
-    ["Dates", "String"],
-    ["Coordinates", "String"],
-    ["Radius", "int"],
-    ["Geofences", "String"],
-    ["RegionIds", "String"],
-    ["NpcIds", "String"],
-    ["ItemIds", "String"],
-    ["ChatPatterns", "String"],
-    ["SeparatePanel", "boolean"],
-    ["PanelAnchorType", "RSAnchorType"],
-    ["PanelAnchorX", "int"],
-    ["PanelAnchorY", "int"],
-    ["ImageAlignment", "RSViewGroup.Gravity"]
+    # ["Enable", "boolean"],
+    # ["Text", "String"],
+    # ["Color", "Color"],
+    # ["Duration", "int"],
+    # ["Cooldown", "int"],
+    # ["TimeUnit", "TimeUnit"],
+    # ["Notify", "boolean"],
+    # ["Times", "String"],
+    # ["DaysOfWeek", "String"],
+    # ["Dates", "String"],
+    # ["Coordinates", "String"],
+    # ["Radius", "int"],
+    # ["Geofences", "String"],
+    # ["RegionIds", "String"],
+    # ["NpcIds", "String"],
+    # ["ItemIds", "String"],
+    # ["ChatPatterns", "String"],
+    # ["SeparatePanel", "boolean"],
+    # ["PanelAnchorType", "RSAnchorType"],
+    # ["PanelAnchorX", "int"],
+    # ["PanelAnchorY", "int"],
+    # ["ImageAlignment", "RSViewGroup.Gravity"]
+    ["ImageId", "int"]
 ]
 
 for info in configInfo:

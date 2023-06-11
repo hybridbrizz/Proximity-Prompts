@@ -204,6 +204,24 @@ line257 = '            section = {lcName}'
 line258 = '      )'
 line259 = '      default RSViewGroup.Gravity {lcName}ImageAlignment() {{ return RSViewGroup.Gravity.TOP_START; }}'
 line260 = ''
+line261 = '      @ConfigItem('
+line262 = '            keyName = "{ucName}ImageId",'
+line263 = '            position = 11,'
+line264 = '            name = "Image ID",'
+line265 = '            description = "Configures the image id.",'
+line266 = '            section = {lcName}'
+line267 = '      )'
+line268 = '      default int {lcName}ImageId() {{ return 0; }}'
+line269 = ''
+line261 = '      @ConfigItem('
+line262 = '            keyName = "{ucName}ImageId",'
+line263 = '            position = 11,'
+line264 = '            name = "Image ID",'
+line265 = '            description = "Configures the image id.",'
+line266 = '            section = {lcName}'
+line267 = '      )'
+line268 = '      default int {lcName}ImageId() {{ return 0; }}'
+line269 = ''
 
 
 config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n" + line6 + "\n" + line7 + "\n" + line8 + \
@@ -239,10 +257,12 @@ config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n
          "\n" + line241 + "\n" + line242 + "\n" + line243 + "\n" + line244 + "\n" + line245 + \
          "\n" + line246 + "\n" + line247 + "\n" + line248 + "\n" + line249 + "\n" + line250 + \
          "\n" + line251 + "\n" + line252 + "\n" + line253 + "\n" + line254 + "\n" + line255 + \
-         "\n" + line256 + "\n" + line257 + "\n" + line258 + "\n" + line259 + "\n" + line260
+         "\n" + line256 + "\n" + line257 + "\n" + line258 + "\n" + line259 + "\n" + line260 + \
+         "\n" + line261 + "\n" + line262 + "\n" + line263 + "\n" + line264 + "\n" + line265 + \
+         "\n" + line266 + "\n" + line267 + "\n" + line268 + "\n" + line269
 
 # string = ""
-# for i in range(250, 261):
+# for i in range(261, 270):
 #     string += "\"\\n\" + line" + str(i) + " + "
 #     if i % 5 == 0:
 #         string += "\\\n"
