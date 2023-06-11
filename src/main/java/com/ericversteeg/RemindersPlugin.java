@@ -172,14 +172,14 @@ public class RemindersPlugin extends Plugin {
 
 		List<Reminder> reminders = new ArrayList<>();
 
+		Pattern colorPattern = Pattern.compile("\\^\\w");
+
 		for (int i = 1; i <= 100; i++) {
 			Reminder reminder = new Reminder();
 
 			reminder.id = i;
 			reminder.enable = isEnable(i);
 			reminder.text = getText(i);
-			reminder.text = reminder.text
-					.substring(0, Math.min(reminder.text.length(), 255));
 			reminder.colur = getColor(i);
 			reminder.duration = getDuration(i);
 			reminder.cooldown = getCooldown(i);
@@ -219,8 +219,6 @@ public class RemindersPlugin extends Plugin {
 				if (jsonObject.has("text"))
 				{
 					reminder.text = jsonObject.get("text").getAsString();
-					reminder.text = reminder.text
-							.substring(0, Math.min(reminder.text.length(), 255));
 				}
 
 				if (jsonObject.has("color"))

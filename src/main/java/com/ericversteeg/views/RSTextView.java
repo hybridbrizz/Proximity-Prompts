@@ -1,9 +1,12 @@
 package com.ericversteeg.views;
 
+import jdk.nashorn.internal.objects.annotations.Where;
 import net.runelite.client.ui.overlay.components.TextComponent;
 
 import java.awt.*;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class RSTextView extends RSView
 {
@@ -77,50 +80,108 @@ public class RSTextView extends RSView
     {
         super.render(graphics, origin);
 
-        renderLines(graphics, lineWidth, new Point(origin.x + x + paddingStart,
+        charRenderLines(graphics, lineWidth, new Point(origin.x + x + paddingStart,
                 origin.y + y + paddingTop));
     }
 
-    private void renderLines(Graphics2D graphics, int maxWidth, Point start)
+    private void charRenderLines(Graphics2D graphics, int maxWidth, Point start)
     {
-        StringBuilder sb = new StringBuilder();
-        String [] words = text.split("\\s+");
+        char [] chars = text.replace("\\s+", " ").toCharArray();
 
-        int line = 1;
-        for (String word: words)
+        int rx = 0;
+        int ry = fontMetrics.getHeight();
+
+        int cIndex = 0;
+        int rIndex = 0;
+
+        int spaceWidth = fontMetrics.stringWidth(" ");
+
+        StringBuilder sb = new StringBuilder();
+
+        boolean readColor = false;
+        Map<Integer, Color> colorPositions = new HashMap<>();
+
+        for (int i = 0; i < chars.length; i++)
         {
-            String space = " ";
-            if (word.equals(words[words.length - 1]))
+            char c = chars[i];
+            boolean lastChar = i == chars.length - 1;
+
+            if (readColor)
             {
-                space = "";
+               colorPositions.put(cIndex, getColor(c));
+               readColor = false;
+
+               continue;
             }
 
-            if (fontMetrics.stringWidth(sb + space + word) > maxWidth)
+            if (c != ' ' && !lastChar)
             {
-                textComponent.setPosition(new Point(start.x,
-                        start.y + line * fontMetrics.getHeight()));
+                if (c == '^')
+                {
+                    readColor = true;
 
-                textComponent.setText(sb.toString());
-                textComponent.render(graphics);
+                    continue;
+                }
+
+                sb.append(c);
+                cIndex += 1;
+            }
+            else
+            {
+                if (c != ' ')
+                {
+                    sb.append(c);
+                    cIndex += 1;
+                }
+
+                String word = sb.toString();
+
+                int sw = fontMetrics.stringWidth(word);
+
+                if (rx + sw > maxWidth)
+                {
+                    //System.out.println("Moving " + word + " onto next line because " + rx + " + " + sw + " > " + maxWidth);
+
+                    rx = 0;
+                    ry += fontMetrics.getHeight();
+                }
+
+                for (char sc: word.toCharArray())
+                {
+                    Color color = colorPositions.get(rIndex);
+                    if (color != null)
+                    {
+                        textComponent.setColor(color);
+                    }
+
+                    textComponent.setPosition(new Point(start.x + rx,start.y + ry));
+                    textComponent.setText(String.valueOf(sc));
+                    textComponent.render(graphics);
+
+                    rx += fontMetrics.stringWidth(String.valueOf(sc));
+                    rIndex += 1;
+                }
+                rx += spaceWidth;
+
+                Color color = colorPositions.get(rIndex);
+                if (color != null)
+                {
+                    textComponent.setColor(color);
+                }
+
+                cIndex += 1;
+                rIndex += 1;
 
                 sb = new StringBuilder();
-                line += 1;
             }
-            sb.append(word);
-            sb.append(" ");
         }
-
-        textComponent.setPosition(new Point(start.x,
-                start.y + line * fontMetrics.getHeight()));
-
-        textComponent.setText(sb.toString());
-        textComponent.render(graphics);
     }
 
     private int getNumLines(int maxWidth)
     {
         StringBuilder sb = new StringBuilder();
-        String [] words = text.split("\\s+");
+        String str = Pattern.compile("\\^\\w").matcher(text).replaceAll("");
+        String [] words = str.split("\\s+");
 
         int lines = 1;
 
@@ -142,5 +203,50 @@ public class RSTextView extends RSView
         }
 
         return lines;
+    }
+
+    Color getColor(char c)
+    {
+        if (c == 'w')
+        {
+            return Color.WHITE;
+        }
+        else if (c == 'b')
+        {
+            return Color.BLACK;
+        }
+        else if (c == 'g')
+        {
+            return Color.GREEN;
+        }
+        else if (c == 'p')
+        {
+            return Color.PINK;
+        }
+        else if (c == 'u')
+        {
+            return Color.BLUE;
+        }
+        else if (c == 'c')
+        {
+            return Color.CYAN;
+        }
+        else if (c == 'm')
+        {
+            return Color.MAGENTA;
+        }
+        else if (c == 'y')
+        {
+            return Color.YELLOW;
+        }
+        else if (c == 'r')
+        {
+            return Color.RED;
+        }
+        else if (c == 'o')
+        {
+            return Color.ORANGE;
+        }
+        return Color.WHITE;
     }
 }
