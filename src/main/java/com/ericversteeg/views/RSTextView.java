@@ -179,29 +179,55 @@ public class RSTextView extends RSView
 
     private int getNumLines(int maxWidth)
     {
-        StringBuilder sb = new StringBuilder();
         String str = Pattern.compile("\\^\\w").matcher(text).replaceAll("");
-        String [] words = str.split("\\s+");
 
+        System.out.println("|" + str + "|");
+
+        char [] chars = str.replace("\\s+", " ").toCharArray();
+
+        int rx = 0;
         int lines = 1;
 
-        for (String word: words)
-        {
-            String space = " ";
-            if (word.equals(words[words.length - 1]))
-            {
-                space = "";
-            }
+        int spaceWidth = fontMetrics.stringWidth(" ");
 
-            if (fontMetrics.stringWidth(sb + space + word) > maxWidth)
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < chars.length; i++)
+        {
+            char c = chars[i];
+            boolean lastChar = i == chars.length - 1;
+
+            if (c != ' ' && !lastChar)
             {
-                lines += 1;
+                sb.append(c);
+            }
+            else
+            {
+                if (c != ' ')
+                {
+                    sb.append(c);
+                }
+
+                String word = sb.toString();
+
+                int sw = fontMetrics.stringWidth(word);
+
+                if (rx + sw > maxWidth)
+                {
+                    lines += 1;
+
+                    rx = 0;
+                }
+
+                for (char sc: word.toCharArray())
+                {
+                    rx += fontMetrics.stringWidth(String.valueOf(sc));
+                }
+                rx += spaceWidth;
+
                 sb = new StringBuilder();
             }
-            sb.append(word);
-            sb.append(" ");
         }
-
         return lines;
     }
 

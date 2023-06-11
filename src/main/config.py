@@ -159,6 +159,43 @@ line212 = '            section = {lcName}'
 line213 = '      )'
 line214 = '      default boolean {lcName}Notify() {{ return false; }}'
 line215 = ''
+line216 = '      @ConfigItem('
+line217 = '            keyName = "{ucName}SeparatePanel",'
+line218 = '            position = 7,'
+line219 = '            name = "Separate Panel",'
+line220 = '            description = "Configures whether or not reminder is shown in separate panel.",'
+line221 = '            section = {lcName}'
+line222 = '      )'
+line223 = '      default boolean {lcName}SeparatePanel() {{ return false; }}'
+line224 = ''
+line225 = '      @ConfigItem('
+line226 = '            keyName = "{ucName}panelAnchorType",'
+line227 = '            position = 8,'
+line228 = '            name = "Panel Anchor Type",'
+line229 = '            description = "Configures the anchor type for the panel.",'
+line230 = '            section = {lcName}'
+line231 = '      )'
+line232 = '      default RSAnchorType {lcName}PanelAnchorType() {{ return RSAnchorType.TOP_LEFT; }}'
+line233 = ''
+line234 = '      @ConfigItem('
+line235 = '            keyName = "{ucName}PanelAnchorX",'
+line236 = '            position = 9,'
+line237 = '            name = "Panel Anchor X",'
+line238 = '            description = "Configures the anchor x position for the panel.",'
+line239 = '            section = {lcName}'
+line240 = '      )'
+line241 = '      default int {lcName}PanelAnchorX() {{ return 0; }}'
+line242 = ''
+line243 = '      @ConfigItem('
+line244 = '            keyName = "{ucName}PanelAnchorY",'
+line245 = '            position = 10,'
+line246 = '            name = "Panel Anchor Y",'
+line247 = '            description = "Configures the anchor y position for the panel.",'
+line248 = '            section = {lcName}'
+line249 = '      )'
+line250 = '      default int {lcName}PanelAnchorY() {{ return 0; }}'
+line251 = ''
+
 
 config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n" + line6 + "\n" + line7 + "\n" + line8 + \
          "\n" + line9 + "\n" + line10 + "\n" + line11 + "\n" + line12 + "\n" + line13 + "\n" + line14 + "\n" + line15 + "\n" + \
@@ -184,7 +221,23 @@ config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n
          "\n" + line196 + "\n" + line197 + "\n" + line198 + "\n" + line199 + "\n" + line200 + \
          "\n" + line201 + "\n" + line202 + "\n" + line203 + "\n" + line204 + "\n" + line205 + \
          "\n" + line206 + "\n" + line207 + "\n" + line208 + "\n" + line209 + "\n" + line210 + \
-         "\n" + line211 + "\n" + line212 + "\n" + line213 + "\n" + line214 + "\n" + line215 + "\n"
+         "\n" + line211 + "\n" + line212 + "\n" + line213 + "\n" + line214 + "\n" + line215 + \
+         "\n" + line216 + "\n" + line217 + "\n" + line218 + "\n" + line219 + "\n" + line220 + \
+         "\n" + line221 + "\n" + line222 + "\n" + line223 + "\n" + line224 + "\n" + line225 + \
+         "\n" + line226 + "\n" + line227 + "\n" + line228 + "\n" + line229 + "\n" + line230 + \
+         "\n" + line231 + "\n" + line232 + "\n" + line233 + "\n" + line234 + "\n" + line235 + \
+         "\n" + line236 + "\n" + line237 + "\n" + line238 + "\n" + line239 + "\n" + line240 + \
+         "\n" + line241 + "\n" + line242 + "\n" + line243 + "\n" + line244 + "\n" + line245 + \
+         "\n" + line246 + "\n" + line247 + "\n" + line248 + "\n" + line249 + "\n" + line250 + \
+         "\n" + line251
+
+# string = ""
+# for i in range(216, 252):
+#     string += "\"\\n\" + line" + str(i) + " + "
+#     if i % 5 == 0:
+#         string += "\\\n"
+#
+# print(string)
 
 for index in range(1,101):
     print(config.format(number=index, ucName="Reminder" + str(index), lcName="reminder" + str(index), pos=(20 + index)))

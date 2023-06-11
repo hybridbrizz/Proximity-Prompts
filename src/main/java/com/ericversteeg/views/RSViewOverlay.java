@@ -1,78 +1,70 @@
 package com.ericversteeg.views;
 
-import com.ericversteeg.RemindersConfig;
-import com.ericversteeg.RemindersPlugin;
 import net.runelite.api.Client;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.ui.overlay.Overlay;
 
-import javax.inject.Inject;
+import javax.swing.text.View;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.*;
 import java.time.Instant;
 
 public class RSViewOverlay extends Overlay
 {
-    private RSViewGroup rootView;
-
-    private RSAnchorType anchorType;
-    private Integer anchorX;
-    private Integer anchorY;
-
-    private Client client;
+    private List<ViewInfo> viewInfo = new ArrayList<>();
 
     @Override
     public Dimension render(Graphics2D graphics)
     {
-        if (rootView == null)
+        long start = Instant.now().toEpochMilli();
+
+        for (ViewInfo info: viewInfo)
         {
-            return new Dimension(0, 0);
-        }
+            Client client = info.getClient();
+            RSViewGroup view = info.getView();
+            RSAnchorType anchorType = info.getAnchorType();
+            int anchorX = info.getAnchorX();
+            int anchorY = info.getAnchorY();
 
-        //long start = Instant.now().toEpochMilli();
+            applyFonts(view, graphics);
 
-        applyFonts(rootView, graphics);
+            view.layout();
 
-        rootView.layout();
-
-        if (anchorType != null)
-        {
-            Widget viewportWidget = getViewportWidget();
-
-            rootView.setX(anchorX);
-            rootView.setY(anchorY);
-
-            if (anchorType == RSAnchorType.TOP_RIGHT || anchorType == RSAnchorType.BOTTOM_RIGHT)
+            if (anchorType != null)
             {
-                rootView.setX(viewportWidget.getCanvasLocation().getX() + viewportWidget.getWidth() + 28 - anchorX - rootView.getW());
+                Widget viewportWidget = getViewportWidget(client);
+
+                view.setX(anchorX);
+                view.setY(anchorY);
+
+                if (anchorType == RSAnchorType.TOP_RIGHT || anchorType == RSAnchorType.BOTTOM_RIGHT)
+                {
+                    view.setX(viewportWidget.getCanvasLocation().getX() + viewportWidget.getWidth() + 28 - anchorX - view.getW());
+                }
+
+                if (anchorType == RSAnchorType.BOTTOM_LEFT || anchorType == RSAnchorType.BOTTOM_RIGHT)
+                {
+                    view.setY(viewportWidget.getCanvasLocation().getY() + viewportWidget.getHeight() + 41 - anchorY - view.getH());
+                }
             }
 
-            if (anchorType == RSAnchorType.BOTTOM_LEFT || anchorType == RSAnchorType.BOTTOM_RIGHT)
-            {
-                rootView.setY(viewportWidget.getCanvasLocation().getY() + viewportWidget.getHeight() + 41 - anchorY - rootView.getH());
-            }
+            view.render(graphics, new Point(0, 0));
         }
 
-        rootView.render(graphics, new Point(0, 0));
+        System.out.println("Render in " + (Instant.now().toEpochMilli() - start) + "ms");
 
-        //System.out.println("Render in " + (Instant.now().toEpochMilli() - start) + "ms");
-
-        return new Dimension(rootView.getW(), rootView.getH());
+        return new Dimension(0, 0);
     }
 
-    public void setRootView(RSViewGroup rootView)
-    {
-        this.rootView = rootView;
+    public void addViewInfo(ViewInfo viewInfo) {
+        this.viewInfo.add(viewInfo);
     }
 
-    public void setAnchor(Client client, RSAnchorType type, int x, int y)
+    public void clearViewInfo()
     {
-        this.client = client;
-
-        anchorType = type;
-
-        anchorX = x;
-        anchorY = y;
+        viewInfo.clear();
     }
 
     private void applyFonts(RSView view, Graphics2D graphics)
@@ -91,7 +83,7 @@ public class RSViewOverlay extends Overlay
         }
     }
 
-    private Widget getViewportWidget()
+    private Widget getViewportWidget(Client client)
     {
         Widget widget;
 
@@ -105,5 +97,48 @@ public class RSViewOverlay extends Overlay
         if (widget != null) return widget;
 
         return client.getWidget(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER);
+    }
+
+    public static class ViewInfo {
+
+        private Client client;
+        private RSViewGroup view;
+        private RSAnchorType anchorType;
+        private int anchorX;
+        private int anchorY;
+
+        public ViewInfo(Client client, RSViewGroup view, RSAnchorType anchorType, int anchorX, int anchorY)
+        {
+            this.client = client;
+            this.view = view;
+            this.anchorType = anchorType;
+            this.anchorX = anchorX;
+            this.anchorY = anchorY;
+        }
+
+        public Client getClient()
+        {
+            return client;
+        }
+
+        public RSViewGroup getView()
+        {
+            return view;
+        }
+
+        public RSAnchorType getAnchorType()
+        {
+            return anchorType;
+        }
+
+        public int getAnchorX()
+        {
+            return anchorX;
+        }
+
+        public int getAnchorY()
+        {
+            return anchorY;
+        }
     }
 }

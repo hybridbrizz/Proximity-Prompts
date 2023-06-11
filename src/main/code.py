@@ -21,7 +21,11 @@ configInfo = [
     ["RegionIds", "String"],
     ["NpcIds", "String"],
     ["ItemIds", "String"],
-    ["ChatPatterns", "String"]
+    ["ChatPatterns", "String"],
+    ["SeparatePanel", "boolean"],
+    ["PanelAnchorType", "RSAnchorType"],
+    ["PanelAnchorX", "int"],
+    ["PanelAnchorY", "int"]
 ]
 
 for info in configInfo:
@@ -49,6 +53,8 @@ for info in configInfo:
         default_return = "0"
     elif type == "Color":
         default_return = "Color.WHITE"
+    elif type == "RSAnchorTYpe":
+        default_return = "RSAnchorType.TOP_LEFT"
 
     print(line4.format(defaultReturn=default_return))
     print(line5)

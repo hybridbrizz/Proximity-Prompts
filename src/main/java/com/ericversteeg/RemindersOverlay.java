@@ -105,6 +105,8 @@ class RemindersOverlay extends RSViewOverlay {
 
 	void updateViews()
 	{
+		clearViewInfo();
+
 		long start = Instant.now().toEpochMilli();
 
 		TextSize textSize = config.textSize();
@@ -158,6 +160,14 @@ class RemindersOverlay extends RSViewOverlay {
 				}
 			}
 
+			activeCount++;
+
+			if (plugin.isSeparatePanel(reminder.id))
+			{
+				renderReminderPanel(reminder, color);
+				continue;
+			}
+
 			RSRow row = new RSRow(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
 			if (activeCount + 1 < Math.min(reminders.size(), maxReminders))
 			{
@@ -181,8 +191,6 @@ class RemindersOverlay extends RSViewOverlay {
 			row.addView(rightText);
 
 			panel.addView(row);
-
-			activeCount++;
 		}
 
 		if (config.idFinder())
@@ -191,14 +199,33 @@ class RemindersOverlay extends RSViewOverlay {
 		}
 		else if (activeCount == 0)
 		{
-			setRootView(null);
 			return;
 		}
 
-		setRootView(panel);
-		setAnchor(client, config.anchorType(), config.anchorX(), config.anchorY());
+		addViewInfo(new ViewInfo(client, panel, config.anchorType(),
+				config.anchorX(), config.anchorY()));
 
 		//System.out.println("View setup in " + (Instant.now().toEpochMilli() - start) + "ms");
+	}
+
+	private void renderReminderPanel(Reminder reminder, Color color)
+	{
+		String text = reminder.text;
+
+		RSRow panel = new RSRow(10, 120, config.width(), RSView.WRAP_CONTENT);
+		panel.setBgColor(panelBackgroundColor);
+		panel.addBorder(innerBorderColor, outerBorderColor);
+		panel.setPadding(4);
+
+		RSTextView textView = new RSTextView(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT, font);
+
+		textView.setTextColor(color);
+		textView.setText(text);
+
+		panel.addView(textView);
+
+		addViewInfo(new ViewInfo(client, panel, plugin.getPanelAnchorType(reminder.id),
+				plugin.getPanelAnchorX(reminder.id), plugin.getPanelAnchorY(reminder.id)));
 	}
 
 	private void renderIds(RSColumn panel)

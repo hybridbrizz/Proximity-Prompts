@@ -311,6 +311,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder1Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder1SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder1
+	)
+	default boolean reminder1SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder1panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder1
+	)
+	default RSAnchorType reminder1PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder1PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder1
+	)
+	default int reminder1PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder1PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder1
+	)
+	default int reminder1PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder2",
@@ -473,6 +508,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder2Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder2SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder2
+	)
+	default boolean reminder2SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder2panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder2
+	)
+	default RSAnchorType reminder2PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder2PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder2
+	)
+	default int reminder2PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder2PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder2
+	)
+	default int reminder2PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder3",
@@ -635,6 +705,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder3Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder3SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder3
+	)
+	default boolean reminder3SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder3panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder3
+	)
+	default RSAnchorType reminder3PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder3PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder3
+	)
+	default int reminder3PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder3PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder3
+	)
+	default int reminder3PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder4",
@@ -797,6 +902,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder4Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder4SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder4
+	)
+	default boolean reminder4SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder4panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder4
+	)
+	default RSAnchorType reminder4PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder4PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder4
+	)
+	default int reminder4PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder4PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder4
+	)
+	default int reminder4PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder5",
@@ -959,6 +1099,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder5Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder5SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder5
+	)
+	default boolean reminder5SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder5panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder5
+	)
+	default RSAnchorType reminder5PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder5PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder5
+	)
+	default int reminder5PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder5PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder5
+	)
+	default int reminder5PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder6",
@@ -1121,6 +1296,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder6Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder6SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder6
+	)
+	default boolean reminder6SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder6panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder6
+	)
+	default RSAnchorType reminder6PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder6PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder6
+	)
+	default int reminder6PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder6PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder6
+	)
+	default int reminder6PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder7",
@@ -1283,6 +1493,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder7Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder7SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder7
+	)
+	default boolean reminder7SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder7panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder7
+	)
+	default RSAnchorType reminder7PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder7PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder7
+	)
+	default int reminder7PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder7PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder7
+	)
+	default int reminder7PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder8",
@@ -1445,6 +1690,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder8Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder8SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder8
+	)
+	default boolean reminder8SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder8panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder8
+	)
+	default RSAnchorType reminder8PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder8PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder8
+	)
+	default int reminder8PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder8PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder8
+	)
+	default int reminder8PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder9",
@@ -1607,6 +1887,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder9Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder9SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder9
+	)
+	default boolean reminder9SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder9panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder9
+	)
+	default RSAnchorType reminder9PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder9PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder9
+	)
+	default int reminder9PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder9PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder9
+	)
+	default int reminder9PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder10",
@@ -1769,6 +2084,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder10Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder10SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder10
+	)
+	default boolean reminder10SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder10panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder10
+	)
+	default RSAnchorType reminder10PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder10PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder10
+	)
+	default int reminder10PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder10PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder10
+	)
+	default int reminder10PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder11",
@@ -1931,6 +2281,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder11Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder11SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder11
+	)
+	default boolean reminder11SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder11panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder11
+	)
+	default RSAnchorType reminder11PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder11PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder11
+	)
+	default int reminder11PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder11PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder11
+	)
+	default int reminder11PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder12",
@@ -2093,6 +2478,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder12Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder12SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder12
+	)
+	default boolean reminder12SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder12panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder12
+	)
+	default RSAnchorType reminder12PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder12PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder12
+	)
+	default int reminder12PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder12PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder12
+	)
+	default int reminder12PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder13",
@@ -2255,6 +2675,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder13Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder13SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder13
+	)
+	default boolean reminder13SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder13panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder13
+	)
+	default RSAnchorType reminder13PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder13PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder13
+	)
+	default int reminder13PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder13PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder13
+	)
+	default int reminder13PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder14",
@@ -2417,6 +2872,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder14Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder14SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder14
+	)
+	default boolean reminder14SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder14panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder14
+	)
+	default RSAnchorType reminder14PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder14PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder14
+	)
+	default int reminder14PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder14PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder14
+	)
+	default int reminder14PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder15",
@@ -2579,6 +3069,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder15Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder15SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder15
+	)
+	default boolean reminder15SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder15panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder15
+	)
+	default RSAnchorType reminder15PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder15PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder15
+	)
+	default int reminder15PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder15PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder15
+	)
+	default int reminder15PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder16",
@@ -2741,6 +3266,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder16Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder16SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder16
+	)
+	default boolean reminder16SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder16panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder16
+	)
+	default RSAnchorType reminder16PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder16PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder16
+	)
+	default int reminder16PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder16PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder16
+	)
+	default int reminder16PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder17",
@@ -2903,6 +3463,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder17Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder17SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder17
+	)
+	default boolean reminder17SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder17panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder17
+	)
+	default RSAnchorType reminder17PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder17PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder17
+	)
+	default int reminder17PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder17PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder17
+	)
+	default int reminder17PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder18",
@@ -3065,6 +3660,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder18Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder18SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder18
+	)
+	default boolean reminder18SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder18panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder18
+	)
+	default RSAnchorType reminder18PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder18PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder18
+	)
+	default int reminder18PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder18PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder18
+	)
+	default int reminder18PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder19",
@@ -3227,6 +3857,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder19Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder19SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder19
+	)
+	default boolean reminder19SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder19panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder19
+	)
+	default RSAnchorType reminder19PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder19PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder19
+	)
+	default int reminder19PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder19PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder19
+	)
+	default int reminder19PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder20",
@@ -3389,6 +4054,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder20Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder20SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder20
+	)
+	default boolean reminder20SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder20panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder20
+	)
+	default RSAnchorType reminder20PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder20PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder20
+	)
+	default int reminder20PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder20PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder20
+	)
+	default int reminder20PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder21",
@@ -3551,6 +4251,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder21Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder21SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder21
+	)
+	default boolean reminder21SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder21panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder21
+	)
+	default RSAnchorType reminder21PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder21PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder21
+	)
+	default int reminder21PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder21PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder21
+	)
+	default int reminder21PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder22",
@@ -3713,6 +4448,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder22Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder22SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder22
+	)
+	default boolean reminder22SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder22panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder22
+	)
+	default RSAnchorType reminder22PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder22PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder22
+	)
+	default int reminder22PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder22PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder22
+	)
+	default int reminder22PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder23",
@@ -3875,6 +4645,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder23Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder23SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder23
+	)
+	default boolean reminder23SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder23panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder23
+	)
+	default RSAnchorType reminder23PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder23PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder23
+	)
+	default int reminder23PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder23PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder23
+	)
+	default int reminder23PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder24",
@@ -4037,6 +4842,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder24Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder24SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder24
+	)
+	default boolean reminder24SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder24panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder24
+	)
+	default RSAnchorType reminder24PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder24PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder24
+	)
+	default int reminder24PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder24PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder24
+	)
+	default int reminder24PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder25",
@@ -4199,6 +5039,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder25Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder25SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder25
+	)
+	default boolean reminder25SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder25panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder25
+	)
+	default RSAnchorType reminder25PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder25PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder25
+	)
+	default int reminder25PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder25PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder25
+	)
+	default int reminder25PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder26",
@@ -4361,6 +5236,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder26Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder26SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder26
+	)
+	default boolean reminder26SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder26panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder26
+	)
+	default RSAnchorType reminder26PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder26PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder26
+	)
+	default int reminder26PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder26PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder26
+	)
+	default int reminder26PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder27",
@@ -4523,6 +5433,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder27Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder27SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder27
+	)
+	default boolean reminder27SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder27panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder27
+	)
+	default RSAnchorType reminder27PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder27PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder27
+	)
+	default int reminder27PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder27PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder27
+	)
+	default int reminder27PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder28",
@@ -4685,6 +5630,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder28Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder28SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder28
+	)
+	default boolean reminder28SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder28panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder28
+	)
+	default RSAnchorType reminder28PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder28PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder28
+	)
+	default int reminder28PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder28PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder28
+	)
+	default int reminder28PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder29",
@@ -4847,6 +5827,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder29Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder29SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder29
+	)
+	default boolean reminder29SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder29panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder29
+	)
+	default RSAnchorType reminder29PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder29PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder29
+	)
+	default int reminder29PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder29PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder29
+	)
+	default int reminder29PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder30",
@@ -5009,6 +6024,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder30Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder30SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder30
+	)
+	default boolean reminder30SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder30panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder30
+	)
+	default RSAnchorType reminder30PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder30PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder30
+	)
+	default int reminder30PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder30PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder30
+	)
+	default int reminder30PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder31",
@@ -5171,6 +6221,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder31Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder31SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder31
+	)
+	default boolean reminder31SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder31panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder31
+	)
+	default RSAnchorType reminder31PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder31PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder31
+	)
+	default int reminder31PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder31PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder31
+	)
+	default int reminder31PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder32",
@@ -5333,6 +6418,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder32Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder32SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder32
+	)
+	default boolean reminder32SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder32panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder32
+	)
+	default RSAnchorType reminder32PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder32PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder32
+	)
+	default int reminder32PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder32PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder32
+	)
+	default int reminder32PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder33",
@@ -5495,6 +6615,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder33Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder33SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder33
+	)
+	default boolean reminder33SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder33panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder33
+	)
+	default RSAnchorType reminder33PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder33PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder33
+	)
+	default int reminder33PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder33PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder33
+	)
+	default int reminder33PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder34",
@@ -5657,6 +6812,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder34Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder34SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder34
+	)
+	default boolean reminder34SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder34panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder34
+	)
+	default RSAnchorType reminder34PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder34PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder34
+	)
+	default int reminder34PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder34PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder34
+	)
+	default int reminder34PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder35",
@@ -5819,6 +7009,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder35Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder35SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder35
+	)
+	default boolean reminder35SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder35panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder35
+	)
+	default RSAnchorType reminder35PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder35PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder35
+	)
+	default int reminder35PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder35PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder35
+	)
+	default int reminder35PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder36",
@@ -5981,6 +7206,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder36Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder36SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder36
+	)
+	default boolean reminder36SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder36panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder36
+	)
+	default RSAnchorType reminder36PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder36PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder36
+	)
+	default int reminder36PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder36PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder36
+	)
+	default int reminder36PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder37",
@@ -6143,6 +7403,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder37Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder37SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder37
+	)
+	default boolean reminder37SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder37panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder37
+	)
+	default RSAnchorType reminder37PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder37PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder37
+	)
+	default int reminder37PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder37PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder37
+	)
+	default int reminder37PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder38",
@@ -6305,6 +7600,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder38Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder38SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder38
+	)
+	default boolean reminder38SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder38panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder38
+	)
+	default RSAnchorType reminder38PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder38PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder38
+	)
+	default int reminder38PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder38PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder38
+	)
+	default int reminder38PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder39",
@@ -6467,6 +7797,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder39Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder39SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder39
+	)
+	default boolean reminder39SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder39panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder39
+	)
+	default RSAnchorType reminder39PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder39PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder39
+	)
+	default int reminder39PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder39PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder39
+	)
+	default int reminder39PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder40",
@@ -6629,6 +7994,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder40Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder40SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder40
+	)
+	default boolean reminder40SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder40panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder40
+	)
+	default RSAnchorType reminder40PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder40PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder40
+	)
+	default int reminder40PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder40PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder40
+	)
+	default int reminder40PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder41",
@@ -6791,6 +8191,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder41Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder41SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder41
+	)
+	default boolean reminder41SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder41panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder41
+	)
+	default RSAnchorType reminder41PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder41PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder41
+	)
+	default int reminder41PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder41PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder41
+	)
+	default int reminder41PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder42",
@@ -6953,6 +8388,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder42Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder42SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder42
+	)
+	default boolean reminder42SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder42panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder42
+	)
+	default RSAnchorType reminder42PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder42PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder42
+	)
+	default int reminder42PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder42PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder42
+	)
+	default int reminder42PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder43",
@@ -7115,6 +8585,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder43Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder43SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder43
+	)
+	default boolean reminder43SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder43panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder43
+	)
+	default RSAnchorType reminder43PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder43PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder43
+	)
+	default int reminder43PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder43PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder43
+	)
+	default int reminder43PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder44",
@@ -7277,6 +8782,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder44Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder44SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder44
+	)
+	default boolean reminder44SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder44panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder44
+	)
+	default RSAnchorType reminder44PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder44PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder44
+	)
+	default int reminder44PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder44PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder44
+	)
+	default int reminder44PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder45",
@@ -7439,6 +8979,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder45Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder45SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder45
+	)
+	default boolean reminder45SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder45panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder45
+	)
+	default RSAnchorType reminder45PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder45PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder45
+	)
+	default int reminder45PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder45PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder45
+	)
+	default int reminder45PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder46",
@@ -7601,6 +9176,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder46Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder46SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder46
+	)
+	default boolean reminder46SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder46panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder46
+	)
+	default RSAnchorType reminder46PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder46PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder46
+	)
+	default int reminder46PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder46PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder46
+	)
+	default int reminder46PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder47",
@@ -7763,6 +9373,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder47Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder47SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder47
+	)
+	default boolean reminder47SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder47panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder47
+	)
+	default RSAnchorType reminder47PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder47PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder47
+	)
+	default int reminder47PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder47PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder47
+	)
+	default int reminder47PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder48",
@@ -7925,6 +9570,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder48Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder48SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder48
+	)
+	default boolean reminder48SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder48panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder48
+	)
+	default RSAnchorType reminder48PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder48PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder48
+	)
+	default int reminder48PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder48PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder48
+	)
+	default int reminder48PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder49",
@@ -8087,6 +9767,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder49Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder49SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder49
+	)
+	default boolean reminder49SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder49panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder49
+	)
+	default RSAnchorType reminder49PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder49PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder49
+	)
+	default int reminder49PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder49PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder49
+	)
+	default int reminder49PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder50",
@@ -8249,6 +9964,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder50Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder50SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder50
+	)
+	default boolean reminder50SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder50panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder50
+	)
+	default RSAnchorType reminder50PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder50PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder50
+	)
+	default int reminder50PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder50PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder50
+	)
+	default int reminder50PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder51",
@@ -8411,6 +10161,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder51Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder51SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder51
+	)
+	default boolean reminder51SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder51panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder51
+	)
+	default RSAnchorType reminder51PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder51PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder51
+	)
+	default int reminder51PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder51PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder51
+	)
+	default int reminder51PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder52",
@@ -8573,6 +10358,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder52Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder52SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder52
+	)
+	default boolean reminder52SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder52panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder52
+	)
+	default RSAnchorType reminder52PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder52PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder52
+	)
+	default int reminder52PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder52PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder52
+	)
+	default int reminder52PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder53",
@@ -8735,6 +10555,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder53Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder53SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder53
+	)
+	default boolean reminder53SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder53panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder53
+	)
+	default RSAnchorType reminder53PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder53PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder53
+	)
+	default int reminder53PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder53PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder53
+	)
+	default int reminder53PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder54",
@@ -8897,6 +10752,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder54Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder54SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder54
+	)
+	default boolean reminder54SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder54panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder54
+	)
+	default RSAnchorType reminder54PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder54PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder54
+	)
+	default int reminder54PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder54PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder54
+	)
+	default int reminder54PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder55",
@@ -9059,6 +10949,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder55Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder55SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder55
+	)
+	default boolean reminder55SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder55panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder55
+	)
+	default RSAnchorType reminder55PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder55PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder55
+	)
+	default int reminder55PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder55PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder55
+	)
+	default int reminder55PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder56",
@@ -9221,6 +11146,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder56Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder56SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder56
+	)
+	default boolean reminder56SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder56panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder56
+	)
+	default RSAnchorType reminder56PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder56PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder56
+	)
+	default int reminder56PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder56PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder56
+	)
+	default int reminder56PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder57",
@@ -9383,6 +11343,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder57Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder57SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder57
+	)
+	default boolean reminder57SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder57panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder57
+	)
+	default RSAnchorType reminder57PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder57PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder57
+	)
+	default int reminder57PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder57PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder57
+	)
+	default int reminder57PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder58",
@@ -9545,6 +11540,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder58Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder58SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder58
+	)
+	default boolean reminder58SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder58panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder58
+	)
+	default RSAnchorType reminder58PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder58PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder58
+	)
+	default int reminder58PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder58PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder58
+	)
+	default int reminder58PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder59",
@@ -9707,6 +11737,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder59Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder59SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder59
+	)
+	default boolean reminder59SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder59panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder59
+	)
+	default RSAnchorType reminder59PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder59PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder59
+	)
+	default int reminder59PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder59PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder59
+	)
+	default int reminder59PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder60",
@@ -9869,6 +11934,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder60Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder60SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder60
+	)
+	default boolean reminder60SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder60panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder60
+	)
+	default RSAnchorType reminder60PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder60PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder60
+	)
+	default int reminder60PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder60PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder60
+	)
+	default int reminder60PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder61",
@@ -10031,6 +12131,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder61Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder61SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder61
+	)
+	default boolean reminder61SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder61panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder61
+	)
+	default RSAnchorType reminder61PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder61PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder61
+	)
+	default int reminder61PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder61PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder61
+	)
+	default int reminder61PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder62",
@@ -10193,6 +12328,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder62Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder62SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder62
+	)
+	default boolean reminder62SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder62panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder62
+	)
+	default RSAnchorType reminder62PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder62PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder62
+	)
+	default int reminder62PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder62PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder62
+	)
+	default int reminder62PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder63",
@@ -10355,6 +12525,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder63Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder63SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder63
+	)
+	default boolean reminder63SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder63panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder63
+	)
+	default RSAnchorType reminder63PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder63PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder63
+	)
+	default int reminder63PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder63PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder63
+	)
+	default int reminder63PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder64",
@@ -10517,6 +12722,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder64Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder64SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder64
+	)
+	default boolean reminder64SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder64panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder64
+	)
+	default RSAnchorType reminder64PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder64PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder64
+	)
+	default int reminder64PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder64PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder64
+	)
+	default int reminder64PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder65",
@@ -10679,6 +12919,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder65Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder65SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder65
+	)
+	default boolean reminder65SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder65panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder65
+	)
+	default RSAnchorType reminder65PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder65PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder65
+	)
+	default int reminder65PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder65PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder65
+	)
+	default int reminder65PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder66",
@@ -10841,6 +13116,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder66Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder66SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder66
+	)
+	default boolean reminder66SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder66panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder66
+	)
+	default RSAnchorType reminder66PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder66PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder66
+	)
+	default int reminder66PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder66PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder66
+	)
+	default int reminder66PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder67",
@@ -11003,6 +13313,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder67Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder67SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder67
+	)
+	default boolean reminder67SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder67panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder67
+	)
+	default RSAnchorType reminder67PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder67PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder67
+	)
+	default int reminder67PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder67PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder67
+	)
+	default int reminder67PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder68",
@@ -11165,6 +13510,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder68Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder68SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder68
+	)
+	default boolean reminder68SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder68panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder68
+	)
+	default RSAnchorType reminder68PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder68PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder68
+	)
+	default int reminder68PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder68PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder68
+	)
+	default int reminder68PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder69",
@@ -11327,6 +13707,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder69Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder69SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder69
+	)
+	default boolean reminder69SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder69panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder69
+	)
+	default RSAnchorType reminder69PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder69PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder69
+	)
+	default int reminder69PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder69PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder69
+	)
+	default int reminder69PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder70",
@@ -11489,6 +13904,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder70Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder70SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder70
+	)
+	default boolean reminder70SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder70panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder70
+	)
+	default RSAnchorType reminder70PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder70PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder70
+	)
+	default int reminder70PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder70PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder70
+	)
+	default int reminder70PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder71",
@@ -11651,6 +14101,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder71Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder71SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder71
+	)
+	default boolean reminder71SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder71panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder71
+	)
+	default RSAnchorType reminder71PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder71PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder71
+	)
+	default int reminder71PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder71PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder71
+	)
+	default int reminder71PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder72",
@@ -11813,6 +14298,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder72Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder72SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder72
+	)
+	default boolean reminder72SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder72panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder72
+	)
+	default RSAnchorType reminder72PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder72PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder72
+	)
+	default int reminder72PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder72PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder72
+	)
+	default int reminder72PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder73",
@@ -11975,6 +14495,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder73Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder73SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder73
+	)
+	default boolean reminder73SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder73panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder73
+	)
+	default RSAnchorType reminder73PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder73PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder73
+	)
+	default int reminder73PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder73PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder73
+	)
+	default int reminder73PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder74",
@@ -12137,6 +14692,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder74Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder74SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder74
+	)
+	default boolean reminder74SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder74panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder74
+	)
+	default RSAnchorType reminder74PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder74PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder74
+	)
+	default int reminder74PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder74PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder74
+	)
+	default int reminder74PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder75",
@@ -12299,6 +14889,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder75Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder75SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder75
+	)
+	default boolean reminder75SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder75panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder75
+	)
+	default RSAnchorType reminder75PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder75PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder75
+	)
+	default int reminder75PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder75PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder75
+	)
+	default int reminder75PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder76",
@@ -12461,6 +15086,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder76Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder76SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder76
+	)
+	default boolean reminder76SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder76panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder76
+	)
+	default RSAnchorType reminder76PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder76PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder76
+	)
+	default int reminder76PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder76PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder76
+	)
+	default int reminder76PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder77",
@@ -12623,6 +15283,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder77Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder77SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder77
+	)
+	default boolean reminder77SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder77panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder77
+	)
+	default RSAnchorType reminder77PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder77PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder77
+	)
+	default int reminder77PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder77PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder77
+	)
+	default int reminder77PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder78",
@@ -12785,6 +15480,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder78Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder78SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder78
+	)
+	default boolean reminder78SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder78panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder78
+	)
+	default RSAnchorType reminder78PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder78PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder78
+	)
+	default int reminder78PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder78PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder78
+	)
+	default int reminder78PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder79",
@@ -12947,6 +15677,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder79Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder79SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder79
+	)
+	default boolean reminder79SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder79panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder79
+	)
+	default RSAnchorType reminder79PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder79PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder79
+	)
+	default int reminder79PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder79PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder79
+	)
+	default int reminder79PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder80",
@@ -13109,6 +15874,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder80Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder80SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder80
+	)
+	default boolean reminder80SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder80panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder80
+	)
+	default RSAnchorType reminder80PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder80PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder80
+	)
+	default int reminder80PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder80PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder80
+	)
+	default int reminder80PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder81",
@@ -13271,6 +16071,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder81Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder81SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder81
+	)
+	default boolean reminder81SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder81panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder81
+	)
+	default RSAnchorType reminder81PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder81PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder81
+	)
+	default int reminder81PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder81PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder81
+	)
+	default int reminder81PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder82",
@@ -13433,6 +16268,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder82Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder82SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder82
+	)
+	default boolean reminder82SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder82panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder82
+	)
+	default RSAnchorType reminder82PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder82PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder82
+	)
+	default int reminder82PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder82PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder82
+	)
+	default int reminder82PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder83",
@@ -13595,6 +16465,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder83Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder83SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder83
+	)
+	default boolean reminder83SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder83panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder83
+	)
+	default RSAnchorType reminder83PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder83PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder83
+	)
+	default int reminder83PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder83PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder83
+	)
+	default int reminder83PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder84",
@@ -13757,6 +16662,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder84Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder84SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder84
+	)
+	default boolean reminder84SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder84panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder84
+	)
+	default RSAnchorType reminder84PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder84PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder84
+	)
+	default int reminder84PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder84PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder84
+	)
+	default int reminder84PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder85",
@@ -13919,6 +16859,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder85Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder85SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder85
+	)
+	default boolean reminder85SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder85panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder85
+	)
+	default RSAnchorType reminder85PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder85PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder85
+	)
+	default int reminder85PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder85PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder85
+	)
+	default int reminder85PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder86",
@@ -14081,6 +17056,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder86Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder86SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder86
+	)
+	default boolean reminder86SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder86panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder86
+	)
+	default RSAnchorType reminder86PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder86PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder86
+	)
+	default int reminder86PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder86PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder86
+	)
+	default int reminder86PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder87",
@@ -14243,6 +17253,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder87Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder87SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder87
+	)
+	default boolean reminder87SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder87panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder87
+	)
+	default RSAnchorType reminder87PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder87PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder87
+	)
+	default int reminder87PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder87PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder87
+	)
+	default int reminder87PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder88",
@@ -14405,6 +17450,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder88Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder88SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder88
+	)
+	default boolean reminder88SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder88panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder88
+	)
+	default RSAnchorType reminder88PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder88PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder88
+	)
+	default int reminder88PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder88PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder88
+	)
+	default int reminder88PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder89",
@@ -14567,6 +17647,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder89Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder89SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder89
+	)
+	default boolean reminder89SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder89panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder89
+	)
+	default RSAnchorType reminder89PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder89PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder89
+	)
+	default int reminder89PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder89PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder89
+	)
+	default int reminder89PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder90",
@@ -14729,6 +17844,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder90Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder90SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder90
+	)
+	default boolean reminder90SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder90panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder90
+	)
+	default RSAnchorType reminder90PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder90PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder90
+	)
+	default int reminder90PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder90PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder90
+	)
+	default int reminder90PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder91",
@@ -14891,6 +18041,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder91Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder91SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder91
+	)
+	default boolean reminder91SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder91panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder91
+	)
+	default RSAnchorType reminder91PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder91PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder91
+	)
+	default int reminder91PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder91PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder91
+	)
+	default int reminder91PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder92",
@@ -15053,6 +18238,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder92Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder92SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder92
+	)
+	default boolean reminder92SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder92panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder92
+	)
+	default RSAnchorType reminder92PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder92PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder92
+	)
+	default int reminder92PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder92PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder92
+	)
+	default int reminder92PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder93",
@@ -15215,6 +18435,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder93Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder93SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder93
+	)
+	default boolean reminder93SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder93panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder93
+	)
+	default RSAnchorType reminder93PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder93PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder93
+	)
+	default int reminder93PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder93PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder93
+	)
+	default int reminder93PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder94",
@@ -15377,6 +18632,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder94Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder94SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder94
+	)
+	default boolean reminder94SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder94panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder94
+	)
+	default RSAnchorType reminder94PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder94PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder94
+	)
+	default int reminder94PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder94PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder94
+	)
+	default int reminder94PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder95",
@@ -15539,6 +18829,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder95Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder95SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder95
+	)
+	default boolean reminder95SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder95panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder95
+	)
+	default RSAnchorType reminder95PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder95PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder95
+	)
+	default int reminder95PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder95PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder95
+	)
+	default int reminder95PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder96",
@@ -15701,6 +19026,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder96Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder96SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder96
+	)
+	default boolean reminder96SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder96panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder96
+	)
+	default RSAnchorType reminder96PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder96PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder96
+	)
+	default int reminder96PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder96PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder96
+	)
+	default int reminder96PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder97",
@@ -15863,6 +19223,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder97Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder97SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder97
+	)
+	default boolean reminder97SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder97panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder97
+	)
+	default RSAnchorType reminder97PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder97PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder97
+	)
+	default int reminder97PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder97PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder97
+	)
+	default int reminder97PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder98",
@@ -16025,6 +19420,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder98Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder98SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder98
+	)
+	default boolean reminder98SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder98panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder98
+	)
+	default RSAnchorType reminder98PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder98PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder98
+	)
+	default int reminder98PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder98PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder98
+	)
+	default int reminder98PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder99",
@@ -16187,6 +19617,41 @@ public interface RemindersConfig extends Config {
 	)
 	default boolean reminder99Notify() { return false; }
 
+	@ConfigItem(
+			keyName = "Reminder99SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder99
+	)
+	default boolean reminder99SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder99panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder99
+	)
+	default RSAnchorType reminder99PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder99PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder99
+	)
+	default int reminder99PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder99PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder99
+	)
+	default int reminder99PanelAnchorY() { return 0; }
 
 	@ConfigSection(
 			name = "Reminder100",
@@ -16348,4 +19813,40 @@ public interface RemindersConfig extends Config {
 			section = reminder100
 	)
 	default boolean reminder100Notify() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder100SeparatePanel",
+			position = 7,
+			name = "Separate Panel",
+			description = "Configures whether or not reminder is shown in separate panel.",
+			section = reminder100
+	)
+	default boolean reminder100SeparatePanel() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder100panelAnchorType",
+			position = 8,
+			name = "Panel Anchor Type",
+			description = "Configures the anchor type for the panel.",
+			section = reminder100
+	)
+	default RSAnchorType reminder100PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
+
+	@ConfigItem(
+			keyName = "Reminder100PanelAnchorX",
+			position = 9,
+			name = "Panel Anchor X",
+			description = "Configures the anchor x position for the panel.",
+			section = reminder100
+	)
+	default int reminder100PanelAnchorX() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder100PanelAnchorY",
+			position = 10,
+			name = "Panel Anchor Y",
+			description = "Configures the anchor y position for the panel.",
+			section = reminder100
+	)
+	default int reminder100PanelAnchorY() { return 0; }
 }
