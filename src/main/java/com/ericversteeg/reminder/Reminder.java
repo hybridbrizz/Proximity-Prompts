@@ -16,6 +16,9 @@ public class Reminder {
     @SerializedName("enable")
     public boolean enable = false;
 
+    @SerializedName("force_show")
+    public boolean forceShow = false;
+
     @SerializedName("duration")
     public int duration = 0;
 

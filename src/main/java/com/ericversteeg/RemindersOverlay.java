@@ -1,5 +1,6 @@
 package com.ericversteeg;
 
+import com.ericversteeg.config.ColorAnimationType;
 import com.ericversteeg.reminder.Reminder;
 import com.ericversteeg.views.*;
 import net.runelite.api.Client;
@@ -200,12 +201,11 @@ class RemindersOverlay extends RSViewOverlay {
 
 					image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 					rightText.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
-					rightText.setImageBgColor(plugin.getImageBgColor(reminder.id));
 				}
 			}
 
-			rightText.setAnimatesColor(plugin.isAnimate(reminder.id));
-			rightText.setAnimationCycleDuration(plugin.getCycleDuration(reminder.id));
+			rightText.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
+			rightText.setAnimationCycleDuration(2);
 
 			row.addView(rightText);
 
@@ -233,9 +233,16 @@ class RemindersOverlay extends RSViewOverlay {
 	{
 		String text = reminder.text;
 
+		Color panelColor = plugin.getPanelColor(reminder.id);
+
 		RSRow panel = new RSRow(10, 120, plugin.getPanelWidth(reminder.id), RSView.WRAP_CONTENT);
-		panel.setBgColor(panelBackgroundColor);
-		panel.addBorder(innerBorderColor, outerBorderColor);
+		panel.setBgColor(new Color(panelColor.getRed(), panelColor.getGreen(), panelColor.getBlue(), 156));
+
+		if (plugin.isPanelBorder(reminder.id))
+		{
+			panel.addBorder(panelColor);
+		}
+
 		panel.setPadding(4);
 
 		RSTextView textView = new RSTextView(0, 0, RSView.MATCH_PARENT,
@@ -264,12 +271,11 @@ class RemindersOverlay extends RSViewOverlay {
 
 				image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 				textView.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
-				textView.setImageBgColor(plugin.getImageBgColor(reminder.id));
 			}
 		}
 
-		textView.setAnimatesColor(plugin.isAnimate(reminder.id));
-		textView.setAnimationCycleDuration(plugin.getCycleDuration(reminder.id));
+		textView.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
+		textView.setAnimationCycleDuration(2);
 
 		panel.addView(textView);
 

@@ -12,7 +12,7 @@ public class RSViewBorder implements RSRenderable
     {
         this.view = view;
 
-        outerColor = color;
+        innerColor = color;
     }
 
     public RSViewBorder(RSView view, Color innerColor, Color outerColor)
@@ -26,11 +26,14 @@ public class RSViewBorder implements RSRenderable
     @Override
     public void render(Graphics2D graphics, Point origin)
     {
-        graphics.setColor(outerColor);
-        graphics.drawRect(origin.x + view.getX(), origin.y + view.getY(), view.getW(), view.getH());
+        if (outerColor != null)
+        {
+            graphics.setColor(outerColor);
+            graphics.drawRect(origin.x + view.getX(), origin.y + view.getY(), view.getW(), view.getH());
 
-        graphics.setColor(outerColor);
-        graphics.drawRect(origin.x + view.getX() - 1, origin.y + view.getY() - 1, view.getW() + 2, view.getH() + 2);
+            graphics.setColor(outerColor);
+            graphics.drawRect(origin.x + view.getX() - 1, origin.y + view.getY() - 1, view.getW() + 2, view.getH() + 2);
+        }
 
         if (innerColor != null)
         {
