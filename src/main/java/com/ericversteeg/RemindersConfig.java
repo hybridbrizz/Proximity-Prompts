@@ -1,6 +1,7 @@
 package com.ericversteeg;
 
 import com.ericversteeg.config.ColorAnimationType;
+import com.ericversteeg.config.Location;
 import com.ericversteeg.config.TimeUnit;
 import com.ericversteeg.views.RSAnchorType;
 import com.ericversteeg.views.RSViewGroup;
@@ -53,7 +54,7 @@ public interface RemindersConfig extends Config {
 	}
 
 	@ConfigItem(
-			position = 5,
+			position = 0,
 			keyName = "idFinder",
 			name = "ID Finder",
 			description = "Configures whether or not to show ids."
@@ -70,16 +71,6 @@ public interface RemindersConfig extends Config {
 	)
 	default TextSize textSize() {
 		return TextSize.SMALL;
-	}
-
-	@ConfigItem(
-			position = 7,
-			keyName = "max",
-			name = "Max",
-			description = "Configures the max number of reminders."
-	)
-	default int maxReminders() {
-		return 5;
 	}
 
 	@ConfigSection(
@@ -313,11 +304,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder1SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder1
 	)
-	default boolean reminder1SeparatePanel() { return false; }
+	default Location reminder1Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder1panelAnchorType",
@@ -365,19 +356,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder1Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder1AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder1ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder1
 	)
-	default ColorAnimationType reminder1AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder1ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder1PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder1
 	)
@@ -417,11 +408,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder1ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder1
 	)
 	default boolean reminder1ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder1ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder1
+	)
+	default int reminder1ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder2",
@@ -587,11 +588,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder2SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder2
 	)
-	default boolean reminder2SeparatePanel() { return false; }
+	default Location reminder2Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder2panelAnchorType",
@@ -639,19 +640,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder2Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder2AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder2ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder2
 	)
-	default ColorAnimationType reminder2AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder2ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder2PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder2
 	)
@@ -691,11 +692,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder2ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder2
 	)
 	default boolean reminder2ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder2ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder2
+	)
+	default int reminder2ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder3",
@@ -861,11 +872,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder3SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder3
 	)
-	default boolean reminder3SeparatePanel() { return false; }
+	default Location reminder3Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder3panelAnchorType",
@@ -913,19 +924,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder3Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder3AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder3ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder3
 	)
-	default ColorAnimationType reminder3AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder3ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder3PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder3
 	)
@@ -965,11 +976,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder3ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder3
 	)
 	default boolean reminder3ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder3ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder3
+	)
+	default int reminder3ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder4",
@@ -1135,11 +1156,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder4SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder4
 	)
-	default boolean reminder4SeparatePanel() { return false; }
+	default Location reminder4Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder4panelAnchorType",
@@ -1187,19 +1208,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder4Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder4AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder4ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder4
 	)
-	default ColorAnimationType reminder4AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder4ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder4PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder4
 	)
@@ -1239,11 +1260,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder4ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder4
 	)
 	default boolean reminder4ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder4ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder4
+	)
+	default int reminder4ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder5",
@@ -1409,11 +1440,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder5SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder5
 	)
-	default boolean reminder5SeparatePanel() { return false; }
+	default Location reminder5Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder5panelAnchorType",
@@ -1461,19 +1492,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder5Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder5AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder5ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder5
 	)
-	default ColorAnimationType reminder5AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder5ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder5PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder5
 	)
@@ -1513,11 +1544,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder5ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder5
 	)
 	default boolean reminder5ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder5ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder5
+	)
+	default int reminder5ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder6",
@@ -1683,11 +1724,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder6SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder6
 	)
-	default boolean reminder6SeparatePanel() { return false; }
+	default Location reminder6Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder6panelAnchorType",
@@ -1735,19 +1776,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder6Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder6AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder6ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder6
 	)
-	default ColorAnimationType reminder6AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder6ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder6PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder6
 	)
@@ -1787,11 +1828,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder6ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder6
 	)
 	default boolean reminder6ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder6ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder6
+	)
+	default int reminder6ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder7",
@@ -1957,11 +2008,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder7SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder7
 	)
-	default boolean reminder7SeparatePanel() { return false; }
+	default Location reminder7Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder7panelAnchorType",
@@ -2009,19 +2060,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder7Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder7AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder7ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder7
 	)
-	default ColorAnimationType reminder7AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder7ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder7PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder7
 	)
@@ -2061,11 +2112,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder7ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder7
 	)
 	default boolean reminder7ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder7ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder7
+	)
+	default int reminder7ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder8",
@@ -2231,11 +2292,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder8SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder8
 	)
-	default boolean reminder8SeparatePanel() { return false; }
+	default Location reminder8Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder8panelAnchorType",
@@ -2283,19 +2344,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder8Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder8AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder8ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder8
 	)
-	default ColorAnimationType reminder8AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder8ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder8PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder8
 	)
@@ -2335,11 +2396,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder8ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder8
 	)
 	default boolean reminder8ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder8ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder8
+	)
+	default int reminder8ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder9",
@@ -2505,11 +2576,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder9SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder9
 	)
-	default boolean reminder9SeparatePanel() { return false; }
+	default Location reminder9Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder9panelAnchorType",
@@ -2557,19 +2628,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder9Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder9AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder9ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder9
 	)
-	default ColorAnimationType reminder9AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder9ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder9PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder9
 	)
@@ -2609,11 +2680,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder9ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder9
 	)
 	default boolean reminder9ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder9ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder9
+	)
+	default int reminder9ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder10",
@@ -2779,11 +2860,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder10SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder10
 	)
-	default boolean reminder10SeparatePanel() { return false; }
+	default Location reminder10Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder10panelAnchorType",
@@ -2831,19 +2912,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder10Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder10AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder10ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder10
 	)
-	default ColorAnimationType reminder10AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder10ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder10PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder10
 	)
@@ -2883,11 +2964,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder10ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder10
 	)
 	default boolean reminder10ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder10ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder10
+	)
+	default int reminder10ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder11",
@@ -3053,11 +3144,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder11SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder11
 	)
-	default boolean reminder11SeparatePanel() { return false; }
+	default Location reminder11Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder11panelAnchorType",
@@ -3105,19 +3196,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder11Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder11AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder11ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder11
 	)
-	default ColorAnimationType reminder11AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder11ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder11PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder11
 	)
@@ -3157,11 +3248,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder11ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder11
 	)
 	default boolean reminder11ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder11ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder11
+	)
+	default int reminder11ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder12",
@@ -3327,11 +3428,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder12SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder12
 	)
-	default boolean reminder12SeparatePanel() { return false; }
+	default Location reminder12Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder12panelAnchorType",
@@ -3379,19 +3480,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder12Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder12AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder12ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder12
 	)
-	default ColorAnimationType reminder12AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder12ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder12PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder12
 	)
@@ -3431,11 +3532,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder12ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder12
 	)
 	default boolean reminder12ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder12ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder12
+	)
+	default int reminder12ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder13",
@@ -3601,11 +3712,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder13SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder13
 	)
-	default boolean reminder13SeparatePanel() { return false; }
+	default Location reminder13Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder13panelAnchorType",
@@ -3653,19 +3764,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder13Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder13AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder13ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder13
 	)
-	default ColorAnimationType reminder13AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder13ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder13PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder13
 	)
@@ -3705,11 +3816,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder13ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder13
 	)
 	default boolean reminder13ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder13ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder13
+	)
+	default int reminder13ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder14",
@@ -3875,11 +3996,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder14SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder14
 	)
-	default boolean reminder14SeparatePanel() { return false; }
+	default Location reminder14Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder14panelAnchorType",
@@ -3927,19 +4048,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder14Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder14AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder14ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder14
 	)
-	default ColorAnimationType reminder14AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder14ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder14PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder14
 	)
@@ -3979,11 +4100,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder14ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder14
 	)
 	default boolean reminder14ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder14ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder14
+	)
+	default int reminder14ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder15",
@@ -4149,11 +4280,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder15SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder15
 	)
-	default boolean reminder15SeparatePanel() { return false; }
+	default Location reminder15Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder15panelAnchorType",
@@ -4201,19 +4332,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder15Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder15AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder15ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder15
 	)
-	default ColorAnimationType reminder15AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder15ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder15PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder15
 	)
@@ -4253,11 +4384,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder15ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder15
 	)
 	default boolean reminder15ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder15ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder15
+	)
+	default int reminder15ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder16",
@@ -4423,11 +4564,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder16SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder16
 	)
-	default boolean reminder16SeparatePanel() { return false; }
+	default Location reminder16Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder16panelAnchorType",
@@ -4475,19 +4616,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder16Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder16AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder16ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder16
 	)
-	default ColorAnimationType reminder16AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder16ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder16PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder16
 	)
@@ -4527,11 +4668,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder16ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder16
 	)
 	default boolean reminder16ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder16ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder16
+	)
+	default int reminder16ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder17",
@@ -4697,11 +4848,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder17SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder17
 	)
-	default boolean reminder17SeparatePanel() { return false; }
+	default Location reminder17Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder17panelAnchorType",
@@ -4749,19 +4900,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder17Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder17AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder17ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder17
 	)
-	default ColorAnimationType reminder17AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder17ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder17PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder17
 	)
@@ -4801,11 +4952,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder17ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder17
 	)
 	default boolean reminder17ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder17ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder17
+	)
+	default int reminder17ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder18",
@@ -4971,11 +5132,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder18SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder18
 	)
-	default boolean reminder18SeparatePanel() { return false; }
+	default Location reminder18Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder18panelAnchorType",
@@ -5023,19 +5184,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder18Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder18AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder18ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder18
 	)
-	default ColorAnimationType reminder18AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder18ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder18PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder18
 	)
@@ -5075,11 +5236,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder18ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder18
 	)
 	default boolean reminder18ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder18ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder18
+	)
+	default int reminder18ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder19",
@@ -5245,11 +5416,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder19SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder19
 	)
-	default boolean reminder19SeparatePanel() { return false; }
+	default Location reminder19Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder19panelAnchorType",
@@ -5297,19 +5468,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder19Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder19AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder19ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder19
 	)
-	default ColorAnimationType reminder19AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder19ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder19PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder19
 	)
@@ -5349,11 +5520,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder19ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder19
 	)
 	default boolean reminder19ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder19ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder19
+	)
+	default int reminder19ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder20",
@@ -5519,11 +5700,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder20SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder20
 	)
-	default boolean reminder20SeparatePanel() { return false; }
+	default Location reminder20Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder20panelAnchorType",
@@ -5571,19 +5752,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder20Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder20AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder20ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder20
 	)
-	default ColorAnimationType reminder20AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder20ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder20PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder20
 	)
@@ -5623,11 +5804,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder20ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder20
 	)
 	default boolean reminder20ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder20ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder20
+	)
+	default int reminder20ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder21",
@@ -5793,11 +5984,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder21SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder21
 	)
-	default boolean reminder21SeparatePanel() { return false; }
+	default Location reminder21Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder21panelAnchorType",
@@ -5845,19 +6036,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder21Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder21AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder21ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder21
 	)
-	default ColorAnimationType reminder21AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder21ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder21PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder21
 	)
@@ -5897,11 +6088,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder21ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder21
 	)
 	default boolean reminder21ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder21ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder21
+	)
+	default int reminder21ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder22",
@@ -6067,11 +6268,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder22SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder22
 	)
-	default boolean reminder22SeparatePanel() { return false; }
+	default Location reminder22Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder22panelAnchorType",
@@ -6119,19 +6320,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder22Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder22AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder22ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder22
 	)
-	default ColorAnimationType reminder22AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder22ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder22PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder22
 	)
@@ -6171,11 +6372,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder22ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder22
 	)
 	default boolean reminder22ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder22ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder22
+	)
+	default int reminder22ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder23",
@@ -6341,11 +6552,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder23SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder23
 	)
-	default boolean reminder23SeparatePanel() { return false; }
+	default Location reminder23Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder23panelAnchorType",
@@ -6393,19 +6604,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder23Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder23AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder23ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder23
 	)
-	default ColorAnimationType reminder23AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder23ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder23PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder23
 	)
@@ -6445,11 +6656,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder23ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder23
 	)
 	default boolean reminder23ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder23ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder23
+	)
+	default int reminder23ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder24",
@@ -6615,11 +6836,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder24SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder24
 	)
-	default boolean reminder24SeparatePanel() { return false; }
+	default Location reminder24Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder24panelAnchorType",
@@ -6667,19 +6888,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder24Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder24AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder24ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder24
 	)
-	default ColorAnimationType reminder24AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder24ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder24PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder24
 	)
@@ -6719,11 +6940,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder24ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder24
 	)
 	default boolean reminder24ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder24ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder24
+	)
+	default int reminder24ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder25",
@@ -6889,11 +7120,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder25SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder25
 	)
-	default boolean reminder25SeparatePanel() { return false; }
+	default Location reminder25Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder25panelAnchorType",
@@ -6941,19 +7172,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder25Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder25AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder25ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder25
 	)
-	default ColorAnimationType reminder25AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder25ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder25PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder25
 	)
@@ -6993,11 +7224,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder25ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder25
 	)
 	default boolean reminder25ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder25ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder25
+	)
+	default int reminder25ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder26",
@@ -7163,11 +7404,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder26SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder26
 	)
-	default boolean reminder26SeparatePanel() { return false; }
+	default Location reminder26Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder26panelAnchorType",
@@ -7215,19 +7456,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder26Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder26AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder26ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder26
 	)
-	default ColorAnimationType reminder26AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder26ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder26PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder26
 	)
@@ -7267,11 +7508,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder26ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder26
 	)
 	default boolean reminder26ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder26ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder26
+	)
+	default int reminder26ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder27",
@@ -7437,11 +7688,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder27SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder27
 	)
-	default boolean reminder27SeparatePanel() { return false; }
+	default Location reminder27Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder27panelAnchorType",
@@ -7489,19 +7740,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder27Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder27AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder27ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder27
 	)
-	default ColorAnimationType reminder27AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder27ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder27PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder27
 	)
@@ -7541,11 +7792,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder27ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder27
 	)
 	default boolean reminder27ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder27ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder27
+	)
+	default int reminder27ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder28",
@@ -7711,11 +7972,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder28SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder28
 	)
-	default boolean reminder28SeparatePanel() { return false; }
+	default Location reminder28Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder28panelAnchorType",
@@ -7763,19 +8024,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder28Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder28AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder28ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder28
 	)
-	default ColorAnimationType reminder28AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder28ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder28PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder28
 	)
@@ -7815,11 +8076,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder28ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder28
 	)
 	default boolean reminder28ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder28ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder28
+	)
+	default int reminder28ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder29",
@@ -7985,11 +8256,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder29SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder29
 	)
-	default boolean reminder29SeparatePanel() { return false; }
+	default Location reminder29Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder29panelAnchorType",
@@ -8037,19 +8308,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder29Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder29AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder29ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder29
 	)
-	default ColorAnimationType reminder29AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder29ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder29PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder29
 	)
@@ -8089,11 +8360,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder29ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder29
 	)
 	default boolean reminder29ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder29ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder29
+	)
+	default int reminder29ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder30",
@@ -8259,11 +8540,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder30SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder30
 	)
-	default boolean reminder30SeparatePanel() { return false; }
+	default Location reminder30Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder30panelAnchorType",
@@ -8311,19 +8592,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder30Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder30AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder30ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder30
 	)
-	default ColorAnimationType reminder30AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder30ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder30PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder30
 	)
@@ -8363,11 +8644,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder30ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder30
 	)
 	default boolean reminder30ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder30ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder30
+	)
+	default int reminder30ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder31",
@@ -8533,11 +8824,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder31SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder31
 	)
-	default boolean reminder31SeparatePanel() { return false; }
+	default Location reminder31Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder31panelAnchorType",
@@ -8585,19 +8876,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder31Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder31AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder31ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder31
 	)
-	default ColorAnimationType reminder31AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder31ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder31PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder31
 	)
@@ -8637,11 +8928,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder31ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder31
 	)
 	default boolean reminder31ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder31ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder31
+	)
+	default int reminder31ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder32",
@@ -8807,11 +9108,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder32SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder32
 	)
-	default boolean reminder32SeparatePanel() { return false; }
+	default Location reminder32Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder32panelAnchorType",
@@ -8859,19 +9160,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder32Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder32AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder32ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder32
 	)
-	default ColorAnimationType reminder32AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder32ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder32PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder32
 	)
@@ -8911,11 +9212,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder32ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder32
 	)
 	default boolean reminder32ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder32ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder32
+	)
+	default int reminder32ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder33",
@@ -9081,11 +9392,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder33SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder33
 	)
-	default boolean reminder33SeparatePanel() { return false; }
+	default Location reminder33Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder33panelAnchorType",
@@ -9133,19 +9444,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder33Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder33AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder33ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder33
 	)
-	default ColorAnimationType reminder33AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder33ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder33PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder33
 	)
@@ -9185,11 +9496,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder33ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder33
 	)
 	default boolean reminder33ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder33ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder33
+	)
+	default int reminder33ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder34",
@@ -9355,11 +9676,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder34SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder34
 	)
-	default boolean reminder34SeparatePanel() { return false; }
+	default Location reminder34Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder34panelAnchorType",
@@ -9407,19 +9728,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder34Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder34AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder34ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder34
 	)
-	default ColorAnimationType reminder34AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder34ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder34PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder34
 	)
@@ -9459,11 +9780,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder34ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder34
 	)
 	default boolean reminder34ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder34ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder34
+	)
+	default int reminder34ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder35",
@@ -9629,11 +9960,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder35SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder35
 	)
-	default boolean reminder35SeparatePanel() { return false; }
+	default Location reminder35Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder35panelAnchorType",
@@ -9681,19 +10012,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder35Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder35AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder35ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder35
 	)
-	default ColorAnimationType reminder35AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder35ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder35PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder35
 	)
@@ -9733,11 +10064,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder35ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder35
 	)
 	default boolean reminder35ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder35ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder35
+	)
+	default int reminder35ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder36",
@@ -9903,11 +10244,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder36SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder36
 	)
-	default boolean reminder36SeparatePanel() { return false; }
+	default Location reminder36Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder36panelAnchorType",
@@ -9955,19 +10296,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder36Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder36AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder36ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder36
 	)
-	default ColorAnimationType reminder36AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder36ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder36PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder36
 	)
@@ -10007,11 +10348,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder36ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder36
 	)
 	default boolean reminder36ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder36ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder36
+	)
+	default int reminder36ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder37",
@@ -10177,11 +10528,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder37SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder37
 	)
-	default boolean reminder37SeparatePanel() { return false; }
+	default Location reminder37Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder37panelAnchorType",
@@ -10229,19 +10580,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder37Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder37AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder37ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder37
 	)
-	default ColorAnimationType reminder37AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder37ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder37PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder37
 	)
@@ -10281,11 +10632,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder37ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder37
 	)
 	default boolean reminder37ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder37ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder37
+	)
+	default int reminder37ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder38",
@@ -10451,11 +10812,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder38SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder38
 	)
-	default boolean reminder38SeparatePanel() { return false; }
+	default Location reminder38Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder38panelAnchorType",
@@ -10503,19 +10864,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder38Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder38AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder38ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder38
 	)
-	default ColorAnimationType reminder38AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder38ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder38PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder38
 	)
@@ -10555,11 +10916,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder38ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder38
 	)
 	default boolean reminder38ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder38ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder38
+	)
+	default int reminder38ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder39",
@@ -10725,11 +11096,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder39SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder39
 	)
-	default boolean reminder39SeparatePanel() { return false; }
+	default Location reminder39Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder39panelAnchorType",
@@ -10777,19 +11148,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder39Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder39AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder39ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder39
 	)
-	default ColorAnimationType reminder39AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder39ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder39PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder39
 	)
@@ -10829,11 +11200,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder39ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder39
 	)
 	default boolean reminder39ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder39ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder39
+	)
+	default int reminder39ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder40",
@@ -10999,11 +11380,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder40SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder40
 	)
-	default boolean reminder40SeparatePanel() { return false; }
+	default Location reminder40Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder40panelAnchorType",
@@ -11051,19 +11432,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder40Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder40AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder40ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder40
 	)
-	default ColorAnimationType reminder40AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder40ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder40PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder40
 	)
@@ -11103,11 +11484,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder40ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder40
 	)
 	default boolean reminder40ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder40ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder40
+	)
+	default int reminder40ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder41",
@@ -11273,11 +11664,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder41SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder41
 	)
-	default boolean reminder41SeparatePanel() { return false; }
+	default Location reminder41Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder41panelAnchorType",
@@ -11325,19 +11716,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder41Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder41AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder41ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder41
 	)
-	default ColorAnimationType reminder41AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder41ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder41PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder41
 	)
@@ -11377,11 +11768,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder41ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder41
 	)
 	default boolean reminder41ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder41ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder41
+	)
+	default int reminder41ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder42",
@@ -11547,11 +11948,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder42SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder42
 	)
-	default boolean reminder42SeparatePanel() { return false; }
+	default Location reminder42Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder42panelAnchorType",
@@ -11599,19 +12000,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder42Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder42AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder42ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder42
 	)
-	default ColorAnimationType reminder42AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder42ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder42PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder42
 	)
@@ -11651,11 +12052,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder42ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder42
 	)
 	default boolean reminder42ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder42ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder42
+	)
+	default int reminder42ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder43",
@@ -11821,11 +12232,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder43SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder43
 	)
-	default boolean reminder43SeparatePanel() { return false; }
+	default Location reminder43Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder43panelAnchorType",
@@ -11873,19 +12284,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder43Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder43AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder43ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder43
 	)
-	default ColorAnimationType reminder43AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder43ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder43PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder43
 	)
@@ -11925,11 +12336,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder43ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder43
 	)
 	default boolean reminder43ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder43ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder43
+	)
+	default int reminder43ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder44",
@@ -12095,11 +12516,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder44SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder44
 	)
-	default boolean reminder44SeparatePanel() { return false; }
+	default Location reminder44Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder44panelAnchorType",
@@ -12147,19 +12568,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder44Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder44AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder44ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder44
 	)
-	default ColorAnimationType reminder44AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder44ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder44PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder44
 	)
@@ -12199,11 +12620,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder44ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder44
 	)
 	default boolean reminder44ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder44ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder44
+	)
+	default int reminder44ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder45",
@@ -12369,11 +12800,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder45SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder45
 	)
-	default boolean reminder45SeparatePanel() { return false; }
+	default Location reminder45Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder45panelAnchorType",
@@ -12421,19 +12852,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder45Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder45AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder45ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder45
 	)
-	default ColorAnimationType reminder45AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder45ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder45PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder45
 	)
@@ -12473,11 +12904,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder45ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder45
 	)
 	default boolean reminder45ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder45ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder45
+	)
+	default int reminder45ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder46",
@@ -12643,11 +13084,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder46SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder46
 	)
-	default boolean reminder46SeparatePanel() { return false; }
+	default Location reminder46Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder46panelAnchorType",
@@ -12695,19 +13136,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder46Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder46AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder46ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder46
 	)
-	default ColorAnimationType reminder46AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder46ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder46PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder46
 	)
@@ -12747,11 +13188,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder46ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder46
 	)
 	default boolean reminder46ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder46ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder46
+	)
+	default int reminder46ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder47",
@@ -12917,11 +13368,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder47SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder47
 	)
-	default boolean reminder47SeparatePanel() { return false; }
+	default Location reminder47Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder47panelAnchorType",
@@ -12969,19 +13420,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder47Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder47AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder47ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder47
 	)
-	default ColorAnimationType reminder47AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder47ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder47PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder47
 	)
@@ -13021,11 +13472,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder47ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder47
 	)
 	default boolean reminder47ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder47ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder47
+	)
+	default int reminder47ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder48",
@@ -13191,11 +13652,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder48SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder48
 	)
-	default boolean reminder48SeparatePanel() { return false; }
+	default Location reminder48Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder48panelAnchorType",
@@ -13243,19 +13704,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder48Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder48AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder48ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder48
 	)
-	default ColorAnimationType reminder48AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder48ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder48PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder48
 	)
@@ -13295,11 +13756,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder48ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder48
 	)
 	default boolean reminder48ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder48ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder48
+	)
+	default int reminder48ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder49",
@@ -13465,11 +13936,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder49SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder49
 	)
-	default boolean reminder49SeparatePanel() { return false; }
+	default Location reminder49Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder49panelAnchorType",
@@ -13517,19 +13988,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder49Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder49AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder49ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder49
 	)
-	default ColorAnimationType reminder49AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder49ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder49PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder49
 	)
@@ -13569,11 +14040,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder49ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder49
 	)
 	default boolean reminder49ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder49ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder49
+	)
+	default int reminder49ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder50",
@@ -13739,11 +14220,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder50SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder50
 	)
-	default boolean reminder50SeparatePanel() { return false; }
+	default Location reminder50Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder50panelAnchorType",
@@ -13791,19 +14272,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder50Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder50AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder50ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder50
 	)
-	default ColorAnimationType reminder50AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder50ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder50PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder50
 	)
@@ -13843,11 +14324,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder50ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder50
 	)
 	default boolean reminder50ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder50ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder50
+	)
+	default int reminder50ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder51",
@@ -14013,11 +14504,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder51SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder51
 	)
-	default boolean reminder51SeparatePanel() { return false; }
+	default Location reminder51Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder51panelAnchorType",
@@ -14065,19 +14556,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder51Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder51AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder51ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder51
 	)
-	default ColorAnimationType reminder51AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder51ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder51PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder51
 	)
@@ -14117,11 +14608,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder51ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder51
 	)
 	default boolean reminder51ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder51ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder51
+	)
+	default int reminder51ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder52",
@@ -14287,11 +14788,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder52SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder52
 	)
-	default boolean reminder52SeparatePanel() { return false; }
+	default Location reminder52Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder52panelAnchorType",
@@ -14339,19 +14840,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder52Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder52AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder52ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder52
 	)
-	default ColorAnimationType reminder52AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder52ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder52PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder52
 	)
@@ -14391,11 +14892,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder52ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder52
 	)
 	default boolean reminder52ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder52ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder52
+	)
+	default int reminder52ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder53",
@@ -14561,11 +15072,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder53SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder53
 	)
-	default boolean reminder53SeparatePanel() { return false; }
+	default Location reminder53Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder53panelAnchorType",
@@ -14613,19 +15124,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder53Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder53AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder53ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder53
 	)
-	default ColorAnimationType reminder53AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder53ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder53PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder53
 	)
@@ -14665,11 +15176,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder53ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder53
 	)
 	default boolean reminder53ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder53ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder53
+	)
+	default int reminder53ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder54",
@@ -14835,11 +15356,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder54SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder54
 	)
-	default boolean reminder54SeparatePanel() { return false; }
+	default Location reminder54Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder54panelAnchorType",
@@ -14887,19 +15408,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder54Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder54AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder54ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder54
 	)
-	default ColorAnimationType reminder54AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder54ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder54PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder54
 	)
@@ -14939,11 +15460,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder54ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder54
 	)
 	default boolean reminder54ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder54ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder54
+	)
+	default int reminder54ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder55",
@@ -15109,11 +15640,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder55SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder55
 	)
-	default boolean reminder55SeparatePanel() { return false; }
+	default Location reminder55Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder55panelAnchorType",
@@ -15161,19 +15692,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder55Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder55AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder55ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder55
 	)
-	default ColorAnimationType reminder55AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder55ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder55PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder55
 	)
@@ -15213,11 +15744,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder55ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder55
 	)
 	default boolean reminder55ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder55ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder55
+	)
+	default int reminder55ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder56",
@@ -15383,11 +15924,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder56SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder56
 	)
-	default boolean reminder56SeparatePanel() { return false; }
+	default Location reminder56Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder56panelAnchorType",
@@ -15435,19 +15976,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder56Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder56AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder56ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder56
 	)
-	default ColorAnimationType reminder56AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder56ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder56PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder56
 	)
@@ -15487,11 +16028,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder56ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder56
 	)
 	default boolean reminder56ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder56ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder56
+	)
+	default int reminder56ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder57",
@@ -15657,11 +16208,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder57SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder57
 	)
-	default boolean reminder57SeparatePanel() { return false; }
+	default Location reminder57Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder57panelAnchorType",
@@ -15709,19 +16260,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder57Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder57AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder57ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder57
 	)
-	default ColorAnimationType reminder57AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder57ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder57PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder57
 	)
@@ -15761,11 +16312,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder57ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder57
 	)
 	default boolean reminder57ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder57ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder57
+	)
+	default int reminder57ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder58",
@@ -15931,11 +16492,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder58SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder58
 	)
-	default boolean reminder58SeparatePanel() { return false; }
+	default Location reminder58Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder58panelAnchorType",
@@ -15983,19 +16544,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder58Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder58AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder58ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder58
 	)
-	default ColorAnimationType reminder58AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder58ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder58PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder58
 	)
@@ -16035,11 +16596,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder58ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder58
 	)
 	default boolean reminder58ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder58ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder58
+	)
+	default int reminder58ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder59",
@@ -16205,11 +16776,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder59SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder59
 	)
-	default boolean reminder59SeparatePanel() { return false; }
+	default Location reminder59Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder59panelAnchorType",
@@ -16257,19 +16828,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder59Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder59AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder59ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder59
 	)
-	default ColorAnimationType reminder59AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder59ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder59PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder59
 	)
@@ -16309,11 +16880,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder59ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder59
 	)
 	default boolean reminder59ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder59ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder59
+	)
+	default int reminder59ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder60",
@@ -16479,11 +17060,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder60SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder60
 	)
-	default boolean reminder60SeparatePanel() { return false; }
+	default Location reminder60Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder60panelAnchorType",
@@ -16531,19 +17112,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder60Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder60AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder60ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder60
 	)
-	default ColorAnimationType reminder60AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder60ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder60PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder60
 	)
@@ -16583,11 +17164,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder60ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder60
 	)
 	default boolean reminder60ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder60ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder60
+	)
+	default int reminder60ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder61",
@@ -16753,11 +17344,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder61SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder61
 	)
-	default boolean reminder61SeparatePanel() { return false; }
+	default Location reminder61Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder61panelAnchorType",
@@ -16805,19 +17396,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder61Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder61AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder61ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder61
 	)
-	default ColorAnimationType reminder61AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder61ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder61PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder61
 	)
@@ -16857,11 +17448,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder61ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder61
 	)
 	default boolean reminder61ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder61ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder61
+	)
+	default int reminder61ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder62",
@@ -17027,11 +17628,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder62SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder62
 	)
-	default boolean reminder62SeparatePanel() { return false; }
+	default Location reminder62Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder62panelAnchorType",
@@ -17079,19 +17680,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder62Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder62AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder62ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder62
 	)
-	default ColorAnimationType reminder62AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder62ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder62PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder62
 	)
@@ -17131,11 +17732,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder62ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder62
 	)
 	default boolean reminder62ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder62ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder62
+	)
+	default int reminder62ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder63",
@@ -17301,11 +17912,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder63SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder63
 	)
-	default boolean reminder63SeparatePanel() { return false; }
+	default Location reminder63Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder63panelAnchorType",
@@ -17353,19 +17964,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder63Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder63AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder63ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder63
 	)
-	default ColorAnimationType reminder63AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder63ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder63PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder63
 	)
@@ -17405,11 +18016,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder63ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder63
 	)
 	default boolean reminder63ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder63ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder63
+	)
+	default int reminder63ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder64",
@@ -17575,11 +18196,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder64SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder64
 	)
-	default boolean reminder64SeparatePanel() { return false; }
+	default Location reminder64Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder64panelAnchorType",
@@ -17627,19 +18248,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder64Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder64AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder64ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder64
 	)
-	default ColorAnimationType reminder64AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder64ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder64PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder64
 	)
@@ -17679,11 +18300,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder64ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder64
 	)
 	default boolean reminder64ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder64ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder64
+	)
+	default int reminder64ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder65",
@@ -17849,11 +18480,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder65SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder65
 	)
-	default boolean reminder65SeparatePanel() { return false; }
+	default Location reminder65Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder65panelAnchorType",
@@ -17901,19 +18532,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder65Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder65AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder65ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder65
 	)
-	default ColorAnimationType reminder65AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder65ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder65PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder65
 	)
@@ -17953,11 +18584,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder65ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder65
 	)
 	default boolean reminder65ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder65ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder65
+	)
+	default int reminder65ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder66",
@@ -18123,11 +18764,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder66SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder66
 	)
-	default boolean reminder66SeparatePanel() { return false; }
+	default Location reminder66Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder66panelAnchorType",
@@ -18175,19 +18816,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder66Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder66AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder66ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder66
 	)
-	default ColorAnimationType reminder66AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder66ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder66PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder66
 	)
@@ -18227,11 +18868,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder66ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder66
 	)
 	default boolean reminder66ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder66ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder66
+	)
+	default int reminder66ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder67",
@@ -18397,11 +19048,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder67SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder67
 	)
-	default boolean reminder67SeparatePanel() { return false; }
+	default Location reminder67Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder67panelAnchorType",
@@ -18449,19 +19100,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder67Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder67AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder67ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder67
 	)
-	default ColorAnimationType reminder67AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder67ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder67PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder67
 	)
@@ -18501,11 +19152,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder67ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder67
 	)
 	default boolean reminder67ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder67ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder67
+	)
+	default int reminder67ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder68",
@@ -18671,11 +19332,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder68SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder68
 	)
-	default boolean reminder68SeparatePanel() { return false; }
+	default Location reminder68Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder68panelAnchorType",
@@ -18723,19 +19384,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder68Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder68AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder68ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder68
 	)
-	default ColorAnimationType reminder68AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder68ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder68PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder68
 	)
@@ -18775,11 +19436,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder68ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder68
 	)
 	default boolean reminder68ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder68ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder68
+	)
+	default int reminder68ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder69",
@@ -18945,11 +19616,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder69SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder69
 	)
-	default boolean reminder69SeparatePanel() { return false; }
+	default Location reminder69Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder69panelAnchorType",
@@ -18997,19 +19668,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder69Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder69AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder69ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder69
 	)
-	default ColorAnimationType reminder69AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder69ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder69PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder69
 	)
@@ -19049,11 +19720,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder69ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder69
 	)
 	default boolean reminder69ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder69ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder69
+	)
+	default int reminder69ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder70",
@@ -19219,11 +19900,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder70SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder70
 	)
-	default boolean reminder70SeparatePanel() { return false; }
+	default Location reminder70Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder70panelAnchorType",
@@ -19271,19 +19952,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder70Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder70AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder70ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder70
 	)
-	default ColorAnimationType reminder70AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder70ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder70PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder70
 	)
@@ -19323,11 +20004,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder70ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder70
 	)
 	default boolean reminder70ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder70ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder70
+	)
+	default int reminder70ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder71",
@@ -19493,11 +20184,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder71SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder71
 	)
-	default boolean reminder71SeparatePanel() { return false; }
+	default Location reminder71Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder71panelAnchorType",
@@ -19545,19 +20236,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder71Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder71AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder71ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder71
 	)
-	default ColorAnimationType reminder71AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder71ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder71PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder71
 	)
@@ -19597,11 +20288,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder71ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder71
 	)
 	default boolean reminder71ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder71ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder71
+	)
+	default int reminder71ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder72",
@@ -19767,11 +20468,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder72SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder72
 	)
-	default boolean reminder72SeparatePanel() { return false; }
+	default Location reminder72Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder72panelAnchorType",
@@ -19819,19 +20520,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder72Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder72AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder72ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder72
 	)
-	default ColorAnimationType reminder72AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder72ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder72PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder72
 	)
@@ -19871,11 +20572,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder72ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder72
 	)
 	default boolean reminder72ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder72ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder72
+	)
+	default int reminder72ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder73",
@@ -20041,11 +20752,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder73SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder73
 	)
-	default boolean reminder73SeparatePanel() { return false; }
+	default Location reminder73Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder73panelAnchorType",
@@ -20093,19 +20804,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder73Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder73AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder73ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder73
 	)
-	default ColorAnimationType reminder73AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder73ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder73PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder73
 	)
@@ -20145,11 +20856,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder73ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder73
 	)
 	default boolean reminder73ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder73ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder73
+	)
+	default int reminder73ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder74",
@@ -20315,11 +21036,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder74SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder74
 	)
-	default boolean reminder74SeparatePanel() { return false; }
+	default Location reminder74Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder74panelAnchorType",
@@ -20367,19 +21088,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder74Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder74AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder74ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder74
 	)
-	default ColorAnimationType reminder74AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder74ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder74PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder74
 	)
@@ -20419,11 +21140,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder74ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder74
 	)
 	default boolean reminder74ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder74ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder74
+	)
+	default int reminder74ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder75",
@@ -20589,11 +21320,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder75SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder75
 	)
-	default boolean reminder75SeparatePanel() { return false; }
+	default Location reminder75Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder75panelAnchorType",
@@ -20641,19 +21372,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder75Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder75AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder75ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder75
 	)
-	default ColorAnimationType reminder75AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder75ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder75PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder75
 	)
@@ -20693,11 +21424,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder75ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder75
 	)
 	default boolean reminder75ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder75ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder75
+	)
+	default int reminder75ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder76",
@@ -20863,11 +21604,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder76SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder76
 	)
-	default boolean reminder76SeparatePanel() { return false; }
+	default Location reminder76Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder76panelAnchorType",
@@ -20915,19 +21656,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder76Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder76AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder76ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder76
 	)
-	default ColorAnimationType reminder76AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder76ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder76PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder76
 	)
@@ -20967,11 +21708,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder76ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder76
 	)
 	default boolean reminder76ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder76ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder76
+	)
+	default int reminder76ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder77",
@@ -21137,11 +21888,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder77SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder77
 	)
-	default boolean reminder77SeparatePanel() { return false; }
+	default Location reminder77Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder77panelAnchorType",
@@ -21189,19 +21940,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder77Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder77AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder77ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder77
 	)
-	default ColorAnimationType reminder77AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder77ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder77PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder77
 	)
@@ -21241,11 +21992,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder77ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder77
 	)
 	default boolean reminder77ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder77ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder77
+	)
+	default int reminder77ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder78",
@@ -21411,11 +22172,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder78SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder78
 	)
-	default boolean reminder78SeparatePanel() { return false; }
+	default Location reminder78Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder78panelAnchorType",
@@ -21463,19 +22224,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder78Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder78AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder78ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder78
 	)
-	default ColorAnimationType reminder78AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder78ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder78PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder78
 	)
@@ -21515,11 +22276,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder78ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder78
 	)
 	default boolean reminder78ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder78ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder78
+	)
+	default int reminder78ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder79",
@@ -21685,11 +22456,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder79SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder79
 	)
-	default boolean reminder79SeparatePanel() { return false; }
+	default Location reminder79Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder79panelAnchorType",
@@ -21737,19 +22508,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder79Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder79AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder79ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder79
 	)
-	default ColorAnimationType reminder79AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder79ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder79PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder79
 	)
@@ -21789,11 +22560,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder79ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder79
 	)
 	default boolean reminder79ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder79ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder79
+	)
+	default int reminder79ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder80",
@@ -21959,11 +22740,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder80SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder80
 	)
-	default boolean reminder80SeparatePanel() { return false; }
+	default Location reminder80Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder80panelAnchorType",
@@ -22011,19 +22792,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder80Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder80AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder80ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder80
 	)
-	default ColorAnimationType reminder80AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder80ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder80PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder80
 	)
@@ -22063,11 +22844,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder80ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder80
 	)
 	default boolean reminder80ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder80ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder80
+	)
+	default int reminder80ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder81",
@@ -22233,11 +23024,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder81SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder81
 	)
-	default boolean reminder81SeparatePanel() { return false; }
+	default Location reminder81Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder81panelAnchorType",
@@ -22285,19 +23076,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder81Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder81AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder81ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder81
 	)
-	default ColorAnimationType reminder81AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder81ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder81PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder81
 	)
@@ -22337,11 +23128,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder81ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder81
 	)
 	default boolean reminder81ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder81ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder81
+	)
+	default int reminder81ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder82",
@@ -22507,11 +23308,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder82SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder82
 	)
-	default boolean reminder82SeparatePanel() { return false; }
+	default Location reminder82Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder82panelAnchorType",
@@ -22559,19 +23360,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder82Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder82AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder82ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder82
 	)
-	default ColorAnimationType reminder82AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder82ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder82PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder82
 	)
@@ -22611,11 +23412,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder82ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder82
 	)
 	default boolean reminder82ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder82ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder82
+	)
+	default int reminder82ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder83",
@@ -22781,11 +23592,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder83SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder83
 	)
-	default boolean reminder83SeparatePanel() { return false; }
+	default Location reminder83Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder83panelAnchorType",
@@ -22833,19 +23644,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder83Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder83AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder83ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder83
 	)
-	default ColorAnimationType reminder83AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder83ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder83PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder83
 	)
@@ -22885,11 +23696,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder83ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder83
 	)
 	default boolean reminder83ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder83ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder83
+	)
+	default int reminder83ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder84",
@@ -23055,11 +23876,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder84SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder84
 	)
-	default boolean reminder84SeparatePanel() { return false; }
+	default Location reminder84Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder84panelAnchorType",
@@ -23107,19 +23928,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder84Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder84AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder84ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder84
 	)
-	default ColorAnimationType reminder84AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder84ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder84PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder84
 	)
@@ -23159,11 +23980,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder84ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder84
 	)
 	default boolean reminder84ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder84ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder84
+	)
+	default int reminder84ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder85",
@@ -23329,11 +24160,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder85SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder85
 	)
-	default boolean reminder85SeparatePanel() { return false; }
+	default Location reminder85Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder85panelAnchorType",
@@ -23381,19 +24212,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder85Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder85AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder85ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder85
 	)
-	default ColorAnimationType reminder85AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder85ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder85PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder85
 	)
@@ -23433,11 +24264,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder85ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder85
 	)
 	default boolean reminder85ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder85ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder85
+	)
+	default int reminder85ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder86",
@@ -23603,11 +24444,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder86SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder86
 	)
-	default boolean reminder86SeparatePanel() { return false; }
+	default Location reminder86Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder86panelAnchorType",
@@ -23655,19 +24496,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder86Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder86AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder86ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder86
 	)
-	default ColorAnimationType reminder86AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder86ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder86PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder86
 	)
@@ -23707,11 +24548,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder86ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder86
 	)
 	default boolean reminder86ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder86ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder86
+	)
+	default int reminder86ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder87",
@@ -23877,11 +24728,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder87SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder87
 	)
-	default boolean reminder87SeparatePanel() { return false; }
+	default Location reminder87Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder87panelAnchorType",
@@ -23929,19 +24780,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder87Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder87AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder87ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder87
 	)
-	default ColorAnimationType reminder87AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder87ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder87PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder87
 	)
@@ -23981,11 +24832,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder87ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder87
 	)
 	default boolean reminder87ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder87ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder87
+	)
+	default int reminder87ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder88",
@@ -24151,11 +25012,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder88SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder88
 	)
-	default boolean reminder88SeparatePanel() { return false; }
+	default Location reminder88Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder88panelAnchorType",
@@ -24203,19 +25064,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder88Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder88AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder88ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder88
 	)
-	default ColorAnimationType reminder88AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder88ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder88PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder88
 	)
@@ -24255,11 +25116,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder88ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder88
 	)
 	default boolean reminder88ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder88ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder88
+	)
+	default int reminder88ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder89",
@@ -24425,11 +25296,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder89SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder89
 	)
-	default boolean reminder89SeparatePanel() { return false; }
+	default Location reminder89Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder89panelAnchorType",
@@ -24477,19 +25348,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder89Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder89AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder89ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder89
 	)
-	default ColorAnimationType reminder89AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder89ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder89PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder89
 	)
@@ -24529,11 +25400,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder89ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder89
 	)
 	default boolean reminder89ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder89ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder89
+	)
+	default int reminder89ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder90",
@@ -24699,11 +25580,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder90SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder90
 	)
-	default boolean reminder90SeparatePanel() { return false; }
+	default Location reminder90Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder90panelAnchorType",
@@ -24751,19 +25632,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder90Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder90AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder90ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder90
 	)
-	default ColorAnimationType reminder90AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder90ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder90PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder90
 	)
@@ -24803,11 +25684,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder90ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder90
 	)
 	default boolean reminder90ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder90ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder90
+	)
+	default int reminder90ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder91",
@@ -24973,11 +25864,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder91SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder91
 	)
-	default boolean reminder91SeparatePanel() { return false; }
+	default Location reminder91Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder91panelAnchorType",
@@ -25025,19 +25916,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder91Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder91AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder91ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder91
 	)
-	default ColorAnimationType reminder91AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder91ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder91PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder91
 	)
@@ -25077,11 +25968,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder91ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder91
 	)
 	default boolean reminder91ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder91ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder91
+	)
+	default int reminder91ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder92",
@@ -25247,11 +26148,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder92SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder92
 	)
-	default boolean reminder92SeparatePanel() { return false; }
+	default Location reminder92Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder92panelAnchorType",
@@ -25299,19 +26200,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder92Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder92AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder92ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder92
 	)
-	default ColorAnimationType reminder92AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder92ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder92PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder92
 	)
@@ -25351,11 +26252,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder92ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder92
 	)
 	default boolean reminder92ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder92ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder92
+	)
+	default int reminder92ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder93",
@@ -25521,11 +26432,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder93SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder93
 	)
-	default boolean reminder93SeparatePanel() { return false; }
+	default Location reminder93Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder93panelAnchorType",
@@ -25573,19 +26484,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder93Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder93AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder93ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder93
 	)
-	default ColorAnimationType reminder93AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder93ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder93PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder93
 	)
@@ -25625,11 +26536,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder93ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder93
 	)
 	default boolean reminder93ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder93ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder93
+	)
+	default int reminder93ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder94",
@@ -25795,11 +26716,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder94SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder94
 	)
-	default boolean reminder94SeparatePanel() { return false; }
+	default Location reminder94Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder94panelAnchorType",
@@ -25847,19 +26768,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder94Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder94AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder94ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder94
 	)
-	default ColorAnimationType reminder94AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder94ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder94PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder94
 	)
@@ -25899,11 +26820,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder94ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder94
 	)
 	default boolean reminder94ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder94ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder94
+	)
+	default int reminder94ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder95",
@@ -26069,11 +27000,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder95SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder95
 	)
-	default boolean reminder95SeparatePanel() { return false; }
+	default Location reminder95Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder95panelAnchorType",
@@ -26121,19 +27052,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder95Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder95AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder95ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder95
 	)
-	default ColorAnimationType reminder95AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder95ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder95PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder95
 	)
@@ -26173,11 +27104,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder95ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder95
 	)
 	default boolean reminder95ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder95ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder95
+	)
+	default int reminder95ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder96",
@@ -26343,11 +27284,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder96SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder96
 	)
-	default boolean reminder96SeparatePanel() { return false; }
+	default Location reminder96Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder96panelAnchorType",
@@ -26395,19 +27336,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder96Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder96AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder96ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder96
 	)
-	default ColorAnimationType reminder96AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder96ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder96PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder96
 	)
@@ -26447,11 +27388,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder96ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder96
 	)
 	default boolean reminder96ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder96ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder96
+	)
+	default int reminder96ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder97",
@@ -26617,11 +27568,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder97SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder97
 	)
-	default boolean reminder97SeparatePanel() { return false; }
+	default Location reminder97Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder97panelAnchorType",
@@ -26669,19 +27620,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder97Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder97AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder97ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder97
 	)
-	default ColorAnimationType reminder97AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder97ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder97PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder97
 	)
@@ -26721,11 +27672,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder97ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder97
 	)
 	default boolean reminder97ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder97ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder97
+	)
+	default int reminder97ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder98",
@@ -26891,11 +27852,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder98SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder98
 	)
-	default boolean reminder98SeparatePanel() { return false; }
+	default Location reminder98Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder98panelAnchorType",
@@ -26943,19 +27904,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder98Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder98AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder98ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder98
 	)
-	default ColorAnimationType reminder98AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder98ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder98PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder98
 	)
@@ -26995,11 +27956,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder98ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder98
 	)
 	default boolean reminder98ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder98ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder98
+	)
+	default int reminder98ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder99",
@@ -27165,11 +28136,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder99SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder99
 	)
-	default boolean reminder99SeparatePanel() { return false; }
+	default Location reminder99Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder99panelAnchorType",
@@ -27217,19 +28188,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder99Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder99AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder99ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder99
 	)
-	default ColorAnimationType reminder99AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder99ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder99PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder99
 	)
@@ -27269,11 +28240,21 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder99ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder99
 	)
 	default boolean reminder99ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder99ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder99
+	)
+	default int reminder99ImageOffset() { return 0; }
+
 
 	@ConfigSection(
 			name = "Reminder100",
@@ -27439,11 +28420,11 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder100SeparatePanel",
 			position = 7,
-			name = "Separate Panel",
-			description = "Configures whether or not reminder is shown in separate panel.",
+			name = "Location",
+			description = "Configures the location for reminder.",
 			section = reminder100
 	)
-	default boolean reminder100SeparatePanel() { return false; }
+	default Location reminder100Location() { return Location.IN_LIST; }
 
 	@ConfigItem(
 			keyName = "Reminder100panelAnchorType",
@@ -27491,19 +28472,19 @@ public interface RemindersConfig extends Config {
 	default boolean reminder100Image() { return false; }
 
 	@ConfigItem(
-			keyName = "Reminder100AnimationType",
-			position = 17,
-			name = "Animation Type",
-			description = "Configures the animation type.",
+			keyName = "Reminder100ImageOffsetNegative",
+			position = 14,
+			name = "Offset Negative",
+			description = "Configures whether or not the image offset is a negative number.",
 			section = reminder100
 	)
-	default ColorAnimationType reminder100AnimationType() { return ColorAnimationType.ANALOGOUS; }
+	default boolean reminder100ImageOffsetNegative() { return false; }
 
 
 	@ConfigItem(
 			keyName = "Reminder100PanelWidth",
 			position = 11,
-			name = "Panel Width",
+			name = "Word Wrap Width",
 			description = "Configures width for panel.",
 			section = reminder100
 	)
@@ -27543,9 +28524,18 @@ public interface RemindersConfig extends Config {
 	@ConfigItem(
 			keyName = "Reminder100ForceShow",
 			position = 0,
-			name = "Force Show",
+			name = "Force",
 			description = "Configures whether or not to force show reminder.",
 			section = reminder100
 	)
 	default boolean reminder100ForceShow() { return false; }
+
+	@ConfigItem(
+			keyName = "Reminder100ImageOffset",
+			position = 14,
+			name = "Image Offset",
+			description = "Configures offset for image.",
+			section = reminder100
+	)
+	default int reminder100ImageOffset() { return 0; }
 }

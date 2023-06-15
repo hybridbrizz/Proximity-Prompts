@@ -1,6 +1,7 @@
 package com.ericversteeg;
 
 import com.ericversteeg.config.ColorAnimationType;
+import com.ericversteeg.config.Location;
 import com.ericversteeg.config.TimeUnit;
 import com.ericversteeg.reminder.Reminder;
 import com.ericversteeg.reminder.Reminders;
@@ -35,7 +36,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @PluginDescriptor(
-	name = "Easy Reminders",
+	name = "Easy Reminder",
 	description = "Set reminders."
 )
 
@@ -60,6 +61,7 @@ public class RemindersPlugin extends Plugin {
 	List<Reminder> reminders = new ArrayList<>();
 	List<Reminder> activeReminders = new ArrayList<>();
 	List<Reminder> inactiveReminders = new ArrayList<>();
+	Map<Integer, Integer> savedCounts = new HashMap<>();
 
 	LocalDateTime dateTime = LocalDateTime.now(ZoneId.systemDefault());
 
@@ -200,13 +202,19 @@ public class RemindersPlugin extends Plugin {
 			reminder.itemIds = getItemIds(i);
 			reminder.chatPatterns = getChatPatterns(i);
 
+			Integer savedCount = savedCounts.get(i);
+			if (savedCount != null)
+			{
+				reminder.savedCount = savedCount;
+			}
+
 			reminders.add(reminder);
 		}
 
 		try {
 			JsonArray jsonArray = gson.fromJson(config.customReminders(), JsonArray.class);
 
-			int i = 0;
+			int i = 1;
 			for (JsonElement jsonElement: jsonArray)
 			{
 				JsonObject jsonObject = jsonElement.getAsJsonObject();
@@ -303,6 +311,12 @@ public class RemindersPlugin extends Plugin {
 				if (jsonObject.has("chat_patterns"))
 				{
 					reminder.chatPatterns = toCsv(jsonObject.get("chat_patterns").getAsJsonArray());
+				}
+
+				Integer savedCount = savedCounts.get(i);
+				if (savedCount != null)
+				{
+					reminder.savedCount = savedCount;
 				}
 
 				reminders.add(reminder);
@@ -2648,109 +2662,109 @@ public class RemindersPlugin extends Plugin {
 		else return "";
 	}
 
-	boolean isSeparatePanel(int reminderId)
+	Location getLocation(int reminderId)
 	{
-		if (reminderId == 1) return config.reminder1SeparatePanel();
-		else if (reminderId == 2) return config.reminder2SeparatePanel();
-		else if (reminderId == 3) return config.reminder3SeparatePanel();
-		else if (reminderId == 4) return config.reminder4SeparatePanel();
-		else if (reminderId == 5) return config.reminder5SeparatePanel();
-		else if (reminderId == 6) return config.reminder6SeparatePanel();
-		else if (reminderId == 7) return config.reminder7SeparatePanel();
-		else if (reminderId == 8) return config.reminder8SeparatePanel();
-		else if (reminderId == 9) return config.reminder9SeparatePanel();
-		else if (reminderId == 10) return config.reminder10SeparatePanel();
-		else if (reminderId == 11) return config.reminder11SeparatePanel();
-		else if (reminderId == 12) return config.reminder12SeparatePanel();
-		else if (reminderId == 13) return config.reminder13SeparatePanel();
-		else if (reminderId == 14) return config.reminder14SeparatePanel();
-		else if (reminderId == 15) return config.reminder15SeparatePanel();
-		else if (reminderId == 16) return config.reminder16SeparatePanel();
-		else if (reminderId == 17) return config.reminder17SeparatePanel();
-		else if (reminderId == 18) return config.reminder18SeparatePanel();
-		else if (reminderId == 19) return config.reminder19SeparatePanel();
-		else if (reminderId == 20) return config.reminder20SeparatePanel();
-		else if (reminderId == 21) return config.reminder21SeparatePanel();
-		else if (reminderId == 22) return config.reminder22SeparatePanel();
-		else if (reminderId == 23) return config.reminder23SeparatePanel();
-		else if (reminderId == 24) return config.reminder24SeparatePanel();
-		else if (reminderId == 25) return config.reminder25SeparatePanel();
-		else if (reminderId == 26) return config.reminder26SeparatePanel();
-		else if (reminderId == 27) return config.reminder27SeparatePanel();
-		else if (reminderId == 28) return config.reminder28SeparatePanel();
-		else if (reminderId == 29) return config.reminder29SeparatePanel();
-		else if (reminderId == 30) return config.reminder30SeparatePanel();
-		else if (reminderId == 31) return config.reminder31SeparatePanel();
-		else if (reminderId == 32) return config.reminder32SeparatePanel();
-		else if (reminderId == 33) return config.reminder33SeparatePanel();
-		else if (reminderId == 34) return config.reminder34SeparatePanel();
-		else if (reminderId == 35) return config.reminder35SeparatePanel();
-		else if (reminderId == 36) return config.reminder36SeparatePanel();
-		else if (reminderId == 37) return config.reminder37SeparatePanel();
-		else if (reminderId == 38) return config.reminder38SeparatePanel();
-		else if (reminderId == 39) return config.reminder39SeparatePanel();
-		else if (reminderId == 40) return config.reminder40SeparatePanel();
-		else if (reminderId == 41) return config.reminder41SeparatePanel();
-		else if (reminderId == 42) return config.reminder42SeparatePanel();
-		else if (reminderId == 43) return config.reminder43SeparatePanel();
-		else if (reminderId == 44) return config.reminder44SeparatePanel();
-		else if (reminderId == 45) return config.reminder45SeparatePanel();
-		else if (reminderId == 46) return config.reminder46SeparatePanel();
-		else if (reminderId == 47) return config.reminder47SeparatePanel();
-		else if (reminderId == 48) return config.reminder48SeparatePanel();
-		else if (reminderId == 49) return config.reminder49SeparatePanel();
-		else if (reminderId == 50) return config.reminder50SeparatePanel();
-		else if (reminderId == 51) return config.reminder51SeparatePanel();
-		else if (reminderId == 52) return config.reminder52SeparatePanel();
-		else if (reminderId == 53) return config.reminder53SeparatePanel();
-		else if (reminderId == 54) return config.reminder54SeparatePanel();
-		else if (reminderId == 55) return config.reminder55SeparatePanel();
-		else if (reminderId == 56) return config.reminder56SeparatePanel();
-		else if (reminderId == 57) return config.reminder57SeparatePanel();
-		else if (reminderId == 58) return config.reminder58SeparatePanel();
-		else if (reminderId == 59) return config.reminder59SeparatePanel();
-		else if (reminderId == 60) return config.reminder60SeparatePanel();
-		else if (reminderId == 61) return config.reminder61SeparatePanel();
-		else if (reminderId == 62) return config.reminder62SeparatePanel();
-		else if (reminderId == 63) return config.reminder63SeparatePanel();
-		else if (reminderId == 64) return config.reminder64SeparatePanel();
-		else if (reminderId == 65) return config.reminder65SeparatePanel();
-		else if (reminderId == 66) return config.reminder66SeparatePanel();
-		else if (reminderId == 67) return config.reminder67SeparatePanel();
-		else if (reminderId == 68) return config.reminder68SeparatePanel();
-		else if (reminderId == 69) return config.reminder69SeparatePanel();
-		else if (reminderId == 70) return config.reminder70SeparatePanel();
-		else if (reminderId == 71) return config.reminder71SeparatePanel();
-		else if (reminderId == 72) return config.reminder72SeparatePanel();
-		else if (reminderId == 73) return config.reminder73SeparatePanel();
-		else if (reminderId == 74) return config.reminder74SeparatePanel();
-		else if (reminderId == 75) return config.reminder75SeparatePanel();
-		else if (reminderId == 76) return config.reminder76SeparatePanel();
-		else if (reminderId == 77) return config.reminder77SeparatePanel();
-		else if (reminderId == 78) return config.reminder78SeparatePanel();
-		else if (reminderId == 79) return config.reminder79SeparatePanel();
-		else if (reminderId == 80) return config.reminder80SeparatePanel();
-		else if (reminderId == 81) return config.reminder81SeparatePanel();
-		else if (reminderId == 82) return config.reminder82SeparatePanel();
-		else if (reminderId == 83) return config.reminder83SeparatePanel();
-		else if (reminderId == 84) return config.reminder84SeparatePanel();
-		else if (reminderId == 85) return config.reminder85SeparatePanel();
-		else if (reminderId == 86) return config.reminder86SeparatePanel();
-		else if (reminderId == 87) return config.reminder87SeparatePanel();
-		else if (reminderId == 88) return config.reminder88SeparatePanel();
-		else if (reminderId == 89) return config.reminder89SeparatePanel();
-		else if (reminderId == 90) return config.reminder90SeparatePanel();
-		else if (reminderId == 91) return config.reminder91SeparatePanel();
-		else if (reminderId == 92) return config.reminder92SeparatePanel();
-		else if (reminderId == 93) return config.reminder93SeparatePanel();
-		else if (reminderId == 94) return config.reminder94SeparatePanel();
-		else if (reminderId == 95) return config.reminder95SeparatePanel();
-		else if (reminderId == 96) return config.reminder96SeparatePanel();
-		else if (reminderId == 97) return config.reminder97SeparatePanel();
-		else if (reminderId == 98) return config.reminder98SeparatePanel();
-		else if (reminderId == 99) return config.reminder99SeparatePanel();
-		else if (reminderId == 100) return config.reminder100SeparatePanel();
-		else return false;
+		if (reminderId == 1) return config.reminder1Location();
+		else if (reminderId == 2) return config.reminder2Location();
+		else if (reminderId == 3) return config.reminder3Location();
+		else if (reminderId == 4) return config.reminder4Location();
+		else if (reminderId == 5) return config.reminder5Location();
+		else if (reminderId == 6) return config.reminder6Location();
+		else if (reminderId == 7) return config.reminder7Location();
+		else if (reminderId == 8) return config.reminder8Location();
+		else if (reminderId == 9) return config.reminder9Location();
+		else if (reminderId == 10) return config.reminder10Location();
+		else if (reminderId == 11) return config.reminder11Location();
+		else if (reminderId == 12) return config.reminder12Location();
+		else if (reminderId == 13) return config.reminder13Location();
+		else if (reminderId == 14) return config.reminder14Location();
+		else if (reminderId == 15) return config.reminder15Location();
+		else if (reminderId == 16) return config.reminder16Location();
+		else if (reminderId == 17) return config.reminder17Location();
+		else if (reminderId == 18) return config.reminder18Location();
+		else if (reminderId == 19) return config.reminder19Location();
+		else if (reminderId == 20) return config.reminder20Location();
+		else if (reminderId == 21) return config.reminder21Location();
+		else if (reminderId == 22) return config.reminder22Location();
+		else if (reminderId == 23) return config.reminder23Location();
+		else if (reminderId == 24) return config.reminder24Location();
+		else if (reminderId == 25) return config.reminder25Location();
+		else if (reminderId == 26) return config.reminder26Location();
+		else if (reminderId == 27) return config.reminder27Location();
+		else if (reminderId == 28) return config.reminder28Location();
+		else if (reminderId == 29) return config.reminder29Location();
+		else if (reminderId == 30) return config.reminder30Location();
+		else if (reminderId == 31) return config.reminder31Location();
+		else if (reminderId == 32) return config.reminder32Location();
+		else if (reminderId == 33) return config.reminder33Location();
+		else if (reminderId == 34) return config.reminder34Location();
+		else if (reminderId == 35) return config.reminder35Location();
+		else if (reminderId == 36) return config.reminder36Location();
+		else if (reminderId == 37) return config.reminder37Location();
+		else if (reminderId == 38) return config.reminder38Location();
+		else if (reminderId == 39) return config.reminder39Location();
+		else if (reminderId == 40) return config.reminder40Location();
+		else if (reminderId == 41) return config.reminder41Location();
+		else if (reminderId == 42) return config.reminder42Location();
+		else if (reminderId == 43) return config.reminder43Location();
+		else if (reminderId == 44) return config.reminder44Location();
+		else if (reminderId == 45) return config.reminder45Location();
+		else if (reminderId == 46) return config.reminder46Location();
+		else if (reminderId == 47) return config.reminder47Location();
+		else if (reminderId == 48) return config.reminder48Location();
+		else if (reminderId == 49) return config.reminder49Location();
+		else if (reminderId == 50) return config.reminder50Location();
+		else if (reminderId == 51) return config.reminder51Location();
+		else if (reminderId == 52) return config.reminder52Location();
+		else if (reminderId == 53) return config.reminder53Location();
+		else if (reminderId == 54) return config.reminder54Location();
+		else if (reminderId == 55) return config.reminder55Location();
+		else if (reminderId == 56) return config.reminder56Location();
+		else if (reminderId == 57) return config.reminder57Location();
+		else if (reminderId == 58) return config.reminder58Location();
+		else if (reminderId == 59) return config.reminder59Location();
+		else if (reminderId == 60) return config.reminder60Location();
+		else if (reminderId == 61) return config.reminder61Location();
+		else if (reminderId == 62) return config.reminder62Location();
+		else if (reminderId == 63) return config.reminder63Location();
+		else if (reminderId == 64) return config.reminder64Location();
+		else if (reminderId == 65) return config.reminder65Location();
+		else if (reminderId == 66) return config.reminder66Location();
+		else if (reminderId == 67) return config.reminder67Location();
+		else if (reminderId == 68) return config.reminder68Location();
+		else if (reminderId == 69) return config.reminder69Location();
+		else if (reminderId == 70) return config.reminder70Location();
+		else if (reminderId == 71) return config.reminder71Location();
+		else if (reminderId == 72) return config.reminder72Location();
+		else if (reminderId == 73) return config.reminder73Location();
+		else if (reminderId == 74) return config.reminder74Location();
+		else if (reminderId == 75) return config.reminder75Location();
+		else if (reminderId == 76) return config.reminder76Location();
+		else if (reminderId == 77) return config.reminder77Location();
+		else if (reminderId == 78) return config.reminder78Location();
+		else if (reminderId == 79) return config.reminder79Location();
+		else if (reminderId == 80) return config.reminder80Location();
+		else if (reminderId == 81) return config.reminder81Location();
+		else if (reminderId == 82) return config.reminder82Location();
+		else if (reminderId == 83) return config.reminder83Location();
+		else if (reminderId == 84) return config.reminder84Location();
+		else if (reminderId == 85) return config.reminder85Location();
+		else if (reminderId == 86) return config.reminder86Location();
+		else if (reminderId == 87) return config.reminder87Location();
+		else if (reminderId == 88) return config.reminder88Location();
+		else if (reminderId == 89) return config.reminder89Location();
+		else if (reminderId == 90) return config.reminder90Location();
+		else if (reminderId == 91) return config.reminder91Location();
+		else if (reminderId == 92) return config.reminder92Location();
+		else if (reminderId == 93) return config.reminder93Location();
+		else if (reminderId == 94) return config.reminder94Location();
+		else if (reminderId == 95) return config.reminder95Location();
+		else if (reminderId == 96) return config.reminder96Location();
+		else if (reminderId == 97) return config.reminder97Location();
+		else if (reminderId == 98) return config.reminder98Location();
+		else if (reminderId == 99) return config.reminder99Location();
+		else if (reminderId == 100) return config.reminder100Location();
+		else return Location.IN_LIST;
 	}
 
 	RSAnchorType getPanelAnchorType(int reminderId)
@@ -3278,111 +3292,6 @@ public class RemindersPlugin extends Plugin {
 		else return 0;
 	}
 
-	ColorAnimationType getAnimationType(int reminderId)
-	{
-		if (reminderId == 1) return config.reminder1AnimationType();
-		else if (reminderId == 2) return config.reminder2AnimationType();
-		else if (reminderId == 3) return config.reminder3AnimationType();
-		else if (reminderId == 4) return config.reminder4AnimationType();
-		else if (reminderId == 5) return config.reminder5AnimationType();
-		else if (reminderId == 6) return config.reminder6AnimationType();
-		else if (reminderId == 7) return config.reminder7AnimationType();
-		else if (reminderId == 8) return config.reminder8AnimationType();
-		else if (reminderId == 9) return config.reminder9AnimationType();
-		else if (reminderId == 10) return config.reminder10AnimationType();
-		else if (reminderId == 11) return config.reminder11AnimationType();
-		else if (reminderId == 12) return config.reminder12AnimationType();
-		else if (reminderId == 13) return config.reminder13AnimationType();
-		else if (reminderId == 14) return config.reminder14AnimationType();
-		else if (reminderId == 15) return config.reminder15AnimationType();
-		else if (reminderId == 16) return config.reminder16AnimationType();
-		else if (reminderId == 17) return config.reminder17AnimationType();
-		else if (reminderId == 18) return config.reminder18AnimationType();
-		else if (reminderId == 19) return config.reminder19AnimationType();
-		else if (reminderId == 20) return config.reminder20AnimationType();
-		else if (reminderId == 21) return config.reminder21AnimationType();
-		else if (reminderId == 22) return config.reminder22AnimationType();
-		else if (reminderId == 23) return config.reminder23AnimationType();
-		else if (reminderId == 24) return config.reminder24AnimationType();
-		else if (reminderId == 25) return config.reminder25AnimationType();
-		else if (reminderId == 26) return config.reminder26AnimationType();
-		else if (reminderId == 27) return config.reminder27AnimationType();
-		else if (reminderId == 28) return config.reminder28AnimationType();
-		else if (reminderId == 29) return config.reminder29AnimationType();
-		else if (reminderId == 30) return config.reminder30AnimationType();
-		else if (reminderId == 31) return config.reminder31AnimationType();
-		else if (reminderId == 32) return config.reminder32AnimationType();
-		else if (reminderId == 33) return config.reminder33AnimationType();
-		else if (reminderId == 34) return config.reminder34AnimationType();
-		else if (reminderId == 35) return config.reminder35AnimationType();
-		else if (reminderId == 36) return config.reminder36AnimationType();
-		else if (reminderId == 37) return config.reminder37AnimationType();
-		else if (reminderId == 38) return config.reminder38AnimationType();
-		else if (reminderId == 39) return config.reminder39AnimationType();
-		else if (reminderId == 40) return config.reminder40AnimationType();
-		else if (reminderId == 41) return config.reminder41AnimationType();
-		else if (reminderId == 42) return config.reminder42AnimationType();
-		else if (reminderId == 43) return config.reminder43AnimationType();
-		else if (reminderId == 44) return config.reminder44AnimationType();
-		else if (reminderId == 45) return config.reminder45AnimationType();
-		else if (reminderId == 46) return config.reminder46AnimationType();
-		else if (reminderId == 47) return config.reminder47AnimationType();
-		else if (reminderId == 48) return config.reminder48AnimationType();
-		else if (reminderId == 49) return config.reminder49AnimationType();
-		else if (reminderId == 50) return config.reminder50AnimationType();
-		else if (reminderId == 51) return config.reminder51AnimationType();
-		else if (reminderId == 52) return config.reminder52AnimationType();
-		else if (reminderId == 53) return config.reminder53AnimationType();
-		else if (reminderId == 54) return config.reminder54AnimationType();
-		else if (reminderId == 55) return config.reminder55AnimationType();
-		else if (reminderId == 56) return config.reminder56AnimationType();
-		else if (reminderId == 57) return config.reminder57AnimationType();
-		else if (reminderId == 58) return config.reminder58AnimationType();
-		else if (reminderId == 59) return config.reminder59AnimationType();
-		else if (reminderId == 60) return config.reminder60AnimationType();
-		else if (reminderId == 61) return config.reminder61AnimationType();
-		else if (reminderId == 62) return config.reminder62AnimationType();
-		else if (reminderId == 63) return config.reminder63AnimationType();
-		else if (reminderId == 64) return config.reminder64AnimationType();
-		else if (reminderId == 65) return config.reminder65AnimationType();
-		else if (reminderId == 66) return config.reminder66AnimationType();
-		else if (reminderId == 67) return config.reminder67AnimationType();
-		else if (reminderId == 68) return config.reminder68AnimationType();
-		else if (reminderId == 69) return config.reminder69AnimationType();
-		else if (reminderId == 70) return config.reminder70AnimationType();
-		else if (reminderId == 71) return config.reminder71AnimationType();
-		else if (reminderId == 72) return config.reminder72AnimationType();
-		else if (reminderId == 73) return config.reminder73AnimationType();
-		else if (reminderId == 74) return config.reminder74AnimationType();
-		else if (reminderId == 75) return config.reminder75AnimationType();
-		else if (reminderId == 76) return config.reminder76AnimationType();
-		else if (reminderId == 77) return config.reminder77AnimationType();
-		else if (reminderId == 78) return config.reminder78AnimationType();
-		else if (reminderId == 79) return config.reminder79AnimationType();
-		else if (reminderId == 80) return config.reminder80AnimationType();
-		else if (reminderId == 81) return config.reminder81AnimationType();
-		else if (reminderId == 82) return config.reminder82AnimationType();
-		else if (reminderId == 83) return config.reminder83AnimationType();
-		else if (reminderId == 84) return config.reminder84AnimationType();
-		else if (reminderId == 85) return config.reminder85AnimationType();
-		else if (reminderId == 86) return config.reminder86AnimationType();
-		else if (reminderId == 87) return config.reminder87AnimationType();
-		else if (reminderId == 88) return config.reminder88AnimationType();
-		else if (reminderId == 89) return config.reminder89AnimationType();
-		else if (reminderId == 90) return config.reminder90AnimationType();
-		else if (reminderId == 91) return config.reminder91AnimationType();
-		else if (reminderId == 92) return config.reminder92AnimationType();
-		else if (reminderId == 93) return config.reminder93AnimationType();
-		else if (reminderId == 94) return config.reminder94AnimationType();
-		else if (reminderId == 95) return config.reminder95AnimationType();
-		else if (reminderId == 96) return config.reminder96AnimationType();
-		else if (reminderId == 97) return config.reminder97AnimationType();
-		else if (reminderId == 98) return config.reminder98AnimationType();
-		else if (reminderId == 99) return config.reminder99AnimationType();
-		else if (reminderId == 100) return config.reminder100AnimationType();
-		else return ColorAnimationType.ANALOGOUS;
-	}
-
 	int getPanelWidth(int reminderId)
 	{
 		if (reminderId == 1) return config.reminder1PanelWidth();
@@ -3905,6 +3814,216 @@ public class RemindersPlugin extends Plugin {
 		else if (reminderId == 98) return config.reminder98ForceShow();
 		else if (reminderId == 99) return config.reminder99ForceShow();
 		else if (reminderId == 100) return config.reminder100ForceShow();
+		else return false;
+	}
+
+	int getImageOffset(int reminderId)
+	{
+		if (reminderId == 1) return config.reminder1ImageOffset();
+		else if (reminderId == 2) return config.reminder2ImageOffset();
+		else if (reminderId == 3) return config.reminder3ImageOffset();
+		else if (reminderId == 4) return config.reminder4ImageOffset();
+		else if (reminderId == 5) return config.reminder5ImageOffset();
+		else if (reminderId == 6) return config.reminder6ImageOffset();
+		else if (reminderId == 7) return config.reminder7ImageOffset();
+		else if (reminderId == 8) return config.reminder8ImageOffset();
+		else if (reminderId == 9) return config.reminder9ImageOffset();
+		else if (reminderId == 10) return config.reminder10ImageOffset();
+		else if (reminderId == 11) return config.reminder11ImageOffset();
+		else if (reminderId == 12) return config.reminder12ImageOffset();
+		else if (reminderId == 13) return config.reminder13ImageOffset();
+		else if (reminderId == 14) return config.reminder14ImageOffset();
+		else if (reminderId == 15) return config.reminder15ImageOffset();
+		else if (reminderId == 16) return config.reminder16ImageOffset();
+		else if (reminderId == 17) return config.reminder17ImageOffset();
+		else if (reminderId == 18) return config.reminder18ImageOffset();
+		else if (reminderId == 19) return config.reminder19ImageOffset();
+		else if (reminderId == 20) return config.reminder20ImageOffset();
+		else if (reminderId == 21) return config.reminder21ImageOffset();
+		else if (reminderId == 22) return config.reminder22ImageOffset();
+		else if (reminderId == 23) return config.reminder23ImageOffset();
+		else if (reminderId == 24) return config.reminder24ImageOffset();
+		else if (reminderId == 25) return config.reminder25ImageOffset();
+		else if (reminderId == 26) return config.reminder26ImageOffset();
+		else if (reminderId == 27) return config.reminder27ImageOffset();
+		else if (reminderId == 28) return config.reminder28ImageOffset();
+		else if (reminderId == 29) return config.reminder29ImageOffset();
+		else if (reminderId == 30) return config.reminder30ImageOffset();
+		else if (reminderId == 31) return config.reminder31ImageOffset();
+		else if (reminderId == 32) return config.reminder32ImageOffset();
+		else if (reminderId == 33) return config.reminder33ImageOffset();
+		else if (reminderId == 34) return config.reminder34ImageOffset();
+		else if (reminderId == 35) return config.reminder35ImageOffset();
+		else if (reminderId == 36) return config.reminder36ImageOffset();
+		else if (reminderId == 37) return config.reminder37ImageOffset();
+		else if (reminderId == 38) return config.reminder38ImageOffset();
+		else if (reminderId == 39) return config.reminder39ImageOffset();
+		else if (reminderId == 40) return config.reminder40ImageOffset();
+		else if (reminderId == 41) return config.reminder41ImageOffset();
+		else if (reminderId == 42) return config.reminder42ImageOffset();
+		else if (reminderId == 43) return config.reminder43ImageOffset();
+		else if (reminderId == 44) return config.reminder44ImageOffset();
+		else if (reminderId == 45) return config.reminder45ImageOffset();
+		else if (reminderId == 46) return config.reminder46ImageOffset();
+		else if (reminderId == 47) return config.reminder47ImageOffset();
+		else if (reminderId == 48) return config.reminder48ImageOffset();
+		else if (reminderId == 49) return config.reminder49ImageOffset();
+		else if (reminderId == 50) return config.reminder50ImageOffset();
+		else if (reminderId == 51) return config.reminder51ImageOffset();
+		else if (reminderId == 52) return config.reminder52ImageOffset();
+		else if (reminderId == 53) return config.reminder53ImageOffset();
+		else if (reminderId == 54) return config.reminder54ImageOffset();
+		else if (reminderId == 55) return config.reminder55ImageOffset();
+		else if (reminderId == 56) return config.reminder56ImageOffset();
+		else if (reminderId == 57) return config.reminder57ImageOffset();
+		else if (reminderId == 58) return config.reminder58ImageOffset();
+		else if (reminderId == 59) return config.reminder59ImageOffset();
+		else if (reminderId == 60) return config.reminder60ImageOffset();
+		else if (reminderId == 61) return config.reminder61ImageOffset();
+		else if (reminderId == 62) return config.reminder62ImageOffset();
+		else if (reminderId == 63) return config.reminder63ImageOffset();
+		else if (reminderId == 64) return config.reminder64ImageOffset();
+		else if (reminderId == 65) return config.reminder65ImageOffset();
+		else if (reminderId == 66) return config.reminder66ImageOffset();
+		else if (reminderId == 67) return config.reminder67ImageOffset();
+		else if (reminderId == 68) return config.reminder68ImageOffset();
+		else if (reminderId == 69) return config.reminder69ImageOffset();
+		else if (reminderId == 70) return config.reminder70ImageOffset();
+		else if (reminderId == 71) return config.reminder71ImageOffset();
+		else if (reminderId == 72) return config.reminder72ImageOffset();
+		else if (reminderId == 73) return config.reminder73ImageOffset();
+		else if (reminderId == 74) return config.reminder74ImageOffset();
+		else if (reminderId == 75) return config.reminder75ImageOffset();
+		else if (reminderId == 76) return config.reminder76ImageOffset();
+		else if (reminderId == 77) return config.reminder77ImageOffset();
+		else if (reminderId == 78) return config.reminder78ImageOffset();
+		else if (reminderId == 79) return config.reminder79ImageOffset();
+		else if (reminderId == 80) return config.reminder80ImageOffset();
+		else if (reminderId == 81) return config.reminder81ImageOffset();
+		else if (reminderId == 82) return config.reminder82ImageOffset();
+		else if (reminderId == 83) return config.reminder83ImageOffset();
+		else if (reminderId == 84) return config.reminder84ImageOffset();
+		else if (reminderId == 85) return config.reminder85ImageOffset();
+		else if (reminderId == 86) return config.reminder86ImageOffset();
+		else if (reminderId == 87) return config.reminder87ImageOffset();
+		else if (reminderId == 88) return config.reminder88ImageOffset();
+		else if (reminderId == 89) return config.reminder89ImageOffset();
+		else if (reminderId == 90) return config.reminder90ImageOffset();
+		else if (reminderId == 91) return config.reminder91ImageOffset();
+		else if (reminderId == 92) return config.reminder92ImageOffset();
+		else if (reminderId == 93) return config.reminder93ImageOffset();
+		else if (reminderId == 94) return config.reminder94ImageOffset();
+		else if (reminderId == 95) return config.reminder95ImageOffset();
+		else if (reminderId == 96) return config.reminder96ImageOffset();
+		else if (reminderId == 97) return config.reminder97ImageOffset();
+		else if (reminderId == 98) return config.reminder98ImageOffset();
+		else if (reminderId == 99) return config.reminder99ImageOffset();
+		else if (reminderId == 100) return config.reminder100ImageOffset();
+		else return 0;
+	}
+
+	boolean isImageOffsetNegative(int reminderId)
+	{
+		if (reminderId == 1) return config.reminder1ImageOffsetNegative();
+		else if (reminderId == 2) return config.reminder2ImageOffsetNegative();
+		else if (reminderId == 3) return config.reminder3ImageOffsetNegative();
+		else if (reminderId == 4) return config.reminder4ImageOffsetNegative();
+		else if (reminderId == 5) return config.reminder5ImageOffsetNegative();
+		else if (reminderId == 6) return config.reminder6ImageOffsetNegative();
+		else if (reminderId == 7) return config.reminder7ImageOffsetNegative();
+		else if (reminderId == 8) return config.reminder8ImageOffsetNegative();
+		else if (reminderId == 9) return config.reminder9ImageOffsetNegative();
+		else if (reminderId == 10) return config.reminder10ImageOffsetNegative();
+		else if (reminderId == 11) return config.reminder11ImageOffsetNegative();
+		else if (reminderId == 12) return config.reminder12ImageOffsetNegative();
+		else if (reminderId == 13) return config.reminder13ImageOffsetNegative();
+		else if (reminderId == 14) return config.reminder14ImageOffsetNegative();
+		else if (reminderId == 15) return config.reminder15ImageOffsetNegative();
+		else if (reminderId == 16) return config.reminder16ImageOffsetNegative();
+		else if (reminderId == 17) return config.reminder17ImageOffsetNegative();
+		else if (reminderId == 18) return config.reminder18ImageOffsetNegative();
+		else if (reminderId == 19) return config.reminder19ImageOffsetNegative();
+		else if (reminderId == 20) return config.reminder20ImageOffsetNegative();
+		else if (reminderId == 21) return config.reminder21ImageOffsetNegative();
+		else if (reminderId == 22) return config.reminder22ImageOffsetNegative();
+		else if (reminderId == 23) return config.reminder23ImageOffsetNegative();
+		else if (reminderId == 24) return config.reminder24ImageOffsetNegative();
+		else if (reminderId == 25) return config.reminder25ImageOffsetNegative();
+		else if (reminderId == 26) return config.reminder26ImageOffsetNegative();
+		else if (reminderId == 27) return config.reminder27ImageOffsetNegative();
+		else if (reminderId == 28) return config.reminder28ImageOffsetNegative();
+		else if (reminderId == 29) return config.reminder29ImageOffsetNegative();
+		else if (reminderId == 30) return config.reminder30ImageOffsetNegative();
+		else if (reminderId == 31) return config.reminder31ImageOffsetNegative();
+		else if (reminderId == 32) return config.reminder32ImageOffsetNegative();
+		else if (reminderId == 33) return config.reminder33ImageOffsetNegative();
+		else if (reminderId == 34) return config.reminder34ImageOffsetNegative();
+		else if (reminderId == 35) return config.reminder35ImageOffsetNegative();
+		else if (reminderId == 36) return config.reminder36ImageOffsetNegative();
+		else if (reminderId == 37) return config.reminder37ImageOffsetNegative();
+		else if (reminderId == 38) return config.reminder38ImageOffsetNegative();
+		else if (reminderId == 39) return config.reminder39ImageOffsetNegative();
+		else if (reminderId == 40) return config.reminder40ImageOffsetNegative();
+		else if (reminderId == 41) return config.reminder41ImageOffsetNegative();
+		else if (reminderId == 42) return config.reminder42ImageOffsetNegative();
+		else if (reminderId == 43) return config.reminder43ImageOffsetNegative();
+		else if (reminderId == 44) return config.reminder44ImageOffsetNegative();
+		else if (reminderId == 45) return config.reminder45ImageOffsetNegative();
+		else if (reminderId == 46) return config.reminder46ImageOffsetNegative();
+		else if (reminderId == 47) return config.reminder47ImageOffsetNegative();
+		else if (reminderId == 48) return config.reminder48ImageOffsetNegative();
+		else if (reminderId == 49) return config.reminder49ImageOffsetNegative();
+		else if (reminderId == 50) return config.reminder50ImageOffsetNegative();
+		else if (reminderId == 51) return config.reminder51ImageOffsetNegative();
+		else if (reminderId == 52) return config.reminder52ImageOffsetNegative();
+		else if (reminderId == 53) return config.reminder53ImageOffsetNegative();
+		else if (reminderId == 54) return config.reminder54ImageOffsetNegative();
+		else if (reminderId == 55) return config.reminder55ImageOffsetNegative();
+		else if (reminderId == 56) return config.reminder56ImageOffsetNegative();
+		else if (reminderId == 57) return config.reminder57ImageOffsetNegative();
+		else if (reminderId == 58) return config.reminder58ImageOffsetNegative();
+		else if (reminderId == 59) return config.reminder59ImageOffsetNegative();
+		else if (reminderId == 60) return config.reminder60ImageOffsetNegative();
+		else if (reminderId == 61) return config.reminder61ImageOffsetNegative();
+		else if (reminderId == 62) return config.reminder62ImageOffsetNegative();
+		else if (reminderId == 63) return config.reminder63ImageOffsetNegative();
+		else if (reminderId == 64) return config.reminder64ImageOffsetNegative();
+		else if (reminderId == 65) return config.reminder65ImageOffsetNegative();
+		else if (reminderId == 66) return config.reminder66ImageOffsetNegative();
+		else if (reminderId == 67) return config.reminder67ImageOffsetNegative();
+		else if (reminderId == 68) return config.reminder68ImageOffsetNegative();
+		else if (reminderId == 69) return config.reminder69ImageOffsetNegative();
+		else if (reminderId == 70) return config.reminder70ImageOffsetNegative();
+		else if (reminderId == 71) return config.reminder71ImageOffsetNegative();
+		else if (reminderId == 72) return config.reminder72ImageOffsetNegative();
+		else if (reminderId == 73) return config.reminder73ImageOffsetNegative();
+		else if (reminderId == 74) return config.reminder74ImageOffsetNegative();
+		else if (reminderId == 75) return config.reminder75ImageOffsetNegative();
+		else if (reminderId == 76) return config.reminder76ImageOffsetNegative();
+		else if (reminderId == 77) return config.reminder77ImageOffsetNegative();
+		else if (reminderId == 78) return config.reminder78ImageOffsetNegative();
+		else if (reminderId == 79) return config.reminder79ImageOffsetNegative();
+		else if (reminderId == 80) return config.reminder80ImageOffsetNegative();
+		else if (reminderId == 81) return config.reminder81ImageOffsetNegative();
+		else if (reminderId == 82) return config.reminder82ImageOffsetNegative();
+		else if (reminderId == 83) return config.reminder83ImageOffsetNegative();
+		else if (reminderId == 84) return config.reminder84ImageOffsetNegative();
+		else if (reminderId == 85) return config.reminder85ImageOffsetNegative();
+		else if (reminderId == 86) return config.reminder86ImageOffsetNegative();
+		else if (reminderId == 87) return config.reminder87ImageOffsetNegative();
+		else if (reminderId == 88) return config.reminder88ImageOffsetNegative();
+		else if (reminderId == 89) return config.reminder89ImageOffsetNegative();
+		else if (reminderId == 90) return config.reminder90ImageOffsetNegative();
+		else if (reminderId == 91) return config.reminder91ImageOffsetNegative();
+		else if (reminderId == 92) return config.reminder92ImageOffsetNegative();
+		else if (reminderId == 93) return config.reminder93ImageOffsetNegative();
+		else if (reminderId == 94) return config.reminder94ImageOffsetNegative();
+		else if (reminderId == 95) return config.reminder95ImageOffsetNegative();
+		else if (reminderId == 96) return config.reminder96ImageOffsetNegative();
+		else if (reminderId == 97) return config.reminder97ImageOffsetNegative();
+		else if (reminderId == 98) return config.reminder98ImageOffsetNegative();
+		else if (reminderId == 99) return config.reminder99ImageOffsetNegative();
+		else if (reminderId == 100) return config.reminder100ImageOffsetNegative();
 		else return false;
 	}
 }

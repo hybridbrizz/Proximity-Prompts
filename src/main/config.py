@@ -162,11 +162,11 @@ line215 = ''
 line216 = '      @ConfigItem('
 line217 = '            keyName = "{ucName}SeparatePanel",'
 line218 = '            position = 7,'
-line219 = '            name = "Separate Panel",'
-line220 = '            description = "Configures whether or not reminder is shown in separate panel.",'
+line219 = '            name = "Location",'
+line220 = '            description = "Configures the location for reminder.",'
 line221 = '            section = {lcName}'
 line222 = '      )'
-line223 = '      default boolean {lcName}SeparatePanel() {{ return false; }}'
+line223 = '      default Location {lcName}Location() {{ return Location.IN_LIST; }}'
 line224 = ''
 line225 = '      @ConfigItem('
 line226 = '            keyName = "{ucName}panelAnchorType",'
@@ -214,18 +214,18 @@ line276 = '      )'
 line277 = '      default boolean {lcName}Image() {{ return false; }}'
 line278 = ''
 line288 = '      @ConfigItem('
-line289 = '            keyName = "{ucName}AnimationType",'
-line290 = '            position = 17,'
-line291 = '            name = "Animation Type",'
-line292 = '            description = "Configures the animation type.",'
+line289 = '            keyName = "{ucName}ImageOffsetNegative",'
+line290 = '            position = 14,'
+line291 = '            name = "Offset Negative",'
+line292 = '            description = "Configures whether or not the image offset is a negative number.",'
 line293 = '            section = {lcName}'
 line294 = '      )'
-line295 = '      default ColorAnimationType {lcName}AnimationType() {{ return ColorAnimationType.ANALOGOUS; }}'
+line295 = '      default boolean {lcName}ImageOffsetNegative() {{ return false; }}'
 line296 = ''
 line306 = '      @ConfigItem('
 line307 = '            keyName = "{ucName}PanelWidth",'
 line308 = '            position = 11,'
-line309 = '            name = "Panel Width",'
+line309 = '            name = "Word Wrap Width",'
 line310 = '            description = "Configures width for panel.",'
 line311 = '            section = {lcName}'
 line312 = '      )'
@@ -262,12 +262,21 @@ line354 = ''
 line356 = '      @ConfigItem('
 line357 = '            keyName = "{ucName}ForceShow",'
 line358 = '            position = 0,'
-line359 = '            name = "Force Show",'
+line359 = '            name = "Force",'
 line360 = '            description = "Configures whether or not to force show reminder.",'
 line361 = '            section = {lcName}'
 line362 = '      )'
 line363 = '      default boolean {lcName}ForceShow() {{ return false; }}'
 line364 = ''
+line365 = '      @ConfigItem('
+line366 = '            keyName = "{ucName}ImageOffset",'
+line367 = '            position = 14,'
+line368 = '            name = "Image Offset",'
+line369 = '            description = "Configures offset for image.",'
+line370 = '            section = {lcName}'
+line371 = '      )'
+line372 = '      default int {lcName}ImageOffset() {{ return 0; }}'
+line373 = ''
 
 
 config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n" + line6 + "\n" + line7 + "\n" + line8 + \
@@ -318,10 +327,12 @@ config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n
          "\n" + line346 + "\n" + line347 + "\n" + line348 + "\n" + line349 + "\n" + line350 + \
          "\n" + line351 + "\n" + line352 + "\n" + line353 + "\n" + line354 + "\n" + \
          "\n" + line356 + "\n" + line357 + "\n" + line358 + "\n" + line359 + "\n" + line360 + \
-         "\n" + line361 + "\n" + line362 + "\n" + line363 + "\n" + line364
+         "\n" + line361 + "\n" + line362 + "\n" + line363 + "\n" + line364 + "\n" + line365 + \
+         "\n" + line366 + "\n" + line367 + "\n" + line368 + "\n" + line369 + "\n" + line370 + \
+         "\n" + line371 + "\n" + line372 + "\n" + line373 + "\n"
 
 # string = ""
-# for i in range(355, 365):
+# for i in range(360, 376):
 #     string += "\"\\n\" + line" + str(i) + " + "
 #     if i % 5 == 0:
 #         string += "\\\n"

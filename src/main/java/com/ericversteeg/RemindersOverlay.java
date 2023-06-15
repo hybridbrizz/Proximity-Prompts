@@ -1,11 +1,13 @@
 package com.ericversteeg;
 
 import com.ericversteeg.config.ColorAnimationType;
+import com.ericversteeg.config.Location;
 import com.ericversteeg.reminder.Reminder;
 import com.ericversteeg.views.*;
 import net.runelite.api.Client;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.NPC;
+import net.runelite.api.Skill;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
@@ -62,6 +64,9 @@ class RemindersOverlay extends RSViewOverlay {
 			font = FontManager.getRunescapeSmallFont();
 		}
 
+		setPosition(OverlayPosition.DYNAMIC);
+		setLayer(OverlayLayer.UNDER_WIDGETS);
+
 //		RSRow column = new RSRow(10, 120, 500, 50);
 //		column.setBgColor(Color.decode("#45AB76"));
 //		column.setPadding(5);
@@ -114,6 +119,18 @@ class RemindersOverlay extends RSViewOverlay {
 	{
 		clearViewInfo();
 
+//		RSBox hpBarContainer = new RSBox(570,350, 125, 17);
+//		RSHpBar hpBar = new RSHpBar(0, 0, RSView.MATCH_PARENT, RSView.MATCH_PARENT);
+//		RSTextView hpText = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, FontManager.getRunescapeFont());
+//
+//		hpText.setText(String.format("%d", client.getBoostedSkillLevel(Skill.HITPOINTS)));
+//		hpText.setLayoutGravity(RSViewGroup.Gravity.CENTER);
+//
+//		hpBarContainer.addView(hpBar);
+//		hpBarContainer.addView(hpText);
+//
+//		addViewInfo(new ViewInfo(client, hpBarContainer, RSAnchorType.TOP_LEFT, 570,350));
+
 		long start = Instant.now().toEpochMilli();
 
 		font = fontForTextSize(config.textSize());
@@ -125,7 +142,7 @@ class RemindersOverlay extends RSViewOverlay {
 		panel.addBorder(innerBorderColor, outerBorderColor);
 		panel.setPadding(4);
 
-		int maxReminders = config.maxReminders();
+		int maxReminders = 500;
 		int activeCount = 0;
 
 		java.util.List<Reminder> reminders = plugin.activeReminders.stream()
@@ -155,9 +172,14 @@ class RemindersOverlay extends RSViewOverlay {
 				}
 			}
 
-			if (plugin.isSeparatePanel(reminder.id))
+			if (plugin.getLocation(reminder.id) == Location.WORD_WRAP_PANEL)
 			{
-				renderReminderPanel(reminder, color);
+				renderReminderWordWrapPanel(reminder, color);
+				continue;
+			}
+			else if (plugin.getLocation(reminder.id) == Location.SINGLE_LINE_PANEL)
+			{
+				renderReminderSingleLinePanel(reminder, color);
 				continue;
 			}
 
@@ -201,11 +223,12 @@ class RemindersOverlay extends RSViewOverlay {
 
 					image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 					rightText.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
+					rightText.setImageOffset(plugin.getImageOffset(reminder.id), plugin.isImageOffsetNegative(reminder.id));
 				}
 			}
 
-			rightText.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
-			rightText.setAnimationCycleDuration(2);
+			//rightText.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
+			//rightText.setAnimationCycleDuration(2);
 
 			row.addView(rightText);
 
@@ -229,7 +252,7 @@ class RemindersOverlay extends RSViewOverlay {
 		//System.out.println("View setup in " + (Instant.now().toEpochMilli() - start) + "ms");
 	}
 
-	private void renderReminderPanel(Reminder reminder, Color color)
+	private void renderReminderWordWrapPanel(Reminder reminder, Color color)
 	{
 		String text = reminder.text;
 
@@ -271,11 +294,81 @@ class RemindersOverlay extends RSViewOverlay {
 
 				image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 				textView.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
+				textView.setImageOffset(plugin.getImageOffset(reminder.id), plugin.isImageOffsetNegative(reminder.id));
 			}
 		}
 
-		textView.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
-		textView.setAnimationCycleDuration(2);
+		//textView.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
+		//textView.setAnimationCycleDuration(2);
+
+		panel.addView(textView);
+
+		addViewInfo(new ViewInfo(client, panel, plugin.getPanelAnchorType(reminder.id),
+				plugin.getPanelAnchorX(reminder.id), plugin.getPanelAnchorY(reminder.id)));
+	}
+
+	private void renderReminderSingleLinePanel(Reminder reminder, Color color)
+	{
+		String text = reminder.text;
+
+		RSImageView imageView = new RSImageView(RSView.WRAP_CONTENT, RSView.WRAP_CONTENT);
+
+		boolean isImage = plugin.isImage(reminder.id);
+		int imageId = plugin.getImageId(reminder.id);
+
+		int imageWidth = 0;
+		if (isImage && imageId > 0)
+		{
+			BufferedImage image = itemManager.getImage(imageId);
+			if (image != null)
+			{
+				if (plugin.getPanelTextSize(reminder.id) == TextSize.SMALL)
+				{
+					imageWidth = 24;
+				}
+				else
+				{
+					imageWidth = 32;
+				}
+
+				image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
+				imageView.setImage(image);
+				imageView.setOffset(plugin.getImageOffset(reminder.id), plugin.isImageOffsetNegative(reminder.id));
+			}
+		}
+
+		Color panelColor = plugin.getPanelColor(reminder.id);
+
+		int panelHeight = RSView.WRAP_CONTENT;
+		if (imageWidth > 0)
+		{
+			panelHeight = imageWidth;
+		}
+
+		RSRow panel = new RSRow(10, 120, RSView.WRAP_CONTENT, panelHeight);
+		panel.setBgColor(new Color(panelColor.getRed(), panelColor.getGreen(), panelColor.getBlue(), 156));
+
+		if (plugin.isPanelBorder(reminder.id))
+		{
+			panel.addBorder(panelColor);
+		}
+
+		panel.setPadding(4);
+
+		panel.addView(imageView);
+
+		RSTextView textView = new RSTextView(0, 0, RSView.WRAP_CONTENT,
+				RSView.WRAP_CONTENT, fontForTextSize(plugin.getPanelTextSize(reminder.id)));
+
+		if (imageWidth > 0)
+		{
+			textView.setLayoutGravity(RSViewGroup.Gravity.START);
+		}
+
+		textView.setTextColor(color);
+		textView.setText(text);
+		//textView.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
+		//textView.setAnimationCycleDuration(2);
 
 		panel.addView(textView);
 

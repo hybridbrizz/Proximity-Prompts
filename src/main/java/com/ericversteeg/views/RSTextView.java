@@ -25,6 +25,8 @@ public class RSTextView extends RSView
     private int imageY = 0;
     private int imageW = 0;
     private int imageH = 0;
+    private int imageOffset = 0;
+    private boolean imageOffsetNegative = false;
     private RSViewGroup.Gravity imageGravity;
     private boolean animatesColor = false;
     private long animationCycleMillis = 10000L;
@@ -66,6 +68,12 @@ public class RSTextView extends RSView
     public void setImageBgColor(Color imageBgColor)
     {
         this.imageBgColor = imageBgColor;
+    }
+
+    public void setImageOffset(int imageOffset, boolean negative)
+    {
+        this.imageOffset = imageOffset;
+        this.imageOffsetNegative = negative;
     }
 
     private int imageX(int imageW, RSViewGroup.Gravity gravity)
@@ -138,7 +146,9 @@ public class RSTextView extends RSView
         }
         else
         {
-            lineWidth = strWidth;
+
+            String str = Pattern.compile("\\^\\w").matcher(text).replaceAll("");
+            lineWidth = fontMetrics.stringWidth(str);
         }
 
         return paddingStart + lineWidth + paddingEnd;
@@ -148,6 +158,11 @@ public class RSTextView extends RSView
     public int measureHeight(Map<RSLayoutGuide, Integer> guides)
     {
         lineHeight = fontMetrics.getHeight();
+
+        if (dimensionParams.getW() == WRAP_CONTENT)
+        {
+            return lineHeight;
+        }
 
         if (hasImage)
         {
@@ -180,8 +195,14 @@ public class RSTextView extends RSView
             graphics.fillRect(origin.x + x + paddingStart + imageX,
                     origin.y + y + paddingTop + imageY, imageW, imageH);
 
+            int offset = imageOffset;
+            if (imageOffsetNegative)
+            {
+                offset *= -1;
+            }
+
             graphics.drawImage(image, origin.x + x + paddingStart + imageX,
-                    origin.y + y + paddingTop + imageY, null);
+                    origin.y + y + paddingTop + imageY + offset, null);
         }
         else
         {

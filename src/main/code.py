@@ -22,18 +22,19 @@ configInfo = [
     ["NpcIds", "String"],
     ["ItemIds", "String"],
     ["ChatPatterns", "String"],
-    ["SeparatePanel", "boolean"],
+    ["Location", "Location"],
     ["PanelAnchorType", "RSAnchorType"],
     ["PanelAnchorX", "int"],
     ["PanelAnchorY", "int"],
     ["Image", "boolean"],
     ["ImageId", "int"],
-    ["AnimationType", "ColorAnimationType"],
     ["PanelWidth", "int"],
     ["PanelTextSize", "TextSize"],
     ["PanelColor", "Color"],
     ["PanelBorder", "boolean"],
-    ["ForceShow", "boolean"]
+    ["ForceShow", "boolean"],
+    ["ImageOffset", "int"],
+    ["ImageOffsetNegative", "boolean"]
 ]
 
 for info in configInfo:
@@ -71,6 +72,8 @@ for info in configInfo:
         default_return = "RSViewGroup.Gravity.TOP_START"
     elif type == "TextSize":
         default_return = "TextSize.SMALL"
+    elif type == "Location":
+        default_return = "Location.IN_LIST"
 
     print(line4.format(defaultReturn=default_return))
     print(line5)
