@@ -1,11 +1,10 @@
-package com.ericversteeg.views;
+package com.ericversteeg.view;
 
 import net.runelite.api.Client;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.ui.overlay.Overlay;
 
-import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;

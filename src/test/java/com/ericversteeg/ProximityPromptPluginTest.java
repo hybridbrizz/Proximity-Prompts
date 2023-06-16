@@ -3,11 +3,11 @@ package com.ericversteeg;
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
 
-public class XpGoalsPluginTest
+public class ProximityPromptPluginTest
 {
 	public static void main(String[] args) throws Exception
 	{
-		ExternalPluginManager.loadBuiltin(RemindersPlugin.class);
+		ExternalPluginManager.loadBuiltin(ProximityPromptPlugin.class);
 		RuneLite.main(args);
 	}
 }

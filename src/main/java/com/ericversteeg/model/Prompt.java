@@ -1,10 +1,10 @@
-package com.ericversteeg.reminder;
+package com.ericversteeg.model;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.awt.*;
 
-public class Reminder {
+public class Prompt {
 
     public static int TIME_UNIT_SECONDS = 0;
     public static int TIME_UNIT_MINUTES = 1;

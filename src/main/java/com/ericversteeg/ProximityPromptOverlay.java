@@ -1,13 +1,12 @@
 package com.ericversteeg;
 
-import com.ericversteeg.config.ColorAnimationType;
-import com.ericversteeg.config.Location;
-import com.ericversteeg.reminder.Reminder;
-import com.ericversteeg.views.*;
+import com.ericversteeg.model.config.Location;
+import com.ericversteeg.model.config.TextSize;
+import com.ericversteeg.model.Prompt;
+import com.ericversteeg.view.*;
 import net.runelite.api.Client;
 import net.runelite.api.ItemComposition;
 import net.runelite.api.NPC;
-import net.runelite.api.Skill;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.ui.overlay.OverlayLayer;
@@ -23,12 +22,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-class RemindersOverlay extends RSViewOverlay {
+class ProximityPromptOverlay extends RSViewOverlay {
 
 	private final Client client;
 	private final ItemManager itemManager;
-	private final RemindersPlugin plugin;
-	private final RemindersConfig config;
+	private final ProximityPromptPlugin plugin;
+	private final ProximityPromptConfig config;
 
 	private Font font;
 
@@ -37,11 +36,11 @@ class RemindersOverlay extends RSViewOverlay {
 	private Color innerBorderColor = new Color(147, 141, 130, 37);
 
 	@Inject
-	private RemindersOverlay(
+	private ProximityPromptOverlay(
 			Client client,
 			ItemManager itemManager,
-			RemindersPlugin plugin,
-			RemindersConfig config)
+			ProximityPromptPlugin plugin,
+			ProximityPromptConfig config)
 	{
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.ABOVE_WIDGETS);
@@ -145,26 +144,26 @@ class RemindersOverlay extends RSViewOverlay {
 		int maxReminders = 500;
 		int activeCount = 0;
 
-		java.util.List<Reminder> reminders = plugin.activeReminders.stream()
+		java.util.List<Prompt> prompts = plugin.activePrompts.stream()
 				.sorted(((o1, o2) -> (int) (o2.posted - o1.posted)))
 				.collect(Collectors.toList());
 
-		for (Reminder reminder: reminders) {
+		for (Prompt prompt : prompts) {
 			if (activeCount == maxReminders) break;
 
-			String text = reminder.text;
+			String text = prompt.text;
 			if (text.trim().isEmpty()) continue;
 
 			Color color;
-			if (reminder.colur != null)
+			if (prompt.colur != null)
 			{
-				color = reminder.colur;
+				color = prompt.colur;
 			}
 			else
 			{
 				try
 				{
-					color = Color.decode(reminder.colorStr);
+					color = Color.decode(prompt.colorStr);
 				}
 				catch (Exception exception)
 				{
@@ -172,19 +171,19 @@ class RemindersOverlay extends RSViewOverlay {
 				}
 			}
 
-			if (plugin.getLocation(reminder.id) == Location.WORD_WRAP_PANEL)
+			if (plugin.getLocation(prompt.id) == Location.WORD_WRAP_PANEL)
 			{
-				renderReminderWordWrapPanel(reminder, color);
+				renderReminderWordWrapPanel(prompt, color);
 				continue;
 			}
-			else if (plugin.getLocation(reminder.id) == Location.SINGLE_LINE_PANEL)
+			else if (plugin.getLocation(prompt.id) == Location.SINGLE_LINE_PANEL)
 			{
-				renderReminderSingleLinePanel(reminder, color);
+				renderReminderSingleLinePanel(prompt, color);
 				continue;
 			}
 
 			RSRow row = new RSRow(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
-			if (activeCount + 1 < Math.min(reminders.size(), maxReminders))
+			if (activeCount + 1 < Math.min(prompts.size(), maxReminders))
 			{
 				row.setMarginBottom(5);
 			}
@@ -203,8 +202,8 @@ class RemindersOverlay extends RSViewOverlay {
 			rightText.setText(text);
 			rightText.setWeight(1f);
 
-			boolean isImage = plugin.isImage(reminder.id);
-			int imageId = plugin.getImageId(reminder.id);
+			boolean isImage = plugin.isImage(prompt.id);
+			int imageId = plugin.getImageId(prompt.id);
 
 			if (isImage && imageId > 0)
 			{
@@ -223,7 +222,7 @@ class RemindersOverlay extends RSViewOverlay {
 
 					image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 					rightText.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
-					rightText.setImageOffset(plugin.getImageOffset(reminder.id), plugin.isImageOffsetNegative(reminder.id));
+					rightText.setImageOffset(plugin.getImageOffset(prompt.id), plugin.isImageOffsetNegative(prompt.id));
 				}
 			}
 
@@ -252,16 +251,16 @@ class RemindersOverlay extends RSViewOverlay {
 		//System.out.println("View setup in " + (Instant.now().toEpochMilli() - start) + "ms");
 	}
 
-	private void renderReminderWordWrapPanel(Reminder reminder, Color color)
+	private void renderReminderWordWrapPanel(Prompt prompt, Color color)
 	{
-		String text = reminder.text;
+		String text = prompt.text;
 
-		Color panelColor = plugin.getPanelColor(reminder.id);
+		Color panelColor = plugin.getPanelColor(prompt.id);
 
-		RSRow panel = new RSRow(10, 120, plugin.getPanelWidth(reminder.id), RSView.WRAP_CONTENT);
+		RSRow panel = new RSRow(10, 120, plugin.getPanelWidth(prompt.id), RSView.WRAP_CONTENT);
 		panel.setBgColor(new Color(panelColor.getRed(), panelColor.getGreen(), panelColor.getBlue(), 156));
 
-		if (plugin.isPanelBorder(reminder.id))
+		if (plugin.isPanelBorder(prompt.id))
 		{
 			panel.addBorder(panelColor);
 		}
@@ -269,13 +268,13 @@ class RemindersOverlay extends RSViewOverlay {
 		panel.setPadding(4);
 
 		RSTextView textView = new RSTextView(0, 0, RSView.MATCH_PARENT,
-				RSView.WRAP_CONTENT, fontForTextSize(plugin.getPanelTextSize(reminder.id)));
+				RSView.WRAP_CONTENT, fontForTextSize(plugin.getPanelTextSize(prompt.id)));
 
 		textView.setTextColor(color);
 		textView.setText(text);
 
-		boolean isImage = plugin.isImage(reminder.id);
-		int imageId = plugin.getImageId(reminder.id);
+		boolean isImage = plugin.isImage(prompt.id);
+		int imageId = plugin.getImageId(prompt.id);
 
 		if (isImage && imageId > 0)
 		{
@@ -283,7 +282,7 @@ class RemindersOverlay extends RSViewOverlay {
 			if (image != null)
 			{
 				int imageWidth;
-				if (plugin.getPanelTextSize(reminder.id) == TextSize.SMALL)
+				if (plugin.getPanelTextSize(prompt.id) == TextSize.SMALL)
 				{
 					imageWidth = 24;
 				}
@@ -294,7 +293,7 @@ class RemindersOverlay extends RSViewOverlay {
 
 				image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 				textView.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
-				textView.setImageOffset(plugin.getImageOffset(reminder.id), plugin.isImageOffsetNegative(reminder.id));
+				textView.setImageOffset(plugin.getImageOffset(prompt.id), plugin.isImageOffsetNegative(prompt.id));
 			}
 		}
 
@@ -303,18 +302,18 @@ class RemindersOverlay extends RSViewOverlay {
 
 		panel.addView(textView);
 
-		addViewInfo(new ViewInfo(client, panel, plugin.getPanelAnchorType(reminder.id),
-				plugin.getPanelAnchorX(reminder.id), plugin.getPanelAnchorY(reminder.id)));
+		addViewInfo(new ViewInfo(client, panel, plugin.getPanelAnchorType(prompt.id),
+				plugin.getPanelAnchorX(prompt.id), plugin.getPanelAnchorY(prompt.id)));
 	}
 
-	private void renderReminderSingleLinePanel(Reminder reminder, Color color)
+	private void renderReminderSingleLinePanel(Prompt prompt, Color color)
 	{
-		String text = reminder.text;
+		String text = prompt.text;
 
 		RSImageView imageView = new RSImageView(RSView.WRAP_CONTENT, RSView.WRAP_CONTENT);
 
-		boolean isImage = plugin.isImage(reminder.id);
-		int imageId = plugin.getImageId(reminder.id);
+		boolean isImage = plugin.isImage(prompt.id);
+		int imageId = plugin.getImageId(prompt.id);
 
 		int imageWidth = 0;
 		if (isImage && imageId > 0)
@@ -322,7 +321,7 @@ class RemindersOverlay extends RSViewOverlay {
 			BufferedImage image = itemManager.getImage(imageId);
 			if (image != null)
 			{
-				if (plugin.getPanelTextSize(reminder.id) == TextSize.SMALL)
+				if (plugin.getPanelTextSize(prompt.id) == TextSize.SMALL)
 				{
 					imageWidth = 24;
 				}
@@ -333,11 +332,11 @@ class RemindersOverlay extends RSViewOverlay {
 
 				image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 				imageView.setImage(image);
-				imageView.setOffset(plugin.getImageOffset(reminder.id), plugin.isImageOffsetNegative(reminder.id));
+				imageView.setOffset(plugin.getImageOffset(prompt.id), plugin.isImageOffsetNegative(prompt.id));
 			}
 		}
 
-		Color panelColor = plugin.getPanelColor(reminder.id);
+		Color panelColor = plugin.getPanelColor(prompt.id);
 
 		int panelHeight = RSView.WRAP_CONTENT;
 		if (imageWidth > 0)
@@ -348,7 +347,7 @@ class RemindersOverlay extends RSViewOverlay {
 		RSRow panel = new RSRow(10, 120, RSView.WRAP_CONTENT, panelHeight);
 		panel.setBgColor(new Color(panelColor.getRed(), panelColor.getGreen(), panelColor.getBlue(), 156));
 
-		if (plugin.isPanelBorder(reminder.id))
+		if (plugin.isPanelBorder(prompt.id))
 		{
 			panel.addBorder(panelColor);
 		}
@@ -358,7 +357,7 @@ class RemindersOverlay extends RSViewOverlay {
 		panel.addView(imageView);
 
 		RSTextView textView = new RSTextView(0, 0, RSView.WRAP_CONTENT,
-				RSView.WRAP_CONTENT, fontForTextSize(plugin.getPanelTextSize(reminder.id)));
+				RSView.WRAP_CONTENT, fontForTextSize(plugin.getPanelTextSize(prompt.id)));
 
 		if (imageWidth > 0)
 		{
@@ -372,8 +371,8 @@ class RemindersOverlay extends RSViewOverlay {
 
 		panel.addView(textView);
 
-		addViewInfo(new ViewInfo(client, panel, plugin.getPanelAnchorType(reminder.id),
-				plugin.getPanelAnchorX(reminder.id), plugin.getPanelAnchorY(reminder.id)));
+		addViewInfo(new ViewInfo(client, panel, plugin.getPanelAnchorType(prompt.id),
+				plugin.getPanelAnchorX(prompt.id), plugin.getPanelAnchorY(prompt.id)));
 	}
 
 	private void renderIds(RSColumn panel)
@@ -437,7 +436,7 @@ class RemindersOverlay extends RSViewOverlay {
 			}
 		}
 
-		for (ItemComposition item: plugin.inventoryItems)
+		for (ItemComposition item: plugin.items)
 		{
 			if (item.getId() == -1) continue;
 
@@ -487,7 +486,7 @@ class RemindersOverlay extends RSViewOverlay {
 
 	private String printItems() {
 		StringBuilder sb = new StringBuilder();
-		for (ItemComposition item : plugin.inventoryItems) {
+		for (ItemComposition item : plugin.items) {
 			if (item.getId() < 0) continue;
 
 			sb.append(item.getName());

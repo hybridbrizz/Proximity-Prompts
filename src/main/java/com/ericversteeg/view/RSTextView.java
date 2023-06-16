@@ -1,4 +1,4 @@
-package com.ericversteeg.views;
+package com.ericversteeg.view;
 
 import net.runelite.client.ui.overlay.components.TextComponent;
 
@@ -29,7 +29,7 @@ public class RSTextView extends RSView
     private boolean imageOffsetNegative = false;
     private RSViewGroup.Gravity imageGravity;
     private boolean animatesColor = false;
-    private long animationCycleMillis = 10000L;
+    private long animationCycleMillis = 2000L;
 
     public RSTextView(int x, int y, int w, int h, Font font) {
         super(x, y, w, h);
@@ -439,7 +439,7 @@ public class RSTextView extends RSView
 
     private void setColor(Color color)
     {
-        if (animatesColor)
+        if (color.getAlpha() == 0)
         {
             float percent = (Instant.now().toEpochMilli() % animationCycleMillis) / ((float) animationCycleMillis);
 
@@ -685,11 +685,15 @@ public class RSTextView extends RSView
         }
         else if (c == 'o')
         {
-            return Color.ORANGE;
+            return new Color(252, 154, 78);
         }
         else if (c == '0')
         {
             return textColor;
+        }
+        else if (c == 'a')
+        {
+            return new Color(255, 0, 0, 0);
         }
         return Color.WHITE;
     }

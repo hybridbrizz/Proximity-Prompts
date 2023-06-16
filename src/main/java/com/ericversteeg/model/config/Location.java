@@ -1,4 +1,4 @@
-package com.ericversteeg.config;
+package com.ericversteeg.model.config;
 
 public enum Location {
     IN_LIST,

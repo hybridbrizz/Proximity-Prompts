@@ -1,4 +1,4 @@
-package com.ericversteeg.views;
+package com.ericversteeg.view;
 
 import java.util.Map;
 

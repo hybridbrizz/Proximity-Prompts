@@ -1,4 +1,4 @@
-package com.ericversteeg;
+package com.ericversteeg.model.config;
 
 public enum TextSize {
     SMALL,
