@@ -65,76 +65,22 @@ class ProximityPromptOverlay extends RSViewOverlay {
 
 		setPosition(OverlayPosition.DYNAMIC);
 		setLayer(OverlayLayer.UNDER_WIDGETS);
-
-//		RSRow column = new RSRow(10, 120, 500, 50);
-//		column.setBgColor(Color.decode("#45AB76"));
-//		column.setPadding(5);
-//
-//		RSColumn column2 = new RSColumn(0, 0, 120, RSView.MATCH_PARENT);
-//		column2.setBgColor(new Color(0, 255, 0));
-//		column2.setPadding(5);
-//		column2.setMarginBottom(5);
-//
-//		RSView view = new RSView(0, 0, RSView.MATCH_PARENT, 20);
-//		view.setBgColor(new Color(255, 0, 0));
-//		view.setMarginEnd(5);
-//		view.setMarginBottom(5);
-//
-//		column2.addView(view);
-//
-//		column.addView(column2);
-//
-//		RSBox box = new RSBox(0, 0, 140, RSView.MATCH_PARENT);
-//		box.setBgColor(new Color(255, 255, 0));
-//		//view.setMarginBottom(5);
-//		box.setWeight(4f);
-//
-//		view = new RSView(0, 0, 20, 20);
-//		view.setBgColor(Color.ORANGE);
-//		view.setLayoutGravity(RSViewGroup.Gravity.CENTER);
-//
-//		box.addView(view);
-//
-//		view = new RSView(0, 0, 20, 20);
-//		view.setBgColor(Color.ORANGE);
-//		view.setLayoutGravity(RSViewGroup.Gravity.BOTTOM_END);
-//		view.setMarginBottom(5);
-//		view.setMarginEnd(5);
-//
-//		box.addView(view);
-//
-//		column.addView(box);
-//
-//		view = new RSView(0, 0, 140, RSView.MATCH_PARENT);
-//		view.setBgColor(new Color(0, 0, 255));
-//		view.setWeight(1f);
-//
-//		column.addView(view);
-//
-//		setRootView(column);
 	}
 
 	void updateViews()
 	{
 		clearViewInfo();
 
-//		RSBox hpBarContainer = new RSBox(570,350, 125, 17);
-//		RSHpBar hpBar = new RSHpBar(0, 0, RSView.MATCH_PARENT, RSView.MATCH_PARENT);
-//		RSTextView hpText = new RSTextView(0, 0, RSView.WRAP_CONTENT, RSView.WRAP_CONTENT, FontManager.getRunescapeFont());
-//
-//		hpText.setText(String.format("%d", client.getBoostedSkillLevel(Skill.HITPOINTS)));
-//		hpText.setLayoutGravity(RSViewGroup.Gravity.CENTER);
-//
-//		hpBarContainer.addView(hpBar);
-//		hpBarContainer.addView(hpText);
-//
-//		addViewInfo(new ViewInfo(client, hpBarContainer, RSAnchorType.TOP_LEFT, 570,350));
-
-		long start = Instant.now().toEpochMilli();
+		//long start = Instant.now().toEpochMilli();
 
 		font = fontForTextSize(config.textSize().ordinal());
 
-		int panelWidth = config.width();
+		int minWidth = 140;
+		if (font == FontManager.getRunescapeBoldFont())
+		{
+			minWidth = 160;
+		}
+		int panelWidth = Math.max(config.width(), minWidth);
 
 		RSColumn panel = new RSColumn(10, 120, panelWidth, RSView.WRAP_CONTENT);
 		panel.setBgColor(panelBackgroundColor);
@@ -147,7 +93,8 @@ class ProximityPromptOverlay extends RSViewOverlay {
 				.filter(obj -> !obj.text.trim().isEmpty())
 				.collect(Collectors.toList());
 
-		for (Prompt prompt : listPrompts) {
+		for (Prompt prompt : listPrompts)
+		{
 			String text = prompt.text;
 			if (text.trim().isEmpty()) continue;
 
@@ -222,7 +169,8 @@ class ProximityPromptOverlay extends RSViewOverlay {
 				.filter(obj -> !obj.text.trim().isEmpty())
 				.collect(Collectors.toList());
 
-		for (Prompt prompt : panelPrompts) {
+		for (Prompt prompt : panelPrompts)
+		{
 			String text = prompt.text;
 			if (text.trim().isEmpty()) continue;
 
@@ -258,7 +206,7 @@ class ProximityPromptOverlay extends RSViewOverlay {
 
 		Color panelColor = prompt.bgColor;
 
-		RSRow panel = new RSRow(10, 120, prompt.width, RSView.WRAP_CONTENT);
+		RSRow panel = new RSRow(10, 120, Math.max(prompt.width, 50), RSView.WRAP_CONTENT);
 		panel.setBgColor(new Color(panelColor.getRed(), panelColor.getGreen(), panelColor.getBlue(), 156));
 
 		if (prompt.hasBorder)

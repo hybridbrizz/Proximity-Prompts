@@ -74,7 +74,7 @@ public interface ProximityPromptConfig extends Config
 	}
 
 	@ConfigSection(
-			name = "JSON",
+			name = "Prompts",
 			description = "JSON Prompts",
 			position = 20,
 			closedByDefault = true
