@@ -54,8 +54,6 @@ Optionally a duration and cooldown can also be configured.
 
 ### Prompts can also be added using a JSON format
 
-Only required is text.
-
 Unit, location, anchor, tsize, and sound are all configuration list index.
 
 ```json
