@@ -21,7 +21,7 @@ line18 = '    @ConfigItem('
 line19 = '            keyName = "{lcName}Text",'
 line20 = '            position = 1,'
 line21 = '            name = "Text",'
-line22 = '            description = "Configures the text.",'
+line22 = '            description = "Configures the prompt text.",'
 line23 = '            section = {lcName}'
 line24 = '    )'
 line25 = '    default String {lcName}Text() {{ return ""; }}'
@@ -30,7 +30,7 @@ line27 = '    @ConfigItem('
 line28 = '            keyName = "{lcName}Color",'
 line29 = '            position = 2,'
 line30 = '            name = "Color",'
-line31 = '            description = "Configures the color.",'
+line31 = '            description = "Configures the text color.",'
 line32 = '            section = {lcName}'
 line33 = '    )'
 line34 = '    default Color {lcName}Color() {{ return Color.WHITE; }}'
@@ -54,7 +54,7 @@ line51 = '    )'
 line52 = '    default String {lcName}DaysOfWeek() {{ return ""; }}'
 line53 = ''
 line108 = '     @ConfigItem('
-line109 = '           keyName = "{lcName}Datess",'
+line109 = '           keyName = "{lcName}Dates",'
 line110= '            position = 39,'
 line111 = '           name = "Dates",'
 line112 = '           description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",'
@@ -82,7 +82,7 @@ line133 = '      default String {lcName}Geofences() {{ return ""; }}'
 line134 = ''
 line135 = '      @ConfigItem('
 line136 = '            keyName = "{lcName}Radius",'
-line137 = '            position = 32,'
+line137 = '            position = 31,'
 line138 = '            name = "Coordinate Radius",'
 line139 = '            description = "Configures how far away from coordinates prompt is shown.",'
 line140 = '            section = {lcName}'
@@ -102,7 +102,7 @@ line153 = '      @ConfigItem('
 line154 = '      keyName = "{ucName}NpcIds",'
 line155 = '            position = 34,'
 line156 = '            name = "Npcs",'
-line157 = '            description = "Configures the npc ids when prompt is shown (comma separated).",'
+line157 = '            description = "Configures npc ids where prompt is shown (comma separated).",'
 line158 = '            section = {lcName}'
 line159 = '      )'
 line160 = '      default String {lcName}NpcIds() {{ return ""; }}'
@@ -111,7 +111,7 @@ line162 = '      @ConfigItem('
 line163 = '      keyName = "{ucName}ItemIds",'
 line164 = '            position = 35,'
 line165 = '            name = "Items",'
-line166 = '            description = "Configures the item ids when prompt is shown (comma separated).",'
+line166 = '            description = "Configures item ids where prompt is shown (comma separated).",'
 line167 = '            section = {lcName}'
 line168 = '      )'
 line169 = '      default String {lcName}ItemIds() {{ return ""; }}'
@@ -120,7 +120,7 @@ line171 = '      @ConfigItem('
 line172 = '            keyName = "{ucName}Duration",'
 line173 = '            position = 3,'
 line174 = '            name = "Duration",'
-line175 = '            description = "Configures the duration for prompt.",'
+line175 = '            description = "Configures duration of prompt.",'
 line176 = '            section = {lcName}'
 line177 = '      )'
 line178 = '      default int {lcName}Duration() {{ return 0; }}'
@@ -129,7 +129,7 @@ line180 = '      @ConfigItem('
 line181 = '            keyName = "{ucName}Cooldown",'
 line182 = '            position = 4,'
 line183 = '            name = "Cooldown",'
-line184 = '            description = "Configures how long before prompt can be shown again.",'
+line184 = '            description = "Configures cooldown of prompt.",'
 line185 = '            section = {lcName}'
 line186 = '      )'
 line187 = '      default int {lcName}Cooldown() {{ return 0; }}'
@@ -147,7 +147,7 @@ line198 = '      @ConfigItem('
 line199 = '            keyName = "{ucName}ChatPatterns",'
 line200 = '            position = 36,'
 line201 = '            name = "Messages",'
-line202 = '            description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",'
+line202 = '            description = "Configures text or regex to match messages to show prompt. (comma seperated)",'
 line203 = '            section = {lcName}'
 line204 = '      )'
 line205 = '      default String {lcName}ChatPatterns() {{ return ""; }}'
@@ -173,8 +173,8 @@ line224 = ''
 line225 = '      @ConfigItem('
 line226 = '            keyName = "{ucName}panelAnchorType",'
 line227 = '            position = 8,'
-line228 = '            name = "Panel Anchor Type",'
-line229 = '            description = "Configures the anchor type for the panel.",'
+line228 = '            name = "Anchor",'
+line229 = '            description = "Configures the anchor type of panel.",'
 line230 = '            section = {lcName}'
 line231 = '      )'
 line232 = '      default RSAnchorType {lcName}PanelAnchorType() {{ return RSAnchorType.TOP_LEFT; }}'
@@ -182,8 +182,8 @@ line233 = ''
 line234 = '      @ConfigItem('
 line235 = '            keyName = "{ucName}PanelAnchorX",'
 line236 = '            position = 9,'
-line237 = '            name = "Panel Anchor X",'
-line238 = '            description = "Configures the anchor x position for the panel.",'
+line237 = '            name = "X Position",'
+line238 = '            description = "Configures the x position of panel.",'
 line239 = '            section = {lcName}'
 line240 = '      )'
 line241 = '      default int {lcName}PanelAnchorX() {{ return 0; }}'
@@ -191,8 +191,8 @@ line242 = ''
 line243 = '      @ConfigItem('
 line244 = '            keyName = "{ucName}PanelAnchorY",'
 line245 = '            position = 10,'
-line246 = '            name = "Panel Anchor Y",'
-line247 = '            description = "Configures the anchor y position for the panel.",'
+line246 = '            name = "Y Position",'
+line247 = '            description = "Configures the y position of panel.",'
 line248 = '            section = {lcName}'
 line249 = '      )'
 line250 = '      default int {lcName}PanelAnchorY() {{ return 0; }}'
@@ -201,7 +201,7 @@ line261 = '      @ConfigItem('
 line262 = '            keyName = "{ucName}ImageId",'
 line263 = '            position = 14,'
 line264 = '            name = "Image ID",'
-line265 = '            description = "Configures the image id.",'
+line265 = '            description = "Configures image id to display in prompt.",'
 line266 = '            section = {lcName}'
 line267 = '      )'
 line268 = '      default int {lcName}ImageId() {{ return 0; }}'
@@ -210,7 +210,7 @@ line270 = '      @ConfigItem('
 line271 = '            keyName = "{ucName}Sound",'
 line272 = '            position = 13,'
 line273 = '            name = "Sound",'
-line274 = '            description = "Configures sound that plays.",'
+line274 = '            description = "Configures sound that plays with prompt.",'
 line275 = '            section = {lcName}'
 line276 = '      )'
 line277 = '      default Sound {lcName}Sound() {{ return Sound.NONE; }}'
@@ -219,7 +219,7 @@ line288 = '      @ConfigItem('
 line289 = '            keyName = "{ucName}ImageOffsetNegative",'
 line290 = '            position = 14,'
 line291 = '            name = "Offset Negative",'
-line292 = '            description = "Configures whether or not the image offset is a negative number.",'
+line292 = '            description = "Configures whether or not image offset is a negative number.",'
 line293 = '            section = {lcName}'
 line294 = '      )'
 line295 = '      default boolean {lcName}ImageOffsetNegative() {{ return false; }}'
@@ -227,8 +227,8 @@ line296 = ''
 line306 = '      @ConfigItem('
 line307 = '            keyName = "{ucName}PanelWidth",'
 line308 = '            position = 11,'
-line309 = '            name = "Word Wrap Width",'
-line310 = '            description = "Configures width for panel.",'
+line309 = '            name = "Width",'
+line310 = '            description = "Configures width of panel.",'
 line311 = '            section = {lcName}'
 line312 = '      )'
 line313 = '      default int {lcName}PanelWidth() {{ return 140; }}'
@@ -236,8 +236,8 @@ line314 = ''
 line326 = '      @ConfigItem('
 line327 = '            keyName = "{ucName}PanelTextSize",'
 line328 = '            position = 12,'
-line329 = '            name = "Panel Text Size",'
-line330 = '            description = "Configures the text Size.",'
+line329 = '            name = "Text Size",'
+line330 = '            description = "Configures text size of prompt.",'
 line331 = '            section = {lcName}'
 line332 = '      )'
 line333 = '      default TextSize {lcName}PanelTextSize() {{ return TextSize.SMALL; }}'
@@ -245,7 +245,7 @@ line334 = ''
 line336 = '      @ConfigItem('
 line337 = '            keyName = "{ucName}PanelColor",'
 line338 = '            position = 12,'
-line339 = '            name = "Panel Color",'
+line339 = '            name = "Background Color",'
 line340 = '            description = "Configures panel color.",'
 line341 = '            section = {lcName}'
 line342 = '      )'
@@ -255,8 +255,8 @@ line345 = '      @Alpha'
 line346 = '      @ConfigItem('
 line347 = '            keyName = "{ucName}PanelBorder",'
 line348 = '            position = 12,'
-line349 = '            name = "Panel Border",'
-line350 = '            description = "Configures whether or not panel has a border.",'
+line349 = '            name = "Border",'
+line350 = '            description = "Configures whether or not panel has border.",'
 line351 = '            section = {lcName}'
 line352 = '      )'
 line353 = '      default boolean {lcName}PanelBorder() {{ return true; }}'
@@ -265,7 +265,7 @@ line356 = '      @ConfigItem('
 line357 = '            keyName = "{ucName}ForceShow",'
 line358 = '            position = 0,'
 line359 = '            name = "Force",'
-line360 = '            description = "Configures whether or not to force show prompt.",'
+line360 = '            description = "Configures whether or not to force the prompt visible.",'
 line361 = '            section = {lcName}'
 line362 = '      )'
 line363 = '      default boolean {lcName}ForceShow() {{ return false; }}'
@@ -341,33 +341,33 @@ config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n
 #
 # print(string)
 
-# for index in range(1,101):
-#     print(config.format(number=index, ucName="Prompt" + str(index), lcName="prompt" + str(index), pos=(20 + index)))
+for index in range(1,101):
+    print(config.format(number=index, ucName="Prompt" + str(index), lcName="prompt" + str(index), pos=(20 + index)))
 
 
-json = "{{" + \
-    "\"text\":\"^aCannonball!\"," + \
-    "\"color\":\"#FF0000\"," + \
-    "\"location\":1," + \
-       "\"anchor\":0," + \
-       "\"x\":{x}," + \
-       "\"y\":{y}," + \
-       "\"image\":2," + \
-       "\"offset\":2," + \
-       "\"noffset\":true," + \
-       "\"radius\":2," + \
-       "\"npcs\":[486,487]," + \
-       "\"dates\":[\"6/17/23\"]," + \
-       "\"bg\":\"#65bc87\"," + \
-       "\"tsize\":0," + \
-       "\"unit\":0," + \
-       "\"duration\":{d}," + \
-       "\"cd\":100," + \
-       "\"sound\":2," + \
-       "\"patterns\":[\"cannon\"]" + \
-    "}},\n"
-
-print("[")
-for index in range(1,1500):
-    print(json.format(x=random.randint(0, 1300), y=random.randint(0, 700), d=index))
-print("]")
+# json = "{{" + \
+#     "\"text\":\"^aCannonball!\"," + \
+#     "\"color\":\"#FF0000\"," + \
+#     "\"location\":1," + \
+#        "\"anchor\":0," + \
+#        "\"x\":{x}," + \
+#        "\"y\":{y}," + \
+#        "\"image\":2," + \
+#        "\"offset\":2," + \
+#        "\"noffset\":true," + \
+#        "\"radius\":2," + \
+#        "\"npcs\":[486,487]," + \
+#        "\"dates\":[\"6/17/23\"]," + \
+#        "\"bg\":\"#65bc87\"," + \
+#        "\"tsize\":0," + \
+#        "\"unit\":0," + \
+#        "\"duration\":{d}," + \
+#        "\"cd\":100," + \
+#        "\"sound\":2," + \
+#        "\"patterns\":[\"cannon\"]" + \
+#     "}},\n"
+#
+# print("[")
+# for index in range(1,1500):
+#     print(json.format(x=random.randint(0, 1300), y=random.randint(0, 700), d=index))
+# print("]")

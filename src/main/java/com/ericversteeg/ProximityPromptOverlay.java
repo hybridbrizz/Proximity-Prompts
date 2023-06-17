@@ -171,12 +171,12 @@ class ProximityPromptOverlay extends RSViewOverlay {
 				}
 			}
 
-			if (prompt.location == Location.WORD_WRAP_PANEL.ordinal())
+			if (prompt.location == Location.WORD_WRAP.ordinal())
 			{
 				renderReminderWordWrapPanel(prompt, color);
 				continue;
 			}
-			else if (prompt.location == Location.SINGLE_LINE_PANEL.ordinal())
+			else if (prompt.location == Location.SINGLE_LINE.ordinal())
 			{
 				renderReminderSingleLinePanel(prompt, color);
 				continue;

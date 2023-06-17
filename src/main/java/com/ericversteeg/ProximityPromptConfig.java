@@ -17,7 +17,7 @@ public interface ProximityPromptConfig extends Config {
 			position = 1,
 			keyName = "anchorType",
 			name = "Anchor",
-			description = "Configure anchor."
+			description = "Configure anchor of list panel."
 	)
 	default RSAnchorType anchorType() {
 		return RSAnchorType.TOP_LEFT;
@@ -26,8 +26,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			position = 2,
 			keyName = "anchorX",
-			name = "List X Position",
-			description = "Configure x position relative to anchor."
+			name = "X Position",
+			description = "Configure x position relative to anchor of list panel."
 	)
 	default int anchorX() {
 		return 10;
@@ -36,8 +36,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			position = 3,
 			keyName = "anchorY",
-			name = "List Y Position",
-			description = "Configures y position relative to anchor."
+			name = "Y Position",
+			description = "Configures y position relative to anchor of list panel."
 	)
 	default int anchorY() {
 		return 120;
@@ -47,7 +47,7 @@ public interface ProximityPromptConfig extends Config {
 			position = 4,
 			keyName = "width",
 			name = "Width",
-			description = "Configures the width."
+			description = "Configures the width of list panel."
 	)
 	default int width() {
 		return 140;
@@ -57,7 +57,7 @@ public interface ProximityPromptConfig extends Config {
 			position = 0,
 			keyName = "idFinder",
 			name = "ID Finder",
-			description = "Configures whether or not to enable ID Finder."
+			description = "Configures whether or not to enable ID Finder in list panel."
 	)
 	default boolean idFinder() {
 		return false;
@@ -67,7 +67,7 @@ public interface ProximityPromptConfig extends Config {
 			position = 6,
 			keyName = "textSize",
 			name = "Text Size",
-			description = "Configures the text size."
+			description = "Configures the text size of list panel."
 	)
 	default TextSize textSize() {
 		return TextSize.SMALL;
@@ -114,7 +114,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt1Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt1
 	)
 	default String prompt1Text() { return ""; }
@@ -123,7 +123,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt1Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt1
 	)
 	default Color prompt1Color() { return Color.WHITE; }
@@ -147,7 +147,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt1DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt1Datess",
+			keyName = "prompt1Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -175,7 +175,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt1Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt1
@@ -195,7 +195,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt1
 	)
 	default String prompt1NpcIds() { return ""; }
@@ -204,7 +204,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt1
 	)
 	default String prompt1ItemIds() { return ""; }
@@ -213,7 +213,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt1
 	)
 	default int prompt1Duration() { return 0; }
@@ -222,7 +222,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt1
 	)
 	default int prompt1Cooldown() { return 0; }
@@ -240,7 +240,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt1
 	)
 	default String prompt1ChatPatterns() { return ""; }
@@ -266,8 +266,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt1panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt1
 	)
 	default RSAnchorType prompt1PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -275,8 +275,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt1PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt1
 	)
 	default int prompt1PanelAnchorX() { return 0; }
@@ -284,8 +284,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt1PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt1
 	)
 	default int prompt1PanelAnchorY() { return 0; }
@@ -294,7 +294,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt1
 	)
 	default int prompt1ImageId() { return 0; }
@@ -303,7 +303,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt1
 	)
 	default Sound prompt1Sound() { return Sound.NONE; }
@@ -312,7 +312,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt1
 	)
 	default boolean prompt1ImageOffsetNegative() { return false; }
@@ -321,8 +321,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt1PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt1
 	)
 	default int prompt1PanelWidth() { return 140; }
@@ -331,8 +331,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt1PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt1
 	)
 	default TextSize prompt1PanelTextSize() { return TextSize.SMALL; }
@@ -341,7 +341,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt1PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt1
 	)
@@ -351,8 +351,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt1PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt1
 	)
 	default boolean prompt1PanelBorder() { return true; }
@@ -362,7 +362,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt1
 	)
 	default boolean prompt1ForceShow() { return false; }
@@ -398,7 +398,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt2Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt2
 	)
 	default String prompt2Text() { return ""; }
@@ -407,7 +407,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt2Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt2
 	)
 	default Color prompt2Color() { return Color.WHITE; }
@@ -431,7 +431,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt2DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt2Datess",
+			keyName = "prompt2Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -459,7 +459,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt2Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt2
@@ -479,7 +479,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt2
 	)
 	default String prompt2NpcIds() { return ""; }
@@ -488,7 +488,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt2
 	)
 	default String prompt2ItemIds() { return ""; }
@@ -497,7 +497,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt2
 	)
 	default int prompt2Duration() { return 0; }
@@ -506,7 +506,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt2
 	)
 	default int prompt2Cooldown() { return 0; }
@@ -524,7 +524,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt2
 	)
 	default String prompt2ChatPatterns() { return ""; }
@@ -550,8 +550,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt2panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt2
 	)
 	default RSAnchorType prompt2PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -559,8 +559,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt2PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt2
 	)
 	default int prompt2PanelAnchorX() { return 0; }
@@ -568,8 +568,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt2PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt2
 	)
 	default int prompt2PanelAnchorY() { return 0; }
@@ -578,7 +578,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt2
 	)
 	default int prompt2ImageId() { return 0; }
@@ -587,7 +587,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt2
 	)
 	default Sound prompt2Sound() { return Sound.NONE; }
@@ -596,7 +596,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt2
 	)
 	default boolean prompt2ImageOffsetNegative() { return false; }
@@ -605,8 +605,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt2PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt2
 	)
 	default int prompt2PanelWidth() { return 140; }
@@ -615,8 +615,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt2PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt2
 	)
 	default TextSize prompt2PanelTextSize() { return TextSize.SMALL; }
@@ -625,7 +625,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt2PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt2
 	)
@@ -635,8 +635,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt2PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt2
 	)
 	default boolean prompt2PanelBorder() { return true; }
@@ -646,7 +646,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt2
 	)
 	default boolean prompt2ForceShow() { return false; }
@@ -682,7 +682,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt3Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt3
 	)
 	default String prompt3Text() { return ""; }
@@ -691,7 +691,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt3Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt3
 	)
 	default Color prompt3Color() { return Color.WHITE; }
@@ -715,7 +715,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt3DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt3Datess",
+			keyName = "prompt3Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -743,7 +743,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt3Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt3
@@ -763,7 +763,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt3
 	)
 	default String prompt3NpcIds() { return ""; }
@@ -772,7 +772,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt3
 	)
 	default String prompt3ItemIds() { return ""; }
@@ -781,7 +781,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt3
 	)
 	default int prompt3Duration() { return 0; }
@@ -790,7 +790,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt3
 	)
 	default int prompt3Cooldown() { return 0; }
@@ -808,7 +808,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt3
 	)
 	default String prompt3ChatPatterns() { return ""; }
@@ -834,8 +834,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt3panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt3
 	)
 	default RSAnchorType prompt3PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -843,8 +843,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt3PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt3
 	)
 	default int prompt3PanelAnchorX() { return 0; }
@@ -852,8 +852,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt3PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt3
 	)
 	default int prompt3PanelAnchorY() { return 0; }
@@ -862,7 +862,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt3
 	)
 	default int prompt3ImageId() { return 0; }
@@ -871,7 +871,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt3
 	)
 	default Sound prompt3Sound() { return Sound.NONE; }
@@ -880,7 +880,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt3
 	)
 	default boolean prompt3ImageOffsetNegative() { return false; }
@@ -889,8 +889,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt3PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt3
 	)
 	default int prompt3PanelWidth() { return 140; }
@@ -899,8 +899,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt3PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt3
 	)
 	default TextSize prompt3PanelTextSize() { return TextSize.SMALL; }
@@ -909,7 +909,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt3PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt3
 	)
@@ -919,8 +919,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt3PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt3
 	)
 	default boolean prompt3PanelBorder() { return true; }
@@ -930,7 +930,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt3
 	)
 	default boolean prompt3ForceShow() { return false; }
@@ -966,7 +966,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt4Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt4
 	)
 	default String prompt4Text() { return ""; }
@@ -975,7 +975,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt4Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt4
 	)
 	default Color prompt4Color() { return Color.WHITE; }
@@ -999,7 +999,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt4DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt4Datess",
+			keyName = "prompt4Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -1027,7 +1027,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt4Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt4
@@ -1047,7 +1047,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt4
 	)
 	default String prompt4NpcIds() { return ""; }
@@ -1056,7 +1056,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt4
 	)
 	default String prompt4ItemIds() { return ""; }
@@ -1065,7 +1065,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt4
 	)
 	default int prompt4Duration() { return 0; }
@@ -1074,7 +1074,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt4
 	)
 	default int prompt4Cooldown() { return 0; }
@@ -1092,7 +1092,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt4
 	)
 	default String prompt4ChatPatterns() { return ""; }
@@ -1118,8 +1118,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt4panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt4
 	)
 	default RSAnchorType prompt4PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -1127,8 +1127,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt4PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt4
 	)
 	default int prompt4PanelAnchorX() { return 0; }
@@ -1136,8 +1136,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt4PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt4
 	)
 	default int prompt4PanelAnchorY() { return 0; }
@@ -1146,7 +1146,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt4
 	)
 	default int prompt4ImageId() { return 0; }
@@ -1155,7 +1155,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt4
 	)
 	default Sound prompt4Sound() { return Sound.NONE; }
@@ -1164,7 +1164,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt4
 	)
 	default boolean prompt4ImageOffsetNegative() { return false; }
@@ -1173,8 +1173,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt4PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt4
 	)
 	default int prompt4PanelWidth() { return 140; }
@@ -1183,8 +1183,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt4PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt4
 	)
 	default TextSize prompt4PanelTextSize() { return TextSize.SMALL; }
@@ -1193,7 +1193,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt4PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt4
 	)
@@ -1203,8 +1203,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt4PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt4
 	)
 	default boolean prompt4PanelBorder() { return true; }
@@ -1214,7 +1214,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt4
 	)
 	default boolean prompt4ForceShow() { return false; }
@@ -1250,7 +1250,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt5Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt5
 	)
 	default String prompt5Text() { return ""; }
@@ -1259,7 +1259,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt5Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt5
 	)
 	default Color prompt5Color() { return Color.WHITE; }
@@ -1283,7 +1283,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt5DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt5Datess",
+			keyName = "prompt5Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -1311,7 +1311,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt5Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt5
@@ -1331,7 +1331,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt5
 	)
 	default String prompt5NpcIds() { return ""; }
@@ -1340,7 +1340,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt5
 	)
 	default String prompt5ItemIds() { return ""; }
@@ -1349,7 +1349,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt5
 	)
 	default int prompt5Duration() { return 0; }
@@ -1358,7 +1358,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt5
 	)
 	default int prompt5Cooldown() { return 0; }
@@ -1376,7 +1376,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt5
 	)
 	default String prompt5ChatPatterns() { return ""; }
@@ -1402,8 +1402,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt5panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt5
 	)
 	default RSAnchorType prompt5PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -1411,8 +1411,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt5PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt5
 	)
 	default int prompt5PanelAnchorX() { return 0; }
@@ -1420,8 +1420,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt5PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt5
 	)
 	default int prompt5PanelAnchorY() { return 0; }
@@ -1430,7 +1430,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt5
 	)
 	default int prompt5ImageId() { return 0; }
@@ -1439,7 +1439,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt5
 	)
 	default Sound prompt5Sound() { return Sound.NONE; }
@@ -1448,7 +1448,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt5
 	)
 	default boolean prompt5ImageOffsetNegative() { return false; }
@@ -1457,8 +1457,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt5PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt5
 	)
 	default int prompt5PanelWidth() { return 140; }
@@ -1467,8 +1467,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt5PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt5
 	)
 	default TextSize prompt5PanelTextSize() { return TextSize.SMALL; }
@@ -1477,7 +1477,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt5PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt5
 	)
@@ -1487,8 +1487,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt5PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt5
 	)
 	default boolean prompt5PanelBorder() { return true; }
@@ -1498,7 +1498,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt5
 	)
 	default boolean prompt5ForceShow() { return false; }
@@ -1534,7 +1534,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt6Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt6
 	)
 	default String prompt6Text() { return ""; }
@@ -1543,7 +1543,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt6Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt6
 	)
 	default Color prompt6Color() { return Color.WHITE; }
@@ -1567,7 +1567,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt6DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt6Datess",
+			keyName = "prompt6Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -1595,7 +1595,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt6Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt6
@@ -1615,7 +1615,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt6
 	)
 	default String prompt6NpcIds() { return ""; }
@@ -1624,7 +1624,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt6
 	)
 	default String prompt6ItemIds() { return ""; }
@@ -1633,7 +1633,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt6
 	)
 	default int prompt6Duration() { return 0; }
@@ -1642,7 +1642,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt6
 	)
 	default int prompt6Cooldown() { return 0; }
@@ -1660,7 +1660,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt6
 	)
 	default String prompt6ChatPatterns() { return ""; }
@@ -1686,8 +1686,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt6panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt6
 	)
 	default RSAnchorType prompt6PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -1695,8 +1695,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt6PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt6
 	)
 	default int prompt6PanelAnchorX() { return 0; }
@@ -1704,8 +1704,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt6PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt6
 	)
 	default int prompt6PanelAnchorY() { return 0; }
@@ -1714,7 +1714,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt6
 	)
 	default int prompt6ImageId() { return 0; }
@@ -1723,7 +1723,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt6
 	)
 	default Sound prompt6Sound() { return Sound.NONE; }
@@ -1732,7 +1732,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt6
 	)
 	default boolean prompt6ImageOffsetNegative() { return false; }
@@ -1741,8 +1741,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt6PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt6
 	)
 	default int prompt6PanelWidth() { return 140; }
@@ -1751,8 +1751,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt6PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt6
 	)
 	default TextSize prompt6PanelTextSize() { return TextSize.SMALL; }
@@ -1761,7 +1761,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt6PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt6
 	)
@@ -1771,8 +1771,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt6PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt6
 	)
 	default boolean prompt6PanelBorder() { return true; }
@@ -1782,7 +1782,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt6
 	)
 	default boolean prompt6ForceShow() { return false; }
@@ -1818,7 +1818,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt7Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt7
 	)
 	default String prompt7Text() { return ""; }
@@ -1827,7 +1827,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt7Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt7
 	)
 	default Color prompt7Color() { return Color.WHITE; }
@@ -1851,7 +1851,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt7DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt7Datess",
+			keyName = "prompt7Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -1879,7 +1879,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt7Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt7
@@ -1899,7 +1899,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt7
 	)
 	default String prompt7NpcIds() { return ""; }
@@ -1908,7 +1908,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt7
 	)
 	default String prompt7ItemIds() { return ""; }
@@ -1917,7 +1917,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt7
 	)
 	default int prompt7Duration() { return 0; }
@@ -1926,7 +1926,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt7
 	)
 	default int prompt7Cooldown() { return 0; }
@@ -1944,7 +1944,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt7
 	)
 	default String prompt7ChatPatterns() { return ""; }
@@ -1970,8 +1970,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt7panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt7
 	)
 	default RSAnchorType prompt7PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -1979,8 +1979,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt7PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt7
 	)
 	default int prompt7PanelAnchorX() { return 0; }
@@ -1988,8 +1988,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt7PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt7
 	)
 	default int prompt7PanelAnchorY() { return 0; }
@@ -1998,7 +1998,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt7
 	)
 	default int prompt7ImageId() { return 0; }
@@ -2007,7 +2007,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt7
 	)
 	default Sound prompt7Sound() { return Sound.NONE; }
@@ -2016,7 +2016,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt7
 	)
 	default boolean prompt7ImageOffsetNegative() { return false; }
@@ -2025,8 +2025,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt7PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt7
 	)
 	default int prompt7PanelWidth() { return 140; }
@@ -2035,8 +2035,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt7PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt7
 	)
 	default TextSize prompt7PanelTextSize() { return TextSize.SMALL; }
@@ -2045,7 +2045,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt7PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt7
 	)
@@ -2055,8 +2055,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt7PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt7
 	)
 	default boolean prompt7PanelBorder() { return true; }
@@ -2066,7 +2066,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt7
 	)
 	default boolean prompt7ForceShow() { return false; }
@@ -2102,7 +2102,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt8Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt8
 	)
 	default String prompt8Text() { return ""; }
@@ -2111,7 +2111,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt8Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt8
 	)
 	default Color prompt8Color() { return Color.WHITE; }
@@ -2135,7 +2135,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt8DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt8Datess",
+			keyName = "prompt8Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -2163,7 +2163,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt8Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt8
@@ -2183,7 +2183,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt8
 	)
 	default String prompt8NpcIds() { return ""; }
@@ -2192,7 +2192,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt8
 	)
 	default String prompt8ItemIds() { return ""; }
@@ -2201,7 +2201,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt8
 	)
 	default int prompt8Duration() { return 0; }
@@ -2210,7 +2210,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt8
 	)
 	default int prompt8Cooldown() { return 0; }
@@ -2228,7 +2228,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt8
 	)
 	default String prompt8ChatPatterns() { return ""; }
@@ -2254,8 +2254,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt8panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt8
 	)
 	default RSAnchorType prompt8PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -2263,8 +2263,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt8PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt8
 	)
 	default int prompt8PanelAnchorX() { return 0; }
@@ -2272,8 +2272,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt8PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt8
 	)
 	default int prompt8PanelAnchorY() { return 0; }
@@ -2282,7 +2282,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt8
 	)
 	default int prompt8ImageId() { return 0; }
@@ -2291,7 +2291,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt8
 	)
 	default Sound prompt8Sound() { return Sound.NONE; }
@@ -2300,7 +2300,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt8
 	)
 	default boolean prompt8ImageOffsetNegative() { return false; }
@@ -2309,8 +2309,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt8PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt8
 	)
 	default int prompt8PanelWidth() { return 140; }
@@ -2319,8 +2319,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt8PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt8
 	)
 	default TextSize prompt8PanelTextSize() { return TextSize.SMALL; }
@@ -2329,7 +2329,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt8PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt8
 	)
@@ -2339,8 +2339,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt8PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt8
 	)
 	default boolean prompt8PanelBorder() { return true; }
@@ -2350,7 +2350,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt8
 	)
 	default boolean prompt8ForceShow() { return false; }
@@ -2386,7 +2386,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt9Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt9
 	)
 	default String prompt9Text() { return ""; }
@@ -2395,7 +2395,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt9Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt9
 	)
 	default Color prompt9Color() { return Color.WHITE; }
@@ -2419,7 +2419,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt9DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt9Datess",
+			keyName = "prompt9Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -2447,7 +2447,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt9Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt9
@@ -2467,7 +2467,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt9
 	)
 	default String prompt9NpcIds() { return ""; }
@@ -2476,7 +2476,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt9
 	)
 	default String prompt9ItemIds() { return ""; }
@@ -2485,7 +2485,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt9
 	)
 	default int prompt9Duration() { return 0; }
@@ -2494,7 +2494,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt9
 	)
 	default int prompt9Cooldown() { return 0; }
@@ -2512,7 +2512,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt9
 	)
 	default String prompt9ChatPatterns() { return ""; }
@@ -2538,8 +2538,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt9panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt9
 	)
 	default RSAnchorType prompt9PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -2547,8 +2547,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt9PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt9
 	)
 	default int prompt9PanelAnchorX() { return 0; }
@@ -2556,8 +2556,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt9PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt9
 	)
 	default int prompt9PanelAnchorY() { return 0; }
@@ -2566,7 +2566,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt9
 	)
 	default int prompt9ImageId() { return 0; }
@@ -2575,7 +2575,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt9
 	)
 	default Sound prompt9Sound() { return Sound.NONE; }
@@ -2584,7 +2584,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt9
 	)
 	default boolean prompt9ImageOffsetNegative() { return false; }
@@ -2593,8 +2593,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt9PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt9
 	)
 	default int prompt9PanelWidth() { return 140; }
@@ -2603,8 +2603,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt9PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt9
 	)
 	default TextSize prompt9PanelTextSize() { return TextSize.SMALL; }
@@ -2613,7 +2613,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt9PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt9
 	)
@@ -2623,8 +2623,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt9PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt9
 	)
 	default boolean prompt9PanelBorder() { return true; }
@@ -2634,7 +2634,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt9
 	)
 	default boolean prompt9ForceShow() { return false; }
@@ -2670,7 +2670,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt10Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt10
 	)
 	default String prompt10Text() { return ""; }
@@ -2679,7 +2679,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt10Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt10
 	)
 	default Color prompt10Color() { return Color.WHITE; }
@@ -2703,7 +2703,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt10DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt10Datess",
+			keyName = "prompt10Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -2731,7 +2731,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt10Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt10
@@ -2751,7 +2751,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt10
 	)
 	default String prompt10NpcIds() { return ""; }
@@ -2760,7 +2760,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt10
 	)
 	default String prompt10ItemIds() { return ""; }
@@ -2769,7 +2769,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt10
 	)
 	default int prompt10Duration() { return 0; }
@@ -2778,7 +2778,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt10
 	)
 	default int prompt10Cooldown() { return 0; }
@@ -2796,7 +2796,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt10
 	)
 	default String prompt10ChatPatterns() { return ""; }
@@ -2822,8 +2822,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt10panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt10
 	)
 	default RSAnchorType prompt10PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -2831,8 +2831,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt10PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt10
 	)
 	default int prompt10PanelAnchorX() { return 0; }
@@ -2840,8 +2840,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt10PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt10
 	)
 	default int prompt10PanelAnchorY() { return 0; }
@@ -2850,7 +2850,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt10
 	)
 	default int prompt10ImageId() { return 0; }
@@ -2859,7 +2859,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt10
 	)
 	default Sound prompt10Sound() { return Sound.NONE; }
@@ -2868,7 +2868,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt10
 	)
 	default boolean prompt10ImageOffsetNegative() { return false; }
@@ -2877,8 +2877,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt10PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt10
 	)
 	default int prompt10PanelWidth() { return 140; }
@@ -2887,8 +2887,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt10PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt10
 	)
 	default TextSize prompt10PanelTextSize() { return TextSize.SMALL; }
@@ -2897,7 +2897,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt10PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt10
 	)
@@ -2907,8 +2907,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt10PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt10
 	)
 	default boolean prompt10PanelBorder() { return true; }
@@ -2918,7 +2918,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt10
 	)
 	default boolean prompt10ForceShow() { return false; }
@@ -2954,7 +2954,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt11Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt11
 	)
 	default String prompt11Text() { return ""; }
@@ -2963,7 +2963,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt11Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt11
 	)
 	default Color prompt11Color() { return Color.WHITE; }
@@ -2987,7 +2987,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt11DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt11Datess",
+			keyName = "prompt11Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -3015,7 +3015,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt11Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt11
@@ -3035,7 +3035,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt11
 	)
 	default String prompt11NpcIds() { return ""; }
@@ -3044,7 +3044,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt11
 	)
 	default String prompt11ItemIds() { return ""; }
@@ -3053,7 +3053,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt11
 	)
 	default int prompt11Duration() { return 0; }
@@ -3062,7 +3062,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt11
 	)
 	default int prompt11Cooldown() { return 0; }
@@ -3080,7 +3080,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt11
 	)
 	default String prompt11ChatPatterns() { return ""; }
@@ -3106,8 +3106,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt11panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt11
 	)
 	default RSAnchorType prompt11PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -3115,8 +3115,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt11PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt11
 	)
 	default int prompt11PanelAnchorX() { return 0; }
@@ -3124,8 +3124,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt11PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt11
 	)
 	default int prompt11PanelAnchorY() { return 0; }
@@ -3134,7 +3134,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt11
 	)
 	default int prompt11ImageId() { return 0; }
@@ -3143,7 +3143,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt11
 	)
 	default Sound prompt11Sound() { return Sound.NONE; }
@@ -3152,7 +3152,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt11
 	)
 	default boolean prompt11ImageOffsetNegative() { return false; }
@@ -3161,8 +3161,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt11PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt11
 	)
 	default int prompt11PanelWidth() { return 140; }
@@ -3171,8 +3171,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt11PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt11
 	)
 	default TextSize prompt11PanelTextSize() { return TextSize.SMALL; }
@@ -3181,7 +3181,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt11PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt11
 	)
@@ -3191,8 +3191,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt11PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt11
 	)
 	default boolean prompt11PanelBorder() { return true; }
@@ -3202,7 +3202,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt11
 	)
 	default boolean prompt11ForceShow() { return false; }
@@ -3238,7 +3238,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt12Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt12
 	)
 	default String prompt12Text() { return ""; }
@@ -3247,7 +3247,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt12Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt12
 	)
 	default Color prompt12Color() { return Color.WHITE; }
@@ -3271,7 +3271,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt12DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt12Datess",
+			keyName = "prompt12Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -3299,7 +3299,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt12Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt12
@@ -3319,7 +3319,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt12
 	)
 	default String prompt12NpcIds() { return ""; }
@@ -3328,7 +3328,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt12
 	)
 	default String prompt12ItemIds() { return ""; }
@@ -3337,7 +3337,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt12
 	)
 	default int prompt12Duration() { return 0; }
@@ -3346,7 +3346,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt12
 	)
 	default int prompt12Cooldown() { return 0; }
@@ -3364,7 +3364,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt12
 	)
 	default String prompt12ChatPatterns() { return ""; }
@@ -3390,8 +3390,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt12panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt12
 	)
 	default RSAnchorType prompt12PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -3399,8 +3399,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt12PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt12
 	)
 	default int prompt12PanelAnchorX() { return 0; }
@@ -3408,8 +3408,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt12PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt12
 	)
 	default int prompt12PanelAnchorY() { return 0; }
@@ -3418,7 +3418,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt12
 	)
 	default int prompt12ImageId() { return 0; }
@@ -3427,7 +3427,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt12
 	)
 	default Sound prompt12Sound() { return Sound.NONE; }
@@ -3436,7 +3436,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt12
 	)
 	default boolean prompt12ImageOffsetNegative() { return false; }
@@ -3445,8 +3445,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt12PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt12
 	)
 	default int prompt12PanelWidth() { return 140; }
@@ -3455,8 +3455,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt12PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt12
 	)
 	default TextSize prompt12PanelTextSize() { return TextSize.SMALL; }
@@ -3465,7 +3465,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt12PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt12
 	)
@@ -3475,8 +3475,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt12PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt12
 	)
 	default boolean prompt12PanelBorder() { return true; }
@@ -3486,7 +3486,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt12
 	)
 	default boolean prompt12ForceShow() { return false; }
@@ -3522,7 +3522,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt13Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt13
 	)
 	default String prompt13Text() { return ""; }
@@ -3531,7 +3531,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt13Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt13
 	)
 	default Color prompt13Color() { return Color.WHITE; }
@@ -3555,7 +3555,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt13DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt13Datess",
+			keyName = "prompt13Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -3583,7 +3583,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt13Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt13
@@ -3603,7 +3603,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt13
 	)
 	default String prompt13NpcIds() { return ""; }
@@ -3612,7 +3612,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt13
 	)
 	default String prompt13ItemIds() { return ""; }
@@ -3621,7 +3621,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt13
 	)
 	default int prompt13Duration() { return 0; }
@@ -3630,7 +3630,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt13
 	)
 	default int prompt13Cooldown() { return 0; }
@@ -3648,7 +3648,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt13
 	)
 	default String prompt13ChatPatterns() { return ""; }
@@ -3674,8 +3674,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt13panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt13
 	)
 	default RSAnchorType prompt13PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -3683,8 +3683,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt13PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt13
 	)
 	default int prompt13PanelAnchorX() { return 0; }
@@ -3692,8 +3692,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt13PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt13
 	)
 	default int prompt13PanelAnchorY() { return 0; }
@@ -3702,7 +3702,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt13
 	)
 	default int prompt13ImageId() { return 0; }
@@ -3711,7 +3711,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt13
 	)
 	default Sound prompt13Sound() { return Sound.NONE; }
@@ -3720,7 +3720,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt13
 	)
 	default boolean prompt13ImageOffsetNegative() { return false; }
@@ -3729,8 +3729,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt13PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt13
 	)
 	default int prompt13PanelWidth() { return 140; }
@@ -3739,8 +3739,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt13PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt13
 	)
 	default TextSize prompt13PanelTextSize() { return TextSize.SMALL; }
@@ -3749,7 +3749,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt13PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt13
 	)
@@ -3759,8 +3759,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt13PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt13
 	)
 	default boolean prompt13PanelBorder() { return true; }
@@ -3770,7 +3770,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt13
 	)
 	default boolean prompt13ForceShow() { return false; }
@@ -3806,7 +3806,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt14Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt14
 	)
 	default String prompt14Text() { return ""; }
@@ -3815,7 +3815,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt14Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt14
 	)
 	default Color prompt14Color() { return Color.WHITE; }
@@ -3839,7 +3839,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt14DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt14Datess",
+			keyName = "prompt14Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -3867,7 +3867,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt14Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt14
@@ -3887,7 +3887,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt14
 	)
 	default String prompt14NpcIds() { return ""; }
@@ -3896,7 +3896,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt14
 	)
 	default String prompt14ItemIds() { return ""; }
@@ -3905,7 +3905,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt14
 	)
 	default int prompt14Duration() { return 0; }
@@ -3914,7 +3914,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt14
 	)
 	default int prompt14Cooldown() { return 0; }
@@ -3932,7 +3932,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt14
 	)
 	default String prompt14ChatPatterns() { return ""; }
@@ -3958,8 +3958,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt14panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt14
 	)
 	default RSAnchorType prompt14PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -3967,8 +3967,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt14PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt14
 	)
 	default int prompt14PanelAnchorX() { return 0; }
@@ -3976,8 +3976,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt14PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt14
 	)
 	default int prompt14PanelAnchorY() { return 0; }
@@ -3986,7 +3986,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt14
 	)
 	default int prompt14ImageId() { return 0; }
@@ -3995,7 +3995,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt14
 	)
 	default Sound prompt14Sound() { return Sound.NONE; }
@@ -4004,7 +4004,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt14
 	)
 	default boolean prompt14ImageOffsetNegative() { return false; }
@@ -4013,8 +4013,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt14PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt14
 	)
 	default int prompt14PanelWidth() { return 140; }
@@ -4023,8 +4023,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt14PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt14
 	)
 	default TextSize prompt14PanelTextSize() { return TextSize.SMALL; }
@@ -4033,7 +4033,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt14PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt14
 	)
@@ -4043,8 +4043,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt14PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt14
 	)
 	default boolean prompt14PanelBorder() { return true; }
@@ -4054,7 +4054,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt14
 	)
 	default boolean prompt14ForceShow() { return false; }
@@ -4090,7 +4090,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt15Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt15
 	)
 	default String prompt15Text() { return ""; }
@@ -4099,7 +4099,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt15Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt15
 	)
 	default Color prompt15Color() { return Color.WHITE; }
@@ -4123,7 +4123,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt15DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt15Datess",
+			keyName = "prompt15Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -4151,7 +4151,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt15Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt15
@@ -4171,7 +4171,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt15
 	)
 	default String prompt15NpcIds() { return ""; }
@@ -4180,7 +4180,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt15
 	)
 	default String prompt15ItemIds() { return ""; }
@@ -4189,7 +4189,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt15
 	)
 	default int prompt15Duration() { return 0; }
@@ -4198,7 +4198,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt15
 	)
 	default int prompt15Cooldown() { return 0; }
@@ -4216,7 +4216,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt15
 	)
 	default String prompt15ChatPatterns() { return ""; }
@@ -4242,8 +4242,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt15panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt15
 	)
 	default RSAnchorType prompt15PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -4251,8 +4251,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt15PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt15
 	)
 	default int prompt15PanelAnchorX() { return 0; }
@@ -4260,8 +4260,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt15PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt15
 	)
 	default int prompt15PanelAnchorY() { return 0; }
@@ -4270,7 +4270,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt15
 	)
 	default int prompt15ImageId() { return 0; }
@@ -4279,7 +4279,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt15
 	)
 	default Sound prompt15Sound() { return Sound.NONE; }
@@ -4288,7 +4288,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt15
 	)
 	default boolean prompt15ImageOffsetNegative() { return false; }
@@ -4297,8 +4297,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt15PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt15
 	)
 	default int prompt15PanelWidth() { return 140; }
@@ -4307,8 +4307,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt15PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt15
 	)
 	default TextSize prompt15PanelTextSize() { return TextSize.SMALL; }
@@ -4317,7 +4317,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt15PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt15
 	)
@@ -4327,8 +4327,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt15PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt15
 	)
 	default boolean prompt15PanelBorder() { return true; }
@@ -4338,7 +4338,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt15
 	)
 	default boolean prompt15ForceShow() { return false; }
@@ -4374,7 +4374,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt16Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt16
 	)
 	default String prompt16Text() { return ""; }
@@ -4383,7 +4383,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt16Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt16
 	)
 	default Color prompt16Color() { return Color.WHITE; }
@@ -4407,7 +4407,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt16DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt16Datess",
+			keyName = "prompt16Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -4435,7 +4435,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt16Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt16
@@ -4455,7 +4455,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt16
 	)
 	default String prompt16NpcIds() { return ""; }
@@ -4464,7 +4464,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt16
 	)
 	default String prompt16ItemIds() { return ""; }
@@ -4473,7 +4473,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt16
 	)
 	default int prompt16Duration() { return 0; }
@@ -4482,7 +4482,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt16
 	)
 	default int prompt16Cooldown() { return 0; }
@@ -4500,7 +4500,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt16
 	)
 	default String prompt16ChatPatterns() { return ""; }
@@ -4526,8 +4526,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt16panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt16
 	)
 	default RSAnchorType prompt16PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -4535,8 +4535,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt16PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt16
 	)
 	default int prompt16PanelAnchorX() { return 0; }
@@ -4544,8 +4544,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt16PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt16
 	)
 	default int prompt16PanelAnchorY() { return 0; }
@@ -4554,7 +4554,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt16
 	)
 	default int prompt16ImageId() { return 0; }
@@ -4563,7 +4563,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt16
 	)
 	default Sound prompt16Sound() { return Sound.NONE; }
@@ -4572,7 +4572,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt16
 	)
 	default boolean prompt16ImageOffsetNegative() { return false; }
@@ -4581,8 +4581,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt16PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt16
 	)
 	default int prompt16PanelWidth() { return 140; }
@@ -4591,8 +4591,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt16PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt16
 	)
 	default TextSize prompt16PanelTextSize() { return TextSize.SMALL; }
@@ -4601,7 +4601,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt16PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt16
 	)
@@ -4611,8 +4611,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt16PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt16
 	)
 	default boolean prompt16PanelBorder() { return true; }
@@ -4622,7 +4622,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt16
 	)
 	default boolean prompt16ForceShow() { return false; }
@@ -4658,7 +4658,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt17Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt17
 	)
 	default String prompt17Text() { return ""; }
@@ -4667,7 +4667,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt17Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt17
 	)
 	default Color prompt17Color() { return Color.WHITE; }
@@ -4691,7 +4691,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt17DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt17Datess",
+			keyName = "prompt17Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -4719,7 +4719,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt17Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt17
@@ -4739,7 +4739,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt17
 	)
 	default String prompt17NpcIds() { return ""; }
@@ -4748,7 +4748,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt17
 	)
 	default String prompt17ItemIds() { return ""; }
@@ -4757,7 +4757,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt17
 	)
 	default int prompt17Duration() { return 0; }
@@ -4766,7 +4766,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt17
 	)
 	default int prompt17Cooldown() { return 0; }
@@ -4784,7 +4784,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt17
 	)
 	default String prompt17ChatPatterns() { return ""; }
@@ -4810,8 +4810,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt17panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt17
 	)
 	default RSAnchorType prompt17PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -4819,8 +4819,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt17PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt17
 	)
 	default int prompt17PanelAnchorX() { return 0; }
@@ -4828,8 +4828,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt17PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt17
 	)
 	default int prompt17PanelAnchorY() { return 0; }
@@ -4838,7 +4838,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt17
 	)
 	default int prompt17ImageId() { return 0; }
@@ -4847,7 +4847,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt17
 	)
 	default Sound prompt17Sound() { return Sound.NONE; }
@@ -4856,7 +4856,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt17
 	)
 	default boolean prompt17ImageOffsetNegative() { return false; }
@@ -4865,8 +4865,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt17PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt17
 	)
 	default int prompt17PanelWidth() { return 140; }
@@ -4875,8 +4875,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt17PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt17
 	)
 	default TextSize prompt17PanelTextSize() { return TextSize.SMALL; }
@@ -4885,7 +4885,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt17PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt17
 	)
@@ -4895,8 +4895,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt17PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt17
 	)
 	default boolean prompt17PanelBorder() { return true; }
@@ -4906,7 +4906,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt17
 	)
 	default boolean prompt17ForceShow() { return false; }
@@ -4942,7 +4942,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt18Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt18
 	)
 	default String prompt18Text() { return ""; }
@@ -4951,7 +4951,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt18Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt18
 	)
 	default Color prompt18Color() { return Color.WHITE; }
@@ -4975,7 +4975,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt18DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt18Datess",
+			keyName = "prompt18Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -5003,7 +5003,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt18Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt18
@@ -5023,7 +5023,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt18
 	)
 	default String prompt18NpcIds() { return ""; }
@@ -5032,7 +5032,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt18
 	)
 	default String prompt18ItemIds() { return ""; }
@@ -5041,7 +5041,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt18
 	)
 	default int prompt18Duration() { return 0; }
@@ -5050,7 +5050,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt18
 	)
 	default int prompt18Cooldown() { return 0; }
@@ -5068,7 +5068,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt18
 	)
 	default String prompt18ChatPatterns() { return ""; }
@@ -5094,8 +5094,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt18panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt18
 	)
 	default RSAnchorType prompt18PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -5103,8 +5103,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt18PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt18
 	)
 	default int prompt18PanelAnchorX() { return 0; }
@@ -5112,8 +5112,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt18PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt18
 	)
 	default int prompt18PanelAnchorY() { return 0; }
@@ -5122,7 +5122,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt18
 	)
 	default int prompt18ImageId() { return 0; }
@@ -5131,7 +5131,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt18
 	)
 	default Sound prompt18Sound() { return Sound.NONE; }
@@ -5140,7 +5140,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt18
 	)
 	default boolean prompt18ImageOffsetNegative() { return false; }
@@ -5149,8 +5149,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt18PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt18
 	)
 	default int prompt18PanelWidth() { return 140; }
@@ -5159,8 +5159,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt18PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt18
 	)
 	default TextSize prompt18PanelTextSize() { return TextSize.SMALL; }
@@ -5169,7 +5169,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt18PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt18
 	)
@@ -5179,8 +5179,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt18PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt18
 	)
 	default boolean prompt18PanelBorder() { return true; }
@@ -5190,7 +5190,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt18
 	)
 	default boolean prompt18ForceShow() { return false; }
@@ -5226,7 +5226,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt19Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt19
 	)
 	default String prompt19Text() { return ""; }
@@ -5235,7 +5235,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt19Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt19
 	)
 	default Color prompt19Color() { return Color.WHITE; }
@@ -5259,7 +5259,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt19DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt19Datess",
+			keyName = "prompt19Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -5287,7 +5287,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt19Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt19
@@ -5307,7 +5307,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt19
 	)
 	default String prompt19NpcIds() { return ""; }
@@ -5316,7 +5316,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt19
 	)
 	default String prompt19ItemIds() { return ""; }
@@ -5325,7 +5325,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt19
 	)
 	default int prompt19Duration() { return 0; }
@@ -5334,7 +5334,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt19
 	)
 	default int prompt19Cooldown() { return 0; }
@@ -5352,7 +5352,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt19
 	)
 	default String prompt19ChatPatterns() { return ""; }
@@ -5378,8 +5378,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt19panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt19
 	)
 	default RSAnchorType prompt19PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -5387,8 +5387,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt19PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt19
 	)
 	default int prompt19PanelAnchorX() { return 0; }
@@ -5396,8 +5396,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt19PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt19
 	)
 	default int prompt19PanelAnchorY() { return 0; }
@@ -5406,7 +5406,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt19
 	)
 	default int prompt19ImageId() { return 0; }
@@ -5415,7 +5415,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt19
 	)
 	default Sound prompt19Sound() { return Sound.NONE; }
@@ -5424,7 +5424,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt19
 	)
 	default boolean prompt19ImageOffsetNegative() { return false; }
@@ -5433,8 +5433,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt19PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt19
 	)
 	default int prompt19PanelWidth() { return 140; }
@@ -5443,8 +5443,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt19PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt19
 	)
 	default TextSize prompt19PanelTextSize() { return TextSize.SMALL; }
@@ -5453,7 +5453,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt19PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt19
 	)
@@ -5463,8 +5463,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt19PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt19
 	)
 	default boolean prompt19PanelBorder() { return true; }
@@ -5474,7 +5474,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt19
 	)
 	default boolean prompt19ForceShow() { return false; }
@@ -5510,7 +5510,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt20Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt20
 	)
 	default String prompt20Text() { return ""; }
@@ -5519,7 +5519,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt20Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt20
 	)
 	default Color prompt20Color() { return Color.WHITE; }
@@ -5543,7 +5543,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt20DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt20Datess",
+			keyName = "prompt20Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -5571,7 +5571,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt20Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt20
@@ -5591,7 +5591,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt20
 	)
 	default String prompt20NpcIds() { return ""; }
@@ -5600,7 +5600,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt20
 	)
 	default String prompt20ItemIds() { return ""; }
@@ -5609,7 +5609,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt20
 	)
 	default int prompt20Duration() { return 0; }
@@ -5618,7 +5618,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt20
 	)
 	default int prompt20Cooldown() { return 0; }
@@ -5636,7 +5636,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt20
 	)
 	default String prompt20ChatPatterns() { return ""; }
@@ -5662,8 +5662,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt20panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt20
 	)
 	default RSAnchorType prompt20PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -5671,8 +5671,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt20PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt20
 	)
 	default int prompt20PanelAnchorX() { return 0; }
@@ -5680,8 +5680,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt20PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt20
 	)
 	default int prompt20PanelAnchorY() { return 0; }
@@ -5690,7 +5690,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt20
 	)
 	default int prompt20ImageId() { return 0; }
@@ -5699,7 +5699,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt20
 	)
 	default Sound prompt20Sound() { return Sound.NONE; }
@@ -5708,7 +5708,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt20
 	)
 	default boolean prompt20ImageOffsetNegative() { return false; }
@@ -5717,8 +5717,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt20PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt20
 	)
 	default int prompt20PanelWidth() { return 140; }
@@ -5727,8 +5727,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt20PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt20
 	)
 	default TextSize prompt20PanelTextSize() { return TextSize.SMALL; }
@@ -5737,7 +5737,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt20PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt20
 	)
@@ -5747,8 +5747,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt20PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt20
 	)
 	default boolean prompt20PanelBorder() { return true; }
@@ -5758,7 +5758,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt20
 	)
 	default boolean prompt20ForceShow() { return false; }
@@ -5794,7 +5794,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt21Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt21
 	)
 	default String prompt21Text() { return ""; }
@@ -5803,7 +5803,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt21Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt21
 	)
 	default Color prompt21Color() { return Color.WHITE; }
@@ -5827,7 +5827,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt21DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt21Datess",
+			keyName = "prompt21Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -5855,7 +5855,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt21Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt21
@@ -5875,7 +5875,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt21
 	)
 	default String prompt21NpcIds() { return ""; }
@@ -5884,7 +5884,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt21
 	)
 	default String prompt21ItemIds() { return ""; }
@@ -5893,7 +5893,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt21
 	)
 	default int prompt21Duration() { return 0; }
@@ -5902,7 +5902,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt21
 	)
 	default int prompt21Cooldown() { return 0; }
@@ -5920,7 +5920,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt21
 	)
 	default String prompt21ChatPatterns() { return ""; }
@@ -5946,8 +5946,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt21panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt21
 	)
 	default RSAnchorType prompt21PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -5955,8 +5955,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt21PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt21
 	)
 	default int prompt21PanelAnchorX() { return 0; }
@@ -5964,8 +5964,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt21PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt21
 	)
 	default int prompt21PanelAnchorY() { return 0; }
@@ -5974,7 +5974,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt21
 	)
 	default int prompt21ImageId() { return 0; }
@@ -5983,7 +5983,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt21
 	)
 	default Sound prompt21Sound() { return Sound.NONE; }
@@ -5992,7 +5992,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt21
 	)
 	default boolean prompt21ImageOffsetNegative() { return false; }
@@ -6001,8 +6001,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt21PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt21
 	)
 	default int prompt21PanelWidth() { return 140; }
@@ -6011,8 +6011,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt21PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt21
 	)
 	default TextSize prompt21PanelTextSize() { return TextSize.SMALL; }
@@ -6021,7 +6021,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt21PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt21
 	)
@@ -6031,8 +6031,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt21PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt21
 	)
 	default boolean prompt21PanelBorder() { return true; }
@@ -6042,7 +6042,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt21
 	)
 	default boolean prompt21ForceShow() { return false; }
@@ -6078,7 +6078,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt22Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt22
 	)
 	default String prompt22Text() { return ""; }
@@ -6087,7 +6087,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt22Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt22
 	)
 	default Color prompt22Color() { return Color.WHITE; }
@@ -6111,7 +6111,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt22DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt22Datess",
+			keyName = "prompt22Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -6139,7 +6139,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt22Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt22
@@ -6159,7 +6159,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt22
 	)
 	default String prompt22NpcIds() { return ""; }
@@ -6168,7 +6168,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt22
 	)
 	default String prompt22ItemIds() { return ""; }
@@ -6177,7 +6177,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt22
 	)
 	default int prompt22Duration() { return 0; }
@@ -6186,7 +6186,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt22
 	)
 	default int prompt22Cooldown() { return 0; }
@@ -6204,7 +6204,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt22
 	)
 	default String prompt22ChatPatterns() { return ""; }
@@ -6230,8 +6230,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt22panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt22
 	)
 	default RSAnchorType prompt22PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -6239,8 +6239,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt22PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt22
 	)
 	default int prompt22PanelAnchorX() { return 0; }
@@ -6248,8 +6248,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt22PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt22
 	)
 	default int prompt22PanelAnchorY() { return 0; }
@@ -6258,7 +6258,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt22
 	)
 	default int prompt22ImageId() { return 0; }
@@ -6267,7 +6267,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt22
 	)
 	default Sound prompt22Sound() { return Sound.NONE; }
@@ -6276,7 +6276,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt22
 	)
 	default boolean prompt22ImageOffsetNegative() { return false; }
@@ -6285,8 +6285,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt22PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt22
 	)
 	default int prompt22PanelWidth() { return 140; }
@@ -6295,8 +6295,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt22PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt22
 	)
 	default TextSize prompt22PanelTextSize() { return TextSize.SMALL; }
@@ -6305,7 +6305,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt22PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt22
 	)
@@ -6315,8 +6315,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt22PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt22
 	)
 	default boolean prompt22PanelBorder() { return true; }
@@ -6326,7 +6326,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt22
 	)
 	default boolean prompt22ForceShow() { return false; }
@@ -6362,7 +6362,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt23Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt23
 	)
 	default String prompt23Text() { return ""; }
@@ -6371,7 +6371,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt23Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt23
 	)
 	default Color prompt23Color() { return Color.WHITE; }
@@ -6395,7 +6395,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt23DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt23Datess",
+			keyName = "prompt23Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -6423,7 +6423,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt23Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt23
@@ -6443,7 +6443,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt23
 	)
 	default String prompt23NpcIds() { return ""; }
@@ -6452,7 +6452,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt23
 	)
 	default String prompt23ItemIds() { return ""; }
@@ -6461,7 +6461,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt23
 	)
 	default int prompt23Duration() { return 0; }
@@ -6470,7 +6470,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt23
 	)
 	default int prompt23Cooldown() { return 0; }
@@ -6488,7 +6488,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt23
 	)
 	default String prompt23ChatPatterns() { return ""; }
@@ -6514,8 +6514,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt23panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt23
 	)
 	default RSAnchorType prompt23PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -6523,8 +6523,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt23PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt23
 	)
 	default int prompt23PanelAnchorX() { return 0; }
@@ -6532,8 +6532,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt23PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt23
 	)
 	default int prompt23PanelAnchorY() { return 0; }
@@ -6542,7 +6542,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt23
 	)
 	default int prompt23ImageId() { return 0; }
@@ -6551,7 +6551,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt23
 	)
 	default Sound prompt23Sound() { return Sound.NONE; }
@@ -6560,7 +6560,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt23
 	)
 	default boolean prompt23ImageOffsetNegative() { return false; }
@@ -6569,8 +6569,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt23PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt23
 	)
 	default int prompt23PanelWidth() { return 140; }
@@ -6579,8 +6579,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt23PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt23
 	)
 	default TextSize prompt23PanelTextSize() { return TextSize.SMALL; }
@@ -6589,7 +6589,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt23PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt23
 	)
@@ -6599,8 +6599,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt23PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt23
 	)
 	default boolean prompt23PanelBorder() { return true; }
@@ -6610,7 +6610,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt23
 	)
 	default boolean prompt23ForceShow() { return false; }
@@ -6646,7 +6646,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt24Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt24
 	)
 	default String prompt24Text() { return ""; }
@@ -6655,7 +6655,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt24Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt24
 	)
 	default Color prompt24Color() { return Color.WHITE; }
@@ -6679,7 +6679,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt24DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt24Datess",
+			keyName = "prompt24Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -6707,7 +6707,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt24Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt24
@@ -6727,7 +6727,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt24
 	)
 	default String prompt24NpcIds() { return ""; }
@@ -6736,7 +6736,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt24
 	)
 	default String prompt24ItemIds() { return ""; }
@@ -6745,7 +6745,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt24
 	)
 	default int prompt24Duration() { return 0; }
@@ -6754,7 +6754,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt24
 	)
 	default int prompt24Cooldown() { return 0; }
@@ -6772,7 +6772,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt24
 	)
 	default String prompt24ChatPatterns() { return ""; }
@@ -6798,8 +6798,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt24panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt24
 	)
 	default RSAnchorType prompt24PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -6807,8 +6807,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt24PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt24
 	)
 	default int prompt24PanelAnchorX() { return 0; }
@@ -6816,8 +6816,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt24PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt24
 	)
 	default int prompt24PanelAnchorY() { return 0; }
@@ -6826,7 +6826,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt24
 	)
 	default int prompt24ImageId() { return 0; }
@@ -6835,7 +6835,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt24
 	)
 	default Sound prompt24Sound() { return Sound.NONE; }
@@ -6844,7 +6844,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt24
 	)
 	default boolean prompt24ImageOffsetNegative() { return false; }
@@ -6853,8 +6853,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt24PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt24
 	)
 	default int prompt24PanelWidth() { return 140; }
@@ -6863,8 +6863,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt24PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt24
 	)
 	default TextSize prompt24PanelTextSize() { return TextSize.SMALL; }
@@ -6873,7 +6873,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt24PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt24
 	)
@@ -6883,8 +6883,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt24PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt24
 	)
 	default boolean prompt24PanelBorder() { return true; }
@@ -6894,7 +6894,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt24
 	)
 	default boolean prompt24ForceShow() { return false; }
@@ -6930,7 +6930,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt25Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt25
 	)
 	default String prompt25Text() { return ""; }
@@ -6939,7 +6939,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt25Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt25
 	)
 	default Color prompt25Color() { return Color.WHITE; }
@@ -6963,7 +6963,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt25DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt25Datess",
+			keyName = "prompt25Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -6991,7 +6991,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt25Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt25
@@ -7011,7 +7011,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt25
 	)
 	default String prompt25NpcIds() { return ""; }
@@ -7020,7 +7020,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt25
 	)
 	default String prompt25ItemIds() { return ""; }
@@ -7029,7 +7029,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt25
 	)
 	default int prompt25Duration() { return 0; }
@@ -7038,7 +7038,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt25
 	)
 	default int prompt25Cooldown() { return 0; }
@@ -7056,7 +7056,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt25
 	)
 	default String prompt25ChatPatterns() { return ""; }
@@ -7082,8 +7082,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt25panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt25
 	)
 	default RSAnchorType prompt25PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -7091,8 +7091,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt25PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt25
 	)
 	default int prompt25PanelAnchorX() { return 0; }
@@ -7100,8 +7100,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt25PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt25
 	)
 	default int prompt25PanelAnchorY() { return 0; }
@@ -7110,7 +7110,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt25
 	)
 	default int prompt25ImageId() { return 0; }
@@ -7119,7 +7119,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt25
 	)
 	default Sound prompt25Sound() { return Sound.NONE; }
@@ -7128,7 +7128,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt25
 	)
 	default boolean prompt25ImageOffsetNegative() { return false; }
@@ -7137,8 +7137,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt25PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt25
 	)
 	default int prompt25PanelWidth() { return 140; }
@@ -7147,8 +7147,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt25PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt25
 	)
 	default TextSize prompt25PanelTextSize() { return TextSize.SMALL; }
@@ -7157,7 +7157,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt25PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt25
 	)
@@ -7167,8 +7167,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt25PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt25
 	)
 	default boolean prompt25PanelBorder() { return true; }
@@ -7178,7 +7178,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt25
 	)
 	default boolean prompt25ForceShow() { return false; }
@@ -7214,7 +7214,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt26Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt26
 	)
 	default String prompt26Text() { return ""; }
@@ -7223,7 +7223,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt26Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt26
 	)
 	default Color prompt26Color() { return Color.WHITE; }
@@ -7247,7 +7247,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt26DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt26Datess",
+			keyName = "prompt26Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -7275,7 +7275,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt26Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt26
@@ -7295,7 +7295,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt26
 	)
 	default String prompt26NpcIds() { return ""; }
@@ -7304,7 +7304,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt26
 	)
 	default String prompt26ItemIds() { return ""; }
@@ -7313,7 +7313,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt26
 	)
 	default int prompt26Duration() { return 0; }
@@ -7322,7 +7322,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt26
 	)
 	default int prompt26Cooldown() { return 0; }
@@ -7340,7 +7340,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt26
 	)
 	default String prompt26ChatPatterns() { return ""; }
@@ -7366,8 +7366,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt26panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt26
 	)
 	default RSAnchorType prompt26PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -7375,8 +7375,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt26PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt26
 	)
 	default int prompt26PanelAnchorX() { return 0; }
@@ -7384,8 +7384,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt26PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt26
 	)
 	default int prompt26PanelAnchorY() { return 0; }
@@ -7394,7 +7394,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt26
 	)
 	default int prompt26ImageId() { return 0; }
@@ -7403,7 +7403,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt26
 	)
 	default Sound prompt26Sound() { return Sound.NONE; }
@@ -7412,7 +7412,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt26
 	)
 	default boolean prompt26ImageOffsetNegative() { return false; }
@@ -7421,8 +7421,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt26PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt26
 	)
 	default int prompt26PanelWidth() { return 140; }
@@ -7431,8 +7431,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt26PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt26
 	)
 	default TextSize prompt26PanelTextSize() { return TextSize.SMALL; }
@@ -7441,7 +7441,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt26PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt26
 	)
@@ -7451,8 +7451,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt26PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt26
 	)
 	default boolean prompt26PanelBorder() { return true; }
@@ -7462,7 +7462,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt26
 	)
 	default boolean prompt26ForceShow() { return false; }
@@ -7498,7 +7498,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt27Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt27
 	)
 	default String prompt27Text() { return ""; }
@@ -7507,7 +7507,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt27Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt27
 	)
 	default Color prompt27Color() { return Color.WHITE; }
@@ -7531,7 +7531,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt27DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt27Datess",
+			keyName = "prompt27Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -7559,7 +7559,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt27Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt27
@@ -7579,7 +7579,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt27
 	)
 	default String prompt27NpcIds() { return ""; }
@@ -7588,7 +7588,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt27
 	)
 	default String prompt27ItemIds() { return ""; }
@@ -7597,7 +7597,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt27
 	)
 	default int prompt27Duration() { return 0; }
@@ -7606,7 +7606,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt27
 	)
 	default int prompt27Cooldown() { return 0; }
@@ -7624,7 +7624,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt27
 	)
 	default String prompt27ChatPatterns() { return ""; }
@@ -7650,8 +7650,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt27panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt27
 	)
 	default RSAnchorType prompt27PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -7659,8 +7659,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt27PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt27
 	)
 	default int prompt27PanelAnchorX() { return 0; }
@@ -7668,8 +7668,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt27PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt27
 	)
 	default int prompt27PanelAnchorY() { return 0; }
@@ -7678,7 +7678,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt27
 	)
 	default int prompt27ImageId() { return 0; }
@@ -7687,7 +7687,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt27
 	)
 	default Sound prompt27Sound() { return Sound.NONE; }
@@ -7696,7 +7696,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt27
 	)
 	default boolean prompt27ImageOffsetNegative() { return false; }
@@ -7705,8 +7705,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt27PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt27
 	)
 	default int prompt27PanelWidth() { return 140; }
@@ -7715,8 +7715,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt27PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt27
 	)
 	default TextSize prompt27PanelTextSize() { return TextSize.SMALL; }
@@ -7725,7 +7725,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt27PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt27
 	)
@@ -7735,8 +7735,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt27PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt27
 	)
 	default boolean prompt27PanelBorder() { return true; }
@@ -7746,7 +7746,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt27
 	)
 	default boolean prompt27ForceShow() { return false; }
@@ -7782,7 +7782,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt28Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt28
 	)
 	default String prompt28Text() { return ""; }
@@ -7791,7 +7791,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt28Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt28
 	)
 	default Color prompt28Color() { return Color.WHITE; }
@@ -7815,7 +7815,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt28DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt28Datess",
+			keyName = "prompt28Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -7843,7 +7843,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt28Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt28
@@ -7863,7 +7863,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt28
 	)
 	default String prompt28NpcIds() { return ""; }
@@ -7872,7 +7872,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt28
 	)
 	default String prompt28ItemIds() { return ""; }
@@ -7881,7 +7881,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt28
 	)
 	default int prompt28Duration() { return 0; }
@@ -7890,7 +7890,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt28
 	)
 	default int prompt28Cooldown() { return 0; }
@@ -7908,7 +7908,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt28
 	)
 	default String prompt28ChatPatterns() { return ""; }
@@ -7934,8 +7934,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt28panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt28
 	)
 	default RSAnchorType prompt28PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -7943,8 +7943,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt28PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt28
 	)
 	default int prompt28PanelAnchorX() { return 0; }
@@ -7952,8 +7952,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt28PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt28
 	)
 	default int prompt28PanelAnchorY() { return 0; }
@@ -7962,7 +7962,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt28
 	)
 	default int prompt28ImageId() { return 0; }
@@ -7971,7 +7971,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt28
 	)
 	default Sound prompt28Sound() { return Sound.NONE; }
@@ -7980,7 +7980,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt28
 	)
 	default boolean prompt28ImageOffsetNegative() { return false; }
@@ -7989,8 +7989,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt28PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt28
 	)
 	default int prompt28PanelWidth() { return 140; }
@@ -7999,8 +7999,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt28PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt28
 	)
 	default TextSize prompt28PanelTextSize() { return TextSize.SMALL; }
@@ -8009,7 +8009,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt28PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt28
 	)
@@ -8019,8 +8019,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt28PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt28
 	)
 	default boolean prompt28PanelBorder() { return true; }
@@ -8030,7 +8030,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt28
 	)
 	default boolean prompt28ForceShow() { return false; }
@@ -8066,7 +8066,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt29Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt29
 	)
 	default String prompt29Text() { return ""; }
@@ -8075,7 +8075,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt29Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt29
 	)
 	default Color prompt29Color() { return Color.WHITE; }
@@ -8099,7 +8099,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt29DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt29Datess",
+			keyName = "prompt29Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -8127,7 +8127,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt29Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt29
@@ -8147,7 +8147,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt29
 	)
 	default String prompt29NpcIds() { return ""; }
@@ -8156,7 +8156,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt29
 	)
 	default String prompt29ItemIds() { return ""; }
@@ -8165,7 +8165,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt29
 	)
 	default int prompt29Duration() { return 0; }
@@ -8174,7 +8174,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt29
 	)
 	default int prompt29Cooldown() { return 0; }
@@ -8192,7 +8192,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt29
 	)
 	default String prompt29ChatPatterns() { return ""; }
@@ -8218,8 +8218,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt29panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt29
 	)
 	default RSAnchorType prompt29PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -8227,8 +8227,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt29PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt29
 	)
 	default int prompt29PanelAnchorX() { return 0; }
@@ -8236,8 +8236,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt29PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt29
 	)
 	default int prompt29PanelAnchorY() { return 0; }
@@ -8246,7 +8246,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt29
 	)
 	default int prompt29ImageId() { return 0; }
@@ -8255,7 +8255,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt29
 	)
 	default Sound prompt29Sound() { return Sound.NONE; }
@@ -8264,7 +8264,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt29
 	)
 	default boolean prompt29ImageOffsetNegative() { return false; }
@@ -8273,8 +8273,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt29PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt29
 	)
 	default int prompt29PanelWidth() { return 140; }
@@ -8283,8 +8283,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt29PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt29
 	)
 	default TextSize prompt29PanelTextSize() { return TextSize.SMALL; }
@@ -8293,7 +8293,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt29PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt29
 	)
@@ -8303,8 +8303,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt29PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt29
 	)
 	default boolean prompt29PanelBorder() { return true; }
@@ -8314,7 +8314,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt29
 	)
 	default boolean prompt29ForceShow() { return false; }
@@ -8350,7 +8350,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt30Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt30
 	)
 	default String prompt30Text() { return ""; }
@@ -8359,7 +8359,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt30Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt30
 	)
 	default Color prompt30Color() { return Color.WHITE; }
@@ -8383,7 +8383,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt30DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt30Datess",
+			keyName = "prompt30Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -8411,7 +8411,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt30Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt30
@@ -8431,7 +8431,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt30
 	)
 	default String prompt30NpcIds() { return ""; }
@@ -8440,7 +8440,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt30
 	)
 	default String prompt30ItemIds() { return ""; }
@@ -8449,7 +8449,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt30
 	)
 	default int prompt30Duration() { return 0; }
@@ -8458,7 +8458,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt30
 	)
 	default int prompt30Cooldown() { return 0; }
@@ -8476,7 +8476,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt30
 	)
 	default String prompt30ChatPatterns() { return ""; }
@@ -8502,8 +8502,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt30panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt30
 	)
 	default RSAnchorType prompt30PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -8511,8 +8511,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt30PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt30
 	)
 	default int prompt30PanelAnchorX() { return 0; }
@@ -8520,8 +8520,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt30PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt30
 	)
 	default int prompt30PanelAnchorY() { return 0; }
@@ -8530,7 +8530,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt30
 	)
 	default int prompt30ImageId() { return 0; }
@@ -8539,7 +8539,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt30
 	)
 	default Sound prompt30Sound() { return Sound.NONE; }
@@ -8548,7 +8548,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt30
 	)
 	default boolean prompt30ImageOffsetNegative() { return false; }
@@ -8557,8 +8557,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt30PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt30
 	)
 	default int prompt30PanelWidth() { return 140; }
@@ -8567,8 +8567,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt30PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt30
 	)
 	default TextSize prompt30PanelTextSize() { return TextSize.SMALL; }
@@ -8577,7 +8577,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt30PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt30
 	)
@@ -8587,8 +8587,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt30PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt30
 	)
 	default boolean prompt30PanelBorder() { return true; }
@@ -8598,7 +8598,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt30
 	)
 	default boolean prompt30ForceShow() { return false; }
@@ -8634,7 +8634,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt31Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt31
 	)
 	default String prompt31Text() { return ""; }
@@ -8643,7 +8643,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt31Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt31
 	)
 	default Color prompt31Color() { return Color.WHITE; }
@@ -8667,7 +8667,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt31DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt31Datess",
+			keyName = "prompt31Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -8695,7 +8695,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt31Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt31
@@ -8715,7 +8715,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt31
 	)
 	default String prompt31NpcIds() { return ""; }
@@ -8724,7 +8724,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt31
 	)
 	default String prompt31ItemIds() { return ""; }
@@ -8733,7 +8733,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt31
 	)
 	default int prompt31Duration() { return 0; }
@@ -8742,7 +8742,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt31
 	)
 	default int prompt31Cooldown() { return 0; }
@@ -8760,7 +8760,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt31
 	)
 	default String prompt31ChatPatterns() { return ""; }
@@ -8786,8 +8786,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt31panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt31
 	)
 	default RSAnchorType prompt31PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -8795,8 +8795,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt31PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt31
 	)
 	default int prompt31PanelAnchorX() { return 0; }
@@ -8804,8 +8804,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt31PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt31
 	)
 	default int prompt31PanelAnchorY() { return 0; }
@@ -8814,7 +8814,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt31
 	)
 	default int prompt31ImageId() { return 0; }
@@ -8823,7 +8823,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt31
 	)
 	default Sound prompt31Sound() { return Sound.NONE; }
@@ -8832,7 +8832,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt31
 	)
 	default boolean prompt31ImageOffsetNegative() { return false; }
@@ -8841,8 +8841,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt31PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt31
 	)
 	default int prompt31PanelWidth() { return 140; }
@@ -8851,8 +8851,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt31PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt31
 	)
 	default TextSize prompt31PanelTextSize() { return TextSize.SMALL; }
@@ -8861,7 +8861,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt31PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt31
 	)
@@ -8871,8 +8871,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt31PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt31
 	)
 	default boolean prompt31PanelBorder() { return true; }
@@ -8882,7 +8882,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt31
 	)
 	default boolean prompt31ForceShow() { return false; }
@@ -8918,7 +8918,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt32Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt32
 	)
 	default String prompt32Text() { return ""; }
@@ -8927,7 +8927,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt32Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt32
 	)
 	default Color prompt32Color() { return Color.WHITE; }
@@ -8951,7 +8951,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt32DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt32Datess",
+			keyName = "prompt32Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -8979,7 +8979,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt32Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt32
@@ -8999,7 +8999,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt32
 	)
 	default String prompt32NpcIds() { return ""; }
@@ -9008,7 +9008,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt32
 	)
 	default String prompt32ItemIds() { return ""; }
@@ -9017,7 +9017,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt32
 	)
 	default int prompt32Duration() { return 0; }
@@ -9026,7 +9026,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt32
 	)
 	default int prompt32Cooldown() { return 0; }
@@ -9044,7 +9044,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt32
 	)
 	default String prompt32ChatPatterns() { return ""; }
@@ -9070,8 +9070,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt32panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt32
 	)
 	default RSAnchorType prompt32PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -9079,8 +9079,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt32PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt32
 	)
 	default int prompt32PanelAnchorX() { return 0; }
@@ -9088,8 +9088,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt32PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt32
 	)
 	default int prompt32PanelAnchorY() { return 0; }
@@ -9098,7 +9098,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt32
 	)
 	default int prompt32ImageId() { return 0; }
@@ -9107,7 +9107,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt32
 	)
 	default Sound prompt32Sound() { return Sound.NONE; }
@@ -9116,7 +9116,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt32
 	)
 	default boolean prompt32ImageOffsetNegative() { return false; }
@@ -9125,8 +9125,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt32PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt32
 	)
 	default int prompt32PanelWidth() { return 140; }
@@ -9135,8 +9135,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt32PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt32
 	)
 	default TextSize prompt32PanelTextSize() { return TextSize.SMALL; }
@@ -9145,7 +9145,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt32PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt32
 	)
@@ -9155,8 +9155,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt32PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt32
 	)
 	default boolean prompt32PanelBorder() { return true; }
@@ -9166,7 +9166,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt32
 	)
 	default boolean prompt32ForceShow() { return false; }
@@ -9202,7 +9202,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt33Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt33
 	)
 	default String prompt33Text() { return ""; }
@@ -9211,7 +9211,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt33Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt33
 	)
 	default Color prompt33Color() { return Color.WHITE; }
@@ -9235,7 +9235,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt33DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt33Datess",
+			keyName = "prompt33Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -9263,7 +9263,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt33Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt33
@@ -9283,7 +9283,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt33
 	)
 	default String prompt33NpcIds() { return ""; }
@@ -9292,7 +9292,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt33
 	)
 	default String prompt33ItemIds() { return ""; }
@@ -9301,7 +9301,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt33
 	)
 	default int prompt33Duration() { return 0; }
@@ -9310,7 +9310,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt33
 	)
 	default int prompt33Cooldown() { return 0; }
@@ -9328,7 +9328,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt33
 	)
 	default String prompt33ChatPatterns() { return ""; }
@@ -9354,8 +9354,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt33panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt33
 	)
 	default RSAnchorType prompt33PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -9363,8 +9363,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt33PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt33
 	)
 	default int prompt33PanelAnchorX() { return 0; }
@@ -9372,8 +9372,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt33PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt33
 	)
 	default int prompt33PanelAnchorY() { return 0; }
@@ -9382,7 +9382,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt33
 	)
 	default int prompt33ImageId() { return 0; }
@@ -9391,7 +9391,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt33
 	)
 	default Sound prompt33Sound() { return Sound.NONE; }
@@ -9400,7 +9400,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt33
 	)
 	default boolean prompt33ImageOffsetNegative() { return false; }
@@ -9409,8 +9409,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt33PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt33
 	)
 	default int prompt33PanelWidth() { return 140; }
@@ -9419,8 +9419,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt33PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt33
 	)
 	default TextSize prompt33PanelTextSize() { return TextSize.SMALL; }
@@ -9429,7 +9429,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt33PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt33
 	)
@@ -9439,8 +9439,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt33PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt33
 	)
 	default boolean prompt33PanelBorder() { return true; }
@@ -9450,7 +9450,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt33
 	)
 	default boolean prompt33ForceShow() { return false; }
@@ -9486,7 +9486,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt34Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt34
 	)
 	default String prompt34Text() { return ""; }
@@ -9495,7 +9495,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt34Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt34
 	)
 	default Color prompt34Color() { return Color.WHITE; }
@@ -9519,7 +9519,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt34DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt34Datess",
+			keyName = "prompt34Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -9547,7 +9547,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt34Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt34
@@ -9567,7 +9567,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt34
 	)
 	default String prompt34NpcIds() { return ""; }
@@ -9576,7 +9576,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt34
 	)
 	default String prompt34ItemIds() { return ""; }
@@ -9585,7 +9585,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt34
 	)
 	default int prompt34Duration() { return 0; }
@@ -9594,7 +9594,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt34
 	)
 	default int prompt34Cooldown() { return 0; }
@@ -9612,7 +9612,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt34
 	)
 	default String prompt34ChatPatterns() { return ""; }
@@ -9638,8 +9638,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt34panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt34
 	)
 	default RSAnchorType prompt34PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -9647,8 +9647,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt34PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt34
 	)
 	default int prompt34PanelAnchorX() { return 0; }
@@ -9656,8 +9656,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt34PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt34
 	)
 	default int prompt34PanelAnchorY() { return 0; }
@@ -9666,7 +9666,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt34
 	)
 	default int prompt34ImageId() { return 0; }
@@ -9675,7 +9675,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt34
 	)
 	default Sound prompt34Sound() { return Sound.NONE; }
@@ -9684,7 +9684,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt34
 	)
 	default boolean prompt34ImageOffsetNegative() { return false; }
@@ -9693,8 +9693,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt34PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt34
 	)
 	default int prompt34PanelWidth() { return 140; }
@@ -9703,8 +9703,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt34PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt34
 	)
 	default TextSize prompt34PanelTextSize() { return TextSize.SMALL; }
@@ -9713,7 +9713,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt34PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt34
 	)
@@ -9723,8 +9723,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt34PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt34
 	)
 	default boolean prompt34PanelBorder() { return true; }
@@ -9734,7 +9734,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt34
 	)
 	default boolean prompt34ForceShow() { return false; }
@@ -9770,7 +9770,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt35Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt35
 	)
 	default String prompt35Text() { return ""; }
@@ -9779,7 +9779,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt35Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt35
 	)
 	default Color prompt35Color() { return Color.WHITE; }
@@ -9803,7 +9803,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt35DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt35Datess",
+			keyName = "prompt35Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -9831,7 +9831,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt35Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt35
@@ -9851,7 +9851,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt35
 	)
 	default String prompt35NpcIds() { return ""; }
@@ -9860,7 +9860,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt35
 	)
 	default String prompt35ItemIds() { return ""; }
@@ -9869,7 +9869,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt35
 	)
 	default int prompt35Duration() { return 0; }
@@ -9878,7 +9878,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt35
 	)
 	default int prompt35Cooldown() { return 0; }
@@ -9896,7 +9896,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt35
 	)
 	default String prompt35ChatPatterns() { return ""; }
@@ -9922,8 +9922,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt35panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt35
 	)
 	default RSAnchorType prompt35PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -9931,8 +9931,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt35PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt35
 	)
 	default int prompt35PanelAnchorX() { return 0; }
@@ -9940,8 +9940,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt35PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt35
 	)
 	default int prompt35PanelAnchorY() { return 0; }
@@ -9950,7 +9950,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt35
 	)
 	default int prompt35ImageId() { return 0; }
@@ -9959,7 +9959,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt35
 	)
 	default Sound prompt35Sound() { return Sound.NONE; }
@@ -9968,7 +9968,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt35
 	)
 	default boolean prompt35ImageOffsetNegative() { return false; }
@@ -9977,8 +9977,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt35PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt35
 	)
 	default int prompt35PanelWidth() { return 140; }
@@ -9987,8 +9987,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt35PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt35
 	)
 	default TextSize prompt35PanelTextSize() { return TextSize.SMALL; }
@@ -9997,7 +9997,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt35PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt35
 	)
@@ -10007,8 +10007,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt35PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt35
 	)
 	default boolean prompt35PanelBorder() { return true; }
@@ -10018,7 +10018,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt35
 	)
 	default boolean prompt35ForceShow() { return false; }
@@ -10054,7 +10054,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt36Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt36
 	)
 	default String prompt36Text() { return ""; }
@@ -10063,7 +10063,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt36Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt36
 	)
 	default Color prompt36Color() { return Color.WHITE; }
@@ -10087,7 +10087,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt36DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt36Datess",
+			keyName = "prompt36Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -10115,7 +10115,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt36Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt36
@@ -10135,7 +10135,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt36
 	)
 	default String prompt36NpcIds() { return ""; }
@@ -10144,7 +10144,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt36
 	)
 	default String prompt36ItemIds() { return ""; }
@@ -10153,7 +10153,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt36
 	)
 	default int prompt36Duration() { return 0; }
@@ -10162,7 +10162,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt36
 	)
 	default int prompt36Cooldown() { return 0; }
@@ -10180,7 +10180,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt36
 	)
 	default String prompt36ChatPatterns() { return ""; }
@@ -10206,8 +10206,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt36panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt36
 	)
 	default RSAnchorType prompt36PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -10215,8 +10215,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt36PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt36
 	)
 	default int prompt36PanelAnchorX() { return 0; }
@@ -10224,8 +10224,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt36PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt36
 	)
 	default int prompt36PanelAnchorY() { return 0; }
@@ -10234,7 +10234,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt36
 	)
 	default int prompt36ImageId() { return 0; }
@@ -10243,7 +10243,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt36
 	)
 	default Sound prompt36Sound() { return Sound.NONE; }
@@ -10252,7 +10252,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt36
 	)
 	default boolean prompt36ImageOffsetNegative() { return false; }
@@ -10261,8 +10261,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt36PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt36
 	)
 	default int prompt36PanelWidth() { return 140; }
@@ -10271,8 +10271,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt36PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt36
 	)
 	default TextSize prompt36PanelTextSize() { return TextSize.SMALL; }
@@ -10281,7 +10281,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt36PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt36
 	)
@@ -10291,8 +10291,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt36PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt36
 	)
 	default boolean prompt36PanelBorder() { return true; }
@@ -10302,7 +10302,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt36
 	)
 	default boolean prompt36ForceShow() { return false; }
@@ -10338,7 +10338,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt37Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt37
 	)
 	default String prompt37Text() { return ""; }
@@ -10347,7 +10347,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt37Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt37
 	)
 	default Color prompt37Color() { return Color.WHITE; }
@@ -10371,7 +10371,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt37DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt37Datess",
+			keyName = "prompt37Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -10399,7 +10399,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt37Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt37
@@ -10419,7 +10419,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt37
 	)
 	default String prompt37NpcIds() { return ""; }
@@ -10428,7 +10428,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt37
 	)
 	default String prompt37ItemIds() { return ""; }
@@ -10437,7 +10437,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt37
 	)
 	default int prompt37Duration() { return 0; }
@@ -10446,7 +10446,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt37
 	)
 	default int prompt37Cooldown() { return 0; }
@@ -10464,7 +10464,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt37
 	)
 	default String prompt37ChatPatterns() { return ""; }
@@ -10490,8 +10490,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt37panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt37
 	)
 	default RSAnchorType prompt37PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -10499,8 +10499,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt37PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt37
 	)
 	default int prompt37PanelAnchorX() { return 0; }
@@ -10508,8 +10508,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt37PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt37
 	)
 	default int prompt37PanelAnchorY() { return 0; }
@@ -10518,7 +10518,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt37
 	)
 	default int prompt37ImageId() { return 0; }
@@ -10527,7 +10527,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt37
 	)
 	default Sound prompt37Sound() { return Sound.NONE; }
@@ -10536,7 +10536,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt37
 	)
 	default boolean prompt37ImageOffsetNegative() { return false; }
@@ -10545,8 +10545,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt37PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt37
 	)
 	default int prompt37PanelWidth() { return 140; }
@@ -10555,8 +10555,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt37PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt37
 	)
 	default TextSize prompt37PanelTextSize() { return TextSize.SMALL; }
@@ -10565,7 +10565,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt37PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt37
 	)
@@ -10575,8 +10575,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt37PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt37
 	)
 	default boolean prompt37PanelBorder() { return true; }
@@ -10586,7 +10586,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt37
 	)
 	default boolean prompt37ForceShow() { return false; }
@@ -10622,7 +10622,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt38Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt38
 	)
 	default String prompt38Text() { return ""; }
@@ -10631,7 +10631,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt38Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt38
 	)
 	default Color prompt38Color() { return Color.WHITE; }
@@ -10655,7 +10655,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt38DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt38Datess",
+			keyName = "prompt38Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -10683,7 +10683,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt38Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt38
@@ -10703,7 +10703,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt38
 	)
 	default String prompt38NpcIds() { return ""; }
@@ -10712,7 +10712,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt38
 	)
 	default String prompt38ItemIds() { return ""; }
@@ -10721,7 +10721,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt38
 	)
 	default int prompt38Duration() { return 0; }
@@ -10730,7 +10730,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt38
 	)
 	default int prompt38Cooldown() { return 0; }
@@ -10748,7 +10748,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt38
 	)
 	default String prompt38ChatPatterns() { return ""; }
@@ -10774,8 +10774,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt38panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt38
 	)
 	default RSAnchorType prompt38PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -10783,8 +10783,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt38PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt38
 	)
 	default int prompt38PanelAnchorX() { return 0; }
@@ -10792,8 +10792,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt38PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt38
 	)
 	default int prompt38PanelAnchorY() { return 0; }
@@ -10802,7 +10802,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt38
 	)
 	default int prompt38ImageId() { return 0; }
@@ -10811,7 +10811,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt38
 	)
 	default Sound prompt38Sound() { return Sound.NONE; }
@@ -10820,7 +10820,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt38
 	)
 	default boolean prompt38ImageOffsetNegative() { return false; }
@@ -10829,8 +10829,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt38PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt38
 	)
 	default int prompt38PanelWidth() { return 140; }
@@ -10839,8 +10839,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt38PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt38
 	)
 	default TextSize prompt38PanelTextSize() { return TextSize.SMALL; }
@@ -10849,7 +10849,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt38PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt38
 	)
@@ -10859,8 +10859,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt38PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt38
 	)
 	default boolean prompt38PanelBorder() { return true; }
@@ -10870,7 +10870,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt38
 	)
 	default boolean prompt38ForceShow() { return false; }
@@ -10906,7 +10906,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt39Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt39
 	)
 	default String prompt39Text() { return ""; }
@@ -10915,7 +10915,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt39Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt39
 	)
 	default Color prompt39Color() { return Color.WHITE; }
@@ -10939,7 +10939,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt39DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt39Datess",
+			keyName = "prompt39Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -10967,7 +10967,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt39Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt39
@@ -10987,7 +10987,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt39
 	)
 	default String prompt39NpcIds() { return ""; }
@@ -10996,7 +10996,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt39
 	)
 	default String prompt39ItemIds() { return ""; }
@@ -11005,7 +11005,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt39
 	)
 	default int prompt39Duration() { return 0; }
@@ -11014,7 +11014,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt39
 	)
 	default int prompt39Cooldown() { return 0; }
@@ -11032,7 +11032,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt39
 	)
 	default String prompt39ChatPatterns() { return ""; }
@@ -11058,8 +11058,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt39panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt39
 	)
 	default RSAnchorType prompt39PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -11067,8 +11067,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt39PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt39
 	)
 	default int prompt39PanelAnchorX() { return 0; }
@@ -11076,8 +11076,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt39PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt39
 	)
 	default int prompt39PanelAnchorY() { return 0; }
@@ -11086,7 +11086,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt39
 	)
 	default int prompt39ImageId() { return 0; }
@@ -11095,7 +11095,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt39
 	)
 	default Sound prompt39Sound() { return Sound.NONE; }
@@ -11104,7 +11104,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt39
 	)
 	default boolean prompt39ImageOffsetNegative() { return false; }
@@ -11113,8 +11113,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt39PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt39
 	)
 	default int prompt39PanelWidth() { return 140; }
@@ -11123,8 +11123,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt39PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt39
 	)
 	default TextSize prompt39PanelTextSize() { return TextSize.SMALL; }
@@ -11133,7 +11133,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt39PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt39
 	)
@@ -11143,8 +11143,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt39PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt39
 	)
 	default boolean prompt39PanelBorder() { return true; }
@@ -11154,7 +11154,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt39
 	)
 	default boolean prompt39ForceShow() { return false; }
@@ -11190,7 +11190,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt40Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt40
 	)
 	default String prompt40Text() { return ""; }
@@ -11199,7 +11199,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt40Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt40
 	)
 	default Color prompt40Color() { return Color.WHITE; }
@@ -11223,7 +11223,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt40DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt40Datess",
+			keyName = "prompt40Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -11251,7 +11251,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt40Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt40
@@ -11271,7 +11271,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt40
 	)
 	default String prompt40NpcIds() { return ""; }
@@ -11280,7 +11280,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt40
 	)
 	default String prompt40ItemIds() { return ""; }
@@ -11289,7 +11289,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt40
 	)
 	default int prompt40Duration() { return 0; }
@@ -11298,7 +11298,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt40
 	)
 	default int prompt40Cooldown() { return 0; }
@@ -11316,7 +11316,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt40
 	)
 	default String prompt40ChatPatterns() { return ""; }
@@ -11342,8 +11342,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt40panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt40
 	)
 	default RSAnchorType prompt40PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -11351,8 +11351,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt40PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt40
 	)
 	default int prompt40PanelAnchorX() { return 0; }
@@ -11360,8 +11360,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt40PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt40
 	)
 	default int prompt40PanelAnchorY() { return 0; }
@@ -11370,7 +11370,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt40
 	)
 	default int prompt40ImageId() { return 0; }
@@ -11379,7 +11379,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt40
 	)
 	default Sound prompt40Sound() { return Sound.NONE; }
@@ -11388,7 +11388,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt40
 	)
 	default boolean prompt40ImageOffsetNegative() { return false; }
@@ -11397,8 +11397,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt40PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt40
 	)
 	default int prompt40PanelWidth() { return 140; }
@@ -11407,8 +11407,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt40PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt40
 	)
 	default TextSize prompt40PanelTextSize() { return TextSize.SMALL; }
@@ -11417,7 +11417,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt40PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt40
 	)
@@ -11427,8 +11427,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt40PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt40
 	)
 	default boolean prompt40PanelBorder() { return true; }
@@ -11438,7 +11438,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt40
 	)
 	default boolean prompt40ForceShow() { return false; }
@@ -11474,7 +11474,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt41Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt41
 	)
 	default String prompt41Text() { return ""; }
@@ -11483,7 +11483,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt41Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt41
 	)
 	default Color prompt41Color() { return Color.WHITE; }
@@ -11507,7 +11507,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt41DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt41Datess",
+			keyName = "prompt41Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -11535,7 +11535,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt41Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt41
@@ -11555,7 +11555,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt41
 	)
 	default String prompt41NpcIds() { return ""; }
@@ -11564,7 +11564,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt41
 	)
 	default String prompt41ItemIds() { return ""; }
@@ -11573,7 +11573,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt41
 	)
 	default int prompt41Duration() { return 0; }
@@ -11582,7 +11582,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt41
 	)
 	default int prompt41Cooldown() { return 0; }
@@ -11600,7 +11600,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt41
 	)
 	default String prompt41ChatPatterns() { return ""; }
@@ -11626,8 +11626,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt41panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt41
 	)
 	default RSAnchorType prompt41PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -11635,8 +11635,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt41PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt41
 	)
 	default int prompt41PanelAnchorX() { return 0; }
@@ -11644,8 +11644,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt41PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt41
 	)
 	default int prompt41PanelAnchorY() { return 0; }
@@ -11654,7 +11654,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt41
 	)
 	default int prompt41ImageId() { return 0; }
@@ -11663,7 +11663,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt41
 	)
 	default Sound prompt41Sound() { return Sound.NONE; }
@@ -11672,7 +11672,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt41
 	)
 	default boolean prompt41ImageOffsetNegative() { return false; }
@@ -11681,8 +11681,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt41PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt41
 	)
 	default int prompt41PanelWidth() { return 140; }
@@ -11691,8 +11691,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt41PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt41
 	)
 	default TextSize prompt41PanelTextSize() { return TextSize.SMALL; }
@@ -11701,7 +11701,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt41PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt41
 	)
@@ -11711,8 +11711,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt41PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt41
 	)
 	default boolean prompt41PanelBorder() { return true; }
@@ -11722,7 +11722,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt41
 	)
 	default boolean prompt41ForceShow() { return false; }
@@ -11758,7 +11758,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt42Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt42
 	)
 	default String prompt42Text() { return ""; }
@@ -11767,7 +11767,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt42Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt42
 	)
 	default Color prompt42Color() { return Color.WHITE; }
@@ -11791,7 +11791,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt42DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt42Datess",
+			keyName = "prompt42Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -11819,7 +11819,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt42Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt42
@@ -11839,7 +11839,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt42
 	)
 	default String prompt42NpcIds() { return ""; }
@@ -11848,7 +11848,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt42
 	)
 	default String prompt42ItemIds() { return ""; }
@@ -11857,7 +11857,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt42
 	)
 	default int prompt42Duration() { return 0; }
@@ -11866,7 +11866,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt42
 	)
 	default int prompt42Cooldown() { return 0; }
@@ -11884,7 +11884,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt42
 	)
 	default String prompt42ChatPatterns() { return ""; }
@@ -11910,8 +11910,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt42panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt42
 	)
 	default RSAnchorType prompt42PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -11919,8 +11919,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt42PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt42
 	)
 	default int prompt42PanelAnchorX() { return 0; }
@@ -11928,8 +11928,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt42PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt42
 	)
 	default int prompt42PanelAnchorY() { return 0; }
@@ -11938,7 +11938,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt42
 	)
 	default int prompt42ImageId() { return 0; }
@@ -11947,7 +11947,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt42
 	)
 	default Sound prompt42Sound() { return Sound.NONE; }
@@ -11956,7 +11956,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt42
 	)
 	default boolean prompt42ImageOffsetNegative() { return false; }
@@ -11965,8 +11965,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt42PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt42
 	)
 	default int prompt42PanelWidth() { return 140; }
@@ -11975,8 +11975,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt42PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt42
 	)
 	default TextSize prompt42PanelTextSize() { return TextSize.SMALL; }
@@ -11985,7 +11985,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt42PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt42
 	)
@@ -11995,8 +11995,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt42PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt42
 	)
 	default boolean prompt42PanelBorder() { return true; }
@@ -12006,7 +12006,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt42
 	)
 	default boolean prompt42ForceShow() { return false; }
@@ -12042,7 +12042,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt43Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt43
 	)
 	default String prompt43Text() { return ""; }
@@ -12051,7 +12051,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt43Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt43
 	)
 	default Color prompt43Color() { return Color.WHITE; }
@@ -12075,7 +12075,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt43DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt43Datess",
+			keyName = "prompt43Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -12103,7 +12103,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt43Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt43
@@ -12123,7 +12123,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt43
 	)
 	default String prompt43NpcIds() { return ""; }
@@ -12132,7 +12132,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt43
 	)
 	default String prompt43ItemIds() { return ""; }
@@ -12141,7 +12141,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt43
 	)
 	default int prompt43Duration() { return 0; }
@@ -12150,7 +12150,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt43
 	)
 	default int prompt43Cooldown() { return 0; }
@@ -12168,7 +12168,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt43
 	)
 	default String prompt43ChatPatterns() { return ""; }
@@ -12194,8 +12194,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt43panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt43
 	)
 	default RSAnchorType prompt43PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -12203,8 +12203,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt43PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt43
 	)
 	default int prompt43PanelAnchorX() { return 0; }
@@ -12212,8 +12212,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt43PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt43
 	)
 	default int prompt43PanelAnchorY() { return 0; }
@@ -12222,7 +12222,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt43
 	)
 	default int prompt43ImageId() { return 0; }
@@ -12231,7 +12231,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt43
 	)
 	default Sound prompt43Sound() { return Sound.NONE; }
@@ -12240,7 +12240,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt43
 	)
 	default boolean prompt43ImageOffsetNegative() { return false; }
@@ -12249,8 +12249,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt43PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt43
 	)
 	default int prompt43PanelWidth() { return 140; }
@@ -12259,8 +12259,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt43PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt43
 	)
 	default TextSize prompt43PanelTextSize() { return TextSize.SMALL; }
@@ -12269,7 +12269,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt43PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt43
 	)
@@ -12279,8 +12279,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt43PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt43
 	)
 	default boolean prompt43PanelBorder() { return true; }
@@ -12290,7 +12290,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt43
 	)
 	default boolean prompt43ForceShow() { return false; }
@@ -12326,7 +12326,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt44Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt44
 	)
 	default String prompt44Text() { return ""; }
@@ -12335,7 +12335,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt44Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt44
 	)
 	default Color prompt44Color() { return Color.WHITE; }
@@ -12359,7 +12359,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt44DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt44Datess",
+			keyName = "prompt44Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -12387,7 +12387,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt44Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt44
@@ -12407,7 +12407,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt44
 	)
 	default String prompt44NpcIds() { return ""; }
@@ -12416,7 +12416,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt44
 	)
 	default String prompt44ItemIds() { return ""; }
@@ -12425,7 +12425,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt44
 	)
 	default int prompt44Duration() { return 0; }
@@ -12434,7 +12434,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt44
 	)
 	default int prompt44Cooldown() { return 0; }
@@ -12452,7 +12452,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt44
 	)
 	default String prompt44ChatPatterns() { return ""; }
@@ -12478,8 +12478,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt44panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt44
 	)
 	default RSAnchorType prompt44PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -12487,8 +12487,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt44PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt44
 	)
 	default int prompt44PanelAnchorX() { return 0; }
@@ -12496,8 +12496,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt44PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt44
 	)
 	default int prompt44PanelAnchorY() { return 0; }
@@ -12506,7 +12506,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt44
 	)
 	default int prompt44ImageId() { return 0; }
@@ -12515,7 +12515,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt44
 	)
 	default Sound prompt44Sound() { return Sound.NONE; }
@@ -12524,7 +12524,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt44
 	)
 	default boolean prompt44ImageOffsetNegative() { return false; }
@@ -12533,8 +12533,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt44PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt44
 	)
 	default int prompt44PanelWidth() { return 140; }
@@ -12543,8 +12543,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt44PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt44
 	)
 	default TextSize prompt44PanelTextSize() { return TextSize.SMALL; }
@@ -12553,7 +12553,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt44PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt44
 	)
@@ -12563,8 +12563,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt44PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt44
 	)
 	default boolean prompt44PanelBorder() { return true; }
@@ -12574,7 +12574,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt44
 	)
 	default boolean prompt44ForceShow() { return false; }
@@ -12610,7 +12610,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt45Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt45
 	)
 	default String prompt45Text() { return ""; }
@@ -12619,7 +12619,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt45Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt45
 	)
 	default Color prompt45Color() { return Color.WHITE; }
@@ -12643,7 +12643,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt45DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt45Datess",
+			keyName = "prompt45Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -12671,7 +12671,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt45Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt45
@@ -12691,7 +12691,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt45
 	)
 	default String prompt45NpcIds() { return ""; }
@@ -12700,7 +12700,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt45
 	)
 	default String prompt45ItemIds() { return ""; }
@@ -12709,7 +12709,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt45
 	)
 	default int prompt45Duration() { return 0; }
@@ -12718,7 +12718,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt45
 	)
 	default int prompt45Cooldown() { return 0; }
@@ -12736,7 +12736,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt45
 	)
 	default String prompt45ChatPatterns() { return ""; }
@@ -12762,8 +12762,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt45panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt45
 	)
 	default RSAnchorType prompt45PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -12771,8 +12771,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt45PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt45
 	)
 	default int prompt45PanelAnchorX() { return 0; }
@@ -12780,8 +12780,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt45PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt45
 	)
 	default int prompt45PanelAnchorY() { return 0; }
@@ -12790,7 +12790,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt45
 	)
 	default int prompt45ImageId() { return 0; }
@@ -12799,7 +12799,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt45
 	)
 	default Sound prompt45Sound() { return Sound.NONE; }
@@ -12808,7 +12808,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt45
 	)
 	default boolean prompt45ImageOffsetNegative() { return false; }
@@ -12817,8 +12817,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt45PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt45
 	)
 	default int prompt45PanelWidth() { return 140; }
@@ -12827,8 +12827,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt45PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt45
 	)
 	default TextSize prompt45PanelTextSize() { return TextSize.SMALL; }
@@ -12837,7 +12837,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt45PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt45
 	)
@@ -12847,8 +12847,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt45PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt45
 	)
 	default boolean prompt45PanelBorder() { return true; }
@@ -12858,7 +12858,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt45
 	)
 	default boolean prompt45ForceShow() { return false; }
@@ -12894,7 +12894,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt46Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt46
 	)
 	default String prompt46Text() { return ""; }
@@ -12903,7 +12903,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt46Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt46
 	)
 	default Color prompt46Color() { return Color.WHITE; }
@@ -12927,7 +12927,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt46DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt46Datess",
+			keyName = "prompt46Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -12955,7 +12955,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt46Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt46
@@ -12975,7 +12975,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt46
 	)
 	default String prompt46NpcIds() { return ""; }
@@ -12984,7 +12984,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt46
 	)
 	default String prompt46ItemIds() { return ""; }
@@ -12993,7 +12993,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt46
 	)
 	default int prompt46Duration() { return 0; }
@@ -13002,7 +13002,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt46
 	)
 	default int prompt46Cooldown() { return 0; }
@@ -13020,7 +13020,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt46
 	)
 	default String prompt46ChatPatterns() { return ""; }
@@ -13046,8 +13046,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt46panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt46
 	)
 	default RSAnchorType prompt46PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -13055,8 +13055,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt46PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt46
 	)
 	default int prompt46PanelAnchorX() { return 0; }
@@ -13064,8 +13064,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt46PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt46
 	)
 	default int prompt46PanelAnchorY() { return 0; }
@@ -13074,7 +13074,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt46
 	)
 	default int prompt46ImageId() { return 0; }
@@ -13083,7 +13083,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt46
 	)
 	default Sound prompt46Sound() { return Sound.NONE; }
@@ -13092,7 +13092,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt46
 	)
 	default boolean prompt46ImageOffsetNegative() { return false; }
@@ -13101,8 +13101,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt46PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt46
 	)
 	default int prompt46PanelWidth() { return 140; }
@@ -13111,8 +13111,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt46PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt46
 	)
 	default TextSize prompt46PanelTextSize() { return TextSize.SMALL; }
@@ -13121,7 +13121,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt46PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt46
 	)
@@ -13131,8 +13131,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt46PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt46
 	)
 	default boolean prompt46PanelBorder() { return true; }
@@ -13142,7 +13142,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt46
 	)
 	default boolean prompt46ForceShow() { return false; }
@@ -13178,7 +13178,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt47Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt47
 	)
 	default String prompt47Text() { return ""; }
@@ -13187,7 +13187,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt47Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt47
 	)
 	default Color prompt47Color() { return Color.WHITE; }
@@ -13211,7 +13211,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt47DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt47Datess",
+			keyName = "prompt47Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -13239,7 +13239,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt47Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt47
@@ -13259,7 +13259,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt47
 	)
 	default String prompt47NpcIds() { return ""; }
@@ -13268,7 +13268,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt47
 	)
 	default String prompt47ItemIds() { return ""; }
@@ -13277,7 +13277,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt47
 	)
 	default int prompt47Duration() { return 0; }
@@ -13286,7 +13286,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt47
 	)
 	default int prompt47Cooldown() { return 0; }
@@ -13304,7 +13304,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt47
 	)
 	default String prompt47ChatPatterns() { return ""; }
@@ -13330,8 +13330,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt47panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt47
 	)
 	default RSAnchorType prompt47PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -13339,8 +13339,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt47PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt47
 	)
 	default int prompt47PanelAnchorX() { return 0; }
@@ -13348,8 +13348,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt47PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt47
 	)
 	default int prompt47PanelAnchorY() { return 0; }
@@ -13358,7 +13358,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt47
 	)
 	default int prompt47ImageId() { return 0; }
@@ -13367,7 +13367,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt47
 	)
 	default Sound prompt47Sound() { return Sound.NONE; }
@@ -13376,7 +13376,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt47
 	)
 	default boolean prompt47ImageOffsetNegative() { return false; }
@@ -13385,8 +13385,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt47PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt47
 	)
 	default int prompt47PanelWidth() { return 140; }
@@ -13395,8 +13395,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt47PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt47
 	)
 	default TextSize prompt47PanelTextSize() { return TextSize.SMALL; }
@@ -13405,7 +13405,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt47PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt47
 	)
@@ -13415,8 +13415,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt47PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt47
 	)
 	default boolean prompt47PanelBorder() { return true; }
@@ -13426,7 +13426,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt47
 	)
 	default boolean prompt47ForceShow() { return false; }
@@ -13462,7 +13462,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt48Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt48
 	)
 	default String prompt48Text() { return ""; }
@@ -13471,7 +13471,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt48Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt48
 	)
 	default Color prompt48Color() { return Color.WHITE; }
@@ -13495,7 +13495,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt48DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt48Datess",
+			keyName = "prompt48Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -13523,7 +13523,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt48Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt48
@@ -13543,7 +13543,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt48
 	)
 	default String prompt48NpcIds() { return ""; }
@@ -13552,7 +13552,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt48
 	)
 	default String prompt48ItemIds() { return ""; }
@@ -13561,7 +13561,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt48
 	)
 	default int prompt48Duration() { return 0; }
@@ -13570,7 +13570,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt48
 	)
 	default int prompt48Cooldown() { return 0; }
@@ -13588,7 +13588,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt48
 	)
 	default String prompt48ChatPatterns() { return ""; }
@@ -13614,8 +13614,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt48panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt48
 	)
 	default RSAnchorType prompt48PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -13623,8 +13623,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt48PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt48
 	)
 	default int prompt48PanelAnchorX() { return 0; }
@@ -13632,8 +13632,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt48PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt48
 	)
 	default int prompt48PanelAnchorY() { return 0; }
@@ -13642,7 +13642,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt48
 	)
 	default int prompt48ImageId() { return 0; }
@@ -13651,7 +13651,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt48
 	)
 	default Sound prompt48Sound() { return Sound.NONE; }
@@ -13660,7 +13660,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt48
 	)
 	default boolean prompt48ImageOffsetNegative() { return false; }
@@ -13669,8 +13669,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt48PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt48
 	)
 	default int prompt48PanelWidth() { return 140; }
@@ -13679,8 +13679,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt48PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt48
 	)
 	default TextSize prompt48PanelTextSize() { return TextSize.SMALL; }
@@ -13689,7 +13689,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt48PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt48
 	)
@@ -13699,8 +13699,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt48PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt48
 	)
 	default boolean prompt48PanelBorder() { return true; }
@@ -13710,7 +13710,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt48
 	)
 	default boolean prompt48ForceShow() { return false; }
@@ -13746,7 +13746,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt49Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt49
 	)
 	default String prompt49Text() { return ""; }
@@ -13755,7 +13755,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt49Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt49
 	)
 	default Color prompt49Color() { return Color.WHITE; }
@@ -13779,7 +13779,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt49DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt49Datess",
+			keyName = "prompt49Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -13807,7 +13807,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt49Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt49
@@ -13827,7 +13827,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt49
 	)
 	default String prompt49NpcIds() { return ""; }
@@ -13836,7 +13836,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt49
 	)
 	default String prompt49ItemIds() { return ""; }
@@ -13845,7 +13845,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt49
 	)
 	default int prompt49Duration() { return 0; }
@@ -13854,7 +13854,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt49
 	)
 	default int prompt49Cooldown() { return 0; }
@@ -13872,7 +13872,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt49
 	)
 	default String prompt49ChatPatterns() { return ""; }
@@ -13898,8 +13898,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt49panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt49
 	)
 	default RSAnchorType prompt49PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -13907,8 +13907,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt49PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt49
 	)
 	default int prompt49PanelAnchorX() { return 0; }
@@ -13916,8 +13916,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt49PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt49
 	)
 	default int prompt49PanelAnchorY() { return 0; }
@@ -13926,7 +13926,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt49
 	)
 	default int prompt49ImageId() { return 0; }
@@ -13935,7 +13935,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt49
 	)
 	default Sound prompt49Sound() { return Sound.NONE; }
@@ -13944,7 +13944,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt49
 	)
 	default boolean prompt49ImageOffsetNegative() { return false; }
@@ -13953,8 +13953,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt49PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt49
 	)
 	default int prompt49PanelWidth() { return 140; }
@@ -13963,8 +13963,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt49PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt49
 	)
 	default TextSize prompt49PanelTextSize() { return TextSize.SMALL; }
@@ -13973,7 +13973,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt49PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt49
 	)
@@ -13983,8 +13983,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt49PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt49
 	)
 	default boolean prompt49PanelBorder() { return true; }
@@ -13994,7 +13994,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt49
 	)
 	default boolean prompt49ForceShow() { return false; }
@@ -14030,7 +14030,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt50Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt50
 	)
 	default String prompt50Text() { return ""; }
@@ -14039,7 +14039,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt50Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt50
 	)
 	default Color prompt50Color() { return Color.WHITE; }
@@ -14063,7 +14063,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt50DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt50Datess",
+			keyName = "prompt50Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -14091,7 +14091,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt50Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt50
@@ -14111,7 +14111,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt50
 	)
 	default String prompt50NpcIds() { return ""; }
@@ -14120,7 +14120,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt50
 	)
 	default String prompt50ItemIds() { return ""; }
@@ -14129,7 +14129,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt50
 	)
 	default int prompt50Duration() { return 0; }
@@ -14138,7 +14138,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt50
 	)
 	default int prompt50Cooldown() { return 0; }
@@ -14156,7 +14156,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt50
 	)
 	default String prompt50ChatPatterns() { return ""; }
@@ -14182,8 +14182,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt50panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt50
 	)
 	default RSAnchorType prompt50PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -14191,8 +14191,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt50PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt50
 	)
 	default int prompt50PanelAnchorX() { return 0; }
@@ -14200,8 +14200,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt50PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt50
 	)
 	default int prompt50PanelAnchorY() { return 0; }
@@ -14210,7 +14210,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt50
 	)
 	default int prompt50ImageId() { return 0; }
@@ -14219,7 +14219,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt50
 	)
 	default Sound prompt50Sound() { return Sound.NONE; }
@@ -14228,7 +14228,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt50
 	)
 	default boolean prompt50ImageOffsetNegative() { return false; }
@@ -14237,8 +14237,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt50PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt50
 	)
 	default int prompt50PanelWidth() { return 140; }
@@ -14247,8 +14247,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt50PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt50
 	)
 	default TextSize prompt50PanelTextSize() { return TextSize.SMALL; }
@@ -14257,7 +14257,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt50PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt50
 	)
@@ -14267,8 +14267,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt50PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt50
 	)
 	default boolean prompt50PanelBorder() { return true; }
@@ -14278,7 +14278,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt50
 	)
 	default boolean prompt50ForceShow() { return false; }
@@ -14314,7 +14314,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt51Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt51
 	)
 	default String prompt51Text() { return ""; }
@@ -14323,7 +14323,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt51Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt51
 	)
 	default Color prompt51Color() { return Color.WHITE; }
@@ -14347,7 +14347,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt51DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt51Datess",
+			keyName = "prompt51Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -14375,7 +14375,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt51Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt51
@@ -14395,7 +14395,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt51
 	)
 	default String prompt51NpcIds() { return ""; }
@@ -14404,7 +14404,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt51
 	)
 	default String prompt51ItemIds() { return ""; }
@@ -14413,7 +14413,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt51
 	)
 	default int prompt51Duration() { return 0; }
@@ -14422,7 +14422,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt51
 	)
 	default int prompt51Cooldown() { return 0; }
@@ -14440,7 +14440,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt51
 	)
 	default String prompt51ChatPatterns() { return ""; }
@@ -14466,8 +14466,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt51panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt51
 	)
 	default RSAnchorType prompt51PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -14475,8 +14475,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt51PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt51
 	)
 	default int prompt51PanelAnchorX() { return 0; }
@@ -14484,8 +14484,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt51PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt51
 	)
 	default int prompt51PanelAnchorY() { return 0; }
@@ -14494,7 +14494,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt51
 	)
 	default int prompt51ImageId() { return 0; }
@@ -14503,7 +14503,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt51
 	)
 	default Sound prompt51Sound() { return Sound.NONE; }
@@ -14512,7 +14512,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt51
 	)
 	default boolean prompt51ImageOffsetNegative() { return false; }
@@ -14521,8 +14521,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt51PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt51
 	)
 	default int prompt51PanelWidth() { return 140; }
@@ -14531,8 +14531,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt51PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt51
 	)
 	default TextSize prompt51PanelTextSize() { return TextSize.SMALL; }
@@ -14541,7 +14541,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt51PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt51
 	)
@@ -14551,8 +14551,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt51PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt51
 	)
 	default boolean prompt51PanelBorder() { return true; }
@@ -14562,7 +14562,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt51
 	)
 	default boolean prompt51ForceShow() { return false; }
@@ -14598,7 +14598,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt52Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt52
 	)
 	default String prompt52Text() { return ""; }
@@ -14607,7 +14607,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt52Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt52
 	)
 	default Color prompt52Color() { return Color.WHITE; }
@@ -14631,7 +14631,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt52DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt52Datess",
+			keyName = "prompt52Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -14659,7 +14659,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt52Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt52
@@ -14679,7 +14679,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt52
 	)
 	default String prompt52NpcIds() { return ""; }
@@ -14688,7 +14688,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt52
 	)
 	default String prompt52ItemIds() { return ""; }
@@ -14697,7 +14697,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt52
 	)
 	default int prompt52Duration() { return 0; }
@@ -14706,7 +14706,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt52
 	)
 	default int prompt52Cooldown() { return 0; }
@@ -14724,7 +14724,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt52
 	)
 	default String prompt52ChatPatterns() { return ""; }
@@ -14750,8 +14750,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt52panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt52
 	)
 	default RSAnchorType prompt52PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -14759,8 +14759,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt52PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt52
 	)
 	default int prompt52PanelAnchorX() { return 0; }
@@ -14768,8 +14768,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt52PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt52
 	)
 	default int prompt52PanelAnchorY() { return 0; }
@@ -14778,7 +14778,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt52
 	)
 	default int prompt52ImageId() { return 0; }
@@ -14787,7 +14787,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt52
 	)
 	default Sound prompt52Sound() { return Sound.NONE; }
@@ -14796,7 +14796,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt52
 	)
 	default boolean prompt52ImageOffsetNegative() { return false; }
@@ -14805,8 +14805,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt52PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt52
 	)
 	default int prompt52PanelWidth() { return 140; }
@@ -14815,8 +14815,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt52PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt52
 	)
 	default TextSize prompt52PanelTextSize() { return TextSize.SMALL; }
@@ -14825,7 +14825,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt52PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt52
 	)
@@ -14835,8 +14835,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt52PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt52
 	)
 	default boolean prompt52PanelBorder() { return true; }
@@ -14846,7 +14846,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt52
 	)
 	default boolean prompt52ForceShow() { return false; }
@@ -14882,7 +14882,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt53Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt53
 	)
 	default String prompt53Text() { return ""; }
@@ -14891,7 +14891,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt53Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt53
 	)
 	default Color prompt53Color() { return Color.WHITE; }
@@ -14915,7 +14915,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt53DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt53Datess",
+			keyName = "prompt53Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -14943,7 +14943,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt53Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt53
@@ -14963,7 +14963,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt53
 	)
 	default String prompt53NpcIds() { return ""; }
@@ -14972,7 +14972,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt53
 	)
 	default String prompt53ItemIds() { return ""; }
@@ -14981,7 +14981,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt53
 	)
 	default int prompt53Duration() { return 0; }
@@ -14990,7 +14990,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt53
 	)
 	default int prompt53Cooldown() { return 0; }
@@ -15008,7 +15008,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt53
 	)
 	default String prompt53ChatPatterns() { return ""; }
@@ -15034,8 +15034,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt53panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt53
 	)
 	default RSAnchorType prompt53PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -15043,8 +15043,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt53PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt53
 	)
 	default int prompt53PanelAnchorX() { return 0; }
@@ -15052,8 +15052,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt53PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt53
 	)
 	default int prompt53PanelAnchorY() { return 0; }
@@ -15062,7 +15062,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt53
 	)
 	default int prompt53ImageId() { return 0; }
@@ -15071,7 +15071,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt53
 	)
 	default Sound prompt53Sound() { return Sound.NONE; }
@@ -15080,7 +15080,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt53
 	)
 	default boolean prompt53ImageOffsetNegative() { return false; }
@@ -15089,8 +15089,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt53PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt53
 	)
 	default int prompt53PanelWidth() { return 140; }
@@ -15099,8 +15099,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt53PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt53
 	)
 	default TextSize prompt53PanelTextSize() { return TextSize.SMALL; }
@@ -15109,7 +15109,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt53PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt53
 	)
@@ -15119,8 +15119,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt53PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt53
 	)
 	default boolean prompt53PanelBorder() { return true; }
@@ -15130,7 +15130,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt53
 	)
 	default boolean prompt53ForceShow() { return false; }
@@ -15166,7 +15166,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt54Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt54
 	)
 	default String prompt54Text() { return ""; }
@@ -15175,7 +15175,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt54Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt54
 	)
 	default Color prompt54Color() { return Color.WHITE; }
@@ -15199,7 +15199,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt54DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt54Datess",
+			keyName = "prompt54Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -15227,7 +15227,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt54Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt54
@@ -15247,7 +15247,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt54
 	)
 	default String prompt54NpcIds() { return ""; }
@@ -15256,7 +15256,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt54
 	)
 	default String prompt54ItemIds() { return ""; }
@@ -15265,7 +15265,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt54
 	)
 	default int prompt54Duration() { return 0; }
@@ -15274,7 +15274,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt54
 	)
 	default int prompt54Cooldown() { return 0; }
@@ -15292,7 +15292,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt54
 	)
 	default String prompt54ChatPatterns() { return ""; }
@@ -15318,8 +15318,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt54panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt54
 	)
 	default RSAnchorType prompt54PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -15327,8 +15327,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt54PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt54
 	)
 	default int prompt54PanelAnchorX() { return 0; }
@@ -15336,8 +15336,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt54PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt54
 	)
 	default int prompt54PanelAnchorY() { return 0; }
@@ -15346,7 +15346,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt54
 	)
 	default int prompt54ImageId() { return 0; }
@@ -15355,7 +15355,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt54
 	)
 	default Sound prompt54Sound() { return Sound.NONE; }
@@ -15364,7 +15364,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt54
 	)
 	default boolean prompt54ImageOffsetNegative() { return false; }
@@ -15373,8 +15373,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt54PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt54
 	)
 	default int prompt54PanelWidth() { return 140; }
@@ -15383,8 +15383,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt54PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt54
 	)
 	default TextSize prompt54PanelTextSize() { return TextSize.SMALL; }
@@ -15393,7 +15393,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt54PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt54
 	)
@@ -15403,8 +15403,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt54PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt54
 	)
 	default boolean prompt54PanelBorder() { return true; }
@@ -15414,7 +15414,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt54
 	)
 	default boolean prompt54ForceShow() { return false; }
@@ -15450,7 +15450,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt55Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt55
 	)
 	default String prompt55Text() { return ""; }
@@ -15459,7 +15459,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt55Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt55
 	)
 	default Color prompt55Color() { return Color.WHITE; }
@@ -15483,7 +15483,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt55DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt55Datess",
+			keyName = "prompt55Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -15511,7 +15511,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt55Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt55
@@ -15531,7 +15531,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt55
 	)
 	default String prompt55NpcIds() { return ""; }
@@ -15540,7 +15540,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt55
 	)
 	default String prompt55ItemIds() { return ""; }
@@ -15549,7 +15549,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt55
 	)
 	default int prompt55Duration() { return 0; }
@@ -15558,7 +15558,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt55
 	)
 	default int prompt55Cooldown() { return 0; }
@@ -15576,7 +15576,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt55
 	)
 	default String prompt55ChatPatterns() { return ""; }
@@ -15602,8 +15602,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt55panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt55
 	)
 	default RSAnchorType prompt55PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -15611,8 +15611,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt55PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt55
 	)
 	default int prompt55PanelAnchorX() { return 0; }
@@ -15620,8 +15620,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt55PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt55
 	)
 	default int prompt55PanelAnchorY() { return 0; }
@@ -15630,7 +15630,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt55
 	)
 	default int prompt55ImageId() { return 0; }
@@ -15639,7 +15639,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt55
 	)
 	default Sound prompt55Sound() { return Sound.NONE; }
@@ -15648,7 +15648,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt55
 	)
 	default boolean prompt55ImageOffsetNegative() { return false; }
@@ -15657,8 +15657,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt55PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt55
 	)
 	default int prompt55PanelWidth() { return 140; }
@@ -15667,8 +15667,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt55PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt55
 	)
 	default TextSize prompt55PanelTextSize() { return TextSize.SMALL; }
@@ -15677,7 +15677,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt55PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt55
 	)
@@ -15687,8 +15687,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt55PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt55
 	)
 	default boolean prompt55PanelBorder() { return true; }
@@ -15698,7 +15698,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt55
 	)
 	default boolean prompt55ForceShow() { return false; }
@@ -15734,7 +15734,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt56Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt56
 	)
 	default String prompt56Text() { return ""; }
@@ -15743,7 +15743,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt56Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt56
 	)
 	default Color prompt56Color() { return Color.WHITE; }
@@ -15767,7 +15767,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt56DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt56Datess",
+			keyName = "prompt56Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -15795,7 +15795,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt56Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt56
@@ -15815,7 +15815,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt56
 	)
 	default String prompt56NpcIds() { return ""; }
@@ -15824,7 +15824,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt56
 	)
 	default String prompt56ItemIds() { return ""; }
@@ -15833,7 +15833,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt56
 	)
 	default int prompt56Duration() { return 0; }
@@ -15842,7 +15842,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt56
 	)
 	default int prompt56Cooldown() { return 0; }
@@ -15860,7 +15860,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt56
 	)
 	default String prompt56ChatPatterns() { return ""; }
@@ -15886,8 +15886,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt56panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt56
 	)
 	default RSAnchorType prompt56PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -15895,8 +15895,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt56PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt56
 	)
 	default int prompt56PanelAnchorX() { return 0; }
@@ -15904,8 +15904,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt56PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt56
 	)
 	default int prompt56PanelAnchorY() { return 0; }
@@ -15914,7 +15914,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt56
 	)
 	default int prompt56ImageId() { return 0; }
@@ -15923,7 +15923,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt56
 	)
 	default Sound prompt56Sound() { return Sound.NONE; }
@@ -15932,7 +15932,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt56
 	)
 	default boolean prompt56ImageOffsetNegative() { return false; }
@@ -15941,8 +15941,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt56PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt56
 	)
 	default int prompt56PanelWidth() { return 140; }
@@ -15951,8 +15951,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt56PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt56
 	)
 	default TextSize prompt56PanelTextSize() { return TextSize.SMALL; }
@@ -15961,7 +15961,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt56PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt56
 	)
@@ -15971,8 +15971,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt56PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt56
 	)
 	default boolean prompt56PanelBorder() { return true; }
@@ -15982,7 +15982,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt56
 	)
 	default boolean prompt56ForceShow() { return false; }
@@ -16018,7 +16018,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt57Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt57
 	)
 	default String prompt57Text() { return ""; }
@@ -16027,7 +16027,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt57Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt57
 	)
 	default Color prompt57Color() { return Color.WHITE; }
@@ -16051,7 +16051,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt57DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt57Datess",
+			keyName = "prompt57Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -16079,7 +16079,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt57Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt57
@@ -16099,7 +16099,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt57
 	)
 	default String prompt57NpcIds() { return ""; }
@@ -16108,7 +16108,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt57
 	)
 	default String prompt57ItemIds() { return ""; }
@@ -16117,7 +16117,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt57
 	)
 	default int prompt57Duration() { return 0; }
@@ -16126,7 +16126,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt57
 	)
 	default int prompt57Cooldown() { return 0; }
@@ -16144,7 +16144,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt57
 	)
 	default String prompt57ChatPatterns() { return ""; }
@@ -16170,8 +16170,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt57panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt57
 	)
 	default RSAnchorType prompt57PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -16179,8 +16179,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt57PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt57
 	)
 	default int prompt57PanelAnchorX() { return 0; }
@@ -16188,8 +16188,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt57PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt57
 	)
 	default int prompt57PanelAnchorY() { return 0; }
@@ -16198,7 +16198,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt57
 	)
 	default int prompt57ImageId() { return 0; }
@@ -16207,7 +16207,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt57
 	)
 	default Sound prompt57Sound() { return Sound.NONE; }
@@ -16216,7 +16216,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt57
 	)
 	default boolean prompt57ImageOffsetNegative() { return false; }
@@ -16225,8 +16225,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt57PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt57
 	)
 	default int prompt57PanelWidth() { return 140; }
@@ -16235,8 +16235,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt57PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt57
 	)
 	default TextSize prompt57PanelTextSize() { return TextSize.SMALL; }
@@ -16245,7 +16245,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt57PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt57
 	)
@@ -16255,8 +16255,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt57PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt57
 	)
 	default boolean prompt57PanelBorder() { return true; }
@@ -16266,7 +16266,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt57
 	)
 	default boolean prompt57ForceShow() { return false; }
@@ -16302,7 +16302,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt58Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt58
 	)
 	default String prompt58Text() { return ""; }
@@ -16311,7 +16311,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt58Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt58
 	)
 	default Color prompt58Color() { return Color.WHITE; }
@@ -16335,7 +16335,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt58DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt58Datess",
+			keyName = "prompt58Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -16363,7 +16363,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt58Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt58
@@ -16383,7 +16383,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt58
 	)
 	default String prompt58NpcIds() { return ""; }
@@ -16392,7 +16392,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt58
 	)
 	default String prompt58ItemIds() { return ""; }
@@ -16401,7 +16401,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt58
 	)
 	default int prompt58Duration() { return 0; }
@@ -16410,7 +16410,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt58
 	)
 	default int prompt58Cooldown() { return 0; }
@@ -16428,7 +16428,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt58
 	)
 	default String prompt58ChatPatterns() { return ""; }
@@ -16454,8 +16454,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt58panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt58
 	)
 	default RSAnchorType prompt58PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -16463,8 +16463,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt58PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt58
 	)
 	default int prompt58PanelAnchorX() { return 0; }
@@ -16472,8 +16472,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt58PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt58
 	)
 	default int prompt58PanelAnchorY() { return 0; }
@@ -16482,7 +16482,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt58
 	)
 	default int prompt58ImageId() { return 0; }
@@ -16491,7 +16491,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt58
 	)
 	default Sound prompt58Sound() { return Sound.NONE; }
@@ -16500,7 +16500,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt58
 	)
 	default boolean prompt58ImageOffsetNegative() { return false; }
@@ -16509,8 +16509,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt58PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt58
 	)
 	default int prompt58PanelWidth() { return 140; }
@@ -16519,8 +16519,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt58PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt58
 	)
 	default TextSize prompt58PanelTextSize() { return TextSize.SMALL; }
@@ -16529,7 +16529,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt58PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt58
 	)
@@ -16539,8 +16539,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt58PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt58
 	)
 	default boolean prompt58PanelBorder() { return true; }
@@ -16550,7 +16550,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt58
 	)
 	default boolean prompt58ForceShow() { return false; }
@@ -16586,7 +16586,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt59Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt59
 	)
 	default String prompt59Text() { return ""; }
@@ -16595,7 +16595,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt59Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt59
 	)
 	default Color prompt59Color() { return Color.WHITE; }
@@ -16619,7 +16619,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt59DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt59Datess",
+			keyName = "prompt59Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -16647,7 +16647,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt59Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt59
@@ -16667,7 +16667,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt59
 	)
 	default String prompt59NpcIds() { return ""; }
@@ -16676,7 +16676,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt59
 	)
 	default String prompt59ItemIds() { return ""; }
@@ -16685,7 +16685,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt59
 	)
 	default int prompt59Duration() { return 0; }
@@ -16694,7 +16694,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt59
 	)
 	default int prompt59Cooldown() { return 0; }
@@ -16712,7 +16712,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt59
 	)
 	default String prompt59ChatPatterns() { return ""; }
@@ -16738,8 +16738,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt59panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt59
 	)
 	default RSAnchorType prompt59PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -16747,8 +16747,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt59PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt59
 	)
 	default int prompt59PanelAnchorX() { return 0; }
@@ -16756,8 +16756,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt59PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt59
 	)
 	default int prompt59PanelAnchorY() { return 0; }
@@ -16766,7 +16766,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt59
 	)
 	default int prompt59ImageId() { return 0; }
@@ -16775,7 +16775,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt59
 	)
 	default Sound prompt59Sound() { return Sound.NONE; }
@@ -16784,7 +16784,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt59
 	)
 	default boolean prompt59ImageOffsetNegative() { return false; }
@@ -16793,8 +16793,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt59PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt59
 	)
 	default int prompt59PanelWidth() { return 140; }
@@ -16803,8 +16803,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt59PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt59
 	)
 	default TextSize prompt59PanelTextSize() { return TextSize.SMALL; }
@@ -16813,7 +16813,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt59PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt59
 	)
@@ -16823,8 +16823,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt59PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt59
 	)
 	default boolean prompt59PanelBorder() { return true; }
@@ -16834,7 +16834,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt59
 	)
 	default boolean prompt59ForceShow() { return false; }
@@ -16870,7 +16870,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt60Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt60
 	)
 	default String prompt60Text() { return ""; }
@@ -16879,7 +16879,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt60Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt60
 	)
 	default Color prompt60Color() { return Color.WHITE; }
@@ -16903,7 +16903,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt60DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt60Datess",
+			keyName = "prompt60Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -16931,7 +16931,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt60Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt60
@@ -16951,7 +16951,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt60
 	)
 	default String prompt60NpcIds() { return ""; }
@@ -16960,7 +16960,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt60
 	)
 	default String prompt60ItemIds() { return ""; }
@@ -16969,7 +16969,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt60
 	)
 	default int prompt60Duration() { return 0; }
@@ -16978,7 +16978,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt60
 	)
 	default int prompt60Cooldown() { return 0; }
@@ -16996,7 +16996,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt60
 	)
 	default String prompt60ChatPatterns() { return ""; }
@@ -17022,8 +17022,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt60panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt60
 	)
 	default RSAnchorType prompt60PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -17031,8 +17031,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt60PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt60
 	)
 	default int prompt60PanelAnchorX() { return 0; }
@@ -17040,8 +17040,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt60PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt60
 	)
 	default int prompt60PanelAnchorY() { return 0; }
@@ -17050,7 +17050,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt60
 	)
 	default int prompt60ImageId() { return 0; }
@@ -17059,7 +17059,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt60
 	)
 	default Sound prompt60Sound() { return Sound.NONE; }
@@ -17068,7 +17068,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt60
 	)
 	default boolean prompt60ImageOffsetNegative() { return false; }
@@ -17077,8 +17077,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt60PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt60
 	)
 	default int prompt60PanelWidth() { return 140; }
@@ -17087,8 +17087,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt60PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt60
 	)
 	default TextSize prompt60PanelTextSize() { return TextSize.SMALL; }
@@ -17097,7 +17097,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt60PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt60
 	)
@@ -17107,8 +17107,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt60PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt60
 	)
 	default boolean prompt60PanelBorder() { return true; }
@@ -17118,7 +17118,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt60
 	)
 	default boolean prompt60ForceShow() { return false; }
@@ -17154,7 +17154,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt61Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt61
 	)
 	default String prompt61Text() { return ""; }
@@ -17163,7 +17163,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt61Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt61
 	)
 	default Color prompt61Color() { return Color.WHITE; }
@@ -17187,7 +17187,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt61DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt61Datess",
+			keyName = "prompt61Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -17215,7 +17215,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt61Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt61
@@ -17235,7 +17235,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt61
 	)
 	default String prompt61NpcIds() { return ""; }
@@ -17244,7 +17244,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt61
 	)
 	default String prompt61ItemIds() { return ""; }
@@ -17253,7 +17253,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt61
 	)
 	default int prompt61Duration() { return 0; }
@@ -17262,7 +17262,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt61
 	)
 	default int prompt61Cooldown() { return 0; }
@@ -17280,7 +17280,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt61
 	)
 	default String prompt61ChatPatterns() { return ""; }
@@ -17306,8 +17306,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt61panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt61
 	)
 	default RSAnchorType prompt61PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -17315,8 +17315,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt61PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt61
 	)
 	default int prompt61PanelAnchorX() { return 0; }
@@ -17324,8 +17324,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt61PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt61
 	)
 	default int prompt61PanelAnchorY() { return 0; }
@@ -17334,7 +17334,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt61
 	)
 	default int prompt61ImageId() { return 0; }
@@ -17343,7 +17343,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt61
 	)
 	default Sound prompt61Sound() { return Sound.NONE; }
@@ -17352,7 +17352,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt61
 	)
 	default boolean prompt61ImageOffsetNegative() { return false; }
@@ -17361,8 +17361,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt61PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt61
 	)
 	default int prompt61PanelWidth() { return 140; }
@@ -17371,8 +17371,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt61PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt61
 	)
 	default TextSize prompt61PanelTextSize() { return TextSize.SMALL; }
@@ -17381,7 +17381,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt61PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt61
 	)
@@ -17391,8 +17391,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt61PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt61
 	)
 	default boolean prompt61PanelBorder() { return true; }
@@ -17402,7 +17402,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt61
 	)
 	default boolean prompt61ForceShow() { return false; }
@@ -17438,7 +17438,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt62Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt62
 	)
 	default String prompt62Text() { return ""; }
@@ -17447,7 +17447,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt62Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt62
 	)
 	default Color prompt62Color() { return Color.WHITE; }
@@ -17471,7 +17471,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt62DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt62Datess",
+			keyName = "prompt62Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -17499,7 +17499,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt62Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt62
@@ -17519,7 +17519,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt62
 	)
 	default String prompt62NpcIds() { return ""; }
@@ -17528,7 +17528,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt62
 	)
 	default String prompt62ItemIds() { return ""; }
@@ -17537,7 +17537,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt62
 	)
 	default int prompt62Duration() { return 0; }
@@ -17546,7 +17546,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt62
 	)
 	default int prompt62Cooldown() { return 0; }
@@ -17564,7 +17564,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt62
 	)
 	default String prompt62ChatPatterns() { return ""; }
@@ -17590,8 +17590,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt62panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt62
 	)
 	default RSAnchorType prompt62PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -17599,8 +17599,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt62PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt62
 	)
 	default int prompt62PanelAnchorX() { return 0; }
@@ -17608,8 +17608,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt62PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt62
 	)
 	default int prompt62PanelAnchorY() { return 0; }
@@ -17618,7 +17618,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt62
 	)
 	default int prompt62ImageId() { return 0; }
@@ -17627,7 +17627,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt62
 	)
 	default Sound prompt62Sound() { return Sound.NONE; }
@@ -17636,7 +17636,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt62
 	)
 	default boolean prompt62ImageOffsetNegative() { return false; }
@@ -17645,8 +17645,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt62PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt62
 	)
 	default int prompt62PanelWidth() { return 140; }
@@ -17655,8 +17655,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt62PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt62
 	)
 	default TextSize prompt62PanelTextSize() { return TextSize.SMALL; }
@@ -17665,7 +17665,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt62PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt62
 	)
@@ -17675,8 +17675,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt62PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt62
 	)
 	default boolean prompt62PanelBorder() { return true; }
@@ -17686,7 +17686,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt62
 	)
 	default boolean prompt62ForceShow() { return false; }
@@ -17722,7 +17722,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt63Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt63
 	)
 	default String prompt63Text() { return ""; }
@@ -17731,7 +17731,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt63Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt63
 	)
 	default Color prompt63Color() { return Color.WHITE; }
@@ -17755,7 +17755,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt63DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt63Datess",
+			keyName = "prompt63Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -17783,7 +17783,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt63Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt63
@@ -17803,7 +17803,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt63
 	)
 	default String prompt63NpcIds() { return ""; }
@@ -17812,7 +17812,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt63
 	)
 	default String prompt63ItemIds() { return ""; }
@@ -17821,7 +17821,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt63
 	)
 	default int prompt63Duration() { return 0; }
@@ -17830,7 +17830,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt63
 	)
 	default int prompt63Cooldown() { return 0; }
@@ -17848,7 +17848,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt63
 	)
 	default String prompt63ChatPatterns() { return ""; }
@@ -17874,8 +17874,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt63panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt63
 	)
 	default RSAnchorType prompt63PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -17883,8 +17883,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt63PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt63
 	)
 	default int prompt63PanelAnchorX() { return 0; }
@@ -17892,8 +17892,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt63PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt63
 	)
 	default int prompt63PanelAnchorY() { return 0; }
@@ -17902,7 +17902,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt63
 	)
 	default int prompt63ImageId() { return 0; }
@@ -17911,7 +17911,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt63
 	)
 	default Sound prompt63Sound() { return Sound.NONE; }
@@ -17920,7 +17920,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt63
 	)
 	default boolean prompt63ImageOffsetNegative() { return false; }
@@ -17929,8 +17929,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt63PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt63
 	)
 	default int prompt63PanelWidth() { return 140; }
@@ -17939,8 +17939,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt63PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt63
 	)
 	default TextSize prompt63PanelTextSize() { return TextSize.SMALL; }
@@ -17949,7 +17949,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt63PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt63
 	)
@@ -17959,8 +17959,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt63PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt63
 	)
 	default boolean prompt63PanelBorder() { return true; }
@@ -17970,7 +17970,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt63
 	)
 	default boolean prompt63ForceShow() { return false; }
@@ -18006,7 +18006,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt64Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt64
 	)
 	default String prompt64Text() { return ""; }
@@ -18015,7 +18015,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt64Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt64
 	)
 	default Color prompt64Color() { return Color.WHITE; }
@@ -18039,7 +18039,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt64DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt64Datess",
+			keyName = "prompt64Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -18067,7 +18067,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt64Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt64
@@ -18087,7 +18087,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt64
 	)
 	default String prompt64NpcIds() { return ""; }
@@ -18096,7 +18096,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt64
 	)
 	default String prompt64ItemIds() { return ""; }
@@ -18105,7 +18105,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt64
 	)
 	default int prompt64Duration() { return 0; }
@@ -18114,7 +18114,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt64
 	)
 	default int prompt64Cooldown() { return 0; }
@@ -18132,7 +18132,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt64
 	)
 	default String prompt64ChatPatterns() { return ""; }
@@ -18158,8 +18158,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt64panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt64
 	)
 	default RSAnchorType prompt64PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -18167,8 +18167,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt64PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt64
 	)
 	default int prompt64PanelAnchorX() { return 0; }
@@ -18176,8 +18176,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt64PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt64
 	)
 	default int prompt64PanelAnchorY() { return 0; }
@@ -18186,7 +18186,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt64
 	)
 	default int prompt64ImageId() { return 0; }
@@ -18195,7 +18195,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt64
 	)
 	default Sound prompt64Sound() { return Sound.NONE; }
@@ -18204,7 +18204,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt64
 	)
 	default boolean prompt64ImageOffsetNegative() { return false; }
@@ -18213,8 +18213,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt64PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt64
 	)
 	default int prompt64PanelWidth() { return 140; }
@@ -18223,8 +18223,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt64PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt64
 	)
 	default TextSize prompt64PanelTextSize() { return TextSize.SMALL; }
@@ -18233,7 +18233,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt64PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt64
 	)
@@ -18243,8 +18243,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt64PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt64
 	)
 	default boolean prompt64PanelBorder() { return true; }
@@ -18254,7 +18254,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt64
 	)
 	default boolean prompt64ForceShow() { return false; }
@@ -18290,7 +18290,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt65Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt65
 	)
 	default String prompt65Text() { return ""; }
@@ -18299,7 +18299,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt65Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt65
 	)
 	default Color prompt65Color() { return Color.WHITE; }
@@ -18323,7 +18323,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt65DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt65Datess",
+			keyName = "prompt65Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -18351,7 +18351,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt65Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt65
@@ -18371,7 +18371,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt65
 	)
 	default String prompt65NpcIds() { return ""; }
@@ -18380,7 +18380,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt65
 	)
 	default String prompt65ItemIds() { return ""; }
@@ -18389,7 +18389,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt65
 	)
 	default int prompt65Duration() { return 0; }
@@ -18398,7 +18398,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt65
 	)
 	default int prompt65Cooldown() { return 0; }
@@ -18416,7 +18416,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt65
 	)
 	default String prompt65ChatPatterns() { return ""; }
@@ -18442,8 +18442,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt65panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt65
 	)
 	default RSAnchorType prompt65PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -18451,8 +18451,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt65PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt65
 	)
 	default int prompt65PanelAnchorX() { return 0; }
@@ -18460,8 +18460,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt65PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt65
 	)
 	default int prompt65PanelAnchorY() { return 0; }
@@ -18470,7 +18470,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt65
 	)
 	default int prompt65ImageId() { return 0; }
@@ -18479,7 +18479,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt65
 	)
 	default Sound prompt65Sound() { return Sound.NONE; }
@@ -18488,7 +18488,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt65
 	)
 	default boolean prompt65ImageOffsetNegative() { return false; }
@@ -18497,8 +18497,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt65PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt65
 	)
 	default int prompt65PanelWidth() { return 140; }
@@ -18507,8 +18507,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt65PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt65
 	)
 	default TextSize prompt65PanelTextSize() { return TextSize.SMALL; }
@@ -18517,7 +18517,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt65PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt65
 	)
@@ -18527,8 +18527,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt65PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt65
 	)
 	default boolean prompt65PanelBorder() { return true; }
@@ -18538,7 +18538,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt65
 	)
 	default boolean prompt65ForceShow() { return false; }
@@ -18574,7 +18574,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt66Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt66
 	)
 	default String prompt66Text() { return ""; }
@@ -18583,7 +18583,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt66Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt66
 	)
 	default Color prompt66Color() { return Color.WHITE; }
@@ -18607,7 +18607,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt66DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt66Datess",
+			keyName = "prompt66Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -18635,7 +18635,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt66Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt66
@@ -18655,7 +18655,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt66
 	)
 	default String prompt66NpcIds() { return ""; }
@@ -18664,7 +18664,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt66
 	)
 	default String prompt66ItemIds() { return ""; }
@@ -18673,7 +18673,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt66
 	)
 	default int prompt66Duration() { return 0; }
@@ -18682,7 +18682,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt66
 	)
 	default int prompt66Cooldown() { return 0; }
@@ -18700,7 +18700,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt66
 	)
 	default String prompt66ChatPatterns() { return ""; }
@@ -18726,8 +18726,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt66panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt66
 	)
 	default RSAnchorType prompt66PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -18735,8 +18735,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt66PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt66
 	)
 	default int prompt66PanelAnchorX() { return 0; }
@@ -18744,8 +18744,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt66PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt66
 	)
 	default int prompt66PanelAnchorY() { return 0; }
@@ -18754,7 +18754,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt66
 	)
 	default int prompt66ImageId() { return 0; }
@@ -18763,7 +18763,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt66
 	)
 	default Sound prompt66Sound() { return Sound.NONE; }
@@ -18772,7 +18772,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt66
 	)
 	default boolean prompt66ImageOffsetNegative() { return false; }
@@ -18781,8 +18781,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt66PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt66
 	)
 	default int prompt66PanelWidth() { return 140; }
@@ -18791,8 +18791,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt66PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt66
 	)
 	default TextSize prompt66PanelTextSize() { return TextSize.SMALL; }
@@ -18801,7 +18801,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt66PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt66
 	)
@@ -18811,8 +18811,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt66PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt66
 	)
 	default boolean prompt66PanelBorder() { return true; }
@@ -18822,7 +18822,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt66
 	)
 	default boolean prompt66ForceShow() { return false; }
@@ -18858,7 +18858,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt67Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt67
 	)
 	default String prompt67Text() { return ""; }
@@ -18867,7 +18867,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt67Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt67
 	)
 	default Color prompt67Color() { return Color.WHITE; }
@@ -18891,7 +18891,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt67DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt67Datess",
+			keyName = "prompt67Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -18919,7 +18919,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt67Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt67
@@ -18939,7 +18939,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt67
 	)
 	default String prompt67NpcIds() { return ""; }
@@ -18948,7 +18948,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt67
 	)
 	default String prompt67ItemIds() { return ""; }
@@ -18957,7 +18957,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt67
 	)
 	default int prompt67Duration() { return 0; }
@@ -18966,7 +18966,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt67
 	)
 	default int prompt67Cooldown() { return 0; }
@@ -18984,7 +18984,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt67
 	)
 	default String prompt67ChatPatterns() { return ""; }
@@ -19010,8 +19010,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt67panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt67
 	)
 	default RSAnchorType prompt67PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -19019,8 +19019,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt67PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt67
 	)
 	default int prompt67PanelAnchorX() { return 0; }
@@ -19028,8 +19028,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt67PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt67
 	)
 	default int prompt67PanelAnchorY() { return 0; }
@@ -19038,7 +19038,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt67
 	)
 	default int prompt67ImageId() { return 0; }
@@ -19047,7 +19047,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt67
 	)
 	default Sound prompt67Sound() { return Sound.NONE; }
@@ -19056,7 +19056,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt67
 	)
 	default boolean prompt67ImageOffsetNegative() { return false; }
@@ -19065,8 +19065,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt67PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt67
 	)
 	default int prompt67PanelWidth() { return 140; }
@@ -19075,8 +19075,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt67PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt67
 	)
 	default TextSize prompt67PanelTextSize() { return TextSize.SMALL; }
@@ -19085,7 +19085,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt67PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt67
 	)
@@ -19095,8 +19095,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt67PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt67
 	)
 	default boolean prompt67PanelBorder() { return true; }
@@ -19106,7 +19106,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt67
 	)
 	default boolean prompt67ForceShow() { return false; }
@@ -19142,7 +19142,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt68Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt68
 	)
 	default String prompt68Text() { return ""; }
@@ -19151,7 +19151,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt68Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt68
 	)
 	default Color prompt68Color() { return Color.WHITE; }
@@ -19175,7 +19175,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt68DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt68Datess",
+			keyName = "prompt68Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -19203,7 +19203,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt68Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt68
@@ -19223,7 +19223,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt68
 	)
 	default String prompt68NpcIds() { return ""; }
@@ -19232,7 +19232,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt68
 	)
 	default String prompt68ItemIds() { return ""; }
@@ -19241,7 +19241,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt68
 	)
 	default int prompt68Duration() { return 0; }
@@ -19250,7 +19250,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt68
 	)
 	default int prompt68Cooldown() { return 0; }
@@ -19268,7 +19268,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt68
 	)
 	default String prompt68ChatPatterns() { return ""; }
@@ -19294,8 +19294,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt68panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt68
 	)
 	default RSAnchorType prompt68PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -19303,8 +19303,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt68PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt68
 	)
 	default int prompt68PanelAnchorX() { return 0; }
@@ -19312,8 +19312,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt68PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt68
 	)
 	default int prompt68PanelAnchorY() { return 0; }
@@ -19322,7 +19322,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt68
 	)
 	default int prompt68ImageId() { return 0; }
@@ -19331,7 +19331,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt68
 	)
 	default Sound prompt68Sound() { return Sound.NONE; }
@@ -19340,7 +19340,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt68
 	)
 	default boolean prompt68ImageOffsetNegative() { return false; }
@@ -19349,8 +19349,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt68PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt68
 	)
 	default int prompt68PanelWidth() { return 140; }
@@ -19359,8 +19359,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt68PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt68
 	)
 	default TextSize prompt68PanelTextSize() { return TextSize.SMALL; }
@@ -19369,7 +19369,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt68PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt68
 	)
@@ -19379,8 +19379,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt68PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt68
 	)
 	default boolean prompt68PanelBorder() { return true; }
@@ -19390,7 +19390,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt68
 	)
 	default boolean prompt68ForceShow() { return false; }
@@ -19426,7 +19426,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt69Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt69
 	)
 	default String prompt69Text() { return ""; }
@@ -19435,7 +19435,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt69Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt69
 	)
 	default Color prompt69Color() { return Color.WHITE; }
@@ -19459,7 +19459,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt69DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt69Datess",
+			keyName = "prompt69Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -19487,7 +19487,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt69Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt69
@@ -19507,7 +19507,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt69
 	)
 	default String prompt69NpcIds() { return ""; }
@@ -19516,7 +19516,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt69
 	)
 	default String prompt69ItemIds() { return ""; }
@@ -19525,7 +19525,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt69
 	)
 	default int prompt69Duration() { return 0; }
@@ -19534,7 +19534,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt69
 	)
 	default int prompt69Cooldown() { return 0; }
@@ -19552,7 +19552,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt69
 	)
 	default String prompt69ChatPatterns() { return ""; }
@@ -19578,8 +19578,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt69panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt69
 	)
 	default RSAnchorType prompt69PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -19587,8 +19587,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt69PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt69
 	)
 	default int prompt69PanelAnchorX() { return 0; }
@@ -19596,8 +19596,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt69PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt69
 	)
 	default int prompt69PanelAnchorY() { return 0; }
@@ -19606,7 +19606,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt69
 	)
 	default int prompt69ImageId() { return 0; }
@@ -19615,7 +19615,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt69
 	)
 	default Sound prompt69Sound() { return Sound.NONE; }
@@ -19624,7 +19624,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt69
 	)
 	default boolean prompt69ImageOffsetNegative() { return false; }
@@ -19633,8 +19633,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt69PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt69
 	)
 	default int prompt69PanelWidth() { return 140; }
@@ -19643,8 +19643,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt69PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt69
 	)
 	default TextSize prompt69PanelTextSize() { return TextSize.SMALL; }
@@ -19653,7 +19653,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt69PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt69
 	)
@@ -19663,8 +19663,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt69PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt69
 	)
 	default boolean prompt69PanelBorder() { return true; }
@@ -19674,7 +19674,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt69
 	)
 	default boolean prompt69ForceShow() { return false; }
@@ -19710,7 +19710,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt70Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt70
 	)
 	default String prompt70Text() { return ""; }
@@ -19719,7 +19719,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt70Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt70
 	)
 	default Color prompt70Color() { return Color.WHITE; }
@@ -19743,7 +19743,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt70DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt70Datess",
+			keyName = "prompt70Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -19771,7 +19771,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt70Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt70
@@ -19791,7 +19791,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt70
 	)
 	default String prompt70NpcIds() { return ""; }
@@ -19800,7 +19800,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt70
 	)
 	default String prompt70ItemIds() { return ""; }
@@ -19809,7 +19809,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt70
 	)
 	default int prompt70Duration() { return 0; }
@@ -19818,7 +19818,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt70
 	)
 	default int prompt70Cooldown() { return 0; }
@@ -19836,7 +19836,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt70
 	)
 	default String prompt70ChatPatterns() { return ""; }
@@ -19862,8 +19862,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt70panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt70
 	)
 	default RSAnchorType prompt70PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -19871,8 +19871,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt70PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt70
 	)
 	default int prompt70PanelAnchorX() { return 0; }
@@ -19880,8 +19880,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt70PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt70
 	)
 	default int prompt70PanelAnchorY() { return 0; }
@@ -19890,7 +19890,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt70
 	)
 	default int prompt70ImageId() { return 0; }
@@ -19899,7 +19899,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt70
 	)
 	default Sound prompt70Sound() { return Sound.NONE; }
@@ -19908,7 +19908,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt70
 	)
 	default boolean prompt70ImageOffsetNegative() { return false; }
@@ -19917,8 +19917,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt70PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt70
 	)
 	default int prompt70PanelWidth() { return 140; }
@@ -19927,8 +19927,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt70PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt70
 	)
 	default TextSize prompt70PanelTextSize() { return TextSize.SMALL; }
@@ -19937,7 +19937,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt70PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt70
 	)
@@ -19947,8 +19947,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt70PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt70
 	)
 	default boolean prompt70PanelBorder() { return true; }
@@ -19958,7 +19958,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt70
 	)
 	default boolean prompt70ForceShow() { return false; }
@@ -19994,7 +19994,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt71Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt71
 	)
 	default String prompt71Text() { return ""; }
@@ -20003,7 +20003,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt71Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt71
 	)
 	default Color prompt71Color() { return Color.WHITE; }
@@ -20027,7 +20027,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt71DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt71Datess",
+			keyName = "prompt71Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -20055,7 +20055,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt71Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt71
@@ -20075,7 +20075,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt71
 	)
 	default String prompt71NpcIds() { return ""; }
@@ -20084,7 +20084,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt71
 	)
 	default String prompt71ItemIds() { return ""; }
@@ -20093,7 +20093,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt71
 	)
 	default int prompt71Duration() { return 0; }
@@ -20102,7 +20102,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt71
 	)
 	default int prompt71Cooldown() { return 0; }
@@ -20120,7 +20120,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt71
 	)
 	default String prompt71ChatPatterns() { return ""; }
@@ -20146,8 +20146,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt71panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt71
 	)
 	default RSAnchorType prompt71PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -20155,8 +20155,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt71PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt71
 	)
 	default int prompt71PanelAnchorX() { return 0; }
@@ -20164,8 +20164,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt71PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt71
 	)
 	default int prompt71PanelAnchorY() { return 0; }
@@ -20174,7 +20174,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt71
 	)
 	default int prompt71ImageId() { return 0; }
@@ -20183,7 +20183,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt71
 	)
 	default Sound prompt71Sound() { return Sound.NONE; }
@@ -20192,7 +20192,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt71
 	)
 	default boolean prompt71ImageOffsetNegative() { return false; }
@@ -20201,8 +20201,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt71PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt71
 	)
 	default int prompt71PanelWidth() { return 140; }
@@ -20211,8 +20211,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt71PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt71
 	)
 	default TextSize prompt71PanelTextSize() { return TextSize.SMALL; }
@@ -20221,7 +20221,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt71PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt71
 	)
@@ -20231,8 +20231,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt71PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt71
 	)
 	default boolean prompt71PanelBorder() { return true; }
@@ -20242,7 +20242,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt71
 	)
 	default boolean prompt71ForceShow() { return false; }
@@ -20278,7 +20278,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt72Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt72
 	)
 	default String prompt72Text() { return ""; }
@@ -20287,7 +20287,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt72Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt72
 	)
 	default Color prompt72Color() { return Color.WHITE; }
@@ -20311,7 +20311,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt72DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt72Datess",
+			keyName = "prompt72Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -20339,7 +20339,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt72Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt72
@@ -20359,7 +20359,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt72
 	)
 	default String prompt72NpcIds() { return ""; }
@@ -20368,7 +20368,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt72
 	)
 	default String prompt72ItemIds() { return ""; }
@@ -20377,7 +20377,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt72
 	)
 	default int prompt72Duration() { return 0; }
@@ -20386,7 +20386,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt72
 	)
 	default int prompt72Cooldown() { return 0; }
@@ -20404,7 +20404,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt72
 	)
 	default String prompt72ChatPatterns() { return ""; }
@@ -20430,8 +20430,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt72panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt72
 	)
 	default RSAnchorType prompt72PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -20439,8 +20439,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt72PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt72
 	)
 	default int prompt72PanelAnchorX() { return 0; }
@@ -20448,8 +20448,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt72PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt72
 	)
 	default int prompt72PanelAnchorY() { return 0; }
@@ -20458,7 +20458,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt72
 	)
 	default int prompt72ImageId() { return 0; }
@@ -20467,7 +20467,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt72
 	)
 	default Sound prompt72Sound() { return Sound.NONE; }
@@ -20476,7 +20476,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt72
 	)
 	default boolean prompt72ImageOffsetNegative() { return false; }
@@ -20485,8 +20485,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt72PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt72
 	)
 	default int prompt72PanelWidth() { return 140; }
@@ -20495,8 +20495,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt72PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt72
 	)
 	default TextSize prompt72PanelTextSize() { return TextSize.SMALL; }
@@ -20505,7 +20505,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt72PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt72
 	)
@@ -20515,8 +20515,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt72PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt72
 	)
 	default boolean prompt72PanelBorder() { return true; }
@@ -20526,7 +20526,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt72
 	)
 	default boolean prompt72ForceShow() { return false; }
@@ -20562,7 +20562,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt73Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt73
 	)
 	default String prompt73Text() { return ""; }
@@ -20571,7 +20571,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt73Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt73
 	)
 	default Color prompt73Color() { return Color.WHITE; }
@@ -20595,7 +20595,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt73DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt73Datess",
+			keyName = "prompt73Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -20623,7 +20623,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt73Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt73
@@ -20643,7 +20643,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt73
 	)
 	default String prompt73NpcIds() { return ""; }
@@ -20652,7 +20652,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt73
 	)
 	default String prompt73ItemIds() { return ""; }
@@ -20661,7 +20661,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt73
 	)
 	default int prompt73Duration() { return 0; }
@@ -20670,7 +20670,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt73
 	)
 	default int prompt73Cooldown() { return 0; }
@@ -20688,7 +20688,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt73
 	)
 	default String prompt73ChatPatterns() { return ""; }
@@ -20714,8 +20714,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt73panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt73
 	)
 	default RSAnchorType prompt73PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -20723,8 +20723,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt73PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt73
 	)
 	default int prompt73PanelAnchorX() { return 0; }
@@ -20732,8 +20732,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt73PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt73
 	)
 	default int prompt73PanelAnchorY() { return 0; }
@@ -20742,7 +20742,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt73
 	)
 	default int prompt73ImageId() { return 0; }
@@ -20751,7 +20751,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt73
 	)
 	default Sound prompt73Sound() { return Sound.NONE; }
@@ -20760,7 +20760,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt73
 	)
 	default boolean prompt73ImageOffsetNegative() { return false; }
@@ -20769,8 +20769,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt73PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt73
 	)
 	default int prompt73PanelWidth() { return 140; }
@@ -20779,8 +20779,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt73PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt73
 	)
 	default TextSize prompt73PanelTextSize() { return TextSize.SMALL; }
@@ -20789,7 +20789,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt73PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt73
 	)
@@ -20799,8 +20799,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt73PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt73
 	)
 	default boolean prompt73PanelBorder() { return true; }
@@ -20810,7 +20810,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt73
 	)
 	default boolean prompt73ForceShow() { return false; }
@@ -20846,7 +20846,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt74Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt74
 	)
 	default String prompt74Text() { return ""; }
@@ -20855,7 +20855,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt74Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt74
 	)
 	default Color prompt74Color() { return Color.WHITE; }
@@ -20879,7 +20879,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt74DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt74Datess",
+			keyName = "prompt74Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -20907,7 +20907,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt74Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt74
@@ -20927,7 +20927,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt74
 	)
 	default String prompt74NpcIds() { return ""; }
@@ -20936,7 +20936,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt74
 	)
 	default String prompt74ItemIds() { return ""; }
@@ -20945,7 +20945,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt74
 	)
 	default int prompt74Duration() { return 0; }
@@ -20954,7 +20954,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt74
 	)
 	default int prompt74Cooldown() { return 0; }
@@ -20972,7 +20972,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt74
 	)
 	default String prompt74ChatPatterns() { return ""; }
@@ -20998,8 +20998,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt74panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt74
 	)
 	default RSAnchorType prompt74PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -21007,8 +21007,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt74PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt74
 	)
 	default int prompt74PanelAnchorX() { return 0; }
@@ -21016,8 +21016,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt74PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt74
 	)
 	default int prompt74PanelAnchorY() { return 0; }
@@ -21026,7 +21026,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt74
 	)
 	default int prompt74ImageId() { return 0; }
@@ -21035,7 +21035,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt74
 	)
 	default Sound prompt74Sound() { return Sound.NONE; }
@@ -21044,7 +21044,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt74
 	)
 	default boolean prompt74ImageOffsetNegative() { return false; }
@@ -21053,8 +21053,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt74PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt74
 	)
 	default int prompt74PanelWidth() { return 140; }
@@ -21063,8 +21063,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt74PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt74
 	)
 	default TextSize prompt74PanelTextSize() { return TextSize.SMALL; }
@@ -21073,7 +21073,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt74PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt74
 	)
@@ -21083,8 +21083,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt74PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt74
 	)
 	default boolean prompt74PanelBorder() { return true; }
@@ -21094,7 +21094,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt74
 	)
 	default boolean prompt74ForceShow() { return false; }
@@ -21130,7 +21130,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt75Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt75
 	)
 	default String prompt75Text() { return ""; }
@@ -21139,7 +21139,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt75Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt75
 	)
 	default Color prompt75Color() { return Color.WHITE; }
@@ -21163,7 +21163,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt75DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt75Datess",
+			keyName = "prompt75Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -21191,7 +21191,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt75Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt75
@@ -21211,7 +21211,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt75
 	)
 	default String prompt75NpcIds() { return ""; }
@@ -21220,7 +21220,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt75
 	)
 	default String prompt75ItemIds() { return ""; }
@@ -21229,7 +21229,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt75
 	)
 	default int prompt75Duration() { return 0; }
@@ -21238,7 +21238,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt75
 	)
 	default int prompt75Cooldown() { return 0; }
@@ -21256,7 +21256,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt75
 	)
 	default String prompt75ChatPatterns() { return ""; }
@@ -21282,8 +21282,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt75panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt75
 	)
 	default RSAnchorType prompt75PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -21291,8 +21291,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt75PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt75
 	)
 	default int prompt75PanelAnchorX() { return 0; }
@@ -21300,8 +21300,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt75PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt75
 	)
 	default int prompt75PanelAnchorY() { return 0; }
@@ -21310,7 +21310,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt75
 	)
 	default int prompt75ImageId() { return 0; }
@@ -21319,7 +21319,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt75
 	)
 	default Sound prompt75Sound() { return Sound.NONE; }
@@ -21328,7 +21328,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt75
 	)
 	default boolean prompt75ImageOffsetNegative() { return false; }
@@ -21337,8 +21337,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt75PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt75
 	)
 	default int prompt75PanelWidth() { return 140; }
@@ -21347,8 +21347,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt75PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt75
 	)
 	default TextSize prompt75PanelTextSize() { return TextSize.SMALL; }
@@ -21357,7 +21357,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt75PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt75
 	)
@@ -21367,8 +21367,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt75PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt75
 	)
 	default boolean prompt75PanelBorder() { return true; }
@@ -21378,7 +21378,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt75
 	)
 	default boolean prompt75ForceShow() { return false; }
@@ -21414,7 +21414,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt76Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt76
 	)
 	default String prompt76Text() { return ""; }
@@ -21423,7 +21423,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt76Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt76
 	)
 	default Color prompt76Color() { return Color.WHITE; }
@@ -21447,7 +21447,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt76DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt76Datess",
+			keyName = "prompt76Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -21475,7 +21475,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt76Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt76
@@ -21495,7 +21495,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt76
 	)
 	default String prompt76NpcIds() { return ""; }
@@ -21504,7 +21504,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt76
 	)
 	default String prompt76ItemIds() { return ""; }
@@ -21513,7 +21513,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt76
 	)
 	default int prompt76Duration() { return 0; }
@@ -21522,7 +21522,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt76
 	)
 	default int prompt76Cooldown() { return 0; }
@@ -21540,7 +21540,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt76
 	)
 	default String prompt76ChatPatterns() { return ""; }
@@ -21566,8 +21566,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt76panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt76
 	)
 	default RSAnchorType prompt76PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -21575,8 +21575,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt76PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt76
 	)
 	default int prompt76PanelAnchorX() { return 0; }
@@ -21584,8 +21584,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt76PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt76
 	)
 	default int prompt76PanelAnchorY() { return 0; }
@@ -21594,7 +21594,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt76
 	)
 	default int prompt76ImageId() { return 0; }
@@ -21603,7 +21603,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt76
 	)
 	default Sound prompt76Sound() { return Sound.NONE; }
@@ -21612,7 +21612,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt76
 	)
 	default boolean prompt76ImageOffsetNegative() { return false; }
@@ -21621,8 +21621,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt76PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt76
 	)
 	default int prompt76PanelWidth() { return 140; }
@@ -21631,8 +21631,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt76PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt76
 	)
 	default TextSize prompt76PanelTextSize() { return TextSize.SMALL; }
@@ -21641,7 +21641,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt76PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt76
 	)
@@ -21651,8 +21651,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt76PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt76
 	)
 	default boolean prompt76PanelBorder() { return true; }
@@ -21662,7 +21662,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt76
 	)
 	default boolean prompt76ForceShow() { return false; }
@@ -21698,7 +21698,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt77Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt77
 	)
 	default String prompt77Text() { return ""; }
@@ -21707,7 +21707,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt77Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt77
 	)
 	default Color prompt77Color() { return Color.WHITE; }
@@ -21731,7 +21731,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt77DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt77Datess",
+			keyName = "prompt77Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -21759,7 +21759,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt77Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt77
@@ -21779,7 +21779,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt77
 	)
 	default String prompt77NpcIds() { return ""; }
@@ -21788,7 +21788,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt77
 	)
 	default String prompt77ItemIds() { return ""; }
@@ -21797,7 +21797,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt77
 	)
 	default int prompt77Duration() { return 0; }
@@ -21806,7 +21806,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt77
 	)
 	default int prompt77Cooldown() { return 0; }
@@ -21824,7 +21824,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt77
 	)
 	default String prompt77ChatPatterns() { return ""; }
@@ -21850,8 +21850,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt77panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt77
 	)
 	default RSAnchorType prompt77PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -21859,8 +21859,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt77PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt77
 	)
 	default int prompt77PanelAnchorX() { return 0; }
@@ -21868,8 +21868,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt77PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt77
 	)
 	default int prompt77PanelAnchorY() { return 0; }
@@ -21878,7 +21878,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt77
 	)
 	default int prompt77ImageId() { return 0; }
@@ -21887,7 +21887,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt77
 	)
 	default Sound prompt77Sound() { return Sound.NONE; }
@@ -21896,7 +21896,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt77
 	)
 	default boolean prompt77ImageOffsetNegative() { return false; }
@@ -21905,8 +21905,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt77PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt77
 	)
 	default int prompt77PanelWidth() { return 140; }
@@ -21915,8 +21915,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt77PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt77
 	)
 	default TextSize prompt77PanelTextSize() { return TextSize.SMALL; }
@@ -21925,7 +21925,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt77PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt77
 	)
@@ -21935,8 +21935,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt77PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt77
 	)
 	default boolean prompt77PanelBorder() { return true; }
@@ -21946,7 +21946,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt77
 	)
 	default boolean prompt77ForceShow() { return false; }
@@ -21982,7 +21982,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt78Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt78
 	)
 	default String prompt78Text() { return ""; }
@@ -21991,7 +21991,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt78Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt78
 	)
 	default Color prompt78Color() { return Color.WHITE; }
@@ -22015,7 +22015,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt78DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt78Datess",
+			keyName = "prompt78Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -22043,7 +22043,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt78Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt78
@@ -22063,7 +22063,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt78
 	)
 	default String prompt78NpcIds() { return ""; }
@@ -22072,7 +22072,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt78
 	)
 	default String prompt78ItemIds() { return ""; }
@@ -22081,7 +22081,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt78
 	)
 	default int prompt78Duration() { return 0; }
@@ -22090,7 +22090,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt78
 	)
 	default int prompt78Cooldown() { return 0; }
@@ -22108,7 +22108,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt78
 	)
 	default String prompt78ChatPatterns() { return ""; }
@@ -22134,8 +22134,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt78panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt78
 	)
 	default RSAnchorType prompt78PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -22143,8 +22143,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt78PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt78
 	)
 	default int prompt78PanelAnchorX() { return 0; }
@@ -22152,8 +22152,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt78PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt78
 	)
 	default int prompt78PanelAnchorY() { return 0; }
@@ -22162,7 +22162,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt78
 	)
 	default int prompt78ImageId() { return 0; }
@@ -22171,7 +22171,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt78
 	)
 	default Sound prompt78Sound() { return Sound.NONE; }
@@ -22180,7 +22180,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt78
 	)
 	default boolean prompt78ImageOffsetNegative() { return false; }
@@ -22189,8 +22189,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt78PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt78
 	)
 	default int prompt78PanelWidth() { return 140; }
@@ -22199,8 +22199,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt78PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt78
 	)
 	default TextSize prompt78PanelTextSize() { return TextSize.SMALL; }
@@ -22209,7 +22209,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt78PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt78
 	)
@@ -22219,8 +22219,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt78PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt78
 	)
 	default boolean prompt78PanelBorder() { return true; }
@@ -22230,7 +22230,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt78
 	)
 	default boolean prompt78ForceShow() { return false; }
@@ -22266,7 +22266,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt79Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt79
 	)
 	default String prompt79Text() { return ""; }
@@ -22275,7 +22275,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt79Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt79
 	)
 	default Color prompt79Color() { return Color.WHITE; }
@@ -22299,7 +22299,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt79DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt79Datess",
+			keyName = "prompt79Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -22327,7 +22327,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt79Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt79
@@ -22347,7 +22347,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt79
 	)
 	default String prompt79NpcIds() { return ""; }
@@ -22356,7 +22356,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt79
 	)
 	default String prompt79ItemIds() { return ""; }
@@ -22365,7 +22365,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt79
 	)
 	default int prompt79Duration() { return 0; }
@@ -22374,7 +22374,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt79
 	)
 	default int prompt79Cooldown() { return 0; }
@@ -22392,7 +22392,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt79
 	)
 	default String prompt79ChatPatterns() { return ""; }
@@ -22418,8 +22418,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt79panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt79
 	)
 	default RSAnchorType prompt79PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -22427,8 +22427,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt79PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt79
 	)
 	default int prompt79PanelAnchorX() { return 0; }
@@ -22436,8 +22436,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt79PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt79
 	)
 	default int prompt79PanelAnchorY() { return 0; }
@@ -22446,7 +22446,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt79
 	)
 	default int prompt79ImageId() { return 0; }
@@ -22455,7 +22455,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt79
 	)
 	default Sound prompt79Sound() { return Sound.NONE; }
@@ -22464,7 +22464,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt79
 	)
 	default boolean prompt79ImageOffsetNegative() { return false; }
@@ -22473,8 +22473,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt79PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt79
 	)
 	default int prompt79PanelWidth() { return 140; }
@@ -22483,8 +22483,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt79PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt79
 	)
 	default TextSize prompt79PanelTextSize() { return TextSize.SMALL; }
@@ -22493,7 +22493,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt79PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt79
 	)
@@ -22503,8 +22503,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt79PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt79
 	)
 	default boolean prompt79PanelBorder() { return true; }
@@ -22514,7 +22514,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt79
 	)
 	default boolean prompt79ForceShow() { return false; }
@@ -22550,7 +22550,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt80Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt80
 	)
 	default String prompt80Text() { return ""; }
@@ -22559,7 +22559,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt80Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt80
 	)
 	default Color prompt80Color() { return Color.WHITE; }
@@ -22583,7 +22583,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt80DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt80Datess",
+			keyName = "prompt80Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -22611,7 +22611,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt80Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt80
@@ -22631,7 +22631,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt80
 	)
 	default String prompt80NpcIds() { return ""; }
@@ -22640,7 +22640,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt80
 	)
 	default String prompt80ItemIds() { return ""; }
@@ -22649,7 +22649,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt80
 	)
 	default int prompt80Duration() { return 0; }
@@ -22658,7 +22658,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt80
 	)
 	default int prompt80Cooldown() { return 0; }
@@ -22676,7 +22676,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt80
 	)
 	default String prompt80ChatPatterns() { return ""; }
@@ -22702,8 +22702,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt80panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt80
 	)
 	default RSAnchorType prompt80PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -22711,8 +22711,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt80PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt80
 	)
 	default int prompt80PanelAnchorX() { return 0; }
@@ -22720,8 +22720,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt80PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt80
 	)
 	default int prompt80PanelAnchorY() { return 0; }
@@ -22730,7 +22730,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt80
 	)
 	default int prompt80ImageId() { return 0; }
@@ -22739,7 +22739,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt80
 	)
 	default Sound prompt80Sound() { return Sound.NONE; }
@@ -22748,7 +22748,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt80
 	)
 	default boolean prompt80ImageOffsetNegative() { return false; }
@@ -22757,8 +22757,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt80PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt80
 	)
 	default int prompt80PanelWidth() { return 140; }
@@ -22767,8 +22767,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt80PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt80
 	)
 	default TextSize prompt80PanelTextSize() { return TextSize.SMALL; }
@@ -22777,7 +22777,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt80PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt80
 	)
@@ -22787,8 +22787,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt80PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt80
 	)
 	default boolean prompt80PanelBorder() { return true; }
@@ -22798,7 +22798,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt80
 	)
 	default boolean prompt80ForceShow() { return false; }
@@ -22834,7 +22834,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt81Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt81
 	)
 	default String prompt81Text() { return ""; }
@@ -22843,7 +22843,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt81Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt81
 	)
 	default Color prompt81Color() { return Color.WHITE; }
@@ -22867,7 +22867,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt81DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt81Datess",
+			keyName = "prompt81Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -22895,7 +22895,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt81Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt81
@@ -22915,7 +22915,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt81
 	)
 	default String prompt81NpcIds() { return ""; }
@@ -22924,7 +22924,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt81
 	)
 	default String prompt81ItemIds() { return ""; }
@@ -22933,7 +22933,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt81
 	)
 	default int prompt81Duration() { return 0; }
@@ -22942,7 +22942,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt81
 	)
 	default int prompt81Cooldown() { return 0; }
@@ -22960,7 +22960,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt81
 	)
 	default String prompt81ChatPatterns() { return ""; }
@@ -22986,8 +22986,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt81panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt81
 	)
 	default RSAnchorType prompt81PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -22995,8 +22995,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt81PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt81
 	)
 	default int prompt81PanelAnchorX() { return 0; }
@@ -23004,8 +23004,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt81PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt81
 	)
 	default int prompt81PanelAnchorY() { return 0; }
@@ -23014,7 +23014,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt81
 	)
 	default int prompt81ImageId() { return 0; }
@@ -23023,7 +23023,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt81
 	)
 	default Sound prompt81Sound() { return Sound.NONE; }
@@ -23032,7 +23032,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt81
 	)
 	default boolean prompt81ImageOffsetNegative() { return false; }
@@ -23041,8 +23041,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt81PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt81
 	)
 	default int prompt81PanelWidth() { return 140; }
@@ -23051,8 +23051,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt81PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt81
 	)
 	default TextSize prompt81PanelTextSize() { return TextSize.SMALL; }
@@ -23061,7 +23061,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt81PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt81
 	)
@@ -23071,8 +23071,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt81PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt81
 	)
 	default boolean prompt81PanelBorder() { return true; }
@@ -23082,7 +23082,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt81
 	)
 	default boolean prompt81ForceShow() { return false; }
@@ -23118,7 +23118,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt82Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt82
 	)
 	default String prompt82Text() { return ""; }
@@ -23127,7 +23127,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt82Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt82
 	)
 	default Color prompt82Color() { return Color.WHITE; }
@@ -23151,7 +23151,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt82DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt82Datess",
+			keyName = "prompt82Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -23179,7 +23179,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt82Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt82
@@ -23199,7 +23199,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt82
 	)
 	default String prompt82NpcIds() { return ""; }
@@ -23208,7 +23208,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt82
 	)
 	default String prompt82ItemIds() { return ""; }
@@ -23217,7 +23217,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt82
 	)
 	default int prompt82Duration() { return 0; }
@@ -23226,7 +23226,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt82
 	)
 	default int prompt82Cooldown() { return 0; }
@@ -23244,7 +23244,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt82
 	)
 	default String prompt82ChatPatterns() { return ""; }
@@ -23270,8 +23270,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt82panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt82
 	)
 	default RSAnchorType prompt82PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -23279,8 +23279,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt82PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt82
 	)
 	default int prompt82PanelAnchorX() { return 0; }
@@ -23288,8 +23288,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt82PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt82
 	)
 	default int prompt82PanelAnchorY() { return 0; }
@@ -23298,7 +23298,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt82
 	)
 	default int prompt82ImageId() { return 0; }
@@ -23307,7 +23307,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt82
 	)
 	default Sound prompt82Sound() { return Sound.NONE; }
@@ -23316,7 +23316,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt82
 	)
 	default boolean prompt82ImageOffsetNegative() { return false; }
@@ -23325,8 +23325,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt82PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt82
 	)
 	default int prompt82PanelWidth() { return 140; }
@@ -23335,8 +23335,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt82PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt82
 	)
 	default TextSize prompt82PanelTextSize() { return TextSize.SMALL; }
@@ -23345,7 +23345,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt82PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt82
 	)
@@ -23355,8 +23355,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt82PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt82
 	)
 	default boolean prompt82PanelBorder() { return true; }
@@ -23366,7 +23366,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt82
 	)
 	default boolean prompt82ForceShow() { return false; }
@@ -23402,7 +23402,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt83Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt83
 	)
 	default String prompt83Text() { return ""; }
@@ -23411,7 +23411,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt83Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt83
 	)
 	default Color prompt83Color() { return Color.WHITE; }
@@ -23435,7 +23435,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt83DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt83Datess",
+			keyName = "prompt83Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -23463,7 +23463,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt83Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt83
@@ -23483,7 +23483,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt83
 	)
 	default String prompt83NpcIds() { return ""; }
@@ -23492,7 +23492,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt83
 	)
 	default String prompt83ItemIds() { return ""; }
@@ -23501,7 +23501,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt83
 	)
 	default int prompt83Duration() { return 0; }
@@ -23510,7 +23510,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt83
 	)
 	default int prompt83Cooldown() { return 0; }
@@ -23528,7 +23528,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt83
 	)
 	default String prompt83ChatPatterns() { return ""; }
@@ -23554,8 +23554,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt83panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt83
 	)
 	default RSAnchorType prompt83PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -23563,8 +23563,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt83PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt83
 	)
 	default int prompt83PanelAnchorX() { return 0; }
@@ -23572,8 +23572,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt83PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt83
 	)
 	default int prompt83PanelAnchorY() { return 0; }
@@ -23582,7 +23582,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt83
 	)
 	default int prompt83ImageId() { return 0; }
@@ -23591,7 +23591,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt83
 	)
 	default Sound prompt83Sound() { return Sound.NONE; }
@@ -23600,7 +23600,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt83
 	)
 	default boolean prompt83ImageOffsetNegative() { return false; }
@@ -23609,8 +23609,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt83PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt83
 	)
 	default int prompt83PanelWidth() { return 140; }
@@ -23619,8 +23619,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt83PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt83
 	)
 	default TextSize prompt83PanelTextSize() { return TextSize.SMALL; }
@@ -23629,7 +23629,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt83PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt83
 	)
@@ -23639,8 +23639,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt83PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt83
 	)
 	default boolean prompt83PanelBorder() { return true; }
@@ -23650,7 +23650,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt83
 	)
 	default boolean prompt83ForceShow() { return false; }
@@ -23686,7 +23686,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt84Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt84
 	)
 	default String prompt84Text() { return ""; }
@@ -23695,7 +23695,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt84Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt84
 	)
 	default Color prompt84Color() { return Color.WHITE; }
@@ -23719,7 +23719,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt84DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt84Datess",
+			keyName = "prompt84Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -23747,7 +23747,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt84Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt84
@@ -23767,7 +23767,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt84
 	)
 	default String prompt84NpcIds() { return ""; }
@@ -23776,7 +23776,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt84
 	)
 	default String prompt84ItemIds() { return ""; }
@@ -23785,7 +23785,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt84
 	)
 	default int prompt84Duration() { return 0; }
@@ -23794,7 +23794,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt84
 	)
 	default int prompt84Cooldown() { return 0; }
@@ -23812,7 +23812,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt84
 	)
 	default String prompt84ChatPatterns() { return ""; }
@@ -23838,8 +23838,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt84panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt84
 	)
 	default RSAnchorType prompt84PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -23847,8 +23847,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt84PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt84
 	)
 	default int prompt84PanelAnchorX() { return 0; }
@@ -23856,8 +23856,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt84PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt84
 	)
 	default int prompt84PanelAnchorY() { return 0; }
@@ -23866,7 +23866,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt84
 	)
 	default int prompt84ImageId() { return 0; }
@@ -23875,7 +23875,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt84
 	)
 	default Sound prompt84Sound() { return Sound.NONE; }
@@ -23884,7 +23884,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt84
 	)
 	default boolean prompt84ImageOffsetNegative() { return false; }
@@ -23893,8 +23893,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt84PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt84
 	)
 	default int prompt84PanelWidth() { return 140; }
@@ -23903,8 +23903,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt84PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt84
 	)
 	default TextSize prompt84PanelTextSize() { return TextSize.SMALL; }
@@ -23913,7 +23913,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt84PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt84
 	)
@@ -23923,8 +23923,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt84PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt84
 	)
 	default boolean prompt84PanelBorder() { return true; }
@@ -23934,7 +23934,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt84
 	)
 	default boolean prompt84ForceShow() { return false; }
@@ -23970,7 +23970,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt85Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt85
 	)
 	default String prompt85Text() { return ""; }
@@ -23979,7 +23979,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt85Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt85
 	)
 	default Color prompt85Color() { return Color.WHITE; }
@@ -24003,7 +24003,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt85DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt85Datess",
+			keyName = "prompt85Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -24031,7 +24031,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt85Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt85
@@ -24051,7 +24051,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt85
 	)
 	default String prompt85NpcIds() { return ""; }
@@ -24060,7 +24060,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt85
 	)
 	default String prompt85ItemIds() { return ""; }
@@ -24069,7 +24069,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt85
 	)
 	default int prompt85Duration() { return 0; }
@@ -24078,7 +24078,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt85
 	)
 	default int prompt85Cooldown() { return 0; }
@@ -24096,7 +24096,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt85
 	)
 	default String prompt85ChatPatterns() { return ""; }
@@ -24122,8 +24122,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt85panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt85
 	)
 	default RSAnchorType prompt85PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -24131,8 +24131,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt85PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt85
 	)
 	default int prompt85PanelAnchorX() { return 0; }
@@ -24140,8 +24140,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt85PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt85
 	)
 	default int prompt85PanelAnchorY() { return 0; }
@@ -24150,7 +24150,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt85
 	)
 	default int prompt85ImageId() { return 0; }
@@ -24159,7 +24159,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt85
 	)
 	default Sound prompt85Sound() { return Sound.NONE; }
@@ -24168,7 +24168,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt85
 	)
 	default boolean prompt85ImageOffsetNegative() { return false; }
@@ -24177,8 +24177,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt85PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt85
 	)
 	default int prompt85PanelWidth() { return 140; }
@@ -24187,8 +24187,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt85PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt85
 	)
 	default TextSize prompt85PanelTextSize() { return TextSize.SMALL; }
@@ -24197,7 +24197,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt85PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt85
 	)
@@ -24207,8 +24207,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt85PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt85
 	)
 	default boolean prompt85PanelBorder() { return true; }
@@ -24218,7 +24218,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt85
 	)
 	default boolean prompt85ForceShow() { return false; }
@@ -24254,7 +24254,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt86Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt86
 	)
 	default String prompt86Text() { return ""; }
@@ -24263,7 +24263,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt86Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt86
 	)
 	default Color prompt86Color() { return Color.WHITE; }
@@ -24287,7 +24287,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt86DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt86Datess",
+			keyName = "prompt86Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -24315,7 +24315,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt86Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt86
@@ -24335,7 +24335,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt86
 	)
 	default String prompt86NpcIds() { return ""; }
@@ -24344,7 +24344,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt86
 	)
 	default String prompt86ItemIds() { return ""; }
@@ -24353,7 +24353,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt86
 	)
 	default int prompt86Duration() { return 0; }
@@ -24362,7 +24362,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt86
 	)
 	default int prompt86Cooldown() { return 0; }
@@ -24380,7 +24380,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt86
 	)
 	default String prompt86ChatPatterns() { return ""; }
@@ -24406,8 +24406,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt86panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt86
 	)
 	default RSAnchorType prompt86PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -24415,8 +24415,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt86PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt86
 	)
 	default int prompt86PanelAnchorX() { return 0; }
@@ -24424,8 +24424,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt86PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt86
 	)
 	default int prompt86PanelAnchorY() { return 0; }
@@ -24434,7 +24434,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt86
 	)
 	default int prompt86ImageId() { return 0; }
@@ -24443,7 +24443,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt86
 	)
 	default Sound prompt86Sound() { return Sound.NONE; }
@@ -24452,7 +24452,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt86
 	)
 	default boolean prompt86ImageOffsetNegative() { return false; }
@@ -24461,8 +24461,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt86PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt86
 	)
 	default int prompt86PanelWidth() { return 140; }
@@ -24471,8 +24471,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt86PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt86
 	)
 	default TextSize prompt86PanelTextSize() { return TextSize.SMALL; }
@@ -24481,7 +24481,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt86PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt86
 	)
@@ -24491,8 +24491,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt86PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt86
 	)
 	default boolean prompt86PanelBorder() { return true; }
@@ -24502,7 +24502,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt86
 	)
 	default boolean prompt86ForceShow() { return false; }
@@ -24538,7 +24538,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt87Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt87
 	)
 	default String prompt87Text() { return ""; }
@@ -24547,7 +24547,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt87Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt87
 	)
 	default Color prompt87Color() { return Color.WHITE; }
@@ -24571,7 +24571,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt87DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt87Datess",
+			keyName = "prompt87Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -24599,7 +24599,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt87Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt87
@@ -24619,7 +24619,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt87
 	)
 	default String prompt87NpcIds() { return ""; }
@@ -24628,7 +24628,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt87
 	)
 	default String prompt87ItemIds() { return ""; }
@@ -24637,7 +24637,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt87
 	)
 	default int prompt87Duration() { return 0; }
@@ -24646,7 +24646,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt87
 	)
 	default int prompt87Cooldown() { return 0; }
@@ -24664,7 +24664,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt87
 	)
 	default String prompt87ChatPatterns() { return ""; }
@@ -24690,8 +24690,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt87panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt87
 	)
 	default RSAnchorType prompt87PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -24699,8 +24699,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt87PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt87
 	)
 	default int prompt87PanelAnchorX() { return 0; }
@@ -24708,8 +24708,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt87PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt87
 	)
 	default int prompt87PanelAnchorY() { return 0; }
@@ -24718,7 +24718,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt87
 	)
 	default int prompt87ImageId() { return 0; }
@@ -24727,7 +24727,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt87
 	)
 	default Sound prompt87Sound() { return Sound.NONE; }
@@ -24736,7 +24736,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt87
 	)
 	default boolean prompt87ImageOffsetNegative() { return false; }
@@ -24745,8 +24745,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt87PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt87
 	)
 	default int prompt87PanelWidth() { return 140; }
@@ -24755,8 +24755,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt87PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt87
 	)
 	default TextSize prompt87PanelTextSize() { return TextSize.SMALL; }
@@ -24765,7 +24765,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt87PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt87
 	)
@@ -24775,8 +24775,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt87PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt87
 	)
 	default boolean prompt87PanelBorder() { return true; }
@@ -24786,7 +24786,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt87
 	)
 	default boolean prompt87ForceShow() { return false; }
@@ -24822,7 +24822,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt88Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt88
 	)
 	default String prompt88Text() { return ""; }
@@ -24831,7 +24831,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt88Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt88
 	)
 	default Color prompt88Color() { return Color.WHITE; }
@@ -24855,7 +24855,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt88DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt88Datess",
+			keyName = "prompt88Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -24883,7 +24883,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt88Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt88
@@ -24903,7 +24903,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt88
 	)
 	default String prompt88NpcIds() { return ""; }
@@ -24912,7 +24912,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt88
 	)
 	default String prompt88ItemIds() { return ""; }
@@ -24921,7 +24921,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt88
 	)
 	default int prompt88Duration() { return 0; }
@@ -24930,7 +24930,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt88
 	)
 	default int prompt88Cooldown() { return 0; }
@@ -24948,7 +24948,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt88
 	)
 	default String prompt88ChatPatterns() { return ""; }
@@ -24974,8 +24974,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt88panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt88
 	)
 	default RSAnchorType prompt88PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -24983,8 +24983,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt88PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt88
 	)
 	default int prompt88PanelAnchorX() { return 0; }
@@ -24992,8 +24992,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt88PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt88
 	)
 	default int prompt88PanelAnchorY() { return 0; }
@@ -25002,7 +25002,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt88
 	)
 	default int prompt88ImageId() { return 0; }
@@ -25011,7 +25011,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt88
 	)
 	default Sound prompt88Sound() { return Sound.NONE; }
@@ -25020,7 +25020,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt88
 	)
 	default boolean prompt88ImageOffsetNegative() { return false; }
@@ -25029,8 +25029,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt88PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt88
 	)
 	default int prompt88PanelWidth() { return 140; }
@@ -25039,8 +25039,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt88PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt88
 	)
 	default TextSize prompt88PanelTextSize() { return TextSize.SMALL; }
@@ -25049,7 +25049,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt88PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt88
 	)
@@ -25059,8 +25059,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt88PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt88
 	)
 	default boolean prompt88PanelBorder() { return true; }
@@ -25070,7 +25070,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt88
 	)
 	default boolean prompt88ForceShow() { return false; }
@@ -25106,7 +25106,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt89Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt89
 	)
 	default String prompt89Text() { return ""; }
@@ -25115,7 +25115,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt89Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt89
 	)
 	default Color prompt89Color() { return Color.WHITE; }
@@ -25139,7 +25139,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt89DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt89Datess",
+			keyName = "prompt89Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -25167,7 +25167,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt89Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt89
@@ -25187,7 +25187,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt89
 	)
 	default String prompt89NpcIds() { return ""; }
@@ -25196,7 +25196,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt89
 	)
 	default String prompt89ItemIds() { return ""; }
@@ -25205,7 +25205,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt89
 	)
 	default int prompt89Duration() { return 0; }
@@ -25214,7 +25214,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt89
 	)
 	default int prompt89Cooldown() { return 0; }
@@ -25232,7 +25232,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt89
 	)
 	default String prompt89ChatPatterns() { return ""; }
@@ -25258,8 +25258,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt89panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt89
 	)
 	default RSAnchorType prompt89PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -25267,8 +25267,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt89PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt89
 	)
 	default int prompt89PanelAnchorX() { return 0; }
@@ -25276,8 +25276,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt89PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt89
 	)
 	default int prompt89PanelAnchorY() { return 0; }
@@ -25286,7 +25286,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt89
 	)
 	default int prompt89ImageId() { return 0; }
@@ -25295,7 +25295,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt89
 	)
 	default Sound prompt89Sound() { return Sound.NONE; }
@@ -25304,7 +25304,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt89
 	)
 	default boolean prompt89ImageOffsetNegative() { return false; }
@@ -25313,8 +25313,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt89PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt89
 	)
 	default int prompt89PanelWidth() { return 140; }
@@ -25323,8 +25323,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt89PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt89
 	)
 	default TextSize prompt89PanelTextSize() { return TextSize.SMALL; }
@@ -25333,7 +25333,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt89PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt89
 	)
@@ -25343,8 +25343,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt89PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt89
 	)
 	default boolean prompt89PanelBorder() { return true; }
@@ -25354,7 +25354,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt89
 	)
 	default boolean prompt89ForceShow() { return false; }
@@ -25390,7 +25390,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt90Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt90
 	)
 	default String prompt90Text() { return ""; }
@@ -25399,7 +25399,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt90Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt90
 	)
 	default Color prompt90Color() { return Color.WHITE; }
@@ -25423,7 +25423,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt90DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt90Datess",
+			keyName = "prompt90Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -25451,7 +25451,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt90Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt90
@@ -25471,7 +25471,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt90
 	)
 	default String prompt90NpcIds() { return ""; }
@@ -25480,7 +25480,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt90
 	)
 	default String prompt90ItemIds() { return ""; }
@@ -25489,7 +25489,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt90
 	)
 	default int prompt90Duration() { return 0; }
@@ -25498,7 +25498,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt90
 	)
 	default int prompt90Cooldown() { return 0; }
@@ -25516,7 +25516,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt90
 	)
 	default String prompt90ChatPatterns() { return ""; }
@@ -25542,8 +25542,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt90panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt90
 	)
 	default RSAnchorType prompt90PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -25551,8 +25551,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt90PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt90
 	)
 	default int prompt90PanelAnchorX() { return 0; }
@@ -25560,8 +25560,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt90PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt90
 	)
 	default int prompt90PanelAnchorY() { return 0; }
@@ -25570,7 +25570,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt90
 	)
 	default int prompt90ImageId() { return 0; }
@@ -25579,7 +25579,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt90
 	)
 	default Sound prompt90Sound() { return Sound.NONE; }
@@ -25588,7 +25588,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt90
 	)
 	default boolean prompt90ImageOffsetNegative() { return false; }
@@ -25597,8 +25597,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt90PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt90
 	)
 	default int prompt90PanelWidth() { return 140; }
@@ -25607,8 +25607,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt90PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt90
 	)
 	default TextSize prompt90PanelTextSize() { return TextSize.SMALL; }
@@ -25617,7 +25617,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt90PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt90
 	)
@@ -25627,8 +25627,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt90PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt90
 	)
 	default boolean prompt90PanelBorder() { return true; }
@@ -25638,7 +25638,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt90
 	)
 	default boolean prompt90ForceShow() { return false; }
@@ -25674,7 +25674,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt91Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt91
 	)
 	default String prompt91Text() { return ""; }
@@ -25683,7 +25683,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt91Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt91
 	)
 	default Color prompt91Color() { return Color.WHITE; }
@@ -25707,7 +25707,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt91DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt91Datess",
+			keyName = "prompt91Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -25735,7 +25735,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt91Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt91
@@ -25755,7 +25755,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt91
 	)
 	default String prompt91NpcIds() { return ""; }
@@ -25764,7 +25764,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt91
 	)
 	default String prompt91ItemIds() { return ""; }
@@ -25773,7 +25773,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt91
 	)
 	default int prompt91Duration() { return 0; }
@@ -25782,7 +25782,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt91
 	)
 	default int prompt91Cooldown() { return 0; }
@@ -25800,7 +25800,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt91
 	)
 	default String prompt91ChatPatterns() { return ""; }
@@ -25826,8 +25826,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt91panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt91
 	)
 	default RSAnchorType prompt91PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -25835,8 +25835,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt91PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt91
 	)
 	default int prompt91PanelAnchorX() { return 0; }
@@ -25844,8 +25844,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt91PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt91
 	)
 	default int prompt91PanelAnchorY() { return 0; }
@@ -25854,7 +25854,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt91
 	)
 	default int prompt91ImageId() { return 0; }
@@ -25863,7 +25863,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt91
 	)
 	default Sound prompt91Sound() { return Sound.NONE; }
@@ -25872,7 +25872,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt91
 	)
 	default boolean prompt91ImageOffsetNegative() { return false; }
@@ -25881,8 +25881,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt91PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt91
 	)
 	default int prompt91PanelWidth() { return 140; }
@@ -25891,8 +25891,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt91PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt91
 	)
 	default TextSize prompt91PanelTextSize() { return TextSize.SMALL; }
@@ -25901,7 +25901,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt91PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt91
 	)
@@ -25911,8 +25911,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt91PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt91
 	)
 	default boolean prompt91PanelBorder() { return true; }
@@ -25922,7 +25922,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt91
 	)
 	default boolean prompt91ForceShow() { return false; }
@@ -25958,7 +25958,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt92Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt92
 	)
 	default String prompt92Text() { return ""; }
@@ -25967,7 +25967,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt92Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt92
 	)
 	default Color prompt92Color() { return Color.WHITE; }
@@ -25991,7 +25991,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt92DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt92Datess",
+			keyName = "prompt92Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -26019,7 +26019,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt92Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt92
@@ -26039,7 +26039,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt92
 	)
 	default String prompt92NpcIds() { return ""; }
@@ -26048,7 +26048,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt92
 	)
 	default String prompt92ItemIds() { return ""; }
@@ -26057,7 +26057,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt92
 	)
 	default int prompt92Duration() { return 0; }
@@ -26066,7 +26066,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt92
 	)
 	default int prompt92Cooldown() { return 0; }
@@ -26084,7 +26084,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt92
 	)
 	default String prompt92ChatPatterns() { return ""; }
@@ -26110,8 +26110,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt92panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt92
 	)
 	default RSAnchorType prompt92PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -26119,8 +26119,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt92PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt92
 	)
 	default int prompt92PanelAnchorX() { return 0; }
@@ -26128,8 +26128,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt92PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt92
 	)
 	default int prompt92PanelAnchorY() { return 0; }
@@ -26138,7 +26138,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt92
 	)
 	default int prompt92ImageId() { return 0; }
@@ -26147,7 +26147,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt92
 	)
 	default Sound prompt92Sound() { return Sound.NONE; }
@@ -26156,7 +26156,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt92
 	)
 	default boolean prompt92ImageOffsetNegative() { return false; }
@@ -26165,8 +26165,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt92PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt92
 	)
 	default int prompt92PanelWidth() { return 140; }
@@ -26175,8 +26175,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt92PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt92
 	)
 	default TextSize prompt92PanelTextSize() { return TextSize.SMALL; }
@@ -26185,7 +26185,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt92PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt92
 	)
@@ -26195,8 +26195,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt92PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt92
 	)
 	default boolean prompt92PanelBorder() { return true; }
@@ -26206,7 +26206,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt92
 	)
 	default boolean prompt92ForceShow() { return false; }
@@ -26242,7 +26242,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt93Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt93
 	)
 	default String prompt93Text() { return ""; }
@@ -26251,7 +26251,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt93Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt93
 	)
 	default Color prompt93Color() { return Color.WHITE; }
@@ -26275,7 +26275,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt93DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt93Datess",
+			keyName = "prompt93Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -26303,7 +26303,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt93Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt93
@@ -26323,7 +26323,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt93
 	)
 	default String prompt93NpcIds() { return ""; }
@@ -26332,7 +26332,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt93
 	)
 	default String prompt93ItemIds() { return ""; }
@@ -26341,7 +26341,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt93
 	)
 	default int prompt93Duration() { return 0; }
@@ -26350,7 +26350,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt93
 	)
 	default int prompt93Cooldown() { return 0; }
@@ -26368,7 +26368,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt93
 	)
 	default String prompt93ChatPatterns() { return ""; }
@@ -26394,8 +26394,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt93panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt93
 	)
 	default RSAnchorType prompt93PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -26403,8 +26403,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt93PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt93
 	)
 	default int prompt93PanelAnchorX() { return 0; }
@@ -26412,8 +26412,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt93PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt93
 	)
 	default int prompt93PanelAnchorY() { return 0; }
@@ -26422,7 +26422,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt93
 	)
 	default int prompt93ImageId() { return 0; }
@@ -26431,7 +26431,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt93
 	)
 	default Sound prompt93Sound() { return Sound.NONE; }
@@ -26440,7 +26440,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt93
 	)
 	default boolean prompt93ImageOffsetNegative() { return false; }
@@ -26449,8 +26449,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt93PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt93
 	)
 	default int prompt93PanelWidth() { return 140; }
@@ -26459,8 +26459,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt93PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt93
 	)
 	default TextSize prompt93PanelTextSize() { return TextSize.SMALL; }
@@ -26469,7 +26469,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt93PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt93
 	)
@@ -26479,8 +26479,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt93PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt93
 	)
 	default boolean prompt93PanelBorder() { return true; }
@@ -26490,7 +26490,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt93
 	)
 	default boolean prompt93ForceShow() { return false; }
@@ -26526,7 +26526,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt94Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt94
 	)
 	default String prompt94Text() { return ""; }
@@ -26535,7 +26535,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt94Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt94
 	)
 	default Color prompt94Color() { return Color.WHITE; }
@@ -26559,7 +26559,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt94DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt94Datess",
+			keyName = "prompt94Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -26587,7 +26587,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt94Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt94
@@ -26607,7 +26607,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt94
 	)
 	default String prompt94NpcIds() { return ""; }
@@ -26616,7 +26616,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt94
 	)
 	default String prompt94ItemIds() { return ""; }
@@ -26625,7 +26625,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt94
 	)
 	default int prompt94Duration() { return 0; }
@@ -26634,7 +26634,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt94
 	)
 	default int prompt94Cooldown() { return 0; }
@@ -26652,7 +26652,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt94
 	)
 	default String prompt94ChatPatterns() { return ""; }
@@ -26678,8 +26678,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt94panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt94
 	)
 	default RSAnchorType prompt94PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -26687,8 +26687,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt94PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt94
 	)
 	default int prompt94PanelAnchorX() { return 0; }
@@ -26696,8 +26696,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt94PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt94
 	)
 	default int prompt94PanelAnchorY() { return 0; }
@@ -26706,7 +26706,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt94
 	)
 	default int prompt94ImageId() { return 0; }
@@ -26715,7 +26715,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt94
 	)
 	default Sound prompt94Sound() { return Sound.NONE; }
@@ -26724,7 +26724,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt94
 	)
 	default boolean prompt94ImageOffsetNegative() { return false; }
@@ -26733,8 +26733,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt94PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt94
 	)
 	default int prompt94PanelWidth() { return 140; }
@@ -26743,8 +26743,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt94PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt94
 	)
 	default TextSize prompt94PanelTextSize() { return TextSize.SMALL; }
@@ -26753,7 +26753,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt94PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt94
 	)
@@ -26763,8 +26763,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt94PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt94
 	)
 	default boolean prompt94PanelBorder() { return true; }
@@ -26774,7 +26774,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt94
 	)
 	default boolean prompt94ForceShow() { return false; }
@@ -26810,7 +26810,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt95Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt95
 	)
 	default String prompt95Text() { return ""; }
@@ -26819,7 +26819,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt95Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt95
 	)
 	default Color prompt95Color() { return Color.WHITE; }
@@ -26843,7 +26843,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt95DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt95Datess",
+			keyName = "prompt95Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -26871,7 +26871,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt95Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt95
@@ -26891,7 +26891,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt95
 	)
 	default String prompt95NpcIds() { return ""; }
@@ -26900,7 +26900,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt95
 	)
 	default String prompt95ItemIds() { return ""; }
@@ -26909,7 +26909,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt95
 	)
 	default int prompt95Duration() { return 0; }
@@ -26918,7 +26918,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt95
 	)
 	default int prompt95Cooldown() { return 0; }
@@ -26936,7 +26936,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt95
 	)
 	default String prompt95ChatPatterns() { return ""; }
@@ -26962,8 +26962,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt95panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt95
 	)
 	default RSAnchorType prompt95PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -26971,8 +26971,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt95PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt95
 	)
 	default int prompt95PanelAnchorX() { return 0; }
@@ -26980,8 +26980,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt95PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt95
 	)
 	default int prompt95PanelAnchorY() { return 0; }
@@ -26990,7 +26990,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt95
 	)
 	default int prompt95ImageId() { return 0; }
@@ -26999,7 +26999,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt95
 	)
 	default Sound prompt95Sound() { return Sound.NONE; }
@@ -27008,7 +27008,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt95
 	)
 	default boolean prompt95ImageOffsetNegative() { return false; }
@@ -27017,8 +27017,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt95PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt95
 	)
 	default int prompt95PanelWidth() { return 140; }
@@ -27027,8 +27027,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt95PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt95
 	)
 	default TextSize prompt95PanelTextSize() { return TextSize.SMALL; }
@@ -27037,7 +27037,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt95PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt95
 	)
@@ -27047,8 +27047,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt95PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt95
 	)
 	default boolean prompt95PanelBorder() { return true; }
@@ -27058,7 +27058,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt95
 	)
 	default boolean prompt95ForceShow() { return false; }
@@ -27094,7 +27094,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt96Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt96
 	)
 	default String prompt96Text() { return ""; }
@@ -27103,7 +27103,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt96Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt96
 	)
 	default Color prompt96Color() { return Color.WHITE; }
@@ -27127,7 +27127,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt96DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt96Datess",
+			keyName = "prompt96Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -27155,7 +27155,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt96Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt96
@@ -27175,7 +27175,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt96
 	)
 	default String prompt96NpcIds() { return ""; }
@@ -27184,7 +27184,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt96
 	)
 	default String prompt96ItemIds() { return ""; }
@@ -27193,7 +27193,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt96
 	)
 	default int prompt96Duration() { return 0; }
@@ -27202,7 +27202,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt96
 	)
 	default int prompt96Cooldown() { return 0; }
@@ -27220,7 +27220,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt96
 	)
 	default String prompt96ChatPatterns() { return ""; }
@@ -27246,8 +27246,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt96panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt96
 	)
 	default RSAnchorType prompt96PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -27255,8 +27255,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt96PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt96
 	)
 	default int prompt96PanelAnchorX() { return 0; }
@@ -27264,8 +27264,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt96PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt96
 	)
 	default int prompt96PanelAnchorY() { return 0; }
@@ -27274,7 +27274,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt96
 	)
 	default int prompt96ImageId() { return 0; }
@@ -27283,7 +27283,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt96
 	)
 	default Sound prompt96Sound() { return Sound.NONE; }
@@ -27292,7 +27292,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt96
 	)
 	default boolean prompt96ImageOffsetNegative() { return false; }
@@ -27301,8 +27301,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt96PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt96
 	)
 	default int prompt96PanelWidth() { return 140; }
@@ -27311,8 +27311,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt96PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt96
 	)
 	default TextSize prompt96PanelTextSize() { return TextSize.SMALL; }
@@ -27321,7 +27321,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt96PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt96
 	)
@@ -27331,8 +27331,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt96PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt96
 	)
 	default boolean prompt96PanelBorder() { return true; }
@@ -27342,7 +27342,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt96
 	)
 	default boolean prompt96ForceShow() { return false; }
@@ -27378,7 +27378,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt97Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt97
 	)
 	default String prompt97Text() { return ""; }
@@ -27387,7 +27387,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt97Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt97
 	)
 	default Color prompt97Color() { return Color.WHITE; }
@@ -27411,7 +27411,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt97DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt97Datess",
+			keyName = "prompt97Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -27439,7 +27439,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt97Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt97
@@ -27459,7 +27459,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt97
 	)
 	default String prompt97NpcIds() { return ""; }
@@ -27468,7 +27468,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt97
 	)
 	default String prompt97ItemIds() { return ""; }
@@ -27477,7 +27477,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt97
 	)
 	default int prompt97Duration() { return 0; }
@@ -27486,7 +27486,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt97
 	)
 	default int prompt97Cooldown() { return 0; }
@@ -27504,7 +27504,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt97
 	)
 	default String prompt97ChatPatterns() { return ""; }
@@ -27530,8 +27530,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt97panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt97
 	)
 	default RSAnchorType prompt97PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -27539,8 +27539,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt97PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt97
 	)
 	default int prompt97PanelAnchorX() { return 0; }
@@ -27548,8 +27548,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt97PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt97
 	)
 	default int prompt97PanelAnchorY() { return 0; }
@@ -27558,7 +27558,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt97
 	)
 	default int prompt97ImageId() { return 0; }
@@ -27567,7 +27567,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt97
 	)
 	default Sound prompt97Sound() { return Sound.NONE; }
@@ -27576,7 +27576,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt97
 	)
 	default boolean prompt97ImageOffsetNegative() { return false; }
@@ -27585,8 +27585,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt97PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt97
 	)
 	default int prompt97PanelWidth() { return 140; }
@@ -27595,8 +27595,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt97PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt97
 	)
 	default TextSize prompt97PanelTextSize() { return TextSize.SMALL; }
@@ -27605,7 +27605,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt97PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt97
 	)
@@ -27615,8 +27615,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt97PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt97
 	)
 	default boolean prompt97PanelBorder() { return true; }
@@ -27626,7 +27626,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt97
 	)
 	default boolean prompt97ForceShow() { return false; }
@@ -27662,7 +27662,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt98Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt98
 	)
 	default String prompt98Text() { return ""; }
@@ -27671,7 +27671,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt98Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt98
 	)
 	default Color prompt98Color() { return Color.WHITE; }
@@ -27695,7 +27695,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt98DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt98Datess",
+			keyName = "prompt98Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -27723,7 +27723,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt98Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt98
@@ -27743,7 +27743,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt98
 	)
 	default String prompt98NpcIds() { return ""; }
@@ -27752,7 +27752,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt98
 	)
 	default String prompt98ItemIds() { return ""; }
@@ -27761,7 +27761,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt98
 	)
 	default int prompt98Duration() { return 0; }
@@ -27770,7 +27770,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt98
 	)
 	default int prompt98Cooldown() { return 0; }
@@ -27788,7 +27788,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt98
 	)
 	default String prompt98ChatPatterns() { return ""; }
@@ -27814,8 +27814,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt98panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt98
 	)
 	default RSAnchorType prompt98PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -27823,8 +27823,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt98PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt98
 	)
 	default int prompt98PanelAnchorX() { return 0; }
@@ -27832,8 +27832,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt98PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt98
 	)
 	default int prompt98PanelAnchorY() { return 0; }
@@ -27842,7 +27842,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt98
 	)
 	default int prompt98ImageId() { return 0; }
@@ -27851,7 +27851,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt98
 	)
 	default Sound prompt98Sound() { return Sound.NONE; }
@@ -27860,7 +27860,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt98
 	)
 	default boolean prompt98ImageOffsetNegative() { return false; }
@@ -27869,8 +27869,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt98PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt98
 	)
 	default int prompt98PanelWidth() { return 140; }
@@ -27879,8 +27879,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt98PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt98
 	)
 	default TextSize prompt98PanelTextSize() { return TextSize.SMALL; }
@@ -27889,7 +27889,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt98PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt98
 	)
@@ -27899,8 +27899,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt98PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt98
 	)
 	default boolean prompt98PanelBorder() { return true; }
@@ -27910,7 +27910,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt98
 	)
 	default boolean prompt98ForceShow() { return false; }
@@ -27946,7 +27946,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt99Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt99
 	)
 	default String prompt99Text() { return ""; }
@@ -27955,7 +27955,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt99Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt99
 	)
 	default Color prompt99Color() { return Color.WHITE; }
@@ -27979,7 +27979,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt99DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt99Datess",
+			keyName = "prompt99Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -28007,7 +28007,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt99Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt99
@@ -28027,7 +28027,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt99
 	)
 	default String prompt99NpcIds() { return ""; }
@@ -28036,7 +28036,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt99
 	)
 	default String prompt99ItemIds() { return ""; }
@@ -28045,7 +28045,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt99
 	)
 	default int prompt99Duration() { return 0; }
@@ -28054,7 +28054,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt99
 	)
 	default int prompt99Cooldown() { return 0; }
@@ -28072,7 +28072,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt99
 	)
 	default String prompt99ChatPatterns() { return ""; }
@@ -28098,8 +28098,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt99panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt99
 	)
 	default RSAnchorType prompt99PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -28107,8 +28107,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt99PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt99
 	)
 	default int prompt99PanelAnchorX() { return 0; }
@@ -28116,8 +28116,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt99PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt99
 	)
 	default int prompt99PanelAnchorY() { return 0; }
@@ -28126,7 +28126,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt99
 	)
 	default int prompt99ImageId() { return 0; }
@@ -28135,7 +28135,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt99
 	)
 	default Sound prompt99Sound() { return Sound.NONE; }
@@ -28144,7 +28144,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt99
 	)
 	default boolean prompt99ImageOffsetNegative() { return false; }
@@ -28153,8 +28153,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt99PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt99
 	)
 	default int prompt99PanelWidth() { return 140; }
@@ -28163,8 +28163,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt99PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt99
 	)
 	default TextSize prompt99PanelTextSize() { return TextSize.SMALL; }
@@ -28173,7 +28173,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt99PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt99
 	)
@@ -28183,8 +28183,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt99PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt99
 	)
 	default boolean prompt99PanelBorder() { return true; }
@@ -28194,7 +28194,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt99
 	)
 	default boolean prompt99ForceShow() { return false; }
@@ -28230,7 +28230,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt100Text",
 			position = 1,
 			name = "Text",
-			description = "Configures the text.",
+			description = "Configures the prompt text.",
 			section = prompt100
 	)
 	default String prompt100Text() { return ""; }
@@ -28239,7 +28239,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "prompt100Color",
 			position = 2,
 			name = "Color",
-			description = "Configures the color.",
+			description = "Configures the text color.",
 			section = prompt100
 	)
 	default Color prompt100Color() { return Color.WHITE; }
@@ -28263,7 +28263,7 @@ public interface ProximityPromptConfig extends Config {
 	default String prompt100DaysOfWeek() { return ""; }
 
 	@ConfigItem(
-			keyName = "prompt100Datess",
+			keyName = "prompt100Dates",
 			position = 39,
 			name = "Dates",
 			description = "Configures what dates prompt is shown. Set dates 04/30, 05/28/23 or ranges 9/20/22-10/30/22, 7/20-8/9. (comma separated).",
@@ -28291,7 +28291,7 @@ public interface ProximityPromptConfig extends Config {
 
 	@ConfigItem(
 			keyName = "prompt100Radius",
-			position = 32,
+			position = 31,
 			name = "Coordinate Radius",
 			description = "Configures how far away from coordinates prompt is shown.",
 			section = prompt100
@@ -28311,7 +28311,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100NpcIds",
 			position = 34,
 			name = "Npcs",
-			description = "Configures the npc ids when prompt is shown (comma separated).",
+			description = "Configures npc ids where prompt is shown (comma separated).",
 			section = prompt100
 	)
 	default String prompt100NpcIds() { return ""; }
@@ -28320,7 +28320,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100ItemIds",
 			position = 35,
 			name = "Items",
-			description = "Configures the item ids when prompt is shown (comma separated).",
+			description = "Configures item ids where prompt is shown (comma separated).",
 			section = prompt100
 	)
 	default String prompt100ItemIds() { return ""; }
@@ -28329,7 +28329,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100Duration",
 			position = 3,
 			name = "Duration",
-			description = "Configures the duration for prompt.",
+			description = "Configures duration of prompt.",
 			section = prompt100
 	)
 	default int prompt100Duration() { return 0; }
@@ -28338,7 +28338,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100Cooldown",
 			position = 4,
 			name = "Cooldown",
-			description = "Configures how long before prompt can be shown again.",
+			description = "Configures cooldown of prompt.",
 			section = prompt100
 	)
 	default int prompt100Cooldown() { return 0; }
@@ -28356,7 +28356,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
 			section = prompt100
 	)
 	default String prompt100ChatPatterns() { return ""; }
@@ -28382,8 +28382,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt100panelAnchorType",
 			position = 8,
-			name = "Panel Anchor Type",
-			description = "Configures the anchor type for the panel.",
+			name = "Anchor",
+			description = "Configures the anchor type of panel.",
 			section = prompt100
 	)
 	default RSAnchorType prompt100PanelAnchorType() { return RSAnchorType.TOP_LEFT; }
@@ -28391,8 +28391,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt100PanelAnchorX",
 			position = 9,
-			name = "Panel Anchor X",
-			description = "Configures the anchor x position for the panel.",
+			name = "X Position",
+			description = "Configures the x position of panel.",
 			section = prompt100
 	)
 	default int prompt100PanelAnchorX() { return 0; }
@@ -28400,8 +28400,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt100PanelAnchorY",
 			position = 10,
-			name = "Panel Anchor Y",
-			description = "Configures the anchor y position for the panel.",
+			name = "Y Position",
+			description = "Configures the y position of panel.",
 			section = prompt100
 	)
 	default int prompt100PanelAnchorY() { return 0; }
@@ -28410,7 +28410,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100ImageId",
 			position = 14,
 			name = "Image ID",
-			description = "Configures the image id.",
+			description = "Configures image id to display in prompt.",
 			section = prompt100
 	)
 	default int prompt100ImageId() { return 0; }
@@ -28419,7 +28419,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100Sound",
 			position = 13,
 			name = "Sound",
-			description = "Configures sound that plays.",
+			description = "Configures sound that plays with prompt.",
 			section = prompt100
 	)
 	default Sound prompt100Sound() { return Sound.NONE; }
@@ -28428,7 +28428,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100ImageOffsetNegative",
 			position = 14,
 			name = "Offset Negative",
-			description = "Configures whether or not the image offset is a negative number.",
+			description = "Configures whether or not image offset is a negative number.",
 			section = prompt100
 	)
 	default boolean prompt100ImageOffsetNegative() { return false; }
@@ -28437,8 +28437,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt100PanelWidth",
 			position = 11,
-			name = "Word Wrap Width",
-			description = "Configures width for panel.",
+			name = "Width",
+			description = "Configures width of panel.",
 			section = prompt100
 	)
 	default int prompt100PanelWidth() { return 140; }
@@ -28447,8 +28447,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt100PanelTextSize",
 			position = 12,
-			name = "Panel Text Size",
-			description = "Configures the text Size.",
+			name = "Text Size",
+			description = "Configures text size of prompt.",
 			section = prompt100
 	)
 	default TextSize prompt100PanelTextSize() { return TextSize.SMALL; }
@@ -28457,7 +28457,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt100PanelColor",
 			position = 12,
-			name = "Panel Color",
+			name = "Background Color",
 			description = "Configures panel color.",
 			section = prompt100
 	)
@@ -28467,8 +28467,8 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt100PanelBorder",
 			position = 12,
-			name = "Panel Border",
-			description = "Configures whether or not panel has a border.",
+			name = "Border",
+			description = "Configures whether or not panel has border.",
 			section = prompt100
 	)
 	default boolean prompt100PanelBorder() { return true; }
@@ -28478,7 +28478,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100ForceShow",
 			position = 0,
 			name = "Force",
-			description = "Configures whether or not to force show prompt.",
+			description = "Configures whether or not to force the prompt visible.",
 			section = prompt100
 	)
 	default boolean prompt100ForceShow() { return false; }

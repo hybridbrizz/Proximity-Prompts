@@ -587,7 +587,8 @@ public class ProximityPromptPlugin extends Plugin {
 
 	private void playSound(int sound)
 	{
-		if (Instant.now().toEpochMilli() - startTime < 5000)
+		if (Instant.now().toEpochMilli() - startTime < 5000
+				|| sound == 0)
 		{
 			return;
 		}
