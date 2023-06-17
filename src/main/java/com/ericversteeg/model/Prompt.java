@@ -16,16 +16,16 @@ public class Prompt {
     @SerializedName("enable")
     public boolean enable = false;
 
-    @SerializedName("force_show")
-    public boolean forceShow = false;
+    @SerializedName("force")
+    public boolean force = false;
 
     @SerializedName("duration")
     public int duration = 0;
 
-    @SerializedName("cooldown")
+    @SerializedName("cd")
     public int cooldown = 0;
 
-    @SerializedName("timeunit")
+    @SerializedName("unit")
     public int timeUnit = 0;
 
     @SerializedName("notify")
@@ -41,18 +41,56 @@ public class Prompt {
     @SerializedName("color")
     public String colorStr = "";
 
-    public Color colur;
+    public Color color = Color.WHITE;
+
+    @SerializedName("location")
+    public int location = 0;
+
+    @SerializedName("anchor")
+    public int anchorType = 0;
+
+    @SerializedName("x")
+    public int anchorX = 0;
+
+    @SerializedName("y")
+    public int anchorY = 0;
+
+    @SerializedName("width")
+    public int width = 140;
+
+    @SerializedName("border")
+    public boolean hasBorder = true;
+
+    @SerializedName("bg")
+    public String bgColorStr = "";
+
+    public Color bgColor = Color.GRAY;
+
+    @SerializedName("tsize")
+    public int textSize = 0;
+
+    @SerializedName("sound")
+    public int sound = 0;
+
+    @SerializedName("image")
+    public int imageId = 0;
+
+    @SerializedName("offset")
+    public int imageOffset = 0;
+
+    @SerializedName("noffset")
+    public boolean isOffsetNegative = false;
 
     @SerializedName("times")
     public String times = "";
 
-    @SerializedName("days_of_week")
-    public String daysOfWeek = "";
+    @SerializedName("days")
+    public String days = "";
 
     @SerializedName("dates")
     public String dates = "";
 
-    @SerializedName("coordinates")
+    @SerializedName("coords")
     public String coordinates = "";
 
     @SerializedName("radius")
@@ -61,16 +99,16 @@ public class Prompt {
     @SerializedName("geofences")
     public String geoFences = "";
 
-    @SerializedName("region_ids")
+    @SerializedName("regions")
     public String regionIds = "";
 
-    @SerializedName("npc_ids")
+    @SerializedName("npcs")
     public String npcIds = "";
 
-    @SerializedName("item_ids")
+    @SerializedName("items")
     public String itemIds = "";
 
-    @SerializedName("chat_patterns")
+    @SerializedName("patterns")
     public String chatPatterns = "";
 
     public int savedCount = 0;

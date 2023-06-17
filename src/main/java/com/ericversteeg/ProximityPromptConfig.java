@@ -84,60 +84,13 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			position = 0,
 			keyName = "jsonPrompts",
-			name = "Json",
+			name = "Prompts",
 			description = "Json array of prompts.",
 			section = customPrompts
 
 	)
 	default String customReminders() {
-		return "[\n" +
-				"  {\n" +
-				"    \"enable\": false,\n" +
-				"    \"text\": \"Reminder text.\",\n" +
-				"    \"color\": \"#00FFFF\",\n" +
-				"    \"duration\": 0,\n" +
-				"    \"cooldown\": 0,\n" +
-				"    \"time_unit\": 1,\n" +
-				"    \"notify\": false,\n" +
-				"    \"times\": [\n" +
-				"      \"10:00pm\",\n" +
-				"      \"5:30pm-7:00pm\"\n" +
-				"    ],\n" +
-				"    \"days_of_week\": [\n" +
-				"      \"Thu\",\n" +
-				"      \"Sat\"\n" +
-				"    ],\n" +
-				"    \"dates\": [\n" +
-				"      \"05/30/23\",\n" +
-				"      \"10/20\"\n" +
-				"    ],\n" +
-				"    \"coordinates\": [\n" +
-				"      \"(300, 400)\",\n" +
-				"      \"(1000, 750)\"\n" +
-				"    ],\n" +
-				"    \"radius\": 3,\n" +
-				"    \"geofences\": [\n" +
-				"      \"(4000, 3000, 4500, 2500)\",\n" +
-				"      \"(500, 1000, 1500, 500)\"\n" +
-				"    ],\n" +
-				"    \"region_ids\": [\n" +
-				"      \"500\",\n" +
-				"      \"750\"\n" +
-				"    ],\n" +
-				"    \"npc_ids\": [\n" +
-				"      \"300\",\n" +
-				"      \"400\"\n" +
-				"    ],\n" +
-				"    \"item_ids\": [\n" +
-				"      \"1500\",\n" +
-				"      \"2000\"\n" +
-				"    ],\n" +
-				"    \"chat_patterns\": [\n" +
-				"      \"text\",\n" +
-				"      \"regex\"\n" +
-				"    ]\n" +
-				"  }  \n" +
-				"]";
+		return "";
 	}
 
 	@ConfigSection(

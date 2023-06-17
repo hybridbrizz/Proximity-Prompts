@@ -52,7 +52,7 @@ public class RSViewOverlay extends Overlay
             view.render(graphics, new Point(0, 0));
         }
 
-        System.out.println("Render in " + (Instant.now().toEpochMilli() - start) + "ms");
+        //System.out.println("Render in " + (Instant.now().toEpochMilli() - start) + "ms");
 
         return new Dimension(0, 0);
     }

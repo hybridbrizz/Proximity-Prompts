@@ -37,7 +37,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @PluginDescriptor(
-	name = "Proximity Prompt",
+	name = "Proximity Prompts",
 	description = "Create prompts that appear only sometimes."
 )
 
@@ -78,6 +78,8 @@ public class ProximityPromptPlugin extends Plugin {
 	List<ItemComposition> items = new ArrayList<>();
 
 	WorldPoint worldPos = new WorldPoint(0, 0, 0);
+
+	long startTime = 0L;
 
 	@Override
 	protected void startUp() throws Exception
@@ -123,6 +125,11 @@ public class ProximityPromptPlugin extends Plugin {
 	@Subscribe
 	public void onGameTick(GameTick tick)
 	{
+		if (startTime == 0L)
+		{
+			startTime = Instant.now().toEpochMilli();
+		}
+
 		dateTime = LocalDateTime.now(ZoneId.systemDefault());
 
 		activePrompts = getActivePrompts(prompts);
@@ -257,23 +264,33 @@ public class ProximityPromptPlugin extends Plugin {
 
 		List<Prompt> prompts = new ArrayList<>();
 
-		Pattern colorPattern = Pattern.compile("\\^\\w");
-
 		for (int i = 1; i <= 100; i++)
 		{
 			Prompt prompt = new Prompt();
 
 			prompt.id = i;
 			prompt.enable = isEnable(i);
-			prompt.forceShow = isForceShow(i);
+			prompt.force = isForceShow(i);
 			prompt.text = getText(i);
-			prompt.colur = getColor(i);
+			prompt.color = getColor(i);
 			prompt.duration = getDuration(i);
 			prompt.cooldown = getCooldown(i);
 			prompt.timeUnit = getTimeUnit(i).getType();
 			prompt.notify = isNotify(i);
+			prompt.location = getLocation(i).ordinal();
+			prompt.anchorType = getPanelAnchorType(i).ordinal();
+			prompt.anchorX = getPanelAnchorX(i);
+			prompt.anchorY = getPanelAnchorY(i);
+			prompt.width = getPanelWidth(i);
+			prompt.hasBorder = isPanelBorder(i);
+			prompt.bgColor = getPanelColor(i);
+			prompt.textSize = getPanelTextSize(i).ordinal();
+			prompt.sound = getSound(i).ordinal();
+			prompt.imageId = getImageId(i);
+			prompt.imageOffset = getImageOffset(i);
+			prompt.isOffsetNegative = isImageOffsetNegative(i);
 			prompt.times = getTimes(i);
-			prompt.daysOfWeek = getDaysOfWeek(i);
+			prompt.days = getDaysOfWeek(i);
 			prompt.dates = getDates(i);
 			prompt.coordinates = getCoordinates(i);
 			prompt.radius = getRadius(i);
@@ -298,14 +315,11 @@ public class ProximityPromptPlugin extends Plugin {
 
 				prompt.id = 100 + i;
 
-				if (jsonObject.has("enable"))
-				{
-					prompt.enable = jsonObject.get("enable").getAsBoolean();
-				}
+				prompt.enable = true;
 
-				if (jsonObject.has("force_show"))
+				if (jsonObject.has("force"))
 				{
-					prompt.enable = jsonObject.get("force_show").getAsBoolean();
+					prompt.force = jsonObject.get("force").getAsBoolean();
 				}
 
 				if (jsonObject.has("text"))
@@ -316,6 +330,7 @@ public class ProximityPromptPlugin extends Plugin {
 				if (jsonObject.has("color"))
 				{
 					prompt.colorStr = jsonObject.get("color").getAsString();
+					prompt.color = Color.decode(prompt.colorStr);
 				}
 
 				if (jsonObject.has("duration"))
@@ -323,14 +338,14 @@ public class ProximityPromptPlugin extends Plugin {
 					prompt.duration = jsonObject.get("duration").getAsInt();
 				}
 
-				if (jsonObject.has("cooldown"))
+				if (jsonObject.has("cd"))
 				{
-					prompt.cooldown = jsonObject.get("cooldown").getAsInt();
+					prompt.cooldown = jsonObject.get("cd").getAsInt();
 				}
 
-				if (jsonObject.has("time_unit"))
+				if (jsonObject.has("unit"))
 				{
-					prompt.timeUnit = jsonObject.get("time_unit").getAsInt();
+					prompt.timeUnit = jsonObject.get("unit").getAsInt();
 				}
 
 				if (jsonObject.has("notify"))
@@ -338,24 +353,70 @@ public class ProximityPromptPlugin extends Plugin {
 					prompt.notify = jsonObject.get("notify").getAsBoolean();
 				}
 
-				if (jsonObject.has("times"))
+				if (jsonObject.has("location"))
 				{
-					prompt.times = toCsv(jsonObject.get("times").getAsJsonArray());
+					prompt.location = jsonObject.get("location").getAsInt();
 				}
 
-				if (jsonObject.has("days_of_week"))
+				if (jsonObject.has("anchor"))
 				{
-					prompt.daysOfWeek = toCsv(jsonObject.get("days_of_week").getAsJsonArray());
+					prompt.anchorType = jsonObject.get("anchor").getAsInt();
 				}
 
-				if (jsonObject.has("dates"))
+				if (jsonObject.has("x"))
 				{
-					prompt.dates = toCsv(jsonObject.get("dates").getAsJsonArray());
+					prompt.anchorX = jsonObject.get("x").getAsInt();
 				}
 
-				if (jsonObject.has("coordinates"))
+				if (jsonObject.has("y"))
 				{
-					prompt.coordinates = toCsv(jsonObject.get("coordinates").getAsJsonArray());
+					prompt.anchorY = jsonObject.get("y").getAsInt();
+				}
+
+				if (jsonObject.has("width"))
+				{
+					prompt.width = jsonObject.get("width").getAsInt();
+				}
+
+				if (jsonObject.has("border"))
+				{
+					prompt.hasBorder = jsonObject.get("border").getAsBoolean();
+				}
+
+				if (jsonObject.has("bg"))
+				{
+					prompt.bgColorStr = jsonObject.get("bg").getAsString();
+					prompt.bgColor = Color.decode(prompt.bgColorStr);
+				}
+
+				if (jsonObject.has("tsize"))
+				{
+					prompt.textSize = jsonObject.get("tsize").getAsInt();
+				}
+
+				if (jsonObject.has("sound"))
+				{
+					prompt.sound = jsonObject.get("sound").getAsInt();
+				}
+
+				if (jsonObject.has("image"))
+				{
+					prompt.imageId = jsonObject.get("image").getAsInt();
+				}
+
+				if (jsonObject.has("offset"))
+				{
+					prompt.imageOffset = jsonObject.get("offset").getAsInt();
+				}
+
+				if (jsonObject.has("noffset"))
+				{
+					prompt.isOffsetNegative = jsonObject.get("noffset").getAsBoolean();
+				}
+
+				if (jsonObject.has("coords"))
+				{
+					prompt.coordinates = toCsv(jsonObject.get("coords").getAsJsonArray());
 				}
 
 				if (jsonObject.has("radius"))
@@ -368,24 +429,39 @@ public class ProximityPromptPlugin extends Plugin {
 					prompt.geoFences = toCsv(jsonObject.get("geofences").getAsJsonArray());
 				}
 
-				if (jsonObject.has("region_ids"))
+				if (jsonObject.has("regions"))
 				{
-					prompt.regionIds = toCsv(jsonObject.get("region_ids").getAsJsonArray());
+					prompt.regionIds = toCsv(jsonObject.get("regions").getAsJsonArray());
 				}
 
-				if (jsonObject.has("npc_ids"))
+				if (jsonObject.has("npcs"))
 				{
-					prompt.npcIds = toCsv(jsonObject.get("npc_ids").getAsJsonArray());
+					prompt.npcIds = toCsv(jsonObject.get("npcs").getAsJsonArray());
 				}
 
-				if (jsonObject.has("item_ids"))
+				if (jsonObject.has("items"))
 				{
-					prompt.itemIds = toCsv(jsonObject.get("item_ids").getAsJsonArray());
+					prompt.itemIds = toCsv(jsonObject.get("items").getAsJsonArray());
 				}
 
-				if (jsonObject.has("chat_patterns"))
+				if (jsonObject.has("patterns"))
 				{
-					prompt.chatPatterns = toCsv(jsonObject.get("chat_patterns").getAsJsonArray());
+					prompt.chatPatterns = toCsv(jsonObject.get("patterns").getAsJsonArray());
+				}
+
+				if (jsonObject.has("times"))
+				{
+					prompt.times = toCsv(jsonObject.get("times").getAsJsonArray());
+				}
+
+				if (jsonObject.has("days"))
+				{
+					prompt.days = toCsv(jsonObject.get("days").getAsJsonArray());
+				}
+
+				if (jsonObject.has("dates"))
+				{
+					prompt.dates = toCsv(jsonObject.get("dates").getAsJsonArray());
 				}
 
 				prompts.add(prompt);
@@ -416,7 +492,7 @@ public class ProximityPromptPlugin extends Plugin {
 
 		for (Prompt prompt : prompts)
 		{
-			if (prompt.forceShow)
+			if (prompt.force)
 			{
 				activeList.add(prompt);
 			}
@@ -424,10 +500,10 @@ public class ProximityPromptPlugin extends Plugin {
 
 		for (Prompt prompt : prompts)
 		{
-			if (prompt.enable && !prompt.forceShow)
+			if (prompt.enable && !prompt.force)
 			{
 				if (!((checkTimes(prompt.times) && !matchesTimes(prompt.times)) ||
-					(checkDaysOfWeek(prompt.daysOfWeek) && !matchesDaysOfWeek(prompt.daysOfWeek)) ||
+					(checkDaysOfWeek(prompt.days) && !matchesDaysOfWeek(prompt.days)) ||
 					(checkDates(prompt.dates) && !matchesDates(prompt.dates)) ||
 					(checkCoordinates(prompt.coordinates) && !matchesCoordinates(prompt.coordinates, prompt.radius)) ||
 					(checkGeoFences(prompt.geoFences) && !matchesGeoFences(prompt.geoFences)) ||
@@ -448,9 +524,7 @@ public class ProximityPromptPlugin extends Plugin {
 						prompt.posted = Instant.now().toEpochMilli();
 						prompt.active = true;
 
-						clientThreadProvider.get().invoke(() ->
-								client.playSoundEffect(getSound(prompt.id).getId(), SoundEffectVolume.HIGH)
-						);
+						playSound(prompt.sound);
 
 						if (prompt.notify && prompt.lastNotified <= Instant.now().toEpochMilli() - 30000)
 						{
@@ -467,9 +541,7 @@ public class ProximityPromptPlugin extends Plugin {
 
 						if (prompt.cooldown > 0)
 						{
-							clientThreadProvider.get().invoke(() ->
-									client.playSoundEffect(getSound(prompt.id).getId(), SoundEffectVolume.HIGH)
-							);
+							playSound(prompt.sound);
 						}
 
 						if (prompt.notify && prompt.lastNotified <= Instant.now().toEpochMilli() - 30000)
@@ -511,6 +583,21 @@ public class ProximityPromptPlugin extends Plugin {
 		System.out.println("Get active took " + (Instant.now().toEpochMilli() - start) + "ms");
 
 		return activeList;
+	}
+
+	private void playSound(int sound)
+	{
+		if (Instant.now().toEpochMilli() - startTime < 5000)
+		{
+			return;
+		}
+
+		clientThreadProvider.get().invoke(() ->
+				client.playSoundEffect(
+						Sound.values()[sound].getId(),
+						SoundEffectVolume.HIGH
+				)
+		);
 	}
 
 	private Prompt currentActiveReminder(int id)

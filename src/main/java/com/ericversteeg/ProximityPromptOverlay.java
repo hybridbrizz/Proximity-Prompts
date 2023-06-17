@@ -132,7 +132,7 @@ class ProximityPromptOverlay extends RSViewOverlay {
 
 		long start = Instant.now().toEpochMilli();
 
-		font = fontForTextSize(config.textSize());
+		font = fontForTextSize(config.textSize().ordinal());
 
 		int panelWidth = config.width();
 
@@ -155,9 +155,9 @@ class ProximityPromptOverlay extends RSViewOverlay {
 			if (text.trim().isEmpty()) continue;
 
 			Color color;
-			if (prompt.colur != null)
+			if (prompt.color != null)
 			{
-				color = prompt.colur;
+				color = prompt.color;
 			}
 			else
 			{
@@ -171,12 +171,12 @@ class ProximityPromptOverlay extends RSViewOverlay {
 				}
 			}
 
-			if (plugin.getLocation(prompt.id) == Location.WORD_WRAP_PANEL)
+			if (prompt.location == Location.WORD_WRAP_PANEL.ordinal())
 			{
 				renderReminderWordWrapPanel(prompt, color);
 				continue;
 			}
-			else if (plugin.getLocation(prompt.id) == Location.SINGLE_LINE_PANEL)
+			else if (prompt.location == Location.SINGLE_LINE_PANEL.ordinal())
 			{
 				renderReminderSingleLinePanel(prompt, color);
 				continue;
@@ -202,7 +202,7 @@ class ProximityPromptOverlay extends RSViewOverlay {
 			rightText.setText(text);
 			rightText.setWeight(1f);
 
-			int imageId = plugin.getImageId(prompt.id);
+			int imageId = prompt.imageId;
 
 			if (imageId > 0)
 			{
@@ -221,12 +221,9 @@ class ProximityPromptOverlay extends RSViewOverlay {
 
 					image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 					rightText.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
-					rightText.setImageOffset(plugin.getImageOffset(prompt.id), plugin.isImageOffsetNegative(prompt.id));
+					rightText.setImageOffset(prompt.imageOffset, prompt.isOffsetNegative);
 				}
 			}
-
-			//rightText.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
-			//rightText.setAnimationCycleDuration(2);
 
 			row.addView(rightText);
 
@@ -254,12 +251,12 @@ class ProximityPromptOverlay extends RSViewOverlay {
 	{
 		String text = prompt.text;
 
-		Color panelColor = plugin.getPanelColor(prompt.id);
+		Color panelColor = prompt.bgColor;
 
-		RSRow panel = new RSRow(10, 120, plugin.getPanelWidth(prompt.id), RSView.WRAP_CONTENT);
+		RSRow panel = new RSRow(10, 120, prompt.width, RSView.WRAP_CONTENT);
 		panel.setBgColor(new Color(panelColor.getRed(), panelColor.getGreen(), panelColor.getBlue(), 156));
 
-		if (plugin.isPanelBorder(prompt.id))
+		if (prompt.hasBorder)
 		{
 			panel.addBorder(panelColor);
 		}
@@ -267,12 +264,12 @@ class ProximityPromptOverlay extends RSViewOverlay {
 		panel.setPadding(4);
 
 		RSTextView textView = new RSTextView(0, 0, RSView.MATCH_PARENT,
-				RSView.WRAP_CONTENT, fontForTextSize(plugin.getPanelTextSize(prompt.id)));
+				RSView.WRAP_CONTENT, fontForTextSize(prompt.textSize));
 
 		textView.setTextColor(color);
 		textView.setText(text);
 
-		int imageId = plugin.getImageId(prompt.id);
+		int imageId = prompt.imageId;
 
 		if (imageId > 0)
 		{
@@ -280,7 +277,7 @@ class ProximityPromptOverlay extends RSViewOverlay {
 			if (image != null)
 			{
 				int imageWidth;
-				if (plugin.getPanelTextSize(prompt.id) == TextSize.SMALL)
+				if (prompt.textSize == TextSize.SMALL.ordinal())
 				{
 					imageWidth = 24;
 				}
@@ -291,17 +288,14 @@ class ProximityPromptOverlay extends RSViewOverlay {
 
 				image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 				textView.setImage(image, imageWidth, imageWidth, RSViewGroup.Gravity.TOP_START);
-				textView.setImageOffset(plugin.getImageOffset(prompt.id), plugin.isImageOffsetNegative(prompt.id));
+				textView.setImageOffset(prompt.imageOffset, prompt.isOffsetNegative);
 			}
 		}
 
-		//textView.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
-		//textView.setAnimationCycleDuration(2);
-
 		panel.addView(textView);
 
-		addViewInfo(new ViewInfo(client, panel, plugin.getPanelAnchorType(prompt.id),
-				plugin.getPanelAnchorX(prompt.id), plugin.getPanelAnchorY(prompt.id)));
+		addViewInfo(new ViewInfo(client, panel, RSAnchorType.values()[prompt.anchorType],
+				prompt.anchorX, prompt.anchorY));
 	}
 
 	private void renderReminderSingleLinePanel(Prompt prompt, Color color)
@@ -310,7 +304,7 @@ class ProximityPromptOverlay extends RSViewOverlay {
 
 		RSImageView imageView = new RSImageView(RSView.WRAP_CONTENT, RSView.WRAP_CONTENT);
 		
-		int imageId = plugin.getImageId(prompt.id);
+		int imageId = prompt.imageId;
 
 		int imageWidth = 0;
 		if (imageId > 0)
@@ -318,7 +312,7 @@ class ProximityPromptOverlay extends RSViewOverlay {
 			BufferedImage image = itemManager.getImage(imageId);
 			if (image != null)
 			{
-				if (plugin.getPanelTextSize(prompt.id) == TextSize.SMALL)
+				if (prompt.textSize == TextSize.SMALL.ordinal())
 				{
 					imageWidth = 24;
 				}
@@ -329,11 +323,11 @@ class ProximityPromptOverlay extends RSViewOverlay {
 
 				image = ImageUtil.resizeImage(image, imageWidth, imageWidth, true);
 				imageView.setImage(image);
-				imageView.setOffset(plugin.getImageOffset(prompt.id), plugin.isImageOffsetNegative(prompt.id));
+				imageView.setOffset(prompt.imageOffset, prompt.isOffsetNegative);
 			}
 		}
 
-		Color panelColor = plugin.getPanelColor(prompt.id);
+		Color panelColor = prompt.bgColor;
 
 		int panelHeight = RSView.WRAP_CONTENT;
 		if (imageWidth > 0)
@@ -344,7 +338,7 @@ class ProximityPromptOverlay extends RSViewOverlay {
 		RSRow panel = new RSRow(10, 120, RSView.WRAP_CONTENT, panelHeight);
 		panel.setBgColor(new Color(panelColor.getRed(), panelColor.getGreen(), panelColor.getBlue(), 156));
 
-		if (plugin.isPanelBorder(prompt.id))
+		if (prompt.hasBorder)
 		{
 			panel.addBorder(panelColor);
 		}
@@ -354,7 +348,7 @@ class ProximityPromptOverlay extends RSViewOverlay {
 		panel.addView(imageView);
 
 		RSTextView textView = new RSTextView(0, 0, RSView.WRAP_CONTENT,
-				RSView.WRAP_CONTENT, fontForTextSize(plugin.getPanelTextSize(prompt.id)));
+				RSView.WRAP_CONTENT, fontForTextSize(prompt.textSize));
 
 		if (imageWidth > 0)
 		{
@@ -363,13 +357,11 @@ class ProximityPromptOverlay extends RSViewOverlay {
 
 		textView.setTextColor(color);
 		textView.setText(text);
-		//textView.setAnimatesColor(plugin.getAnimationType(reminder.id) != ColorAnimationType.NONE);
-		//textView.setAnimationCycleDuration(2);
 
 		panel.addView(textView);
 
-		addViewInfo(new ViewInfo(client, panel, plugin.getPanelAnchorType(prompt.id),
-				plugin.getPanelAnchorX(prompt.id), plugin.getPanelAnchorY(prompt.id)));
+		addViewInfo(new ViewInfo(client, panel, RSAnchorType.values()[prompt.anchorType],
+				prompt.anchorX, prompt.anchorY));
 	}
 
 	private void renderIds(RSColumn panel)
@@ -455,14 +447,14 @@ class ProximityPromptOverlay extends RSViewOverlay {
 		}
 	}
 
-	private Font fontForTextSize(TextSize textSize)
+	private Font fontForTextSize(int textSize)
 	{
 		Font font;
-		if (textSize == TextSize.SMALL)
+		if (textSize == TextSize.SMALL.ordinal())
 		{
 			font = FontManager.getRunescapeSmallFont();
 		}
-		else if (textSize == TextSize.LARGE)
+		else if (textSize == TextSize.LARGE.ordinal())
 		{
 			font = FontManager.getRunescapeFont();
 		}

@@ -439,12 +439,21 @@ public class RSTextView extends RSView
 
     private void setColor(Color color)
     {
-        if (color.getAlpha() == 0)
+        if (color.getAlpha() < 5)
         {
             float percent = (Instant.now().toEpochMilli() % animationCycleMillis) / ((float) animationCycleMillis);
 
-            Color [] triadicColors = getTriadicColors(color);
-            Color animatedColor = getInterpolatedColor(getColorPair(triadicColors, percent), triadicColors.length, percent);
+            Color [] colors;
+            if (color.getAlpha() == 0)
+            {
+                colors = getTriadicColors(color);
+            }
+            else
+            {
+                colors = new Color [] { Color.WHITE, Color.BLACK };
+            }
+
+            Color animatedColor = getInterpolatedColor(getColorPair(colors, percent), colors.length, percent);
             textComponent.setColor(animatedColor);
         }
         else
@@ -694,6 +703,46 @@ public class RSTextView extends RSView
         else if (c == 'a')
         {
             return new Color(255, 0, 0, 0);
+        }
+        else if (c == 'l')
+        {
+            return new Color(107, 242, 73);
+        }
+        else if (c == 'd')
+        {
+            return new Color(107, 41, 242);
+        }
+        else if (c == 'e')
+        {
+            return new Color(122, 75, 28);
+        }
+        else if (c == 'f')
+        {
+            return new Color(35, 94, 49);
+        }
+        else if (c == 'h')
+        {
+            return new Color(177, 184, 222);
+        }
+        else if (c == 'i')
+        {
+            return new Color(255, 191, 135);
+        }
+        else if (c == 'j')
+        {
+            return new Color(165, 11, 94);
+        }
+        else if (c == 'k')
+        {
+            return new Color(66, 12, 3);
+        }
+        else if (c == 'n')
+        {
+            return new Color(226, 255, 167);
+        }
+        else if (c == 'q')
+        {
+            return new Color(0, 0, 0, 1);
         }
         return Color.WHITE;
     }
