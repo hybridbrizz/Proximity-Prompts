@@ -1,6 +1,7 @@
 package com.ericversteeg;
 
 import com.ericversteeg.model.config.Location;
+import com.ericversteeg.model.config.Sound;
 import com.ericversteeg.model.config.TextSize;
 import com.ericversteeg.model.config.TimeUnit;
 import com.ericversteeg.view.RSAnchorType;
@@ -285,7 +286,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt1ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt1
 	)
@@ -346,13 +347,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt1ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt1Image",
+			keyName = "Prompt1Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt1
 	)
-	default boolean prompt1Image() { return false; }
+	default Sound prompt1Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt1ImageOffsetNegative",
@@ -569,7 +570,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt2ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt2
 	)
@@ -630,13 +631,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt2ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt2Image",
+			keyName = "Prompt2Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt2
 	)
-	default boolean prompt2Image() { return false; }
+	default Sound prompt2Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt2ImageOffsetNegative",
@@ -853,7 +854,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt3ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt3
 	)
@@ -914,13 +915,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt3ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt3Image",
+			keyName = "Prompt3Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt3
 	)
-	default boolean prompt3Image() { return false; }
+	default Sound prompt3Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt3ImageOffsetNegative",
@@ -1137,7 +1138,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt4ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt4
 	)
@@ -1198,13 +1199,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt4ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt4Image",
+			keyName = "Prompt4Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt4
 	)
-	default boolean prompt4Image() { return false; }
+	default Sound prompt4Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt4ImageOffsetNegative",
@@ -1421,7 +1422,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt5ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt5
 	)
@@ -1482,13 +1483,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt5ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt5Image",
+			keyName = "Prompt5Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt5
 	)
-	default boolean prompt5Image() { return false; }
+	default Sound prompt5Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt5ImageOffsetNegative",
@@ -1705,7 +1706,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt6ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt6
 	)
@@ -1766,13 +1767,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt6ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt6Image",
+			keyName = "Prompt6Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt6
 	)
-	default boolean prompt6Image() { return false; }
+	default Sound prompt6Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt6ImageOffsetNegative",
@@ -1989,7 +1990,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt7ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt7
 	)
@@ -2050,13 +2051,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt7ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt7Image",
+			keyName = "Prompt7Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt7
 	)
-	default boolean prompt7Image() { return false; }
+	default Sound prompt7Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt7ImageOffsetNegative",
@@ -2273,7 +2274,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt8ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt8
 	)
@@ -2334,13 +2335,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt8ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt8Image",
+			keyName = "Prompt8Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt8
 	)
-	default boolean prompt8Image() { return false; }
+	default Sound prompt8Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt8ImageOffsetNegative",
@@ -2557,7 +2558,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt9ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt9
 	)
@@ -2618,13 +2619,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt9ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt9Image",
+			keyName = "Prompt9Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt9
 	)
-	default boolean prompt9Image() { return false; }
+	default Sound prompt9Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt9ImageOffsetNegative",
@@ -2841,7 +2842,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt10ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt10
 	)
@@ -2902,13 +2903,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt10ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt10Image",
+			keyName = "Prompt10Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt10
 	)
-	default boolean prompt10Image() { return false; }
+	default Sound prompt10Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt10ImageOffsetNegative",
@@ -3125,7 +3126,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt11ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt11
 	)
@@ -3186,13 +3187,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt11ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt11Image",
+			keyName = "Prompt11Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt11
 	)
-	default boolean prompt11Image() { return false; }
+	default Sound prompt11Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt11ImageOffsetNegative",
@@ -3409,7 +3410,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt12ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt12
 	)
@@ -3470,13 +3471,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt12ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt12Image",
+			keyName = "Prompt12Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt12
 	)
-	default boolean prompt12Image() { return false; }
+	default Sound prompt12Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt12ImageOffsetNegative",
@@ -3693,7 +3694,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt13ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt13
 	)
@@ -3754,13 +3755,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt13ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt13Image",
+			keyName = "Prompt13Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt13
 	)
-	default boolean prompt13Image() { return false; }
+	default Sound prompt13Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt13ImageOffsetNegative",
@@ -3977,7 +3978,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt14ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt14
 	)
@@ -4038,13 +4039,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt14ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt14Image",
+			keyName = "Prompt14Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt14
 	)
-	default boolean prompt14Image() { return false; }
+	default Sound prompt14Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt14ImageOffsetNegative",
@@ -4261,7 +4262,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt15ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt15
 	)
@@ -4322,13 +4323,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt15ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt15Image",
+			keyName = "Prompt15Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt15
 	)
-	default boolean prompt15Image() { return false; }
+	default Sound prompt15Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt15ImageOffsetNegative",
@@ -4545,7 +4546,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt16ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt16
 	)
@@ -4606,13 +4607,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt16ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt16Image",
+			keyName = "Prompt16Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt16
 	)
-	default boolean prompt16Image() { return false; }
+	default Sound prompt16Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt16ImageOffsetNegative",
@@ -4829,7 +4830,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt17ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt17
 	)
@@ -4890,13 +4891,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt17ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt17Image",
+			keyName = "Prompt17Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt17
 	)
-	default boolean prompt17Image() { return false; }
+	default Sound prompt17Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt17ImageOffsetNegative",
@@ -5113,7 +5114,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt18ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt18
 	)
@@ -5174,13 +5175,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt18ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt18Image",
+			keyName = "Prompt18Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt18
 	)
-	default boolean prompt18Image() { return false; }
+	default Sound prompt18Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt18ImageOffsetNegative",
@@ -5397,7 +5398,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt19ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt19
 	)
@@ -5458,13 +5459,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt19ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt19Image",
+			keyName = "Prompt19Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt19
 	)
-	default boolean prompt19Image() { return false; }
+	default Sound prompt19Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt19ImageOffsetNegative",
@@ -5681,7 +5682,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt20ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt20
 	)
@@ -5742,13 +5743,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt20ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt20Image",
+			keyName = "Prompt20Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt20
 	)
-	default boolean prompt20Image() { return false; }
+	default Sound prompt20Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt20ImageOffsetNegative",
@@ -5965,7 +5966,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt21ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt21
 	)
@@ -6026,13 +6027,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt21ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt21Image",
+			keyName = "Prompt21Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt21
 	)
-	default boolean prompt21Image() { return false; }
+	default Sound prompt21Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt21ImageOffsetNegative",
@@ -6249,7 +6250,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt22ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt22
 	)
@@ -6310,13 +6311,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt22ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt22Image",
+			keyName = "Prompt22Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt22
 	)
-	default boolean prompt22Image() { return false; }
+	default Sound prompt22Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt22ImageOffsetNegative",
@@ -6533,7 +6534,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt23ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt23
 	)
@@ -6594,13 +6595,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt23ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt23Image",
+			keyName = "Prompt23Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt23
 	)
-	default boolean prompt23Image() { return false; }
+	default Sound prompt23Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt23ImageOffsetNegative",
@@ -6817,7 +6818,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt24ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt24
 	)
@@ -6878,13 +6879,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt24ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt24Image",
+			keyName = "Prompt24Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt24
 	)
-	default boolean prompt24Image() { return false; }
+	default Sound prompt24Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt24ImageOffsetNegative",
@@ -7101,7 +7102,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt25ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt25
 	)
@@ -7162,13 +7163,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt25ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt25Image",
+			keyName = "Prompt25Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt25
 	)
-	default boolean prompt25Image() { return false; }
+	default Sound prompt25Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt25ImageOffsetNegative",
@@ -7385,7 +7386,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt26ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt26
 	)
@@ -7446,13 +7447,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt26ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt26Image",
+			keyName = "Prompt26Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt26
 	)
-	default boolean prompt26Image() { return false; }
+	default Sound prompt26Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt26ImageOffsetNegative",
@@ -7669,7 +7670,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt27ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt27
 	)
@@ -7730,13 +7731,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt27ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt27Image",
+			keyName = "Prompt27Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt27
 	)
-	default boolean prompt27Image() { return false; }
+	default Sound prompt27Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt27ImageOffsetNegative",
@@ -7953,7 +7954,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt28ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt28
 	)
@@ -8014,13 +8015,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt28ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt28Image",
+			keyName = "Prompt28Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt28
 	)
-	default boolean prompt28Image() { return false; }
+	default Sound prompt28Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt28ImageOffsetNegative",
@@ -8237,7 +8238,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt29ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt29
 	)
@@ -8298,13 +8299,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt29ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt29Image",
+			keyName = "Prompt29Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt29
 	)
-	default boolean prompt29Image() { return false; }
+	default Sound prompt29Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt29ImageOffsetNegative",
@@ -8521,7 +8522,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt30ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt30
 	)
@@ -8582,13 +8583,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt30ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt30Image",
+			keyName = "Prompt30Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt30
 	)
-	default boolean prompt30Image() { return false; }
+	default Sound prompt30Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt30ImageOffsetNegative",
@@ -8805,7 +8806,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt31ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt31
 	)
@@ -8866,13 +8867,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt31ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt31Image",
+			keyName = "Prompt31Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt31
 	)
-	default boolean prompt31Image() { return false; }
+	default Sound prompt31Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt31ImageOffsetNegative",
@@ -9089,7 +9090,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt32ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt32
 	)
@@ -9150,13 +9151,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt32ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt32Image",
+			keyName = "Prompt32Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt32
 	)
-	default boolean prompt32Image() { return false; }
+	default Sound prompt32Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt32ImageOffsetNegative",
@@ -9373,7 +9374,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt33ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt33
 	)
@@ -9434,13 +9435,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt33ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt33Image",
+			keyName = "Prompt33Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt33
 	)
-	default boolean prompt33Image() { return false; }
+	default Sound prompt33Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt33ImageOffsetNegative",
@@ -9657,7 +9658,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt34ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt34
 	)
@@ -9718,13 +9719,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt34ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt34Image",
+			keyName = "Prompt34Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt34
 	)
-	default boolean prompt34Image() { return false; }
+	default Sound prompt34Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt34ImageOffsetNegative",
@@ -9941,7 +9942,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt35ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt35
 	)
@@ -10002,13 +10003,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt35ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt35Image",
+			keyName = "Prompt35Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt35
 	)
-	default boolean prompt35Image() { return false; }
+	default Sound prompt35Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt35ImageOffsetNegative",
@@ -10225,7 +10226,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt36ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt36
 	)
@@ -10286,13 +10287,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt36ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt36Image",
+			keyName = "Prompt36Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt36
 	)
-	default boolean prompt36Image() { return false; }
+	default Sound prompt36Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt36ImageOffsetNegative",
@@ -10509,7 +10510,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt37ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt37
 	)
@@ -10570,13 +10571,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt37ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt37Image",
+			keyName = "Prompt37Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt37
 	)
-	default boolean prompt37Image() { return false; }
+	default Sound prompt37Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt37ImageOffsetNegative",
@@ -10793,7 +10794,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt38ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt38
 	)
@@ -10854,13 +10855,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt38ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt38Image",
+			keyName = "Prompt38Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt38
 	)
-	default boolean prompt38Image() { return false; }
+	default Sound prompt38Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt38ImageOffsetNegative",
@@ -11077,7 +11078,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt39ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt39
 	)
@@ -11138,13 +11139,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt39ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt39Image",
+			keyName = "Prompt39Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt39
 	)
-	default boolean prompt39Image() { return false; }
+	default Sound prompt39Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt39ImageOffsetNegative",
@@ -11361,7 +11362,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt40ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt40
 	)
@@ -11422,13 +11423,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt40ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt40Image",
+			keyName = "Prompt40Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt40
 	)
-	default boolean prompt40Image() { return false; }
+	default Sound prompt40Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt40ImageOffsetNegative",
@@ -11645,7 +11646,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt41ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt41
 	)
@@ -11706,13 +11707,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt41ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt41Image",
+			keyName = "Prompt41Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt41
 	)
-	default boolean prompt41Image() { return false; }
+	default Sound prompt41Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt41ImageOffsetNegative",
@@ -11929,7 +11930,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt42ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt42
 	)
@@ -11990,13 +11991,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt42ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt42Image",
+			keyName = "Prompt42Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt42
 	)
-	default boolean prompt42Image() { return false; }
+	default Sound prompt42Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt42ImageOffsetNegative",
@@ -12213,7 +12214,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt43ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt43
 	)
@@ -12274,13 +12275,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt43ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt43Image",
+			keyName = "Prompt43Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt43
 	)
-	default boolean prompt43Image() { return false; }
+	default Sound prompt43Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt43ImageOffsetNegative",
@@ -12497,7 +12498,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt44ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt44
 	)
@@ -12558,13 +12559,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt44ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt44Image",
+			keyName = "Prompt44Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt44
 	)
-	default boolean prompt44Image() { return false; }
+	default Sound prompt44Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt44ImageOffsetNegative",
@@ -12781,7 +12782,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt45ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt45
 	)
@@ -12842,13 +12843,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt45ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt45Image",
+			keyName = "Prompt45Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt45
 	)
-	default boolean prompt45Image() { return false; }
+	default Sound prompt45Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt45ImageOffsetNegative",
@@ -13065,7 +13066,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt46ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt46
 	)
@@ -13126,13 +13127,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt46ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt46Image",
+			keyName = "Prompt46Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt46
 	)
-	default boolean prompt46Image() { return false; }
+	default Sound prompt46Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt46ImageOffsetNegative",
@@ -13349,7 +13350,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt47ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt47
 	)
@@ -13410,13 +13411,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt47ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt47Image",
+			keyName = "Prompt47Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt47
 	)
-	default boolean prompt47Image() { return false; }
+	default Sound prompt47Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt47ImageOffsetNegative",
@@ -13633,7 +13634,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt48ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt48
 	)
@@ -13694,13 +13695,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt48ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt48Image",
+			keyName = "Prompt48Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt48
 	)
-	default boolean prompt48Image() { return false; }
+	default Sound prompt48Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt48ImageOffsetNegative",
@@ -13917,7 +13918,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt49ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt49
 	)
@@ -13978,13 +13979,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt49ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt49Image",
+			keyName = "Prompt49Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt49
 	)
-	default boolean prompt49Image() { return false; }
+	default Sound prompt49Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt49ImageOffsetNegative",
@@ -14201,7 +14202,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt50ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt50
 	)
@@ -14262,13 +14263,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt50ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt50Image",
+			keyName = "Prompt50Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt50
 	)
-	default boolean prompt50Image() { return false; }
+	default Sound prompt50Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt50ImageOffsetNegative",
@@ -14485,7 +14486,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt51ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt51
 	)
@@ -14546,13 +14547,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt51ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt51Image",
+			keyName = "Prompt51Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt51
 	)
-	default boolean prompt51Image() { return false; }
+	default Sound prompt51Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt51ImageOffsetNegative",
@@ -14769,7 +14770,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt52ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt52
 	)
@@ -14830,13 +14831,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt52ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt52Image",
+			keyName = "Prompt52Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt52
 	)
-	default boolean prompt52Image() { return false; }
+	default Sound prompt52Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt52ImageOffsetNegative",
@@ -15053,7 +15054,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt53ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt53
 	)
@@ -15114,13 +15115,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt53ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt53Image",
+			keyName = "Prompt53Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt53
 	)
-	default boolean prompt53Image() { return false; }
+	default Sound prompt53Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt53ImageOffsetNegative",
@@ -15337,7 +15338,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt54ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt54
 	)
@@ -15398,13 +15399,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt54ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt54Image",
+			keyName = "Prompt54Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt54
 	)
-	default boolean prompt54Image() { return false; }
+	default Sound prompt54Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt54ImageOffsetNegative",
@@ -15621,7 +15622,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt55ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt55
 	)
@@ -15682,13 +15683,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt55ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt55Image",
+			keyName = "Prompt55Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt55
 	)
-	default boolean prompt55Image() { return false; }
+	default Sound prompt55Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt55ImageOffsetNegative",
@@ -15905,7 +15906,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt56ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt56
 	)
@@ -15966,13 +15967,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt56ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt56Image",
+			keyName = "Prompt56Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt56
 	)
-	default boolean prompt56Image() { return false; }
+	default Sound prompt56Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt56ImageOffsetNegative",
@@ -16189,7 +16190,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt57ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt57
 	)
@@ -16250,13 +16251,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt57ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt57Image",
+			keyName = "Prompt57Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt57
 	)
-	default boolean prompt57Image() { return false; }
+	default Sound prompt57Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt57ImageOffsetNegative",
@@ -16473,7 +16474,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt58ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt58
 	)
@@ -16534,13 +16535,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt58ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt58Image",
+			keyName = "Prompt58Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt58
 	)
-	default boolean prompt58Image() { return false; }
+	default Sound prompt58Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt58ImageOffsetNegative",
@@ -16757,7 +16758,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt59ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt59
 	)
@@ -16818,13 +16819,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt59ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt59Image",
+			keyName = "Prompt59Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt59
 	)
-	default boolean prompt59Image() { return false; }
+	default Sound prompt59Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt59ImageOffsetNegative",
@@ -17041,7 +17042,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt60ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt60
 	)
@@ -17102,13 +17103,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt60ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt60Image",
+			keyName = "Prompt60Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt60
 	)
-	default boolean prompt60Image() { return false; }
+	default Sound prompt60Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt60ImageOffsetNegative",
@@ -17325,7 +17326,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt61ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt61
 	)
@@ -17386,13 +17387,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt61ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt61Image",
+			keyName = "Prompt61Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt61
 	)
-	default boolean prompt61Image() { return false; }
+	default Sound prompt61Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt61ImageOffsetNegative",
@@ -17609,7 +17610,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt62ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt62
 	)
@@ -17670,13 +17671,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt62ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt62Image",
+			keyName = "Prompt62Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt62
 	)
-	default boolean prompt62Image() { return false; }
+	default Sound prompt62Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt62ImageOffsetNegative",
@@ -17893,7 +17894,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt63ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt63
 	)
@@ -17954,13 +17955,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt63ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt63Image",
+			keyName = "Prompt63Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt63
 	)
-	default boolean prompt63Image() { return false; }
+	default Sound prompt63Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt63ImageOffsetNegative",
@@ -18177,7 +18178,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt64ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt64
 	)
@@ -18238,13 +18239,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt64ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt64Image",
+			keyName = "Prompt64Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt64
 	)
-	default boolean prompt64Image() { return false; }
+	default Sound prompt64Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt64ImageOffsetNegative",
@@ -18461,7 +18462,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt65ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt65
 	)
@@ -18522,13 +18523,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt65ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt65Image",
+			keyName = "Prompt65Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt65
 	)
-	default boolean prompt65Image() { return false; }
+	default Sound prompt65Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt65ImageOffsetNegative",
@@ -18745,7 +18746,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt66ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt66
 	)
@@ -18806,13 +18807,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt66ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt66Image",
+			keyName = "Prompt66Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt66
 	)
-	default boolean prompt66Image() { return false; }
+	default Sound prompt66Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt66ImageOffsetNegative",
@@ -19029,7 +19030,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt67ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt67
 	)
@@ -19090,13 +19091,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt67ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt67Image",
+			keyName = "Prompt67Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt67
 	)
-	default boolean prompt67Image() { return false; }
+	default Sound prompt67Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt67ImageOffsetNegative",
@@ -19313,7 +19314,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt68ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt68
 	)
@@ -19374,13 +19375,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt68ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt68Image",
+			keyName = "Prompt68Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt68
 	)
-	default boolean prompt68Image() { return false; }
+	default Sound prompt68Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt68ImageOffsetNegative",
@@ -19597,7 +19598,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt69ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt69
 	)
@@ -19658,13 +19659,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt69ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt69Image",
+			keyName = "Prompt69Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt69
 	)
-	default boolean prompt69Image() { return false; }
+	default Sound prompt69Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt69ImageOffsetNegative",
@@ -19881,7 +19882,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt70ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt70
 	)
@@ -19942,13 +19943,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt70ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt70Image",
+			keyName = "Prompt70Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt70
 	)
-	default boolean prompt70Image() { return false; }
+	default Sound prompt70Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt70ImageOffsetNegative",
@@ -20165,7 +20166,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt71ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt71
 	)
@@ -20226,13 +20227,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt71ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt71Image",
+			keyName = "Prompt71Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt71
 	)
-	default boolean prompt71Image() { return false; }
+	default Sound prompt71Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt71ImageOffsetNegative",
@@ -20449,7 +20450,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt72ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt72
 	)
@@ -20510,13 +20511,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt72ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt72Image",
+			keyName = "Prompt72Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt72
 	)
-	default boolean prompt72Image() { return false; }
+	default Sound prompt72Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt72ImageOffsetNegative",
@@ -20733,7 +20734,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt73ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt73
 	)
@@ -20794,13 +20795,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt73ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt73Image",
+			keyName = "Prompt73Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt73
 	)
-	default boolean prompt73Image() { return false; }
+	default Sound prompt73Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt73ImageOffsetNegative",
@@ -21017,7 +21018,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt74ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt74
 	)
@@ -21078,13 +21079,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt74ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt74Image",
+			keyName = "Prompt74Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt74
 	)
-	default boolean prompt74Image() { return false; }
+	default Sound prompt74Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt74ImageOffsetNegative",
@@ -21301,7 +21302,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt75ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt75
 	)
@@ -21362,13 +21363,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt75ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt75Image",
+			keyName = "Prompt75Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt75
 	)
-	default boolean prompt75Image() { return false; }
+	default Sound prompt75Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt75ImageOffsetNegative",
@@ -21585,7 +21586,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt76ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt76
 	)
@@ -21646,13 +21647,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt76ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt76Image",
+			keyName = "Prompt76Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt76
 	)
-	default boolean prompt76Image() { return false; }
+	default Sound prompt76Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt76ImageOffsetNegative",
@@ -21869,7 +21870,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt77ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt77
 	)
@@ -21930,13 +21931,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt77ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt77Image",
+			keyName = "Prompt77Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt77
 	)
-	default boolean prompt77Image() { return false; }
+	default Sound prompt77Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt77ImageOffsetNegative",
@@ -22153,7 +22154,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt78ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt78
 	)
@@ -22214,13 +22215,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt78ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt78Image",
+			keyName = "Prompt78Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt78
 	)
-	default boolean prompt78Image() { return false; }
+	default Sound prompt78Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt78ImageOffsetNegative",
@@ -22437,7 +22438,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt79ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt79
 	)
@@ -22498,13 +22499,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt79ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt79Image",
+			keyName = "Prompt79Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt79
 	)
-	default boolean prompt79Image() { return false; }
+	default Sound prompt79Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt79ImageOffsetNegative",
@@ -22721,7 +22722,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt80ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt80
 	)
@@ -22782,13 +22783,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt80ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt80Image",
+			keyName = "Prompt80Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt80
 	)
-	default boolean prompt80Image() { return false; }
+	default Sound prompt80Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt80ImageOffsetNegative",
@@ -23005,7 +23006,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt81ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt81
 	)
@@ -23066,13 +23067,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt81ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt81Image",
+			keyName = "Prompt81Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt81
 	)
-	default boolean prompt81Image() { return false; }
+	default Sound prompt81Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt81ImageOffsetNegative",
@@ -23289,7 +23290,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt82ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt82
 	)
@@ -23350,13 +23351,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt82ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt82Image",
+			keyName = "Prompt82Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt82
 	)
-	default boolean prompt82Image() { return false; }
+	default Sound prompt82Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt82ImageOffsetNegative",
@@ -23573,7 +23574,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt83ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt83
 	)
@@ -23634,13 +23635,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt83ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt83Image",
+			keyName = "Prompt83Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt83
 	)
-	default boolean prompt83Image() { return false; }
+	default Sound prompt83Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt83ImageOffsetNegative",
@@ -23857,7 +23858,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt84ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt84
 	)
@@ -23918,13 +23919,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt84ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt84Image",
+			keyName = "Prompt84Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt84
 	)
-	default boolean prompt84Image() { return false; }
+	default Sound prompt84Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt84ImageOffsetNegative",
@@ -24141,7 +24142,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt85ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt85
 	)
@@ -24202,13 +24203,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt85ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt85Image",
+			keyName = "Prompt85Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt85
 	)
-	default boolean prompt85Image() { return false; }
+	default Sound prompt85Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt85ImageOffsetNegative",
@@ -24425,7 +24426,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt86ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt86
 	)
@@ -24486,13 +24487,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt86ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt86Image",
+			keyName = "Prompt86Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt86
 	)
-	default boolean prompt86Image() { return false; }
+	default Sound prompt86Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt86ImageOffsetNegative",
@@ -24709,7 +24710,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt87ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt87
 	)
@@ -24770,13 +24771,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt87ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt87Image",
+			keyName = "Prompt87Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt87
 	)
-	default boolean prompt87Image() { return false; }
+	default Sound prompt87Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt87ImageOffsetNegative",
@@ -24993,7 +24994,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt88ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt88
 	)
@@ -25054,13 +25055,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt88ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt88Image",
+			keyName = "Prompt88Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt88
 	)
-	default boolean prompt88Image() { return false; }
+	default Sound prompt88Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt88ImageOffsetNegative",
@@ -25277,7 +25278,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt89ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt89
 	)
@@ -25338,13 +25339,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt89ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt89Image",
+			keyName = "Prompt89Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt89
 	)
-	default boolean prompt89Image() { return false; }
+	default Sound prompt89Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt89ImageOffsetNegative",
@@ -25561,7 +25562,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt90ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt90
 	)
@@ -25622,13 +25623,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt90ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt90Image",
+			keyName = "Prompt90Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt90
 	)
-	default boolean prompt90Image() { return false; }
+	default Sound prompt90Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt90ImageOffsetNegative",
@@ -25845,7 +25846,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt91ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt91
 	)
@@ -25906,13 +25907,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt91ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt91Image",
+			keyName = "Prompt91Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt91
 	)
-	default boolean prompt91Image() { return false; }
+	default Sound prompt91Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt91ImageOffsetNegative",
@@ -26129,7 +26130,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt92ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt92
 	)
@@ -26190,13 +26191,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt92ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt92Image",
+			keyName = "Prompt92Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt92
 	)
-	default boolean prompt92Image() { return false; }
+	default Sound prompt92Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt92ImageOffsetNegative",
@@ -26413,7 +26414,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt93ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt93
 	)
@@ -26474,13 +26475,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt93ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt93Image",
+			keyName = "Prompt93Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt93
 	)
-	default boolean prompt93Image() { return false; }
+	default Sound prompt93Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt93ImageOffsetNegative",
@@ -26697,7 +26698,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt94ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt94
 	)
@@ -26758,13 +26759,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt94ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt94Image",
+			keyName = "Prompt94Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt94
 	)
-	default boolean prompt94Image() { return false; }
+	default Sound prompt94Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt94ImageOffsetNegative",
@@ -26981,7 +26982,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt95ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt95
 	)
@@ -27042,13 +27043,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt95ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt95Image",
+			keyName = "Prompt95Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt95
 	)
-	default boolean prompt95Image() { return false; }
+	default Sound prompt95Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt95ImageOffsetNegative",
@@ -27265,7 +27266,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt96ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt96
 	)
@@ -27326,13 +27327,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt96ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt96Image",
+			keyName = "Prompt96Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt96
 	)
-	default boolean prompt96Image() { return false; }
+	default Sound prompt96Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt96ImageOffsetNegative",
@@ -27549,7 +27550,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt97ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt97
 	)
@@ -27610,13 +27611,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt97ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt97Image",
+			keyName = "Prompt97Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt97
 	)
-	default boolean prompt97Image() { return false; }
+	default Sound prompt97Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt97ImageOffsetNegative",
@@ -27833,7 +27834,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt98ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt98
 	)
@@ -27894,13 +27895,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt98ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt98Image",
+			keyName = "Prompt98Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt98
 	)
-	default boolean prompt98Image() { return false; }
+	default Sound prompt98Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt98ImageOffsetNegative",
@@ -28117,7 +28118,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt99ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt99
 	)
@@ -28178,13 +28179,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt99ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt99Image",
+			keyName = "Prompt99Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt99
 	)
-	default boolean prompt99Image() { return false; }
+	default Sound prompt99Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt99ImageOffsetNegative",
@@ -28401,7 +28402,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			keyName = "Prompt100ChatPatterns",
 			position = 36,
-			name = "Patterns",
+			name = "Messages",
 			description = "Configures text or regex patterns to match in messages to show prompt. (comma seperated)",
 			section = prompt100
 	)
@@ -28462,13 +28463,13 @@ public interface ProximityPromptConfig extends Config {
 	default int prompt100ImageId() { return 0; }
 
 	@ConfigItem(
-			keyName = "Prompt100Image",
+			keyName = "Prompt100Sound",
 			position = 13,
-			name = "Image",
-			description = "Configures whether or not the prompt has an image.",
+			name = "Sound",
+			description = "Configures sound that plays.",
 			section = prompt100
 	)
-	default boolean prompt100Image() { return false; }
+	default Sound prompt100Sound() { return Sound.NONE; }
 
 	@ConfigItem(
 			keyName = "Prompt100ImageOffsetNegative",

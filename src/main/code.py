@@ -26,7 +26,6 @@ configInfo = [
     ["PanelAnchorType", "RSAnchorType"],
     ["PanelAnchorX", "int"],
     ["PanelAnchorY", "int"],
-    ["Image", "boolean"],
     ["ImageId", "int"],
     ["PanelWidth", "int"],
     ["PanelTextSize", "TextSize"],
@@ -34,7 +33,8 @@ configInfo = [
     ["PanelBorder", "boolean"],
     ["ForceShow", "boolean"],
     ["ImageOffset", "int"],
-    ["ImageOffsetNegative", "boolean"]
+    ["ImageOffsetNegative", "boolean"],
+    ["Sound", "Sound"],
 ]
 
 for info in configInfo:
@@ -74,6 +74,8 @@ for info in configInfo:
         default_return = "TextSize.SMALL"
     elif type == "Location":
         default_return = "Location.IN_LIST"
+    elif type == "Sound":
+        default_return = "Sound.NONE"
 
     print(line4.format(defaultReturn=default_return))
     print(line5)

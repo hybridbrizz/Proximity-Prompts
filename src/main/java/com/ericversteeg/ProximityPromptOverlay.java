@@ -202,10 +202,9 @@ class ProximityPromptOverlay extends RSViewOverlay {
 			rightText.setText(text);
 			rightText.setWeight(1f);
 
-			boolean isImage = plugin.isImage(prompt.id);
 			int imageId = plugin.getImageId(prompt.id);
 
-			if (isImage && imageId > 0)
+			if (imageId > 0)
 			{
 				BufferedImage image = itemManager.getImage(imageId);
 				if (image != null)
@@ -273,10 +272,9 @@ class ProximityPromptOverlay extends RSViewOverlay {
 		textView.setTextColor(color);
 		textView.setText(text);
 
-		boolean isImage = plugin.isImage(prompt.id);
 		int imageId = plugin.getImageId(prompt.id);
 
-		if (isImage && imageId > 0)
+		if (imageId > 0)
 		{
 			BufferedImage image = itemManager.getImage(imageId);
 			if (image != null)
@@ -311,12 +309,11 @@ class ProximityPromptOverlay extends RSViewOverlay {
 		String text = prompt.text;
 
 		RSImageView imageView = new RSImageView(RSView.WRAP_CONTENT, RSView.WRAP_CONTENT);
-
-		boolean isImage = plugin.isImage(prompt.id);
+		
 		int imageId = plugin.getImageId(prompt.id);
 
 		int imageWidth = 0;
-		if (isImage && imageId > 0)
+		if (imageId > 0)
 		{
 			BufferedImage image = itemManager.getImage(imageId);
 			if (image != null)

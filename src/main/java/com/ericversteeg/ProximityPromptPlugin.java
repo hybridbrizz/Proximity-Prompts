@@ -1,6 +1,7 @@
 package com.ericversteeg;
 
 import com.ericversteeg.model.config.Location;
+import com.ericversteeg.model.config.Sound;
 import com.ericversteeg.model.config.TextSize;
 import com.ericversteeg.model.config.TimeUnit;
 import com.ericversteeg.model.Prompt;
@@ -14,6 +15,7 @@ import net.runelite.api.*;
 import net.runelite.api.coords.WorldPoint;
 import net.runelite.api.events.*;
 import net.runelite.client.Notifier;
+import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
@@ -24,6 +26,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 import java.awt.*;
 import java.time.*;
 import java.time.temporal.ChronoField;
@@ -56,6 +59,8 @@ public class ProximityPromptPlugin extends Plugin {
 	private ItemManager itemManager;
 	@Inject
 	private Notifier notifier;
+	@Inject
+	private Provider<ClientThread> clientThreadProvider;
 
 	List<Prompt> prompts = new ArrayList<>();
 	List<Prompt> activePrompts = new ArrayList<>();
@@ -102,6 +107,16 @@ public class ProximityPromptPlugin extends Plugin {
 		{
 			prompts = getAllPrompts();
 			activePrompts = getActivePrompts(prompts);
+
+			if (config.getKey().matches("^.*?Sound$"))
+			{
+				clientThreadProvider.get().invoke(() ->
+						client.playSoundEffect(
+								Sound.valueOf(config.getNewValue()).getId(),
+								SoundEffectVolume.HIGH
+						)
+				);
+			}
 		}
 	}
 
@@ -433,6 +448,10 @@ public class ProximityPromptPlugin extends Plugin {
 						prompt.posted = Instant.now().toEpochMilli();
 						prompt.active = true;
 
+						clientThreadProvider.get().invoke(() ->
+								client.playSoundEffect(getSound(prompt.id).getId(), SoundEffectVolume.HIGH)
+						);
+
 						if (prompt.notify && prompt.lastNotified <= Instant.now().toEpochMilli() - 30000)
 						{
 							notifier.notify(prompt.text);
@@ -445,6 +464,13 @@ public class ProximityPromptPlugin extends Plugin {
 					{
 						prompt.active = true;
 						prompt.posted = Instant.now().toEpochMilli();
+
+						if (prompt.cooldown > 0)
+						{
+							clientThreadProvider.get().invoke(() ->
+									client.playSoundEffect(getSound(prompt.id).getId(), SoundEffectVolume.HIGH)
+							);
+						}
 
 						if (prompt.notify && prompt.lastNotified <= Instant.now().toEpochMilli() - 30000)
 						{
@@ -3136,111 +3162,6 @@ public class ProximityPromptPlugin extends Plugin {
 		else return 0;
 	}
 
-	boolean isImage(int reminderId)
-	{
-		if (reminderId == 1) return config.prompt1Image();
-		else if (reminderId == 2) return config.prompt2Image();
-		else if (reminderId == 3) return config.prompt3Image();
-		else if (reminderId == 4) return config.prompt4Image();
-		else if (reminderId == 5) return config.prompt5Image();
-		else if (reminderId == 6) return config.prompt6Image();
-		else if (reminderId == 7) return config.prompt7Image();
-		else if (reminderId == 8) return config.prompt8Image();
-		else if (reminderId == 9) return config.prompt9Image();
-		else if (reminderId == 10) return config.prompt10Image();
-		else if (reminderId == 11) return config.prompt11Image();
-		else if (reminderId == 12) return config.prompt12Image();
-		else if (reminderId == 13) return config.prompt13Image();
-		else if (reminderId == 14) return config.prompt14Image();
-		else if (reminderId == 15) return config.prompt15Image();
-		else if (reminderId == 16) return config.prompt16Image();
-		else if (reminderId == 17) return config.prompt17Image();
-		else if (reminderId == 18) return config.prompt18Image();
-		else if (reminderId == 19) return config.prompt19Image();
-		else if (reminderId == 20) return config.prompt20Image();
-		else if (reminderId == 21) return config.prompt21Image();
-		else if (reminderId == 22) return config.prompt22Image();
-		else if (reminderId == 23) return config.prompt23Image();
-		else if (reminderId == 24) return config.prompt24Image();
-		else if (reminderId == 25) return config.prompt25Image();
-		else if (reminderId == 26) return config.prompt26Image();
-		else if (reminderId == 27) return config.prompt27Image();
-		else if (reminderId == 28) return config.prompt28Image();
-		else if (reminderId == 29) return config.prompt29Image();
-		else if (reminderId == 30) return config.prompt30Image();
-		else if (reminderId == 31) return config.prompt31Image();
-		else if (reminderId == 32) return config.prompt32Image();
-		else if (reminderId == 33) return config.prompt33Image();
-		else if (reminderId == 34) return config.prompt34Image();
-		else if (reminderId == 35) return config.prompt35Image();
-		else if (reminderId == 36) return config.prompt36Image();
-		else if (reminderId == 37) return config.prompt37Image();
-		else if (reminderId == 38) return config.prompt38Image();
-		else if (reminderId == 39) return config.prompt39Image();
-		else if (reminderId == 40) return config.prompt40Image();
-		else if (reminderId == 41) return config.prompt41Image();
-		else if (reminderId == 42) return config.prompt42Image();
-		else if (reminderId == 43) return config.prompt43Image();
-		else if (reminderId == 44) return config.prompt44Image();
-		else if (reminderId == 45) return config.prompt45Image();
-		else if (reminderId == 46) return config.prompt46Image();
-		else if (reminderId == 47) return config.prompt47Image();
-		else if (reminderId == 48) return config.prompt48Image();
-		else if (reminderId == 49) return config.prompt49Image();
-		else if (reminderId == 50) return config.prompt50Image();
-		else if (reminderId == 51) return config.prompt51Image();
-		else if (reminderId == 52) return config.prompt52Image();
-		else if (reminderId == 53) return config.prompt53Image();
-		else if (reminderId == 54) return config.prompt54Image();
-		else if (reminderId == 55) return config.prompt55Image();
-		else if (reminderId == 56) return config.prompt56Image();
-		else if (reminderId == 57) return config.prompt57Image();
-		else if (reminderId == 58) return config.prompt58Image();
-		else if (reminderId == 59) return config.prompt59Image();
-		else if (reminderId == 60) return config.prompt60Image();
-		else if (reminderId == 61) return config.prompt61Image();
-		else if (reminderId == 62) return config.prompt62Image();
-		else if (reminderId == 63) return config.prompt63Image();
-		else if (reminderId == 64) return config.prompt64Image();
-		else if (reminderId == 65) return config.prompt65Image();
-		else if (reminderId == 66) return config.prompt66Image();
-		else if (reminderId == 67) return config.prompt67Image();
-		else if (reminderId == 68) return config.prompt68Image();
-		else if (reminderId == 69) return config.prompt69Image();
-		else if (reminderId == 70) return config.prompt70Image();
-		else if (reminderId == 71) return config.prompt71Image();
-		else if (reminderId == 72) return config.prompt72Image();
-		else if (reminderId == 73) return config.prompt73Image();
-		else if (reminderId == 74) return config.prompt74Image();
-		else if (reminderId == 75) return config.prompt75Image();
-		else if (reminderId == 76) return config.prompt76Image();
-		else if (reminderId == 77) return config.prompt77Image();
-		else if (reminderId == 78) return config.prompt78Image();
-		else if (reminderId == 79) return config.prompt79Image();
-		else if (reminderId == 80) return config.prompt80Image();
-		else if (reminderId == 81) return config.prompt81Image();
-		else if (reminderId == 82) return config.prompt82Image();
-		else if (reminderId == 83) return config.prompt83Image();
-		else if (reminderId == 84) return config.prompt84Image();
-		else if (reminderId == 85) return config.prompt85Image();
-		else if (reminderId == 86) return config.prompt86Image();
-		else if (reminderId == 87) return config.prompt87Image();
-		else if (reminderId == 88) return config.prompt88Image();
-		else if (reminderId == 89) return config.prompt89Image();
-		else if (reminderId == 90) return config.prompt90Image();
-		else if (reminderId == 91) return config.prompt91Image();
-		else if (reminderId == 92) return config.prompt92Image();
-		else if (reminderId == 93) return config.prompt93Image();
-		else if (reminderId == 94) return config.prompt94Image();
-		else if (reminderId == 95) return config.prompt95Image();
-		else if (reminderId == 96) return config.prompt96Image();
-		else if (reminderId == 97) return config.prompt97Image();
-		else if (reminderId == 98) return config.prompt98Image();
-		else if (reminderId == 99) return config.prompt99Image();
-		else if (reminderId == 100) return config.prompt100Image();
-		else return false;
-	}
-
 	int getImageId(int reminderId)
 	{
 		if (reminderId == 1) return config.prompt1ImageId();
@@ -4079,5 +4000,110 @@ public class ProximityPromptPlugin extends Plugin {
 		else if (reminderId == 99) return config.prompt99ImageOffsetNegative();
 		else if (reminderId == 100) return config.prompt100ImageOffsetNegative();
 		else return false;
+	}
+
+	Sound getSound(int reminderId)
+	{
+		if (reminderId == 1) return config.prompt1Sound();
+		else if (reminderId == 2) return config.prompt2Sound();
+		else if (reminderId == 3) return config.prompt3Sound();
+		else if (reminderId == 4) return config.prompt4Sound();
+		else if (reminderId == 5) return config.prompt5Sound();
+		else if (reminderId == 6) return config.prompt6Sound();
+		else if (reminderId == 7) return config.prompt7Sound();
+		else if (reminderId == 8) return config.prompt8Sound();
+		else if (reminderId == 9) return config.prompt9Sound();
+		else if (reminderId == 10) return config.prompt10Sound();
+		else if (reminderId == 11) return config.prompt11Sound();
+		else if (reminderId == 12) return config.prompt12Sound();
+		else if (reminderId == 13) return config.prompt13Sound();
+		else if (reminderId == 14) return config.prompt14Sound();
+		else if (reminderId == 15) return config.prompt15Sound();
+		else if (reminderId == 16) return config.prompt16Sound();
+		else if (reminderId == 17) return config.prompt17Sound();
+		else if (reminderId == 18) return config.prompt18Sound();
+		else if (reminderId == 19) return config.prompt19Sound();
+		else if (reminderId == 20) return config.prompt20Sound();
+		else if (reminderId == 21) return config.prompt21Sound();
+		else if (reminderId == 22) return config.prompt22Sound();
+		else if (reminderId == 23) return config.prompt23Sound();
+		else if (reminderId == 24) return config.prompt24Sound();
+		else if (reminderId == 25) return config.prompt25Sound();
+		else if (reminderId == 26) return config.prompt26Sound();
+		else if (reminderId == 27) return config.prompt27Sound();
+		else if (reminderId == 28) return config.prompt28Sound();
+		else if (reminderId == 29) return config.prompt29Sound();
+		else if (reminderId == 30) return config.prompt30Sound();
+		else if (reminderId == 31) return config.prompt31Sound();
+		else if (reminderId == 32) return config.prompt32Sound();
+		else if (reminderId == 33) return config.prompt33Sound();
+		else if (reminderId == 34) return config.prompt34Sound();
+		else if (reminderId == 35) return config.prompt35Sound();
+		else if (reminderId == 36) return config.prompt36Sound();
+		else if (reminderId == 37) return config.prompt37Sound();
+		else if (reminderId == 38) return config.prompt38Sound();
+		else if (reminderId == 39) return config.prompt39Sound();
+		else if (reminderId == 40) return config.prompt40Sound();
+		else if (reminderId == 41) return config.prompt41Sound();
+		else if (reminderId == 42) return config.prompt42Sound();
+		else if (reminderId == 43) return config.prompt43Sound();
+		else if (reminderId == 44) return config.prompt44Sound();
+		else if (reminderId == 45) return config.prompt45Sound();
+		else if (reminderId == 46) return config.prompt46Sound();
+		else if (reminderId == 47) return config.prompt47Sound();
+		else if (reminderId == 48) return config.prompt48Sound();
+		else if (reminderId == 49) return config.prompt49Sound();
+		else if (reminderId == 50) return config.prompt50Sound();
+		else if (reminderId == 51) return config.prompt51Sound();
+		else if (reminderId == 52) return config.prompt52Sound();
+		else if (reminderId == 53) return config.prompt53Sound();
+		else if (reminderId == 54) return config.prompt54Sound();
+		else if (reminderId == 55) return config.prompt55Sound();
+		else if (reminderId == 56) return config.prompt56Sound();
+		else if (reminderId == 57) return config.prompt57Sound();
+		else if (reminderId == 58) return config.prompt58Sound();
+		else if (reminderId == 59) return config.prompt59Sound();
+		else if (reminderId == 60) return config.prompt60Sound();
+		else if (reminderId == 61) return config.prompt61Sound();
+		else if (reminderId == 62) return config.prompt62Sound();
+		else if (reminderId == 63) return config.prompt63Sound();
+		else if (reminderId == 64) return config.prompt64Sound();
+		else if (reminderId == 65) return config.prompt65Sound();
+		else if (reminderId == 66) return config.prompt66Sound();
+		else if (reminderId == 67) return config.prompt67Sound();
+		else if (reminderId == 68) return config.prompt68Sound();
+		else if (reminderId == 69) return config.prompt69Sound();
+		else if (reminderId == 70) return config.prompt70Sound();
+		else if (reminderId == 71) return config.prompt71Sound();
+		else if (reminderId == 72) return config.prompt72Sound();
+		else if (reminderId == 73) return config.prompt73Sound();
+		else if (reminderId == 74) return config.prompt74Sound();
+		else if (reminderId == 75) return config.prompt75Sound();
+		else if (reminderId == 76) return config.prompt76Sound();
+		else if (reminderId == 77) return config.prompt77Sound();
+		else if (reminderId == 78) return config.prompt78Sound();
+		else if (reminderId == 79) return config.prompt79Sound();
+		else if (reminderId == 80) return config.prompt80Sound();
+		else if (reminderId == 81) return config.prompt81Sound();
+		else if (reminderId == 82) return config.prompt82Sound();
+		else if (reminderId == 83) return config.prompt83Sound();
+		else if (reminderId == 84) return config.prompt84Sound();
+		else if (reminderId == 85) return config.prompt85Sound();
+		else if (reminderId == 86) return config.prompt86Sound();
+		else if (reminderId == 87) return config.prompt87Sound();
+		else if (reminderId == 88) return config.prompt88Sound();
+		else if (reminderId == 89) return config.prompt89Sound();
+		else if (reminderId == 90) return config.prompt90Sound();
+		else if (reminderId == 91) return config.prompt91Sound();
+		else if (reminderId == 92) return config.prompt92Sound();
+		else if (reminderId == 93) return config.prompt93Sound();
+		else if (reminderId == 94) return config.prompt94Sound();
+		else if (reminderId == 95) return config.prompt95Sound();
+		else if (reminderId == 96) return config.prompt96Sound();
+		else if (reminderId == 97) return config.prompt97Sound();
+		else if (reminderId == 98) return config.prompt98Sound();
+		else if (reminderId == 99) return config.prompt99Sound();
+		else if (reminderId == 100) return config.prompt100Sound();
+		else return Sound.NONE;
 	}
 }
