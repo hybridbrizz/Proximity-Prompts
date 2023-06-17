@@ -1,6 +1,6 @@
 # Proximity Prompts
 
-![cannongif2](https://github.com/erversteeg/Proximity-Prompts/assets/2341316/3ebf9cf9-5802-49c5-b24f-e252c81ad334)
+![gif2](https://github.com/erversteeg/Proximity-Prompts/assets/2341316/dc057b0e-4974-40d4-b2db-ee94d2b1e5ad)
 
 ### Proximity promts are little overlays that appear at certain times depending on how they are configured. You can customize them to appear based on:
 
