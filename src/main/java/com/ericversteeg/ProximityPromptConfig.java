@@ -8,6 +8,7 @@ import com.ericversteeg.view.RSAnchorType;
 import net.runelite.client.config.*;
 
 import java.awt.*;
+
 @ConfigGroup(ProximityPromptConfig.GROUP)
 public interface ProximityPromptConfig extends Config
 {
