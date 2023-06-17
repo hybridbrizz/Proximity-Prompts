@@ -1,6 +1,6 @@
 line1  = '{configTYpe} {namePrefix}{ucConfigName}(int promptId)'
 line2  = '{'
-line3  = '    {ifType} (reminderId == {number}) return config.{lcName}{ucConfigName}();'
+line3  = '    {ifType} (promptId == {number}) return config.{lcName}{ucConfigName}();'
 line4  = '    else return {defaultReturn};'
 line5  = '}'
 

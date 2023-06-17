@@ -8,9 +8,9 @@ import com.ericversteeg.view.RSAnchorType;
 import net.runelite.client.config.*;
 
 import java.awt.*;
-
 @ConfigGroup(ProximityPromptConfig.GROUP)
-public interface ProximityPromptConfig extends Config {
+public interface ProximityPromptConfig extends Config
+{
 	String GROUP = "proximity_prompt";
 
 	@ConfigItem(
@@ -89,7 +89,7 @@ public interface ProximityPromptConfig extends Config {
 			section = customPrompts
 
 	)
-	default String customReminders() {
+	default String customPrompts() {
 		return "";
 	}
 
@@ -240,7 +240,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt1ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt1
 	)
 	default String prompt1ChatPatterns() { return ""; }
@@ -524,7 +524,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt2ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt2
 	)
 	default String prompt2ChatPatterns() { return ""; }
@@ -808,7 +808,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt3ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt3
 	)
 	default String prompt3ChatPatterns() { return ""; }
@@ -1092,7 +1092,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt4ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt4
 	)
 	default String prompt4ChatPatterns() { return ""; }
@@ -1376,7 +1376,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt5ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt5
 	)
 	default String prompt5ChatPatterns() { return ""; }
@@ -1660,7 +1660,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt6ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt6
 	)
 	default String prompt6ChatPatterns() { return ""; }
@@ -1944,7 +1944,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt7ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt7
 	)
 	default String prompt7ChatPatterns() { return ""; }
@@ -2228,7 +2228,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt8ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt8
 	)
 	default String prompt8ChatPatterns() { return ""; }
@@ -2512,7 +2512,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt9ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt9
 	)
 	default String prompt9ChatPatterns() { return ""; }
@@ -2796,7 +2796,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt10ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt10
 	)
 	default String prompt10ChatPatterns() { return ""; }
@@ -3080,7 +3080,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt11ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt11
 	)
 	default String prompt11ChatPatterns() { return ""; }
@@ -3364,7 +3364,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt12ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt12
 	)
 	default String prompt12ChatPatterns() { return ""; }
@@ -3648,7 +3648,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt13ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt13
 	)
 	default String prompt13ChatPatterns() { return ""; }
@@ -3932,7 +3932,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt14ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt14
 	)
 	default String prompt14ChatPatterns() { return ""; }
@@ -4216,7 +4216,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt15ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt15
 	)
 	default String prompt15ChatPatterns() { return ""; }
@@ -4500,7 +4500,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt16ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt16
 	)
 	default String prompt16ChatPatterns() { return ""; }
@@ -4784,7 +4784,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt17ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt17
 	)
 	default String prompt17ChatPatterns() { return ""; }
@@ -5068,7 +5068,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt18ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt18
 	)
 	default String prompt18ChatPatterns() { return ""; }
@@ -5352,7 +5352,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt19ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt19
 	)
 	default String prompt19ChatPatterns() { return ""; }
@@ -5636,7 +5636,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt20ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt20
 	)
 	default String prompt20ChatPatterns() { return ""; }
@@ -5920,7 +5920,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt21ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt21
 	)
 	default String prompt21ChatPatterns() { return ""; }
@@ -6204,7 +6204,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt22ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt22
 	)
 	default String prompt22ChatPatterns() { return ""; }
@@ -6488,7 +6488,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt23ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt23
 	)
 	default String prompt23ChatPatterns() { return ""; }
@@ -6772,7 +6772,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt24ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt24
 	)
 	default String prompt24ChatPatterns() { return ""; }
@@ -7056,7 +7056,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt25ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt25
 	)
 	default String prompt25ChatPatterns() { return ""; }
@@ -7340,7 +7340,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt26ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt26
 	)
 	default String prompt26ChatPatterns() { return ""; }
@@ -7624,7 +7624,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt27ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt27
 	)
 	default String prompt27ChatPatterns() { return ""; }
@@ -7908,7 +7908,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt28ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt28
 	)
 	default String prompt28ChatPatterns() { return ""; }
@@ -8192,7 +8192,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt29ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt29
 	)
 	default String prompt29ChatPatterns() { return ""; }
@@ -8476,7 +8476,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt30ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt30
 	)
 	default String prompt30ChatPatterns() { return ""; }
@@ -8760,7 +8760,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt31ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt31
 	)
 	default String prompt31ChatPatterns() { return ""; }
@@ -9044,7 +9044,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt32ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt32
 	)
 	default String prompt32ChatPatterns() { return ""; }
@@ -9328,7 +9328,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt33ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt33
 	)
 	default String prompt33ChatPatterns() { return ""; }
@@ -9612,7 +9612,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt34ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt34
 	)
 	default String prompt34ChatPatterns() { return ""; }
@@ -9896,7 +9896,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt35ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt35
 	)
 	default String prompt35ChatPatterns() { return ""; }
@@ -10180,7 +10180,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt36ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt36
 	)
 	default String prompt36ChatPatterns() { return ""; }
@@ -10464,7 +10464,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt37ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt37
 	)
 	default String prompt37ChatPatterns() { return ""; }
@@ -10748,7 +10748,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt38ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt38
 	)
 	default String prompt38ChatPatterns() { return ""; }
@@ -11032,7 +11032,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt39ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt39
 	)
 	default String prompt39ChatPatterns() { return ""; }
@@ -11316,7 +11316,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt40ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt40
 	)
 	default String prompt40ChatPatterns() { return ""; }
@@ -11600,7 +11600,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt41ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt41
 	)
 	default String prompt41ChatPatterns() { return ""; }
@@ -11884,7 +11884,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt42ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt42
 	)
 	default String prompt42ChatPatterns() { return ""; }
@@ -12168,7 +12168,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt43ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt43
 	)
 	default String prompt43ChatPatterns() { return ""; }
@@ -12452,7 +12452,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt44ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt44
 	)
 	default String prompt44ChatPatterns() { return ""; }
@@ -12736,7 +12736,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt45ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt45
 	)
 	default String prompt45ChatPatterns() { return ""; }
@@ -13020,7 +13020,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt46ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt46
 	)
 	default String prompt46ChatPatterns() { return ""; }
@@ -13304,7 +13304,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt47ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt47
 	)
 	default String prompt47ChatPatterns() { return ""; }
@@ -13588,7 +13588,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt48ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt48
 	)
 	default String prompt48ChatPatterns() { return ""; }
@@ -13872,7 +13872,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt49ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt49
 	)
 	default String prompt49ChatPatterns() { return ""; }
@@ -14156,7 +14156,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt50ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt50
 	)
 	default String prompt50ChatPatterns() { return ""; }
@@ -14440,7 +14440,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt51ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt51
 	)
 	default String prompt51ChatPatterns() { return ""; }
@@ -14724,7 +14724,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt52ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt52
 	)
 	default String prompt52ChatPatterns() { return ""; }
@@ -15008,7 +15008,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt53ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt53
 	)
 	default String prompt53ChatPatterns() { return ""; }
@@ -15292,7 +15292,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt54ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt54
 	)
 	default String prompt54ChatPatterns() { return ""; }
@@ -15576,7 +15576,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt55ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt55
 	)
 	default String prompt55ChatPatterns() { return ""; }
@@ -15860,7 +15860,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt56ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt56
 	)
 	default String prompt56ChatPatterns() { return ""; }
@@ -16144,7 +16144,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt57ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt57
 	)
 	default String prompt57ChatPatterns() { return ""; }
@@ -16428,7 +16428,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt58ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt58
 	)
 	default String prompt58ChatPatterns() { return ""; }
@@ -16712,7 +16712,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt59ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt59
 	)
 	default String prompt59ChatPatterns() { return ""; }
@@ -16996,7 +16996,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt60ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt60
 	)
 	default String prompt60ChatPatterns() { return ""; }
@@ -17280,7 +17280,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt61ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt61
 	)
 	default String prompt61ChatPatterns() { return ""; }
@@ -17564,7 +17564,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt62ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt62
 	)
 	default String prompt62ChatPatterns() { return ""; }
@@ -17848,7 +17848,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt63ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt63
 	)
 	default String prompt63ChatPatterns() { return ""; }
@@ -18132,7 +18132,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt64ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt64
 	)
 	default String prompt64ChatPatterns() { return ""; }
@@ -18416,7 +18416,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt65ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt65
 	)
 	default String prompt65ChatPatterns() { return ""; }
@@ -18700,7 +18700,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt66ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt66
 	)
 	default String prompt66ChatPatterns() { return ""; }
@@ -18984,7 +18984,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt67ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt67
 	)
 	default String prompt67ChatPatterns() { return ""; }
@@ -19268,7 +19268,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt68ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt68
 	)
 	default String prompt68ChatPatterns() { return ""; }
@@ -19552,7 +19552,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt69ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt69
 	)
 	default String prompt69ChatPatterns() { return ""; }
@@ -19836,7 +19836,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt70ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt70
 	)
 	default String prompt70ChatPatterns() { return ""; }
@@ -20120,7 +20120,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt71ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt71
 	)
 	default String prompt71ChatPatterns() { return ""; }
@@ -20404,7 +20404,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt72ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt72
 	)
 	default String prompt72ChatPatterns() { return ""; }
@@ -20688,7 +20688,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt73ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt73
 	)
 	default String prompt73ChatPatterns() { return ""; }
@@ -20972,7 +20972,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt74ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt74
 	)
 	default String prompt74ChatPatterns() { return ""; }
@@ -21256,7 +21256,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt75ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt75
 	)
 	default String prompt75ChatPatterns() { return ""; }
@@ -21540,7 +21540,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt76ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt76
 	)
 	default String prompt76ChatPatterns() { return ""; }
@@ -21824,7 +21824,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt77ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt77
 	)
 	default String prompt77ChatPatterns() { return ""; }
@@ -22108,7 +22108,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt78ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt78
 	)
 	default String prompt78ChatPatterns() { return ""; }
@@ -22392,7 +22392,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt79ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt79
 	)
 	default String prompt79ChatPatterns() { return ""; }
@@ -22676,7 +22676,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt80ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt80
 	)
 	default String prompt80ChatPatterns() { return ""; }
@@ -22960,7 +22960,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt81ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt81
 	)
 	default String prompt81ChatPatterns() { return ""; }
@@ -23244,7 +23244,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt82ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt82
 	)
 	default String prompt82ChatPatterns() { return ""; }
@@ -23528,7 +23528,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt83ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt83
 	)
 	default String prompt83ChatPatterns() { return ""; }
@@ -23812,7 +23812,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt84ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt84
 	)
 	default String prompt84ChatPatterns() { return ""; }
@@ -24096,7 +24096,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt85ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt85
 	)
 	default String prompt85ChatPatterns() { return ""; }
@@ -24380,7 +24380,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt86ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt86
 	)
 	default String prompt86ChatPatterns() { return ""; }
@@ -24664,7 +24664,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt87ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt87
 	)
 	default String prompt87ChatPatterns() { return ""; }
@@ -24948,7 +24948,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt88ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt88
 	)
 	default String prompt88ChatPatterns() { return ""; }
@@ -25232,7 +25232,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt89ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt89
 	)
 	default String prompt89ChatPatterns() { return ""; }
@@ -25516,7 +25516,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt90ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt90
 	)
 	default String prompt90ChatPatterns() { return ""; }
@@ -25800,7 +25800,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt91ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt91
 	)
 	default String prompt91ChatPatterns() { return ""; }
@@ -26084,7 +26084,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt92ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt92
 	)
 	default String prompt92ChatPatterns() { return ""; }
@@ -26368,7 +26368,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt93ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt93
 	)
 	default String prompt93ChatPatterns() { return ""; }
@@ -26652,7 +26652,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt94ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt94
 	)
 	default String prompt94ChatPatterns() { return ""; }
@@ -26936,7 +26936,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt95ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt95
 	)
 	default String prompt95ChatPatterns() { return ""; }
@@ -27220,7 +27220,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt96ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt96
 	)
 	default String prompt96ChatPatterns() { return ""; }
@@ -27504,7 +27504,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt97ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt97
 	)
 	default String prompt97ChatPatterns() { return ""; }
@@ -27788,7 +27788,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt98ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt98
 	)
 	default String prompt98ChatPatterns() { return ""; }
@@ -28072,7 +28072,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt99ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt99
 	)
 	default String prompt99ChatPatterns() { return ""; }
@@ -28356,7 +28356,7 @@ public interface ProximityPromptConfig extends Config {
 			keyName = "Prompt100ChatPatterns",
 			position = 36,
 			name = "Messages",
-			description = "Configures text or regex to match messages with to show prompt. (comma seperated)",
+			description = "Configures text or regex to match messages to show prompt. (comma separated)",
 			section = prompt100
 	)
 	default String prompt100ChatPatterns() { return ""; }

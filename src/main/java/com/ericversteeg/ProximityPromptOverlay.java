@@ -31,9 +31,9 @@ class ProximityPromptOverlay extends RSViewOverlay {
 
 	private Font font;
 
-	private Color panelBackgroundColor = ComponentConstants.STANDARD_BACKGROUND_COLOR;
-	private Color outerBorderColor = new Color(57, 41, 13, 124);
-	private Color innerBorderColor = new Color(147, 141, 130, 37);
+	private final Color panelBackgroundColor = ComponentConstants.STANDARD_BACKGROUND_COLOR;
+	private final Color outerBorderColor = new Color(57, 41, 13, 124);
+	private final Color innerBorderColor = new Color(147, 141, 130, 37);
 
 	@Inject
 	private ProximityPromptOverlay(
@@ -141,16 +141,13 @@ class ProximityPromptOverlay extends RSViewOverlay {
 		panel.addBorder(innerBorderColor, outerBorderColor);
 		panel.setPadding(4);
 
-		int maxReminders = 500;
-		int activeCount = 0;
-
-		java.util.List<Prompt> prompts = plugin.activePrompts.stream()
+		java.util.List<Prompt> listPrompts = plugin.activePrompts.stream()
 				.sorted(((o1, o2) -> (int) (o2.posted - o1.posted)))
+				.filter(obj -> obj.location == Location.IN_LIST.ordinal())
+				.filter(obj -> !obj.text.trim().isEmpty())
 				.collect(Collectors.toList());
 
-		for (Prompt prompt : prompts) {
-			if (activeCount == maxReminders) break;
-
+		for (Prompt prompt : listPrompts) {
 			String text = prompt.text;
 			if (text.trim().isEmpty()) continue;
 
@@ -171,19 +168,8 @@ class ProximityPromptOverlay extends RSViewOverlay {
 				}
 			}
 
-			if (prompt.location == Location.WORD_WRAP.ordinal())
-			{
-				renderReminderWordWrapPanel(prompt, color);
-				continue;
-			}
-			else if (prompt.location == Location.SINGLE_LINE.ordinal())
-			{
-				renderReminderSingleLinePanel(prompt, color);
-				continue;
-			}
-
 			RSRow row = new RSRow(0, 0, RSView.MATCH_PARENT, RSView.WRAP_CONTENT);
-			if (activeCount + 1 < Math.min(prompts.size(), maxReminders))
+			if (listPrompts.indexOf(prompt) + 1 < listPrompts.size())
 			{
 				row.setMarginBottom(5);
 			}
@@ -228,15 +214,33 @@ class ProximityPromptOverlay extends RSViewOverlay {
 			row.addView(rightText);
 
 			panel.addView(row);
+		}
 
-			activeCount++;
+		java.util.List<Prompt> panelPrompts = plugin.activePrompts.stream()
+				.sorted(((o1, o2) -> (int) (o2.posted - o1.posted)))
+				.filter(obj -> obj.location != Location.IN_LIST.ordinal())
+				.filter(obj -> !obj.text.trim().isEmpty())
+				.collect(Collectors.toList());
+
+		for (Prompt prompt : panelPrompts) {
+			String text = prompt.text;
+			if (text.trim().isEmpty()) continue;
+
+			if (prompt.location == Location.WORD_WRAP.ordinal())
+			{
+				renderPromptWordWrapPanel(prompt);
+			}
+			else if (prompt.location == Location.SINGLE_LINE.ordinal())
+			{
+				renderPromptSingleLinePanel(prompt);
+			}
 		}
 
 		if (config.idFinder())
 		{
 			renderIds(panel);
 		}
-		else if (activeCount == 0)
+		else if (listPrompts.isEmpty())
 		{
 			return;
 		}
@@ -247,9 +251,10 @@ class ProximityPromptOverlay extends RSViewOverlay {
 		//System.out.println("View setup in " + (Instant.now().toEpochMilli() - start) + "ms");
 	}
 
-	private void renderReminderWordWrapPanel(Prompt prompt, Color color)
+	private void renderPromptWordWrapPanel(Prompt prompt)
 	{
 		String text = prompt.text;
+		Color color = prompt.color;
 
 		Color panelColor = prompt.bgColor;
 
@@ -298,9 +303,10 @@ class ProximityPromptOverlay extends RSViewOverlay {
 				prompt.anchorX, prompt.anchorY));
 	}
 
-	private void renderReminderSingleLinePanel(Prompt prompt, Color color)
+	private void renderPromptSingleLinePanel(Prompt prompt)
 	{
 		String text = prompt.text;
+		Color color = prompt.color;
 
 		RSImageView imageView = new RSImageView(RSView.WRAP_CONTENT, RSView.WRAP_CONTENT);
 		
@@ -471,23 +477,5 @@ class ProximityPromptOverlay extends RSViewOverlay {
 	{
 		updateViews();
 		return super.render(graphics);
-	}
-
-	private String printItems() {
-		StringBuilder sb = new StringBuilder();
-		for (ItemComposition item : plugin.items) {
-			if (item.getId() < 0) continue;
-
-			sb.append(item.getName());
-			sb.append(" ");
-			sb.append(item.getId());
-			sb.append(", ");
-		}
-
-		if (sb.length() > 1) {
-			return sb.substring(0, sb.length() - 2);
-		}
-		return "";
-
 	}
 }
