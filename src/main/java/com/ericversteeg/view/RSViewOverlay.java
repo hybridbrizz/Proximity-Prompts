@@ -47,6 +47,16 @@ public class RSViewOverlay extends Overlay
                 {
                     view.setY(viewportWidget.getCanvasLocation().getY() + viewportWidget.getHeight() + 41 - anchorY - view.getH());
                 }
+
+                if (anchorType == RSAnchorType.TOP_CENTER)
+                {
+                    view.setX((viewportWidget.getCanvasLocation().getX() + viewportWidget.getWidth() + 28 - view.getW()) / 2 + anchorX);
+                }
+
+                if (anchorType == RSAnchorType.LEFT_CENTER)
+                {
+                    view.setY((viewportWidget.getCanvasLocation().getY() + viewportWidget.getHeight() + 41 - view.getH()) / 2 + anchorY);
+                }
             }
 
             view.render(graphics, new Point(0, 0));

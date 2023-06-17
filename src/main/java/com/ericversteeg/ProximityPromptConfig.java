@@ -26,7 +26,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			position = 2,
 			keyName = "anchorX",
-			name = "X Position",
+			name = "List X Position",
 			description = "Configure x position relative to anchor."
 	)
 	default int anchorX() {
@@ -36,7 +36,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			position = 3,
 			keyName = "anchorY",
-			name = "Y Position",
+			name = "List Y Position",
 			description = "Configures y position relative to anchor."
 	)
 	default int anchorY() {
@@ -57,7 +57,7 @@ public interface ProximityPromptConfig extends Config {
 			position = 0,
 			keyName = "idFinder",
 			name = "ID Finder",
-			description = "Configures whether or not to show ids."
+			description = "Configures whether or not to enable ID Finder."
 	)
 	default boolean idFinder() {
 		return false;

@@ -444,9 +444,9 @@ public class ProximityPromptPlugin extends Plugin {
 					prompt.itemIds = toCsv(jsonObject.get("items").getAsJsonArray());
 				}
 
-				if (jsonObject.has("patterns"))
+				if (jsonObject.has("messages"))
 				{
-					prompt.chatPatterns = toCsv(jsonObject.get("patterns").getAsJsonArray());
+					prompt.chatPatterns = toCsv(jsonObject.get("messages").getAsJsonArray());
 				}
 
 				if (jsonObject.has("times"))

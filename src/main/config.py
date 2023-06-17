@@ -1,3 +1,5 @@
+import random
+
 line1  = '    @ConfigSection('
 line2  = '            name = "{number}",'
 line3  = '            description = "Prompt {number}",'
@@ -339,5 +341,33 @@ config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n
 #
 # print(string)
 
-for index in range(1,101):
-    print(config.format(number=index, ucName="Prompt" + str(index), lcName="prompt" + str(index), pos=(20 + index)))
+# for index in range(1,101):
+#     print(config.format(number=index, ucName="Prompt" + str(index), lcName="prompt" + str(index), pos=(20 + index)))
+
+
+json = "{{" + \
+    "\"text\":\"^aCannonball!\"," + \
+    "\"color\":\"#FF0000\"," + \
+    "\"location\":1," + \
+       "\"anchor\":0," + \
+       "\"x\":{x}," + \
+       "\"y\":{y}," + \
+       "\"image\":2," + \
+       "\"offset\":2," + \
+       "\"noffset\":true," + \
+       "\"radius\":2," + \
+       "\"npcs\":[486,487]," + \
+       "\"dates\":[\"6/17/23\"]," + \
+       "\"bg\":\"#65bc87\"," + \
+       "\"tsize\":0," + \
+       "\"unit\":0," + \
+       "\"duration\":{d}," + \
+       "\"cd\":100," + \
+       "\"sound\":2," + \
+       "\"patterns\":[\"cannon\"]" + \
+    "}},\n"
+
+print("[")
+for index in range(1,1500):
+    print(json.format(x=random.randint(0, 1300), y=random.randint(0, 700), d=index))
+print("]")

@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 public enum RSAnchorType
 {
     TOP_LEFT,
+    TOP_CENTER,
     TOP_RIGHT,
     BOTTOM_LEFT,
-    BOTTOM_RIGHT
+    BOTTOM_RIGHT,
+    LEFT_CENTER
 }
