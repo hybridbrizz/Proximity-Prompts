@@ -14,7 +14,7 @@
 - Days
 - Dates
 
-### Each prompt can appear in a list or in a sperate panel. Panels can be customized a few ways:
+### Each prompt can appear in a list or in a sperate panel. Panels can be customized in different ways:
 
 - Anchor
 - (X, Y)
@@ -52,3 +52,66 @@ Optionally a duration and cooldown can also be configured.
 - ^w White
 - ^y Yellow
 
+### Prompts can also be added using a JSON format
+
+Only required is text.
+
+Unit, location, anchor, tsize, and sound are all configuration list index.
+
+```json
+[
+  {
+    "force": false,
+    "text": "Prompt",
+    "color": "#FFFFFF",
+    "duration": 5,
+    "cd": 30,
+    "unit": 0,
+    "notify": false,
+    "location": 1,
+    "anchor": 0,
+    "x": 10,
+    "y": 20,
+    "width": 150,
+    "broder": true,
+    "bg": "#000000",
+    "tsize": 0,
+    "sound": 1,
+    "image": 2,
+    "offset": 0,
+    "noffset": false,
+    "coords": [
+      "(10,20)"
+    ],
+    "radius": 1,
+    "geofences": [
+      "(10,10,20,0)"
+    ],
+    "regions": [
+      2
+    ],
+    "npcs": [
+      3
+    ],
+    "items": [
+      4
+    ],
+    "messages": [
+      "cannon",
+      "[0-9]{1,3}"
+    ],
+    "times": [
+      "8:00pm",
+      "9:00pm-11:00pm"
+    ],
+    "days": [
+      "Sat"
+    ],
+    "dates": [
+      "06/10",
+      "09/15/22"
+    ]
+  }
+]
+```
+    
