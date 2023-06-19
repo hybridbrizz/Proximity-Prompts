@@ -74,9 +74,9 @@ public interface ProximityPromptConfig extends Config {
 	}
 
 	@ConfigSection(
-			name = "Reminders",
+			name = "Custom",
 			description = "JSON Reminders",
-			position = 20,
+			position = 50,
 			closedByDefault = true
 	)
 	String customReminders = "customRemindersSection";
@@ -84,7 +84,7 @@ public interface ProximityPromptConfig extends Config {
 	@ConfigItem(
 			position = 0,
 			keyName = "jsonReminders",
-			name = "Reminders",
+			name = "JSON",
 			description = "Json array of reminders.",
 			section = customReminders
 
