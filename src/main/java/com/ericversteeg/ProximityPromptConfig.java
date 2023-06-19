@@ -10,7 +10,8 @@ import net.runelite.client.config.*;
 import java.awt.*;
 
 @ConfigGroup(ProximityPromptConfig.GROUP)
-public interface ProximityPromptConfig extends Config {
+public interface ProximityPromptConfig extends Config
+{
 	String GROUP = "proximity_prompt";
 
 	@ConfigItem(
