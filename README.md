@@ -1,8 +1,6 @@
-# Proximity Prompts
+# Fun Reminders
 
-![gif2](https://github.com/erversteeg/Proximity-Prompts/assets/2341316/dc057b0e-4974-40d4-b2db-ee94d2b1e5ad)
-
-### Proximity promts are little overlays that appear at certain times depending on how they are configured. You can customize them to appear based on:
+### You can customize reminders to appear based on:
 
 - Coordiantes
 - Geofences
@@ -14,7 +12,7 @@
 - Days
 - Dates
 
-### Each prompt can appear in a list or in a sperate panel. Panels can be customized in different ways:
+### Each reminder can appear in a list or in a sperate panel. Panels can be customized in different ways:
 
 - Anchor
 - (X, Y)
@@ -27,7 +25,7 @@
 
 Optionally a duration and cooldown can also be configured.
 
-### Each character of prompt text can be set to a different color:
+### Each character of reminder text can be set to a different color:
 
 - ^0 Configured color
 - ^a Animated
@@ -52,7 +50,7 @@ Optionally a duration and cooldown can also be configured.
 - ^w White
 - ^y Yellow
 
-### Prompts can also be added using a JSON format
+### Reminders can also be added using a JSON format
 
 Unit, location, anchor, tsize, and sound are all configuration list index.
 
@@ -60,7 +58,7 @@ Unit, location, anchor, tsize, and sound are all configuration list index.
 [
   {
     "force": false,
-    "text": "Prompt",
+    "text": "Reminder",
     "color": "#FFFFFF",
     "duration": 5,
     "cd": 30,

@@ -48,12 +48,12 @@ for info in configInfo:
     print(line1.format(configTYpe=type, namePrefix=prefix, ucConfigName=name))
     print(line2)
 
-    for index in range(1,101):
+    for index in range(1,11):
         if_type = "else if"
         if index == 1:
             if_type = "if"
 
-        print(line3.format(ifType=if_type, number=index, lcName="prompt" + str(index), ucConfigName=name))
+        print(line3.format(ifType=if_type, number=index, lcName="reminder" + str(index), ucConfigName=name))
 
     default_return = "false"
     if type == "String":
