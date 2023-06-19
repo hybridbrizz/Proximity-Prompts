@@ -251,7 +251,7 @@ public class ProximityPromptPlugin extends Plugin {
 		}
 
 		try {
-			JsonArray jsonArray = gson.fromJson(config.customPrompts(), JsonArray.class);
+			JsonArray jsonArray = gson.fromJson(config.customReminders(), JsonArray.class);
 
 			int i = 1;
 			for (JsonElement jsonElement: jsonArray)

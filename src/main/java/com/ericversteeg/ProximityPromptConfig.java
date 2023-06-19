@@ -79,17 +79,17 @@ public interface ProximityPromptConfig extends Config {
 			position = 20,
 			closedByDefault = true
 	)
-	String customPrompts = "customPromptsSection";
+	String customReminders = "customRemindersSection";
 
 	@ConfigItem(
 			position = 0,
-			keyName = "jsonPrompts",
-			name = "Prompts",
-			description = "Json array of prompts.",
-			section = customPrompts
+			keyName = "jsonReminders",
+			name = "Reminders",
+			description = "Json array of reminders.",
+			section = customReminders
 
 	)
-	default String customPrompts() {
+	default String customReminders() {
 		return "";
 	}
 
