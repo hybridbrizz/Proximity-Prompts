@@ -98,6 +98,17 @@ public class ProximityPromptPlugin extends Plugin {
 	protected void shutDown() throws Exception
 	{
 		overlayManager.remove(overlay);
+
+		prompts.clear();
+		activePrompts.clear();
+		inactivePrompts.clear();
+
+		npcs.clear();
+		npcLastPositions.clear();
+		idleNpcs.clear();
+
+		chatMessages.clear();
+		items.clear();
 	}
 
 	@Provides
@@ -212,6 +223,7 @@ public class ProximityPromptPlugin extends Plugin {
 	{
 		NPC npc = npcDespawned.getNpc();
 		npcs.remove(npc);
+		npcLastPositions.remove(npc.getId());
 	}
 
 	@Subscribe
