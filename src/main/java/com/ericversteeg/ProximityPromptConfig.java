@@ -262,7 +262,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder1
 	)
-	default Location reminder1Location() { return Location.IN_LIST; }
+	default Location reminder1Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder1panelAnchorType",
@@ -280,7 +280,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder1
 	)
-	default int reminder1PanelAnchorX() { return 0; }
+	default int reminder1PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder1PanelAnchorY",
@@ -289,7 +289,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder1
 	)
-	default int reminder1PanelAnchorY() { return 0; }
+	default int reminder1PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder1ImageId",
@@ -346,7 +346,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder1
 	)
-	default Color reminder1PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder1PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
@@ -555,7 +555,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder2
 	)
-	default Location reminder2Location() { return Location.IN_LIST; }
+	default Location reminder2Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder2panelAnchorType",
@@ -573,7 +573,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder2
 	)
-	default int reminder2PanelAnchorX() { return 0; }
+	default int reminder2PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder2PanelAnchorY",
@@ -582,7 +582,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder2
 	)
-	default int reminder2PanelAnchorY() { return 0; }
+	default int reminder2PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder2ImageId",
@@ -639,7 +639,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder2
 	)
-	default Color reminder2PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder2PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
@@ -848,7 +848,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder3
 	)
-	default Location reminder3Location() { return Location.IN_LIST; }
+	default Location reminder3Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder3panelAnchorType",
@@ -866,7 +866,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder3
 	)
-	default int reminder3PanelAnchorX() { return 0; }
+	default int reminder3PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder3PanelAnchorY",
@@ -875,7 +875,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder3
 	)
-	default int reminder3PanelAnchorY() { return 0; }
+	default int reminder3PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder3ImageId",
@@ -932,7 +932,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder3
 	)
-	default Color reminder3PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder3PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
@@ -1141,7 +1141,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder4
 	)
-	default Location reminder4Location() { return Location.IN_LIST; }
+	default Location reminder4Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder4panelAnchorType",
@@ -1159,7 +1159,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder4
 	)
-	default int reminder4PanelAnchorX() { return 0; }
+	default int reminder4PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder4PanelAnchorY",
@@ -1168,7 +1168,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder4
 	)
-	default int reminder4PanelAnchorY() { return 0; }
+	default int reminder4PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder4ImageId",
@@ -1225,7 +1225,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder4
 	)
-	default Color reminder4PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder4PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
@@ -1434,7 +1434,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder5
 	)
-	default Location reminder5Location() { return Location.IN_LIST; }
+	default Location reminder5Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder5panelAnchorType",
@@ -1452,7 +1452,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder5
 	)
-	default int reminder5PanelAnchorX() { return 0; }
+	default int reminder5PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder5PanelAnchorY",
@@ -1461,7 +1461,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder5
 	)
-	default int reminder5PanelAnchorY() { return 0; }
+	default int reminder5PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder5ImageId",
@@ -1518,7 +1518,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder5
 	)
-	default Color reminder5PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder5PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
@@ -1727,7 +1727,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder6
 	)
-	default Location reminder6Location() { return Location.IN_LIST; }
+	default Location reminder6Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder6panelAnchorType",
@@ -1745,7 +1745,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder6
 	)
-	default int reminder6PanelAnchorX() { return 0; }
+	default int reminder6PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder6PanelAnchorY",
@@ -1754,7 +1754,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder6
 	)
-	default int reminder6PanelAnchorY() { return 0; }
+	default int reminder6PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder6ImageId",
@@ -1811,7 +1811,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder6
 	)
-	default Color reminder6PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder6PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
@@ -2020,7 +2020,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder7
 	)
-	default Location reminder7Location() { return Location.IN_LIST; }
+	default Location reminder7Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder7panelAnchorType",
@@ -2038,7 +2038,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder7
 	)
-	default int reminder7PanelAnchorX() { return 0; }
+	default int reminder7PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder7PanelAnchorY",
@@ -2047,7 +2047,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder7
 	)
-	default int reminder7PanelAnchorY() { return 0; }
+	default int reminder7PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder7ImageId",
@@ -2104,7 +2104,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder7
 	)
-	default Color reminder7PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder7PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
@@ -2313,7 +2313,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder8
 	)
-	default Location reminder8Location() { return Location.IN_LIST; }
+	default Location reminder8Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder8panelAnchorType",
@@ -2331,7 +2331,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder8
 	)
-	default int reminder8PanelAnchorX() { return 0; }
+	default int reminder8PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder8PanelAnchorY",
@@ -2340,7 +2340,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder8
 	)
-	default int reminder8PanelAnchorY() { return 0; }
+	default int reminder8PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder8ImageId",
@@ -2397,7 +2397,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder8
 	)
-	default Color reminder8PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder8PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
@@ -2606,7 +2606,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder9
 	)
-	default Location reminder9Location() { return Location.IN_LIST; }
+	default Location reminder9Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder9panelAnchorType",
@@ -2624,7 +2624,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder9
 	)
-	default int reminder9PanelAnchorX() { return 0; }
+	default int reminder9PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder9PanelAnchorY",
@@ -2633,7 +2633,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder9
 	)
-	default int reminder9PanelAnchorY() { return 0; }
+	default int reminder9PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder9ImageId",
@@ -2690,7 +2690,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder9
 	)
-	default Color reminder9PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder9PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
@@ -2899,7 +2899,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the location for reminder.",
 			section = reminder10
 	)
-	default Location reminder10Location() { return Location.IN_LIST; }
+	default Location reminder10Location() { return Location.SINGLE_LINE; }
 
 	@ConfigItem(
 			keyName = "Reminder10panelAnchorType",
@@ -2917,7 +2917,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the x position of panel.",
 			section = reminder10
 	)
-	default int reminder10PanelAnchorX() { return 0; }
+	default int reminder10PanelAnchorX() { return 100; }
 
 	@ConfigItem(
 			keyName = "Reminder10PanelAnchorY",
@@ -2926,7 +2926,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures the y position of panel.",
 			section = reminder10
 	)
-	default int reminder10PanelAnchorY() { return 0; }
+	default int reminder10PanelAnchorY() { return 200; }
 
 	@ConfigItem(
 			keyName = "Reminder10ImageId",
@@ -2983,7 +2983,7 @@ public interface ProximityPromptConfig extends Config
 			description = "Configures panel color.",
 			section = reminder10
 	)
-	default Color reminder10PanelColor() { return new Color(115, 115, 115); }
+	default Color reminder10PanelColor() { return new Color(28, 28, 28); }
 
 	@Alpha
 	@ConfigItem(
