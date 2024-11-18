@@ -22,6 +22,13 @@ public class RSViewOverlay extends Overlay
         for (ViewInfo info: viewInfo)
         {
             Client client = info.getClient();
+
+            Widget viewportWidget = getViewportWidget(client);
+            if (viewportWidget.isHidden())
+            {
+                return null;
+            }
+
             RSViewGroup view = info.getView();
             RSAnchorType anchorType = info.getAnchorType();
             int anchorX = info.getAnchorX();
@@ -33,8 +40,6 @@ public class RSViewOverlay extends Overlay
 
             if (anchorType != null)
             {
-                Widget viewportWidget = getViewportWidget(client);
-
                 view.setX(anchorX);
                 view.setY(anchorY);
 
