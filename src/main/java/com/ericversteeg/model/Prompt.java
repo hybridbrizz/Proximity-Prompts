@@ -105,6 +105,9 @@ public class Prompt {
     @SerializedName("npcs")
     public String npcIds = "";
 
+    @SerializedName("idle_npcs")
+    public String idleNpcIds = "";
+
     @SerializedName("items")
     public String itemIds = "";
 

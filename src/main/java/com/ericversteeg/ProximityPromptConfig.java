@@ -377,6 +377,15 @@ public interface ProximityPromptConfig extends Config
 	)
 	default int reminder1ImageOffset() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder1NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder1
+	)
+	default String reminder1IdleNpcIds() { return ""; }
+
 
 	@ConfigSection(
 			name = "2",
@@ -660,6 +669,15 @@ public interface ProximityPromptConfig extends Config
 			section = reminder2
 	)
 	default int reminder2ImageOffset() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder2NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder2
+	)
+	default String reminder2IdleNpcIds() { return ""; }
 
 
 	@ConfigSection(
@@ -945,6 +963,15 @@ public interface ProximityPromptConfig extends Config
 	)
 	default int reminder3ImageOffset() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder3NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder3
+	)
+	default String reminder3IdleNpcIds() { return ""; }
+
 
 	@ConfigSection(
 			name = "4",
@@ -1228,6 +1255,15 @@ public interface ProximityPromptConfig extends Config
 			section = reminder4
 	)
 	default int reminder4ImageOffset() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder4NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder4
+	)
+	default String reminder4IdleNpcIds() { return ""; }
 
 
 	@ConfigSection(
@@ -1513,6 +1549,15 @@ public interface ProximityPromptConfig extends Config
 	)
 	default int reminder5ImageOffset() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder5NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder5
+	)
+	default String reminder5IdleNpcIds() { return ""; }
+
 
 	@ConfigSection(
 			name = "6",
@@ -1796,6 +1841,15 @@ public interface ProximityPromptConfig extends Config
 			section = reminder6
 	)
 	default int reminder6ImageOffset() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder6NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder6
+	)
+	default String reminder6IdleNpcIds() { return ""; }
 
 
 	@ConfigSection(
@@ -2081,6 +2135,15 @@ public interface ProximityPromptConfig extends Config
 	)
 	default int reminder7ImageOffset() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder7NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder7
+	)
+	default String reminder7IdleNpcIds() { return ""; }
+
 
 	@ConfigSection(
 			name = "8",
@@ -2364,6 +2427,15 @@ public interface ProximityPromptConfig extends Config
 			section = reminder8
 	)
 	default int reminder8ImageOffset() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder8NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder8
+	)
+	default String reminder8IdleNpcIds() { return ""; }
 
 
 	@ConfigSection(
@@ -2649,6 +2721,15 @@ public interface ProximityPromptConfig extends Config
 	)
 	default int reminder9ImageOffset() { return 0; }
 
+	@ConfigItem(
+			keyName = "Reminder9NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder9
+	)
+	default String reminder9IdleNpcIds() { return ""; }
+
 
 	@ConfigSection(
 			name = "10",
@@ -2932,4 +3013,13 @@ public interface ProximityPromptConfig extends Config
 			section = reminder10
 	)
 	default int reminder10ImageOffset() { return 0; }
+
+	@ConfigItem(
+			keyName = "Reminder10NpcsIdle",
+			position = 34,
+			name = "Idle Npcs",
+			description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",
+			section = reminder10
+	)
+	default String reminder10IdleNpcIds() { return ""; }
 }

@@ -277,6 +277,15 @@ line370 = '            section = {lcName}'
 line371 = '      )'
 line372 = '      default int {lcName}ImageOffset() {{ return 0; }}'
 line373 = ''
+line374 = '      @ConfigItem('
+line375 = '            keyName = "{ucName}NpcsIdle",'
+line376 = '            position = 34,'
+line377 = '            name = "Idle Npcs",'
+line378 = '            description = "List of npc ids who are idle (not moving) when reminder is shown (comma separated).",'
+line379 = '            section = {lcName}'
+line380 = '      )'
+line381 = '      default String {lcName}IdleNpcIds() {{ return ""; }}'
+line382 = ''
 
 
 config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n" + line6 + "\n" + line7 + "\n" + line8 + \
@@ -329,9 +338,10 @@ config = line1 + "\n" + line2 + "\n" + line3 + "\n" + line4 + "\n" + line5 + "\n
          "\n" + line356 + "\n" + line357 + "\n" + line358 + "\n" + line359 + "\n" + line360 + \
          "\n" + line361 + "\n" + line362 + "\n" + line363 + "\n" + line364 + "\n" + line365 + \
          "\n" + line366 + "\n" + line367 + "\n" + line368 + "\n" + line369 + "\n" + line370 + \
-         "\n" + line371 + "\n" + line372 + "\n" + line373 + "\n"
-
-# string = ""
+         "\n" + line371 + "\n" + line372 + "\n" + line373 + "\n" + line374 + "\n" + line375 + \
+         "\n" + line376 + "\n" + line377 + "\n" + line378 + "\n" + line379 + "\n" + line380 + \
+         "\n" + line381 + "\n" + line382 + "\n"
+    # string = ""
 # for i in range(360, 376):
 #     string += "\"\\n\" + line" + str(i) + " + "
 #     if i % 5 == 0:

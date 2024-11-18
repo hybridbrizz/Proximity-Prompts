@@ -6,6 +6,7 @@
 - Geofences
 - Regions
 - Npcs
+- Idle Npcs
 - Items
 - Messages
 - Times
@@ -88,6 +89,9 @@ Unit, location, anchor, tsize, and sound are all configuration list index.
     ],
     "npcs": [
       3
+    ],
+    "idle_npcs": [
+      5
     ],
     "items": [
       4

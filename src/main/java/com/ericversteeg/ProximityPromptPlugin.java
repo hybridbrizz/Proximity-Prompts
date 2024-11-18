@@ -1,10 +1,10 @@
 package com.ericversteeg;
 
+import com.ericversteeg.model.Prompt;
 import com.ericversteeg.model.config.Location;
 import com.ericversteeg.model.config.Sound;
 import com.ericversteeg.model.config.TextSize;
 import com.ericversteeg.model.config.TimeUnit;
-import com.ericversteeg.model.Prompt;
 import com.ericversteeg.view.RSAnchorType;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -13,13 +13,15 @@ import com.google.gson.JsonObject;
 import com.google.inject.Provides;
 import net.runelite.api.*;
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.events.*;
+import net.runelite.api.events.ChatMessage;
+import net.runelite.api.events.GameTick;
+import net.runelite.api.events.NpcDespawned;
+import net.runelite.api.events.NpcSpawned;
 import net.runelite.client.Notifier;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
-import net.runelite.client.events.RuneScapeProfileChanged;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
@@ -28,10 +30,13 @@ import net.runelite.client.ui.overlay.OverlayManager;
 import javax.inject.Inject;
 import javax.inject.Provider;
 import java.awt.*;
-import java.time.*;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoField;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -74,6 +79,9 @@ public class ProximityPromptPlugin extends Plugin {
 	WorldPoint worldPos = new WorldPoint(0, 0, 0);
 
 	List<NPC> npcs = new ArrayList<>();
+	Map<Integer, WorldPoint> npcLastPositions = new HashMap<>();
+	Set<NPC> idleNpcs = new HashSet<>();
+
 	List<ChatMessage> chatMessages = new ArrayList<>();
 	List<ItemComposition> items = new ArrayList<>();
 
@@ -172,6 +180,24 @@ public class ProximityPromptPlugin extends Plugin {
 				items.add(itemComposition);
 			}
 		}
+
+		// update idle npcs
+		idleNpcs.clear();
+		for (NPC npc: npcs)
+		{
+			WorldPoint cPos = npc.getWorldLocation();
+			WorldPoint lPos = npcLastPositions.get(npc.getId());
+
+			if (cPos != null && lPos != null)
+			{
+				if (cPos.getX() == lPos.getX() && cPos.getY() == lPos.getY())
+				{
+					idleNpcs.add(npc);
+				}
+			}
+
+			npcLastPositions.put(npc.getId(), cPos);
+		}
 	}
 
 	@Subscribe(priority = -1)
@@ -244,6 +270,7 @@ public class ProximityPromptPlugin extends Plugin {
 			prompt.geoFences = getGeofences(i);
 			prompt.regionIds = getRegionIds(i);
 			prompt.npcIds = getNpcIds(i);
+			prompt.idleNpcIds = getIdleNpcIds(i);
 			prompt.itemIds = getItemIds(i);
 			prompt.chatPatterns = getChatPatterns(i);
 
@@ -391,6 +418,11 @@ public class ProximityPromptPlugin extends Plugin {
 					prompt.npcIds = toCsv(jsonObject.get("npcs").getAsJsonArray());
 				}
 
+				if (jsonObject.has("idle_npcs"))
+				{
+					prompt.idleNpcIds = toCsv(jsonObject.get("idle_npcs").getAsJsonArray());
+				}
+
 				if (jsonObject.has("items"))
 				{
 					prompt.itemIds = toCsv(jsonObject.get("items").getAsJsonArray());
@@ -461,6 +493,7 @@ public class ProximityPromptPlugin extends Plugin {
 					(checkGeoFences(prompt.geoFences) && !matchesGeoFences(prompt.geoFences)) ||
 					(checkRegions(prompt.regionIds) && !matchesRegions(prompt.regionIds)) ||
 					(checkNpcIds(prompt.npcIds) && !matchesNpcIds(prompt.npcIds)) ||
+					(checkIdleNpcIds(prompt.idleNpcIds) && !matchesIdleNpcIds(prompt.idleNpcIds)) ||
 					(checkItemIds(prompt.itemIds) && !matchesItemIds(prompt.itemIds)) ||
 					(checkChatPatterns(prompt.chatPatterns) && !matchesChatPatterns(prompt.chatPatterns)))
 				)
@@ -981,6 +1014,43 @@ public class ProximityPromptPlugin extends Plugin {
 		}
 	}
 
+	private boolean checkIdleNpcIds(String npcIds)
+	{
+		return !npcIds.isEmpty();
+	}
+
+	private boolean matchesIdleNpcIds(String npcIdsStr)
+	{
+		try {
+			String [] npcIds = npcIdsStr.split(",");
+
+			for (String npcIdStr: npcIds)
+			{
+				int npcId = Integer.parseInt(npcIdStr.trim());
+
+				boolean matches = false;
+				for (NPC npc: idleNpcs)
+				{
+					if (npc.getId() == npcId) {
+						matches = true;
+						break;
+					}
+				}
+
+				if (matches)
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+		catch (Exception exception)
+		{
+			return false;
+		}
+	}
+
 	private boolean checkItemIds(String itemIds)
 	{
 		return !itemIds.isEmpty();
@@ -1273,6 +1343,21 @@ public class ProximityPromptPlugin extends Plugin {
 		else if (promptId == 8) return config.reminder8NpcIds();
 		else if (promptId == 9) return config.reminder9NpcIds();
 		else if (promptId == 10) return config.reminder10NpcIds();
+		else return "";
+	}
+
+	String getIdleNpcIds(int promptId)
+	{
+		if (promptId == 1) return config.reminder1IdleNpcIds();
+		else if (promptId == 2) return config.reminder2IdleNpcIds();
+		else if (promptId == 3) return config.reminder3IdleNpcIds();
+		else if (promptId == 4) return config.reminder4IdleNpcIds();
+		else if (promptId == 5) return config.reminder5IdleNpcIds();
+		else if (promptId == 6) return config.reminder6IdleNpcIds();
+		else if (promptId == 7) return config.reminder7IdleNpcIds();
+		else if (promptId == 8) return config.reminder8IdleNpcIds();
+		else if (promptId == 9) return config.reminder9IdleNpcIds();
+		else if (promptId == 10) return config.reminder10IdleNpcIds();
 		else return "";
 	}
 
