@@ -42,8 +42,10 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @PluginDescriptor(
-	name = "Fun Reminders",
-	description = "Create reminders."
+	name = "Conditional Pop-ups",
+	description = "Add little pop-ups that appear based on a combination of one or many set " +
+			"coordinates, geofences, game regions, NPCs in range, idle NPCs in range, inventory items, " +
+			"message patterns, dates, and times."
 )
 
 public class ProximityPromptPlugin extends Plugin {
