@@ -1,14 +1,14 @@
 package com.ericversteeg.view;
 
 import net.runelite.api.Client;
+import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
-import net.runelite.api.widgets.WidgetInfo;
 import net.runelite.client.ui.overlay.Overlay;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.awt.*;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RSViewOverlay extends Overlay
 {
@@ -96,16 +96,16 @@ public class RSViewOverlay extends Overlay
     {
         Widget widget;
 
-        widget = client.getWidget(WidgetInfo.RESIZABLE_VIEWPORT_INTERFACE_CONTAINER);
+        widget = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_INTERFACE_CONTAINER);
         if (widget != null) return widget;
 
-        widget = client.getWidget(WidgetInfo.RESIZABLE_VIEWPORT_BOTTOM_LINE_INTERFACE_CONTAINER);
+        widget = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_INTERFACE_CONTAINER);
         if (widget != null) return widget;
 
-        widget = client.getWidget(WidgetInfo.FIXED_VIEWPORT_INTERFACE_CONTAINER);
+        widget = client.getWidget(ComponentID.FIXED_VIEWPORT_INTERFACE_CONTAINER);
         if (widget != null) return widget;
 
-        return client.getWidget(WidgetInfo.BANK_INVENTORY_ITEMS_CONTAINER);
+        return client.getWidget(ComponentID.BANK_INVENTORY_ITEM_CONTAINER);
     }
 
     public static class ViewInfo {
