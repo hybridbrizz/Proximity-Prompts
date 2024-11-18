@@ -1,5 +1,7 @@
 # Conditional Pop-ups
 
+![Pop-up message](https://github.com/user-attachments/assets/0c95ecdb-8113-4c0d-b59e-3beef758721f)
+
 Add little pop-ups that appear based on a combination of one or many coordinates, geofences, game regions, NPCs in range, idle NPCs in range, inventory items, message patterns, dates, and times.
 Each pop-up can be stylized with text colors, icon, and sound.
 
