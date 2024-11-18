@@ -1,32 +1,17 @@
-# Fun Reminders
+# Conditional Pop-ups
 
-### You can customize reminders to appear based on:
+Add little pop-ups that appear based on a combination of one or many coordinates, geofences, game regions, NPCs in range, idle NPCs in range, inventory items, message patterns, dates, and times.
+Each pop-up can be stylized with text colors, icon, and sound.
 
-- Coordiantes
-- Geofences
-- Regions
-- Npcs
-- Idle Npcs
-- Items
-- Messages
-- Times
-- Days
-- Dates
+Optionally a duration and cooldown can be set for each pop-up. For example to only show it for 5 seconds after the conditions are met or show and hide it at an interval.
 
-### Each reminder can appear in a list or in a sperate panel. Panels can be customized in different ways:
+By default pop-ups stay visible for as long as all the conditions are met.
 
-- Anchor
-- (X, Y)
-- Width
-- Border
-- Color
-- Text Size
-- Image
-- Sound
+This plugin runs off the default Runelite Panel packages so to configure window positions you can in plugin settings. Anchor, x, and y are those settings.
 
-Optionally a duration and cooldown can also be configured.
+## Text Color Format
 
-### Each character of reminder text can be set to a different color:
+Append these formats before the letters you want to recolor.
 
 - ^0 Configured color
 - ^a Animated
@@ -51,9 +36,9 @@ Optionally a duration and cooldown can also be configured.
 - ^w White
 - ^y Yellow
 
-### Reminders can also be added using a JSON format
+## JSON Format
 
-Unit, location, anchor, tsize, and sound are all configuration list index.
+This plugin only supports 10 pop-ups at a time however additional pop-ups can be included on top of this with a JSON format.
 
 ```json
 [
@@ -114,4 +99,5 @@ Unit, location, anchor, tsize, and sound are all configuration list index.
   }
 ]
 ```
-    
+
+Specifically unit, location, anchor, tsize, and sound are all the set list index.
